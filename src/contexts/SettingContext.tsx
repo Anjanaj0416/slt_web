@@ -1,0 +1,42 @@
+"use client";
+
+import { Direction } from "@mui/material";
+import { createContext, PropsWithChildren, useEffect, useState } from "react";
+
+// ============================================================
+export type SettingsOptions = { direction: Direction };
+// ============================================================
+
+// SET "rtl" OR "ltr" HERE
+// THEN GOTO BROWSER CONSOLE AND RUN localStorage.clear() TO CLEAR LOCALSTORAGE
+const initialSettings: SettingsOptions = { direction: "ltr" };
+
+export const SettingsContext = createContext({
+  settings: initialSettings,
+  updateSettings: (arg: SettingsOptions) => {},
+});
+
+const SettingsProvider = ({ children }: PropsWithChildren) => {
+  const [settings, setSettings] = useState(initialSettings);
+
+  const updateSettings = (updatedSetting: SettingsOptions) => {
+    setSettings(updatedSetting);
+    window.localStorage.setItem("settings", JSON.stringify(updatedSetting));
+  };
+
+  useEffect(() => {
+    if (!window) return;
+
+    const getItem = window.localStorage.getItem("settings");
+    if (getItem) setSettings(JSON.parse(getItem));
+    else setSettings(initialSettings);
+  }, []);
+
+  return (
+    <SettingsContext.Provider value={{ settings, updateSettings }}>
+      {children}
+    </SettingsContext.Provider>
+  );
+};
+
+export default SettingsProvider;

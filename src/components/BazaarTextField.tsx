@@ -1,0 +1,68 @@
+import { FC } from "react";
+import { Box, BoxProps, TextField, TextFieldProps } from "@mui/material";
+// CUSTOM COMPONENT
+import { H6 } from "./Typography";
+
+// ==============================================================
+type Props = TextFieldProps & BoxProps;
+// ==============================================================
+
+const BazaarTextField: FC<Props> = ({ label, InputProps, ...props }) => {
+  const boxProps: BoxProps = {};
+  const textFieldProps: TextFieldProps = {};
+
+  for (const key in props) {
+    if (spacePropList.includes(key)) boxProps[key] = props[key];
+    else textFieldProps[key] = props[key];
+  }
+
+  return (
+    <Box {...boxProps}>
+      {/* INPUT LEVEL TEXT */}
+      {label ? (
+        <H6 mb={1} fontSize={13} color="grey.700">
+          {label}
+        </H6>
+      ) : null}
+
+      {/* INPUT FIELD SECTION */}
+      <TextField
+        InputProps={{ ...InputProps, style: { ...InputProps?.style, height: 44 } }}
+        {...textFieldProps}
+      />
+    </Box>
+  );
+};
+
+const spacePropList = [
+  "m",
+  "mt",
+  "mr",
+  "mb",
+  "ml",
+  "mx",
+  "my",
+  "p",
+  "pt",
+  "pr",
+  "pb",
+  "pl",
+  "px",
+  "py",
+  "margin",
+  "marginTop",
+  "marginRight",
+  "marginBottom",
+  "marginLeft",
+  "marginX",
+  "marginY",
+  "padding",
+  "paddingTop",
+  "paddingRight",
+  "paddingBottom",
+  "paddingLeft",
+  "paddingX",
+  "paddingY",
+];
+
+export default BazaarTextField;
