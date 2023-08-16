@@ -1,0 +1,37 @@
+{
+  "Global Custom Components": {
+    "prefix": "gcc",
+    "body": ["// GLOBAL CUSTOM COMPONENTS"],
+    "description": "Global Custom Components"
+  },
+  "Local Custom Components": {
+    "prefix": "lcc",
+    "body": ["// Local CUSTOM COMPONENTS"],
+    "description": "Local Custom Components"
+  },
+  "Data Model": {
+    "prefix": "dl",
+    "body": ["// CUSTOM DATA MODEL"],
+    "description": "Data Model"
+  },
+  "Custom Hooks": {
+    "prefix": "ch",
+    "body": ["// GLOBAL CUSTOM HOOKS"],
+    "description": "Local Custom hooks"
+  },
+  "Custom Icon Components": {
+    "prefix": "ic",
+    "body": ["// CUSTOM ICON COMPONENT"],
+    "description": "Custom Icon Components"
+  },
+  "Utility Functions": {
+    "prefix": "ulf",
+    "body": ["// CUSTOM UTILS LIBRARY FUNCTIONS"],
+    "description": "Custom Utility Functions"
+  },
+  "API Functions": {
+    "prefix": "af",
+    "body": ["// API FUNCTIONS"],
+    "description": "Custom Api Functions"
+  }
+}

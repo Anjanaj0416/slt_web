@@ -50,10 +50,12 @@ const INITIAL_CART = [
 
 const INITIAL_STATE = { cart: INITIAL_CART };
 
+// ==============================================================
 interface ContextProps {
   state: InitialState;
   dispatch: (args: CartActionType) => void;
 }
+// ==============================================================
 
 export const CartContext = createContext<ContextProps>({} as ContextProps);
 

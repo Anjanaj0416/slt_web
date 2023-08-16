@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import Carousel from "components/carousel/Carousel";
 import { CarouselCard1 } from "components/carousel-cards";
-// TYPESCRIPT DATA SHAPE
+// CUSTOM DATA MODEL
 import MainCarouselItem from "models/Market-1.model";
 
 // ======================================================

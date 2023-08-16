@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { Container, Grid } from "@mui/material";
 import Navigations from "./Navigations";
-import ShopLayout1 from "components/layouts/ShopLayout1";
+import ShopLayout1 from "components/layouts/shop-layout-1/shop-layout-1";
 
 /**
  *  Used in:

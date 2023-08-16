@@ -1,10 +1,11 @@
 "use client";
 
-import { FC } from "react";
 import { Box, Container, styled } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import WhiteButton from "components/WhiteButton";
 import { H3, Paragraph, Span } from "components/Typography";
 
+// STYLED COMPONENT
 const BannerWrapper = styled(Box)(({ theme }) => ({
   gap: "5rem",
   padding: "2rem",
@@ -25,7 +26,7 @@ const BannerWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Section7: FC = () => {
+const Section7 = () => {
   return (
     <Container sx={{ my: 8 }}>
       <BannerWrapper>
@@ -33,6 +34,7 @@ const Section7: FC = () => {
           <H3 fontSize={{ sm: 36, xs: 28 }} lineHeight={1}>
             GIFT <Span color="primary.main">50% OFF</Span> PERFECT STYLES
           </H3>
+
           <Paragraph fontSize={16}>
             Only until the end of this week. Terms and conditions apply
           </Paragraph>

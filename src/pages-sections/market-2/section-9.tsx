@@ -3,12 +3,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Box, Button, Container } from "@mui/material";
+// GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
+// GLOBAL CUSTOM COMPONENTS
 import Carousel from "components/carousel/Carousel";
-import { H2, Paragraph } from "components/Typography";
+import { H2, H3, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import ProductCard20 from "components/product-cards/ProductCard20";
 import { carouselStyled } from "components/carousel/styles";
+// CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
 const Section9 = () => {
@@ -31,39 +34,41 @@ const Section9 = () => {
     else setVisibleSlides(5);
   }, [width]);
 
+  // SELECTED BUTTON
   const handleSelected = (item: string) => () => setSelected(item);
+
+  // BUTTON ACTIVE COLOR
   const activeColor = (item: string) => (item === selected ? "error" : "dark");
+
+  // FILTERABLE BUTTON LIST
+  const FILTER_BUTTONS = [
+    { id: 1, title: "New Arrivals", value: "new" },
+    { id: 2, title: "Best Seller", value: "best" },
+    { id: 3, title: "Most Popular", value: "popular" },
+    { id: 4, title: "View All", value: "view" },
+  ];
 
   return (
     <Container sx={{ pb: 8 }}>
       <FlexBetween gap={2} flexWrap="wrap" mb={3}>
         {/* SECTION TITLE */}
         <Box>
-          <H2 fontSize={20}>Selected Products</H2>
+          <H3>Selected Products</H3>
           <Paragraph>All our new arrivals in a exclusive brand selection</Paragraph>
         </Box>
 
         {/* FILTERED BUTTON LIST */}
         <FlexBox flexWrap="wrap" gap={1} sx={{ "& button": { flexGrow: 1 } }}>
-          <Button variant="outlined" color={activeColor("new")} onClick={handleSelected("new")}>
-            New Arrivals
-          </Button>
-
-          <Button variant="outlined" color={activeColor("best")} onClick={handleSelected("best")}>
-            Best Seller
-          </Button>
-
-          <Button
-            variant="outlined"
-            color={activeColor("popular")}
-            onClick={handleSelected("popular")}
-          >
-            Most Popular
-          </Button>
-
-          <Button variant="outlined" color={activeColor("view")} onClick={handleSelected("view")}>
-            View All
-          </Button>
+          {FILTER_BUTTONS.map(({ id, title, value }) => (
+            <Button
+              key={id}
+              variant="outlined"
+              color={activeColor(value)}
+              onClick={handleSelected(value)}
+            >
+              {title}
+            </Button>
+          ))}
         </FlexBox>
       </FlexBetween>
 

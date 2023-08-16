@@ -1,9 +1,11 @@
 import { FC } from "react";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
+// GLOBAL CUSTOM COMPONENTS
 import { H4 } from "components/Typography";
-import { Box, styled } from "@mui/material";
 import LazyImage from "components/LazyImage";
 
-// custom styled components
+// CUSTOM COMPONENTS
 const Wrapper = styled(Box)(({ theme }) => ({
   height: "100%",
   cursor: "pointer",

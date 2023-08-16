@@ -1,11 +1,12 @@
 "use client";
 
-import { FC } from "react";
 import { Box, Container, Divider, Grid, styled } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import { H4, Paragraph, Span } from "components/Typography";
+// CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 
-// custom styled components
+// STYLED COMPONENT
 const BannerBox = styled(Box)<{ img: string }>(({ theme, img }) => ({
   padding: 32,
   overflow: "hidden",
@@ -19,10 +20,11 @@ const BannerBox = styled(Box)<{ img: string }>(({ theme, img }) => ({
   }),
 }));
 
-const Section6: FC = () => {
+const Section6 = () => {
   return (
     <Container sx={{ my: 8 }}>
       <Grid container spacing={3}>
+        {/* FINAL REDUCTION BANNER */}
         <Grid item md={6} xs={12}>
           <BannerBox img="/assets/images/banners/banner-21.jpg">
             <H4>Final Reduction</H4>
@@ -42,6 +44,7 @@ const Section6: FC = () => {
           </BannerBox>
         </Grid>
 
+        {/* WEEKEND SALE BANNER */}
         <Grid item md={6} xs={12}>
           <BannerBox img="/assets/images/banners/banner-22.jpg">
             <H4 color="white">Weekend Sale</H4>

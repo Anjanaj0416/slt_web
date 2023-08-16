@@ -6,14 +6,14 @@ import useSettings from "hooks/useSettings";
 import { FlexBetween, FlexBox } from "./flex-box";
 
 // ===================================================
-type CategorySectionHeaderProps = {
+interface Props {
   title?: string;
   icon?: ReactNode;
   seeMoreLink?: string;
-};
+}
 // ===================================================
 
-const CategorySectionHeader: FC<CategorySectionHeaderProps> = (props) => {
+const CategorySectionHeader: FC<Props> = (props) => {
   const { title, seeMoreLink, icon } = props;
 
   const { settings } = useSettings();

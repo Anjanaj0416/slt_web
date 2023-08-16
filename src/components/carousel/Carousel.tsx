@@ -148,11 +148,8 @@ const renderDots = ({
   const dots = [];
   const total = totalSlides - visibleSlides + 1;
   // handle dot button
-  const handleClick = (currentSlide: any, autoplay: boolean) => {
-    carouselStore.setStoreState({
-      autoPlay: autoplay,
-      currentSlide: currentSlide,
-    });
+  const handleClick = (currentSlide: number, autoPlay: boolean) => {
+    carouselStore.setStoreState({ autoPlay, currentSlide });
   };
 
   for (let i = 0; i < total; i += step) {

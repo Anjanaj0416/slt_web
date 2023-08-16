@@ -1,30 +1,33 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Rating } from "@mui/material";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
+// GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
 import BazaarImage from "components/BazaarImage";
 import { Paragraph } from "components/Typography";
+// CUSTOM UTILS LIBRARY FUNCTIONS
 import { currency } from "lib";
 
 // ===========================================
-type ProductCard19Props = {
+interface Props {
   slug?: string;
   image: string;
   title: string;
   price: number;
   id?: string | number;
-};
+}
 // ===========================================
 
-const ProductCard19: FC<ProductCard19Props> = ({ image, title, price, slug }) => {
+const ProductCard19: FC<Props> = ({ image, title, price, slug }) => {
   return (
     <FlexBox
       mb={2}
       gap={2}
       alignItems="center"
       sx={{
-        " & a": { flexShrink: 0 },
+        "& a": { flexShrink: 0 },
         ":last-of-type": { mb: 0 },
         "& img": { transition: "0.3s" },
         ":hover": { img: { transform: "scale(1.1)" } },
@@ -40,6 +43,7 @@ const ProductCard19: FC<ProductCard19Props> = ({ image, title, price, slug }) =>
         <NavLink href="#">
           <Paragraph fontSize={16}>{title}</Paragraph>
         </NavLink>
+
         <Paragraph fontWeight={700}>{currency(price)}</Paragraph>
         <Rating value={4} sx={{ fontSize: 14 }} />
       </Box>

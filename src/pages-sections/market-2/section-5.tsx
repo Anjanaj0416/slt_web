@@ -2,14 +2,17 @@
 
 import { FC, useEffect, useState } from "react";
 import { Card, Container, Grid, List, ListItem, styled } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
 import useWindowSize from "hooks/useWindowSize";
 import Carousel from "components/carousel/Carousel";
 import ProductCard20 from "components/product-cards/ProductCard20";
 import { carouselStyled } from "components/carousel/styles";
+// CUSTOM DATA MODEL
 import { CategoryBasedProducts } from "models/Market-2.model";
 
+// STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
   fontSize: 13,
   fontWeight: 500,

@@ -14,7 +14,11 @@ type SearchAreaProps = {
 // ===============================================================
 
 const SearchArea: FC<SearchAreaProps> = (props) => {
-  const { searchPlaceholder, buttonText, handleBtnClick } = props;
+  const {
+    searchPlaceholder = "Search Product...",
+    buttonText = "Add Product",
+    handleBtnClick,
+  } = props;
   const downSM = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
 
   return (
@@ -33,11 +37,6 @@ const SearchArea: FC<SearchAreaProps> = (props) => {
       </Button>
     </FlexBox>
   );
-};
-
-SearchArea.defaultProps = {
-  buttonText: "Add Product",
-  searchPlaceholder: "Search Product...",
 };
 
 export default SearchArea;

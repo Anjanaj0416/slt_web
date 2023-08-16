@@ -1,6 +1,8 @@
 "use client";
 
-import { Container, Grid } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+// GLOBAL CUSTOM COMPONENTS
 import { NavLink3 } from "components/nav-link";
 import { BannerCard3 } from "components/banners";
 import { H4, Paragraph, Span } from "components/Typography";

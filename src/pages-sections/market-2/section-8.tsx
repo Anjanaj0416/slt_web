@@ -1,12 +1,16 @@
 "use client";
 
 import { useEffect, useState, FC } from "react";
-import { Box, Container } from "@mui/material";
-import { H2 } from "components/Typography";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+// GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
+// GLOBAL CUSTOM COMPONENTS
+import { H3 } from "components/Typography";
 import BazaarImage from "components/BazaarImage";
 import Carousel from "components/carousel/Carousel";
 import { FlexRowCenter } from "components/flex-box";
+// CUSTOM DATA MODEL
 import Brand from "models/Brand.model";
 
 // ==========================================================
@@ -26,9 +30,7 @@ const Section8: FC<Props> = ({ brands }) => {
 
   return (
     <Container sx={{ my: 8 }}>
-      <H2 fontSize={20} mb={3}>
-        Featured Brands
-      </H2>
+      <H3 mb={3}>Featured Brands</H3>
 
       <Box padding={4} bgcolor="white">
         <Carousel

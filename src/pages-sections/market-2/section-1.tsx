@@ -2,11 +2,13 @@
 
 import { FC } from "react";
 import { Box, Container, CSSObject, Grid, Stack } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import { NavLink3 } from "components/nav-link";
 import { BannerCard3 } from "components/banners";
 import Carousel from "components/carousel/Carousel";
 import { H4, Paragraph } from "components/Typography";
 import { CarouselCard4 } from "components/carousel-cards";
+// CUSTOM DATA MODEL
 import { MainCarouselItem } from "models/Market-2.model";
 
 // ======================================================
@@ -14,8 +16,8 @@ type Props = { carouselData: MainCarouselItem[] };
 // ======================================================
 
 const Section1: FC<Props> = ({ carouselData }) => {
-  // custom css
-  const carouselStyles: CSSObject = {
+  // CUSTOM CAROUSEL STYLES
+  const CAROUSEL_STYLES: CSSObject = {
     overflow: "hidden",
     borderRadius: "3px",
     "& .carousel__dot-group": {
@@ -32,6 +34,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
     <Box pt={3}>
       <Container>
         <Grid container spacing={2}>
+          {/* MAIN CAROUSEL AREA */}
           <Grid item md={9} xs={12}>
             <Carousel
               spacing="0px"
@@ -40,7 +43,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
               autoPlay={false}
               visibleSlides={1}
               showArrow={false}
-              sx={carouselStyles}
+              sx={CAROUSEL_STYLES}
               totalSlides={carouselData.length}
             >
               {carouselData.map((item, ind) => (
@@ -61,6 +64,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
 
           <Grid item md={3} xs={12}>
             <Stack height="100%" direction={{ md: "column", sm: "row", xs: "column" }} spacing={2}>
+              {/* SUMMER SALE BANNER */}
               <BannerCard3 flex={1} img="/assets/images/banners/banner-17.jpg">
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   NEW ARRIVALS
@@ -75,6 +79,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
                 <NavLink3 href="#" text="Shop Now" color="dark.main" />
               </BannerCard3>
 
+              {/* DESKTOP & LAPTOP BANNER */}
               <BannerCard3 flex={1} img="/assets/images/banners/banner-16.jpg">
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   GAMING 4K

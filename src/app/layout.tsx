@@ -11,7 +11,9 @@ import ThemeProvider from "theme/themeProvider";
 import "nprogress/nprogress.css";
 import "simplebar-react/dist/simplebar.min.css";
 
+// IMPORT DUMMY SERVER
 import "__server__";
+import CartProvider from "contexts/CartContext";
 
 export const metadata: Metadata = {
   title: "Bazaar - Next.js E-commerce Template",
@@ -25,7 +27,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={openSans.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <CartProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </CartProvider>
       </body>
     </html>
   );

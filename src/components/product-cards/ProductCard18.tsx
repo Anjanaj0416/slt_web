@@ -4,14 +4,17 @@ import { useSnackbar } from "notistack";
 import { Box, Button, IconButton, Rating, styled } from "@mui/material";
 import { AddShoppingCart, Favorite, FavoriteBorder } from "@mui/icons-material";
 import { currency } from "lib";
+// GLOBAL CUSTOM HOOK
+import useCart from "hooks/useCart";
+// GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { FlexRowCenter } from "components/flex-box";
 import { H4, Paragraph, Small } from "components/Typography";
-import { CartItem, useAppContext } from "contexts/AppContext";
 import ProductViewDialog from "components/products/ProductViewDialog";
+// CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
-// custom styled components
+// CUSTOM COMPONENTS
 const Card = styled(Box)({
   ":hover": {
     "& .product-actions": { right: 10 },
@@ -36,7 +39,7 @@ const AddToCartButton = styled(IconButton)({
   transition: "right 0.3s .1s",
 });
 
-const FavouriteButton = styled(IconButton)({
+const FavoriteButton = styled(IconButton)({
   top: 45,
   right: -40,
   position: "absolute",
@@ -57,17 +60,17 @@ type ProductCardProps = { product: Product };
 // ==============================================================
 
 const ProductCard18: FC<ProductCardProps> = ({ product }) => {
+  const { state, dispatch } = useCart();
   const { enqueueSnackbar } = useSnackbar();
-  const { state, dispatch } = useAppContext();
   const [openDialog, setOpenDialog] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const cartItem: CartItem | undefined = state.cart.find((item) => item.slug === product.slug);
+  const cartItem = state.cart.find((item) => item.slug === product.slug);
 
-  // handle favourite
+  // HANDLE FAVORITE PRODUCT
   const handleFavorite = () => setIsFavorite((fav) => !fav);
 
-  // handle add to cart
+  // HANDLE ADD TO CART PRODUCT
   const handleAddToCart = (product: Product) => () => {
     const payload = {
       id: product.id,
@@ -99,13 +102,13 @@ const ProductCard18: FC<ProductCardProps> = ({ product }) => {
           <AddShoppingCart color="disabled" fontSize="small" />
         </AddToCartButton>
 
-        <FavouriteButton className="product-actions" onClick={handleFavorite}>
+        <FavoriteButton className="product-actions" onClick={handleFavorite}>
           {isFavorite ? (
             <Favorite color="primary" fontSize="small" />
           ) : (
             <FavoriteBorder color="disabled" fontSize="small" />
           )}
-        </FavouriteButton>
+        </FavoriteButton>
 
         <QuickViewButton
           fullWidth
@@ -132,8 +135,12 @@ const ProductCard18: FC<ProductCardProps> = ({ product }) => {
       />
 
       <Box p={1} textAlign="center">
-        {product.categories.length > 0 && <Small color="grey.500">{product.categories[0]}</Small>}
+        {product.categories.length > 0 ? (
+          <Small color="grey.500">{product.categories[0]}</Small>
+        ) : null}
+
         <Paragraph fontWeight="bold">{product.title}</Paragraph>
+
         <H4 fontWeight={700} py={0.5}>
           {currency(product.price)}
         </H4>

@@ -2,14 +2,16 @@
 
 import { FC } from "react";
 import { Box, Container, Grid, styled } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { slideX } from "animations/keyframes";
 import WhiteButton from "components/WhiteButton";
 import { H3, Paragraph, Span } from "components/Typography";
 import CategoryCard1 from "components/category-cards/CategoryCard1";
+// CUSTOM DATA MODEL
 import Category from "models/Category.model";
 
-// custom styled components
+// STYLED COMPONENTS
 const AdWrapper = styled(FlexBox)(({ theme }) => ({
   color: "#fff",
   marginTop: "3rem",
@@ -58,12 +60,14 @@ const Section3: FC<Section3Props> = ({ categories }) => {
   return (
     <Container sx={{ mt: 8 }}>
       <Grid container spacing={3}>
+        {/* CATEGORY LIST AREA */}
         {categories.map((item) => (
           <Grid item lg={2} md={3} sm={4} xs={6} key={item.id}>
             <CategoryCard1 image={item.image} title={item.name} />
           </Grid>
         ))}
 
+        {/* ANIMATED BANNER AREA */}
         <Grid item xs={12}>
           <AdWrapper alignItems="center">
             <AdTitle1>Black friday sale!</AdTitle1>

@@ -2,7 +2,7 @@ import { FC, ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Box, Container, Grid } from "@mui/material";
 import Stepper from "components/Stepper";
-import ShopLayout1 from "./ShopLayout1";
+import ShopLayout1 from "./shop-layout-1/shop-layout-1";
 
 /**
  *  Used:

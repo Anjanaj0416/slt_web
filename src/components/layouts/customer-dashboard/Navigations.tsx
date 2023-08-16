@@ -5,7 +5,7 @@ import { CreditCard, FavoriteBorder, Person, Place } from "@mui/icons-material";
 import ShoppingBagOutlined from "@mui/icons-material/ShoppingBagOutlined";
 import { FlexBox } from "components/flex-box";
 import CustomerService from "icons/CustomerService";
-import NavLink, { NavLinkProps } from "components/nav-link/NavLink";
+import NavLink, { NavLinkProps } from "components/nav-link/nav-link";
 
 // custom styled components
 const MainContainer = styled(Card)(({ theme }) => ({

@@ -1,13 +1,18 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Container, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { styled } from "@mui/material/styles";
+// CUSTOM ICON COMPONENT
 import appIcons from "icons";
+// GLOBAL CUSTOM COMPONENTS
 import { H4, Span } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";
+// CUSTOM DATA MODEL
 import Service from "models/Service.model";
 
-// custom styled components
+// STYLED COMPONENTS
 const StyledFlexBox = styled(Box)(({ theme }) => ({
   display: "grid",
   padding: "2rem 0",
@@ -28,7 +33,9 @@ const StyledFlexBox = styled(Box)(({ theme }) => ({
 const ServiceItem = styled(FlexRowCenter)(({ theme }) => ({
   borderRight: `1px solid ${theme.palette.grey[400]}`,
   ":last-child": { borderRight: 0 },
-  [theme.breakpoints.down("md")]: { ":nth-of-type(even)": { borderRight: 0 } },
+  [theme.breakpoints.down("md")]: {
+    ":nth-of-type(even)": { borderRight: 0 },
+  },
   [theme.breakpoints.down("sm")]: {
     borderRight: 0,
     justifyContent: "flex-start",

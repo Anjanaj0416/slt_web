@@ -4,9 +4,8 @@ import { ChevronRight } from "@mui/icons-material";
 import { FlexBox } from "components/flex-box";
 
 // styled components
-const StyledFlexBox = styled<FC<AccordionHeaderProps>>(({ children, open, ...rest }) => (
-  <FlexBox {...rest}>{children}</FlexBox>
-))<AccordionHeaderProps>(({ open, theme }) => ({
+const StyledFlexBox = styled(FlexBox)<{ open: number }>(({ open, theme }) => ({
+  padding: ".5rem 1rem",
   alignItems: "center",
   justifyContent: "space-between",
   ".caretIcon": {
@@ -18,30 +17,23 @@ const StyledFlexBox = styled<FC<AccordionHeaderProps>>(({ children, open, ...res
 }));
 
 // =================================================================
-type AccordionHeaderProps = {
+interface Props extends BoxProps {
   sx?: SxProps;
   open?: boolean;
   showIcon?: boolean;
   children: ReactNode;
-};
+}
 // =================================================================
 
-const AccordionHeader: FC<AccordionHeaderProps & BoxProps> = (props) => {
-  const { sx, open, children, showIcon, ...others } = props;
+const AccordionHeader: FC<Props> = (props) => {
+  const { open, children, showIcon = true, ...others } = props;
 
   return (
-    <StyledFlexBox open={open} sx={sx} {...others}>
+    <StyledFlexBox open={open ? 1 : 0} {...others}>
       {children}
       {showIcon && <ChevronRight className="caretIcon" fontSize="small" />}
     </StyledFlexBox>
   );
-};
-
-//  set default props data
-AccordionHeader.defaultProps = {
-  px: "1rem",
-  py: "0.5rem",
-  showIcon: true,
 };
 
 export default AccordionHeader;

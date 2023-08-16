@@ -7,7 +7,7 @@ interface BazaarCardProps extends CardProps {
 }
 // ===============================================
 
-const BazaarCard = styled<FC<BazaarCardProps>>(({ hoverEffect, children, ...rest }) => (
+const BazaarCard = styled<FC<BazaarCardProps>>(({ hoverEffect = false, children, ...rest }) => (
   <Card {...rest}>{children}</Card>
 ))<BazaarCardProps>(({ theme, hoverEffect }) => ({
   overflow: "unset",
@@ -15,7 +15,5 @@ const BazaarCard = styled<FC<BazaarCardProps>>(({ hoverEffect, children, ...rest
   transition: "all 250ms ease-in-out",
   "&:hover": { ...(hoverEffect && { boxShadow: theme.shadows[3] }) },
 }));
-
-BazaarCard.defaultProps = { hoverEffect: false };
 
 export default BazaarCard;
