@@ -43,7 +43,7 @@ const CarouselCard3: FC<Props> = ({ product }) => {
           Starting at ${product.price} & save upto {product.discount}%
         </Paragraph>
 
-        <Link href={`/product/${product.slug}`}>
+        <Link href={`/products/${product.slug}`}>
           <LinkText>SHOP NOW</LinkText>
         </Link>
       </StyledFlexBox>

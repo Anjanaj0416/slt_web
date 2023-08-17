@@ -33,7 +33,7 @@ const ProductCard19: FC<Props> = ({ image, title, price, slug }) => {
         ":hover": { img: { transform: "scale(1.1)" } },
       }}
     >
-      <Link href={`/product/${slug}`}>
+      <Link href={`/products/${slug}`}>
         <Box maxWidth={100} bgcolor="grey.300">
           <BazaarImage width="100%" alt="product" src={image} />
         </Box>

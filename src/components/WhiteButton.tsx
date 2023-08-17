@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { Button, ButtonProps } from "@mui/material";
+import { FC, PropsWithChildren } from "react";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 // ==================================================
-type WhiteButtonProps = { children: any };
+interface Props extends PropsWithChildren, ButtonProps {}
 // ==================================================
 
-const WhiteButton: FC<WhiteButtonProps & ButtonProps> = ({ children, ...props }) => {
+const WhiteButton: FC<Props> = ({ children, ...props }) => {
   return (
     <Button
       color="dark"
@@ -13,7 +13,10 @@ const WhiteButton: FC<WhiteButtonProps & ButtonProps> = ({ children, ...props })
       sx={{
         color: "dark.main",
         backgroundColor: "white",
-        ":hover": { backgroundColor: "dark.main", color: "#fff" },
+        ":hover": {
+          color: "#fff",
+          backgroundColor: "dark.main",
+        },
       }}
       {...props}
     >

@@ -36,7 +36,7 @@ const Section3: FC<Props> = ({ categoryList }) => {
     >
       <Carousel totalSlides={5} visibleSlides={visibleSlides}>
         {categoryList.map((item) => (
-          <Link href={`/product/search/${item.slug}`} key={item.id}>
+          <Link href={`/products/search/${item.slug}`} key={item.id}>
             <BazaarCard elevation={0} sx={{ p: 2 }}>
               <ProductCard6 title={item.name} subtitle={item.description} imgUrl={item.image} />
             </BazaarCard>

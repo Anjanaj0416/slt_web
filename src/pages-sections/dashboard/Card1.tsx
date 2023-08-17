@@ -16,7 +16,7 @@ type Card1Props = {
 // ========================================================
 
 const Card1: FC<Card1Props> = (props) => {
-  const { status, color, title, amount1, amount2, percentage } = props;
+  const { title, amount1, amount2, percentage, status = "up", color = "info.main" } = props;
 
   return (
     <Card sx={{ p: 2 }}>
@@ -39,8 +39,5 @@ const Card1: FC<Card1Props> = (props) => {
     </Card>
   );
 };
-
-// set default props for status and color
-Card1.defaultProps = { status: "up", color: "info.main" };
 
 export default Card1;

@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { useRouter } from "next/navigation";
 import { Box, styled, Button } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import { H1, H4, Paragraph, Span } from "components/Typography";
 
-// custom styled components
+// STYLED COMPONENT
 const CardWrapper = styled(Box)<{ img: string; mode: string }>(({ theme, img, mode }) => ({
   minHeight: 500,
   display: "flex",

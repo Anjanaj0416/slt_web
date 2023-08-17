@@ -1,5 +1,5 @@
 import { FC, Fragment, ReactNode, useCallback, useState } from "react";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import Sticky from "components/Sticky";
 import Topbar from "components/Topbar";
 import Header from "components/header/Header";
@@ -8,7 +8,7 @@ import SearchInput from "components/search-box/SearchInput";
 
 /**
  *  Used in:
- *  1. grocery1, grocery2, healthbeauty-shop
+ *  1. grocery1, grocery2, health-beauty-shop
  *  2. checkout-alternative
  */
 

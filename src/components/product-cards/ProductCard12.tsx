@@ -36,7 +36,7 @@ const ProductCard12: FC<ProductCardProps> = ({
 }) => {
   return (
     <Box>
-      <Link href={`/product/${slug}`}>
+      <Link href={`/products/${slug}`}>
         <HoverBox>
           <BazaarImage src={imgUrl} width="100%" height="auto" alt={title} mx="auto" />
         </HoverBox>

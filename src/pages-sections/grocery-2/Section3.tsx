@@ -34,7 +34,7 @@ const Section3: FC<Props> = ({ categories = [] }) => {
       <Grid container spacing={3}>
         {categories.map((item) => (
           <Grid item lg={4} xs={6} key={item.id}>
-            <Link href={`/product/search/${item.slug}`}>
+            <Link href={`/products/search/${item.slug}`}>
               <StyledBazaarCard hoverEffect>
                 <Image width={46} height={46} alt={item.name} src={item.image} />
 

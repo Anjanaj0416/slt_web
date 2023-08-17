@@ -31,8 +31,8 @@ const ProductCarousel: FC<ProductCarouselProps> = (props) => {
       <Carousel
         step={3}
         showDots
-        showArrowOnHover={true}
-        arrowButtonColor="inherit"
+        // showArrowOnHover={true}
+        // arrowButtonColor="inherit"
         totalSlides={products.length}
         visibleSlides={visibleSlides}
       >
@@ -54,12 +54,6 @@ const ProductCarousel: FC<ProductCarouselProps> = (props) => {
       </Carousel>
     </Box>
   );
-};
-
-// set default component props
-ProductCarousel.defaultProps = {
-  products: [],
-  title: "Best Seller in Your Area",
 };
 
 export default ProductCarousel;

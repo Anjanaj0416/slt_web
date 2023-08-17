@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import { useSnackbar } from "notistack";
 import { Box, Button, IconButton, Rating, styled } from "@mui/material";
 import { AddShoppingCart, Favorite, FavoriteBorder } from "@mui/icons-material";
+// CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // GLOBAL CUSTOM HOOK
 import useCart from "hooks/useCart";
@@ -88,7 +89,7 @@ const ProductCard18: FC<ProductCardProps> = ({ product }) => {
   return (
     <Card>
       <CardMedia>
-        <Link href={`/product/${product.slug}`}>
+        <Link href={`/products/${product.slug}`}>
           <LazyImage
             width={300}
             height={300}

@@ -107,7 +107,7 @@ const MiniCart: FC<MiniCartProps> = ({ toggleSidenav }) => {
               </Button>
             </FlexBox>
 
-            <Link href={`/product/${item.id}`}>
+            <Link href={`/products/${item.id}`}>
               <Avatar alt={item.name} src={item.imgUrl} sx={{ mx: 2, width: 76, height: 76 }} />
             </Link>
 
@@ -115,7 +115,7 @@ const MiniCart: FC<MiniCartProps> = ({ toggleSidenav }) => {
               flex="1"
               sx={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
             >
-              <Link href={`/product/${item.slug}`}>
+              <Link href={`/products/${item.slug}`}>
                 <H5 ellipsis fontSize="14px" className="title">
                   {item.name}
                 </H5>

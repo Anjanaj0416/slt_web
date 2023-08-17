@@ -257,13 +257,13 @@ const shopPageList = [
   },
   {
     imgUrl: "/assets/images/landing/shop/search-product.jpg",
-    previewUrl: "/product/search/mobile%20phone",
+    previewUrl: "/products/search/mobile%20phone",
     title: "Search",
     page: "shop",
   },
   {
     imgUrl: "/assets/images/landing/shop/product-details.jpg",
-    previewUrl: "/product/classic-rolex-watch",
+    previewUrl: "/products/classic-rolex-watch",
     title: "Product Details",
     page: "shop",
   },

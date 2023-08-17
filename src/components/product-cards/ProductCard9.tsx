@@ -72,7 +72,7 @@ const ProductCard9: FC<ProductCardProps> = (props) => {
 
         <Grid item sm={9} xs={12}>
           <FlexBox flexDirection="column" justifyContent="center" height="100%" p={2}>
-            <Link href={`/product/${slug}`}>
+            <Link href={`/products/${slug}`}>
               <H5 fontWeight="600" my="0.5rem">
                 {title}
               </H5>
@@ -135,19 +135,6 @@ const ProductCard9: FC<ProductCardProps> = (props) => {
       </Grid>
     </Wrapper>
   );
-};
-
-ProductCard9.defaultProps = {
-  title: `Apple iPhone 5 Unlocked 16GB 8MP Used Cell-Phone-16gbIOS Used Refurbished 100%Factory Used`,
-  imgUrl: "/assets/images/products/macbook.png",
-  off: 50,
-  rating: 0,
-  price: 450,
-  // subcategories: [
-  //   { title: "Bike", url: "/#" },
-  //   { title: "Ducati", url: "/#" },
-  //   { title: "Motors", url: "/#" },
-  // ],
 };
 
 export default ProductCard9;

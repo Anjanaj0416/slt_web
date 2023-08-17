@@ -40,7 +40,7 @@ const Section9: FC<Props> = ({ categories }) => {
       <Grid container spacing={3}>
         {categories.map((item, ind) => (
           <Grid item lg={2} md={3} sm={4} xs={6} key={ind}>
-            <Link href={`/product/search/${item.slug}`}>
+            <Link href={`/products/search/${item.slug}`}>
               <StyledBazaarCard elevation={1}>
                 <Image width={52} height={52} alt="fashion" src={item.image} />
                 <Paragraph fontWeight="600">{item.name}</Paragraph>

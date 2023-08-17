@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { Box, styled, useTheme } from "@mui/material";
 import appIcons from "icons";
@@ -69,22 +71,23 @@ type SideNavbarProps = {
   sidebarStyle?: "style1" | "style2";
   handleSelect?: (category: string) => void;
 };
+
 // ==================================================================
 
 const SideNavbar: FC<SideNavbarProps> = (props) => {
   const {
     isFixed,
     navList,
-    lineStyle,
-    sidebarStyle,
-    sidebarHeight,
+    lineStyle = "solid",
+    sidebarHeight = "auto",
+    sidebarStyle = "style1",
     handleSelect = () => {},
   } = props;
 
   const { palette } = useTheme();
 
-  const renderChild = (childList: any[]) => {
-    return childList.map((item) => (
+  const renderChild = (childList: any[]) =>
+    childList.map((item) => (
       <StyledList
         key={item.title}
         onClick={() => handleSelect(item.title)}
@@ -96,7 +99,6 @@ const SideNavbar: FC<SideNavbarProps> = (props) => {
         </Span>
       </StyledList>
     ));
-  };
 
   return (
     <Scrollbar autoHide={false} sx={{ maxHeight: sidebarHeight }}>
@@ -155,12 +157,6 @@ const SideNavbar: FC<SideNavbarProps> = (props) => {
       </NavbarRoot>
     </Scrollbar>
   );
-};
-
-SideNavbar.defaultProps = {
-  lineStyle: "solid",
-  sidebarHeight: "auto",
-  sidebarStyle: "style1",
 };
 
 export default SideNavbar;

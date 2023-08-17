@@ -1,10 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
 import { Box, BoxProps, Divider, styled } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import BazaarImage from "components/BazaarImage";
 import { H2, Paragraph, Span } from "components/Typography";
 
-// custom styled components
+// STYLED COMPONENTS
 const CardWrapper = styled(Box)({
   maxHeight: 240,
   overflow: "hidden",

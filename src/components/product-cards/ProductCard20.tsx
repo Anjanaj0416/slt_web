@@ -80,7 +80,7 @@ const ProductCard20: FC<ProductCardProps> = ({ product }) => {
   return (
     <Card height="100%">
       <CardMedia>
-        <Link href={`/product/${product.slug}`}>
+        <Link href={`/products/${product.slug}`}>
           <LazyImage
             width={300}
             height={300}

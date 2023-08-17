@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Drawer, styled } from "@mui/material";
 import { NavLink } from "components/nav-link";
 import { layoutConstant } from "utils/constants";

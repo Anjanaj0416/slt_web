@@ -153,7 +153,7 @@ const ProductCard17: FC<ProductCardProps> = (props) => {
 
   return (
     <StyledCard sx={sx}>
-      <Link href={`/product/${slug}`}>
+      <Link href={`/products/${slug}`}>
         <ImgBox id="imgBox">
           {status && (
             <StatusChipBox>
@@ -174,7 +174,7 @@ const ProductCard17: FC<ProductCardProps> = (props) => {
       <ContentWrapper>
         <FlexBox>
           <Box flex="1 1 0" minWidth="0px" mr={1}>
-            <Link href={`/product/${slug}`}>
+            <Link href={`/products/${slug}`}>
               <H3
                 mb={1}
                 title={title}

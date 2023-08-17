@@ -121,7 +121,7 @@ const ProductCard16: FC<Props> = (props) => {
       <ImgBox id="imgBox">
         {discount !== 0 && <StyledChip color="primary" size="small" label={`${discount}% off`} />}
 
-        <Link href={`/product/${slug}`}>
+        <Link href={`/products/${slug}`}>
           <LazyImage
             alt={title}
             width={550}
@@ -173,7 +173,7 @@ const ProductCard16: FC<Props> = (props) => {
           )}
         </FlexRowCenter>
 
-        <Link href={`/product/${slug}`}>
+        <Link href={`/products/${slug}`}>
           <H3
             my="6px"
             title={title}

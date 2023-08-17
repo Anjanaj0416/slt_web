@@ -24,7 +24,7 @@ const ProductCard8: FC<ProductCardProps> = (props) => {
 
   return (
     <BazaarCard sx={{ p: 2, ...sx }}>
-      <Link href={`/product/${slug}`}>
+      <Link href={`/products/${slug}`}>
         <HoverBox mb={1.5} borderRadius="8px">
           <LazyImage
             alt={title}

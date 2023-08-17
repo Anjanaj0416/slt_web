@@ -161,7 +161,7 @@ const ProductCard14: FC<ProductCardProps> = (props) => {
         {off !== 0 && <StyledChip color="primary" size="small" label={`${off}% off`} />}
 
         <ImageBox>
-          <Link href={`/product/${slug}`}>
+          <Link href={`/products/${slug}`}>
             <LazyImage alt={title} src={imgUrl} width={190} height={190} />
           </Link>
 
@@ -197,7 +197,7 @@ const ProductCard14: FC<ProductCardProps> = (props) => {
 
       <ContentWrapper>
         <Box flex="1 1 0" minWidth="0px" mr={1}>
-          <Link href={`/product/${slug}`}>
+          <Link href={`/products/${slug}`}>
             <H3
               mb={1}
               title={title}

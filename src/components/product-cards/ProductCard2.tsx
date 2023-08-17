@@ -14,7 +14,7 @@ const ProductCard2: FC<ProductCardProps> = (props) => {
   const { thumbnail, title, price, slug } = props;
 
   return (
-    <Link href={`/product/${slug}`}>
+    <Link href={`/products/${slug}`}>
       <HoverBox borderRadius={2} mb={1}>
         <Image
           width={180}

@@ -71,8 +71,8 @@ const megaMenus = [
     {
       title: "Shop",
       child: [
-        { title: "Search product", url: "/product/search/mobile phone" },
-        { title: "Single product", url: "/product/lord-2019" },
+        { title: "Search product", url: "/products/search/mobile phone" },
+        { title: "Single product", url: "/products/lord-2019" },
         { title: "Cart", url: "/cart" },
         { title: "Checkout", url: "/checkout" },
         { title: "Alternative Checkout", url: "/checkout-alternative" },
@@ -139,8 +139,8 @@ const navbarNavigations = [
       {
         title: "Shop",
         child: [
-          { title: "Search product", url: "/product/search/mobile phone" },
-          { title: "Single product", url: "/product/lord-2019" },
+          { title: "Search product", url: "/products/search/mobile phone" },
+          { title: "Single product", url: "/products/lord-2019" },
           { title: "Cart", url: "/cart" },
           { title: "Checkout", url: "/checkout" },
           { title: "Alternative Checkout", url: "/checkout-alternative" },

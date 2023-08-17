@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, ReactNode, useEffect, useState } from "react";
 import { Badge, Box } from "@mui/material";
 import Home from "icons/Home";

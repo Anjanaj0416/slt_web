@@ -42,7 +42,7 @@ const Section13: FC<Props> = ({ bigDiscountList }) => {
           {bigDiscountList.map(({ id, title, thumbnail, price, discount, slug }) => (
             <Box py={0.5} key={id}>
               <BazaarCard sx={{ p: "1rem" }}>
-                <Link href={`/product/${slug}`}>
+                <Link href={`/products/${slug}`}>
                   <HoverBox borderRadius="8px" mb={1}>
                     <LazyImage width={500} height={500} alt={title} src={thumbnail} />
                   </HoverBox>

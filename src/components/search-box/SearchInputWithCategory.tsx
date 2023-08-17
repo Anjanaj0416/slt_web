@@ -105,7 +105,7 @@ const SearchInputWithCategory: FC = () => {
       {resultList.length > 0 && (
         <SearchResultCard elevation={2}>
           {resultList.map((item) => (
-            <Link href={`/product/search/${item}`} key={item}>
+            <Link href={`/products/search/${item}`} key={item}>
               <MenuItem key={item}>{item}</MenuItem>
             </Link>
           ))}
