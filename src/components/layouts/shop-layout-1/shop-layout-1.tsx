@@ -1,6 +1,7 @@
 "use client";
 
-import { FC, Fragment, ReactNode, useCallback, useState } from "react";
+import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
+// GLOBAL CUSTOM COMPONENTS
 import Sticky from "components/Sticky";
 import Topbar from "components/Topbar";
 import { Footer1 } from "components/footer";
@@ -10,7 +11,7 @@ import { MobileNavigationBar } from "components/mobile-navigation";
 import SearchInputWithCategory from "components/search-box/SearchInputWithCategory";
 
 /**
- *  Used in:
+ *  USED IN:
  *  1. market-1, market-2, gadget-shop, fashion-shop, fashion-shop-2, fashion-shop-3, furniture-shop, grocery3, gift-shop
  *  2. product details page
  *  3. order-confirmation page
@@ -20,15 +21,14 @@ import SearchInputWithCategory from "components/search-box/SearchInputWithCatego
  */
 
 // ===================================================
-type ShopLayout1Props = {
-  children: ReactNode;
+interface Props extends PropsWithChildren {
   showTopbar?: boolean;
   showNavbar?: boolean;
   topbarBgColor?: string;
-};
+}
 // ===================================================
 
-const ShopLayout1: FC<ShopLayout1Props> = ({
+const ShopLayout1: FC<Props> = ({
   children,
   topbarBgColor,
   showTopbar = true,

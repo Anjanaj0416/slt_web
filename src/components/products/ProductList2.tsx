@@ -1,15 +1,18 @@
 import { FC } from "react";
-import { Box, Pagination } from "@mui/material";
+import Box from "@mui/material/Box";
+import Pagination from "@mui/material/Pagination";
+// GLOBAL CUSTOM COMPONENTS
+import { Span } from "components/Typography";
 import { FlexBetween } from "components/flex-box";
 import ProductCard9 from "components/product-cards/ProductCard9";
-import { Span } from "../Typography";
+// CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
 // ==========================================================
-type ProductListProps = { products: Product[] };
+type Props = { products: Product[] };
 // ==========================================================
 
-const ProductList2: FC<ProductListProps> = ({ products }) => {
+const ProductList2: FC<Props> = ({ products }) => {
   return (
     <Box>
       {products.map((item) => (

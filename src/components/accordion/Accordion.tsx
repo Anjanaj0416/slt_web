@@ -1,14 +1,14 @@
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Children, cloneElement, FC, ReactElement, useEffect, useRef, useState } from "react";
 
-// styled component props type
+// STYLED COMPONENT PROPS
 type StyledWrapperProps = {
   open: boolean;
   parent_height: number;
   header_height: number;
 };
 
-// styled component
+// STYLED COMPONENT
 const Wrapper = styled("div")<StyledWrapperProps>((props) => ({
   cursor: "pointer",
   overflow: "hidden",
@@ -17,13 +17,13 @@ const Wrapper = styled("div")<StyledWrapperProps>((props) => ({
 }));
 
 // ==============================================================
-type AccordionProps = {
+type Props = {
   expanded?: boolean;
   children: ReactElement[] | any;
 };
 // ==============================================================
 
-const Accordion: FC<AccordionProps> = ({ expanded = false, children }) => {
+const Accordion: FC<Props> = ({ expanded = false, children }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(expanded);
   const [headerHeight, setHeaderHeight] = useState(0);

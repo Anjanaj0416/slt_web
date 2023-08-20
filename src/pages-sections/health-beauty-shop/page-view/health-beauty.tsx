@@ -1,0 +1,79 @@
+"use client";
+
+import { Fragment } from "react";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+// GLOBAL CUSTOM COMPONENTS
+import Setting from "components/Setting";
+import { Footer3 } from "components/footer";
+import Newsletter from "components/Newsletter";
+import SidenavContainer from "components/SidenavContainer";
+import { MobileNavigationBar2 } from "components/mobile-navigation";
+import HealthBeautySidenav from "components/page-sidenav/HealthBeautySideNav";
+// Local CUSTOM COMPONENTS
+import Section1 from "../section-1";
+import Section2 from "../section-2";
+import Section3 from "../section-3";
+import Section4 from "../section-4";
+import Section5 from "../section-5";
+// CUSTOM DATA MODELS
+import Product from "models/Product.model";
+import Service from "models/Service.model";
+import { CategoryItem } from "models/CategoryNavList.model";
+import { HealthCarouselItem } from "models/Carousel.model";
+
+// ===============================================
+interface Props {
+  serviceList: Service[];
+  allProducts: Product[];
+  topNewProducts: Product[];
+  navigationList: CategoryItem[];
+  mainCarouselData: HealthCarouselItem[];
+}
+// ===============================================
+
+const HealthBeautyPageView = (props: Props) => {
+  return (
+    <Fragment>
+      {/* TOP HERO CAROUSEL AREA */}
+      <Box id="healthBeautySection1">
+        <Section1 carouselData={props.mainCarouselData} />
+      </Box>
+
+      <SidenavContainer
+        navFixedComponentID="healthBeautySection1"
+        SideNav={() => <HealthBeautySidenav navList={props.navigationList} />}
+      >
+        <Stack spacing={6}>
+          {/* BANNER AREA */}
+          <Section2 />
+
+          {/* TOP NEW PRODUCTS AREA */}
+          <Section3 products={props.topNewProducts} />
+
+          {/* ALL PRODUCTS AREA */}
+          <Section4 products={props.allProducts} />
+
+          {/* SERVICE LIST AREA */}
+          <Section5 services={props.serviceList} />
+
+          {/* FOOTER AREA */}
+          <Footer3 id="footer" sx={{ borderRadius: "8px", backgroundColor: "primary.800" }} />
+        </Stack>
+      </SidenavContainer>
+
+      {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
+      <Setting />
+
+      {/* POPUP NEWSLETTER FORM */}
+      <Newsletter image="/assets/images/newsletter/bg-4.png" />
+
+      {/* SMALL DEVICE BOTTOM NAVIGATION */}
+      <MobileNavigationBar2>
+        <HealthBeautySidenav navList={props.navigationList} />
+      </MobileNavigationBar2>
+    </Fragment>
+  );
+};
+
+export default HealthBeautyPageView;

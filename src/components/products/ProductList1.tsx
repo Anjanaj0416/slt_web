@@ -1,15 +1,18 @@
 import { FC, Fragment } from "react";
-import { Grid, Pagination } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Pagination from "@mui/material/Pagination";
+// GLOBAL CUSTOM COMPONENTS
+import { Span } from "components/Typography";
 import { FlexBetween } from "components/flex-box";
 import ProductCard1 from "components/product-cards/ProductCard1";
-import { Span } from "components/Typography";
+// CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
 // ========================================================
-type ProductListProps = { products: Product[] };
+type Props = { products: Product[] };
 // ========================================================
 
-const ProductList1: FC<ProductListProps> = ({ products }) => {
+const ProductList1: FC<Props> = ({ products }) => {
   return (
     <Fragment>
       <Grid container spacing={3}>
@@ -30,7 +33,7 @@ const ProductList1: FC<ProductListProps> = ({ products }) => {
 
       <FlexBetween flexWrap="wrap" mt={4}>
         <Span color="grey.600">Showing 1-9 of 1.3k Products</Span>
-        <Pagination count={10} variant="outlined" color="primary" />
+        <Pagination count={Math.ceil(products.length / 10)} variant="outlined" color="primary" />
       </FlexBetween>
     </Fragment>
   );

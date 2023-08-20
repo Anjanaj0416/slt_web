@@ -1,5 +1,6 @@
 import axios from "axios";
 import Product from "models/Product.model";
+import Service from "models/Service.model";
 import { HealthCarouselItem } from "models/Carousel.model";
 
 const getNavigation = async () => {
@@ -17,7 +18,7 @@ const getProducts = async (): Promise<Product[]> => {
   return response.data;
 };
 
-const getServices = async (): Promise<Product[]> => {
+const getServices = async (): Promise<Service[]> => {
   const response = await axios.get("/api/health-beauty/services");
   return response.data;
 };

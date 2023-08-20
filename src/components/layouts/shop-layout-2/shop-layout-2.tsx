@@ -1,0 +1,55 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
+import Box from "@mui/material/Box";
+// GLOBAL CUSTOM COMPONENTS
+import Sticky from "components/Sticky";
+import Topbar from "components/Topbar";
+import Header from "components/header/Header";
+import Navbar from "components/navbar/Navbar";
+import SearchInput from "components/search-box/SearchInput";
+
+/**
+ *  USED IN:
+ *  1. grocery-1, grocery-2, health-beauty-shop
+ *  2. checkout-alternative
+ */
+
+const ShopLayout2: FC<PropsWithChildren> = ({ children }) => {
+  const pathname = usePathname();
+  const [isFixed, setIsFixed] = useState(false);
+  const toggleIsFixed = useCallback((fixed: boolean) => setIsFixed(fixed), []);
+
+  // FOR HANDLE TOP BAR AREA
+  let TOP_BAR_CONTENT = null;
+  const SHOW_TOP_BAR = ["/grocery-2", "/health-beauty-shop", "/checkout-alternative"];
+  if (SHOW_TOP_BAR.includes(pathname)) TOP_BAR_CONTENT = <Topbar />;
+
+  // FOR HANDLE NAV BAR AREA
+  let NAV_BAR_CONTENT = null;
+  const SHOW_NAV_BAR = ["/health-beauty-shop", "/checkout-alternative"];
+  if (SHOW_NAV_BAR.includes(pathname)) NAV_BAR_CONTENT = <Navbar elevation={0} />;
+
+  return (
+    <Fragment>
+      {/* TOP BAR AREA */}
+      {TOP_BAR_CONTENT}
+
+      {/* HEADER */}
+      <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={70}>
+        <Header isFixed={isFixed} searchInput={<SearchInput />} />
+      </Sticky>
+
+      <Box zIndex={4} position="relative" className="section-after-sticky">
+        {/* NAVIGATION BAR */}
+        {NAV_BAR_CONTENT}
+
+        {/* BODY CONTENT */}
+        {children}
+      </Box>
+    </Fragment>
+  );
+};
+
+export default ShopLayout2;

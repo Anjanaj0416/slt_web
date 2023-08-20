@@ -1,17 +1,23 @@
 import { FC, Fragment, useEffect, useState } from "react";
-import { Box, Chip } from "@mui/material";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+// GLOBAL CUSTOM COMPONENT
 import { FlexRowCenter } from "components/flex-box";
 
 // ========================================================
-type Step = { title: string; disabled: boolean };
-type StepperProps = {
+type Step = {
+  title: string;
+  disabled: boolean;
+};
+
+type Props = {
   stepperList: Step[];
   selectedStep: number;
   onChange: (step: number) => void;
 };
 // ========================================================
 
-const Stepper: FC<StepperProps> = ({ selectedStep = 1, stepperList, onChange }) => {
+const Stepper: FC<Props> = ({ selectedStep = 1, stepperList, onChange }) => {
   const [selected, setSelected] = useState(selectedStep - 1);
 
   const handleStepClick = (step: Step, ind: number) => () => {
@@ -46,6 +52,7 @@ const Stepper: FC<StepperProps> = ({ selectedStep = 1, stepperList, onChange }) 
               },
             }}
           />
+
           {ind < stepperList.length - 1 && (
             <Box
               width="50px"

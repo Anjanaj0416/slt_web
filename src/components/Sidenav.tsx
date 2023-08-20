@@ -1,6 +1,7 @@
 import { cloneElement, FC, useEffect, useState, ReactNode } from "react";
 import clsx from "clsx";
 import { Box, Drawer, styled } from "@mui/material";
+// GLOBAL CUSTOM COMPONENT
 import Scrollbar from "components/Scrollbar";
 
 // styled component

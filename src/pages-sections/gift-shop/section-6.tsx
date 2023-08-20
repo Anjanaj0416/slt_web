@@ -28,7 +28,7 @@ const Section6: FC<Props> = ({ products }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator title="Top Saled Items" seeMoreLink="#">
+    <CategorySectionCreator title="Top Sale Items" seeMoreLink="#">
       <Carousel
         infinite={true}
         visibleSlides={visibleSlides}
