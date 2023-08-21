@@ -48,7 +48,7 @@ const SalesLayout: FC<SaleLayoutProps> = (props) => {
 
   return (
     <Fragment>
-      {/* TOPBAR AREA */}
+      {/* TOP BAR AREA */}
       <Topbar />
 
       {/* HEADER AREA */}

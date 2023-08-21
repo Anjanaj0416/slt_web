@@ -1,13 +1,21 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { FC, Fragment } from "react";
-import { useRouter } from "next/router";
 import { Card, styled, Typography } from "@mui/material";
-import { CreditCard, FavoriteBorder, Person, Place } from "@mui/icons-material";
-import ShoppingBagOutlined from "@mui/icons-material/ShoppingBagOutlined";
+import {
+  Place,
+  Person,
+  CreditCard,
+  FavoriteBorder,
+  ShoppingBagOutlined,
+} from "@mui/icons-material";
+// GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import CustomerService from "icons/CustomerService";
 import NavLink, { NavLinkProps } from "components/nav-link/nav-link";
 
-// custom styled components
+// STYLED COMPONENTS
 const MainContainer = styled(Card)(({ theme }) => ({
   paddingBottom: "1.5rem",
   [theme.breakpoints.down("md")]: {
@@ -39,12 +47,12 @@ const StyledNavLink = styled<FC<StyledNavLinkProps & NavLinkProps>>(
   },
 }));
 
-const Navigations = () => {
-  const { pathname } = useRouter();
+const Navigation = () => {
+  const pathname = usePathname();
 
   return (
     <MainContainer>
-      {linkList.map((item) => (
+      {MENUS.map((item) => (
         <Fragment key={item.title}>
           <Typography p="26px 30px 1rem" color="grey.600" fontSize="12px">
             {item.title}
@@ -70,7 +78,7 @@ const Navigations = () => {
   );
 };
 
-const linkList = [
+const MENUS = [
   {
     title: "DASHBOARD",
     list: [
@@ -89,4 +97,4 @@ const linkList = [
   },
 ];
 
-export default Navigations;
+export default Navigation;

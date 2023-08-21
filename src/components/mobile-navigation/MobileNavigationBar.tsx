@@ -1,34 +1,39 @@
-import { FC } from "react";
-import { Badge } from "@mui/material";
+import { Theme, useMediaQuery, Badge } from "@mui/material";
+// CUSTOM ICON COMPONENTS
 import Home from "icons/Home";
 import User2 from "icons/User2";
 import CategoryOutlined from "icons/CategoryOutline";
 import ShoppingBagOutlined from "icons/ShoppingBagOutlined";
-import useWindowSize from "hooks/useWindowSize";
-import { useAppContext } from "contexts/AppContext";
+// GLOBAL CUSTOM HOOK
+import useCart from "hooks/useCart";
+// STYLED COMPONENTS
 import { iconStyle, StyledNavLink, Wrapper } from "./styles";
 
-const MobileNavigationBar: FC = () => {
-  const width = useWindowSize();
-  const { state } = useAppContext();
+const MobileNavigationBar = () => {
+  const { state } = useCart();
+  const DOWN_900 = useMediaQuery((theme: Theme) => theme.breakpoints.down(900));
 
-  return width <= 900 ? (
-    <Wrapper>
-      {list.map((item) => (
-        <StyledNavLink href={item.href} key={item.title}>
-          {item.title === "Cart" ? (
-            <Badge badgeContent={state.cart.length} color="primary">
-              <item.icon fontSize="small" sx={iconStyle} />
-            </Badge>
-          ) : (
-            <item.icon sx={iconStyle} fontSize="small" />
-          )}
+  if (DOWN_900) {
+    return (
+      <Wrapper>
+        {list.map((item) => (
+          <StyledNavLink href={item.href} key={item.title}>
+            {item.title === "Cart" ? (
+              <Badge badgeContent={state.cart.length} color="primary">
+                <item.icon fontSize="small" sx={iconStyle} />
+              </Badge>
+            ) : (
+              <item.icon sx={iconStyle} fontSize="small" />
+            )}
 
-          {item.title}
-        </StyledNavLink>
-      ))}
-    </Wrapper>
-  ) : null;
+            {item.title}
+          </StyledNavLink>
+        ))}
+      </Wrapper>
+    );
+  }
+
+  return null;
 };
 
 const list = [

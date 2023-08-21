@@ -1,9 +1,9 @@
-import React, { FC, Fragment, useState } from "react";
+import { FC, Fragment, useState } from "react";
 import { Button, Dialog, DialogContent, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-const checkoutSchema = yup.object({
+const validationSchema = yup.object({
   street2: yup.string(),
   name: yup.string().required("required"),
   street1: yup.string().required("required"),
@@ -14,17 +14,6 @@ const checkoutSchema = yup.object({
   zip: yup.number().required("required"),
 });
 
-const initialValues: { [k: string]: any } = {
-  name: "UI Lib",
-  street1: "321, Subid Bazaar",
-  street2: "",
-  phone: "01789123456",
-  city: "Sylhet",
-  state: "Sylhet",
-  country: "Bangladesh",
-  zip: 4336,
-};
-
 // ==================================================================
 type NewAddressFormProps = {
   setNewAddress: (value: any) => void;
@@ -34,15 +23,26 @@ type NewAddressFormProps = {
 const NewAddressForm: FC<NewAddressFormProps> = ({ setNewAddress }) => {
   const [addCardForm, setAddCardForm] = useState<boolean>(false);
 
+  const initialValues = {
+    name: "UI Lib",
+    street1: "321, Subid Bazaar",
+    street2: "",
+    phone: "01789123456",
+    city: "Sylhet",
+    state: "Sylhet",
+    country: "Bangladesh",
+    zip: 4336,
+  };
+
   const { handleChange, handleSubmit, errors, touched, values } = useFormik({
-    initialValues: initialValues,
-    validationSchema: checkoutSchema,
+    initialValues,
+    validationSchema,
     onSubmit: (values, { resetForm }) => {
       setNewAddress(values);
 
       if (values) {
         setAddCardForm(false);
-        resetForm(initialValues);
+        resetForm({});
       }
     },
   });
@@ -78,6 +78,7 @@ const NewAddressForm: FC<NewAddressFormProps> = ({ setNewAddress }) => {
                   error={touched.name && Boolean(errors.name)}
                 />
               </Grid>
+
               <Grid item sm={6} xs={12}>
                 <TextField
                   fullWidth

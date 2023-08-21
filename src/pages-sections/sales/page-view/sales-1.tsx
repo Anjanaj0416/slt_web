@@ -15,7 +15,7 @@ import useSales from "../use-sales";
 import { H1 } from "components/Typography";
 import { FlexBox } from "components/flex-box";
 // LAYOUT COMPONENT
-import SalesLayout from "components/layouts/sales-layout";
+import { SalesLayout } from "components/layouts/sales-layout";
 // PRODUCT DATA LIST
 import productDB from "data/product-database";
 

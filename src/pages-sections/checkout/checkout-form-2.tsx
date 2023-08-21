@@ -20,8 +20,8 @@ import format from "date-fns/format";
 import { Formik } from "formik";
 import * as yup from "yup";
 // Local CUSTOM COMPONENTS
-import NewAddressForm from "./NewAddressForm";
-import EditAddressForm from "./EditAddressForm";
+import NewAddressForm from "./new-address-form";
+import EditAddressForm from "./edit-address-form";
 // GLOBAL CUSTOM COMPONENTS
 import Card1 from "components/Card1";
 import LazyImage from "components/LazyImage";

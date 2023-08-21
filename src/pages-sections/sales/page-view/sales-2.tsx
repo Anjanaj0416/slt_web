@@ -7,7 +7,7 @@ import ProductList from "../product-list";
 import ProductPagination from "../product-pagination";
 // GLOBAL CUSTOM COMPONENTS
 import Sticky from "components/Sticky";
-import SalesLayout from "components/layouts/sales-layout";
+import { SalesLayout } from "components/layouts/sales-layout";
 // LOCAL CUSTOM HOOK
 import useSales from "../use-sales";
 // PRODUCT DATA LIST

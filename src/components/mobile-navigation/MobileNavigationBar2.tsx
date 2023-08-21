@@ -1,19 +1,18 @@
 "use client";
 
-import { FC, ReactNode, useEffect, useState } from "react";
-import { Badge, Box } from "@mui/material";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
+import { Theme, useMediaQuery, Box, Badge } from "@mui/material";
+// CUSTOM ICON COMPONENTS
 import Home from "icons/Home";
 import User2 from "icons/User2";
 import CategoryOutlined from "icons/CategoryOutline";
 import ShoppingBagOutlined from "icons/ShoppingBagOutlined";
-import useWindowSize from "hooks/useWindowSize";
+// GLOBAL CUSTOM HOOKS
+import useCart from "hooks/useCart";
+// UTILS CONSTANTS
 import { layoutConstant } from "utils/constants";
-import { useAppContext } from "contexts/AppContext";
+// STYLED COMPONENTS
 import { iconStyle, StyledBox, StyledDrawer, StyledNavLink, Wrapper } from "./styles";
-
-// ===================================================
-type Props = { children?: ReactNode };
-// ===================================================
 
 /**
  * Difference between MobileNavigationBar and MobileNavigationBar2
@@ -21,10 +20,10 @@ type Props = { children?: ReactNode };
  * 2. In the list array if doesn't exists href property then open category menus sidebar drawer in MobileNavigationBar2
  */
 
-const MobileNavigationBar2: FC<Props> = ({ children }) => {
-  const width = useWindowSize();
-  const { state } = useAppContext();
+const MobileNavigationBar2: FC<PropsWithChildren> = ({ children }) => {
+  const { state } = useCart();
   const [open, setOpen] = useState(false);
+  const DOWN_900 = useMediaQuery((theme: Theme) => theme.breakpoints.down(900));
 
   const { mobileNavHeight, topbarHeight } = layoutConstant;
   const total = mobileNavHeight + topbarHeight;
@@ -43,45 +42,54 @@ const MobileNavigationBar2: FC<Props> = ({ children }) => {
     return () => window.removeEventListener("scroll", listener);
   }, [mobileNavHeight, total]);
 
-  return width <= 900 ? (
-    <Box position="relative" display="flex" flexDirection="column">
-      <StyledDrawer open={open} anchor="left" totalheight={totalHeight} onClose={handleDrawerClose}>
-        {children}
-      </StyledDrawer>
+  if (DOWN_900) {
+    return (
+      <Box position="relative" display="flex" flexDirection="column">
+        <StyledDrawer
+          open={open}
+          anchor="left"
+          totalheight={totalHeight}
+          onClose={handleDrawerClose}
+        >
+          {children}
+        </StyledDrawer>
 
-      <Wrapper>
-        {list.map((item) => {
-          if (item.href) {
-            return (
-              <StyledNavLink href={item.href} key={item.title}>
-                {item.title === "Cart" && (
-                  <Badge badgeContent={state.cart.length} color="primary">
-                    <item.icon fontSize="small" sx={iconStyle} />
-                  </Badge>
-                )}
+        <Wrapper>
+          {list.map((item) => {
+            if (item.href) {
+              return (
+                <StyledNavLink href={item.href} key={item.title}>
+                  {item.title === "Cart" && (
+                    <Badge badgeContent={state.cart.length} color="primary">
+                      <item.icon fontSize="small" sx={iconStyle} />
+                    </Badge>
+                  )}
 
-                {item.title !== "Cart" && <item.icon sx={iconStyle} fontSize="small" />}
-                {item.title}
-              </StyledNavLink>
-            );
-          } else {
-            return (
-              <StyledBox onClick={open ? handleDrawerClose : handleDrawerOpen} key={item.title}>
-                {item.title === "Cart" && (
-                  <Badge badgeContent={state.cart.length} color="primary">
-                    <item.icon fontSize="small" sx={iconStyle} />
-                  </Badge>
-                )}
+                  {item.title !== "Cart" && <item.icon sx={iconStyle} fontSize="small" />}
+                  {item.title}
+                </StyledNavLink>
+              );
+            } else {
+              return (
+                <StyledBox onClick={open ? handleDrawerClose : handleDrawerOpen} key={item.title}>
+                  {item.title === "Cart" && (
+                    <Badge badgeContent={state.cart.length} color="primary">
+                      <item.icon fontSize="small" sx={iconStyle} />
+                    </Badge>
+                  )}
 
-                {item.title !== "Cart" && <item.icon sx={iconStyle} fontSize="small" />}
-                {item.title}
-              </StyledBox>
-            );
-          }
-        })}
-      </Wrapper>
-    </Box>
-  ) : null;
+                  {item.title !== "Cart" && <item.icon sx={iconStyle} fontSize="small" />}
+                  {item.title}
+                </StyledBox>
+              );
+            }
+          })}
+        </Wrapper>
+      </Box>
+    );
+  }
+
+  return null;
 };
 
 const list = [

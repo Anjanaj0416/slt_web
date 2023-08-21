@@ -44,8 +44,8 @@ const OrderRow: FC<OrderRowProps> = ({ order }) => {
             size="small"
             label={order.status}
             sx={{
-              p: "0.25rem 0.5rem",
               fontSize: 12,
+              p: "0.25rem 0.5rem",
               color: !!getColor(order.status) ? `${getColor(order.status)}.900` : "inherit",
               backgroundColor: !!getColor(order.status) ? `${getColor(order.status)}.100` : "none",
             }}
