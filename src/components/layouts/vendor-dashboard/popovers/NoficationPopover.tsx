@@ -1,14 +1,24 @@
-import { FC, SyntheticEvent, useState } from "react";
-import { Notifications } from "@mui/icons-material";
+import { SyntheticEvent, useState } from "react";
+import Notifications from "@mui/icons-material/Notifications";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Tab, Box, Fade, Badge, Paper, Popper, styled, SvgIconProps } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import { formatDistance } from "date-fns";
-import { FlexBox } from "components/flex-box";
+import {
+  Tab,
+  Box,
+  Fade,
+  Badge,
+  Paper,
+  Popper,
+  styled,
+  IconButton,
+  SvgIconProps,
+  ClickAwayListener,
+} from "@mui/material";
+
+import formatDistance from "date-fns/formatDistance";
 import CartX from "icons/CartX";
 import CartCheck from "icons/CartCheck";
 import TruckFast from "icons/TruckFast";
+import { FlexBox } from "components/flex-box";
 import { H6, Paragraph } from "components/Typography";
 
 // dummy  data
@@ -80,7 +90,7 @@ const ListItemWrapper = styled(FlexBox)(({ theme }) => ({
   ":last-of-type": { borderBottom: 0 },
 }));
 
-const NotificationsPopover: FC = () => {
+const NotificationsPopover = () => {
   const [open, setOpen] = useState(false);
   const [tabValue, setTabValue] = useState("1");
   const [anchorEl, setAnchorEl] = useState(null);

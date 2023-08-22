@@ -1,6 +1,6 @@
 import { components } from "./components";
 import { typography } from "./typography";
-import { primary, themeColors } from "./themeColors";
+import { primary, themeColors } from "./theme-colors";
 
 /********************************************
  * You can delete themeOptions.ts file and

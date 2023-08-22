@@ -1,5 +1,5 @@
 import { Components } from "@mui/material";
-import { dark, grey } from "./themeColors";
+import { dark, grey, primary, secondary, success } from "./theme-colors";
 import { typography } from "./typography";
 
 // ========================================================
@@ -119,5 +119,15 @@ export const components: Components = {
       sizeLarge: { padding: ".6rem 2.5rem" },
     },
     defaultProps: { color: "inherit" },
+  },
+
+  MuiChip: {
+    defaultProps: { color: "primary" },
+    styleOverrides: {
+      labelSmall: { paddingInline: 12 },
+      colorSuccess: { color: success.main, backgroundColor: success[100] },
+      colorPrimary: { color: primary[500], backgroundColor: primary[100] },
+      colorSecondary: { color: secondary[500], backgroundColor: secondary[100] },
+    },
   },
 };

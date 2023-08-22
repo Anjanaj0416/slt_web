@@ -5,7 +5,7 @@ import { Open_Sans } from "next/font/google";
 export const openSans = Open_Sans({ subsets: ["latin"] });
 
 // THEME PROVIDER
-import ThemeProvider from "theme/themeProvider";
+import ThemeProvider from "theme/theme-provider";
 
 // THIRD PARTY CSS MODULES
 import "nprogress/nprogress.css";

@@ -1,4 +1,5 @@
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import ChevronLeft from "@mui/icons-material/ChevronLeft";
+import ChevronRight from "@mui/icons-material/ChevronRight";
 import { alpha, Box, ButtonBase, styled } from "@mui/material";
 import { Paragraph, Span } from "components/Typography";
 

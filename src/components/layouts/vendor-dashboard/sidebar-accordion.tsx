@@ -1,5 +1,5 @@
 import { FC, ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { Box, styled } from "@mui/material";
 import {
   BadgeValue,
@@ -8,7 +8,7 @@ import {
   NavItemButton,
   ListIconWrapper,
   ChevronRightIcon,
-} from "./LayoutStyledComponents";
+} from "./styles";
 
 // styled component
 const NavExpandRoot = styled(Box)({
@@ -33,7 +33,7 @@ const SidebarAccordion: FC<SidebarAccordionProps> = (props) => {
   const { item, children, sidebarCompact } = props;
   const { name, icon, iconText, badge } = item;
 
-  const router = useRouter();
+  const pathname = usePathname();
   const componentHeight = useRef(0);
   const elementRef = useRef<any>(null);
   const [collapsed, setCollapsed] = useState(false);
@@ -63,7 +63,7 @@ const SidebarAccordion: FC<SidebarAccordionProps> = (props) => {
 
     // OPEN DROPDOWN IF CHILD IS ACTIVE
     for (let child of item.children) {
-      if (child.path === router.pathname) {
+      if (child.path === pathname) {
         setCollapsed(true);
         setHasActive(true);
       }
@@ -73,7 +73,7 @@ const SidebarAccordion: FC<SidebarAccordionProps> = (props) => {
       setHasActive(false);
       setCollapsed(false);
     };
-  }, [calcaulateHeight, item.children, router.pathname]);
+  }, [calcaulateHeight, item.children, pathname]);
 
   return (
     <NavExpandRoot className="subMenu">

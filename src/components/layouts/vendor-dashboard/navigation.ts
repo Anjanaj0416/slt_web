@@ -1,6 +1,6 @@
 import duotone from "icons/duotone";
 
-export const navigations = [
+export const navigation = [
   { type: "label", label: "Admin" },
   { name: "Dashboard", icon: duotone.Dashboard, path: "/vendor/dashboard" },
 

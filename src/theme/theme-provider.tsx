@@ -6,11 +6,13 @@ import { usePathname } from "next/navigation";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiThemeProvider from "@mui/material/styles/ThemeProvider";
 import { createTheme, ThemeOptions, responsiveFontSizes } from "@mui/material/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import merge from "lodash/merge";
 
 import useSettings from "hooks/useSettings";
-import customThemeOptions from "./themeOptions";
-import NextAppDirEmotionCacheProvider from "./emotionCache";
+import customThemeOptions from "./theme-options";
+import NextAppDirEmotionCacheProvider from "./emotion-cache";
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();
@@ -35,10 +37,12 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </MuiThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </MuiThemeProvider>
+      </LocalizationProvider>
     </NextAppDirEmotionCacheProvider>
   );
 };

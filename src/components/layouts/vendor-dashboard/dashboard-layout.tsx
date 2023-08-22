@@ -1,8 +1,9 @@
-import { FC, ReactNode } from "react";
+"use client";
+
+import { FC, PropsWithChildren, Fragment, useState } from "react";
 import { Box, styled } from "@mui/material";
-import { Fragment, useState } from "react";
-import DashboardNavbar from "./DashboardNavbar";
-import DashboardSidebar from "./DashboardSidebar";
+import DashboardNavbar from "./dashboard-navbar";
+import DashboardSidebar from "./dashboard-sidebar";
 
 // styled components
 const BodyWrapper = styled(Box)<{ compact: number }>(({ theme, compact }) => ({
@@ -17,11 +18,7 @@ const InnerWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down(1550)]: { paddingLeft: "2rem", paddingRight: "2rem" },
 }));
 
-// ======================================================
-type Props = { children: ReactNode };
-// ======================================================
-
-const VendorDashboardLayout: FC<Props> = ({ children }) => {
+const VendorDashboardLayout: FC<PropsWithChildren> = ({ children }) => {
   const [sidebarCompact, setSidebarCompact] = useState(0);
   const [showMobileSideBar, setShowMobileSideBar] = useState(0);
 

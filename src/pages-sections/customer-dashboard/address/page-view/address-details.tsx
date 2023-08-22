@@ -1,11 +1,11 @@
 "use client";
 
 import { Fragment } from "react";
-import { Formik } from "formik";
-import * as yup from "yup";
-import { Button, Card, Grid, TextField } from "@mui/material";
+import Card from "@mui/material/Card";
+import Place from "@mui/icons-material/Place";
 // Local CUSTOM COMPONENT
-import Header from "../header";
+import AddressForm from "../address-form";
+import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
 import Address from "models/Address.model";
 
@@ -14,86 +14,14 @@ type Props = { address: Address };
 // =============================================================
 
 const AddressDetailsPageView = ({ address }: Props) => {
-  const INITIAL_VALUES = {
-    name: address.title || "",
-    address: address.street || "",
-    contact: address.phone || "",
-  };
-
-  const VALIDATION_SCHEMA = yup.object().shape({
-    name: yup.string().required("required"),
-    address: yup.string().required("required"),
-    contact: yup.string().required("required"),
-  });
-
-  // HANDLE FORM SUBMIT
-  const handleSubmit = async (values: typeof INITIAL_VALUES) => {
-    console.log(values);
-  };
-
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
-      <Header href="#" title="Edit Address" buttonText="Back to Address" />
+      <DashboardHeader Icon={Place} href="#" title="Edit Address" buttonText="Back to Address" />
 
       {/* FORM AREA */}
       <Card sx={{ p: 3, pt: 4 }}>
-        <Formik
-          onSubmit={handleSubmit}
-          initialValues={INITIAL_VALUES}
-          validationSchema={VALIDATION_SCHEMA}
-        >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <Grid container spacing={3}>
-                <Grid item md={6} xs={12}>
-                  <TextField
-                    fullWidth
-                    name="name"
-                    label="Name"
-                    onBlur={handleBlur}
-                    value={values.name}
-                    onChange={handleChange}
-                    error={!!touched.name && !!errors.name}
-                    helperText={(touched.name && errors.name) as string}
-                  />
-                </Grid>
-
-                <Grid item md={6} xs={12}>
-                  <TextField
-                    fullWidth
-                    name="address"
-                    onBlur={handleBlur}
-                    label="Address Line"
-                    value={values.address}
-                    onChange={handleChange}
-                    error={!!touched.address && !!errors.address}
-                    helperText={(touched.address && errors.address) as string}
-                  />
-                </Grid>
-
-                <Grid item md={6} xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Phone"
-                    name="contact"
-                    onBlur={handleBlur}
-                    value={values.contact}
-                    onChange={handleChange}
-                    error={!!touched.contact && !!errors.contact}
-                    helperText={(touched.contact && errors.contact) as string}
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Button type="submit" variant="contained" color="primary">
-                    Save Changes
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
-          )}
-        </Formik>
+        <AddressForm address={address} />
       </Card>
     </Fragment>
   );

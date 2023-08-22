@@ -5,8 +5,8 @@ import { Avatar, Box, Theme, useMediaQuery } from "@mui/material";
 import LayoutDrawer from "../LayoutDrawer";
 import Scrollbar from "components/Scrollbar";
 import { FlexBetween } from "components/flex-box";
-import { navigations } from "./NavigationList";
-import SidebarAccordion from "./SidebarAccordion";
+import { navigation } from "./navigation";
+import SidebarAccordion from "./sidebar-accordion";
 import {
   ListLabel,
   BadgeValue,
@@ -18,7 +18,7 @@ import {
   SidebarWrapper,
   ChevronLeftIcon,
   ListIconWrapper,
-} from "./LayoutStyledComponents";
+} from "./styles";
 
 const TOP_HEADER_AREA = 70;
 
@@ -119,7 +119,7 @@ const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
       clickOnTrack={false}
       sx={{ overflowX: "hidden", maxHeight: `calc(100vh - ${TOP_HEADER_AREA}px)` }}
     >
-      <NavWrapper compact={sidebarCompact}>{renderLevels(navigations)}</NavWrapper>
+      <NavWrapper compact={sidebarCompact}>{renderLevels(navigation)}</NavWrapper>
     </Scrollbar>
   );
 

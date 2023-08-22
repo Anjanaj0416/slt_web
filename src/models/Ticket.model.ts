@@ -1,5 +1,12 @@
 import User from "./User.model";
 
+type Message = {
+  name: string;
+  date: string;
+  text: string;
+  imgUrl: string;
+};
+
 interface Ticket {
   user: User;
   id: string;
@@ -9,7 +16,7 @@ interface Ticket {
   title: string;
   status: string;
   category: string;
-  conversation?: any;
+  conversation: null | Message[];
 }
 
 export default Ticket;

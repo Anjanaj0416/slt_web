@@ -86,7 +86,6 @@ const CartPageView = () => {
             fullWidth
             sx={{ mb: 2 }}
             options={countryList}
-            // getOptionLabel={(option) => option.label}
             renderInput={(params) => (
               <TextField
                 {...params}

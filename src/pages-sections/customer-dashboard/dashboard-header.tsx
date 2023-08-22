@@ -1,10 +1,12 @@
 import { FC } from "react";
+import Link from "next/link";
 import { SvgIconComponent, Menu } from "@mui/icons-material";
-import { Box, Theme, styled, useMediaQuery } from "@mui/material";
+import { Box, Button, Theme, styled, useMediaQuery } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import Sidenav from "components/Sidenav";
 import { H2 } from "components/Typography";
-import { FlexBox } from "components/flex-box";
+import FlexBox from "components/flex-box/FlexBox";
+import { Navigation } from "components/layouts/customer-dashboard-layout";
 
 // STYLED COMPONENT
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -25,16 +27,37 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 // ==============================================================
-interface Props {
+
+type WithButton = {
+  href: string;
   title: string;
-  button?: JSX.Element;
-  navigation: JSX.Element;
-  Icon?: SvgIconComponent;
-}
+  buttonText: string;
+  Icon: SvgIconComponent;
+};
+
+type WithoutButton = {
+  title: string;
+  Icon: SvgIconComponent;
+  href?: never;
+  buttonText?: never;
+};
+
+type Props = WithoutButton | WithButton;
 // ==============================================================
 
-const DashboardHeader: FC<Props> = ({ title, button, navigation, Icon }) => {
+const DashboardHeader: FC<Props> = ({ title, buttonText, href, Icon }) => {
   const isTablet = useMediaQuery((theme: Theme) => theme.breakpoints.down(1025));
+
+  const HEADER_LINK = (
+    <Button
+      href={href}
+      color="primary"
+      LinkComponent={Link}
+      sx={{ bgcolor: "primary.light", px: 4 }}
+    >
+      {buttonText}
+    </Button>
+  );
 
   return (
     <StyledBox>
@@ -49,14 +72,14 @@ const DashboardHeader: FC<Props> = ({ title, button, navigation, Icon }) => {
 
         <Box className="sidenav">
           <Sidenav position="left" handle={<Menu fontSize="small" />}>
-            {navigation}
+            <Navigation />
           </Sidenav>
         </Box>
 
-        {!isTablet && button ? button : null}
+        {!isTablet && buttonText ? HEADER_LINK : null}
       </FlexBox>
 
-      {isTablet && button ? <Box mt={2}>{button}</Box> : null}
+      {isTablet && buttonText ? <Box mt={2}>{HEADER_LINK}</Box> : null}
     </StyledBox>
   );
 };
