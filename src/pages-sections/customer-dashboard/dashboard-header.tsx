@@ -6,7 +6,7 @@ import { Box, Button, Theme, styled, useMediaQuery } from "@mui/material";
 import Sidenav from "components/Sidenav";
 import { H2 } from "components/Typography";
 import FlexBox from "components/flex-box/FlexBox";
-import { Navigation } from "components/layouts/customer-dashboard-layout";
+import { Navigation } from "components/layouts/customer-dashboard";
 
 // STYLED COMPONENT
 const StyledBox = styled(Box)(({ theme }) => ({

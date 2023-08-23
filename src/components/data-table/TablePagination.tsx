@@ -30,5 +30,4 @@ const StyledPagination = styled(Pagination)(({ theme }) => ({
 }));
 
 const TablePagination = (props: PaginationProps) => <StyledPagination {...props} />;
-
 export default TablePagination;
