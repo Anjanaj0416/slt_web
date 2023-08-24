@@ -8,7 +8,7 @@ import { Paragraph } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../../admin/StyledComponents";
+import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
 
 // ========================================================================
 type Props = { customer: any };

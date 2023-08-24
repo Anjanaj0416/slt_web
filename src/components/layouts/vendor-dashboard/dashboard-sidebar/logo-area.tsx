@@ -24,7 +24,7 @@ const LogoArea = () => {
         color="disabled"
         compact={COMPACT}
         onClick={handleSidebarCompactToggle}
-        sidebarcompact={sidebarCompact ? 1 : 0}
+        sidebar_compact={sidebarCompact ? 1 : 0}
       />
     </FlexBetween>
   );

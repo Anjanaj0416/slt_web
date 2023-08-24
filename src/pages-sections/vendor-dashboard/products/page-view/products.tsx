@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { Box, Card, Stack, Table, TableContainer, TableBody } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
@@ -29,8 +29,10 @@ type Props = { products: Product[] };
 // =============================================================================
 
 const ProductsPageView = ({ products }: Props) => {
+  const [productList, setProductList] = useState([...products]);
+
   // RESHAPE THE PRODUCT LIST BASED TABLE HEAD CELL ID
-  const filteredProducts = products.map((item) => ({
+  const filteredProducts = productList.map((item) => ({
     id: item.id,
     slug: item.slug,
     name: item.title,
@@ -80,7 +82,7 @@ const ProductsPageView = ({ products }: Props) => {
 
               <TableBody>
                 {filteredList.map((product, index) => (
-                  <ProductRow product={product} key={index} />
+                  <ProductRow key={index} product={product} />
                 ))}
               </TableBody>
             </Table>

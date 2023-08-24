@@ -6,14 +6,22 @@ import { FlexBox } from "components/flex-box";
 import BazaarSwitch from "components/BazaarSwitch";
 import { Paragraph, Small } from "components/Typography";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../../admin/StyledComponents";
+import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
 
 // ========================================================================
-type Props = { review: any };
+interface Review {
+  customer: string;
+  product: string;
+  comment: string;
+  published: boolean;
+  productImage: string;
+}
+
+type Props = { review: Review };
 // ========================================================================
 
 const ReviewRow: FC<Props> = ({ review }) => {
-  const { customer, product, comment, published, productImage } = review;
+  const { customer, product, comment, published, productImage } = review || {};
 
   const [productPublish, setProductPublish] = useState(published);
 

@@ -6,19 +6,14 @@ import format from "date-fns/format";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import {
-  StatusWrapper,
-  StyledIconButton,
-  StyledTableCell,
-  StyledTableRow,
-} from "../../admin/StyledComponents";
+import { StatusWrapper, StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
 
 // ========================================================================
 type Props = { order: any };
 // ========================================================================
 
 const OrderRow: FC<Props> = ({ order }) => {
-  const { amount, id, qty, purchaseDate, billingAddress, status } = order;
+  const { amount, id, qty, purchaseDate, billingAddress, status } = order || {};
 
   const router = useRouter();
 

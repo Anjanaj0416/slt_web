@@ -15,12 +15,10 @@ import {
 
 // STYLED COMPONENT
 const NavExpandRoot = styled(Box)({
-  "& .subMenu": { padding: 0 },
-  "& .navItem": { background: "transparent" },
+  // "& .subMenu": { padding: 0 },
   "& .expansion-panel": {
-    "& .expansion-panel": { paddingLeft: 8 },
     overflow: "hidden",
-    transition: "max-height 0.3s cubic-bezier(0, 0, 0.2, 1)",
+    "& .expansion-panel": { paddingLeft: 8 },
   },
 });
 
@@ -77,18 +75,9 @@ const SidebarAccordion: FC<Props> = ({ item, children }) => {
           <StyledText compact={COMPACT}>{name}</StyledText>
         </Box>
 
-        {badge ? (
-          <BadgeValue compact={COMPACT} className="itemIcon">
-            {badge.value}
-          </BadgeValue>
-        ) : null}
+        {badge ? <BadgeValue compact={COMPACT}>{badge.value}</BadgeValue> : null}
 
-        <ChevronRightIcon
-          color="disabled"
-          compact={COMPACT}
-          className="accordionArrow"
-          collapsed={collapsed ? 1 : 0}
-        />
+        <ChevronRightIcon color="disabled" compact={COMPACT} collapsed={collapsed ? 1 : 0} />
       </NavItemButton>
 
       <Collapse in={collapsed} unmountOnExit>

@@ -1,0 +1,71 @@
+"use client";
+
+import { Box, Card, Stack, Table, TableContainer, TableBody } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
+import { H3 } from "components/Typography";
+import Scrollbar from "components/Scrollbar";
+import TableHeader from "components/data-table/TableHeader";
+import TablePagination from "components/data-table/TablePagination";
+// GLOBAL CUSTOM HOOK
+import useMuiTable from "hooks/useMuiTable";
+// Local CUSTOM COMPONENTS
+import PayoutRow from "../payout-row";
+// TABLE HEAD COLUMN DATA
+import { tableHeading } from "../table-heading";
+// DATA TYPES
+import { Payout } from "../types";
+
+// =============================================================================
+type PayoutsProps = { payouts: Payout[] };
+// =============================================================================
+
+const PayoutsPageView = ({ payouts }: PayoutsProps) => {
+  const {
+    order,
+    orderBy,
+    selected,
+    rowsPerPage,
+    filteredList,
+    handleChangePage,
+    handleRequestSort,
+  } = useMuiTable({ listData: payouts, defaultSort: "no" });
+
+  return (
+    <Box py={4}>
+      <H3 mb={2}>Payouts</H3>
+
+      <Card>
+        <Scrollbar>
+          <TableContainer sx={{ minWidth: 800 }}>
+            <Table>
+              <TableHeader
+                order={order}
+                hideSelectBtn
+                orderBy={orderBy}
+                heading={tableHeading}
+                rowCount={payouts.length}
+                numSelected={selected.length}
+                onRequestSort={handleRequestSort}
+              />
+
+              <TableBody>
+                {filteredList.map((payout, index) => (
+                  <PayoutRow payout={payout} key={index} />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Scrollbar>
+
+        <Stack alignItems="center" my={4}>
+          <TablePagination
+            onChange={handleChangePage}
+            count={Math.ceil(payouts.length / rowsPerPage)}
+          />
+        </Stack>
+      </Card>
+    </Box>
+  );
+};
+
+export default PayoutsPageView;

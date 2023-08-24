@@ -6,23 +6,31 @@ import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // GLOBAL CUSTOM COMPONENT
 import BazaarSwitch from "components/BazaarSwitch";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../../admin/StyledComponents";
+import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
 
 // ========================================================================
-type Props = { brand: any; selected: any[] };
+interface Brand {
+  id: string;
+  name: string;
+  logo: string;
+  slug: string;
+  featured: boolean;
+}
+
+type Props = { brand: Brand; selected: string[] };
 // ========================================================================
 
 const BrandRow: FC<Props> = ({ brand, selected }) => {
-  const { name, featured, logo, id, slug } = brand;
+  const { name, featured, logo, id, slug } = brand || {};
 
   const router = useRouter();
   const [featuredCategory, setFeaturedCategory] = useState(featured);
-  const isItemSelected = selected.indexOf(name) !== -1;
+  const hasSelected = selected.indexOf(name) !== -1;
 
   const handleNavigate = () => router.push(`/vendor/categories/${slug}`);
 
   return (
-    <StyledTableRow tabIndex={-1} role="checkbox" selected={isItemSelected}>
+    <StyledTableRow tabIndex={-1} role="checkbox" selected={hasSelected}>
       <StyledTableCell align="center">#{id.split("-")[0]}</StyledTableCell>
 
       <StyledTableCell align="center">{name}</StyledTableCell>

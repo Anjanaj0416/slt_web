@@ -56,12 +56,12 @@ export const navigation = [
     name: "Sellers",
     icon: duotone.Seller,
     children: [
-      { name: "Seller List", path: "/admin/sellers" },
-      { name: "Seller Package", path: "/admin/seller-package" },
-      { name: "Package Payments", path: "/admin/package-payment" },
-      { name: "Earning History", path: "/admin/earning-history" },
-      { name: "Payouts", path: "/admin/payouts" },
-      { name: "Payout Request", path: "/admin/payout-request" },
+      { name: "Seller List", path: "/vendor/sellers" },
+      { name: "Seller Package", path: "/vendor/seller-package" },
+      { name: "Package Payments", path: "/vendor/package-payments" },
+      { name: "Earning History", path: "/vendor/earning-history" },
+      { name: "Payouts", path: "/vendor/payouts" },
+      { name: "Payout Request", path: "/vendor/payout-requests" },
     ],
   },
 

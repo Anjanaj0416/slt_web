@@ -1,24 +1,29 @@
 import { FC, useState } from "react";
 import { Button, Card, Checkbox, FormControlLabel, Grid, TextField } from "@mui/material";
 import { Formik } from "formik";
+import * as yup from "yup";
 // GLOBAL CUSTOM COMPONENTS
 import DropZone from "components/DropZone";
 import { FlexBox } from "components/flex-box";
 import BazaarImage from "components/BazaarImage";
 // STYLED COMPONENTS
-import { UploadImageBox, StyledClear } from "../../admin/StyledComponents";
+import { UploadImageBox, StyledClear } from "../styles";
+
+// FORM FIELDS VALIDATION SCHEMA
+const VALIDATION_SCHEMA = yup.object().shape({
+  name: yup.string().required("Name is required!"),
+});
 
 // ================================================================
 interface Props {
   initialValues: any;
-  validationSchema: any;
   handleFormSubmit: (values: any) => void;
 }
 
 // ================================================================
 
 const BrandForm: FC<Props> = (props) => {
-  const { initialValues, validationSchema, handleFormSubmit } = props;
+  const { initialValues, handleFormSubmit } = props;
 
   const [files, setFiles] = useState([]);
 
@@ -38,7 +43,7 @@ const BrandForm: FC<Props> = (props) => {
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={VALIDATION_SCHEMA}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>

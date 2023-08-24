@@ -1,11 +1,14 @@
 import { FC } from "react";
 import { Box, Button, Card, styled } from "@mui/material";
-import { FlexBox } from "components/flex-box";
-import Verify from "components/icons/Verify";
+// GLOBAL CUSTOM HOOK
+import Verify from "icons/Verify";
+// GLOBAL CUSTOM COMPONENTS
+import FlexBox from "components/flex-box/FlexBox";
 import { H1, H3, H5 } from "components/Typography";
+// CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 
-// styled components
+// STYLED COMPONENTS
 const Wrapper = styled(Card)({
   display: "flex",
   padding: "3rem 2rem",
@@ -25,11 +28,11 @@ const PackageHeading = styled(H1)(({ theme }) => ({
 }));
 
 // ===================================================
-type SellerPackageCardProps = { listItem: any };
+type Props = { listItem: any };
 // ===================================================
 
-const SellerPackageCard: FC<SellerPackageCardProps> = ({ listItem }) => {
-  const { packageName, price, Icon, features = [] } = listItem;
+const SellerPackageCard: FC<Props> = ({ listItem }) => {
+  const { packageName, price, Icon, features = [] } = listItem || {};
 
   return (
     <Wrapper>

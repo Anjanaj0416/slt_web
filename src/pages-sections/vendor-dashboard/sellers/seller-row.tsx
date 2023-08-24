@@ -1,28 +1,37 @@
 import { FC, useState } from "react";
-import { Delete, Edit, RemoveRedEye } from "@mui/icons-material";
-import { Avatar, Box } from "@mui/material";
-import { FlexBox } from "components/flex-box";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import Edit from "@mui/icons-material/Edit";
+import Delete from "@mui/icons-material/Delete";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
+// GLOBAL CUSTOM COMPONENTS
+import FlexBox from "components/flex-box/FlexBox";
 import BazaarSwitch from "components/BazaarSwitch";
 import { Paragraph, Small } from "components/Typography";
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../StyledComponents";
+// CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+// STYLED COMPONENTS
+import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
+// DATA TYPES
+import { Seller } from "./types";
 
 // ========================================================================
-type SellerRowProps = { seller: any };
+type Props = { seller: Seller };
 // ========================================================================
 
-const SellerRow: FC<SellerRowProps> = ({ seller }) => {
-  const { name, phone, image, balance, published, shopName, package: sellerPackage } = seller;
+const SellerRow: FC<Props> = ({ seller }) => {
+  const { name, phone, image, balance, published, shopName, package: sellerPackage } = seller || {};
 
-  const [shopPulish, setShopPublish] = useState(published);
+  const [shopPublish, setShopPublish] = useState(published);
 
   return (
     <StyledTableRow tabIndex={-1} role="checkbox">
       <StyledTableCell align="left">
         <FlexBox alignItems="center" gap={1.5}>
           <Avatar src={image} alt={name} />
+
           <Box>
-            <Paragraph>{name}</Paragraph>
+            <Paragraph fontWeight={600}>{name}</Paragraph>
             <Small color="grey.600">{phone}</Small>
           </Box>
         </FlexBox>
@@ -41,7 +50,7 @@ const SellerRow: FC<SellerRowProps> = ({ seller }) => {
       <StyledTableCell align="left">
         <BazaarSwitch
           color="info"
-          checked={shopPulish}
+          checked={shopPublish}
           onChange={() => setShopPublish((state) => !state)}
         />
       </StyledTableCell>

@@ -2,7 +2,7 @@ import { FC } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import { format } from "date-fns";
+import format from "date-fns/format";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { Paragraph, Span } from "components/Typography";

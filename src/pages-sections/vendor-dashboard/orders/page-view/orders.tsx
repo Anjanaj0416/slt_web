@@ -13,17 +13,8 @@ import useMuiTable from "hooks/useMuiTable";
 import OrderRow from "../order-row";
 // CUSTOM DATA MODEL
 import Order from "models/Order.model";
-
-// TABLE HEADING DATA LIST
-const tableHeading = [
-  { id: "id", label: "Order ID", align: "left" },
-  { id: "qty", label: "Qty", align: "left" },
-  { id: "purchaseDate", label: "Purchase Date", align: "left" },
-  { id: "billingAddress", label: "Billing Address", align: "left" },
-  { id: "amount", label: "Amount", align: "left" },
-  { id: "status", label: "Status", align: "left" },
-  { id: "action", label: "Action", align: "center" },
-];
+// TABLE HEAD COLUMN DATA
+import { tableHeading } from "../table-heading";
 
 // =============================================================================
 type Props = { orders: Order[] };

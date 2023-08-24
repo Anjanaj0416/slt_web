@@ -12,22 +12,28 @@ import { Paragraph, Small } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import {
-  StyledTableRow,
-  CategoryWrapper,
-  StyledTableCell,
-  StyledIconButton,
-} from "../../admin/StyledComponents";
+import { StyledTableRow, CategoryWrapper, StyledTableCell, StyledIconButton } from "../styles";
 
 // ========================================================================
-type Props = { product: any };
+interface Product {
+  id: string;
+  slug: string;
+  name: string;
+  price: number;
+  brand: string;
+  image: string;
+  category: string;
+  published: boolean;
+}
+
+type Props = { product: Product };
 // ========================================================================
 
 const ProductRow: FC<Props> = ({ product }) => {
-  const { category, name, price, image, brand, id, published, slug } = product;
+  const { category, name, price, image, brand, id, published, slug } = product || {};
 
   const router = useRouter();
-  const [productPublish, setProductPublish] = useState(published);
+  const [productPublish, setProductPublish] = useState(published as boolean);
 
   return (
     <StyledTableRow tabIndex={-1} role="checkbox">

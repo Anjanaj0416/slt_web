@@ -13,24 +13,14 @@ import useMuiTable from "hooks/useMuiTable";
 import CategoryRow from "../category-row";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
-
-// TABLE HEADING DATA LIST
-const tableHeading = [
-  { id: "id", label: "ID", align: "left" },
-  { id: "name", label: "Name", align: "left" },
-  { id: "image", label: "Image", align: "left" },
-  { id: "level", label: "Level", align: "left" },
-  { id: "featured", label: "Featured", align: "left" },
-  { id: "action", label: "Action", align: "center" },
-];
+// TABLE HEAD COLUMN DATA
+import { tableHeading } from "../table-heading";
 
 // =============================================================================
 type Props = { categories: Category[] };
 // =============================================================================
 
-const CategoriesPageView = (props: Props) => {
-  const { categories } = props;
-
+const CategoriesPageView = ({ categories }: Props) => {
   // RESHAPE THE PRODUCT LIST BASED TABLE HEAD CELL ID
   const filteredCategories = categories.map((item) => ({
     id: item.id,
@@ -80,7 +70,7 @@ const CategoriesPageView = (props: Props) => {
 
               <TableBody>
                 {filteredList.map((category) => (
-                  <CategoryRow item={category} key={category.id} selected={selected} />
+                  <CategoryRow key={category.id} category={category} selected={selected} />
                 ))}
               </TableBody>
             </Table>

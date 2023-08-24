@@ -4,21 +4,21 @@ import { alpha, Box, ButtonBase, styled } from "@mui/material";
 import { Paragraph, Span } from "components/Typography";
 
 // ===============================================================
-type Active = { active: any };
-type Compact = { compact: any };
-type CollapseCompact = { collapsed: number; compact: any };
-type ChevronLeftProps = { sidebarcompact: any; compact: any };
+type Active = { active: number };
+type Compact = { compact: number };
+type CollapseCompact = { collapsed: number; compact: number };
+type ChevronLeftProps = { sidebar_compact: number; compact: number };
 // ===============================================================
 
 const SidebarWrapper = styled(Box)<Compact>(({ theme, compact }) => ({
+  width: 280,
   height: "100vh",
   position: "fixed",
-  width: compact ? 86 : 280,
   transition: "all .2s ease",
   zIndex: theme.zIndex.drawer,
   color: theme.palette.common.white,
   backgroundColor: theme.palette.grey[900],
-  "&:hover": compact && { width: 280 },
+  ...(compact && { width: 86, "&:hover": { width: 280 } }),
 }));
 
 const NavItemButton = styled(ButtonBase)<Active>(({ theme, active }) => ({
@@ -32,10 +32,7 @@ const NavItemButton = styled(ButtonBase)<Active>(({ theme, active }) => ({
   ...(active && {
     color: theme.palette.info.main,
     backgroundColor: alpha(theme.palette.grey[800], 0.6),
-    "& .MuiSvgIcon-root .secondary": {
-      color: theme.palette.info.main,
-      opacity: 1,
-    },
+    "& .MuiSvgIcon-root .secondary": { color: theme.palette.info.main, opacity: 1 },
   }),
 }));
 
@@ -97,19 +94,19 @@ const BadgeValue = styled(Box)<Compact>(({ compact }) => ({
   display: compact ? "none" : "unset",
 }));
 
-const ChevronLeftIcon = styled(ChevronLeft)<ChevronLeftProps>(({ compact, sidebarcompact }) => ({
+const ChevronLeftIcon = styled(ChevronLeft)<ChevronLeftProps>(({ compact, sidebar_compact }) => ({
   color: "rgba(255, 255, 255, .6)",
   cursor: "pointer",
-  padding: 8,
-  height: 40,
   width: 40,
+  height: 40,
+  padding: 8,
   borderRadius: "50%",
   transition: "all 0.3s",
   display: compact ? "none" : "block",
-  transform: sidebarcompact ? "rotate(180deg)" : "rotate(0deg)",
+  transform: sidebar_compact ? "rotate(180deg)" : "rotate(0deg)",
   "&:hover": {
-    background: "rgba(255, 255, 255, .05)",
     color: "rgba(255, 255, 255, 1)",
+    background: "rgba(255, 255, 255, .05)",
   },
 }));
 

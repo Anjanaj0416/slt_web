@@ -11,16 +11,8 @@ import TablePagination from "components/data-table/TablePagination";
 import useMuiTable from "hooks/useMuiTable";
 // Local CUSTOM COMPONENT
 import CustomerRow from "../customer-row";
-
-// table column list
-const tableHeading = [
-  { id: "name", label: "Name", align: "left" },
-  { id: "phone", label: "Phone", align: "left" },
-  { id: "email", label: "Email", align: "left" },
-  { id: "balance", label: "Wallet Balance", align: "left" },
-  { id: "orders", label: "No Of Orders", align: "left" },
-  { id: "action", label: "Action", align: "center" },
-];
+// TABLE HEAD COLUMN DATA
+import { tableHeading } from "../table-heading";
 
 // =============================================================================
 type Props = { customers: any[] };

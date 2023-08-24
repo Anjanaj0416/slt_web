@@ -1,7 +1,6 @@
-import { Clear } from "@mui/icons-material";
+import Clear from "@mui/icons-material/Clear";
 import { alpha, Box, IconButton, styled, TableCell, TableRow } from "@mui/material";
 
-// styled components
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   fontSize: 14,
   paddingTop: 10,

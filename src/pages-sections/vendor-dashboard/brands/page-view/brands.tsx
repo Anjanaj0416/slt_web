@@ -13,15 +13,8 @@ import useMuiTable from "hooks/useMuiTable";
 import BrandRow from "../brand-row";
 // CUSTOM DATA MODEL
 import Brand from "models/Brand.model";
-
-// TABLE HEADING DATA LIST
-const tableHeading = [
-  { id: "id", label: "ID", align: "center" },
-  { id: "name", label: "Name", align: "center" },
-  { id: "logo", label: "Logo", align: "center" },
-  { id: "featured", label: "Featured", align: "center" },
-  { id: "action", label: "Action", align: "center" },
-];
+// TABLE HEAD COLUMN DATA
+import { tableHeading } from "../table-heading";
 
 // =============================================================================
 type Props = { brands: Brand[] };
@@ -76,7 +69,7 @@ const BrandsPageView = ({ brands }: Props) => {
 
               <TableBody>
                 {filteredList.map((brand) => (
-                  <BrandRow brand={brand} key={brand.id} selected={selected} />
+                  <BrandRow key={brand.id} brand={brand} selected={selected} />
                 ))}
               </TableBody>
             </Table>
