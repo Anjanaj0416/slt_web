@@ -5,15 +5,16 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
-import { BlogCard2 } from "components/blog-cards";
+// Local CUSTOM COMPONENT
+import BlogCard from "./blog-card";
 // CUSTOM DATA MODEL
 import Blog from "models/Blog.model";
 
 // =======================================
-type Section8Props = { blogs: Blog[] };
+type Props = { blogs: Blog[] };
 // =======================================
 
-const Section8: FC<Section8Props> = ({ blogs }) => {
+const Section8: FC<Props> = ({ blogs }) => {
   return (
     <Container sx={{ mt: 8 }}>
       <H2 textAlign="center" mb={4}>
@@ -23,7 +24,7 @@ const Section8: FC<Section8Props> = ({ blogs }) => {
       <Grid container spacing={3}>
         {blogs.map((item) => (
           <Grid item md={4} xs={12} key={item.id}>
-            <BlogCard2
+            <BlogCard
               title={item.title}
               date={item.createdAt}
               image={item.thumbnail}

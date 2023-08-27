@@ -5,7 +5,7 @@ import { Box, Button, Theme, styled, useMediaQuery } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import Sidenav from "components/Sidenav";
 import { H2 } from "components/Typography";
-import FlexBox from "components/flex-box/FlexBox";
+import FlexBox from "components/flex-box/flex-box";
 import { Navigation } from "components/layouts/customer-dashboard";
 
 // STYLED COMPONENT

@@ -1,7 +1,9 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import StyledMegaMenu from "./StyledMegaMenu";
+// GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import LazyImage from "components/LazyImage";
 import { NavLink } from "components/nav-link";
@@ -32,6 +34,7 @@ const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWid
                   ) : (
                     <Box className="title-link">{item.title}</Box>
                   )}
+
                   {item.subCategories?.map((sub, ind) => (
                     <NavLink className="child-link" href={sub.href} key={ind}>
                       {sub.title}
@@ -66,12 +69,13 @@ const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWid
                 </Small>
               </Box>
             </Grid>
+
             <Grid item sm={6} xs={12}>
               <FlexBox
-                flexDirection="column"
-                justifyContent="flex-end"
                 height="160px"
                 position="relative"
+                flexDirection="column"
+                justifyContent="flex-end"
               >
                 <LazyImage
                   alt="model"

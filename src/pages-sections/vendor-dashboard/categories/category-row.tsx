@@ -30,7 +30,7 @@ const CategoryRow: FC<Props> = ({ category, selected }) => {
 
   const hasSelected = selected.indexOf(name) !== -1;
 
-  const handleNavigate = () => router.push(`/vendor/categories/${slug}`);
+  const handleNavigate = () => router.push(`/admin/categories/${slug}`);
 
   return (
     <StyledTableRow tabIndex={-1} role="checkbox" selected={hasSelected}>

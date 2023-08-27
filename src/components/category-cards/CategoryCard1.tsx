@@ -34,10 +34,10 @@ const CategoryTitle = styled(Box)({
 });
 
 // ============================================================
-type CategoryCard1Props = { image: string; title: string };
+type Props = { image: string; title: string };
 // ============================================================
 
-const CategoryCard1: FC<CategoryCard1Props> = ({ image, title }) => {
+const CategoryCard1: FC<Props> = ({ image, title }) => {
   return (
     <Wrapper position="relative">
       <LazyImage

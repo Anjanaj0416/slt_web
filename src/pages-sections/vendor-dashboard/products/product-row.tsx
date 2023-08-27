@@ -67,7 +67,7 @@ const ProductRow: FC<Props> = ({ product }) => {
       </StyledTableCell>
 
       <StyledTableCell align="center">
-        <StyledIconButton onClick={() => router.push(`/vendor/products/${slug}`)}>
+        <StyledIconButton onClick={() => router.push(`/admin/products/${slug}`)}>
           <Edit />
         </StyledIconButton>
 

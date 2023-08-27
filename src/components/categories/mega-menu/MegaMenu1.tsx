@@ -1,10 +1,14 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Card, Grid } from "@mui/material";
-import StyledMegaMenu from "./StyledMegaMenu";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+// GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
+// STYLED COMPONENTS
+import StyledMegaMenu from "./StyledMegaMenu";
 
 // =========================================================
 

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import MegaMenu3 from "./MegaMenu3";
 import StyledMegaMenu from "./StyledMegaMenu";
+// GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
 import CategoryMenuItem from "../CategoryMenuItem";
 

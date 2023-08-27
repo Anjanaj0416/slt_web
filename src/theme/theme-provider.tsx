@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren } from "react";
+import { ReactNode } from "react";
 import getConfig from "next/config";
 import { usePathname } from "next/navigation";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,7 +14,7 @@ import useSettings from "hooks/useSettings";
 import customThemeOptions from "./theme-options";
 import NextAppDirEmotionCacheProvider from "./emotion-cache";
 
-const ThemeProvider = ({ children }: PropsWithChildren) => {
+const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   const { settings } = useSettings();
   const { publicRuntimeConfig } = getConfig() || {}; // Value is coming from next.config.js

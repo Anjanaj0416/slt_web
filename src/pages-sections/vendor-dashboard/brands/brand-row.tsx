@@ -27,7 +27,7 @@ const BrandRow: FC<Props> = ({ brand, selected }) => {
   const [featuredCategory, setFeaturedCategory] = useState(featured);
   const hasSelected = selected.indexOf(name) !== -1;
 
-  const handleNavigate = () => router.push(`/vendor/categories/${slug}`);
+  const handleNavigate = () => router.push(`/admin/categories/${slug}`);
 
   return (
     <StyledTableRow tabIndex={-1} role="checkbox" selected={hasSelected}>

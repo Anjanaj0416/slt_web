@@ -13,10 +13,10 @@ import { FlexRowCenter } from "components/flex-box";
 import Brand from "models/Brand.model";
 
 // ======================================================================
-type Section9Props = { brands: Brand[] };
+type Props = { brands: Brand[] };
 // ======================================================================
 
-const Section9: FC<Section9Props> = ({ brands }) => {
+const Section9: FC<Props> = ({ brands }) => {
   const width = useWindowSize();
   const [visibleSlides, setVisibleSlides] = useState(6);
 

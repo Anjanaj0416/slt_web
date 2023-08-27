@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { Open_Sans } from "next/font/google";
 
 export const openSans = Open_Sans({ subsets: ["latin"] });
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={openSans.className}>

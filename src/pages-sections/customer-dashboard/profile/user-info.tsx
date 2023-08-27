@@ -3,7 +3,7 @@ import format from "date-fns/format";
 import { Theme, useMediaQuery } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import TableRow from "components/TableRow";
-import FlexBox from "components/flex-box/FlexBox";
+import FlexBox from "components/flex-box/flex-box";
 import { Small, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import User from "models/User.model";

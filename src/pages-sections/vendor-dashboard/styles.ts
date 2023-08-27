@@ -34,15 +34,16 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 }));
 
 type StatusType = {
-  status:
-    | "Accepted"
-    | "Rejected"
-    | "Processing"
-    | "Pending"
-    | "Delivered"
-    | "Normal"
-    | "Urgent"
-    | "Cancelled";
+  status: string;
+  // status:
+  //   | "Accepted"
+  //   | "Rejected"
+  //   | "Processing"
+  //   | "Pending"
+  //   | "Delivered"
+  //   | "Normal"
+  //   | "Urgent"
+  //   | "Cancelled";
 };
 
 const StatusWrapper = styled(Box)<StatusType>(({ theme, status }) => {

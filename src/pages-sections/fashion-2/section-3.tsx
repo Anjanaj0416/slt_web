@@ -10,10 +10,10 @@ import CategoryCard1 from "components/category-cards/CategoryCard1";
 import Category from "models/Category.model";
 
 // ===========================================================
-type Section3Props = { categories: Category[] };
+type Props = { categories: Category[] };
 // ===========================================================
 
-const Section3: FC<Section3Props> = ({ categories }) => {
+const Section3: FC<Props> = ({ categories }) => {
   return (
     <Container sx={{ mt: 8 }}>
       <H2 textAlign="center" mb={4}>

@@ -13,10 +13,10 @@ import ProductCard18 from "components/product-cards/ProductCard18";
 import Product from "models/Product.model";
 
 // ======================================================================
-type Section6Props = { products: Product[] };
+type Props = { products: Product[] };
 // ======================================================================
 
-const Section6: FC<Section6Props> = ({ products }) => {
+const Section6: FC<Props> = ({ products }) => {
   const width = useWindowSize();
   const [visibleSlides, setVisibleSlides] = useState(4);
 

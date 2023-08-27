@@ -10,7 +10,7 @@ import ProductCard19 from "components/product-cards/ProductCard19";
 import Product from "models/Product.model";
 
 // ======================================================================
-type Section8Props = {
+type Props = {
   saleProducts: Product[];
   latestProducts: Product[];
   popularProducts: Product[];
@@ -18,7 +18,7 @@ type Section8Props = {
 };
 // ======================================================================
 
-const Section8: FC<Section8Props> = (props) => {
+const Section8: FC<Props> = (props) => {
   const { saleProducts, popularProducts, bestWeekProducts, latestProducts } = props;
 
   return (

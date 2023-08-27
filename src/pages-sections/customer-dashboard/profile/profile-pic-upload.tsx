@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import CameraEnhance from "@mui/icons-material/CameraEnhance";
 // GLOBAL CUSTOM COMPONENTS
-import FlexBox from "components/flex-box/FlexBox";
+import FlexBox from "components/flex-box/flex-box";
 
 const ProfilePicUpload = () => {
   CameraEnhance;

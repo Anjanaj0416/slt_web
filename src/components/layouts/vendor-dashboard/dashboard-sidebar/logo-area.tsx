@@ -1,6 +1,6 @@
 import Avatar from "@mui/material/Avatar";
 // GLOBAL CUSTOM COMPONENT
-import FlexBetween from "components/flex-box/FlexBetween";
+import FlexBetween from "components/flex-box/flex-between";
 // LOCAL CUSTOM HOOK
 import { useLayout } from "../dashboard-layout-context";
 // STYLED COMPONENT

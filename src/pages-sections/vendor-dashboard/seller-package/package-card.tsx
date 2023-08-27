@@ -3,7 +3,7 @@ import { Box, Button, Card, styled } from "@mui/material";
 // GLOBAL CUSTOM HOOK
 import Verify from "icons/Verify";
 // GLOBAL CUSTOM COMPONENTS
-import FlexBox from "components/flex-box/FlexBox";
+import FlexBox from "components/flex-box/flex-box";
 import { H1, H3, H5 } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";

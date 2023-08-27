@@ -3,8 +3,9 @@
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import { BlogCard1 } from "components/blog-cards";
 import CategorySectionHeader from "components/CategorySectionHeader";
+// Local CUSTOM COMPONENT
+import BlogCard from "./blog-card";
 // CUSTOM DATA MODEL
 import Blog from "models/Blog.model";
 
@@ -20,7 +21,7 @@ const Section7 = ({ blogs }: Props) => {
       <Grid container spacing={3}>
         {blogs.map((blog, index) => (
           <Grid item md={6} xs={12} key={index}>
-            <BlogCard1 blog={blog} />
+            <BlogCard blog={blog} />
           </Grid>
         ))}
       </Grid>

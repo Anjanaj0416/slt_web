@@ -24,7 +24,7 @@ const RequestRow: FC<Props> = ({ request }) => {
       <StyledTableCell align="left">{date}</StyledTableCell>
 
       <StyledTableCell align="center">
-        <StatusWrapper status={status as any}>{status}</StatusWrapper>
+        <StatusWrapper status={status}>{status}</StatusWrapper>
       </StyledTableCell>
 
       <StyledTableCell align="center">

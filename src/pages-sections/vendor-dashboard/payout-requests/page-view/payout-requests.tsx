@@ -4,8 +4,7 @@ import { Box, Card, Stack, Table, TableContainer, TableBody } from "@mui/materia
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import Scrollbar from "components/Scrollbar";
-import TableHeader from "components/data-table/TableHeader";
-import TablePagination from "components/data-table/TablePagination";
+import { TableHeader, TablePagination } from "components/data-table";
 // GLOBAL CUSTOM HOOK
 import useMuiTable from "hooks/useMuiTable";
 // Local CUSTOM COMPONENT

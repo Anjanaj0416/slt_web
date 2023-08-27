@@ -24,6 +24,7 @@ const ProductFilterCard = () => {
     <Card sx={{ p: "18px 27px", overflow: "auto" }} elevation={1}>
       {/* CATEGORY VARIANT FILTER */}
       <H6 mb={1.25}>Categories</H6>
+
       {categoryList.map((item) =>
         item.subCategories ? (
           <Accordion key={item.title} expanded>
@@ -58,6 +59,7 @@ const ProductFilterCard = () => {
 
       {/* PRICE VARIANT FILTER */}
       <H6 mb={2}>Price Range</H6>
+
       <FlexBetween>
         <TextField placeholder="0" type="number" size="small" fullWidth />
         <H5 color="grey.600" px={1}>
@@ -70,6 +72,7 @@ const ProductFilterCard = () => {
 
       {/* BRAND VARIANT FILTER */}
       <H6 mb={2}>Brands</H6>
+
       {brandList.map((item) => (
         <FormControlLabel
           key={item}
@@ -97,10 +100,10 @@ const ProductFilterCard = () => {
       <H6 mb={2}>Ratings</H6>
       {[5, 4, 3, 2, 1].map((item) => (
         <FormControlLabel
+          key={item}
           control={<Checkbox size="small" color="secondary" />}
           label={<Rating size="small" value={item} color="warn" readOnly />}
           sx={{ display: "flex" }}
-          key={item}
         />
       ))}
 
@@ -108,6 +111,7 @@ const ProductFilterCard = () => {
 
       {/* COLORS VARIANT FILTER */}
       <H6 mb={2}>Colors</H6>
+
       <FlexBox mb={2} flexWrap="wrap" gap={1}>
         {colorList.map((item) => (
           <Box

@@ -4,7 +4,7 @@ import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // GLOBAL CUSTOM COMPONENTS
-import FlexBox from "components/flex-box/FlexBox";
+import FlexBox from "components/flex-box/flex-box";
 import { Paragraph } from "components/Typography";
 // STYLED COMPONENTS
 import { StatusWrapper, StyledTableRow, StyledTableCell, StyledIconButton } from "../styles";
@@ -40,7 +40,7 @@ const RefundRequestRow: FC<Props> = ({ request }) => {
       </StyledTableCell>
 
       <StyledTableCell align="left" sx={{ fontWeight: 400 }}>
-        <StatusWrapper status={status as any}>{status}</StatusWrapper>
+        <StatusWrapper status={status}>{status}</StatusWrapper>
       </StyledTableCell>
 
       <StyledTableCell align="center">

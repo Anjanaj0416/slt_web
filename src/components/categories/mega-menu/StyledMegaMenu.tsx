@@ -1,7 +1,8 @@
-import { FC, ReactNode } from "react";
-import { Box, styled } from "@mui/material";
+import { PropsWithChildren } from "react";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
-// styled component
+// STYLED COMPONENT
 const Wrapper = styled(Box)(({ theme }) => ({
   display: "none",
   position: "absolute",
@@ -19,20 +20,16 @@ const Wrapper = styled(Box)(({ theme }) => ({
     fontWeight: 400,
   },
   "& .mega-menu-content": {
-    padding: "0.5rem 0px",
-    marginLeft: "1rem",
     borderRadius: 4,
-    backgroundColor: theme.palette.background.paper,
+    marginLeft: "1rem",
+    padding: "0.5rem 0px",
     boxShadow: theme.shadows[3],
     transition: "all 250ms ease-in-out",
+    backgroundColor: theme.palette.background.paper,
   },
 }));
 
-// =================================================
-type Props = { children?: ReactNode };
-// =================================================
-
-const StyledMegaMenu: FC<Props> = ({ children }) => {
+const StyledMegaMenu = ({ children }: PropsWithChildren) => {
   return <Wrapper className="mega-menu">{children}</Wrapper>;
 };
 
