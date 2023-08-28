@@ -8,7 +8,7 @@ import useWindowSize from "hooks/useWindowSize";
 import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
 import { FlexBetween } from "components/flex-box";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard20 from "components/product-cards/ProductCard20";
 import { carouselStyled } from "components/carousel/styles";
 // CUSTOM DATA MODEL

@@ -6,9 +6,8 @@ import appIcons from "icons";
 import Scrollbar from "components/Scrollbar";
 import BazaarCard from "components/BazaarCard";
 import { H5, Span } from "components/Typography";
-import Accordion from "components/accordion/Accordion";
 import { FlexBetween, FlexBox } from "components/flex-box";
-import AccordionHeader from "components/accordion/AccordionHeader";
+import { Accordion, AccordionHeader } from "components/accordion";
 import CategoryNavList from "models/CategoryNavList.model";
 
 const NavbarRoot = styled(BazaarCard)<{

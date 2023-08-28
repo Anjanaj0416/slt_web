@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { CSSProperties, FC, Fragment } from "react";
-import { Box, Button, Chip, styled, useTheme, SxProps } from "@mui/material";
+import { FC, Fragment } from "react";
+import { Box, Button, Chip, styled, useTheme, SxProps, Rating } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
-import BazaarRating from "components/BazaarRating";
 import { FlexBox } from "components/flex-box";
 import LazyImage from "components/LazyImage";
 import { H3, Span } from "components/Typography";
@@ -188,9 +187,9 @@ const ProductCard17: FC<ProductCardProps> = (props) => {
             </Link>
 
             {!hideRating && (
-              <Box display="flex" alignItems="center">
-                <BazaarRating fontSize={18} value={rating || 0} color="warn" readOnly />{" "}
-                <Span sx={{ color: palette.grey[600] }}>{`(${rating}.0)`}</Span>
+              <Box display="flex" alignItems="center" gap={1}>
+                <Rating size="small" value={rating || 0} color="warn" readOnly />{" "}
+                <Span color="grey.600">{`(${rating}.0)`}</Span>
               </Box>
             )}
 

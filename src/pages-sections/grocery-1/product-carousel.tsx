@@ -4,7 +4,7 @@ import { Box, styled, useTheme } from "@mui/material";
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "components/Typography";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard13 from "components/product-cards/ProductCard13";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // CUSTOM DATA MODEL

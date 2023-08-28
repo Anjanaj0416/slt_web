@@ -19,8 +19,8 @@ import Section5 from "../section-5";
 // CUSTOM DATA MODELS
 import Product from "models/Product.model";
 import Service from "models/Service.model";
-import { CategoryItem } from "models/CategoryNavList.model";
 import { HealthCarouselItem } from "models/Carousel.model";
+import { CategoryItem } from "models/CategoryNavList.model";
 
 // ===============================================
 interface Props {

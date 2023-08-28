@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { FC, Fragment, useCallback, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { Add, Favorite, FavoriteBorder, Remove } from "@mui/icons-material";
 import PreviewIcon from "@mui/icons-material/RemoveRedEye";
 import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Box, Button, Chip, Divider, styled, useTheme } from "@mui/material";
+import { Box, Button, Chip, Divider, Rating, styled, useTheme } from "@mui/material";
 import { useSnackbar } from "notistack";
 import LazyImage from "components/LazyImage";
 import BazaarCard from "components/BazaarCard";
 import { H3, Span } from "components/Typography";
-import BazaarRating from "components/BazaarRating";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import ProductViewDialog from "components/products/ProductViewDialog";
 import { CartItem, useAppContext } from "contexts/AppContext";
@@ -80,7 +79,7 @@ const HoverWrapper = styled(FlexBetween)(({ theme }) => ({
   "& svg": { fontSize: 18, color: theme.palette.grey[600] },
 }));
 
-const StyledChip = styled(Chip)(({ theme }) => ({
+const StyledChip = styled(Chip)(() => ({
   zIndex: 11,
   top: "16px",
   left: "0px",
@@ -90,7 +89,6 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   fontSize: "10px",
   position: "absolute",
   borderRadius: "0px 50px 50px 0px",
-  background: theme.palette.primary.main,
 }));
 
 const ContentWrapper = styled(Box)({
@@ -130,7 +128,6 @@ type ProductCardProps = {
 const ProductCard14: FC<ProductCardProps> = (props) => {
   const { off, id, title, price, imgUrl, rating, hideRating, hoverEffect, slug } = props;
 
-  const { palette } = useTheme();
   const { enqueueSnackbar } = useSnackbar();
   const { state, dispatch } = useAppContext();
   const [openModal, setOpenModal] = useState(false);
@@ -158,7 +155,7 @@ const ProductCard14: FC<ProductCardProps> = (props) => {
   return (
     <StyledBazaarCard hoverEffect={hoverEffect}>
       <ImageWrapper>
-        {off !== 0 && <StyledChip color="primary" size="small" label={`${off}% off`} />}
+        {off > 0 ? <StyledChip color="info" size="small" label={`${off}% off`} /> : null}
 
         <ImageBox>
           <Link href={`/products/${slug}`}>
@@ -210,23 +207,23 @@ const ProductCard14: FC<ProductCardProps> = (props) => {
             </H3>
           </Link>
 
-          {!hideRating && (
-            <Box display="flex" alignItems="center">
-              <BazaarRating value={rating || 0} color="warn" readOnly />{" "}
-              <Span sx={{ color: palette.grey[600] }}>{`(${rating}.0)`}</Span>
+          {!hideRating ? (
+            <Box display="flex" alignItems="center" gap={1}>
+              <Rating size="small" value={rating || 0} color="warn" readOnly />{" "}
+              <Span color="grey.600">{`(${rating}.0)`}</Span>
             </Box>
-          )}
+          ) : null}
 
           <FlexBox gap={1} alignItems="center" mt={0.5}>
             <Box fontWeight="600" color="primary.main">
               {calculateDiscount(price, off)}
             </Box>
 
-            {off !== 0 && (
+            {off > 0 ? (
               <Box color="grey.600" fontWeight="600">
                 <del>{currency(price)}</del>
               </Box>
-            )}
+            ) : null}
           </FlexBox>
         </Box>
 

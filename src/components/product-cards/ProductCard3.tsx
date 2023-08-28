@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { FC, useState } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Rating } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import HoverBox from "components/HoverBox";
 import { H4 } from "components/Typography";
 import LazyImage from "components/LazyImage";
-import BazaarRating from "components/BazaarRating";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { calculateDiscount, currency } from "lib";
 
@@ -48,7 +47,7 @@ const ProductCard3: FC<ProductCardProps> = ({
             {title}
           </H4>
 
-          {!hideReview && <BazaarRating value={rating} color="warn" readOnly />}
+          {!hideReview && <Rating size="small" value={rating} color="warn" readOnly />}
 
           <FlexBox gap={1} alignItems="center">
             <Box fontWeight="600" color="primary.main">

@@ -1,33 +1,20 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Container, Grid, IconButton, styled, SxProps } from "@mui/material";
+import { Box, Container, Grid, IconButton, SxProps } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import AppStore from "components/AppStore";
 import { FlexBox } from "components/flex-box";
 import BazaarImage from "components/BazaarImage";
 import { Paragraph } from "components/Typography";
+// CUSTOM ICON COMPONENTS
 import Google from "icons/Google";
 import Twitter from "icons/Twitter";
 import Youtube from "icons/Youtube";
 import Facebook from "icons/Facebook";
 import Instagram from "icons/Instagram";
 
-// styled components
-const StyledFooter = styled("footer")<{ bgcolor?: string }>(({ theme, bgcolor }) => ({
-  color: "white",
-  padding: "40px",
-  background: bgcolor ? bgcolor : theme.palette.secondary.main,
-  [theme.breakpoints.down("md")]: { marginBottom: "4rem" },
-}));
-
-const StyledLink = styled(Link)(({ theme }) => ({
-  borderRadius: 4,
-  display: "block",
-  cursor: "pointer",
-  position: "relative",
-  padding: "0.3rem 0rem",
-  color: theme.palette.grey[300],
-  "&:hover": { color: theme.palette.grey[100] },
-}));
+// STYLED COMPONENTS
+import { StyledRoot, StyledLink } from "./styles";
 
 // =================================================================
 type Props = { id?: string; bgcolor?: string; sx?: SxProps };
@@ -35,7 +22,7 @@ type Props = { id?: string; bgcolor?: string; sx?: SxProps };
 
 const Footer3: FC<Props> = ({ sx, id, bgcolor }) => {
   return (
-    <StyledFooter id={id} sx={sx} bgcolor={bgcolor}>
+    <StyledRoot id={id} sx={sx} bgcolor={bgcolor}>
       <Container>
         <Link href="/">
           <BazaarImage mb={2.5} src="/assets/images/logo.svg" alt="logo" />
@@ -55,7 +42,7 @@ const Footer3: FC<Props> = ({ sx, id, bgcolor }) => {
           <Grid item md={6} sm={6} xs={12}>
             <Box mt={-0.6}>
               {customerCareLinks.map((item, ind) => (
-                <StyledLink href="/" key={ind}>
+                <StyledLink href="/" key={ind} sx={{ color: "grey.300" }}>
                   {item}
                 </StyledLink>
               ))}
@@ -80,7 +67,7 @@ const Footer3: FC<Props> = ({ sx, id, bgcolor }) => {
           </Grid>
         </Grid>
       </Container>
-    </StyledFooter>
+    </StyledRoot>
   );
 };
 

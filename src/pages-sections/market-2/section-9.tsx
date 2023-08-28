@@ -6,7 +6,7 @@ import { Box, Button, Container } from "@mui/material";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { H2, H3, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import ProductCard20 from "components/product-cards/ProductCard20";

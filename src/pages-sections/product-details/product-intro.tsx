@@ -4,12 +4,11 @@ import Link from "next/link";
 import { FC, useState } from "react";
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
-import { Avatar, Box, Button, Chip, Grid } from "@mui/material";
+import { Avatar, Box, Button, Chip, Grid, Rating } from "@mui/material";
 // GLOBAL CUSTOM HOOK
 import useCart from "hooks/useCart";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import BazaarRating from "components/BazaarRating";
 import { H1, H2, H3, H6 } from "components/Typography";
 import { FlexBox, FlexRowCenter } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
@@ -101,7 +100,7 @@ const ProductIntro: FC<Props> = ({ product }) => {
           {/* PRODUCT RATING */}
           <FlexBox alignItems="center" gap={1} mb={2}>
             <Box lineHeight="1">Rated:</Box>
-            <BazaarRating color="warn" fontSize="1.25rem" value={4} readOnly />
+            <Rating color="warn" value={4} readOnly />
             <H6 lineHeight="1">(50)</H6>
           </FlexBox>
 

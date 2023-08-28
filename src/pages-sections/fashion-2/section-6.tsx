@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { carouselStyled } from "components/carousel/styles";
 import ProductCard18 from "components/product-cards/ProductCard18";
 // CUSTOM DATA MODEL

@@ -6,8 +6,7 @@ import Scrollbar from "components/Scrollbar";
 import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
 import BazaarCard from "components/BazaarCard";
-import Accordion from "components/accordion/Accordion";
-import AccordionHeader from "components/accordion/AccordionHeader";
+import { Accordion, AccordionHeader } from "components/accordion";
 import { CategoryItem } from "models/CategoryNavList.model";
 
 // ===========================================================

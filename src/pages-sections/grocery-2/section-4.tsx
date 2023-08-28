@@ -4,7 +4,7 @@ import { Button, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H3, H5 } from "components/Typography";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 
 // STYLED COMPONENT
 const StyledGrid = styled(Grid)(({ theme }) => ({

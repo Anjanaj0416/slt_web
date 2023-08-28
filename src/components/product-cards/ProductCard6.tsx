@@ -1,9 +1,12 @@
 import { FC } from "react";
-import { Card, Chip, styled } from "@mui/material";
+import Card from "@mui/material/Card";
+import Chip from "@mui/material/Chip";
+import { styled } from "@mui/material/styles";
+// GLOBAL CUSTOM COMPONENTS
 import HoverBox from "components/HoverBox";
 import LazyImage from "components/LazyImage";
 
-// styled components
+// STYLED COMPONENT
 const StyledChip = styled(Chip)({
   zIndex: 2,
   top: "0.875rem",
@@ -14,19 +17,24 @@ const StyledChip = styled(Chip)({
 });
 
 // ========================================================
-type ProductCardProps = {
+interface Props {
   title: string;
   imgUrl: string;
   subtitle: string;
-};
+}
 // ========================================================
 
-const ProductCard6: FC<ProductCardProps> = ({ title, subtitle, imgUrl }) => {
+const ProductCard6: FC<Props> = ({ title, subtitle, imgUrl }) => {
   return (
     <Card sx={{ position: "relative" }}>
-      <StyledChip color="secondary" label={title} size="small" sx={{ left: 12 }} />
+      <StyledChip
+        size="small"
+        label={title}
+        color="secondary"
+        sx={{ left: 12, backgroundColor: "secondary.main", color: "white" }}
+      />
 
-      <StyledChip label={subtitle} size="small" sx={{ right: 12, zIndex: 2 }} />
+      <StyledChip color="default" label={subtitle} size="small" sx={{ right: 12, zIndex: 2 }} />
 
       <HoverBox borderRadius={2}>
         <LazyImage priority src={imgUrl} width={1035} height={348} alt={title} />

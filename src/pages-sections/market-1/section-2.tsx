@@ -9,7 +9,7 @@ import Product from "models/Product.model";
 // GLOBAL CUSTOM HOOKS
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard1 from "components/product-cards/ProductCard1";
 import CategorySectionCreator from "components/CategorySectionCreator";
 

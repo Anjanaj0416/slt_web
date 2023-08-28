@@ -4,7 +4,7 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { CarouselCard4 } from "components/carousel-cards";
 import { MainCarouselItem } from "models/Market-2.model";
 

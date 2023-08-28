@@ -13,7 +13,7 @@ import { H4 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";

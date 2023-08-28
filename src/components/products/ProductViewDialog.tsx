@@ -8,12 +8,13 @@ import {
   Divider,
   Grid,
   IconButton,
+  Rating,
   styled,
 } from "@mui/material";
 import { FlexBox } from "components/flex-box";
 import BazaarImage from "components/BazaarImage";
-import BazaarRating from "components/BazaarRating";
-import Carousel from "components/carousel/Carousel";
+
+import Carousel from "components/carousel/carousel";
 import { H1, H2, H3, H6, Paragraph } from "components/Typography";
 import { useAppContext } from "contexts/AppContext";
 import { currency } from "lib";
@@ -78,6 +79,7 @@ const ProductViewDialog: FC<ProductViewDialogProps> = (props) => {
                   <BazaarImage
                     key={index}
                     src={item}
+                    alt="product"
                     sx={{
                       mx: "auto",
                       width: "100%",
@@ -98,8 +100,8 @@ const ProductViewDialog: FC<ProductViewDialogProps> = (props) => {
 
               <H1 color="primary.main">{currency(product.price)}</H1>
 
-              <FlexBox alignItems="center" gap={1}>
-                <BazaarRating color="warn" fontSize="1.25rem" value={4} readOnly />
+              <FlexBox alignItems="center" gap={1} mt={1}>
+                <Rating color="warn" value={4} readOnly />
                 <H6 lineHeight="1">(50)</H6>
               </FlexBox>
 

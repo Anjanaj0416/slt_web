@@ -6,7 +6,7 @@
   },
   "Local Custom Components": {
     "prefix": "lcc",
-    "body": ["// Local CUSTOM COMPONENTS"],
+    "body": ["// LOCAL CUSTOM COMPONENTS"],
     "description": "Local Custom Components"
   },
   "Data Model": {

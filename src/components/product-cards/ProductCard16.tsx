@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { FC, useCallback, useState } from "react";
-import { Box, Chip, Divider, styled, SxProps, useTheme } from "@mui/material";
+import { Box, Chip, Divider, Rating, styled, SxProps } from "@mui/material";
 import PreviewIcon from "@mui/icons-material/RemoveRedEye";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useSnackbar } from "notistack";
 import LazyImage from "components/LazyImage";
 import { H3, Span } from "components/Typography";
-import BazaarRating from "components/BazaarRating";
 import { FlexBetween, FlexRowCenter } from "components/flex-box";
 import ProductViewDialog from "components/products/ProductViewDialog";
 import { CartItem, useAppContext } from "contexts/AppContext";
@@ -82,6 +81,7 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   fontWeight: 600,
   fontSize: "10px",
   position: "absolute",
+  color: theme.palette.common.white,
   background: theme.palette.primary.main,
 }));
 
@@ -96,7 +96,6 @@ interface Props extends Partial<Product> {
 const ProductCard16: FC<Props> = (props) => {
   const { sx, hideRating, discount, id, slug, title, price, thumbnail, rating, images } = props;
 
-  const { palette } = useTheme();
   const { enqueueSnackbar } = useSnackbar();
   const { state, dispatch } = useAppContext();
   const [openModal, setOpenModal] = useState(false);
@@ -119,7 +118,7 @@ const ProductCard16: FC<Props> = (props) => {
   return (
     <StyledCard sx={sx}>
       <ImgBox id="imgBox">
-        {discount !== 0 && <StyledChip color="primary" size="small" label={`${discount}% off`} />}
+        {discount > 0 ? <StyledChip size="small" label={`${discount}% off`} /> : null}
 
         <Link href={`/products/${slug}`}>
           <LazyImage
@@ -188,9 +187,9 @@ const ProductCard16: FC<Props> = (props) => {
         </Link>
 
         {!hideRating && (
-          <FlexRowCenter>
-            <BazaarRating value={rating || 0} color="warn" readOnly />{" "}
-            <Span sx={{ color: palette.grey[600] }}>{`(${rating}.0)`}</Span>
+          <FlexRowCenter gap={1}>
+            <Rating size="small" value={rating || 0} color="warn" readOnly />{" "}
+            <Span color="grey.600">{`(${rating}.0)`}</Span>
           </FlexRowCenter>
         )}
       </ContentWrapper>

@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Box, styled, useTheme } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard10 from "components/product-cards/ProductCard10";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";

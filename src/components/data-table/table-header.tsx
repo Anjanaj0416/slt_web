@@ -1,8 +1,9 @@
 import { ChangeEvent, FC } from "react";
 import { Checkbox, styled, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
+// CUSTOM ICON COMPONENT
 import UpDown from "icons/UpDown";
 
-// styled components
+// STYLED COMPONENTS
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   fontWeight: 600,
   padding: "16px 20px",

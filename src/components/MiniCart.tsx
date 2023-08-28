@@ -1,14 +1,14 @@
 import { FC } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Avatar, Box, Button, Divider, IconButton, useTheme } from "@mui/material";
 import { Add, Clear, Close, Remove } from "@mui/icons-material";
 import LazyImage from "components/LazyImage";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H5, Paragraph, Tiny } from "components/Typography";
 import CartBag from "icons/CartBag";
-import { CartItem, useAppContext } from "contexts/AppContext";
 import { currency } from "lib";
+import useCart from "hooks/useCart";
 
 // =========================================================
 type MiniCartProps = { toggleSidenav: () => void };
@@ -17,7 +17,7 @@ type MiniCartProps = { toggleSidenav: () => void };
 const MiniCart: FC<MiniCartProps> = ({ toggleSidenav }) => {
   const { push } = useRouter();
   const { palette } = useTheme();
-  const { state, dispatch } = useAppContext();
+  const { state, dispatch } = useCart();
   const cartList = state.cart;
 
   const handleCartAmountChange = (amount: number, product) => () => {
@@ -74,7 +74,7 @@ const MiniCart: FC<MiniCartProps> = ({ toggleSidenav }) => {
           </FlexBox>
         )}
 
-        {cartList.map((item: CartItem) => (
+        {cartList.map((item) => (
           <FlexBox
             py={2}
             px={2.5}

@@ -3,12 +3,11 @@ import { FC, Fragment, useCallback, useState } from "react";
 import { Add, Favorite, Remove, RemoveRedEye } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import { Box, Button, Chip, styled } from "@mui/material";
+import { Box, Button, Chip, Rating, styled } from "@mui/material";
 import { useSnackbar } from "notistack";
 import LazyImage from "components/LazyImage";
 import BazaarCard from "components/BazaarCard";
 import { H3, Span } from "components/Typography";
-import BazaarRating from "components/BazaarRating";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import ProductViewDialog from "components/products/ProductViewDialog";
 import { CartItem, useAppContext } from "contexts/AppContext";
@@ -134,7 +133,6 @@ const ProductCard13: FC<ProductCardProps> = (props) => {
         {off !== 0 && <StyledChip color="primary" size="small" label={`${off}% off`} />}
 
         <Link href={`/products/${slug}`}>
-          {/* <img alt={title} src={imgUrl} width="100%" /> */}
           <LazyImage alt={title} src={imgUrl} width={450} height={450} />
         </Link>
 
@@ -184,7 +182,7 @@ const ProductCard13: FC<ProductCardProps> = (props) => {
 
           {!hideRating && (
             <FlexBox gap={1} alignItems="center">
-              <BazaarRating value={rating || 0} color="warn" readOnly />
+              <Rating size="small" value={rating || 0} color="warn" readOnly />
               <Span color="grey.600">{`(${rating})`}</Span>
             </FlexBox>
           )}

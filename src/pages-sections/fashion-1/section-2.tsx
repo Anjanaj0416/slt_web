@@ -2,7 +2,7 @@
 
 import { FC, useEffect, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard3 from "components/product-cards/ProductCard3";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK

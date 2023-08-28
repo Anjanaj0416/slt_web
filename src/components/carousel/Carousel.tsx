@@ -1,6 +1,7 @@
 import { CSSProperties, FC, Fragment, ReactNode, Children } from "react";
-import { SxProps } from "@mui/material";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { SxProps } from "@mui/material/styles";
+import ArrowBack from "@mui/icons-material/ArrowBack";
+import ArrowForward from "@mui/icons-material/ArrowForward";
 import clsx from "clsx";
 import { Slide } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";

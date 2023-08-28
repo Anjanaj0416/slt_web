@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { FC, useCallback, useState } from "react";
-import { Box, Button, Chip, Divider, styled } from "@mui/material";
+import { Box, Button, Chip, Divider, Rating, styled } from "@mui/material";
 import { Add, Favorite, FavoriteBorder, Remove, RemoveRedEye } from "@mui/icons-material";
 import { useSnackbar } from "notistack";
 import ShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import LazyImage from "components/LazyImage";
 import { H3, Span } from "components/Typography";
-import BazaarRating from "components/BazaarRating";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import ProductViewDialog from "components/products/ProductViewDialog";
 import { CartItem, useAppContext } from "contexts/AppContext";
@@ -229,9 +228,9 @@ const ProductCard10: FC<ProductCardProps> = (props) => {
         </Link>
 
         {!hideRating && (
-          <Box display="flex" alignItems="center">
-            <BazaarRating value={rating || 0} color="warn" readOnly />{" "}
-            <Span sx={{ color: "grey.600" }}>{`(${rating}.0)`}</Span>
+          <Box display="flex" alignItems="center" gap={1}>
+            <Rating size="small" value={rating || 0} color="warn" readOnly />{" "}
+            <Span fontWeight={600} color="grey.600">{`(${rating}.0)`}</Span>
           </Box>
         )}
 

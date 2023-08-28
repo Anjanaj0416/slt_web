@@ -5,7 +5,7 @@ import { Box, Container, CSSObject, Grid, Stack } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { NavLink3 } from "components/nav-link";
 import { BannerCard3 } from "components/banners";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { H4, Paragraph } from "components/Typography";
 import { CarouselCard4 } from "components/carousel-cards";
 // CUSTOM DATA MODEL

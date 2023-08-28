@@ -4,7 +4,7 @@ import { FC } from "react";
 import Image from "next/image";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { CarouselCard2 } from "components/carousel-cards";
 // STYLED COMPONENTS
 import { ARROW_BUTTON_STYLE, ContentWrapper, BadgeBox } from "./style";

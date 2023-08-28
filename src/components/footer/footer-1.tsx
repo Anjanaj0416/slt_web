@@ -1,28 +1,20 @@
-import { FC } from "react";
 import Link from "next/link";
 import { Box, Container, Grid, IconButton, styled } from "@mui/material";
+// LOCAL CUSTOM COMPONENTS
 import AppStore from "components/AppStore";
 import Image from "components/BazaarImage";
 import { FlexBox } from "components/flex-box";
 import { Paragraph } from "components/Typography";
+// CUSTOM ICON COMPONENT
 import Google from "icons/Google";
 import Twitter from "icons/Twitter";
 import Youtube from "icons/Youtube";
 import Facebook from "icons/Facebook";
 import Instagram from "icons/Instagram";
+// STYLED COMPONENTS
+import { StyledLink } from "./styles";
 
-// styled component
-const StyledLink = styled(Link)(({ theme }) => ({
-  display: "block",
-  borderRadius: 4,
-  cursor: "pointer",
-  position: "relative",
-  padding: "0.3rem 0rem",
-  color: theme.palette.grey[500],
-  "&:hover": { color: theme.palette.grey[100] },
-}));
-
-const Footer1: FC = () => {
+const Footer1 = () => {
   return (
     <footer>
       <Box bgcolor="#222935">
@@ -48,13 +40,13 @@ const Footer1: FC = () => {
                   About Us
                 </Box>
 
-                <div>
+                <Box>
                   {aboutLinks.map((item, ind) => (
                     <StyledLink href="/" key={ind}>
                       {item}
                     </StyledLink>
                   ))}
-                </div>
+                </Box>
               </Grid>
 
               <Grid item lg={3} md={6} sm={6} xs={12}>
@@ -62,13 +54,13 @@ const Footer1: FC = () => {
                   Customer Care
                 </Box>
 
-                <div>
+                <Box>
                   {customerCareLinks.map((item, ind) => (
                     <StyledLink href="/" key={ind}>
                       {item}
                     </StyledLink>
                   ))}
-                </div>
+                </Box>
               </Grid>
 
               <Grid item lg={3} md={6} sm={6} xs={12}>

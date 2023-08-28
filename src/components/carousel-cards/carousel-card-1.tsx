@@ -7,7 +7,7 @@ import BazaarImage from "components/BazaarImage";
 import { FlexBetween } from "components/flex-box";
 import { Paragraph } from "components/Typography";
 
-// styled component
+// STYLED COMPONENT
 const StyledBox = styled(FlexBetween)(({ theme }) => ({
   ".title": {
     fontSize: 50,

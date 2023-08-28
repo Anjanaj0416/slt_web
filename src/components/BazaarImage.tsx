@@ -1,7 +1,12 @@
-import { compose, display, spacing, styled } from "@mui/system";
+import Box, { BoxProps } from "@mui/material/Box";
 
-const BazaarImage = styled("img")(compose(spacing, display));
+// ==============================================================
+interface Props extends BoxProps {
+  src: string;
+  alt: string;
+}
+// ==============================================================
 
-BazaarImage.defaultProps = { display: "block" };
+const BazaarImage = (props: Props) => <Box component="img" {...props} />;
 
 export default BazaarImage;

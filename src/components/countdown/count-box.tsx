@@ -1,10 +1,7 @@
 import { H3, Span } from "components/Typography";
 
 // ==============================================================
-interface Props {
-  digit: number;
-  title: string;
-}
+type Props = { digit: number; title: string };
 // ==============================================================
 
 const CountBox = ({ digit = 365, title = "DAYS" }: Props) => (

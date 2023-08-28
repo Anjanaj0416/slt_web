@@ -4,7 +4,7 @@ import { FC } from "react";
 import { Box, Button, Grid, styled, useTheme } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { H1, Paragraph } from "components/Typography";
 // CUSTOM DATA MODEL
 import { GiftCarouselItem } from "models/Carousel.model";

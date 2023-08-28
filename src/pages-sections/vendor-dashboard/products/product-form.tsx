@@ -1,11 +1,10 @@
 import { FC, useState } from "react";
-import { Button, Card, Grid, MenuItem, TextField } from "@mui/material";
+import { Box, Button, Card, Grid, MenuItem, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 // GLOBAL CUSTOM COMPONENTS
 import DropZone from "components/DropZone";
 import { FlexBox } from "components/flex-box";
-import BazaarImage from "components/BazaarImage";
 // STYLED COMPONENTS
 import { UploadImageBox, StyledClear } from "../styles";
 
@@ -97,7 +96,7 @@ const ProductForm: FC<Props> = (props) => {
                   {files.map((file, index) => {
                     return (
                       <UploadImageBox key={index}>
-                        <BazaarImage src={file.preview} width="100%" />
+                        <Box component="img" src={file.preview} width="100%" />
                         <StyledClear onClick={handleFileDelete(file)} />
                       </UploadImageBox>
                     );

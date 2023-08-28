@@ -3,7 +3,7 @@
 import { FC, useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard16 from "components/product-cards/ProductCard16";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK

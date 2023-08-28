@@ -5,14 +5,11 @@ import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import Setting from "components/Setting";
 import Newsletter from "components/Newsletter";
-import { MobileNavigationBar } from "components/mobile-navigation";
-// Local CUSTOM COMPONENTS
+// LOCAL CUSTOM COMPONENTS
 import Section1 from "../section-1";
 import Section2 from "../section-2";
 import Section3 from "../section-3";
 import Section4 from "../section-4";
-
-import api from "utils/__api__/grocery3-shop";
 // CUSTOM DATA MODELS
 import Product from "models/Product.model";
 import { MainCarouselItem, OfferCard } from "models/Grocery-3.model";
@@ -48,9 +45,6 @@ const GroceryThreePageView = (props: Props) => {
 
       {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
       <Setting />
-
-      {/* SMALL DEVICE BOTTOM NAVIGATION */}
-      <MobileNavigationBar />
     </Fragment>
   );
 };

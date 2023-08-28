@@ -8,7 +8,7 @@ import useWindowSize from "hooks/useWindowSize";
 import CategoryIcon from "icons/Category";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard6 from "components/product-cards/ProductCard6";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // CUSTOM DATA MODEL

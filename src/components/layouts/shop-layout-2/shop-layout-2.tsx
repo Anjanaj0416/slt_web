@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import Sticky from "components/Sticky";
 import Topbar from "components/Topbar";
-import Header from "components/header/Header";
+import { Header } from "components/header";
 import Navbar from "components/navbar/Navbar";
 import SearchInput from "components/search-box/SearchInput";
 

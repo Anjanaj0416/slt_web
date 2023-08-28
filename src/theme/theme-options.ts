@@ -58,7 +58,7 @@ const themesOptionList = {
   },
 };
 
-const themeOptions = (publicRuntimeConfig: any, pathname: string) => {
+const themeOptions = (pathname: string) => {
   let themeOption;
 
   /*
@@ -66,7 +66,6 @@ const themeOptions = (publicRuntimeConfig: any, pathname: string) => {
     AND FOLLOWING ENTIRE switch case BLOCK.
   */
   const updateTheme = (themeName: string) => {
-    // publicRuntimeConfig.theme = themeName;
     themeOption = themesOptionList[themeName];
   };
 
@@ -75,35 +74,35 @@ const themeOptions = (publicRuntimeConfig: any, pathname: string) => {
       updateTheme(THEMES.DEFAULT);
       break;
 
-    case "/grocery1":
-      updateTheme(THEMES.DEFAULT);
-      break;
+    // case "/grocery1":
+    //   updateTheme(THEMES.DEFAULT);
+    //   break;
 
-    case "/grocery2":
-      updateTheme(THEMES.DEFAULT);
-      break;
+    // case "/grocery2":
+    //   updateTheme(THEMES.DEFAULT);
+    //   break;
 
-    case "/grocery3":
-      updateTheme(THEMES.DEFAULT);
-      break;
+    // case "/grocery3":
+    //   updateTheme(THEMES.DEFAULT);
+    //   break;
 
-    case "/gadget-shop":
-      updateTheme(THEMES.DEFAULT);
-      break;
+    // case "/gadget-shop":
+    //   updateTheme(THEMES.DEFAULT);
+    //   break;
 
-    case "/fashion-shop-1":
-      updateTheme(THEMES.DEFAULT);
-      break;
+    // case "/fashion-shop-1":
+    //   updateTheme(THEMES.DEFAULT);
+    //   break;
 
-    case "/market-1":
-      updateTheme(THEMES.DEFAULT);
-      break;
+    // case "/market-1":
+    //   updateTheme(THEMES.DEFAULT);
+    //   break;
 
     case "/furniture-shop":
       updateTheme(THEMES.FURNITURE);
       break;
 
-    case "/healthbeauty-shop":
+    case "/health-beauty-shop":
       updateTheme(THEMES.HEALTH);
       break;
 

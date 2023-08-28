@@ -1,9 +1,8 @@
 import { FC } from "react";
-import { Box } from "@mui/material";
+import { Box, Rating } from "@mui/material";
 import HoverBox from "components/HoverBox";
 import LazyImage from "components/LazyImage";
 import { H4, Small } from "components/Typography";
-import BazaarRating from "components/BazaarRating";
 import { FlexRowCenter } from "components/flex-box";
 import { currency } from "lib";
 
@@ -37,7 +36,7 @@ const ProductCard4: FC<ProductCardProps> = ({
       </HoverBox>
 
       <FlexRowCenter mb={0.5} gap={0.5}>
-        <BazaarRating size="small" value={rating} color="warn" readOnly />
+        <Rating size="small" value={rating} color="warn" readOnly />
         <Small fontWeight={600}>({reviewCount})</Small>
       </FlexRowCenter>
 

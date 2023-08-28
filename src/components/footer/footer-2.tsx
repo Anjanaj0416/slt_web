@@ -1,32 +1,20 @@
-import { FC } from "react";
 import Link from "next/link";
-import { Box, Grid, IconButton, styled } from "@mui/material";
+import { Box, Grid, IconButton } from "@mui/material";
+// LOCAL CUSTOM COMPONENTS
 import AppStore from "components/AppStore";
 import { FlexBox } from "components/flex-box";
 import BazaarImage from "components/BazaarImage";
 import { Paragraph } from "components/Typography";
+// CUSTOM ICON COMPONENTS
 import Google from "icons/Google";
 import Twitter from "icons/Twitter";
 import Youtube from "icons/Youtube";
 import Facebook from "icons/Facebook";
 import Instagram from "icons/Instagram";
+// STYLED COMPONENTS
+import { StyledFooter, StyledLink } from "./styles";
 
-// styled components
-const StyledFooter = styled("footer")(({ theme }) => ({
-  [theme.breakpoints.down("md")]: { marginBottom: "4rem" },
-}));
-
-const StyledLink = styled(Link)(({ theme }) => ({
-  borderRadius: 4,
-  display: "block",
-  cursor: "pointer",
-  position: "relative",
-  padding: "0.3rem 0rem",
-  color: theme.palette.grey[500],
-  "&:hover": { color: theme.palette.grey[100] },
-}));
-
-const Footer2: FC = () => {
+const Footer2 = () => {
   return (
     <StyledFooter>
       <Box sx={{ p: "40px", bgcolor: "#141850", color: "white", borderRadius: "8px" }}>

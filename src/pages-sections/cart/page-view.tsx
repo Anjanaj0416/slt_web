@@ -60,7 +60,7 @@ const CartPageView = () => {
             </Span>
           </FlexBox>
 
-          <TextField variant="outlined" rows={6} fullWidth multiline sx={{ mb: 2 }} />
+          <TextField variant="outlined" rows={6} fullWidth multiline />
 
           <Divider sx={{ mb: 2 }} />
 

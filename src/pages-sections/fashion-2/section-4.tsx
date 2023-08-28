@@ -2,10 +2,11 @@
 
 import { FC, useEffect, useState } from "react";
 import Container from "@mui/material/Container";
+// GLOBAL CUSTOM HOOK
+import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
-import useWindowSize from "hooks/useWindowSize";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard18 from "components/product-cards/ProductCard18";
 import { carouselStyled } from "components/carousel/styles";
 // CUSTOM DATA MODEL

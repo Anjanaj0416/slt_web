@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard15 from "components/product-cards/ProductCard15";
 // GLOBAL CUSTOM HOOKS
 import useWindowSize from "hooks/useWindowSize";

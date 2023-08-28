@@ -1,7 +1,13 @@
 import { FC } from "react";
 import { Box, Button, Container, MenuItem, styled, SvgIconProps } from "@mui/material";
-import ArrowRight from "@mui/icons-material/ArrowRight";
-import { ArrowLeft, ChevronLeft, ChevronRight, KeyboardArrowDown } from "@mui/icons-material";
+
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  KeyboardArrowDown,
+} from "@mui/icons-material";
 
 import Category from "icons/Category";
 
@@ -11,7 +17,7 @@ import BazaarCard from "components/BazaarCard";
 import { Paragraph } from "components/Typography";
 import CategoryMenu from "components/categories/CategoryMenu";
 
-import MegaMenu from "./MegaMenu";
+import { MegaMenu } from "./mega-menu";
 import MegaMenu2 from "./MegaMenu2";
 
 import useSettings from "hooks/useSettings";
@@ -197,6 +203,8 @@ const Navbar: FC<NavbarProps> = ({
     });
   };
 
+  const CONTENT = <FlexBox gap={4}>{renderNestedNav(navbarNavigations, true)}</FlexBox>;
+
   return (
     <NavBarWrapper hoverEffect={false} elevation={elevation} border={border}>
       {!hideCategories ? (
@@ -218,12 +226,10 @@ const Navbar: FC<NavbarProps> = ({
           </CategoryMenu>
 
           {/* Horizontal menu */}
-          <FlexBox gap={4}>{renderNestedNav(navbarNavigations, true)}</FlexBox>
+          {CONTENT}
         </InnerContainer>
       ) : (
-        <InnerContainer sx={{ justifyContent: "center" }}>
-          <FlexBox gap={4}>{renderNestedNav(navbarNavigations, true)}</FlexBox>
-        </InnerContainer>
+        <InnerContainer sx={{ justifyContent: "center" }}>{CONTENT}</InnerContainer>
       )}
     </NavBarWrapper>
   );

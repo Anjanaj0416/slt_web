@@ -6,8 +6,8 @@ import { Box, Container, Grid, styled } from "@mui/material";
 import { FlexBox } from "components/flex-box";
 import { slideX } from "animations/keyframes";
 import WhiteButton from "components/WhiteButton";
+import { CategoryCard1 } from "components/category-cards";
 import { H3, Paragraph, Span } from "components/Typography";
-import CategoryCard1 from "components/category-cards/CategoryCard1";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
 

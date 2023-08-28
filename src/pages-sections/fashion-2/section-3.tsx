@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
-import CategoryCard1 from "components/category-cards/CategoryCard1";
+import { CategoryCard1 } from "components/category-cards";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
 

@@ -6,7 +6,7 @@ import { Box, Container, Grid } from "@mui/material";
 import Card1 from "./common/card-1";
 import ProductCarousel from "./common/product-carousel";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { CarouselCard3 } from "components/carousel-cards";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK

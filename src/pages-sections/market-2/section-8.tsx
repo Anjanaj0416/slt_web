@@ -8,7 +8,7 @@ import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import BazaarImage from "components/BazaarImage";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { FlexRowCenter } from "components/flex-box";
 // CUSTOM DATA MODEL
 import Brand from "models/Brand.model";

@@ -6,8 +6,8 @@ import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
 import BazaarCard from "components/BazaarCard";
 import { H4, Span } from "components/Typography";
-import Accordion from "components/accordion/Accordion";
-import AccordionHeader from "components/accordion/AccordionHeader";
+import Accordion from "components/accordion/accordion";
+import AccordionHeader from "components/accordion/accordion-header";
 import { CategoryItem } from "models/CategoryNavList.model";
 
 // styled components

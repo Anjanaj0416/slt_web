@@ -2,10 +2,10 @@
 
 import { Box, Card, Checkbox, Divider, FormControlLabel, Rating, TextField } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
-import Accordion from "components/accordion/Accordion";
+import Accordion from "components/accordion/accordion";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
-import AccordionHeader from "components/accordion/AccordionHeader";
+import AccordionHeader from "components/accordion/accordion-header";
 
 // FILTER OPTIONS
 const categoryList = [

@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 import { H4 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 
-// CUSTOM COMPONENTS
+// STYLED COMPONENTS
 const Wrapper = styled(Box)(({ theme }) => ({
   height: "100%",
   cursor: "pointer",

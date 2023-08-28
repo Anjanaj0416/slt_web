@@ -6,7 +6,7 @@ import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM HOOKS
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { H1, Paragraph } from "components/Typography";
 import ProductCard17 from "components/product-cards/ProductCard17";
 // CUSTOM DATA MODEL

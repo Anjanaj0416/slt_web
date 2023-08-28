@@ -3,7 +3,7 @@ import { Box, Button, Grid, styled, useTheme } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import LazyImage from "components/LazyImage";
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 // CUSTOM DATA MODEL
 import { HealthCarouselItem } from "models/Carousel.model";
 

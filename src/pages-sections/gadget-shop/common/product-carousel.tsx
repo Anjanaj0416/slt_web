@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import ProductCard3 from "components/product-cards/ProductCard3";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";

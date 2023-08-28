@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/carousel/Carousel";
+import { Carousel } from "components/carousel";
 import { H1, H6, Paragraph } from "components/Typography";
 import { FurnitureCarouselItem } from "models/Carousel.model";
 // STYLED COMPONENTS

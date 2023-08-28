@@ -8,6 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default async function ProductSearch({ params }) {
-  console.log({ params });
   return <ProductSearchPageView />;
 }

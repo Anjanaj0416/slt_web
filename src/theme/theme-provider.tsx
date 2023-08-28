@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode } from "react";
-import getConfig from "next/config";
 import { usePathname } from "next/navigation";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiThemeProvider from "@mui/material/styles/ThemeProvider";
@@ -17,11 +16,8 @@ import NextAppDirEmotionCacheProvider from "./emotion-cache";
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   const { settings } = useSettings();
-  const { publicRuntimeConfig } = getConfig() || {}; // Value is coming from next.config.js
 
-  // console.log(publicRuntimeConfig);
-
-  const themeOptions = customThemeOptions(publicRuntimeConfig, pathname);
+  const themeOptions = customThemeOptions(pathname);
 
   const mergedThemeOptions = merge({}, { ...themeOptions, direction: settings.direction });
 

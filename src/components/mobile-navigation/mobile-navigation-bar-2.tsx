@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import { FC, Fragment, PropsWithChildren, useEffect, useState } from "react";
 import { Theme, useMediaQuery, Box, Badge } from "@mui/material";
 // CUSTOM ICON COMPONENTS
 import Home from "icons/Home";
@@ -56,33 +56,32 @@ const MobileNavigationBar2: FC<PropsWithChildren> = ({ children }) => {
 
         <Wrapper>
           {list.map((item) => {
-            if (item.href) {
-              return (
-                <StyledNavLink href={item.href} key={item.title}>
-                  {item.title === "Cart" && (
-                    <Badge badgeContent={state.cart.length} color="primary">
-                      <item.icon fontSize="small" sx={iconStyle} />
-                    </Badge>
-                  )}
+            // LINK INNER CONTENTS
+            const ICON = <item.icon sx={iconStyle} fontSize="small" />;
 
-                  {item.title !== "Cart" && <item.icon sx={iconStyle} fontSize="small" />}
-                  {item.title}
-                </StyledNavLink>
-              );
-            } else {
-              return (
-                <StyledBox onClick={open ? handleDrawerClose : handleDrawerOpen} key={item.title}>
-                  {item.title === "Cart" && (
-                    <Badge badgeContent={state.cart.length} color="primary">
-                      <item.icon fontSize="small" sx={iconStyle} />
-                    </Badge>
-                  )}
+            const CONTENT = (
+              <Fragment>
+                {item.title === "Cart" ? (
+                  <Badge badgeContent={state.cart.length} color="primary">
+                    {ICON}
+                  </Badge>
+                ) : (
+                  ICON
+                )}
 
-                  {item.title !== "Cart" && <item.icon sx={iconStyle} fontSize="small" />}
-                  {item.title}
-                </StyledBox>
-              );
-            }
+                {item.title}
+              </Fragment>
+            );
+
+            return item.href ? (
+              <StyledNavLink key={item.title} href={item.href}>
+                {CONTENT}
+              </StyledNavLink>
+            ) : (
+              <StyledBox key={item.title} onClick={open ? handleDrawerClose : handleDrawerOpen}>
+                {CONTENT}
+              </StyledBox>
+            );
           })}
         </Wrapper>
       </Box>

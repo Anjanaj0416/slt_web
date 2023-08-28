@@ -3,9 +3,7 @@ import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import Setting from "components/Setting";
 import Newsletter from "components/Newsletter";
-import SideNavbar from "components/page-sidenav/SideNavbar";
-import { MobileNavigationBar2 } from "components/mobile-navigation";
-// Local CUSTOM COMPONENTS
+// LOCAL CUSTOM COMPONENTS
 import Sidebar from "../sidebar";
 import Section1 from "../section-1";
 import Section2 from "../section-2";
@@ -59,11 +57,6 @@ const GiftShopPageView = async () => {
 
       {/* POPUP NEWSLETTER FORM */}
       <Newsletter image="/assets/images/newsletter/bg-5.png" />
-
-      {/* MOBILE NAVIGATION WITH SIDE NAVBAR */}
-      <MobileNavigationBar2>
-        <SideNavbar navList={categoryNavigation} lineStyle="dash" sidebarStyle="style2" />
-      </MobileNavigationBar2>
     </Fragment>
   );
 };

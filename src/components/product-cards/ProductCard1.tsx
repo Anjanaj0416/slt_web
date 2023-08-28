@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { FC, Fragment, useCallback, useState } from "react";
 import { Add, Favorite, Remove, RemoveRedEye } from "@mui/icons-material";
-import { Box, Button, Chip, IconButton, styled } from "@mui/material";
+import { Box, Button, Chip, IconButton, Rating, styled } from "@mui/material";
 import { useSnackbar } from "notistack";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import LazyImage from "components/LazyImage";
 import BazaarCard from "components/BazaarCard";
 import { H3, Span } from "components/Typography";
-import BazaarRating from "components/BazaarRating";
 import { CartItem, useAppContext } from "contexts/AppContext";
 import ProductViewDialog from "components/products/ProductViewDialog";
 import { FlexBox } from "../flex-box";
@@ -34,7 +33,7 @@ const ImageWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: { display: "block" },
 }));
 
-const StyledChip = styled(Chip)({
+const StyledChip = styled(Chip)(({ theme }) => ({
   zIndex: 1,
   top: "10px",
   left: "10px",
@@ -43,7 +42,9 @@ const StyledChip = styled(Chip)({
   fontWeight: 600,
   fontSize: "10px",
   position: "absolute",
-});
+  color: theme.palette.common.white,
+  background: theme.palette.primary.main,
+}));
 
 const HoverIconWrapper = styled(Box)({
   zIndex: 2,
@@ -112,7 +113,7 @@ const ProductCard1: FC<ProductCardProps> = ({
   return (
     <StyledBazaarCard hoverEffect={hoverEffect}>
       <ImageWrapper>
-        {!!discount && <StyledChip color="primary" size="small" label={`${discount}% off`} />}
+        {discount > 0 ? <StyledChip size="small" label={`${discount}% off`} /> : null}
 
         <HoverIconWrapper className="hover-box">
           <IconButton onClick={toggleDialog}>
@@ -155,7 +156,7 @@ const ProductCard1: FC<ProductCardProps> = ({
               </H3>
             </Link>
 
-            {!hideRating && <BazaarRating value={rating || 0} color="warn" readOnly />}
+            {!hideRating && <Rating size="small" value={rating || 0} color="warn" readOnly />}
 
             {showProductSize && (
               <Span color="grey.600" mb={1} display="block">
