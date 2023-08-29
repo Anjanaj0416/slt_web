@@ -1,8 +1,19 @@
+import { FC } from "react";
 import ChevronRight from "@mui/icons-material/ChevronRight";
+// GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
+// STYLED COMPONENTS
 import { CategoryList, CategoryListItem } from "./styles";
 
-const Categories = ({ categories, openList, handleOpen }) => {
+// ==============================================================
+interface Props {
+  categories: any[];
+  openList: string;
+  handleOpen: (item: string) => void;
+}
+// ==============================================================
+
+const Categories: FC<Props> = ({ categories, openList, handleOpen }) => {
   const { settings } = useSettings();
 
   return (
@@ -14,9 +25,12 @@ const Categories = ({ categories, openList, handleOpen }) => {
           onMouseEnter={() => handleOpen(item)}
         >
           {item}
+
           <ChevronRight
             fontSize="small"
-            sx={{ transform: `rotate(${settings.direction === "rtl" ? "180deg" : "0"})` }}
+            sx={{
+              transform: `rotate(${settings.direction === "rtl" ? "180deg" : "0"})`,
+            }}
           />
         </CategoryListItem>
       ))}

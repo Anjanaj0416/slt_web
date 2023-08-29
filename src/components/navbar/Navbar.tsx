@@ -1,117 +1,41 @@
 import { FC } from "react";
-import { Box, Button, Container, MenuItem, styled, SvgIconProps } from "@mui/material";
-
-import {
-  ArrowLeft,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  KeyboardArrowDown,
-} from "@mui/icons-material";
-
-import Category from "icons/Category";
-
+import { Box, MenuItem } from "@mui/material";
+import { ArrowLeft, ArrowRight, KeyboardArrowDown } from "@mui/icons-material";
+// GLOBAL CUSTOM COMPONENTS
 import { NavLink } from "components/nav-link";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
-import { Paragraph } from "components/Typography";
-import CategoryMenu from "components/categories/CategoryMenu";
-
+// LOCAL CUSTOM COMPONENTS
+import Categories from "./categories";
 import { MegaMenu } from "./mega-menu";
-import MegaMenu2 from "./MegaMenu2";
-
+import { CategoryBasedMenu } from "./category-based-menu";
+// GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
-
-import navbarNavigations from "data/navbarNavigations";
-
-// NavList props interface
-type Navs = {
-  url: string;
-  title: string;
-  Icon?: (props: SvgIconProps<"svg", {}>) => JSX.Element;
-};
-
-type NavList = {
-  url: string;
-  title: string;
-  child: Navs[];
-  megaMenu: boolean;
-  megaMenuWithSub: boolean;
-};
-
-// const common css style
-const navLinkStyle = {
-  cursor: "pointer",
-  transition: "color 150ms ease-in-out",
-  "&:hover": { color: "primary.main" },
-  "&:last-child": { marginRight: 0 },
-};
-
-// style components
-const StyledNavLink = styled(NavLink)({ ...navLinkStyle });
-
-const ParentNav = styled(Box)(({ theme }) => ({
-  "&:hover": {
-    color: theme.palette.primary.main,
-    "& > .parent-nav-item": { display: "block" },
-  },
-}));
-
-const ParentNavItem = styled(Box)(({ theme }) => ({
-  top: 0,
-  zIndex: 5,
-  left: "100%",
-  paddingLeft: 8,
-  display: "none",
-  position: "absolute",
-  [theme.breakpoints.down(1640)]: {
-    right: "100%",
-    left: "auto",
-    paddingRight: 8,
-  },
-}));
-
-const NavBarWrapper = styled(BazaarCard)<{ border: number }>(({ theme, border }) => ({
-  height: "60px",
-  display: "block",
-  borderRadius: "0px",
-  position: "relative",
-  ...(border && { borderBottom: `1px solid ${theme.palette.grey[200]}` }),
-  [theme.breakpoints.down(1150)]: { display: "none" },
-}));
-
-const InnerContainer = styled(Container)({
-  height: "100%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-});
-
-const CategoryMenuButton = styled(Button)(({ theme }) => ({
-  width: "278px",
-  height: "40px",
-  backgroundColor: theme.palette.grey[100],
-}));
-
-const ChildNavsWrapper = styled(Box)({
-  zIndex: 5,
-  left: "50%",
-  top: "100%",
-  display: "none",
-  position: "absolute",
-  transform: "translate(-50%, 0%)",
-});
+// NAVIGATION DATA LIST
+import navigation from "data/navbarNavigations";
+// STYLED COMPONENTS
+import {
+  ParentNav,
+  ParentNavItem,
+  StyledNavLink,
+  NavBarWrapper,
+  InnerContainer,
+  NAV_LINK_STYLES,
+  ChildNavListWrapper,
+} from "./styles";
+// DATA TYPES
+import { NavList } from "./types";
 
 // ==========================================================
-type NavbarProps = {
+interface Props {
   border?: number;
   elevation?: number;
   navListOpen?: boolean;
   hideCategories?: boolean;
-};
+}
 // ==========================================================
 
-const Navbar: FC<NavbarProps> = ({
+const Navbar: FC<Props> = ({
   border,
   elevation = 2,
   navListOpen = false,
@@ -124,17 +48,13 @@ const Navbar: FC<NavbarProps> = ({
       if (isRoot) {
         // SHOW MEGA MENU
         if (nav.megaMenu) {
-          return (
-            //@ts-ignore
-            <MegaMenu key={nav.title} title={nav.title} menuList={nav.child} />
-          );
+          return <MegaMenu key={nav.title} title={nav.title} menuList={nav.child as any} />;
         }
 
         // SHOW MEGA MENU WITH SUB ITEMS
         if (nav.megaMenuWithSub) {
           return (
-            //@ts-ignore
-            <MegaMenu2 key={nav.title} title={nav.title} menuList={nav.child} />
+            <CategoryBasedMenu key={nav.title} title={nav.title} menuList={nav.child as any} />
           );
         }
 
@@ -155,15 +75,15 @@ const Navbar: FC<NavbarProps> = ({
               flexDirection="column"
               sx={{ "&:hover": { "& > .child-nav-item": { display: "block" } } }}
             >
-              <FlexBox alignItems="flex-end" gap={0.3} sx={navLinkStyle}>
+              <FlexBox alignItems="flex-end" gap={0.3} sx={NAV_LINK_STYLES}>
                 {nav.title} <KeyboardArrowDown sx={{ color: "grey.500", fontSize: "1.1rem" }} />
               </FlexBox>
 
-              <ChildNavsWrapper className="child-nav-item">
+              <ChildNavListWrapper className="child-nav-item">
                 <BazaarCard elevation={3} sx={{ mt: 2.5, py: 1, minWidth: 200 }}>
                   {renderNestedNav(nav.child)}
                 </BazaarCard>
-              </ChildNavsWrapper>
+              </ChildNavListWrapper>
             </FlexBox>
           );
         }
@@ -203,29 +123,16 @@ const Navbar: FC<NavbarProps> = ({
     });
   };
 
-  const CONTENT = <FlexBox gap={4}>{renderNestedNav(navbarNavigations, true)}</FlexBox>;
+  const CONTENT = <FlexBox gap={4}>{renderNestedNav(navigation, true)}</FlexBox>;
 
   return (
     <NavBarWrapper hoverEffect={false} elevation={elevation} border={border}>
       {!hideCategories ? (
         <InnerContainer>
           {/* CATEGORY MEGA MENU */}
-          <CategoryMenu open={navListOpen}>
-            <CategoryMenuButton variant="text">
-              <Category fontSize="small" />
-              <Paragraph fontWeight="600" textAlign="left" flex="1 1 0" ml={1.25} color="grey.600">
-                Categories
-              </Paragraph>
+          <Categories open={navListOpen} />
 
-              {settings.direction === "ltr" ? (
-                <ChevronRight className="dropdown-icon" fontSize="small" />
-              ) : (
-                <ChevronLeft className="dropdown-icon" fontSize="small" />
-              )}
-            </CategoryMenuButton>
-          </CategoryMenu>
-
-          {/* Horizontal menu */}
+          {/* HORIZONTAL MENU */}
           {CONTENT}
         </InnerContainer>
       ) : (

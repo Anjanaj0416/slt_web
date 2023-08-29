@@ -1,6 +1,6 @@
 import categoriesMegaMenu from "./categoriesMegaMenu";
 
-// MEGAMENU DATA
+// MEGA-MENU DATA
 const megaMenus = [
   [
     {

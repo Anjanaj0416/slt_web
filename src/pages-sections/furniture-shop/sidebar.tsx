@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 // Local CUSTOM COMPONENT
 import Section2 from "./section-2";
 // GLOBAL CUSTOM COMPONENT
-import SideNavbar from "components/page-sidenav/SideNavbar";
+import { SideNavbar } from "components/page-sidenav";
 // CUSTOM DATA MODEL
 import CategoryNavList from "models/CategoryNavList.model";
 // STYLED COMPONENT

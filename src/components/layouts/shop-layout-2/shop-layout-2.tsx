@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Sticky from "components/Sticky";
 import Topbar from "components/Topbar";
 import { Header } from "components/header";
-import Navbar from "components/navbar/Navbar";
+import { Navbar } from "components/navbar";
 import SearchInput from "components/search-box/SearchInput";
 
 /**

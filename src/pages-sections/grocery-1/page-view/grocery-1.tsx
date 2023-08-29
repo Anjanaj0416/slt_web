@@ -7,8 +7,8 @@ import Stack from "@mui/material/Stack";
 import Setting from "components/Setting";
 import { Footer2 } from "components/footer";
 import Newsletter from "components/Newsletter";
+import { SideNavbar } from "components/page-sidenav";
 import SidenavContainer from "components/SidenavContainer";
-import SideNavbar from "components/page-sidenav/SideNavbar";
 import { MobileNavigationBar2 } from "components/mobile-navigation";
 // Local CUSTOM COMPONENTS
 import Section1 from "../section-1";

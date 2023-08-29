@@ -9,7 +9,7 @@ import DialogDrawer from "./dialog-drawer";
 // GLOBAL CUSTOM COMPONENTS
 import Image from "components/BazaarImage";
 import { Paragraph } from "components/Typography";
-import MobileMenu from "components/navbar/MobileMenu";
+import { MobileMenu } from "components/navbar/mobile-menu";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // GLOBAL CUSTOM HOOK
 import useCart from "hooks/useCart";

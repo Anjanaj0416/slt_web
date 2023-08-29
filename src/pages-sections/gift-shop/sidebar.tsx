@@ -5,7 +5,7 @@ import { Box, Container, styled } from "@mui/material";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { layoutConstant } from "utils/constants";
 // GLOBAL CUSTOM COMPONENTS
-import SideNavbar from "components/page-sidenav/SideNavbar";
+import { SideNavbar } from "components/page-sidenav";
 // CUSTOM DATA MODEL
 import CategoryNavList from "models/CategoryNavList.model";
 

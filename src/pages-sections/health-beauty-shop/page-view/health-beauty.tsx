@@ -8,8 +8,9 @@ import Setting from "components/Setting";
 import { Footer3 } from "components/footer";
 import Newsletter from "components/Newsletter";
 import SidenavContainer from "components/SidenavContainer";
+import { HealthBeautySideNav } from "components/page-sidenav";
 import { MobileNavigationBar2 } from "components/mobile-navigation";
-import HealthBeautySidenav from "components/page-sidenav/HealthBeautySideNav";
+
 // Local CUSTOM COMPONENTS
 import Section1 from "../section-1";
 import Section2 from "../section-2";
@@ -42,7 +43,7 @@ const HealthBeautyPageView = (props: Props) => {
 
       <SidenavContainer
         navFixedComponentID="healthBeautySection1"
-        SideNav={() => <HealthBeautySidenav navList={props.navigationList} />}
+        SideNav={() => <HealthBeautySideNav navigation={props.navigationList} />}
       >
         <Stack spacing={6}>
           {/* BANNER AREA */}
@@ -70,7 +71,7 @@ const HealthBeautyPageView = (props: Props) => {
 
       {/* SMALL DEVICE BOTTOM NAVIGATION */}
       <MobileNavigationBar2>
-        <HealthBeautySidenav navList={props.navigationList} />
+        <HealthBeautySideNav navigation={props.navigationList} />
       </MobileNavigationBar2>
     </Fragment>
   );

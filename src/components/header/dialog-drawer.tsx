@@ -18,7 +18,9 @@ interface Props {
 }
 // ==============================================================
 
-const DialogDrawer: FC<Props> = ({ dialogOpen, sidenavOpen, toggleDialog, toggleSidenav }) => {
+const DialogDrawer: FC<Props> = (props) => {
+  const { dialogOpen, sidenavOpen, toggleDialog, toggleSidenav } = props;
+
   const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
 
   return (

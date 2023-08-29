@@ -8,9 +8,9 @@ import Setting from "components/Setting";
 import { Footer2 } from "components/footer";
 import Scrollbar from "components/Scrollbar";
 import Newsletter from "components/Newsletter";
+import { GrocerySideNav } from "components/page-sidenav";
 import SidenavContainer from "components/SidenavContainer";
 import { MobileNavigationBar2 } from "components/mobile-navigation";
-import Grocery2SideNav from "components/page-sidenav/Grocery2Sidenav";
 // Local CUSTOM COMPONENTS
 import Section1 from "../section-1";
 import Section2 from "../section-2";
@@ -47,7 +47,7 @@ const GroceryTwoPageView = (props: Props) => {
 
       <SidenavContainer
         navFixedComponentID="grocerySection"
-        SideNav={() => <Grocery2SideNav groceryNavigation={props.navigationList} />}
+        SideNav={() => <GrocerySideNav navigation={props.navigationList} />}
       >
         <Stack spacing={6}>
           {/* TOP HERO AREA */}
@@ -91,7 +91,7 @@ const GroceryTwoPageView = (props: Props) => {
       {/* SMALL DEVICE BOTTOM NAVIGATION */}
       <MobileNavigationBar2>
         <Scrollbar>
-          <Grocery2SideNav groceryNavigation={props.navigationList} />
+          <GrocerySideNav navigation={props.navigationList} />
         </Scrollbar>
       </MobileNavigationBar2>
     </Fragment>

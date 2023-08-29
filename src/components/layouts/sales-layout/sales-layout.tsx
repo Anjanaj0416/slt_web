@@ -4,9 +4,9 @@ import { FC, Fragment, ReactNode } from "react";
 import Divider from "@mui/material/Divider";
 // CUSTOM GLOBAL COMPONENTS
 import Topbar from "components/Topbar";
-import { Footer1 } from "components/footer";
 import { Header } from "components/header";
-import Navbar from "components/navbar/Navbar";
+import { Navbar } from "components/navbar";
+import { Footer1 } from "components/footer";
 import { MobileNavigationBar } from "components/mobile-navigation";
 import SearchInputWithCategory from "components/search-box/SearchInputWithCategory";
 
