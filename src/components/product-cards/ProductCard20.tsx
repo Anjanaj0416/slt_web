@@ -8,7 +8,7 @@ import LazyImage from "components/LazyImage";
 import { FlexRowCenter } from "components/flex-box";
 import { H4, Paragraph, Small } from "components/Typography";
 import { CartItem, useAppContext } from "contexts/AppContext";
-import ProductViewDialog from "components/products/ProductViewDialog";
+import ProductViewDialog from "components/products-view/product-view-dialog";
 import Product from "models/Product.model";
 
 // custom styled components

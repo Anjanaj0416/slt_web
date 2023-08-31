@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";
-import ProductCard14 from "components/product-cards/ProductCard14";
+import { ProductCard5 } from "components/product-cards/product-card-5";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -29,7 +29,7 @@ const Section4: FC<Props> = ({ products }) => {
       <Grid container mb={-0.5} spacing={3}>
         {products.map((item) => (
           <Grid key={item.id} item md={4} sm={6} xs={12}>
-            <ProductCard14
+            <ProductCard5
               id={item.id}
               slug={item.slug}
               title={item.title}

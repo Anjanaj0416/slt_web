@@ -1,15 +1,18 @@
 "use client";
 
 import { FC, Fragment } from "react";
-import { Box, Button, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H2, H3, Span } from "components/Typography";
 import { FlexBox, FlexRowCenter } from "components/flex-box";
-import ProductCard8 from "components/product-cards/ProductCard8";
-// CUSTOM DATA MODEL
-import Product from "models/Product.model";
+// LOCAL CUSTOM COMPONENT
+import FrequentlyProductCard from "./frequently-product-card";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+// CUSTOM DATA MODEL
+import Product from "models/Product.model";
 
 // STYLED COMPONENTS
 const WrapperBox = styled(Box)(({ theme }) => ({
@@ -19,34 +22,27 @@ const WrapperBox = styled(Box)(({ theme }) => ({
 }));
 
 // ============================================================
-type Props = { productsData: Product[] };
+type Props = { products: Product[] };
 // ============================================================
 
-const FrequentlyBought: FC<Props> = ({ productsData }) => {
+const FrequentlyBought: FC<Props> = ({ products }) => {
   return (
     <WrapperBox mb={7.5}>
       <H3 mb={3}>Frequently Bought Together</H3>
 
       <FlexBox className="card-holder" flexWrap="wrap" m={-1}>
-        {productsData.map((item, ind) => (
+        {products.map((item, ind) => (
           <Fragment key={item.id}>
-            <ProductCard8
+            <FrequentlyProductCard
               id={item.id}
               key={item.id}
               slug={item.slug}
               price={item.price}
               title={item.title}
               imgUrl={item.thumbnail}
-              sx={{
-                width: "100%",
-                flex: "1 1 0",
-                minWidth: "160px",
-                margin: { xs: 0, sm: 1 },
-                maxWidth: { xs: "100%", sm: "220px" },
-              }}
             />
 
-            {ind < productsData.length - 1 && (
+            {ind < products.length - 1 && (
               <FlexRowCenter>
                 <H2 color="grey.600" mx={1}>
                   +

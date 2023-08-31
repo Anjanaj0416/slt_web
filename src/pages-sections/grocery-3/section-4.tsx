@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Box, Button, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
-import ProductCard10 from "components/product-cards/ProductCard10";
+import { ProductCard3 } from "components/product-cards/product-card-3";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -37,7 +37,7 @@ const Section4: FC<Props> = ({ products }) => {
       <Grid container mb={-0.5} spacing={3}>
         {products.map((item) => (
           <Grid key={item.id} item md={4} sm={6} xs={12}>
-            <ProductCard10
+            <ProductCard3
               hideRating
               id={item.id}
               slug={item.slug}

@@ -4,7 +4,7 @@ import { Container, Grid, IconButton, useMediaQuery, Theme } from "@mui/material
 import FilterList from "@mui/icons-material/FilterList";
 // GLOBAL CUSTOM COMPONENTS
 import Sidenav from "components/Sidenav";
-import ProductList1 from "components/products/ProductList1";
+import ProductsGridView from "components/products-view/products-grid-view";
 // Local CUSTOM COMPONENTS
 import ShopIntroCard from "../shop-intro-card";
 import ProductFilterCard from "../../product-details/product-filter-card";
@@ -50,7 +50,7 @@ const ShopDetailsPageView = ({ shop }: Props) => {
           )}
 
           {/* PRODUCT LIST AREA */}
-          <ProductList1 products={shop.products.slice(0, 9)} />
+          <ProductsGridView products={shop.products.slice(0, 9)} />
         </Grid>
       </Grid>
     </Container>

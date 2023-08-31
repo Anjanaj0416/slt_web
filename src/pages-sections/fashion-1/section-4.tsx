@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import { FC, useState } from "react";
-import { Box, Grid, IconButton } from "@mui/material";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import ArrowBack from "@mui/icons-material/ArrowBack";
+import ArrowForward from "@mui/icons-material/ArrowForward";
+// LOCAL CUSTOM COMPONENT
+import DealWeekCard from "./shared/deal-week-card";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import ProductCard11 from "components/product-cards/ProductCard11";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
@@ -68,7 +72,7 @@ const Section4: FC<Props> = ({ dealOfTheWeek }) => {
         </Box>
       </Box>
 
-      {/* MAIN CAROUSEL */}
+      {/* DEAL WEEK MAIN CAROUSEL */}
       <Carousel
         showDots
         visibleSlides={1}
@@ -82,7 +86,7 @@ const Section4: FC<Props> = ({ dealOfTheWeek }) => {
               {dealOfTheWeek.slice(firstIndex, lastIndex).map((item, ind) => (
                 <Grid item md={6} xs={12} key={ind}>
                   <Link href="/">
-                    <ProductCard11 imgUrl={item.imgUrl} title={item.brand} off={item.off} />
+                    <DealWeekCard imgUrl={item.imgUrl} title={item.brand} off={item.off} />
                   </Link>
                 </Grid>
               ))}

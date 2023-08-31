@@ -26,13 +26,13 @@ const ProductDetailsPageView = (props: Props) => {
       <ProductTabs />
 
       {/* FREQUENTLY BOUGHT PRODUCTS AREA */}
-      <FrequentlyBought productsData={props.frequentlyBought} />
+      <FrequentlyBought products={props.frequentlyBought} />
 
       {/* AVAILABLE SHOPS AREA */}
       <AvailableShops />
 
       {/* RELATED PRODUCTS AREA */}
-      <RelatedProducts productsData={props.relatedProducts} />
+      <RelatedProducts products={props.relatedProducts} />
     </Container>
   );
 };

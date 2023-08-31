@@ -7,8 +7,8 @@ import Topbar from "components/Topbar";
 import { Navbar } from "components/navbar";
 import { Footer1 } from "components/footer";
 import Header from "components/header/header";
+import { SearchInputWithCategory } from "components/search-box";
 import { MobileNavigationBar } from "components/mobile-navigation";
-import SearchInputWithCategory from "components/search-box/SearchInputWithCategory";
 
 /**
  *  USED IN:

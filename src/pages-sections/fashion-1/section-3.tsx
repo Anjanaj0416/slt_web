@@ -3,7 +3,7 @@
 import { FC, useEffect, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import ProductCard3 from "components/product-cards/ProductCard3";
+import { ProductCard2 } from "components/product-cards/product-card-2";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
@@ -37,7 +37,7 @@ const Section3: FC<Props> = ({ newArrivals }) => {
         rightButtonStyle={ARROW_BUTTON_STYLE}
       >
         {newArrivals.map((item, ind) => (
-          <ProductCard3
+          <ProductCard2
             hideReview
             hideFavoriteIcon
             key={item.id}

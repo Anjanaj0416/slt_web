@@ -1,9 +1,11 @@
 import { FC } from "react";
-import { Button, Grid, styled } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";
-import ProductCard13 from "components/product-cards/ProductCard13";
+import { ProductCard4 } from "components/product-cards/product-card-4";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -28,7 +30,7 @@ const AllProducts: FC<Props> = ({ products, title = "All Products" }) => {
       <Grid container spacing={3}>
         {products.map((item) => (
           <Grid key={item.id} item md={4} sm={6} xs={12}>
-            <ProductCard13
+            <ProductCard4
               id={item.id}
               slug={item.slug}
               title={item.title}

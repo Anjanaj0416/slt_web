@@ -1,13 +1,18 @@
 "use client";
 
 import { FC } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import Grid from "@mui/material/Grid";
 // CUSTOM ICON COMPONENT
 import NewArrival from "icons/NewArrival";
 // GLOBAL CUSTOM COMPONENTS
+import HoverBox from "components/HoverBox";
+import { H4 } from "components/Typography";
 import BazaarCard from "components/BazaarCard";
-import ProductCard2 from "components/product-cards/ProductCard2";
 import CategorySectionCreator from "components/CategorySectionCreator";
+// CUSTOM UTILS LIBRARY FUNCTION
+import { currency } from "lib";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -22,7 +27,25 @@ const Section5: FC<Props> = ({ newArrivalsList }) => {
         <Grid container spacing={3}>
           {newArrivalsList.map(({ id, title, price, thumbnail, slug }) => (
             <Grid item lg={2} md={3} sm={4} xs={6} key={id}>
-              <ProductCard2 thumbnail={thumbnail} title={title} price={price} slug={slug} />
+              <Link href={`/products/${slug}`}>
+                <HoverBox borderRadius={2} mb={1}>
+                  <Image
+                    width={180}
+                    height={180}
+                    alt={title}
+                    src={thumbnail}
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </HoverBox>
+
+                <H4 fontSize={14} mb={0.5}>
+                  {title}
+                </H4>
+
+                <H4 fontSize={14} color="primary.main">
+                  {currency(price)}
+                </H4>
+              </Link>
             </Grid>
           ))}
         </Grid>

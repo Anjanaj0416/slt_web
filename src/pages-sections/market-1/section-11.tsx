@@ -1,7 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import { Container, Fab, Grid } from "@mui/material";
+import Fab from "@mui/material/Fab";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS
@@ -19,6 +21,14 @@ const CARD_STYLE = {
   flexDirection: "column",
 };
 
+const FAB_STYLE = {
+  width: 64,
+  height: 64,
+  boxShadow: 0,
+  fontSize: "1.75rem",
+  backgroundColor: "grey.200",
+};
+
 // ==================================================
 type Props = { serviceList: Service[] };
 // ==================================================
@@ -32,15 +42,7 @@ const Section11: FC<Props> = ({ serviceList }) => {
           return (
             <Grid item lg={3} sm={6} xs={12} key={item.id}>
               <BazaarCard hoverEffect sx={CARD_STYLE}>
-                <Fab
-                  sx={{
-                    width: 64,
-                    height: 64,
-                    boxShadow: 0,
-                    fontSize: "1.75rem",
-                    backgroundColor: "grey.200",
-                  }}
-                >
+                <Fab sx={FAB_STYLE}>
                   <Icon fontSize="inherit" />
                 </Fab>
 

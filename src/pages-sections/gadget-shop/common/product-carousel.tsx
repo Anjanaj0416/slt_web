@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import ProductCard3 from "components/product-cards/ProductCard3";
+import { ProductCard2 } from "components/product-cards/product-card-2";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
@@ -39,7 +39,7 @@ const ProductCarousel: FC<Props> = ({ products }) => {
         rightButtonStyle={ARROW_BUTTON_STYLE}
       >
         {products.map((item, ind) => (
-          <ProductCard3
+          <ProductCard2
             key={ind}
             slug={item.slug}
             title={item.title}

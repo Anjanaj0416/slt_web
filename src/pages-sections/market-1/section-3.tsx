@@ -9,8 +9,9 @@ import CategoryIcon from "icons/Category";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
 import { Carousel } from "components/carousel";
-import ProductCard6 from "components/product-cards/ProductCard6";
 import CategorySectionCreator from "components/CategorySectionCreator";
+// LOCAL CUSTOM COMPONENT
+import TopCategoriesCard from "./shared/top-categories-card";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
 
@@ -38,7 +39,11 @@ const Section3: FC<Props> = ({ categoryList }) => {
         {categoryList.map((item) => (
           <Link href={`/products/search/${item.slug}`} key={item.id}>
             <BazaarCard elevation={0} sx={{ p: 2 }}>
-              <ProductCard6 title={item.name} subtitle={item.description} imgUrl={item.image} />
+              <TopCategoriesCard
+                title={item.name}
+                imgUrl={item.image}
+                subtitle={item.description}
+              />
             </BazaarCard>
           </Link>
         ))}

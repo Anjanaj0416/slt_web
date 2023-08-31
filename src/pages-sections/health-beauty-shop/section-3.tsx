@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from "react";
-import { Box, styled, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import { styled, useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
-import { Paragraph } from "components/Typography";
 import { Carousel } from "components/carousel";
+import { Paragraph } from "components/Typography";
 import CategorySectionCreator from "components/CategorySectionCreator";
-import ProductCard14 from "components/product-cards/ProductCard14";
+import { ProductCard5 } from "components/product-cards/product-card-5";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
@@ -53,7 +54,7 @@ const Section3: FC<Props> = ({ products }) => {
       >
         {products.map((item) => (
           <Box pt={0.5} pb={2} key={item.id}>
-            <ProductCard14
+            <ProductCard5
               id={item.id}
               slug={item.slug}
               title={item.title}

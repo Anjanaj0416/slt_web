@@ -7,11 +7,11 @@ import Container from "@mui/material/Container";
 import FeedbackThumbsUpIcon from "icons/FeedbackThumbsUp";
 import CreditCardVerifiedIcon from "icons/CreditCardVerified";
 // Local CUSTOM COMPONENTS
-import ShowcaseCard1 from "./common/card-1";
-import ShowcaseCard2 from "./common/card-2";
-import ShowcaseCard3 from "./common/card-3";
-import ShowcaseCard4 from "./common/card-4";
-import ShowcaseCard5 from "./common/card-5";
+import ShowcaseCard1 from "./shared/card-1";
+import ShowcaseCard2 from "./shared/card-2";
+import ShowcaseCard3 from "./shared/card-3";
+import ShowcaseCard4 from "./shared/card-4";
+import ShowcaseCard5 from "./shared/card-5";
 
 const Section1 = () => {
   return (

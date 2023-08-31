@@ -19,8 +19,8 @@ import ProductFilterCard from "../product-filter-card";
 import Sidenav from "components/Sidenav";
 import { FlexBox } from "components/flex-box";
 import { H5, Paragraph } from "components/Typography";
-import ProductList1 from "components/products/ProductList1";
-import ProductList2 from "components/products/ProductList2";
+import ProductsGridView from "components/products-view/products-grid-view";
+import ProductsListView from "components/products-view/products-list-view";
 // PRODUCT DATA
 import productDatabase from "data/product-database";
 
@@ -119,9 +119,9 @@ const ProductSearchPageView = () => {
         {/* PRODUCT VIEW AREA */}
         <Grid item md={9} xs={12}>
           {view === "grid" ? (
-            <ProductList1 products={PRODUCTS} />
+            <ProductsGridView products={PRODUCTS} />
           ) : (
-            <ProductList2 products={PRODUCTS} />
+            <ProductsListView products={PRODUCTS} />
           )}
         </Grid>
       </Grid>

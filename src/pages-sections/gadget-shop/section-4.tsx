@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import ProductCard3 from "components/product-cards/ProductCard3";
+import { ProductCard2 } from "components/product-cards/product-card-2";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
@@ -43,7 +43,7 @@ const Section4: FC<Props> = ({ mostViewedList }) => {
         >
           {mostViewedList.map((item, ind) => (
             <Box py={0.5} key={ind}>
-              <ProductCard3
+              <ProductCard2
                 slug={item.slug}
                 title={item.title}
                 price={item.price}

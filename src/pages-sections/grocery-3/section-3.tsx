@@ -3,7 +3,7 @@ import { Box, styled, useTheme } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import { Carousel } from "components/carousel";
-import ProductCard10 from "components/product-cards/ProductCard10";
+import { ProductCard3 } from "components/product-cards/product-card-3";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
@@ -67,7 +67,7 @@ const Section3: FC<Props> = ({ products }) => {
       >
         {products.map((item) => (
           <Box py={0.5} key={item.id}>
-            <ProductCard10
+            <ProductCard3
               hideRating
               id={item.id}
               slug={item.slug}

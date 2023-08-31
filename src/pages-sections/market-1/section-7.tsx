@@ -1,14 +1,16 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import { Box, Container, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 // LOCAL CUSTOM COMPONENT
-import ProductCategoryItem from "./product-category-item";
+import ProductCategoryItem from "./shared/product-category-item";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
-import ProductCard1 from "components/product-cards/ProductCard1";
+import ProductCard1 from "components/product-cards/product-card-1";
 import CategorySectionHeader from "components/CategorySectionHeader";
 // CUSTOM DATA MODELS
 import Brand from "models/Brand.model";

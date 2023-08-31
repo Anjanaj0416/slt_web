@@ -8,7 +8,7 @@ import { Header } from "components/header";
 import { Navbar } from "components/navbar";
 import { Footer1 } from "components/footer";
 import { MobileNavigationBar } from "components/mobile-navigation";
-import SearchInputWithCategory from "components/search-box/SearchInputWithCategory";
+import { SearchInputWithCategory } from "components/search-box";
 
 /** USED: SALES-1 & SALES-2 PAGES */
 

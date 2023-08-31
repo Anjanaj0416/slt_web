@@ -2,14 +2,17 @@
 
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Container, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 // CUSTOM ICON COMPONENTS
 import RankBadge from "icons/RankBadge";
 import DottedStar from "icons/DottedStar";
+// LOCAL CUSTOM COMPONENTS
+import FeaturedProductCard from "./shared/featured-product-card";
+import TopRatingProductCard from "./shared/top-rating-product-card";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
-import ProductCard4 from "components/product-cards/ProductCard4";
-import ProductCard5 from "components/product-cards/ProductCard5";
 import CategorySectionHeader from "components/CategorySectionHeader";
 // CUSTOM DATA MODELS
 import Brand from "models/Brand.model";
@@ -33,7 +36,7 @@ const Section4: FC<Props> = ({ topRatedBrands, topRatedList }) => {
                 {topRatedList.map((item) => (
                   <Grid item md={3} sm={6} xs={6} key={item.title}>
                     <Link href={`/products/${item.slug}`}>
-                      <ProductCard4
+                      <TopRatingProductCard
                         title={item.title}
                         price={item.price}
                         rating={item.rating}
@@ -56,7 +59,7 @@ const Section4: FC<Props> = ({ topRatedBrands, topRatedList }) => {
                 {topRatedBrands.map(({ id, name, image, slug }) => (
                   <Grid item sm={6} xs={12} key={id}>
                     <Link href={`/products/search/${slug}`}>
-                      <ProductCard5 title={name} imgUrl={image} />
+                      <FeaturedProductCard title={name} imgUrl={image} />
                     </Link>
                   </Grid>
                 ))}

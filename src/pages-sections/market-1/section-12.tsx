@@ -9,7 +9,7 @@ import GiftBox from "icons/GiftBox";
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import HoverBox from "components/HoverBox";
-import { H4 } from "components/Typography";
+import { H6 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
@@ -24,7 +24,7 @@ import { calculateDiscount, currency } from "lib";
 type Props = { bigDiscountList: Product[] };
 // ========================================================
 
-const Section13: FC<Props> = ({ bigDiscountList }) => {
+const Section12: FC<Props> = ({ bigDiscountList }) => {
   const width = useWindowSize();
   const [visibleSlides, setVisibleSlides] = useState(6);
 
@@ -43,22 +43,17 @@ const Section13: FC<Props> = ({ bigDiscountList }) => {
             <Box py={0.5} key={id}>
               <BazaarCard sx={{ p: "1rem" }}>
                 <Link href={`/products/${slug}`}>
-                  <HoverBox borderRadius="8px" mb={1}>
+                  <HoverBox borderRadius={2} mb={1}>
                     <LazyImage width={500} height={500} alt={title} src={thumbnail} />
                   </HoverBox>
 
-                  <H4 fontWeight="600" fontSize="14px" mb={0.5}>
-                    {title}
-                  </H4>
+                  <H6 mb={0.5}>{title}</H6>
 
                   <FlexBox gap={1}>
-                    <H4 fontWeight="600" fontSize="14px" color="primary.main">
-                      {calculateDiscount(price, discount)}
-                    </H4>
-
-                    <H4 fontWeight="600" fontSize="14px" color="grey.600">
-                      <del>{currency(price)}</del>
-                    </H4>
+                    <H6 color="primary.main">{calculateDiscount(price, discount)}</H6>
+                    <Box component="del" fontWeight={600} color="grey.600">
+                      {currency(price)}
+                    </Box>
                   </FlexBox>
                 </Link>
               </BazaarCard>
@@ -70,4 +65,4 @@ const Section13: FC<Props> = ({ bigDiscountList }) => {
   );
 };
 
-export default Section13;
+export default Section12;

@@ -4,7 +4,7 @@ import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import ProductCard1 from "components/product-cards/ProductCard1";
+import ProductCard1 from "components/product-cards/product-card-1";
 import CategorySectionHeader from "components/CategorySectionHeader";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";

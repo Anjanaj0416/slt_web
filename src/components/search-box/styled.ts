@@ -1,5 +1,7 @@
-import { Card, styled } from "@mui/material";
-import { SearchOutlined } from "@mui/icons-material";
+import Card from "@mui/material/Card";
+import { styled } from "@mui/material/styles";
+import SearchOutlined from "@mui/icons-material/SearchOutlined";
+import { FlexBox } from "components/flex-box";
 
 export const SearchOutlinedIcon = styled(SearchOutlined)(({ theme }) => ({
   color: theme.palette.grey[600],
@@ -14,3 +16,11 @@ export const SearchResultCard = styled(Card)({
   paddingTop: "0.5rem",
   paddingBottom: "0.5rem",
 });
+
+export const DropDownHandler = styled(FlexBox)(({ theme }) => ({
+  whiteSpace: "pre",
+  borderTopRightRadius: 300,
+  borderBottomRightRadius: 300,
+  borderLeft: `1px solid ${theme.palette.text.disabled}`,
+  [theme.breakpoints.down("xs")]: { display: "none" },
+}));

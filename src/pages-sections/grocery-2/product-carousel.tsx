@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { Carousel } from "components/carousel";
-import ProductCard1 from "components/product-cards/ProductCard1";
+import ProductCard1 from "components/product-cards/product-card-1";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL

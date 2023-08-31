@@ -8,7 +8,7 @@ import { useSnackbar } from "notistack";
 import LazyImage from "components/LazyImage";
 import { H3, Span } from "components/Typography";
 import { FlexBetween, FlexRowCenter } from "components/flex-box";
-import ProductViewDialog from "components/products/ProductViewDialog";
+import ProductViewDialog from "components/products-view/product-view-dialog";
 import { CartItem, useAppContext } from "contexts/AppContext";
 import { calculateDiscount, currency } from "lib";
 import Product from "models/Product.model";

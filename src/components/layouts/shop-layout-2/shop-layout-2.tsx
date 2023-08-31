@@ -8,7 +8,7 @@ import Sticky from "components/Sticky";
 import Topbar from "components/Topbar";
 import { Header } from "components/header";
 import { Navbar } from "components/navbar";
-import SearchInput from "components/search-box/SearchInput";
+import { SearchInput } from "components/search-box";
 
 /**
  *  USED IN:

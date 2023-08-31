@@ -11,7 +11,7 @@ import useCart from "hooks/useCart";
 import LazyImage from "components/LazyImage";
 import { FlexRowCenter } from "components/flex-box";
 import { H4, Paragraph, Small } from "components/Typography";
-import ProductViewDialog from "components/products/ProductViewDialog";
+import ProductViewDialog from "components/products-view/product-view-dialog";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 

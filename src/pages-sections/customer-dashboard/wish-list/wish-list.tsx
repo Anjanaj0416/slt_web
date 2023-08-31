@@ -6,7 +6,7 @@ import Favorite from "@mui/icons-material/Favorite";
 // LOCAL CUSTOM HOOK
 import useWishList from "./use-wish-list";
 // GLOBAL CUSTOM COMPONENT
-import ProductCard1 from "components/product-cards/ProductCard1";
+import ProductCard1 from "components/product-cards/product-card-1";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 // Local CUSTOM COMPONENT

@@ -3,7 +3,7 @@
 import { FC, useEffect, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import ProductCard3 from "components/product-cards/ProductCard3";
+import { ProductCard2 } from "components/product-cards/product-card-2";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
@@ -39,7 +39,7 @@ const Section2: FC<Props> = ({ flashDeals }) => {
         rightButtonStyle={ARROW_BUTTON_STYLE}
       >
         {flashDeals.map((item) => (
-          <ProductCard3
+          <ProductCard2
             key={item.id}
             slug={item.slug}
             title={item.title}

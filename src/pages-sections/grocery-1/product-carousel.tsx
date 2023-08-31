@@ -1,11 +1,12 @@
 import { FC, useEffect, useState } from "react";
-import { Box, styled, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import { styled, useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
-import { Paragraph } from "components/Typography";
 import { Carousel } from "components/carousel";
-import ProductCard13 from "components/product-cards/ProductCard13";
+import { Paragraph } from "components/Typography";
+import { ProductCard4 } from "components/product-cards/product-card-4";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -34,27 +35,30 @@ const ProductCarousel: FC<Props> = ({ products, title }) => {
     else setVisibleSlides(3);
   }, [width]);
 
+  // CAROUSEL BUTTON STYLES
+  const STYLES = {
+    "& #backArrowButton, #backForwardButton": {
+      width: 40,
+      height: 40,
+      background: "#fff",
+      boxShadow: shadows[2],
+      color: palette.primary.main,
+    },
+  };
+
   return (
     <CategorySectionCreator title={title} seeMoreLink="#" mb={0}>
       <SubTitle>Best collection in 2021 for you!</SubTitle>
 
       <Carousel
+        sx={STYLES}
         infinite={true}
         totalSlides={products.length}
         visibleSlides={visibleSlides}
-        sx={{
-          "& #backArrowButton, #backForwardButton": {
-            width: 40,
-            height: 40,
-            background: "#fff",
-            boxShadow: shadows[2],
-            color: palette.primary.main,
-          },
-        }}
       >
         {products.map((item) => (
           <Box pb={2} key={item.id}>
-            <ProductCard13
+            <ProductCard4
               id={item.id}
               slug={item.slug}
               title={item.title}
