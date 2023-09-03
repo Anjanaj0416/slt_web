@@ -1,28 +1,27 @@
 import { FC } from "react";
 import Divider from "@mui/material/Divider";
-import { Favorite, FavoriteBorder, AddShoppingCart, RemoveRedEye } from "@mui/icons-material";
+import Favorite from "@mui/icons-material/Favorite";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
+
 // GLOBAL CUSTOM COMPONENT
 import { Span } from "components/Typography";
 // STYLED COMPONENT
-import { HoverWrapper } from "./styles";
+import { ItemController } from "./styles";
 
 // ==============================================================
 interface Props {
   isFavorite: boolean;
   toggleView: () => void;
   toggleFavorite: () => void;
-  handleIncrementQuantity: () => void;
+  handleAddToCart: () => void;
 }
 // ==============================================================
 
-const HoverActions: FC<Props> = ({
-  isFavorite,
-  toggleView,
-  toggleFavorite,
-  handleIncrementQuantity,
-}) => {
+const HoverActions: FC<Props> = ({ isFavorite, toggleView, toggleFavorite, handleAddToCart }) => {
   return (
-    <HoverWrapper className="controller">
+    <ItemController className="controlBox">
       <Span onClick={toggleView}>
         <RemoveRedEye />
       </Span>
@@ -39,10 +38,10 @@ const HoverActions: FC<Props> = ({
 
       <Divider orientation="horizontal" flexItem />
 
-      <Span onClick={handleIncrementQuantity}>
+      <Span onClick={handleAddToCart}>
         <AddShoppingCart />
       </Span>
-    </HoverWrapper>
+    </ItemController>
   );
 };
 

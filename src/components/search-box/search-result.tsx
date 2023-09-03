@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import MenuItem from "@mui/material/MenuItem";
-
+// STYLED COMPONENT
 import { SearchResultCard } from "./styled";
 
 // ==============================================================

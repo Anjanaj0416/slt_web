@@ -9,7 +9,7 @@ import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
 import { FlexBetween } from "components/flex-box";
 import { Carousel } from "components/carousel";
-import ProductCard20 from "components/product-cards/ProductCard20";
+import { ProductCard10 } from "components/product-cards/product-card-10";
 import { carouselStyled } from "components/carousel/styles";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -39,7 +39,7 @@ const Section4: FC<Section4Props> = ({ products }) => {
 
       <Carousel totalSlides={products.length} visibleSlides={visibleSlides} sx={carouselStyled}>
         {products.map((product) => (
-          <ProductCard20 product={product} key={product.id} />
+          <ProductCard10 product={product} key={product.id} />
         ))}
       </Carousel>
     </Container>

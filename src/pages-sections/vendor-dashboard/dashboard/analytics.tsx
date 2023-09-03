@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { styled, useTheme, Card, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+// LOCAL CUSTOM COMPONENT
+import ApexChart from "./apex-chart";
 // GLOBAL CUSTOM COMPONENTS
 import { H5 } from "components/Typography";
-import ApexChart from "components/ApexChart";
 import { FlexBetween } from "components/flex-box";
 // CHART OPTIONS
 import { analyticsChartOptions } from "./chart-options";

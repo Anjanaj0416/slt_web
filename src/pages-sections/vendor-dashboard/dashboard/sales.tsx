@@ -3,8 +3,8 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
-// GLOBAL CUSTOM COMPONENT
-import ApexChart from "components/ApexChart";
+// LOCAL CUSTOM COMPONENT
+import ApexChart from "./apex-chart";
 // Local CUSTOM COMPONENT
 import Card2 from "./card-2";
 // CHART OPTIONS

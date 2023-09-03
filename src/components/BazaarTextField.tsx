@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Box, BoxProps, TextField, TextFieldProps } from "@mui/material";
+import Box, { BoxProps } from "@mui/material/Box";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 // CUSTOM COMPONENT
 import { H6 } from "./Typography";
 

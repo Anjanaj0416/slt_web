@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
-import ProductCard18 from "components/product-cards/ProductCard18";
+import { ProductCard8 } from "components/product-cards/product-card-8";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -23,7 +23,7 @@ const Section6: FC<Props> = ({ products }) => {
       <Grid container spacing={3}>
         {products.slice(0, 4).map((product) => (
           <Grid item md={3} sm={6} xs={12} key={product.id}>
-            <ProductCard18 product={product} />
+            <ProductCard8 product={product} />
           </Grid>
         ))}
       </Grid>

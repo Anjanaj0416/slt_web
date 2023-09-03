@@ -1,9 +1,11 @@
 import { FC } from "react";
-import { Box, styled, SxProps } from "@mui/material";
-import { H6, Paragraph } from "components/Typography";
 import Image from "next/image";
+import Box from "@mui/material/Box";
+import { styled, SxProps } from "@mui/material/styles";
+// GLOBAL CUSTOM COMPONENT
+import { H6, Paragraph } from "components/Typography";
 
-// styled components
+// STYLED COMPONENTS
 const StyledCard = styled(Box)(({ theme }) => ({
   textAlign: "center",
   transition: "all 0.3s",
@@ -11,9 +13,9 @@ const StyledCard = styled(Box)(({ theme }) => ({
 }));
 
 const ImgBox = styled(Box)(({ theme }) => ({
+  height: "100%",
   padding: "0 40px 20px 40px",
   background: theme.palette.primary[100],
-  height: "100%",
 }));
 
 // ===================================================
@@ -25,9 +27,7 @@ type Props = {
 };
 // ===================================================
 
-const ProductCard15: FC<Props> = (props) => {
-  const { sx, imgUrl, title, available } = props;
-
+const CategoryCard: FC<Props> = ({ sx, imgUrl, title, available }) => {
   return (
     <StyledCard sx={sx}>
       <ImgBox>
@@ -48,4 +48,4 @@ const ProductCard15: FC<Props> = (props) => {
   );
 };
 
-export default ProductCard15;
+export default CategoryCard;

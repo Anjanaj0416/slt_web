@@ -1,17 +1,20 @@
 import { FC, useCallback } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
 import { useDropzone } from "react-dropzone";
-import { Box, Button, Divider } from "@mui/material";
+// LOCAL CUSTOM COMPONENT
 import { H5, Small } from "./Typography";
 
 // ========================================================
-type DropZoneProps = {
+interface Props {
   title?: string;
   imageSize?: string;
   onChange: (files: File[]) => void;
-};
+}
 // ========================================================
 
-const DropZone: FC<DropZoneProps> = ({
+const DropZone: FC<Props> = ({
   onChange,
   title = "Drag & drop product image here",
   imageSize = "Upload 280*280 image",
@@ -43,6 +46,7 @@ const DropZone: FC<DropZoneProps> = ({
       {...getRootProps()}
     >
       <input {...getInputProps()} />
+
       <H5 mb={1} color="grey.600">
         {title}
       </H5>

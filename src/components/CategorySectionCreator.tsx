@@ -16,7 +16,9 @@ const CategorySectionCreator: FC<Props> = (props) => {
   return (
     <Box mb={7.5} {...others}>
       <Container sx={{ pb: "1rem" }}>
-        {title && <CategorySectionHeader title={title} seeMoreLink={seeMoreLink} icon={icon} />}
+        {title ? (
+          <CategorySectionHeader title={title} seeMoreLink={seeMoreLink} icon={icon} />
+        ) : null}
 
         {children}
       </Container>

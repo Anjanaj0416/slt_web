@@ -7,11 +7,14 @@ import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import { Carousel } from "components/carousel";
-import ProductCard15 from "components/product-cards/ProductCard15";
+// LOCAL CUSTOM COMPONENT
+import CategoryCard from "./category-card";
 // GLOBAL CUSTOM HOOKS
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
+// COMMON CAROUSEL STYLES
+import { CAROUSEL_STYLE } from "./styles";
 
 // ===============================================
 type Props = { categoryList: Partial<Category>[] };
@@ -29,28 +32,30 @@ const Section4: FC<Props> = ({ categoryList }) => {
     else setVisibleSlides(3);
   }, [width]);
 
+  // const CAROUSEL_STYLE = {
+  //   "& #backArrowButton, #backForwardButton": {
+  //     width: 35,
+  //     height: 35,
+  //     borderRadius: 0,
+  //     boxShadow: theme.shadows[2],
+  //     color: theme.palette.primary.main,
+  //     background: theme.palette.primary[50],
+  //     "&:hover": { background: theme.palette.primary[100] },
+  //   },
+  // };
+
   return (
     <Box>
       <H1 my={2}>Top Categories</H1>
       <Carousel
         infinite={true}
+        sx={CAROUSEL_STYLE(theme)}
         visibleSlides={visibleSlides}
         totalSlides={categoryList.length}
-        sx={{
-          "& #backArrowButton, #backForwardButton": {
-            width: 35,
-            height: 35,
-            borderRadius: 0,
-            boxShadow: theme.shadows[2],
-            color: theme.palette.primary.main,
-            background: theme.palette.primary[50],
-            "&:hover": { background: theme.palette.primary[100] },
-          },
-        }}
       >
         {categoryList.map((item, ind) => (
           <Link href="#" key={ind}>
-            <ProductCard15 title={item.name} available={item.description} imgUrl={item.image} />
+            <CategoryCard title={item.name} available={item.description} imgUrl={item.image} />
           </Link>
         ))}
       </Carousel>

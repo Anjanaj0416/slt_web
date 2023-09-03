@@ -4,7 +4,7 @@ import Pagination from "@mui/material/Pagination";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
 import { FlexBetween } from "components/flex-box";
-import ProductCard9 from "components/product-cards/ProductCard9";
+import { ProductCard9 } from "components/product-cards/product-card-9";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 

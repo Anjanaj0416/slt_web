@@ -3,8 +3,8 @@ import { Box, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import AppStore from "components/AppStore";
 import LazyImage from "components/LazyImage";
-import { H1, H5, H6 } from "components/Typography";
 import { Carousel } from "components/carousel";
+import { H1, H5, H6 } from "components/Typography";
 // CUSTOM DATA MODEL
 import { GroceryTwoCarouselItem } from "models/Carousel.model";
 

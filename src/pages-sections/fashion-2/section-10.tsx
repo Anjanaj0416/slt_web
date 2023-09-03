@@ -3,9 +3,8 @@
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM COMPONENTS
-import { H3 } from "components/Typography";
-import ProductCard19 from "components/product-cards/ProductCard19";
+// LOCAL CUSTOM COMPONENT
+import ListBlock from "./list-block";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -32,24 +31,5 @@ const Section8: FC<Props> = (props) => {
     </Container>
   );
 };
-
-// BLOCK RENDERED LEVEL
-function ListBlock({ title, products }: { title: string; products: Product[] }) {
-  return (
-    <Grid item lg={3} sm={6} xs={12}>
-      <H3 mb={3}>{title}</H3>
-
-      {products.map((product) => (
-        <ProductCard19
-          key={product.id}
-          slug={product.slug}
-          title={product.title}
-          price={product.price}
-          image={product.thumbnail}
-        />
-      ))}
-    </Grid>
-  );
-}
 
 export default Section8;

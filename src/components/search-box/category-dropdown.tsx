@@ -1,4 +1,6 @@
-import { MenuItem, useTheme } from "@mui/material";
+import { FC } from "react";
+import MenuItem from "@mui/material/MenuItem";
+import { useTheme } from "@mui/material/styles";
 import TouchRipple from "@mui/material/ButtonBase";
 import KeyboardArrowDownOutlined from "@mui/icons-material/KeyboardArrowDownOutlined";
 // GLOBAL CUSTOM COMPONENT
@@ -7,7 +9,6 @@ import BazaarMenu from "components/BazaarMenu";
 import { DropDownHandler } from "./styled";
 // DATA
 import { categories } from "./categories";
-import { FC } from "react";
 
 // ==============================================================
 interface Props {

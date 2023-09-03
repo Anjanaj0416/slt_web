@@ -9,7 +9,7 @@ import useWindowSize from "hooks/useWindowSize";
 import { Carousel } from "components/carousel";
 import { H2, H3, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
-import ProductCard20 from "components/product-cards/ProductCard20";
+import { ProductCard10 } from "components/product-cards/product-card-10";
 import { carouselStyled } from "components/carousel/styles";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -79,7 +79,7 @@ const Section9 = () => {
         sx={{ ...carouselStyled, "& .carousel__inner-slide": { pb: 0.5 } }}
       >
         {products.map((product) => (
-          <ProductCard20 product={product} key={product.id} />
+          <ProductCard10 product={product} key={product.id} />
         ))}
       </Carousel>
     </Container>

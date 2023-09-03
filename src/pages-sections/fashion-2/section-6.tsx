@@ -8,7 +8,7 @@ import useWindowSize from "hooks/useWindowSize";
 import { H2 } from "components/Typography";
 import { Carousel } from "components/carousel";
 import { carouselStyled } from "components/carousel/styles";
-import ProductCard18 from "components/product-cards/ProductCard18";
+import { ProductCard8 } from "components/product-cards/product-card-8";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -38,7 +38,7 @@ const Section6: FC<Props> = ({ products }) => {
 
         <Carousel totalSlides={products.length} visibleSlides={visibleSlides} sx={carouselStyled}>
           {products.map((product) => (
-            <ProductCard18 key={product.id} product={product} />
+            <ProductCard8 key={product.id} product={product} />
           ))}
         </Carousel>
       </Container>

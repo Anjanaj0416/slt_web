@@ -1,9 +1,12 @@
-import { FC, ReactNode } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "@mui/icons-material";
+import { FC, ReactNode } from "react";
+import ArrowLeft from "@mui/icons-material/ArrowLeft";
+import ArrowRight from "@mui/icons-material/ArrowRight";
+// LOCAL CUSTOM COMPONENTS
 import { H2 } from "./Typography";
-import useSettings from "hooks/useSettings";
 import { FlexBetween, FlexBox } from "./flex-box";
+// GLOBAL CUSTOM HOOK
+import useSettings from "hooks/useSettings";
 
 // ===================================================
 interface Props {
@@ -21,13 +24,14 @@ const CategorySectionHeader: FC<Props> = (props) => {
   return (
     <FlexBetween mb={3}>
       <FlexBox alignItems="center" gap={1}>
-        {icon && <FlexBox alignItems="center">{icon}</FlexBox>}
+        {icon ? <FlexBox alignItems="center">{icon}</FlexBox> : null}
+
         <H2 fontWeight="bold" lineHeight="1">
           {title}
         </H2>
       </FlexBox>
 
-      {seeMoreLink && (
+      {seeMoreLink ? (
         <Link href={seeMoreLink}>
           <FlexBox alignItems="center" color="grey.600">
             View all
@@ -38,7 +42,7 @@ const CategorySectionHeader: FC<Props> = (props) => {
             )}
           </FlexBox>
         </Link>
-      )}
+      ) : null}
     </FlexBetween>
   );
 };

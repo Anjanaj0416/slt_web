@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 // GLOBAL CUSTOM COMPONENTS
 import { H1, Paragraph } from "components/Typography";
-import ProductCard17 from "components/product-cards/ProductCard17";
+import { ProductCard7 } from "components/product-cards/product-card-7";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -25,7 +25,7 @@ const Section4: FC<Props> = ({ products }) => {
       <Grid container mb={-0.5} spacing={3}>
         {products.map((item) => (
           <Grid key={item.id} item md={4} sm={6} xs={12}>
-            <ProductCard17
+            <ProductCard7
               hideRating
               id={item.id}
               slug={item.slug}

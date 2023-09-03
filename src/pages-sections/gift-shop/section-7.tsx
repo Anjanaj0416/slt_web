@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 // GLOBAL CUSTOM COMPONENTS
 import CategorySectionCreator from "components/CategorySectionCreator";
-import ProductCard16 from "components/product-cards/ProductCard16";
+import { ProductCard6 } from "components/product-cards/product-card-6";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -20,7 +20,7 @@ const Section7: FC<Props> = ({ products }) => {
       <Grid container mb={-0.5} spacing={3}>
         {products.map((item, ind) => (
           <Grid key={ind} item md={3} sm={6} xs={12}>
-            <ProductCard16
+            <ProductCard6
               id={item.id}
               key={item.id}
               slug={item.slug}

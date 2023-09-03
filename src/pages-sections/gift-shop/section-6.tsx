@@ -4,20 +4,22 @@ import { FC, useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import ProductCard16 from "components/product-cards/ProductCard16";
+import { ProductCard6 } from "components/product-cards/product-card-6";
 import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
+// COMMON CAROUSEL STYLES
+import { CAROUSEL_STYLE } from "./styles";
 
 // =========================================================
 type Props = { products: Product[] };
 // =========================================================
 
 const Section6: FC<Props> = ({ products }) => {
+  const theme = useTheme();
   const width = useWindowSize();
-  const { palette, shadows } = useTheme();
   const [visibleSlides, setVisibleSlides] = useState(4);
 
   useEffect(() => {
@@ -31,23 +33,12 @@ const Section6: FC<Props> = ({ products }) => {
     <CategorySectionCreator title="Top Sale Items" seeMoreLink="#">
       <Carousel
         infinite={true}
+        sx={CAROUSEL_STYLE(theme, true)}
         visibleSlides={visibleSlides}
         totalSlides={products.length}
-        sx={{
-          "& .carousel__slider": { paddingBottom: "15px" },
-          "& #backArrowButton, #backForwardButton": {
-            width: 35,
-            height: 35,
-            borderRadius: 0,
-            boxShadow: shadows[2],
-            color: palette.primary.main,
-            background: palette.primary[50],
-            "&:hover": { background: palette.primary[100] },
-          },
-        }}
       >
         {products.map((item) => (
-          <ProductCard16
+          <ProductCard6
             id={item.id}
             key={item.id}
             slug={item.slug}

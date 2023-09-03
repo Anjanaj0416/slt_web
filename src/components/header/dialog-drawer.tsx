@@ -3,7 +3,7 @@ import { Dialog, Drawer, useMediaQuery, Theme } from "@mui/material";
 // LOGIN FORM
 import { LoginPageView } from "pages-sections/sessions/page-view";
 // GLOBAL CUSTOM COMPONENTS
-import MiniCart from "components/MiniCart";
+import { MiniCart } from "components/mini-cart";
 // LOGIN PAGE SECTIONS
 import { Wrapper } from "pages-sections/sessions/styles";
 import LogoWithTitle from "pages-sections/sessions/logo-title";

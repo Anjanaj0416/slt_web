@@ -8,7 +8,7 @@ import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { H1, Paragraph } from "components/Typography";
-import ProductCard17 from "components/product-cards/ProductCard17";
+import { ProductCard7 } from "components/product-cards/product-card-7";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -32,6 +32,18 @@ const Section3: FC<Props> = ({ products, heading, description }) => {
     else setVisibleSlides(3);
   }, [width]);
 
+  const CAROUSEL_STYLE = {
+    "& #backArrowButton, #backForwardButton": {
+      width: 40,
+      height: 40,
+      borderRadius: 0,
+      boxShadow: theme.shadows[2],
+      color: theme.palette.primary.main,
+      background: theme.palette.primary[50],
+      "&:hover": { background: theme.palette.primary[100] },
+    },
+  };
+
   return (
     <Box>
       <Box my={2}>
@@ -43,21 +55,11 @@ const Section3: FC<Props> = ({ products, heading, description }) => {
         totalSlides={products.length}
         visibleSlides={visibleSlides}
         infinite={true}
-        sx={{
-          "& #backArrowButton, #backForwardButton": {
-            width: 40,
-            height: 40,
-            borderRadius: 0,
-            boxShadow: theme.shadows[2],
-            color: theme.palette.primary.main,
-            background: theme.palette.primary[50],
-            "&:hover": { background: theme.palette.primary[100] },
-          },
-        }}
+        sx={CAROUSEL_STYLE}
       >
         {products.map((item) => (
           <Box py={2} key={item.id}>
-            <ProductCard17
+            <ProductCard7
               hideRating
               id={item.id}
               slug={item.slug}

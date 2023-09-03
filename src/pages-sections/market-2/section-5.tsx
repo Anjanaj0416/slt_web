@@ -7,7 +7,7 @@ import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
 import useWindowSize from "hooks/useWindowSize";
 import { Carousel } from "components/carousel";
-import ProductCard20 from "components/product-cards/ProductCard20";
+import { ProductCard10 } from "components/product-cards/product-card-10";
 import { carouselStyled } from "components/carousel/styles";
 // CUSTOM DATA MODEL
 import { CategoryBasedProducts } from "models/Market-2.model";
@@ -66,7 +66,7 @@ const Section5: FC<Section5Props> = ({ data }) => {
             sx={carouselStyled}
           >
             {data.products.map((product) => (
-              <ProductCard20 product={product} key={product.id} />
+              <ProductCard10 product={product} key={product.id} />
             ))}
           </Carousel>
         </Grid>
