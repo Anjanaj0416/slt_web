@@ -32,7 +32,6 @@ const Section8 = () => {
               mx: "auto",
               height: 44,
               paddingRight: 0,
-              // overflow: "hidden",
               color: "secondary.300",
               borderRadius: "0.5rem",
               backgroundColor: "grey.300",

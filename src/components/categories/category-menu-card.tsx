@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { Box, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 import navigations from "data/navigations";
-import CategoryMenuItem from "./CategoryMenuItem";
-import MegaMenu1 from "./mega-menu/MegaMenu1";
-import MegaMenu2 from "./mega-menu/MegaMenu2";
+import CategoryMenuItem from "./category-menu-item";
+import MegaMenu1 from "./mega-menu/mega-menu-1";
+import MegaMenu2 from "./mega-menu/mega-menu-2";
 
 // styled component
 const Wrapper = styled(Box)<CategoryMenuCardProps>(({ theme, position, open }) => ({
@@ -31,7 +32,7 @@ type CategoryMenuCardProps = {
 const CategoryMenuCard: FC<CategoryMenuCardProps> = (props) => {
   const { open, position = "absolute" } = props;
 
-  const megaMenu: any = { MegaMenu1, MegaMenu2 };
+  const megaMenu = { MegaMenu1, MegaMenu2 };
 
   return (
     <Wrapper open={open} position={position}>

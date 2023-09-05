@@ -1,6 +1,9 @@
 import { FC } from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
 import format from "date-fns/format";
-import { Avatar, Box, Button, Card } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H6, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";

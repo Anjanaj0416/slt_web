@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { ProductCard6 } from "components/product-cards/product-card-6";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
@@ -30,7 +30,7 @@ const Section6: FC<Props> = ({ products }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator title="Top Sale Items" seeMoreLink="#">
+    <SectionCreator title="Top Sale Items" seeMoreLink="#">
       <Carousel
         infinite={true}
         sx={CAROUSEL_STYLE(theme, true)}
@@ -52,7 +52,7 @@ const Section6: FC<Props> = ({ products }) => {
           />
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

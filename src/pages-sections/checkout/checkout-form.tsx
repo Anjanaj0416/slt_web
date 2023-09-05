@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Grid,
+  Card,
   Button,
   Checkbox,
   TextField,
@@ -12,8 +13,6 @@ import {
 } from "@mui/material";
 import * as yup from "yup";
 import { Formik } from "formik";
-// GLOBAL CUSTOM COMPONENT
-import Card1 from "components/Card1";
 // DUMMY CUSTOM DATA
 import countryList from "data/countryList";
 
@@ -21,7 +20,7 @@ const CheckoutForm = () => {
   const router = useRouter();
   const [sameAsShipping, setSameAsShipping] = useState(false);
 
-  const handleFormSubmit = async (values) => {
+  const handleFormSubmit = async (values: typeof initialValues) => {
     router.push("/payment");
   };
 
@@ -36,13 +35,13 @@ const CheckoutForm = () => {
 
   return (
     <Formik
+      onSubmit={handleFormSubmit}
       initialValues={initialValues}
       validationSchema={checkoutSchema}
-      onSubmit={handleFormSubmit}
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
         <form onSubmit={handleSubmit}>
-          <Card1 sx={{ mb: 4 }}>
+          <Card sx={{ mb: 4, p: 3 }}>
             <Typography fontWeight="600" mb={2}>
               Shipping Address
             </Typography>
@@ -155,9 +154,9 @@ const CheckoutForm = () => {
                 />
               </Grid>
             </Grid>
-          </Card1>
+          </Card>
 
-          <Card1 sx={{ mb: 4 }}>
+          <Card sx={{ mb: 4, p: 3 }}>
             <Typography fontWeight="600" mb={2}>
               Billing Address
             </Typography>
@@ -278,7 +277,7 @@ const CheckoutForm = () => {
                 </Grid>
               </Grid>
             )}
-          </Card1>
+          </Card>
 
           <Grid container spacing={6}>
             <Grid item sm={6} xs={12}>

@@ -10,8 +10,8 @@ import Product from "models/Product.model";
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
+import { SectionCreator } from "components/section-header";
 import ProductCard1 from "components/product-cards/product-card-1";
-import CategorySectionCreator from "components/CategorySectionCreator";
 
 // =============================================================
 type Props = { flashDeals: Product[] };
@@ -29,7 +29,7 @@ const Section2: FC<Props> = ({ flashDeals }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator icon={<Light color="primary" />} title="Flash Deals" seeMoreLink="#">
+    <SectionCreator icon={<Light color="primary" />} title="Flash Deals" seeMoreLink="#">
       <Carousel totalSlides={flashDeals.length} visibleSlides={visibleSlides} infinite={true}>
         {flashDeals.map((item) => (
           <Box py={0.5} key={item.id}>
@@ -45,7 +45,7 @@ const Section2: FC<Props> = ({ flashDeals }) => {
           </Box>
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

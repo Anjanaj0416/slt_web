@@ -1,9 +1,8 @@
 "use client";
 
 import { Fragment } from "react";
+import Card from "@mui/material/Card";
 import Person from "@mui/icons-material/Person";
-// GLOBAL CUSTOM COMPONENTS
-import Card1 from "components/Card1";
 // Local CUSTOM COMPONENT
 import ProfileEditForm from "../edit-form";
 import ProfilePicUpload from "../profile-pic-upload";
@@ -26,13 +25,13 @@ const ProfileEditPageView = ({ user }: Props) => {
         buttonText="Back to Profile"
       />
 
-      <Card1>
+      <Card sx={{ p: 3 }}>
         {/* USER PROFILE PIC */}
         <ProfilePicUpload />
 
         {/* PROFILE EDITOR FORM */}
         <ProfileEditForm user={user} />
-      </Card1>
+      </Card>
     </Fragment>
   );
 };

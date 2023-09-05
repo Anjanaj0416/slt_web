@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
-import { alpha, Grid, styled } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { alpha, styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarImage from "components/BazaarImage";
 import { H3, Paragraph, Small } from "components/Typography";

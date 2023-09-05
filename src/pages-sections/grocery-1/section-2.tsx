@@ -1,5 +1,8 @@
 import { FC } from "react";
-import { Box, Container, Grid, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS

@@ -1,7 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Grid, styled, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { styled, useTheme } from "@mui/material/styles";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS

@@ -1,14 +1,16 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Container, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 // Local CUSTOM COMPONENTS
 import Card1 from "./common/card-1";
 import ProductCarousel from "./common/product-carousel";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { CarouselCard3 } from "components/carousel-cards";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
 // CUSTOM DATA MODEL
@@ -48,7 +50,7 @@ const Section1: FC<Props> = ({ topPickList, mainCarousel }) => {
         </Grid>
 
         <Grid item md={7} xs={12}>
-          <CategorySectionCreator title="Top Picks">
+          <SectionCreator title="Top Picks">
             {/* TOP PICK LIST PRODUCT */}
             <ProductCarousel products={topPickList} />
 
@@ -63,7 +65,7 @@ const Section1: FC<Props> = ({ topPickList, mainCarousel }) => {
 
             {/* BOTTOM PICK LIST PRODUCT */}
             <ProductCarousel products={topPickList} />
-          </CategorySectionCreator>
+          </SectionCreator>
         </Grid>
       </Grid>
     </Container>

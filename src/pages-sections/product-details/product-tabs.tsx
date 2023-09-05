@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Box, styled, Tab, Tabs } from "@mui/material";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import { styled } from "@mui/material/styles";
 // Local CUSTOM COMPONENTS
 import ProductReview from "./product-review";
 import ProductDescription from "./product-description";

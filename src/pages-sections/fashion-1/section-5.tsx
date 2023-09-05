@@ -10,7 +10,13 @@ import { CarouselCard2 } from "components/carousel-cards";
 import { ARROW_BUTTON_STYLE, ContentWrapper, BadgeBox } from "./style";
 
 // ========================================================
-type Props = { hotDealList: any[] };
+type Deal = {
+  imgUrl: string;
+  expireDate: string;
+  productName: string;
+};
+
+type Props = { hotDealList: Deal[] };
 // ========================================================
 
 const Section5: FC<Props> = ({ hotDealList }) => {

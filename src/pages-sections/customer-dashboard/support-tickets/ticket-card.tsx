@@ -1,6 +1,9 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Card, Chip, IconButton } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Chip from "@mui/material/Chip";
+import IconButton from "@mui/material/IconButton";
 import East from "@mui/icons-material/East";
 import format from "date-fns/format";
 // GLOBAL CUSTOM COMPONENTS

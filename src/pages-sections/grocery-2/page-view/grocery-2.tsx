@@ -4,12 +4,12 @@ import { Fragment } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 // GLOBAL CUSTOM COMPONENTS
-import Setting from "components/Setting";
+import { Setting } from "components/settings";
 import { Footer2 } from "components/footer";
 import Scrollbar from "components/Scrollbar";
-import Newsletter from "components/Newsletter";
+import { Newsletter } from "components/newsletter";
+import { SideNavContainer } from "components/side-nav";
 import { GrocerySideNav } from "components/page-sidenav";
-import SidenavContainer from "components/SidenavContainer";
 import { MobileNavigationBar2 } from "components/mobile-navigation";
 // Local CUSTOM COMPONENTS
 import Section1 from "../section-1";
@@ -45,7 +45,7 @@ const GroceryTwoPageView = (props: Props) => {
     <Fragment>
       <Box id="grocerySection" />
 
-      <SidenavContainer
+      <SideNavContainer
         navFixedComponentID="grocerySection"
         SideNav={() => <GrocerySideNav navigation={props.navigationList} />}
       >
@@ -80,7 +80,7 @@ const GroceryTwoPageView = (props: Props) => {
           {/* FOOTER AREA */}
           <Footer2 />
         </Stack>
-      </SidenavContainer>
+      </SideNavContainer>
 
       {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
       <Setting />

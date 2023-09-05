@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
-import Setting from "components/Setting";
-import Newsletter from "components/Newsletter";
+import { Setting } from "components/settings";
+import { Newsletter } from "components/newsletter";
 // LOCAL CUSTOM COMPONENTS
 import Sidebar from "../sidebar";
 import Section1 from "../section-1";

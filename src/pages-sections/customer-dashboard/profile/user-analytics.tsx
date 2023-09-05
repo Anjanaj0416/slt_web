@@ -1,5 +1,8 @@
 import { FC } from "react";
-import { Avatar, Box, Card, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H3, H5, Paragraph, Small } from "components/Typography";

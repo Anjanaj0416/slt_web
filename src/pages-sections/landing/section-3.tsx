@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import { Box, Button, Container, Grid, styled } from "@mui/material";
 import { FlexRowCenter } from "components/flex-box";
 import { H2, H4, Paragraph, Span } from "components/Typography";
-import PageCard from "./PageCard";
+import PageCard from "./page-card";
 
 const FilterButton = styled(Button)<{ selected: number }>(({ theme, selected }) => ({
   color: selected ? theme.palette.primary.main : "inherit",
@@ -128,27 +128,27 @@ const demoPageList = [
   {
     imgUrl: "/assets/images/landing/home/super-store.jpg",
     previewUrl: "/market-1",
+    page: "homepage",
     title: (
       <>
         Market <TitleBadge>(1)</TitleBadge>
       </>
     ),
-    page: "homepage",
   },
   {
     imgUrl: "/assets/images/landing/home/market-2.jpg",
     previewUrl: "/market-2",
+    page: "homepage",
+    status: "New",
     title: (
       <>
         Market <TitleBadge>(2)</TitleBadge>
       </>
     ),
-    page: "homepage",
-    status: "New",
   },
   {
     imgUrl: "/assets/images/landing/home/fashion-2.jpg",
-    previewUrl: "/fashion-shop-2",
+    previewUrl: "/fashion-2",
     title: (
       <>
         Fashion <TitleBadge>(2)</TitleBadge>
@@ -165,13 +165,13 @@ const demoPageList = [
   },
   {
     imgUrl: "/assets/images/landing/home/grocery1.jpg",
-    previewUrl: "/grocery1",
+    previewUrl: "/grocery-1",
+    page: "homepage",
     title: (
       <>
         Grocery <TitleBadge>(1)</TitleBadge>
       </>
     ),
-    page: "homepage",
   },
   {
     imgUrl: "/assets/images/landing/home/gadget-electronics.jpg",
@@ -189,63 +189,63 @@ const demoPageList = [
 
   {
     imgUrl: "/assets/images/landing/home/grocery2.jpg",
-    previewUrl: "/grocery2",
+    previewUrl: "/grocery-2",
+    page: "homepage",
     title: (
       <>
         Grocery <TitleBadge>(2)</TitleBadge>
       </>
     ),
-    page: "homepage",
   },
   {
     imgUrl: "/assets/images/landing/home/grocery3.jpg",
-    previewUrl: "/grocery3",
+    previewUrl: "/grocery-3",
+    page: "homepage",
     title: (
       <>
         Grocery <TitleBadge>(3)</TitleBadge>
       </>
     ),
-    page: "homepage",
   },
   {
     imgUrl: "/assets/images/landing/home/healthbeauty.jpg",
-    previewUrl: "/healthbeauty-shop",
+    previewUrl: "/health-beauty-shop",
     title: "Health and Beauty",
     page: "homepage",
   },
   {
     imgUrl: "/assets/images/landing/page-3.png",
-    previewUrl: "/fashion-shop-1",
+    previewUrl: "/fashion-1",
+    page: "homepage",
     title: (
       <>
         Fashion <TitleBadge>(1)</TitleBadge>
       </>
     ),
-    page: "homepage",
   },
   {
     imgUrl: "/assets/images/landing/home/fashion-3.jpg",
-    previewUrl: "/fashion-shop-3",
+    previewUrl: "/fashion-3",
+    page: "homepage",
+    status: "New",
     title: (
       <>
         Fashion <TitleBadge>(3)</TitleBadge>
       </>
     ),
-    page: "homepage",
-    status: "New",
   },
 ];
 
 const shopPageList = [
   {
     imgUrl: "/assets/images/landing/shop/sale-page-1.jpg",
-    previewUrl: "/sale-page-1",
+    previewUrl: "/sales-1",
     title: "Sale Page",
     page: "shop",
   },
   {
     imgUrl: "/assets/images/landing/shop/sale-page-2.jpg",
-    previewUrl: "/sale-page-2",
+    previewUrl: "/sales-2",
     title: "Sale Page (Small Navigation)",
     page: "shop",
   },
@@ -388,7 +388,7 @@ const vendorPageList = [
   {
     imgUrl: "/assets/images/landing/vendor/package-payment.jpg",
     previewUrl: "/admin/package-payment",
-    title: "Pacakge Payment",
+    title: "Package Payment",
     status: "New",
     page: "admin",
   },

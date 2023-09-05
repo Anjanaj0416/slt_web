@@ -2,8 +2,8 @@ import { FC } from "react";
 import Link from "next/link";
 import { Box, Container, Grid, IconButton, SxProps } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
-import AppStore from "components/AppStore";
 import { FlexBox } from "components/flex-box";
+import { AppStore } from "components/app-store";
 import BazaarImage from "components/BazaarImage";
 import { Paragraph } from "components/Typography";
 // CUSTOM ICON COMPONENTS

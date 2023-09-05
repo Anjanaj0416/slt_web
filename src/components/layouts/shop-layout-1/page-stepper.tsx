@@ -4,8 +4,8 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM COMPONENT
-import Stepper from "components/Stepper";
+// LOCAL CUSTOM COMPONENT
+import Stepper from "./stepper";
 
 const STEPPER_LIST = [
   { title: "Cart", disabled: false },

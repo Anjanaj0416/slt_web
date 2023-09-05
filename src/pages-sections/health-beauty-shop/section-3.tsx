@@ -4,7 +4,7 @@ import { styled, useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { Paragraph } from "components/Typography";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 import { ProductCard5 } from "components/product-cards/product-card-5";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
@@ -44,7 +44,7 @@ const Section3: FC<Props> = ({ products }) => {
     },
   };
   return (
-    <CategorySectionCreator title="Top New Products" seeMoreLink="#" mb={0}>
+    <SectionCreator title="Top New Products" seeMoreLink="#" mb={0}>
       <SubTitle>Best deal with medical and beauty items</SubTitle>
       <Carousel
         infinite={true}
@@ -66,7 +66,7 @@ const Section3: FC<Props> = ({ products }) => {
           </Box>
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

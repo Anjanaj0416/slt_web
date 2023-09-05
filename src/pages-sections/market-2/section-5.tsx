@@ -23,10 +23,10 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 }));
 
 // ======================================================================
-type Section5Props = { data: CategoryBasedProducts };
+type Props = { data: CategoryBasedProducts };
 // ======================================================================
 
-const Section5: FC<Section5Props> = ({ data }) => {
+const Section5: FC<Props> = ({ data }) => {
   const width = useWindowSize();
   const [visibleSlides, setVisibleSlides] = useState(4);
 

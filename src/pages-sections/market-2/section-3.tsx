@@ -53,10 +53,10 @@ const AdTitle1 = styled(H3)(({ theme }) => ({
 }));
 
 // ===========================================================
-type Section3Props = { categories: Category[] };
+type Props = { categories: Category[] };
 // ===========================================================
 
-const Section3: FC<Section3Props> = ({ categories }) => {
+const Section3: FC<Props> = ({ categories }) => {
   return (
     <Container sx={{ mt: 8 }}>
       <Grid container spacing={3}>

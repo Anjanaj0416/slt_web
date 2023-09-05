@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
-import { alpha, Box, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import { alpha, styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H3, Paragraph, Small } from "components/Typography";

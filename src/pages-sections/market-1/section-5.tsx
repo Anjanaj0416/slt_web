@@ -10,7 +10,7 @@ import NewArrival from "icons/NewArrival";
 import HoverBox from "components/HoverBox";
 import { H4 } from "components/Typography";
 import BazaarCard from "components/BazaarCard";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
@@ -22,7 +22,7 @@ type Props = { newArrivalsList: Product[] };
 
 const Section5: FC<Props> = ({ newArrivalsList }) => {
   return (
-    <CategorySectionCreator icon={<NewArrival />} title="New Arrivals" seeMoreLink="#">
+    <SectionCreator icon={<NewArrival />} title="New Arrivals" seeMoreLink="#">
       <BazaarCard sx={{ p: 2 }}>
         <Grid container spacing={3}>
           {newArrivalsList.map(({ id, title, price, thumbnail, slug }) => (
@@ -50,7 +50,7 @@ const Section5: FC<Props> = ({ newArrivalsList }) => {
           ))}
         </Grid>
       </BazaarCard>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

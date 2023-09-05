@@ -1,7 +1,9 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Call, East, Place } from "@mui/icons-material";
 import { alpha, Avatar, Box, Card, IconButton, Rating, styled } from "@mui/material";
+import Call from "@mui/icons-material/Call";
+import East from "@mui/icons-material/East";
+import Place from "@mui/icons-material/Place";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H3, Span } from "components/Typography";

@@ -1,7 +1,9 @@
 "use client";
 
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
-import { Box, Container, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { layoutConstant } from "utils/constants";
 // GLOBAL CUSTOM COMPONENTS

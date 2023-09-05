@@ -13,11 +13,11 @@ import { ProductCard7 } from "components/product-cards/product-card-7";
 import Product from "models/Product.model";
 
 // ====================================================
-type Props = {
+interface Props {
   heading: string;
   description: string;
   products: Product[];
-};
+}
 // ====================================================
 
 const Section3: FC<Props> = ({ products, heading, description }) => {

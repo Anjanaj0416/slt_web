@@ -1,15 +1,16 @@
 import { FC } from "react";
-import { Card, CardProps, styled } from "@mui/material";
+import Card, { CardProps } from "@mui/material/Card";
+import { styled } from "@mui/material/styles";
 
 // ===============================================
-interface BazaarCardProps extends CardProps {
+interface Props extends CardProps {
   hoverEffect?: boolean;
 }
 // ===============================================
 
-const BazaarCard = styled<FC<BazaarCardProps>>(({ hoverEffect = false, children, ...rest }) => (
+const BazaarCard = styled<FC<Props>>(({ hoverEffect = false, children, ...rest }) => (
   <Card {...rest}>{children}</Card>
-))<BazaarCardProps>(({ theme, hoverEffect }) => ({
+))<Props>(({ theme, hoverEffect }) => ({
   overflow: "unset",
   borderRadius: "8px",
   transition: "all 250ms ease-in-out",

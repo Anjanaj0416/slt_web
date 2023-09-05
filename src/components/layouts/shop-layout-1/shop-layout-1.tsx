@@ -3,7 +3,7 @@
 import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import Sticky from "components/Sticky";
-import Topbar from "components/Topbar";
+import { Topbar } from "components/topbar";
 import { Navbar } from "components/navbar";
 import { Footer1 } from "components/footer";
 import Header from "components/header/header";

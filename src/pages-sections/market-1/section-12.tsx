@@ -14,7 +14,7 @@ import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
 import { Carousel } from "components/carousel";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 // CUSTOM UTILS LIBRARY FUNCTIONS
@@ -36,7 +36,7 @@ const Section12: FC<Props> = ({ bigDiscountList }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator icon={<GiftBox />} title="Big Discounts" seeMoreLink="#">
+    <SectionCreator icon={<GiftBox />} title="Big Discounts" seeMoreLink="#">
       <Box my="-0.25rem">
         <Carousel totalSlides={9} visibleSlides={visibleSlides}>
           {bigDiscountList.map(({ id, title, thumbnail, price, discount, slug }) => (
@@ -61,7 +61,7 @@ const Section12: FC<Props> = ({ bigDiscountList }) => {
           ))}
         </Carousel>
       </Box>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

@@ -1,9 +1,11 @@
 import { FC } from "react";
-import { Box, Grid, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
-import AppStore from "components/AppStore";
 import LazyImage from "components/LazyImage";
 import { Carousel } from "components/carousel";
+import { AppStore } from "components/app-store";
 import { H1, H5, H6 } from "components/Typography";
 // CUSTOM DATA MODEL
 import { GroceryTwoCarouselItem } from "models/Carousel.model";

@@ -3,7 +3,7 @@
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import CategorySectionHeader from "components/CategorySectionHeader";
+import { SectionHeader } from "components/section-header";
 // Local CUSTOM COMPONENT
 import BlogCard from "./blog-card";
 // CUSTOM DATA MODEL
@@ -16,7 +16,7 @@ type Props = { blogs: Blog[] };
 const Section7 = ({ blogs }: Props) => {
   return (
     <Container sx={{ mb: 8 }}>
-      <CategorySectionHeader title="Get Ideas from our Blog" />
+      <SectionHeader title="Get Ideas from our Blog" />
 
       <Grid container spacing={3}>
         {blogs.map((blog, index) => (

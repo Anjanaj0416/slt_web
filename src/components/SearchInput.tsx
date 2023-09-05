@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { Search } from "@mui/icons-material";
-import { InputBase, InputBaseProps, styled } from "@mui/material";
+import Search from "@mui/icons-material/Search";
+import InputBase, { InputBaseProps } from "@mui/material/InputBase";
+import { styled } from "@mui/material/styles";
 
 // styled component
 const StyledInputBase = styled(InputBase)(({ theme }) => ({

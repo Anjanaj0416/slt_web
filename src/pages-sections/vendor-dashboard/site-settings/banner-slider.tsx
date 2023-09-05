@@ -1,7 +1,10 @@
 import NextImage from "next/image";
 import { FormEvent, useState } from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 import Clear from "@mui/icons-material/Clear";
-import { Box, Button, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import DropZone from "components/DropZone";
 import { FlexBox } from "components/flex-box";

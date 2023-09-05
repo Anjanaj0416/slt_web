@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Bazaar Address Page View",
 };
 
-export default async function Address({ params }) {
+export default async function Address({ params }: { params: { id: string } }) {
   try {
     const address = await api.getAddress(params.id);
     return <AddressDetailsPageView address={address} />;

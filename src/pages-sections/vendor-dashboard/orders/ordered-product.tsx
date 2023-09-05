@@ -1,6 +1,9 @@
 import { FC } from "react";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
 import Delete from "@mui/icons-material/Delete";
-import { Box, Avatar, TextField, IconButton } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H6, Paragraph } from "components/Typography";

@@ -1,5 +1,5 @@
+import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
-import Card1 from "components/Card1";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBetween } from "components/flex-box";
 import { Paragraph } from "components/Typography";
@@ -8,42 +8,30 @@ import { currency } from "lib";
 
 const PaymentSummary = () => {
   return (
-    <Card1>
-      <FlexBetween mb={1}>
-        <Paragraph color="grey.600">Subtotal:</Paragraph>
-        <Paragraph fontSize={18} fontWeight={600} lineHeight={1}>
-          {currency(2610)}
-        </Paragraph>
-      </FlexBetween>
+    <Card sx={{ padding: { sm: 3, xs: 2 } }}>
+      <PaymentItem title="Subtotal:" amount={2610} />
+      <PaymentItem title="Shipping:" />
+      <PaymentItem title="Tax:" amount={40} />
+      <PaymentItem title="Discount:" amount={40} />
 
-      <FlexBetween mb={1}>
-        <Paragraph color="grey.600">Shipping:</Paragraph>
-        <Paragraph fontSize={18} fontWeight={600} lineHeight={1}>
-          -
-        </Paragraph>
-      </FlexBetween>
-
-      <FlexBetween mb={1}>
-        <Paragraph color="grey.600">Tax:</Paragraph>
-        <Paragraph fontSize={18} fontWeight={600} lineHeight={1}>
-          {currency(40)}
-        </Paragraph>
-      </FlexBetween>
-
-      <FlexBetween mb={2}>
-        <Paragraph color="grey.600">Discount:</Paragraph>
-        <Paragraph fontSize={18} fontWeight={600} lineHeight={1}>
-          -
-        </Paragraph>
-      </FlexBetween>
-
-      <Divider sx={{ mb: 2 }} />
+      <Divider sx={{ my: 2 }} />
 
       <Paragraph fontSize={25} fontWeight={600} lineHeight={1} textAlign="right">
         {currency(2650)}
       </Paragraph>
-    </Card1>
+    </Card>
   );
 };
+
+function PaymentItem({ title, amount }: { title: string; amount?: number }) {
+  return (
+    <FlexBetween mb={1}>
+      <Paragraph color="grey.600">{title}</Paragraph>
+      <Paragraph fontSize={18} fontWeight={600} lineHeight={1}>
+        {amount ? currency(amount) : "-"}
+      </Paragraph>
+    </FlexBetween>
+  );
+}
 
 export default PaymentSummary;

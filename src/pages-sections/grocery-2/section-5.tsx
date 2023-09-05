@@ -1,5 +1,7 @@
 import { FC } from "react";
-import { Avatar, Grid, styled } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
+import { styled } from "@mui/material/styles";
 // CUSTOM ICON COMPONENT
 import Quote from "icons/Quote";
 // Local CUSTOM COMPONENTS

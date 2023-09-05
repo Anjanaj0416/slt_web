@@ -43,10 +43,10 @@ const ServiceItem = styled(FlexRowCenter)(({ theme }) => ({
 }));
 
 // ===========================================================
-type Section2Props = { serviceList: Service[] };
+type Props = { serviceList: Service[] };
 // ===========================================================
 
-const Section2: FC<Section2Props> = ({ serviceList }) => {
+const Section2: FC<Props> = ({ serviceList }) => {
   return (
     <Container sx={{ mt: "2rem" }}>
       <StyledFlexBox>

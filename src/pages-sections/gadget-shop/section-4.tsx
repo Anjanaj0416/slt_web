@@ -4,8 +4,8 @@ import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
+import { SectionCreator } from "components/section-header";
 import { ProductCard2 } from "components/product-cards/product-card-2";
-import CategorySectionCreator from "components/CategorySectionCreator";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
@@ -32,7 +32,7 @@ const Section4: FC<Props> = ({ mostViewedList }) => {
   };
 
   return (
-    <CategorySectionCreator title="Most Viewed">
+    <SectionCreator title="Most Viewed">
       <Box mt={-0.5} mb={-0.5}>
         <Carousel
           infinite={true}
@@ -55,7 +55,7 @@ const Section4: FC<Props> = ({ mostViewedList }) => {
           ))}
         </Carousel>
       </Box>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

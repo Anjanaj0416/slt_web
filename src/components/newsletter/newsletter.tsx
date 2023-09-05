@@ -14,10 +14,11 @@ import {
   FormControlLabel,
   ClickAwayListener,
 } from "@mui/material";
-import { H1, Paragraph, Span } from "./Typography";
-import { FlexRowCenter } from "./flex-box";
-import Facebook from "icons/Facebook";
-import { Twitter, Instagram, Google, Clear } from "@mui/icons-material";
+import Clear from "@mui/icons-material/Clear";
+// GLOBAL CUSTOM COMPONENTS
+import { H1, Paragraph, Span } from "../Typography";
+// LOCAL CUSTOM COMPONENT
+import SocialIcons from "./social-icons";
 
 // styled components
 const Wrapper = styled(Box)<{ img: string }>(({ theme, img }) => ({
@@ -68,6 +69,7 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
         <Wrapper img={image}>
           <Grid container spacing={2}>
             <Grid item lg={6} md={6} display={{ md: "flex", xs: "none" }} />
+
             <Grid item lg={6} md={6} xs={12} alignItems="center">
               <Box textAlign="center" p={3}>
                 <Paragraph fontSize={22} fontWeight={700}>
@@ -97,23 +99,7 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
                   SUBMIT
                 </Button>
 
-                <FlexRowCenter mt={4} mb={2}>
-                  <IconButton>
-                    <Facebook sx={{ fontSize: 20, color: "grey.900" }} />
-                  </IconButton>
-
-                  <IconButton>
-                    <Twitter sx={{ fontSize: 20, color: "grey.900" }} />
-                  </IconButton>
-
-                  <IconButton>
-                    <Instagram sx={{ fontSize: 20, color: "grey.900" }} />
-                  </IconButton>
-
-                  <IconButton>
-                    <Google sx={{ fontSize: 20, color: "grey.900" }} />
-                  </IconButton>
-                </FlexRowCenter>
+                <SocialIcons />
 
                 <FormControlLabel control={<Checkbox defaultChecked />} label="No, Thanks" />
               </Box>

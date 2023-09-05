@@ -4,7 +4,7 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Category from "icons/Category";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
-import CategoryMenu from "components/categories/CategoryMenu";
+import CategoryMenu from "components/categories/category-menu";
 
 const CategoriesMenu = () => {
   return (

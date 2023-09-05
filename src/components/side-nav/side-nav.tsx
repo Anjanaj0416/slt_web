@@ -1,37 +1,36 @@
 import { cloneElement, FC, useEffect, useState, ReactNode } from "react";
+import Drawer from "@mui/material/Drawer";
 import clsx from "clsx";
-import { Box, Drawer, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENT
 import Scrollbar from "components/Scrollbar";
-
-// styled component
-const Wrapper = styled(Box)({ "& .handle": { cursor: "pointer" } });
+// STYLED COMPONENT
+import { Wrapper } from "./styles";
 
 // ================================================================
-type SidenavProps = {
+interface Props {
   open?: boolean;
   width?: number;
   children: ReactNode;
   handle: React.ReactElement;
   toggleSidenav?: () => void;
   position?: "left" | "right";
-};
+}
 // ================================================================
 
-const Sidenav: FC<SidenavProps> = (props) => {
+const SideNav: FC<Props> = (props) => {
   const { position = "left", open = false, width = 280, handle, children, toggleSidenav } = props;
 
-  const [sidenavOpen, setSidenavOpen] = useState(open);
-  const handleToggleSidenav = () => setSidenavOpen(!sidenavOpen);
+  const [sideNavOpen, setSideNavOpen] = useState(open);
+  const handleToggleSideNav = () => setSideNavOpen(!sideNavOpen);
 
-  useEffect(() => setSidenavOpen(open), [open]);
+  useEffect(() => setSideNavOpen(open), [open]);
 
   return (
     <Wrapper>
       <Drawer
         anchor={position}
-        open={sidenavOpen}
-        onClose={toggleSidenav || handleToggleSidenav}
+        open={sideNavOpen}
+        onClose={toggleSidenav || handleToggleSideNav}
         SlideProps={{ style: { width } }}
         sx={{ zIndex: 15001 }}
       >
@@ -40,11 +39,11 @@ const Sidenav: FC<SidenavProps> = (props) => {
 
       {handle &&
         cloneElement(handle, {
-          onClick: toggleSidenav || handleToggleSidenav,
+          onClick: toggleSidenav || handleToggleSideNav,
           className: clsx(handle.props?.className, "handle"),
         })}
     </Wrapper>
   );
 };
 
-export default Sidenav;
+export default SideNav;

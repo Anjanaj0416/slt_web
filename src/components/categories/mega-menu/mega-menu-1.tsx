@@ -62,16 +62,16 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
             </Grid>
           </Box>
 
-          {rightImage && (
+          {rightImage ? (
             <Box mt={1.5}>
               <Link href={rightImage.href}>
                 <LazyImage src={rightImage.imgUrl} width={137} height={318} alt="banner" />
               </Link>
             </Box>
-          )}
+          ) : null}
         </FlexBox>
 
-        {bottomImage && (
+        {bottomImage ? (
           <Link href={bottomImage.href}>
             <Box position="relative" height={150} width="100%">
               <LazyImage
@@ -82,7 +82,7 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
               />
             </Box>
           </Link>
-        )}
+        ) : null}
       </Card>
     </StyledMegaMenu>
   ) : null;

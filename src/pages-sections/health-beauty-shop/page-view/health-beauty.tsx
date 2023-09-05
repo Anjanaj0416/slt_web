@@ -4,10 +4,10 @@ import { Fragment } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 // GLOBAL CUSTOM COMPONENTS
-import Setting from "components/Setting";
+import { Setting } from "components/settings";
 import { Footer3 } from "components/footer";
-import Newsletter from "components/Newsletter";
-import SidenavContainer from "components/SidenavContainer";
+import { Newsletter } from "components/newsletter";
+import { SideNavContainer } from "components/side-nav";
 import { HealthBeautySideNav } from "components/page-sidenav";
 import { MobileNavigationBar2 } from "components/mobile-navigation";
 
@@ -41,7 +41,7 @@ const HealthBeautyPageView = (props: Props) => {
         <Section1 carouselData={props.mainCarouselData} />
       </Box>
 
-      <SidenavContainer
+      <SideNavContainer
         navFixedComponentID="healthBeautySection1"
         SideNav={() => <HealthBeautySideNav navigation={props.navigationList} />}
       >
@@ -61,7 +61,7 @@ const HealthBeautyPageView = (props: Props) => {
           {/* FOOTER AREA */}
           <Footer3 id="footer" sx={{ borderRadius: "8px", backgroundColor: "primary.800" }} />
         </Stack>
-      </SidenavContainer>
+      </SideNavContainer>
 
       {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
       <Setting />

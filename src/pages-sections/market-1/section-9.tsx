@@ -11,7 +11,7 @@ import CategoryIcon from "icons/Category";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
 import { Paragraph } from "components/Typography";
-import CategorySectionHeader from "components/CategorySectionHeader";
+import { SectionHeader } from "components/section-header";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
 
@@ -33,11 +33,7 @@ type Props = { categories: Category[] };
 const Section9: FC<Props> = ({ categories }) => {
   return (
     <Container sx={{ mb: "70px" }}>
-      <CategorySectionHeader
-        seeMoreLink="#"
-        title="Categories"
-        icon={<CategoryIcon color="primary" />}
-      />
+      <SectionHeader seeMoreLink="#" title="Categories" icon={<CategoryIcon color="primary" />} />
 
       <Grid container spacing={3}>
         {categories.map((item, ind) => (

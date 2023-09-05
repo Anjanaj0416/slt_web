@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import Image from "next/image";
-import { Box, Button, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
 // CUSTOM COMPONENTS
 import { Span } from "components/Typography";
 

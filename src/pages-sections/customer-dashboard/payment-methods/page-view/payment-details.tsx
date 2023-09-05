@@ -1,9 +1,8 @@
 "use client";
 
 import { Fragment } from "react";
+import Card from "@mui/material/Card";
 import CreditCard from "@mui/icons-material/CreditCard";
-// GLOBAL CUSTOM COMPONENTS
-import Card1 from "components/Card1";
 // Local CUSTOM COMPONENT
 import PaymentForm from "../payment-form";
 import DashboardHeader from "../../dashboard-header";
@@ -20,9 +19,9 @@ const PaymentDetailsPageView = () => {
       />
 
       {/* PAYMENT DETAILS EDIT FORM */}
-      <Card1>
+      <Card sx={{ padding: 3 }}>
         <PaymentForm />
-      </Card1>
+      </Card>
     </Fragment>
   );
 };

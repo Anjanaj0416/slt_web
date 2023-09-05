@@ -4,11 +4,11 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
 // GLOBAL CUSTOM COMPONENTS
-import Setting from "components/Setting";
+import { Setting } from "components/settings";
 import { Footer2 } from "components/footer";
-import Newsletter from "components/Newsletter";
+import { Newsletter } from "components/newsletter";
 import { SideNavbar } from "components/page-sidenav";
-import SidenavContainer from "components/SidenavContainer";
+import { SideNavContainer } from "components/side-nav";
 import { MobileNavigationBar2 } from "components/mobile-navigation";
 // Local CUSTOM COMPONENTS
 import Section1 from "../section-1";
@@ -60,7 +60,7 @@ const GroceryOnePageView = (props: Props) => {
       <Section2 id="grocery1Services" services={props.serviceList} />
 
       {/* SIDEBAR WITH OTHER CONTENTS */}
-      <SidenavContainer navFixedComponentID="grocery1Services" SideNav={SideNav}>
+      <SideNavContainer navFixedComponentID="grocery1Services" SideNav={SideNav}>
         <Stack spacing={6} mt={2}>
           {selectedCategory ? (
             // FILTERED PRODUCT LIST
@@ -84,7 +84,7 @@ const GroceryOnePageView = (props: Props) => {
           {/* FOOTER AREA */}
           <Footer2 />
         </Stack>
-      </SidenavContainer>
+      </SideNavContainer>
 
       {/* POPUP NEWSLETTER FORM */}
       <Newsletter image="/assets/images/newsletter/bg-2.png" />

@@ -2,7 +2,7 @@ import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "components/Typography";
-import CategoryMenu from "components/categories/CategoryMenu";
+import CategoryMenu from "components/categories/category-menu";
 // CUSTOM ICON COMPONENT
 import Category from "icons/Category";
 // GLOBAL CUSTOM HOOK

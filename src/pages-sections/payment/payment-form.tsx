@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { ChangeEvent, Fragment, useState } from "react";
-import { Button, Divider, TextField, Stack } from "@mui/material";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
 // GLOBAL CUSTOM COMPONENTS
-import Card1 from "components/Card1";
 import { FlexBox } from "components/flex-box";
 // Local CUSTOM COMPONENTS
 import FormLabel from "./form-label";
@@ -17,7 +20,7 @@ const PaymentForm = () => {
 
   return (
     <Fragment>
-      <Card1 sx={{ mb: 4 }}>
+      <Card sx={{ padding: { sm: 3, xs: 2 }, mb: 4 }}>
         {/* CREDIT CARD OPTION */}
         <FormLabel
           name="credit-card"
@@ -56,7 +59,7 @@ const PaymentForm = () => {
           handleChange={handlePaymentMethodChange}
           checked={paymentMethod === "cod"}
         />
-      </Card1>
+      </Card>
 
       {/* BUTTONS SECTION */}
       <Stack direction="row" spacing={3}>

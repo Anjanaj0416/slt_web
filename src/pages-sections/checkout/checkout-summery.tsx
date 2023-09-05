@@ -1,13 +1,12 @@
-import { Button, Divider, Stack, TextField, Typography } from "@mui/material";
+import { Button, Card, Divider, Stack, TextField, Typography } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
-import Card1 from "components/Card1";
 import { FlexBetween } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 
 const CheckoutSummary = () => {
   return (
-    <Card1>
+    <Card sx={{ p: 3 }}>
       <SummeryItem title="Subtotal:" amount={2610} />
       <SummeryItem title="Shipping:" amount={0} />
       <SummeryItem title="Tax:" amount={40} />
@@ -25,7 +24,7 @@ const CheckoutSummary = () => {
           Apply Voucher
         </Button>
       </Stack>
-    </Card1>
+    </Card>
   );
 };
 

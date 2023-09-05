@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 import { ProductCard6 } from "components/product-cards/product-card-6";
 // GLOBAL CUSTOM HOOKS
 import useWindowSize from "hooks/useWindowSize";
@@ -30,7 +30,7 @@ const Section5: FC<Props> = ({ products }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator title="Popular Items" seeMoreLink="#">
+    <SectionCreator title="Popular Items" seeMoreLink="#">
       <Carousel
         infinite={true}
         visibleSlides={visibleSlides}
@@ -51,7 +51,7 @@ const Section5: FC<Props> = ({ products }) => {
           />
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

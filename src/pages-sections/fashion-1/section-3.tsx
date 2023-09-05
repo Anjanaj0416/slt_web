@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { ProductCard2 } from "components/product-cards/product-card-2";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // COMMON STYLES
@@ -28,7 +28,7 @@ const Section3: FC<Props> = ({ newArrivals }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator title="New Arrivals" seeMoreLink="#">
+    <SectionCreator title="New Arrivals" seeMoreLink="#">
       <Carousel
         infinite={true}
         visibleSlides={visibleSlides}
@@ -50,7 +50,7 @@ const Section3: FC<Props> = ({ newArrivals }) => {
           />
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

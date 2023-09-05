@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button, Card, Grid, styled } from "@mui/material";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
-import { H1, Paragraph } from "components/Typography";
 import LazyImage from "components/LazyImage";
+import { H1, Paragraph } from "components/Typography";
 
 // STYLED COMPONENT
 const Container = styled(Card)(({ theme }) => ({

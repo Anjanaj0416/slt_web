@@ -9,7 +9,7 @@ import CategoryIcon from "icons/Category";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
 import { Carousel } from "components/carousel";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // LOCAL CUSTOM COMPONENT
 import TopCategoriesCard from "./shared/top-categories-card";
 // CUSTOM DATA MODEL
@@ -30,11 +30,7 @@ const Section3: FC<Props> = ({ categoryList }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator
-      seeMoreLink="#"
-      title="Top Categories"
-      icon={<CategoryIcon color="primary" />}
-    >
+    <SectionCreator seeMoreLink="#" title="Top Categories" icon={<CategoryIcon color="primary" />}>
       <Carousel totalSlides={5} visibleSlides={visibleSlides}>
         {categoryList.map((item) => (
           <Link href={`/products/search/${item.slug}`} key={item.id}>
@@ -48,7 +44,7 @@ const Section3: FC<Props> = ({ categoryList }) => {
           </Link>
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

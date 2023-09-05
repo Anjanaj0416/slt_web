@@ -2,7 +2,7 @@ import { SxProps, Menu } from "@mui/material";
 import { Children, cloneElement, FC, Fragment, ReactElement, useState } from "react";
 
 // ===============================================================
-type BazaarMenuProps = {
+type Props = {
   sx?: SxProps;
   open?: boolean;
   className?: string;
@@ -14,7 +14,7 @@ type BazaarMenuProps = {
 };
 // ===============================================================
 
-const BazaarMenu: FC<BazaarMenuProps> = ({
+const BazaarMenu: FC<Props> = ({
   open,
   handler,
   children,

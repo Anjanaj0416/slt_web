@@ -1,5 +1,5 @@
+import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { PropsWithChildren, ReactNode } from "react";
 import { Open_Sans } from "next/font/google";
 
 export const openSans = Open_Sans({ subsets: ["latin"] });
@@ -14,6 +14,7 @@ import "simplebar-react/dist/simplebar.min.css";
 // IMPORT DUMMY SERVER
 import "__server__";
 import CartProvider from "contexts/CartContext";
+import { ProgressBar } from "components/progress";
 
 export const metadata: Metadata = {
   title: "Bazaar - Next.js E-commerce Template",
@@ -28,7 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" suppressHydrationWarning>
       <body className={openSans.className}>
         <CartProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <ProgressBar />
+            {children}
+          </ThemeProvider>
         </CartProvider>
       </body>
     </html>

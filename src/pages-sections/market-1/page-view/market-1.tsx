@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 // GLOBAL COMPONENTS
-import Setting from "components/Setting";
-import Newsletter from "components/Newsletter";
+import { Setting } from "components/settings";
+import { Newsletter } from "components/newsletter";
 // LOCAL CUSTOM COMPONENTS
 import Section1 from "../section-1";
 import Section2 from "../section-2";

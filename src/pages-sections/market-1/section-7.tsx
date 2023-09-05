@@ -10,8 +10,8 @@ import ProductCategoryItem from "./shared/product-category-item";
 import { H3 } from "components/Typography";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
+import { SectionHeader } from "components/section-header";
 import ProductCard1 from "components/product-cards/product-card-1";
-import CategorySectionHeader from "components/CategorySectionHeader";
 // CUSTOM DATA MODELS
 import Brand from "models/Brand.model";
 import Product from "models/Product.model";
@@ -105,7 +105,7 @@ const Section7: FC<Props> = (props) => {
         </BazaarCard>
 
         <Box flex="1 1 0" minWidth="0px">
-          <CategorySectionHeader title={title} seeMoreLink="#" />
+          <SectionHeader title={title} seeMoreLink="#" />
 
           <Grid container spacing={3}>
             {productList.map((item) => (

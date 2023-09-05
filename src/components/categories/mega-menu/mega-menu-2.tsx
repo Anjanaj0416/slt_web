@@ -1,9 +1,9 @@
 import { FC } from "react";
-import MegaMenu3 from "./MegaMenu3";
+import MegaMenu3 from "./mega-menu-3";
 import StyledMegaMenu from "./StyledMegaMenu";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
-import CategoryMenuItem from "../CategoryMenuItem";
+import CategoryMenuItem from "../category-menu-item";
 
 // =======================================================================
 type Data = { icon: string; href: string; title: string; menuData?: any };

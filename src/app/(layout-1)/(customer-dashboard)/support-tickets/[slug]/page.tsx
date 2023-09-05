@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Bazaar Order Details View",
 };
 
-export default async function SupportTicketDetails({ params }) {
+export default async function SupportTicketDetails({ params }: { params: { slug: string } }) {
   try {
     const ticket = await api.getTicket(String(params.slug));
     return <TicketDetailsPageView ticket={ticket} />;

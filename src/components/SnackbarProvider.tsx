@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from "react";
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { SnackbarProvider as NotistackProvider } from "notistack";
 
 // styled component

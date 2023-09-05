@@ -23,7 +23,6 @@ import * as yup from "yup";
 import NewAddressForm from "./new-address-form";
 import EditAddressForm from "./edit-address-form";
 // GLOBAL CUSTOM COMPONENTS
-import Card1 from "components/Card1";
 import LazyImage from "components/LazyImage";
 import { H6, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
@@ -54,7 +53,7 @@ const Heading: FC<HeadingProps> = ({ number, title }) => {
   );
 };
 
-const CheckoutForm2: FC = () => {
+const CheckoutForm2 = () => {
   const router = useRouter();
   const [hasVoucher, setHasVoucher] = useState(false);
   const [newAddress, setNewAddress] = useState<any>("");
@@ -128,7 +127,7 @@ const CheckoutForm2: FC = () => {
     >
       {({ values, errors, touched, handleChange, handleSubmit, setFieldValue }) => (
         <form onSubmit={handleSubmit}>
-          <Card1 sx={{ mb: 3 }}>
+          <Card sx={{ p: 3, mb: 3 }}>
             <Heading number={1} title="Delivery Date and Time" />
 
             <Box mb={3.5}>
@@ -173,9 +172,9 @@ const CheckoutForm2: FC = () => {
                 </Grid>
               </Grid>
             </Box>
-          </Card1>
+          </Card>
 
-          <Card1 sx={{ mb: 3 }}>
+          <Card sx={{ p: 3, mb: 3 }}>
             <FlexBetween>
               <Heading number={2} title="Delivery Address" />
 
@@ -236,9 +235,9 @@ const CheckoutForm2: FC = () => {
                 </Grid>
               ))}
             </Grid>
-          </Card1>
+          </Card>
 
-          <Card1 sx={{ mb: 3 }}>
+          <Card sx={{ p: 3, mb: 3 }}>
             <Heading number={3} title="Payment Details" />
 
             <Box mb={3.5}>
@@ -377,7 +376,7 @@ const CheckoutForm2: FC = () => {
             <Button fullWidth type="submit" color="primary" variant="contained" sx={{ mt: 3 }}>
               Place Order
             </Button>
-          </Card1>
+          </Card>
         </form>
       )}
     </Formik>

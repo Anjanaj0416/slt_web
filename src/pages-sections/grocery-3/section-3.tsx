@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import { Box, styled, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import { styled, useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import { Carousel } from "components/carousel";

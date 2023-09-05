@@ -15,10 +15,10 @@ import { carouselStyled } from "components/carousel/styles";
 import Product from "models/Product.model";
 
 // ======================================================================
-type Section4Props = { products: Product[] };
+type Props = { products: Product[] };
 // ======================================================================
 
-const Section4: FC<Section4Props> = ({ products }) => {
+const Section4: FC<Props> = ({ products }) => {
   const width = useWindowSize();
   const [visibleSlides, setVisibleSlides] = useState(4);
 

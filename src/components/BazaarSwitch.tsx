@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { styled, Switch, SwitchProps } from "@mui/material";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import { styled } from "@mui/material/styles";
 
-// styled component
+// STYLED COMPONENT
 const StyledSwitch = styled(Switch)(({ theme }) => ({
   padding: 8,
   "& .MuiSwitch-switchBase.MuiButtonBase-root": {
@@ -33,5 +34,4 @@ const StyledSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const BazaarSwitch: FC<SwitchProps> = (props) => <StyledSwitch {...props} />;
-
 export default BazaarSwitch;

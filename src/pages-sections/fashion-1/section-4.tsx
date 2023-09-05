@@ -11,12 +11,18 @@ import ArrowForward from "@mui/icons-material/ArrowForward";
 import DealWeekCard from "./shared/deal-week-card";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
 
 // ==========================================================
-type Props = { dealOfTheWeek: any[] };
+interface Props {
+  dealOfTheWeek: {
+    off: number;
+    brand: string;
+    imgUrl: string;
+  }[];
+}
 // ==========================================================
 
 const Section4: FC<Props> = ({ dealOfTheWeek }) => {
@@ -41,7 +47,7 @@ const Section4: FC<Props> = ({ dealOfTheWeek }) => {
   });
 
   return (
-    <CategorySectionCreator title="Deal Of The Week">
+    <SectionCreator title="Deal Of The Week">
       <Box position="relative">
         <Box position="absolute" top={-55} right={0}>
           {/* CAROUSEL PREV ARROW BUTTON */}
@@ -94,7 +100,7 @@ const Section4: FC<Props> = ({ dealOfTheWeek }) => {
           </Box>
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Box, BoxProps, styled } from "@mui/material";
+import Box, { BoxProps } from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 import clsx from "clsx";
 
 // ==============================================================
@@ -10,7 +11,11 @@ interface Props extends BoxProps {
 // ==============================================================
 
 const StyledBox = styled(Box)<Ellipsis>(({ ellipsis }) => ({
-  ...(ellipsis && { overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }),
+  ...(ellipsis && {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+  }),
 }));
 
 export const H1: FC<Props> = (props) => {

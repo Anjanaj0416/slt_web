@@ -13,7 +13,7 @@ const BazaarTextField: FC<Props> = ({ label, InputProps, ...props }) => {
   const textFieldProps: TextFieldProps = {};
 
   for (const key in props) {
-    if (spacePropList.includes(key)) boxProps[key] = props[key];
+    if (SPACE_PROPS_LIST.includes(key)) boxProps[key] = props[key];
     else textFieldProps[key] = props[key];
   }
 
@@ -35,7 +35,7 @@ const BazaarTextField: FC<Props> = ({ label, InputProps, ...props }) => {
   );
 };
 
-const spacePropList = [
+const SPACE_PROPS_LIST = [
   "m",
   "mt",
   "mr",

@@ -1,4 +1,7 @@
-import { Box, Button, styled, TextField } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import { SearchOutlinedIcon } from "components/search-box/styled";

@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 // GLOBAL CUSTOM COMPONENTS
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 import { ProductCard6 } from "components/product-cards/product-card-6";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -16,7 +16,7 @@ type Props = { products: Product[] };
 
 const Section7: FC<Props> = ({ products }) => {
   return (
-    <CategorySectionCreator title="All Products" seeMoreLink="#">
+    <SectionCreator title="All Products" seeMoreLink="#">
       <Grid container mb={-0.5} spacing={3}>
         {products.map((item, ind) => (
           <Grid key={ind} item md={3} sm={6} xs={12}>
@@ -40,7 +40,7 @@ const Section7: FC<Props> = ({ products }) => {
           Load More...
         </Button>
       </Box>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

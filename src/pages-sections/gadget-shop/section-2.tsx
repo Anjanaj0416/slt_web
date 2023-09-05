@@ -4,7 +4,7 @@ import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENT
-import CategorySectionHeader from "components/CategorySectionHeader";
+import { SectionHeader } from "components/section-header";
 // Local CUSTOM COMPONENT
 import Card2 from "./common/card-2";
 // CUSTOM DATA MODEL
@@ -20,7 +20,7 @@ const Section2: FC<Props> = ({ featuredCategories }) => {
 
   return (
     <Container sx={{ mb: 8 }}>
-      <CategorySectionHeader title="Featured Categories" />
+      <SectionHeader title="Featured Categories" />
       <Grid container spacing={3}>
         <Grid item md={6} xs={12}>
           <Card2

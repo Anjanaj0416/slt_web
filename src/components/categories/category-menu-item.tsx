@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { FC, ReactNode } from "react";
-import { Box, MenuItem, styled } from "@mui/material";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import MenuItem from "@mui/material/MenuItem";
+import { styled } from "@mui/material/styles";
+import ChevronLeft from "@mui/icons-material/ChevronLeft";
+import ChevronRight from "@mui/icons-material/ChevronRight";
 import useSettings from "hooks/useSettings";
 
-//styled component
+// STYLED COMPONENT
 const Wrapper = styled(Box)(({ theme }) => ({
   "& .category-dropdown-link": {
     height: 40,
@@ -27,16 +30,16 @@ const Wrapper = styled(Box)(({ theme }) => ({
 }));
 
 // =============================================================
-type CategoryMenuItemProps = {
+interface Props {
   icon?: any;
   href: string;
   title: string;
   caret?: boolean;
   children?: ReactNode;
-};
+}
 // =============================================================
 
-const CategoryMenuItem: FC<CategoryMenuItemProps> = (props) => {
+const CategoryMenuItem: FC<Props> = (props) => {
   const { href, title, caret = true, children, ...rest } = props;
 
   const { settings } = useSettings();
@@ -47,6 +50,7 @@ const CategoryMenuItem: FC<CategoryMenuItemProps> = (props) => {
         <MenuItem className="category-dropdown-link">
           {rest.icon && <rest.icon fontSize="small" color="inherit" />}
           <span className="title">{title}</span>
+
           {caret &&
             (settings.direction === "ltr" ? (
               <ChevronRight fontSize="small" />

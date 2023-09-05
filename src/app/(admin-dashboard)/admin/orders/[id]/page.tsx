@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Bazaar Order Details View",
 };
 
-export default async function OrderDetails({ params }) {
+export default async function OrderDetails({ params }: { params: { id: string } }) {
   try {
     const order = await api.getOrder(String(params.id));
     return <OrderDetailsPageView order={order} />;

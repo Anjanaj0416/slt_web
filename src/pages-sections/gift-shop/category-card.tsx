@@ -19,12 +19,12 @@ const ImgBox = styled(Box)(({ theme }) => ({
 }));
 
 // ===================================================
-type Props = {
+interface Props {
   sx?: SxProps;
   title: string;
   imgUrl: string;
   available: string;
-};
+}
 // ===================================================
 
 const CategoryCard: FC<Props> = ({ sx, imgUrl, title, available }) => {

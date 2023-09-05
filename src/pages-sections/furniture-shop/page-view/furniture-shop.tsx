@@ -2,8 +2,8 @@ import { Fragment } from "react";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import Setting from "components/Setting";
-import Newsletter from "components/Newsletter";
+import { Setting } from "components/settings";
+import { Newsletter } from "components/newsletter";
 // LOCAL CUSTOM COMPONENTS
 import Sidebar from "../sidebar";
 import Section1 from "../section-1";

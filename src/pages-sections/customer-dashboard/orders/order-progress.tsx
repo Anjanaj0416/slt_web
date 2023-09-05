@@ -1,6 +1,9 @@
 import { Fragment } from "react";
 import Done from "@mui/icons-material/Done";
-import { Avatar, Box, Card, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Avatar from "@mui/material/Avatar";
+import { styled } from "@mui/material/styles";
 // CUSTOM ICON COMPONENTS
 import Delivery from "icons/Delivery";
 import PackageBox from "icons/PackageBox";

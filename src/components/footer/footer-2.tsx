@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Box, Grid, IconButton } from "@mui/material";
 // LOCAL CUSTOM COMPONENTS
-import AppStore from "components/AppStore";
 import { FlexBox } from "components/flex-box";
+import { AppStore } from "components/app-store";
 import BazaarImage from "components/BazaarImage";
 import { Paragraph } from "components/Typography";
 // CUSTOM ICON COMPONENTS

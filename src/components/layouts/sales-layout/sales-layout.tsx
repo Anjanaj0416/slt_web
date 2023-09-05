@@ -3,7 +3,7 @@
 import { FC, Fragment, ReactNode } from "react";
 import Divider from "@mui/material/Divider";
 // CUSTOM GLOBAL COMPONENTS
-import Topbar from "components/Topbar";
+import { Topbar } from "components/topbar";
 import { Header } from "components/header";
 import { Navbar } from "components/navbar";
 import { Footer1 } from "components/footer";

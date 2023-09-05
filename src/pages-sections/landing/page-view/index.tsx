@@ -3,13 +3,13 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 // CUSTOM COMPONENTS
 import Footer from "../Footer";
-import Section1 from "../Section1";
-import Section2 from "../Section2";
-import Section3 from "../Section3";
-import Section4 from "../Section4";
-import Section6 from "../Section6";
-import Section5 from "../Section5";
-import Setting from "components/Setting";
+import Section1 from "../section-1";
+import Section2 from "../section-2";
+import Section3 from "../section-3";
+import Section4 from "../section-4";
+import Section5 from "../section-5";
+import Section6 from "../section-6";
+import { Setting } from "components/settings";
 
 const IndexPageView = () => {
   const [filterDemo, setFilterDemo] = useState("");

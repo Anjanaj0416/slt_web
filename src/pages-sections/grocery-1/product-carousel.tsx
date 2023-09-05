@@ -6,8 +6,8 @@ import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { Paragraph } from "components/Typography";
+import { SectionCreator } from "components/section-header";
 import { ProductCard4 } from "components/product-cards/product-card-4";
-import CategorySectionCreator from "components/CategorySectionCreator";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -47,7 +47,7 @@ const ProductCarousel: FC<Props> = ({ products, title }) => {
   };
 
   return (
-    <CategorySectionCreator title={title} seeMoreLink="#" mb={0}>
+    <SectionCreator title={title} seeMoreLink="#" mb={0}>
       <SubTitle>Best collection in 2021 for you!</SubTitle>
 
       <Carousel
@@ -70,7 +70,7 @@ const ProductCarousel: FC<Props> = ({ products, title }) => {
           </Box>
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

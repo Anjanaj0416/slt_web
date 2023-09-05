@@ -1,5 +1,7 @@
 import { FC, SyntheticEvent } from "react";
-import { FormControlLabel, Radio } from "@mui/material";
+import Radio from "@mui/material/Radio";
+import FormControlLabel from "@mui/material/FormControlLabel";
+// GLOBAL CUSTOM COMPONENT
 import { Paragraph } from "components/Typography";
 
 // ==============================================================

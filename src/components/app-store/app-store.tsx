@@ -1,21 +1,13 @@
 import Box from "@mui/material/Box";
-import { FlexBox } from "./flex-box";
+// GLOBAL CUSTOM COMPONENT
+import { FlexBox } from "../flex-box";
+// CUSTOM ICON COMPONENTS
 import PlayStore from "icons/PlayStore";
 import AppleStore from "icons/AppleStore";
 
 const DATA = [
-  {
-    url: "/",
-    icon: PlayStore,
-    title: "Google Play",
-    subtitle: "Get it on",
-  },
-  {
-    url: "/",
-    icon: AppleStore,
-    title: "App Store",
-    subtitle: "Download on the",
-  },
+  { url: "/", icon: PlayStore, title: "Google Play", subtitle: "Get it on" },
+  { url: "/", icon: AppleStore, title: "App Store", subtitle: "Download on the" },
 ];
 
 const AppStore = () => {

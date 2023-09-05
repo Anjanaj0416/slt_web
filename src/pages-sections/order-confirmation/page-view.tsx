@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Button, Container, styled } from "@mui/material";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
 import { H1, Paragraph } from "components/Typography";

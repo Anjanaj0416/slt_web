@@ -1,8 +1,10 @@
 import { FC } from "react";
 import Link from "next/link";
-import format from "date-fns/format";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import IconButton from "@mui/material/IconButton";
 import East from "@mui/icons-material/East";
-import { Box, Chip, IconButton } from "@mui/material";
+import format from "date-fns/format";
 // GLOBAL CUSTOM COMPONENT
 import { H5, Paragraph } from "components/Typography";
 // Local CUSTOM COMPONENT
@@ -13,10 +15,10 @@ import { currency } from "lib";
 import Order from "models/Order.model";
 
 // =================================================
-type OrderRowProps = { order: Order };
+type Props = { order: Order };
 // =================================================
 
-const OrderRow: FC<OrderRowProps> = ({ order }) => {
+const OrderRow: FC<Props> = ({ order }) => {
   const getColor = (status: string) => {
     switch (status) {
       case "Pending":

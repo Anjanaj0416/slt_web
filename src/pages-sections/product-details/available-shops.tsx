@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Avatar, Box, Card, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
 // GLOBAL CUSTOM COMPONENTS
 import { H3, H4 } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";

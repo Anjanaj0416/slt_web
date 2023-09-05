@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   description: "Bazaar Payment Details Page View",
 };
 
-export default async function PaymentMethodDetails({ params }) {
-  console.log(params);
+export default async function PaymentMethodDetails() {
   return <PaymentDetailsPageView />;
 }

@@ -1,7 +1,7 @@
 import { FC } from "react";
-import format from "date-fns/format";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
+import format from "date-fns/format";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { H5, Span } from "components/Typography";

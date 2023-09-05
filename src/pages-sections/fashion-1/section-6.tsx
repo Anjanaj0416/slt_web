@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 // LOCAL CUSTOM COMPONENT
 import LongProductCard from "./shared/long-product-card";
 // GLOBAL CUSTOM COMPONENTS
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 import { ProductCard2 } from "components/product-cards/product-card-2";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -22,7 +22,7 @@ const Section6: FC<Props> = ({ products }) => {
   const TRENDING_ITEMS = products.slice(1, products.length);
 
   return (
-    <CategorySectionCreator title="Trending Items">
+    <SectionCreator title="Trending Items">
       <Grid container spacing={4}>
         <Grid item md={3} xs={12}>
           <LongProductCard
@@ -51,7 +51,7 @@ const Section6: FC<Props> = ({ products }) => {
           ))}
         </Grid>
       </Grid>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

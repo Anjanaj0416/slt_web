@@ -6,7 +6,6 @@ import CameraEnhance from "@mui/icons-material/CameraEnhance";
 import FlexBox from "components/flex-box/flex-box";
 
 const ProfilePicUpload = () => {
-  CameraEnhance;
   return (
     <FlexBox alignItems="flex-end" mb={3}>
       <Avatar src="/assets/images/faces/ralph.png" sx={{ height: 64, width: 64 }} />

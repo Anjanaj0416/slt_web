@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button, Card, TextField } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 // GLOBAL CUSTOM COMPONENTS
 import { H3, H4, H5 } from "components/Typography";
 // Local CUSTOM COMPONENT

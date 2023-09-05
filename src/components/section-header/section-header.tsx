@@ -3,8 +3,8 @@ import { FC, ReactNode } from "react";
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import ArrowRight from "@mui/icons-material/ArrowRight";
 // LOCAL CUSTOM COMPONENTS
-import { H2 } from "./Typography";
-import { FlexBetween, FlexBox } from "./flex-box";
+import { H2 } from "../Typography";
+import { FlexBetween, FlexBox } from "../flex-box";
 // GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
 
@@ -16,7 +16,7 @@ interface Props {
 }
 // ===================================================
 
-const CategorySectionHeader: FC<Props> = (props) => {
+const SectionHeader: FC<Props> = (props) => {
   const { title, seeMoreLink, icon } = props;
 
   const { settings } = useSettings();
@@ -47,4 +47,4 @@ const CategorySectionHeader: FC<Props> = (props) => {
   );
 };
 
-export default CategorySectionHeader;
+export default SectionHeader;

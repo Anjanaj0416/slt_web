@@ -1,7 +1,7 @@
+import { FC, cloneElement, useCallback, useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import { FC, cloneElement, useCallback, useEffect, useRef, useState } from "react";
-import CategoryMenuCard from "./CategoryMenuCard";
+import CategoryMenuCard from "./category-menu-card";
 
 // styled component
 const Wrapper = styled(Box)<{ open: boolean }>(({ open, theme: { direction } }) => ({
@@ -14,13 +14,13 @@ const Wrapper = styled(Box)<{ open: boolean }>(({ open, theme: { direction } }) 
 }));
 
 // ===========================================================
-type CategoryMenuProps = {
+type Props = {
   open?: boolean;
   children: React.ReactElement;
 };
 // ===========================================================
 
-const CategoryMenu: FC<CategoryMenuProps> = ({ open: isOpen = false, children }) => {
+const CategoryMenu: FC<Props> = ({ open: isOpen = false, children }) => {
   const [open, setOpen] = useState(isOpen);
   const popoverRef = useRef(open);
   popoverRef.current = open;

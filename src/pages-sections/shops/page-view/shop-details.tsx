@@ -3,7 +3,7 @@
 import { Container, Grid, IconButton, useMediaQuery, Theme } from "@mui/material";
 import FilterList from "@mui/icons-material/FilterList";
 // GLOBAL CUSTOM COMPONENTS
-import Sidenav from "components/Sidenav";
+import { SideNav } from "components/side-nav";
 import ProductsGridView from "components/products-view/products-grid-view";
 // Local CUSTOM COMPONENTS
 import ShopIntroCard from "../shop-intro-card";
@@ -44,9 +44,9 @@ const ShopDetailsPageView = ({ shop }: Props) => {
         <Grid item md={9} xs={12}>
           {/* SMALL DEVICE SIDEBAR AREA */}
           {isDownMd && (
-            <Sidenav position="left" handle={ICON_BUTTON}>
+            <SideNav position="left" handle={ICON_BUTTON}>
               <ProductFilterCard />
-            </Sidenav>
+            </SideNav>
           )}
 
           {/* PRODUCT LIST AREA */}

@@ -16,7 +16,7 @@ import {
 // Local CUSTOM COMPONENT
 import ProductFilterCard from "../product-filter-card";
 // GLOBAL CUSTOM COMPONENTS
-import Sidenav from "components/Sidenav";
+import Sidenav from "components/side-nav/side-nav";
 import { FlexBox } from "components/flex-box";
 import { H5, Paragraph } from "components/Typography";
 import ProductsGridView from "components/products-view/products-grid-view";

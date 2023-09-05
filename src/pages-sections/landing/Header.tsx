@@ -16,8 +16,8 @@ import {
 import Menu from "@mui/icons-material/Menu";
 import clsx from "clsx";
 // CUSTOM COMPONENT
-import Sidenav from "components/Sidenav";
 import Image from "components/BazaarImage";
+import { SideNav } from "components/side-nav";
 import { FlexBox } from "components/flex-box";
 
 const headerHeight = 72;
@@ -116,7 +116,7 @@ const Header = () => {
 
               {/* mobile menu */}
               {downSM && (
-                <Sidenav
+                <SideNav
                   open={open}
                   width={260}
                   position="right"
@@ -170,7 +170,7 @@ const Header = () => {
                       Purchase Now
                     </Button>
                   </Box>
-                </Sidenav>
+                </SideNav>
               )}
             </FlexBox>
           </Container>

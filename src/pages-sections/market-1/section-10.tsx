@@ -4,8 +4,8 @@ import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
+import { SectionHeader } from "components/section-header";
 import ProductCard1 from "components/product-cards/product-card-1";
-import CategorySectionHeader from "components/CategorySectionHeader";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -16,7 +16,7 @@ type Props = { moreItems: Product[] };
 const Section10: FC<Props> = ({ moreItems }) => {
   return (
     <Container sx={{ mb: "70px" }}>
-      <CategorySectionHeader title="More For You" seeMoreLink="#" />
+      <SectionHeader title="More For You" seeMoreLink="#" />
 
       <Grid container spacing={3}>
         {moreItems.map((item) => (

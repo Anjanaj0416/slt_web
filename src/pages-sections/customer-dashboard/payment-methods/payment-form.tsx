@@ -19,7 +19,7 @@ const PaymentForm = () => {
     cvc: yup.string().required("required"),
   });
 
-  const handleFormSubmit = async (values: any) => {
+  const handleFormSubmit = async (values: typeof INITIAL_VALUES) => {
     console.log(values);
   };
 

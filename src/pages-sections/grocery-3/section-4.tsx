@@ -1,5 +1,8 @@
 import { FC } from "react";
-import { Box, Button, Grid, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import { ProductCard3 } from "components/product-cards/product-card-3";

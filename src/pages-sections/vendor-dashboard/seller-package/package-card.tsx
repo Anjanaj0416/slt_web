@@ -1,5 +1,8 @@
 import { FC } from "react";
-import { Box, Button, Card, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM HOOK
 import Verify from "icons/Verify";
 // GLOBAL CUSTOM COMPONENTS
@@ -7,6 +10,8 @@ import FlexBox from "components/flex-box/flex-box";
 import { H1, H3, H5 } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+// CUSTOM DATA MODEL
+import { PackageItem } from "./types";
 
 // STYLED COMPONENTS
 const Wrapper = styled(Card)({
@@ -28,7 +33,7 @@ const PackageHeading = styled(H1)(({ theme }) => ({
 }));
 
 // ===================================================
-type Props = { listItem: any };
+type Props = { listItem: PackageItem };
 // ===================================================
 
 const SellerPackageCard: FC<Props> = ({ listItem }) => {

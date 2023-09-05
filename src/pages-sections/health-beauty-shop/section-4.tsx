@@ -6,7 +6,7 @@ import { styled } from "@mui/material/styles";
 import { Paragraph } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";
 import { ProductCard5 } from "components/product-cards/product-card-5";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -24,7 +24,7 @@ type Props = { products: Product[] };
 
 const Section4: FC<Props> = ({ products }) => {
   return (
-    <CategorySectionCreator title="All Products" seeMoreLink="#" mb={0}>
+    <SectionCreator title="All Products" seeMoreLink="#" mb={0}>
       <SubTitle>Best deal with medical and beauty items</SubTitle>
       <Grid container mb={-0.5} spacing={3}>
         {products.map((item) => (
@@ -47,7 +47,7 @@ const Section4: FC<Props> = ({ products }) => {
           Load More...
         </Button>
       </FlexRowCenter>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

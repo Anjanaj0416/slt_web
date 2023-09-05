@@ -1,11 +1,12 @@
 "use client";
 
 import { FC } from "react";
-import { Button, Grid, TextField } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Formik } from "formik";
 import * as yup from "yup";
-
 // CUSTOM DATA MODEL
 import User from "models/User.model";
 

@@ -3,8 +3,8 @@ import Link from "next/link";
 import { SvgIconComponent, Menu } from "@mui/icons-material";
 import { Box, Button, Theme, styled, useMediaQuery } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
-import Sidenav from "components/Sidenav";
 import { H2 } from "components/Typography";
+import { SideNav } from "components/side-nav";
 import FlexBox from "components/flex-box/flex-box";
 import { Navigation } from "components/layouts/customer-dashboard";
 
@@ -71,9 +71,9 @@ const DashboardHeader: FC<Props> = ({ title, buttonText, href, Icon }) => {
         </FlexBox>
 
         <Box className="sidenav">
-          <Sidenav position="left" handle={<Menu fontSize="small" />}>
+          <SideNav position="left" handle={<Menu fontSize="small" />}>
             <Navigation />
-          </Sidenav>
+          </SideNav>
         </Box>
 
         {!isTablet && buttonText ? HEADER_LINK : null}

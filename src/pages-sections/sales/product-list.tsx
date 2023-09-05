@@ -1,5 +1,7 @@
 import Grid from "@mui/material/Grid";
+// GLOBAL CUSTOM COMPONENT
 import ProductCard1 from "components/product-cards/product-card-1";
+// CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
 // ==============================================================

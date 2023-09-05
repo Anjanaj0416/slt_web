@@ -1,8 +1,10 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Delete, Edit } from "@mui/icons-material";
-import { Card, IconButton } from "@mui/material";
+import Card from "@mui/material/Card";
+import IconButton from "@mui/material/IconButton";
+import Edit from "@mui/icons-material/Edit";
+import Delete from "@mui/icons-material/Delete";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { H5, Paragraph } from "components/Typography";

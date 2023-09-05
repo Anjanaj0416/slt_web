@@ -13,7 +13,7 @@ import FeaturedProductCard from "./shared/featured-product-card";
 import TopRatingProductCard from "./shared/top-rating-product-card";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
-import CategorySectionHeader from "components/CategorySectionHeader";
+import { SectionHeader } from "components/section-header";
 // CUSTOM DATA MODELS
 import Brand from "models/Brand.model";
 import Product from "models/Product.model";
@@ -29,7 +29,7 @@ const Section4: FC<Props> = ({ topRatedBrands, topRatedList }) => {
         <Grid container spacing={4}>
           {/* TOP RATINGS AREA */}
           <Grid item lg={6} xs={12}>
-            <CategorySectionHeader icon={<RankBadge />} title="Top Ratings" seeMoreLink="#" />
+            <SectionHeader icon={<RankBadge />} title="Top Ratings" seeMoreLink="#" />
 
             <BazaarCard sx={{ p: 2 }}>
               <Grid container spacing={4}>
@@ -52,7 +52,7 @@ const Section4: FC<Props> = ({ topRatedBrands, topRatedList }) => {
 
           {/* FEATURED BRANDS AREA */}
           <Grid item lg={6} xs={12}>
-            <CategorySectionHeader icon={<DottedStar />} title="Featured Brands" seeMoreLink="#" />
+            <SectionHeader icon={<DottedStar />} title="Featured Brands" seeMoreLink="#" />
 
             <BazaarCard sx={{ p: 2 }}>
               <Grid container spacing={3}>

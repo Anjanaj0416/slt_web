@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Box, Container, Grid, IconButton, styled } from "@mui/material";
 // LOCAL CUSTOM COMPONENTS
-import AppStore from "components/AppStore";
 import Image from "components/BazaarImage";
 import { FlexBox } from "components/flex-box";
+import { AppStore } from "components/app-store";
 import { Paragraph } from "components/Typography";
 // CUSTOM ICON COMPONENT
 import Google from "icons/Google";

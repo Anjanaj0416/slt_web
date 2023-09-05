@@ -4,11 +4,7 @@ import { Span } from "components/Typography";
 import { NavLink } from "components/nav-link";
 
 // ==============================================================
-interface Props {
-  href: string;
-  title: string;
-  ml: number;
-}
+type Props = { href: string; title: string; ml: number };
 // ==============================================================
 
 const LinkItem: FC<Props> = ({ href, title, ml = 4 }) => (

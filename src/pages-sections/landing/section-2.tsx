@@ -74,8 +74,8 @@ const Section2 = () => {
             <Grid item lg={3} md={4} sm={6} xs={12} key={item.title}>
               <StyledCard elevation={3}>
                 <BazaarImage
-                  src={`/assets/images/icons/${item.icon}.svg`}
                   alt={item.title}
+                  src={`/assets/images/icons/${item.icon}.svg`}
                   sx={{ mb: "1.5rem", height: 64 }}
                 />
                 <H4 fontSize="18px" fontWeight="700" maxWidth="200px" textAlign="center" mx="auto">

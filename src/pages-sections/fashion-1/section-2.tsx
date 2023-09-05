@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { ProductCard2 } from "components/product-cards/product-card-2";
-import CategorySectionCreator from "components/CategorySectionCreator";
+import { SectionCreator } from "components/section-header";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM ICON COMPONENT
@@ -30,7 +30,7 @@ const Section2: FC<Props> = ({ flashDeals }) => {
   }, [width]);
 
   return (
-    <CategorySectionCreator icon={<Light color="primary" />} title="Flash Deals">
+    <SectionCreator icon={<Light color="primary" />} title="Flash Deals">
       <Carousel
         infinite={true}
         visibleSlides={visibleSlides}
@@ -50,7 +50,7 @@ const Section2: FC<Props> = ({ flashDeals }) => {
           />
         ))}
       </Carousel>
-    </CategorySectionCreator>
+    </SectionCreator>
   );
 };
 

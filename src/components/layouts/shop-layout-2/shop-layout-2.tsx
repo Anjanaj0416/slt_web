@@ -5,7 +5,7 @@ import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import Sticky from "components/Sticky";
-import Topbar from "components/Topbar";
+import { Topbar } from "components/topbar";
 import { Header } from "components/header";
 import { Navbar } from "components/navbar";
 import { SearchInput } from "components/search-box";

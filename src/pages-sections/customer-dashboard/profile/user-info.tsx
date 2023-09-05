@@ -1,8 +1,7 @@
 import { FC } from "react";
 import format from "date-fns/format";
-import { Theme, useMediaQuery } from "@mui/material";
+import { Theme, useMediaQuery, Card } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
-import TableRow from "components/TableRow";
 import FlexBox from "components/flex-box/flex-box";
 import { Small, Span } from "components/Typography";
 // CUSTOM DATA MODEL
@@ -13,14 +12,17 @@ type Props = { user: User };
 // ==============================================================
 
 const UserInfo: FC<Props> = ({ user }) => {
-  const downMd = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+  const downMd = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
 
   return (
-    <TableRow
+    <Card
       sx={{
         mt: 3,
-        cursor: "auto",
+        display: "flex",
+        flexWrap: "wrap",
         p: "0.75rem 1.5rem",
+        alignItems: "center",
+        justifyContent: "space-between",
         ...(downMd && {
           alignItems: "start",
           flexDirection: "column",
@@ -33,7 +35,7 @@ const UserInfo: FC<Props> = ({ user }) => {
       <TableRowItem title="Email" value={user.email} />
       <TableRowItem title="Phone" value={user.phone} />
       <TableRowItem title="Birth date" value={format(new Date(user.dateOfBirth), "dd MMM, yyyy")} />
-    </TableRow>
+    </Card>
   );
 };
 
