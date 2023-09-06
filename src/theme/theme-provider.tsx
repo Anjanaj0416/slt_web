@@ -32,14 +32,14 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   theme.shadows[4] = "0px 0px 28px rgba(3, 0, 71, 0.01)";
 
   return (
-    <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           {children}
         </MuiThemeProvider>
-      </LocalizationProvider>
-    </NextAppDirEmotionCacheProvider>
+      </NextAppDirEmotionCacheProvider>
+    </LocalizationProvider>
   );
 };
 

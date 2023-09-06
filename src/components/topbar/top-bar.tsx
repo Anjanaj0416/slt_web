@@ -1,9 +1,9 @@
-import { FC, useState } from "react";
 import Link from "next/link";
-import { useRouter, useParams, usePathname } from "next/navigation";
+import { FC, useState } from "react";
 import { Chip, IconButton, MenuItem } from "@mui/material";
 import { Add, ExpandMore, Facebook, Instagram, Remove, Twitter } from "@mui/icons-material";
 import TouchRipple from "@mui/material/ButtonBase";
+import { useTranslation } from "react-i18next";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
 import BazaarMenu from "components/BazaarMenu";
@@ -11,25 +11,31 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
 import { StyledContainer, TopbarWrapper } from "./styles";
 
+// ==============================================================
+interface LanguageOption {
+  [key: string]: { title: string; value: string };
+}
+// ==============================================================
+
+// LANGUAGE OPTIONS
+const languageOptions: LanguageOption = {
+  en: { title: "EN", value: "en" },
+  es: { title: "DE", value: "de" },
+};
+
 // ===========================================
-type TopbarProps = { bgColor?: string };
+type Props = { bgColor?: string };
 // ===========================================
 
-const Topbar: FC<TopbarProps> = ({ bgColor }) => {
-  const router = useRouter();
-
-  const pathname = usePathname();
-  const params = useParams();
-
-  // const { asPath, query } = router;
-
+const Topbar: FC<Props> = ({ bgColor }) => {
+  const { i18n, t } = useTranslation();
   const [expand, setExpand] = useState<boolean>(false);
-  // const [language, setLanguage] = useState(router.locale);
 
-  const handleLanguageClick = (lang: string) => () => {
-    // setLanguage(lang);
-    // router.push({ pathname, query }, asPath, { locale: lang });
+  const handleChangeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
   };
+
+  const selectedLanguage = languageOptions[i18n.language];
 
   return (
     <TopbarWrapper bgColor={bgColor} expand={expand ? 1 : 0}>
@@ -37,7 +43,7 @@ const Topbar: FC<TopbarProps> = ({ bgColor }) => {
         <FlexBetween width="100%">
           <FlexBox alignItems="center" gap={1}>
             <Chip
-              label="HOT"
+              label={t("HOT")}
               size="small"
               sx={{
                 color: "white",
@@ -46,7 +52,7 @@ const Topbar: FC<TopbarProps> = ({ bgColor }) => {
                 "& .MuiChip-label": { pl: ".8rem", pr: ".8rem" },
               }}
             />
-            <Span className="title">Free Express Shipping</Span>
+            <Span className="title">{t("Free Express Shipping")}</Span>
           </FlexBox>
 
           <IconButton disableRipple className="expand" onClick={() => setExpand((state) => !state)}>
@@ -59,18 +65,18 @@ const Topbar: FC<TopbarProps> = ({ bgColor }) => {
           <BazaarMenu
             handler={
               <TouchRipple className="handler marginRight">
-                <Span className="menuTitle">EN</Span>
+                <Span className="menuTitle">{selectedLanguage.title}</Span>
                 <ExpandMore fontSize="inherit" />
               </TouchRipple>
             }
           >
-            {languageList.map((item) => (
+            {Object.keys(languageOptions).map((language: string) => (
               <MenuItem
-                key={item.title}
                 className="menuItem"
-                onClick={handleLanguageClick(item.value)}
+                key={languageOptions[language].title}
+                onClick={() => handleChangeLanguage(language)}
               >
-                <Span className="menuTitle">{item.title}</Span>
+                <Span className="menuTitle">{languageOptions[language].title}</Span>
               </MenuItem>
             ))}
           </BazaarMenu>
@@ -93,11 +99,6 @@ const socialLinks = [
   { id: 1, Icon: Twitter, url: "#" },
   { id: 2, Icon: Facebook, url: "#" },
   { id: 3, Icon: Instagram, url: "#" },
-];
-
-const languageList = [
-  { title: "EN", value: "en" },
-  { title: "DE", value: "de" },
 ];
 
 export default Topbar;

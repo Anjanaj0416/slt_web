@@ -8,7 +8,7 @@ export type SettingsOptions = { direction: Direction };
 // ============================================================
 
 // SET "rtl" OR "ltr" HERE
-// THEN GOTO BROWSER CONSOLE AND RUN localStorage.clear() TO CLEAR LOCALSTORAGE
+// THEN GOTO BROWSER CONSOLE AND RUN localStorage.clear() TO CLEAR LOCAL STORAGE
 const initialSettings: SettingsOptions = { direction: "ltr" };
 
 export const SettingsContext = createContext({
@@ -26,7 +26,6 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (!window) return;
-
     const getItem = window.localStorage.getItem("settings");
     if (getItem) setSettings(JSON.parse(getItem));
     else setSettings(initialSettings);
