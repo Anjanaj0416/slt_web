@@ -12,35 +12,21 @@ import { MobileNavigationBar } from "components/mobile-navigation";
 
 /**
  *  USED IN:
- *  1. market-1, market-2, gadget-shop, fashion-shop, fashion-shop-2, fashion-shop-3, furniture-shop, grocery3, gift-shop
+ *  1. market-1, market-2, gadget-shop, fashion-shop, fashion-2, fashion-3, furniture-shop, grocery-3, gift-shop
  *  2. product details page
  *  3. order-confirmation page
  *  4. product-search page
  *  5. shops and shops-details page
- *  6. checkoutNavLayout and CustomerDashboardLayout component
  */
 
-// ===================================================
-interface Props extends PropsWithChildren {
-  showTopbar?: boolean;
-  showNavbar?: boolean;
-  topbarBgColor?: string;
-}
-// ===================================================
-
-const ShopLayout1: FC<Props> = ({
-  children,
-  topbarBgColor,
-  showTopbar = true,
-  showNavbar = true,
-}) => {
+const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
   const [isFixed, setIsFixed] = useState(false);
   const toggleIsFixed = useCallback((fixed: boolean) => setIsFixed(fixed), []);
 
   return (
     <Fragment>
-      {/* TOPBAR */}
-      {showTopbar && <Topbar bgColor={topbarBgColor} />}
+      {/* TOP BAR SECTION */}
+      <Topbar />
 
       {/* HEADER */}
       <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={300}>
@@ -49,7 +35,7 @@ const ShopLayout1: FC<Props> = ({
 
       <div className="section-after-sticky">
         {/* NAVIGATION BAR */}
-        {showNavbar && <Navbar elevation={0} border={1} />}
+        <Navbar elevation={0} border={1} />
 
         {/* BODY CONTENT */}
         {children}

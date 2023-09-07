@@ -24,12 +24,16 @@ const ShopLayout2: FC<PropsWithChildren> = ({ children }) => {
   // FOR HANDLE TOP BAR AREA
   let TOP_BAR_CONTENT = null;
   const SHOW_TOP_BAR = ["/grocery-2", "/health-beauty-shop", "/checkout-alternative"];
-  if (SHOW_TOP_BAR.includes(pathname)) TOP_BAR_CONTENT = <Topbar />;
+  if (SHOW_TOP_BAR.includes(pathname)) {
+    TOP_BAR_CONTENT = <Topbar />;
+  }
 
   // FOR HANDLE NAV BAR AREA
   let NAV_BAR_CONTENT = null;
   const SHOW_NAV_BAR = ["/health-beauty-shop", "/checkout-alternative"];
-  if (SHOW_NAV_BAR.includes(pathname)) NAV_BAR_CONTENT = <Navbar elevation={0} />;
+  if (SHOW_NAV_BAR.includes(pathname)) {
+    NAV_BAR_CONTENT = <Navbar elevation={0} />;
+  }
 
   return (
     <Fragment>

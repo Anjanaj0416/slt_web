@@ -12,10 +12,14 @@ import { LayoutProvider } from "./dashboard-layout-context";
 const VendorDashboardLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <LayoutProvider>
+      {/* DASHBOARD SIDEBAR NAVIGATION */}
       <DashboardSidebar />
 
       <BodyWrapper>
+        {/* DASHBOARD HEADER / TOP BAR AREA */}
         <DashboardNavbar />
+
+        {/* MAIN CONTENT AREA */}
         <Container maxWidth="lg">{children}</Container>
       </BodyWrapper>
     </LayoutProvider>

@@ -7,15 +7,24 @@ import { Topbar } from "components/topbar";
 import { Header } from "components/header";
 import { Navbar } from "components/navbar";
 import { Footer1 } from "components/footer";
-import { MobileNavigationBar } from "components/mobile-navigation";
 import { SearchInputWithCategory } from "components/search-box";
+import { MobileNavigationBar } from "components/mobile-navigation";
 
 /** USED: SALES-1 & SALES-2 PAGES */
 
 // =============================================================
 
-type NoOne = { type?: "one"; categoryNav?: never; children: ReactNode };
-type NoTwo = { type?: "two"; children: ReactNode; categoryNav: ReactNode };
+type NoOne = {
+  type?: "one";
+  categoryNav?: never;
+  children: ReactNode;
+};
+
+type NoTwo = {
+  type?: "two";
+  children: ReactNode;
+  categoryNav: ReactNode;
+};
 
 type SaleLayoutProps = NoOne | NoTwo;
 // =============================================================
@@ -23,11 +32,11 @@ type SaleLayoutProps = NoOne | NoTwo;
 const SalesLayout: FC<SaleLayoutProps> = (props) => {
   const { children, type = "one", categoryNav } = props;
 
-  let content = null;
+  let CONTENT = null;
 
   // FOR SALES 1 PAGE
   if (type == "one") {
-    content = (
+    CONTENT = (
       <Fragment>
         <Navbar />
         {children}
@@ -37,7 +46,7 @@ const SalesLayout: FC<SaleLayoutProps> = (props) => {
 
   // FOR SALES 2 PAGE
   if (type == "two") {
-    content = (
+    CONTENT = (
       <Fragment>
         <Divider />
         {categoryNav}
@@ -55,7 +64,7 @@ const SalesLayout: FC<SaleLayoutProps> = (props) => {
       <Header searchInput={<SearchInputWithCategory />} />
 
       {/* RENDER MAIN CONTENT AREA */}
-      {content}
+      {CONTENT}
 
       {/* FOOTER AREA */}
       <Footer1 />
