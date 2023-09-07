@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { GroceryTwoPageView } from "pages-sections/grocery-2/page-view";
 // API FUNCTIONS
-import api from "utils/__api__/grocery2-shop";
+import api from "utils/__api__/grocery-2";
 
 export const metadata: Metadata = {
   title: "Grocery 2 - Next.js E-commerce Template",

@@ -3,12 +3,12 @@
 import { FC } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
+import Rating from "@mui/material/Rating";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { getDateDifference } from "lib";
-import { Rating } from "@mui/material";
 
 // ===========================================================
 interface Props {

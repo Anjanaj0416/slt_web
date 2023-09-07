@@ -1,58 +1,59 @@
+import { cache } from "react";
 import axios from "axios";
 import Service from "models/Service.model";
 import Product from "models/Product.model";
 import Category from "models/Category.model";
 import { GroceryTwoCarouselItem } from "models/Carousel.model";
 
-const getServices = async (): Promise<Service[]> => {
+const getServices = cache(async (): Promise<Service[]> => {
   const response = await axios.get("/api/grocery-2/services");
   return response.data;
-};
+});
 
-const getCategories = async (): Promise<Category[]> => {
+const getCategories = cache(async (): Promise<Category[]> => {
   const response = await axios.get("/api/grocery-2/categories");
   return response.data;
-};
+});
 
-const getDiscountBannerList = async () => {
+const getDiscountBannerList = cache(async () => {
   const response = await axios.get("/api/grocery-2/discount-card-list");
   return response.data;
-};
+});
 
-const getNavigationList = async () => {
+const getNavigationList = cache(async () => {
   const response = await axios.get("/api/grocery-2/category-navigation");
   return response.data;
-};
+});
 
-const getFeaturedProducts = async (): Promise<Product[]> => {
+const getFeaturedProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/grocery-2/featured-products");
   return response.data;
-};
+});
 
-const getBestSellProducts = async (): Promise<Product[]> => {
+const getBestSellProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/grocery-2/best-sell-products");
   return response.data;
-};
+});
 
-const getBestHomeProducts = async (): Promise<Product[]> => {
+const getBestHomeProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/grocery-2/home-essentials-products");
   return response.data;
-};
+});
 
-const getDairyProducts = async (): Promise<Product[]> => {
+const getDairyProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/grocery-2/more-products");
   return response.data;
-};
+});
 
-const getTestimonials = async () => {
+const getTestimonials = cache(async () => {
   const response = await axios.get("/api/grocery-2/testimonial-list");
   return response.data;
-};
+});
 
-const getMainCarousel = async (): Promise<GroceryTwoCarouselItem[]> => {
+const getMainCarousel = cache(async (): Promise<GroceryTwoCarouselItem[]> => {
   const response = await axios.get("/api/grocery-2/main-carousel");
   return response.data;
-};
+});
 
 export default {
   getServices,

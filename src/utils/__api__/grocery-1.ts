@@ -1,31 +1,32 @@
+import { cache } from "react";
 import axios from "axios";
 import Product from "models/Product.model";
 import Service from "models/Service.model";
 
-const getGrocery1Navigation = async () => {
+const getGrocery1Navigation = cache(async () => {
   const response = await axios.get("/api/grocery-1/navigation");
   return response.data;
-};
+});
 
-const getPopularProducts = async (): Promise<Product[]> => {
+const getPopularProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/grocery-1/products?tag=popular");
   return response.data;
-};
+});
 
-const getTrendingProducts = async (): Promise<Product[]> => {
+const getTrendingProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/grocery-1/products?tag=trending");
   return response.data;
-};
+});
 
-const getProducts = async (): Promise<Product[]> => {
+const getProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/grocery-1/products");
   return response.data;
-};
+});
 
-const getServices = async (): Promise<Service[]> => {
+const getServices = cache(async (): Promise<Service[]> => {
   const response = await axios.get("/api/grocery-1/services");
   return response.data;
-};
+});
 
 export default {
   getServices,

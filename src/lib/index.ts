@@ -1,29 +1,15 @@
-// import getConfig from "next/config";
-import ceil from "lodash/ceil";
-import { differenceInMinutes } from "date-fns";
 import currencyJs from "currency.js";
+import formatDistanceStrict from "date-fns/formatDistanceStrict";
 
 /**
  * GET THE DIFFERENCE DATE FORMAT
- * @param  date - which is created comment data
- * @returns string - formatted from now
+ * @param  DATE | NUMBER | STRING
+ * @returns FORMATTED DATE STRING
  */
 
 function getDateDifference(date: string | number | Date) {
-  let diff = differenceInMinutes(new Date(), new Date(date));
-  if (diff < 60) return diff + " minutes ago";
-
-  diff = ceil(diff / 60);
-  if (diff < 24) return `${diff} hour${diff === 0 ? "" : "s"} ago`;
-
-  diff = ceil(diff / 24);
-  if (diff < 30) return `${diff} day${diff === 0 ? "" : "s"} ago`;
-
-  diff = ceil(diff / 30);
-  if (diff < 12) return `${diff} month${diff === 0 ? "" : "s"} ago`;
-
-  diff = diff / 12;
-  return `${diff.toFixed(1)} year${ceil(diff) === 0 ? "" : "s"} ago`;
+  const distance = formatDistanceStrict(new Date(), new Date(date));
+  return distance + " ago";
 }
 
 /**
@@ -66,16 +52,6 @@ function calculateDiscount(price: number, discount: number) {
 function currency(price: number, fraction: number = 2) {
   const formatCurrency = currencyJs(price).format({ precision: fraction });
   return formatCurrency;
-
-  // const { publicRuntimeConfig } = getConfig();
-  // const formatCurrency = new Intl.NumberFormat(undefined, {
-  //   style: "currency",
-  //   currency: publicRuntimeConfig.currency,
-  //   maximumFractionDigits: fraction,
-  //   minimumFractionDigits: fraction,
-  // });
-
-  // return formatCurrency.format(price);
 }
 
 export { currency, getDateDifference, calculateDiscount, renderProductCount };
