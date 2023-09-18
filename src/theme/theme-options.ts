@@ -74,30 +74,6 @@ const themeOptions = (pathname: string) => {
       updateTheme(THEMES.DEFAULT);
       break;
 
-    // case "/grocery1":
-    //   updateTheme(THEMES.DEFAULT);
-    //   break;
-
-    // case "/grocery2":
-    //   updateTheme(THEMES.DEFAULT);
-    //   break;
-
-    // case "/grocery3":
-    //   updateTheme(THEMES.DEFAULT);
-    //   break;
-
-    // case "/gadget-shop":
-    //   updateTheme(THEMES.DEFAULT);
-    //   break;
-
-    // case "/fashion-shop-1":
-    //   updateTheme(THEMES.DEFAULT);
-    //   break;
-
-    // case "/market-1":
-    //   updateTheme(THEMES.DEFAULT);
-    //   break;
-
     case "/furniture-shop":
       updateTheme(THEMES.FURNITURE);
       break;
@@ -111,7 +87,12 @@ const themeOptions = (pathname: string) => {
       break;
 
     default:
-      themeOption = themesOptionList[THEMES.DEFAULT];
+      if (pathname.startsWith("/admin") || pathname.startsWith("/vendor")) {
+        themeOption = themesOptionList[THEMES.HEALTH];
+      } else {
+        themeOption = themesOptionList[THEMES.DEFAULT];
+      }
+
       break;
   }
   /*

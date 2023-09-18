@@ -46,10 +46,8 @@ const BrandsPageView = ({ brands }: Props) => {
       <SearchArea
         handleSearch={() => {}}
         buttonText="Add Brand"
+        url="/admin/brands/create"
         searchPlaceholder="Search Brand..."
-        handleBtnClick={() => {
-          //   Router.push("/admin/brands/create");
-        }}
       />
 
       <Card>

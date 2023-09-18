@@ -6,7 +6,7 @@ import SaleNavbar from "../sales-navbar";
 import ProductList from "../product-list";
 import ProductPagination from "../product-pagination";
 // GLOBAL CUSTOM COMPONENTS
-import Sticky from "components/Sticky";
+import { Sticky } from "components/sticky";
 import { SalesLayout } from "components/layouts/sales-layout";
 // LOCAL CUSTOM HOOK
 import useSales from "../use-sales";
@@ -20,8 +20,8 @@ const SalesTwoPageView = () => {
     productList,
     selectedCategory,
     PRODUCT_PER_PAGE,
-    handleCategoryChange,
     handlePageChange,
+    handleCategoryChange,
   } = useSales("men", 1);
 
   // CATEGORY NAV LIST

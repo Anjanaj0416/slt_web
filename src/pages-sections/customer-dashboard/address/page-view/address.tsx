@@ -24,7 +24,12 @@ const AddressPageView = ({ addressList }: Props) => {
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
-      <DashboardHeader Icon={Place} href="#" title="My Addresses" buttonText="Add New Address" />
+      <DashboardHeader
+        Icon={Place}
+        href="/address"
+        title="My Addresses"
+        buttonText="Add New Address"
+      />
 
       {/* ALL ADDRESS LIST AREA */}
       {allAddress.map((address) => (

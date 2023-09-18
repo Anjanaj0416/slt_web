@@ -17,7 +17,12 @@ const AddressDetailsPageView = ({ address }: Props) => {
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
-      <DashboardHeader Icon={Place} href="#" title="Edit Address" buttonText="Back to Address" />
+      <DashboardHeader
+        Icon={Place}
+        href="/address"
+        title="Edit Address"
+        buttonText="Back to Address"
+      />
 
       {/* FORM AREA */}
       <Card sx={{ p: 3, pt: 4 }}>

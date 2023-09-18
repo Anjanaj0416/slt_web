@@ -47,10 +47,8 @@ const CategoriesPageView = ({ categories }: Props) => {
       <SearchArea
         handleSearch={() => {}}
         buttonText="Add Category"
+        url="/admin/categories/create"
         searchPlaceholder="Search Category..."
-        handleBtnClick={() => {
-          //   Router.push("/admin/categories/create");
-        }}
       />
 
       <Card>

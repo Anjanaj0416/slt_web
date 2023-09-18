@@ -37,8 +37,9 @@ const Section11: FC<Props> = ({ serviceList }) => {
   return (
     <Container sx={{ mb: "70px" }}>
       <Grid container spacing={3}>
-        {serviceList.map((item, ind) => {
+        {serviceList.map((item) => {
           const Icon = appIcons[item.icon];
+
           return (
             <Grid item lg={3} sm={6} xs={12} key={item.id}>
               <BazaarCard hoverEffect sx={CARD_STYLE}>

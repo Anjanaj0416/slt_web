@@ -33,7 +33,7 @@ const ProductRow: FC<Props> = ({ product }) => {
   const { category, name, price, image, brand, id, published, slug } = product || {};
 
   const router = useRouter();
-  const [productPublish, setProductPublish] = useState(published as boolean);
+  const [productPublish, setProductPublish] = useState(published);
 
   return (
     <StyledTableRow tabIndex={-1} role="checkbox">

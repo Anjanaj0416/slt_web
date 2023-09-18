@@ -35,7 +35,7 @@ const CustomersPageView = ({ customers }: Props) => {
       <SearchArea
         handleSearch={() => {}}
         buttonText="Add Customer"
-        handleBtnClick={() => {}}
+        url="/admin/customers"
         searchPlaceholder="Search Customer..."
       />
 

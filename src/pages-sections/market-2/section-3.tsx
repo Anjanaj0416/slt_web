@@ -1,15 +1,20 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Container, Grid, styled } from "@mui/material";
+import { Box, Container, Grid, keyframes, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
-import { slideX } from "animations/keyframes";
 import WhiteButton from "components/WhiteButton";
 import { CategoryCard1 } from "components/category-cards";
 import { H3, Paragraph, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
+
+// CSS ANIMATION NAME
+const slideX = keyframes`
+    from { left: 120% }
+    to { left: -100% }
+`;
 
 // STYLED COMPONENTS
 const AdWrapper = styled(FlexBox)(({ theme }) => ({

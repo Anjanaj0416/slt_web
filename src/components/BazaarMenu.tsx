@@ -2,7 +2,7 @@ import { SxProps, Menu } from "@mui/material";
 import { Children, cloneElement, FC, Fragment, ReactElement, useState } from "react";
 
 // ===============================================================
-type Props = {
+interface Props {
   sx?: SxProps;
   open?: boolean;
   className?: string;
@@ -11,7 +11,7 @@ type Props = {
   shouldCloseOnItemClick?: boolean;
   children: ReactElement | ReactElement[];
   direction?: "left" | "right" | "center";
-};
+}
 // ===============================================================
 
 const BazaarMenu: FC<Props> = ({

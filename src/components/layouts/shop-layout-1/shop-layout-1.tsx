@@ -2,7 +2,7 @@
 
 import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
-import Sticky from "components/Sticky";
+import { Sticky } from "components/sticky";
 import { Topbar } from "components/topbar";
 import { Navbar } from "components/navbar";
 import { Footer1 } from "components/footer";

@@ -1,0 +1,35 @@
+import { keyframes, styled } from "@mui/material/styles";
+
+interface Props {
+  fixed?: boolean;
+  fixedOn?: number;
+  componentHeight?: number;
+}
+
+const slideDown = keyframes`
+    from {transform: translateY(-200%)}
+    to {transform: translateY(0)}
+`;
+
+export const StyledBox = styled("div")<Props>(({ theme, componentHeight, fixedOn, fixed }) => ({
+  "& .hold": {
+    zIndex: 5,
+    boxShadow: "none",
+    position: "relative",
+  },
+
+  "& .fixed": {
+    left: 0,
+    right: 0,
+    zIndex: 1500,
+    position: "fixed",
+    top: `${fixedOn}px`,
+    boxShadow: theme.shadows[2],
+    transition: "all 350ms ease-in-out",
+    animation: `${slideDown} 400ms ${theme.transitions.easing.easeInOut}`,
+  },
+
+  "& + .section-after-sticky": {
+    paddingTop: fixed ? componentHeight : 0,
+  },
+}));

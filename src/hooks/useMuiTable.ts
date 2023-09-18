@@ -30,14 +30,14 @@ export function stableSort<T>(array: T[], comparator: (a: T, b: T) => number) {
 }
 
 // ================================================================
-interface HookProps {
+interface Props {
   listData: any[];
   defaultSort?: string;
   defaultOrder?: "asc" | "desc";
 }
 // ================================================================
 
-const useMuiTable = (props: HookProps) => {
+const useMuiTable = (props: Props) => {
   const { listData = [], defaultSort = "name", defaultOrder = "asc" } = props;
 
   const [rowsPerPage] = useState(20);
@@ -56,8 +56,8 @@ const useMuiTable = (props: HookProps) => {
   // Handle select whole list
   const handleSelectAllClick = (checked: boolean, defaultSelect: string) => {
     if (checked) {
-      const newSelecteds = listData.map((n: any) => n[defaultSelect]);
-      setSelected(newSelecteds);
+      const newSelected = listData.map((item: any) => item[defaultSelect]);
+      setSelected(newSelected);
       return;
     }
     setSelected([]);
@@ -97,7 +97,6 @@ const useMuiTable = (props: HookProps) => {
     selected,
     rowsPerPage,
     filteredList,
-
     handleRowClick,
     handleChangePage,
     handleRequestSort,

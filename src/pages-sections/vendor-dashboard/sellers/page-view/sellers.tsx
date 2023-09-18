@@ -37,7 +37,7 @@ const SellersPageView = ({ sellers }: Props) => {
       <SearchArea
         handleSearch={() => {}}
         buttonText="Add New Seller"
-        handleBtnClick={() => {}}
+        url="/admin/sellers"
         searchPlaceholder="Search Seller..."
       />
 

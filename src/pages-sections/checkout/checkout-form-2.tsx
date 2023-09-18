@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
-import { DeleteOutline, ModeEditOutline } from "@mui/icons-material";
+import DeleteOutline from "@mui/icons-material/DeleteOutline";
+import ModeEditOutline from "@mui/icons-material/ModeEditOutline";
 import {
   Box,
   Card,

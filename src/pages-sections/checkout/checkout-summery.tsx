@@ -1,4 +1,5 @@
-import { Button, Card, Divider, Stack, TextField, Typography } from "@mui/material";
+import { Button, Card, Divider, Stack, TextField } from "@mui/material";
+import { Paragraph } from "components/Typography";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBetween } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
@@ -14,9 +15,9 @@ const CheckoutSummary = () => {
 
       <Divider sx={{ my: 2 }} />
 
-      <Typography fontSize={25} fontWeight={600} lineHeight={1} textAlign="right">
+      <Paragraph fontSize={25} fontWeight={600} lineHeight={1}>
         {currency(2610)}
-      </Typography>
+      </Paragraph>
 
       <Stack spacing={2} mt={3}>
         <TextField placeholder="Voucher" variant="outlined" size="small" fullWidth />
@@ -31,10 +32,10 @@ const CheckoutSummary = () => {
 function SummeryItem({ title, amount }: { title: string; amount: number }) {
   return (
     <FlexBetween mb={1}>
-      <Typography color="grey.600">{title}</Typography>
-      <Typography fontSize={18} fontWeight={600} lineHeight={1}>
+      <Paragraph color="grey.600">{title}</Paragraph>
+      <Paragraph fontSize={18} fontWeight={600} lineHeight={1}>
         {currency(amount)}
-      </Typography>
+      </Paragraph>
     </FlexBetween>
   );
 }

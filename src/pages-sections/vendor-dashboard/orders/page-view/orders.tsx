@@ -47,7 +47,7 @@ const OrdersPageView = ({ orders }: Props) => {
       <SearchArea
         handleSearch={() => {}}
         buttonText="Create Order"
-        handleBtnClick={() => {}}
+        url="/admin/orders"
         searchPlaceholder="Search Order..."
       />
 

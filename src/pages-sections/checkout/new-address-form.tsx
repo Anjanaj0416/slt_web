@@ -15,12 +15,10 @@ const validationSchema = yup.object({
 });
 
 // ==================================================================
-type NewAddressFormProps = {
-  setNewAddress: (value: any) => void;
-};
+type Props = { setNewAddress: (value: any) => void };
 // ==================================================================
 
-const NewAddressForm: FC<NewAddressFormProps> = ({ setNewAddress }) => {
+const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
   const [addCardForm, setAddCardForm] = useState<boolean>(false);
 
   const initialValues = {

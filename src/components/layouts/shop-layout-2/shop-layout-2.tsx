@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
-import Sticky from "components/Sticky";
+import { Sticky } from "components/sticky";
 import { Topbar } from "components/topbar";
 import { Header } from "components/header";
 import { Navbar } from "components/navbar";
