@@ -61,7 +61,7 @@ const GroceryOnePageView = (props: Props) => {
 
       {/* SIDEBAR WITH OTHER CONTENTS */}
       <SideNavContainer navFixedComponentID="grocery1Services" SideNav={SideNav}>
-        <Stack spacing={6} mt={2}>
+        <Stack spacing={6}>
           {selectedCategory ? (
             // FILTERED PRODUCT LIST
             <AllProducts products={filterProducts} title={selectedCategory} />

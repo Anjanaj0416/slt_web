@@ -41,8 +41,8 @@ const BazaarMenu: FC<Props> = ({
         anchorEl={anchorEl}
         onClose={handleClose}
         open={open !== undefined ? open : !!anchorEl}
-        anchorOrigin={{ vertical: "bottom", horizontal: direction || "left" }}
-        transformOrigin={{ vertical: "top", horizontal: direction || "left" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: direction }}
+        transformOrigin={{ vertical: "top", horizontal: direction }}
         {...props}
       >
         {Children.map(children, (child: ReactElement) =>

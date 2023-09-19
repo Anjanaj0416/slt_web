@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { FC, useState } from "react";
-import { Chip, IconButton, MenuItem } from "@mui/material";
+import Chip from "@mui/material/Chip";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
 import { Add, ExpandMore, Facebook, Instagram, Remove, Twitter } from "@mui/icons-material";
 import TouchRipple from "@mui/material/ButtonBase";
 import { useTranslation } from "react-i18next";
@@ -9,7 +11,7 @@ import { Span } from "components/Typography";
 import BazaarMenu from "components/BazaarMenu";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
-import { StyledContainer, TopbarWrapper } from "./styles";
+import { StyledContainer, StyledRoot } from "./styles";
 
 // ==============================================================
 interface LanguageOption {
@@ -38,7 +40,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
   const selectedLanguage = languageOptions[i18n.language];
 
   return (
-    <TopbarWrapper bgColor={bgColor} expand={expand ? 1 : 0}>
+    <StyledRoot bgColor={bgColor} expand={expand ? 1 : 0}>
       <StyledContainer>
         <FlexBetween width="100%">
           <FlexBox alignItems="center" gap={1}>
@@ -91,7 +93,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
           </FlexBox>
         </FlexBox>
       </StyledContainer>
-    </TopbarWrapper>
+    </StyledRoot>
   );
 };
 

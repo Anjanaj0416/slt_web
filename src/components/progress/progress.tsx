@@ -3,44 +3,12 @@
 "use client";
 import { useEffect } from "react";
 import NProgress from "nprogress";
-import { useTheme } from "@mui/material";
+import { GlobalStyles, useTheme } from "@mui/material";
 
 type PushStateInput = [data: any, unused: string, url?: string | URL | null | undefined];
 
 const ProgressBar = () => {
   const theme = useTheme();
-
-  const styles = (
-    <style>
-      {`
-        #nprogress {
-          pointer-events: none;
-        }
-        #nprogress .bar {
-          background: ${theme.palette.primary.main};
-          position: fixed;
-          z-index: 9999999999;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 3px;
-        }
-        /* Fancy blur effect */
-        #nprogress .peg {
-          display: block;
-          position: absolute;
-          right: 0px;
-          width: 100px;
-          height: 100%;
-          box-shadow: 0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main};
-          opacity: 1.0;
-          -webkit-transform: rotate(3deg) translate(0px, -4px);
-          -ms-transform: rotate(3deg) translate(0px, -4px);
-          transform: rotate(3deg) translate(0px, -4px);
-        }
-    `}
-    </style>
-  );
 
   useEffect(() => {
     NProgress.configure({ showSpinner: false });
@@ -54,7 +22,7 @@ const ProgressBar = () => {
     };
 
     const handleMutation: MutationCallback = () => {
-      const anchorElements = document.querySelectorAll("a");
+      const anchorElements = document.querySelectorAll("a[href]");
       anchorElements.forEach((anchor) => anchor.addEventListener("click", handleAnchorClick));
     };
 
@@ -69,7 +37,34 @@ const ProgressBar = () => {
     });
   });
 
-  return styles;
+  return (
+    <GlobalStyles
+      styles={{
+        "#nprogress": {
+          pointerEvents: "none",
+          ".bar": {
+            top: 0,
+            left: 0,
+            height: 2,
+            width: "100%",
+            position: "fixed",
+            zIndex: 9999999999,
+            background: theme.palette.primary.main,
+          },
+          ".peg": {
+            right: 0,
+            opacity: 1,
+            width: 100,
+            height: "100%",
+            display: "block",
+            boxShadow: "none",
+            position: "absolute",
+            transform: "rotate(3deg) translate(0px, -4px)",
+          },
+        },
+      }}
+    />
+  );
 };
 
 export default ProgressBar;

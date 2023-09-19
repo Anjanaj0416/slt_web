@@ -6,7 +6,7 @@ import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { Paragraph } from "components/Typography";
-import { SectionCreator } from "components/section-header";
+import { SectionHeader } from "components/section-header";
 import { ProductCard4 } from "components/product-cards/product-card-4";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -37,17 +37,26 @@ const ProductCarousel: FC<Props> = ({ products, title }) => {
 
   // CAROUSEL BUTTON STYLES
   const STYLES = {
+    ":hover": {
+      "& #backArrowButton": { left: 5 },
+      "&  #backForwardButton": { right: 5 },
+    },
+    "& #backArrowButton": { left: -30 },
+    "&  #backForwardButton": { right: -30 },
     "& #backArrowButton, #backForwardButton": {
-      width: 40,
-      height: 40,
+      width: 30,
+      height: 30,
+      borderRadius: 1,
       background: "#fff",
       boxShadow: shadows[2],
       color: palette.primary.main,
+      transition: "all 0.4s ease",
     },
   };
 
   return (
-    <SectionCreator title={title} seeMoreLink="#" mb={0}>
+    <Box overflow="hidden">
+      <SectionHeader title={title} seeMoreLink="#" />
       <SubTitle>Best collection in 2021 for you!</SubTitle>
 
       <Carousel
@@ -70,7 +79,7 @@ const ProductCarousel: FC<Props> = ({ products, title }) => {
           </Box>
         ))}
       </Carousel>
-    </SectionCreator>
+    </Box>
   );
 };
 

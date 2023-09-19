@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, FC, ReactNode } from "react";
 import clsx from "clsx";
 import { StyledBox } from "./styles";
+import { Box } from "@mui/material";
 
 // ============================================================
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 const Sticky: FC<Props> = ({ fixedOn, children, onSticky, scrollDistance = 0 }) => {
   const [fixed, setFixed] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
 
   const scrollListener = useCallback(() => {
     if (!window) return;
@@ -39,11 +41,17 @@ const Sticky: FC<Props> = ({ fixedOn, children, onSticky, scrollDistance = 0 }) 
     if (onSticky) onSticky(fixed);
   }, [fixed, onSticky]);
 
+  useEffect(() => {
+    if (elementRef.current) {
+      setHeight(elementRef.current.offsetHeight);
+    }
+  }, []);
+
   return (
-    <StyledBox fixedOn={fixedOn} fixed={fixed}>
-      <div className={clsx({ hold: !fixed, fixed: fixed })} ref={elementRef}>
+    <StyledBox fixedOn={fixedOn} componentHeight={height} fixed={fixed}>
+      <Box className={clsx({ hold: !fixed, fixed: fixed })} ref={elementRef}>
         {children}
-      </div>
+      </Box>
     </StyledBox>
   );
 };

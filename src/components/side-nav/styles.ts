@@ -23,6 +23,7 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   },
 
   ".fixed": {
+    marginTop: 16,
     position: "fixed",
     scrollBehavior: "unset",
     top: layoutConstant.headerHeight,
@@ -30,18 +31,13 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
 
   ".pageContent": {
     left: "unset",
+    marginLeft: "2rem",
     position: "relative",
-    marginLeft: "1.75rem",
     width: `calc(100% - 2rem - ${layoutConstant.grocerySidenavWidth}px)`,
   },
 
-  ".pageContentShifted": {
+  ".pageContentLeft": {
     left: layoutConstant.grocerySidenavWidth,
-  },
-
-  ".section1": {
-    marginBottom: "3rem",
-    marginTop: "1.75rem",
   },
 
   "@keyframes slideDown": {

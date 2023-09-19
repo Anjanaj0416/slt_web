@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
-import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { Sticky } from "components/sticky";
 import { Topbar } from "components/topbar";
@@ -45,13 +44,11 @@ const ShopLayout2: FC<PropsWithChildren> = ({ children }) => {
         <Header isFixed={isFixed} searchInput={<SearchInput />} />
       </Sticky>
 
-      <Box zIndex={4} position="relative" className="section-after-sticky">
-        {/* NAVIGATION BAR */}
-        {NAV_BAR_CONTENT}
+      {/* NAVIGATION BAR */}
+      {NAV_BAR_CONTENT}
 
-        {/* BODY CONTENT */}
-        {children}
-      </Box>
+      {/* BODY CONTENT */}
+      {children}
     </Fragment>
   );
 };

@@ -1,22 +1,15 @@
 import { FC } from "react";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
-import { Paragraph } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";
+import { SectionHeader } from "components/section-header";
 import { ProductCard5 } from "components/product-cards/product-card-5";
-import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
-
 // STYLED COMPONENT
-const SubTitle = styled(Paragraph)(({ theme }) => ({
-  fontSize: 12,
-  marginTop: "-20px",
-  marginBottom: "20px",
-  color: theme.palette.grey[600],
-}));
+import { SubTitle } from "./styles";
 
 // ===========================================================
 type Props = { products: Product[] };
@@ -24,8 +17,10 @@ type Props = { products: Product[] };
 
 const Section4: FC<Props> = ({ products }) => {
   return (
-    <SectionCreator title="All Products" seeMoreLink="#" mb={0}>
+    <Box>
+      <SectionHeader title="All Products" seeMoreLink="#" />
       <SubTitle>Best deal with medical and beauty items</SubTitle>
+
       <Grid container mb={-0.5} spacing={3}>
         {products.map((item) => (
           <Grid key={item.id} item md={4} sm={6} xs={12}>
@@ -47,7 +42,7 @@ const Section4: FC<Props> = ({ products }) => {
           Load More...
         </Button>
       </FlexRowCenter>
-    </SectionCreator>
+    </Box>
   );
 };
 

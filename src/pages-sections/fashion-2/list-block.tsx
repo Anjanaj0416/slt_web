@@ -50,7 +50,7 @@ const ListBlock: FC<Props> = ({ title, products }) => {
             </NavLink>
 
             <Paragraph fontWeight={700}>{currency(product.price)}</Paragraph>
-            <Rating value={4} sx={{ fontSize: 14 }} />
+            <Rating readOnly value={4} sx={{ fontSize: 14 }} />
           </Box>
         </FlexBox>
       ))}

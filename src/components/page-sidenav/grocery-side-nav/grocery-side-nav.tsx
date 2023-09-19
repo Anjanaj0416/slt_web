@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import Box from "@mui/material/Box";
+// CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
@@ -18,7 +19,7 @@ import { CategoryItem } from "models/CategoryNavList.model";
 type Props = { navigation: CategoryItem[] };
 // ===========================================================
 
-const Grocery2SideNav: FC<Props> = ({ navigation }) => {
+const GrocerySideNav: FC<Props> = ({ navigation }) => {
   const { scrolled } = useScroll();
 
   return (
@@ -31,7 +32,7 @@ const Grocery2SideNav: FC<Props> = ({ navigation }) => {
             <Box mb={1} color="grey.700" key={ind}>
               {item.child ? (
                 <Accordion expanded>
-                  <AccordionHeader px={0} py={0.75}>
+                  <AccordionHeader sx={{ px: 0 }}>
                     <FlexBox gap={1.5} alignItems="center">
                       <Icon fontSize="small" />
                       <Span fontWeight={600}>{item.title}</Span>
@@ -57,4 +58,4 @@ const Grocery2SideNav: FC<Props> = ({ navigation }) => {
   );
 };
 
-export default Grocery2SideNav;
+export default memo(GrocerySideNav);

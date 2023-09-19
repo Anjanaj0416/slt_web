@@ -1,23 +1,16 @@
 import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import { Paragraph } from "components/Typography";
-import { SectionCreator } from "components/section-header";
+import { SectionHeader } from "components/section-header";
 import { ProductCard5 } from "components/product-cards/product-card-5";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
-
-// STYLED COMPONENTS
-const SubTitle = styled(Paragraph)(({ theme }) => ({
-  fontSize: 12,
-  marginTop: "-20px",
-  marginBottom: "20px",
-  color: theme.palette.grey[600],
-}));
+// STYLED COMPONENT
+import { SubTitle } from "./styles";
 
 // ================================================================
 type Props = { products: Product[] };
@@ -39,13 +32,17 @@ const Section3: FC<Props> = ({ products }) => {
   const CAROUSEL_STYLE = {
     "& #backArrowButton, #backForwardButton": {
       color: palette.primary.main,
-      background: palette.primary[50],
-      "&:hover": { background: palette.primary[100] },
+      background: palette.primary[100],
+      "&:hover": { background: palette.primary[200] },
     },
+    "& #backArrowButton": { left: 0, borderRadius: "0 8px 8px 0" },
+    "& #backForwardButton": { right: 0, borderRadius: "8px 0 0 8px" },
   };
   return (
-    <SectionCreator title="Top New Products" seeMoreLink="#" mb={0}>
+    <Box>
+      <SectionHeader title="Top New Products" seeMoreLink="#" />
       <SubTitle>Best deal with medical and beauty items</SubTitle>
+
       <Carousel
         infinite={true}
         sx={CAROUSEL_STYLE}
@@ -66,7 +63,7 @@ const Section3: FC<Props> = ({ products }) => {
           </Box>
         ))}
       </Carousel>
-    </SectionCreator>
+    </Box>
   );
 };
 

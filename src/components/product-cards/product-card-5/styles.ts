@@ -29,8 +29,8 @@ export const ImageWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const ImageBox = styled(Box)(({ theme }) => ({
+  padding: 32,
   height: "100%",
-  padding: "44px 40px",
   borderBottom: `1px solid ${theme.palette.grey[300]}`,
 }));
 

@@ -13,7 +13,10 @@ export const NavbarRoot = styled(BazaarCard)<{
   borderRadius: "8px",
   position: "relative",
   overflow: fixed ? "auto" : "unset",
-  "& .linkList": { transition: "all 0.2s", padding: "8px 20px" },
+  "& .linkList": {
+    transition: "all 0.2s",
+    padding: "8px 20px",
+  },
   ...(sidebar === "style2" && {
     height: "auto",
     paddingBottom: 10,

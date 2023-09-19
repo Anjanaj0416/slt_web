@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
+import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { Sticky } from "components/sticky";
 import { Topbar } from "components/topbar";
@@ -33,13 +34,11 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
         <Header isFixed={isFixed} searchInput={<SearchInputWithCategory />} />
       </Sticky>
 
-      <div className="section-after-sticky">
-        {/* NAVIGATION BAR */}
-        <Navbar elevation={0} border={1} />
+      {/* NAVIGATION BAR */}
+      <Navbar elevation={0} border={1} />
 
-        {/* BODY CONTENT */}
-        {children}
-      </div>
+      {/* BODY CONTENT */}
+      {children}
 
       {/* SMALL DEVICE BOTTOM NAVIGATION */}
       <MobileNavigationBar />

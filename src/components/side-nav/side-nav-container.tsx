@@ -7,8 +7,8 @@ import { StyledContainer } from "./styles";
 
 // ================================================================
 interface Props {
-  SideNav: any;
   children: ReactNode;
+  SideNav: () => JSX.Element;
   navFixedComponentID: string;
 }
 // ================================================================
@@ -31,15 +31,13 @@ const SideNavContainer: FC<Props> = (props) => {
     return () => window.removeEventListener("scroll", scrollListener);
   }, [scrollListener]);
 
-  console.log({ isFixed, navFixedComponentID });
-
   return (
     <StyledContainer>
       <Box className={clsx({ sidenav: true, fixed: isFixed })}>
         <SideNav />
       </Box>
 
-      <Box className={clsx({ pageContent: true, pageContentShifted: isFixed })}>{children}</Box>
+      <Box className={clsx({ pageContent: true, pageContentLeft: isFixed })}>{children}</Box>
     </StyledContainer>
   );
 };

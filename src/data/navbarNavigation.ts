@@ -61,6 +61,13 @@ const megaMenus = [
         { title: "Order details", url: "/admin/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8" },
       ],
     },
+    {
+      title: "Authentication",
+      child: [
+        { title: "Login", url: "/login" },
+        { title: "Register", url: "/register" },
+      ],
+    },
   ],
 
   [
@@ -148,6 +155,13 @@ const navbarNavigations = [
           { title: "Checkout", url: "/checkout" },
           { title: "Alternative Checkout", url: "/checkout-alternative" },
           { title: "Order confirmation", url: "/order-confirmation" },
+        ],
+      },
+      {
+        title: "Auth",
+        child: [
+          { title: "Login", url: "/login" },
+          { title: "Register", url: "/register" },
         ],
       },
     ],

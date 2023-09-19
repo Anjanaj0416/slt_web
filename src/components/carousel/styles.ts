@@ -1,4 +1,4 @@
-import { CSSObject, styled } from "@mui/material";
+import { CSSObject, Theme, styled } from "@mui/material";
 import { ButtonBack, ButtonNext, CarouselProvider, DotGroup, Slider } from "pure-react-carousel";
 
 // StyledCarouselProvider and StyledSlider component props type
@@ -16,11 +16,12 @@ const commonArrowBtnStyle = ({
   showDots,
   dot_margin_top,
   showArrowOnHover,
-}: any): CSSObject => ({
-  width: 40,
+}: ArrowButtonProps & { theme: Theme }): CSSObject => ({
+  width: 35,
   border: 0,
-  height: 40,
-  borderRadius: "50%",
+  height: 35,
+  opacity: 0,
+  // borderRadius: "50%",
   alignItems: "center",
   position: "absolute",
   justifyContent: "center",
@@ -30,12 +31,14 @@ const commonArrowBtnStyle = ({
   background: theme.palette.secondary.main,
   color: theme.palette.secondary.contrastText,
   top: `calc(50% - ${showDots ? dot_margin_top : "0px"})`,
+  transition: "all 0.4s ease",
 
   "&:disabled": {
-    background: theme.palette.text.disabled,
-    color: theme.palette.secondary.main,
     cursor: "not-allowed",
+    color: theme.palette.secondary.main,
+    background: theme.palette.text.disabled,
   },
+
   "&:hover:not(:disabled)": {
     background: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText,
@@ -51,11 +54,18 @@ const StyledCarouselProvider = styled(CarouselProvider)<StyledProps>(({ spacing 
   "& .focusRing___1airF.carousel__slide-focus-ring": {
     outline: "none !important",
   },
+
   "& .carousel__inner-slide": {
     margin: "auto",
     width: `calc(100% - ${spacing || "0px"})`,
   },
+
   "&:hover $arrowButton": { display: "flex" },
+
+  ":hover": {
+    "& #backArrowButton": { opacity: 1 },
+    "& #backForwardButton": { opacity: 1 },
+  },
 }));
 
 const StyledSlider = styled(Slider)<StyledProps>(({ spacing }) => ({
@@ -96,33 +106,17 @@ const StyledDot = styled("div")<{ dot_color?: string; dot_active?: any }>(
 
 const StyledArrowBackButton = styled(ButtonBack)<ArrowButtonProps>(
   ({ theme, showArrowOnHover, showDots, dot_margin_top }) => ({
-    ...commonArrowBtnStyle({
-      theme,
-      showDots,
-      showArrowOnHover,
-      dot_margin_top,
-    }),
-    [theme.breakpoints.down("md")]: {
-      height: "36px",
-      width: "36px",
-      left: "-12px",
-    },
+    left: 0,
+    ...commonArrowBtnStyle({ theme, showDots, showArrowOnHover, dot_margin_top }),
+    [theme.breakpoints.down("md")]: { height: "36px", width: "36px", left: "-12px" },
   })
 );
 
 const StyledArrowNextButton = styled(ButtonNext)<ArrowButtonProps>(
   ({ theme, showArrowOnHover, showDots, dot_margin_top }) => ({
-    ...commonArrowBtnStyle({
-      theme,
-      showDots,
-      showArrowOnHover,
-      dot_margin_top,
-    }),
-    [theme.breakpoints.down("md")]: {
-      height: "36px",
-      width: "36px",
-      right: "-12px",
-    },
+    right: 0,
+    ...commonArrowBtnStyle({ theme, showDots, showArrowOnHover, dot_margin_top }),
+    [theme.breakpoints.down("md")]: { height: "36px", width: "36px", right: "-12px" },
   })
 );
 

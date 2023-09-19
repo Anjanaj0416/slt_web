@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 
 import { layoutConstant } from "utils/constants";
 
-export const TopbarWrapper = styled(Box, {
+export const StyledRoot = styled(Box, {
   shouldForwardProp: (props) => props !== "bgColor",
 })<{ bgColor?: string; expand: number }>(({ theme, bgColor, expand }) => ({
   fontSize: 12,

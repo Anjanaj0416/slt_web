@@ -29,7 +29,7 @@ const Section6: FC<Props> = ({ cardList = [] }) => {
   return (
     <Carousel spacing="0px" totalSlides={3} showDots={true} autoPlay={true} visibleSlides={1}>
       {cardList.map((item, ind) => (
-        <StyledGrid key={ind} container sx={{ bgcolor: item.bgColor }}>
+        <StyledGrid key={ind} container sx={{ bgcolor: item.bgColor, borderRadius: 2 }}>
           <Grid item lg={7} sm={9} xs={12}>
             <H5 fontWeight="600" fontSize={{ sm: 18, xs: 14 }} mb={1}>
               {item.subtitle}

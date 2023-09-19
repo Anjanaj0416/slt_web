@@ -10,7 +10,7 @@ import useSettings from "hooks/useSettings";
 
 // ===================================================
 interface Props {
-  title?: string;
+  title: string;
   icon?: ReactNode;
   seeMoreLink?: string;
 }
@@ -18,7 +18,6 @@ interface Props {
 
 const SectionHeader: FC<Props> = (props) => {
   const { title, seeMoreLink, icon } = props;
-
   const { settings } = useSettings();
 
   return (

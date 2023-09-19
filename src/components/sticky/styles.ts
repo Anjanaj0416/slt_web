@@ -12,6 +12,8 @@ const slideDown = keyframes`
 `;
 
 export const StyledBox = styled("div")<Props>(({ theme, componentHeight, fixedOn, fixed }) => ({
+  paddingTop: fixed ? componentHeight : 0,
+
   "& .hold": {
     zIndex: 5,
     boxShadow: "none",
@@ -27,9 +29,5 @@ export const StyledBox = styled("div")<Props>(({ theme, componentHeight, fixedOn
     boxShadow: theme.shadows[2],
     transition: "all 350ms ease-in-out",
     animation: `${slideDown} 400ms ${theme.transitions.easing.easeInOut}`,
-  },
-
-  "& + .section-after-sticky": {
-    paddingTop: fixed ? componentHeight : 0,
   },
 }));

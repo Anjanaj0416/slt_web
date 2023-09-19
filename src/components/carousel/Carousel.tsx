@@ -109,7 +109,6 @@ const Carousel: FC<CarouselProps> = ({
         <Fragment>
           <StyledArrowBackButton
             id="backArrowButton"
-            sx={{ left: "-20px" }}
             style={leftButtonStyle || {}}
             className={clsx(leftButtonClass, arrowButtonClass)}
           >
@@ -122,7 +121,6 @@ const Carousel: FC<CarouselProps> = ({
 
           <StyledArrowNextButton
             id="backForwardButton"
-            sx={{ right: "-20px" }}
             style={rightButtonStyle || {}}
             className={clsx(arrowButtonClass, rightButtonClass)}
           >

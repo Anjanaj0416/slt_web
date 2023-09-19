@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useCallback } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 // GLOBAL CUSTOM COMPONENTS
@@ -34,17 +34,20 @@ interface Props {
 // ===============================================
 
 const HealthBeautyPageView = (props: Props) => {
+  // SIDE NAVBAR COMPONENT
+  const SideNav = useCallback(
+    () => <HealthBeautySideNav navigation={props.navigationList} />,
+    [props.navigationList]
+  );
+
   return (
     <Fragment>
       {/* TOP HERO CAROUSEL AREA */}
-      <Box id="healthBeautySection1">
+      <Box id="healthBeautySection1" mb={2}>
         <Section1 carouselData={props.mainCarouselData} />
       </Box>
 
-      <SideNavContainer
-        navFixedComponentID="healthBeautySection1"
-        SideNav={() => <HealthBeautySideNav navigation={props.navigationList} />}
-      >
+      <SideNavContainer navFixedComponentID="healthBeautySection1" SideNav={SideNav}>
         <Stack spacing={6}>
           {/* BANNER AREA */}
           <Section2 />

@@ -7,6 +7,7 @@ import { MiniCart } from "components/mini-cart";
 // LOGIN PAGE SECTIONS
 import { Wrapper } from "pages-sections/sessions/styles";
 import LogoWithTitle from "pages-sections/sessions/logo-title";
+import LoginBottom from "pages-sections/sessions/login-bottom";
 import SocialButtons from "pages-sections/sessions/social-buttons";
 
 // ==============================================================
@@ -36,6 +37,7 @@ const DialogDrawer: FC<Props> = (props) => {
           <LogoWithTitle />
           <LoginPageView />
           <SocialButtons />
+          <LoginBottom />
         </Wrapper>
       </Dialog>
 

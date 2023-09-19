@@ -1,4 +1,4 @@
-import navigation from "data/navbarNavigations";
+import navigation from "data/navbarNavigation";
 
 // MODIFY THE NAVIGATION WITH NEW STRUCTURE
 export const updateNavigation = navigation.reduce((prev: any[], curr) => {

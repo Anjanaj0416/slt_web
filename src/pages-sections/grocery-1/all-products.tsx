@@ -1,12 +1,13 @@
 import { FC } from "react";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";
+import { SectionHeader } from "components/section-header";
 import { ProductCard4 } from "components/product-cards/product-card-4";
-import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -24,7 +25,8 @@ type Props = { products: Product[]; title?: string };
 
 const AllProducts: FC<Props> = ({ products, title = "All Products" }) => {
   return (
-    <SectionCreator title={title} seeMoreLink="#">
+    <Box>
+      <SectionHeader title={title} seeMoreLink="#" />
       <SubTitle>Best collection in 2021 for you!</SubTitle>
 
       <Grid container spacing={3}>
@@ -48,7 +50,7 @@ const AllProducts: FC<Props> = ({ products, title = "All Products" }) => {
           Load More...
         </Button>
       </FlexRowCenter>
-    </SectionCreator>
+    </Box>
   );
 };
 

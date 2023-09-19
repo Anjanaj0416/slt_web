@@ -1,6 +1,9 @@
 import { FC } from "react";
-import { Box, MenuItem } from "@mui/material";
-import { ArrowLeft, ArrowRight, KeyboardArrowDown } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import MenuItem from "@mui/material/MenuItem";
+import ArrowLeft from "@mui/icons-material/ArrowLeft";
+import ArrowRight from "@mui/icons-material/ArrowRight";
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 // GLOBAL CUSTOM COMPONENTS
 import { NavLink } from "components/nav-link";
 import { FlexBox } from "components/flex-box";
@@ -12,7 +15,7 @@ import { CategoryBasedMenu } from "./category-based-menu";
 // GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
 // NAVIGATION DATA LIST
-import navigation from "data/navbarNavigations";
+import navigation from "data/navbarNavigation";
 // STYLED COMPONENTS
 import {
   ParentNav,
@@ -127,7 +130,9 @@ const Navbar: FC<Props> = ({
 
   return (
     <NavBarWrapper hoverEffect={false} elevation={elevation} border={border}>
-      {!hideCategories ? (
+      {hideCategories ? (
+        <InnerContainer sx={{ justifyContent: "center" }}>{CONTENT}</InnerContainer>
+      ) : (
         <InnerContainer>
           {/* CATEGORY MEGA MENU */}
           <Categories open={navListOpen} />
@@ -135,8 +140,6 @@ const Navbar: FC<Props> = ({
           {/* HORIZONTAL MENU */}
           {CONTENT}
         </InnerContainer>
-      ) : (
-        <InnerContainer sx={{ justifyContent: "center" }}>{CONTENT}</InnerContainer>
       )}
     </NavBarWrapper>
   );

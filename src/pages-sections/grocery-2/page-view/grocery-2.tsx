@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useCallback } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 // GLOBAL CUSTOM COMPONENTS
@@ -41,14 +41,17 @@ type Props = {
 // ========================================================
 
 const GroceryTwoPageView = (props: Props) => {
+  // SIDE NAVBAR COMPONENT
+  const SideNav = useCallback(
+    () => <GrocerySideNav navigation={props.navigationList} />,
+    [props.navigationList]
+  );
+
   return (
     <Fragment>
       <Box id="grocerySection" />
 
-      <SideNavContainer
-        navFixedComponentID="grocerySection"
-        SideNav={() => <GrocerySideNav navigation={props.navigationList} />}
-      >
+      <SideNavContainer navFixedComponentID="grocerySection" SideNav={SideNav}>
         <Stack spacing={6}>
           {/* TOP HERO AREA */}
           <Section1 carouselData={props.mainCarouselData} />

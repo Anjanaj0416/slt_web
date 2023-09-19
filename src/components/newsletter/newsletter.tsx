@@ -54,7 +54,14 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    debounce(() => setOpen(true), 2000)();
+    if (!window) return;
+
+    if (!window.sessionStorage.getItem("newsletter")) {
+      debounce(() => {
+        setOpen(true);
+        window.sessionStorage.setItem("newsletter", "true");
+      }, 2000)();
+    }
   }, []);
 
   return (
