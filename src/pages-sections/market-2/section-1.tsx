@@ -2,9 +2,10 @@
 
 import { FC } from "react";
 import { Box, Container, CSSObject, Grid, Stack } from "@mui/material";
+// LOCAL CUSTOM COMPONENT
+import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS
 import { NavLink3 } from "components/nav-link";
-import { BannerCard3 } from "components/banners";
 import { Carousel } from "components/carousel";
 import { H4, Paragraph } from "components/Typography";
 import { CarouselCard4 } from "components/carousel-cards";
@@ -65,7 +66,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
           <Grid item md={3} xs={12}>
             <Stack height="100%" direction={{ md: "column", sm: "row", xs: "column" }} spacing={2}>
               {/* SUMMER SALE BANNER */}
-              <BannerCard3 flex={1} img="/assets/images/banners/banner-17.jpg">
+              <BannerCard flex={1} img="/assets/images/banners/banner-17.jpg">
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   NEW ARRIVALS
                 </Paragraph>
@@ -77,10 +78,10 @@ const Section1: FC<Props> = ({ carouselData }) => {
                 </H4>
 
                 <NavLink3 href="#" text="Shop Now" color="dark.main" />
-              </BannerCard3>
+              </BannerCard>
 
               {/* DESKTOP & LAPTOP BANNER */}
-              <BannerCard3 flex={1} img="/assets/images/banners/banner-16.jpg">
+              <BannerCard flex={1} img="/assets/images/banners/banner-16.jpg">
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   GAMING 4K
                 </Paragraph>
@@ -92,7 +93,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
                 </H4>
 
                 <NavLink3 href="#" text="Shop Now" color="dark.main" />
-              </BannerCard3>
+              </BannerCard>
             </Stack>
           </Grid>
         </Grid>

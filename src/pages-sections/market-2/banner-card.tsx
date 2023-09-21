@@ -1,9 +1,10 @@
 import { FC, ReactNode } from "react";
-import { Box, BoxProps, styled } from "@mui/material";
+import Box, { BoxProps } from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENT
 import LazyImage from "components/LazyImage";
 
-// custom styled components
+// STYLED COMPONENTS
 const CardWrapper = styled(Box)({
   overflow: "hidden",
   position: "relative",
@@ -28,7 +29,7 @@ interface Props extends BoxProps {
 }
 // ========================================================
 
-const BannerCard3: FC<Props> = ({ img, children, ...props }) => {
+const BannerCard: FC<Props> = ({ img, children, ...props }) => {
   return (
     <CardWrapper {...props}>
       <LazyImage alt="category" height={239} width={330} src={img} />
@@ -37,4 +38,4 @@ const BannerCard3: FC<Props> = ({ img, children, ...props }) => {
   );
 };
 
-export default BannerCard3;
+export default BannerCard;

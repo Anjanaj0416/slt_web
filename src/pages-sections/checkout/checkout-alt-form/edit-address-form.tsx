@@ -1,54 +1,58 @@
-import { FC } from "react";
-import { Button, Dialog, DialogContent, Grid, TextField, Typography } from "@mui/material";
+import { FC, useState } from "react";
+import { Button, Dialog, DialogContent, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
+// GLOBAL CUSTOM COMPONENT
+import { H5 } from "components/Typography";
+
+import { Address } from "./_types";
 
 const validationSchema = yup.object({
   address2: yup.string(),
-  name: yup.string().required("required"),
-  address1: yup.string().required("required"),
-  phone: yup.number().required("required"),
+  name: yup.string().required("Name is required!"),
+  address1: yup.string().required("Address is required!"),
+  phone: yup.number().required("Phone is required!"),
 });
 
 // ================================================================
 interface Props {
-  selected: any;
-  addressData: any[];
-  openEditForm: boolean;
-  setAddressData: (value: any[]) => void;
-  setOpenEditForm: (value: boolean) => void;
+  active: boolean;
+  address: Address;
+  changeEditAddressId: () => void;
+  handleEditAddress: (id: number, data: Address) => void;
 }
 // ================================================================
 
 const EditAddressForm: FC<Props> = (props) => {
-  const { addressData, selected, setAddressData, openEditForm, setOpenEditForm } = props;
+  const { active, address, changeEditAddressId, handleEditAddress } = props;
+
+  const [openModal, setOpenModal] = useState(active);
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    changeEditAddressId();
+  };
 
   const initialValues = {
-    name: selected.name,
-    phone: selected.phone,
-    address1: selected.address1,
-    address2: selected.address2,
+    name: address.name,
+    phone: address.phone,
+    street1: address.street1,
+    street2: address.street2,
   };
 
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      const updated = addressData.map((item) => {
-        return item.name === selected.name ? values : item;
-      });
-
-      setAddressData(updated);
-      if (updated) return setOpenEditForm(false);
+      handleEditAddress(address.id, { ...values, id: address.id });
+      handleCloseModal();
     },
   });
 
   return (
-    <Dialog open={openEditForm} onClose={() => setOpenEditForm(false)}>
+    <Dialog open={openModal} onClose={handleCloseModal} sx={{ zIndex: 99999 }}>
       <DialogContent>
-        <Typography variant="h6" mb={3}>
-          Edit Address Information
-        </Typography>
+        <H5 mb={4}>Edit Address Information</H5>
 
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
@@ -61,7 +65,7 @@ const EditAddressForm: FC<Props> = (props) => {
                 value={values.name}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                helperText={(touched.name && errors.name) as string}
+                helperText={touched.name && errors.name}
                 error={touched.name && Boolean(errors.name)}
               />
             </Grid>
@@ -70,13 +74,13 @@ const EditAddressForm: FC<Props> = (props) => {
               <TextField
                 fullWidth
                 type="text"
-                name="address1"
+                name="street1"
                 label="Address line 1"
-                value={values.address1}
                 onBlur={handleBlur}
+                value={values.street1}
                 onChange={handleChange}
-                error={touched.address1 && Boolean(errors.address1)}
-                helperText={(touched.address1 && errors.address1) as string}
+                helperText={touched.street1 && errors.street1}
+                error={touched.street1 && Boolean(errors.street1)}
               />
             </Grid>
 
@@ -84,13 +88,13 @@ const EditAddressForm: FC<Props> = (props) => {
               <TextField
                 fullWidth
                 type="text"
-                name="address2"
+                name="street2"
                 label="Address line 2"
-                value={values.address2}
                 onBlur={handleBlur}
+                value={values.street2}
                 onChange={handleChange}
-                error={touched.address2 && Boolean(errors.address2)}
-                helperText={(touched.address2 && errors.address2) as string}
+                helperText={touched.street2 && errors.street2}
+                error={touched.street2 && Boolean(errors.street2)}
               />
             </Grid>
 
@@ -100,11 +104,11 @@ const EditAddressForm: FC<Props> = (props) => {
                 type="text"
                 name="phone"
                 label="Enter Your Phone"
-                value={values.phone}
                 onBlur={handleBlur}
+                value={values.phone}
                 onChange={handleChange}
+                helperText={touched.phone && errors.phone}
                 error={touched.phone && Boolean(errors.phone)}
-                helperText={(touched.phone && errors.phone) as string}
               />
             </Grid>
 

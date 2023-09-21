@@ -93,7 +93,7 @@ const megaMenus = [
 ];
 
 // MAIN NAVIGATION DATA
-const navbarNavigations = [
+const navbarNavigation = [
   {
     title: "Home",
     megaMenu: false,
@@ -135,8 +135,8 @@ const navbarNavigations = [
       {
         title: "Sale Page",
         child: [
-          { title: "Version 1", url: "/sale-page-1" },
-          { title: "Version 2", url: "/sale-page-2" },
+          { title: "Version 1", url: "/sales-1" },
+          { title: "Version 2", url: "/sales-2" },
         ],
       },
       {
@@ -228,4 +228,4 @@ const navbarNavigations = [
   },
 ];
 
-export default navbarNavigations;
+export default navbarNavigation;

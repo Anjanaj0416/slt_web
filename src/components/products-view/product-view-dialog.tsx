@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Add, Close, Remove } from "@mui/icons-material";
+
 import {
   Box,
   Grid,
@@ -11,6 +11,10 @@ import {
   IconButton,
   DialogContent,
 } from "@mui/material";
+// MUI ICON COMPONENTS
+import Add from "@mui/icons-material/Add";
+import Close from "@mui/icons-material/Close";
+import Remove from "@mui/icons-material/Remove";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import BazaarImage from "components/BazaarImage";

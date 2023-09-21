@@ -1,7 +1,11 @@
 import { FC, Fragment, useState } from "react";
-import { Button, Dialog, DialogContent, Grid, TextField, Typography } from "@mui/material";
+import { Button, Dialog, DialogContent, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
+// LOCAL CUSTOM COMPONENT
+import { H5 } from "components/Typography";
+
+import { Address } from "./_types";
 
 const validationSchema = yup.object({
   street2: yup.string(),
@@ -15,11 +19,15 @@ const validationSchema = yup.object({
 });
 
 // ==================================================================
-type Props = { setNewAddress: (value: any) => void };
+interface Props {
+  handleAddNewAddress: (value: Omit<Address, "id">) => void;
+}
 // ==================================================================
 
-const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
-  const [addCardForm, setAddCardForm] = useState<boolean>(false);
+const NewAddressForm: FC<Props> = ({ handleAddNewAddress }) => {
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  const handleCloseModal = () => setOpenModal(false);
 
   const initialValues = {
     name: "UI Lib",
@@ -36,31 +44,21 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
     initialValues,
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      setNewAddress(values);
-
-      if (values) {
-        setAddCardForm(false);
-        resetForm({});
-      }
+      handleAddNewAddress(values);
+      handleCloseModal();
+      resetForm({});
     },
   });
 
   return (
     <Fragment>
-      <Button
-        color="primary"
-        variant="outlined"
-        sx={{ p: "2px 20px" }}
-        onClick={() => (addCardForm ? setAddCardForm(false) : setAddCardForm(true))}
-      >
+      <Button color="primary" variant="outlined" onClick={() => setOpenModal(true)}>
         Add New Address
       </Button>
 
-      <Dialog open={addCardForm} onClose={() => setAddCardForm(false)}>
+      <Dialog open={openModal} onClose={handleCloseModal}>
         <DialogContent>
-          <Typography variant="h6" mb={3}>
-            Add New Address Information
-          </Typography>
+          <H5 mb={4}>Add New Address Information</H5>
 
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
@@ -72,7 +70,7 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   value={values.name}
                   label="Enter Your Name"
                   onChange={handleChange}
-                  helperText={(touched.name && errors.name) as string}
+                  helperText={touched.name && errors.name}
                   error={touched.name && Boolean(errors.name)}
                 />
               </Grid>
@@ -85,7 +83,7 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   label="Street line 1"
                   value={values.street1}
                   onChange={handleChange}
-                  helperText={(touched.street1 && errors.street1) as string}
+                  helperText={touched.street1 && errors.street1}
                   error={touched.street1 && Boolean(errors.street1)}
                 />
               </Grid>
@@ -98,7 +96,7 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   label="Address line 2"
                   value={values.street2}
                   onChange={handleChange}
-                  helperText={(touched.street2 && errors.street2) as string}
+                  helperText={touched.street2 && errors.street2}
                   error={touched.street2 && Boolean(errors.street2)}
                 />
               </Grid>
@@ -111,8 +109,8 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   value={values.phone}
                   onChange={handleChange}
                   label="Enter Your Phone"
+                  helperText={touched.phone && errors.phone}
                   error={touched.phone && Boolean(errors.phone)}
-                  helperText={(touched.phone && errors.phone) as string}
                 />
               </Grid>
 
@@ -123,7 +121,7 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   label="City"
                   value={values.city}
                   onChange={handleChange}
-                  helperText={(touched.city && errors.city) as string}
+                  helperText={touched.city && errors.city}
                   error={touched.city && Boolean(errors.city)}
                 />
               </Grid>
@@ -135,7 +133,7 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   label="State"
                   value={values.state}
                   onChange={handleChange}
-                  helperText={(touched.state && errors.state) as string}
+                  helperText={touched.state && errors.state}
                   error={touched.state && Boolean(errors.state)}
                 />
               </Grid>
@@ -148,7 +146,7 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   type="number"
                   value={values.zip}
                   onChange={handleChange}
-                  helperText={(touched.zip && errors.zip) as string}
+                  helperText={touched.zip && errors.zip}
                   error={touched.zip && Boolean(errors.zip)}
                 />
               </Grid>
@@ -160,7 +158,7 @@ const NewAddressForm: FC<Props> = ({ setNewAddress }) => {
                   label="Country"
                   value={values.country}
                   onChange={handleChange}
-                  helperText={(touched.country && errors.country) as string}
+                  helperText={touched.country && errors.country}
                   error={touched.country && Boolean(errors.country)}
                 />
               </Grid>

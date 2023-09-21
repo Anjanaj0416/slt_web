@@ -55,13 +55,13 @@ const MobileNavigationBar2: FC<PropsWithChildren> = ({ children }) => {
         </StyledDrawer>
 
         <Wrapper>
-          {list.map((item) => {
+          {list.map(({ Icon, title, href }) => {
             // LINK INNER CONTENTS
-            const ICON = <item.icon sx={iconStyle} fontSize="small" />;
+            const ICON = <Icon sx={iconStyle} fontSize="small" />;
 
             const CONTENT = (
               <Fragment>
-                {item.title === "Cart" ? (
+                {title === "Cart" ? (
                   <Badge badgeContent={state.cart.length} color="primary">
                     {ICON}
                   </Badge>
@@ -69,16 +69,16 @@ const MobileNavigationBar2: FC<PropsWithChildren> = ({ children }) => {
                   ICON
                 )}
 
-                {item.title}
+                {title}
               </Fragment>
             );
 
-            return item.href ? (
-              <StyledNavLink key={item.title} href={item.href}>
+            return href ? (
+              <StyledNavLink key={title} href={href}>
                 {CONTENT}
               </StyledNavLink>
             ) : (
-              <StyledBox key={item.title} onClick={open ? handleDrawerClose : handleDrawerOpen}>
+              <StyledBox key={title} onClick={open ? handleDrawerClose : handleDrawerOpen}>
                 {CONTENT}
               </StyledBox>
             );
@@ -92,10 +92,10 @@ const MobileNavigationBar2: FC<PropsWithChildren> = ({ children }) => {
 };
 
 const list = [
-  { title: "Home", icon: Home, href: "/" },
-  { title: "Category", icon: CategoryOutlined },
-  { title: "Cart", icon: ShoppingBagOutlined, href: "/cart" },
-  { title: "Account", icon: User2, href: "/profile" },
+  { title: "Home", Icon: Home, href: "/" },
+  { title: "Category", Icon: CategoryOutlined },
+  { title: "Cart", Icon: ShoppingBagOutlined, href: "/cart" },
+  { title: "Account", Icon: User2, href: "/profile" },
 ];
 
 export default MobileNavigationBar2;

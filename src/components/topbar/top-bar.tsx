@@ -3,8 +3,8 @@ import { FC, useState } from "react";
 import Chip from "@mui/material/Chip";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
-import { Add, ExpandMore, Facebook, Instagram, Remove, Twitter } from "@mui/icons-material";
 import TouchRipple from "@mui/material/ButtonBase";
+import { Add, ExpandMore, Facebook, Instagram, Remove, Twitter } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";

@@ -19,5 +19,5 @@ export const StyledRoot = styled("footer")<{ bgcolor?: string }>(({ theme, bgcol
   color: "white",
   padding: "40px",
   background: bgcolor ? bgcolor : theme.palette.secondary.main,
-  [theme.breakpoints.down("md")]: { marginBottom: "4rem" },
+  [theme.breakpoints.down("md")]: { marginBottom: "6rem !important" },
 }));

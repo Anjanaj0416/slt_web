@@ -1,9 +1,9 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-// Local CUSTOM COMPONENTS
-import CheckoutForm from "../checkout-form";
-import CheckoutSummary from "../checkout-summery";
+// LOCAL CUSTOM COMPONENTS
+import { CheckoutForm } from "../checkout-form";
+import { CheckoutSummary } from "../checkout-summery";
 
 const CheckoutPageView = () => {
   return (

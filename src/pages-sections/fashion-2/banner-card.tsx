@@ -1,6 +1,8 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Button, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarImage from "components/BazaarImage";
 import { H1, H3, Paragraph } from "components/Typography";
@@ -29,16 +31,16 @@ const CardContent = styled(Box)({
 });
 
 // ========================================================
-type Props = {
+interface Props {
   img: string;
   url: string;
   text1: string;
   text2: string;
   text3: string;
-};
+}
 // ========================================================
 
-const BannerCard2: FC<Props> = ({ img, url, text1, text2, text3 }) => {
+const BannerCard: FC<Props> = ({ img, url, text1, text2, text3 }) => {
   return (
     <CardWrapper>
       <BazaarImage alt="category" height="100%" width="100%" src={img} />
@@ -60,4 +62,4 @@ const BannerCard2: FC<Props> = ({ img, url, text1, text2, text3 }) => {
   );
 };
 
-export default BannerCard2;
+export default BannerCard;

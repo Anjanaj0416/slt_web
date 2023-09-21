@@ -1,18 +1,14 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Container, Grid, IconButton, SxProps } from "@mui/material";
+import { Box, Container, Grid, SxProps } from "@mui/material";
+// LOCAL CUSTOM COMPONENT
+import AppStore from "./app-store";
+import SocialLinks from "./social-links";
 // GLOBAL CUSTOM COMPONENTS
-import { FlexBox } from "components/flex-box";
-import { AppStore } from "components/app-store";
 import BazaarImage from "components/BazaarImage";
 import { Paragraph } from "components/Typography";
-// CUSTOM ICON COMPONENTS
-import Google from "icons/Google";
-import Twitter from "icons/Twitter";
-import Youtube from "icons/Youtube";
-import Facebook from "icons/Facebook";
-import Instagram from "icons/Instagram";
-
+// DATA
+import { CUSTOMER_CARE_LINKS } from "./data";
 // STYLED COMPONENTS
 import { StyledRoot, StyledLink } from "./styles";
 
@@ -24,12 +20,12 @@ const Footer3: FC<Props> = ({ sx, id, bgcolor }) => {
   return (
     <StyledRoot id={id} sx={sx} bgcolor={bgcolor}>
       <Container>
-        <Link href="/">
-          <BazaarImage mb={2.5} src="/assets/images/logo.svg" alt="logo" />
-        </Link>
-
         <Grid container spacing={6}>
-          <Grid item md={6} sm={6} xs={12}>
+          <Grid item md={7} xs={12}>
+            <Link href="/">
+              <BazaarImage mb={2.5} src="/assets/images/logo.svg" alt="logo" />
+            </Link>
+
             <Paragraph mb={2.5} color="grey.300" maxWidth="370px">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in
               gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at
@@ -39,51 +35,23 @@ const Footer3: FC<Props> = ({ sx, id, bgcolor }) => {
             <AppStore />
           </Grid>
 
-          <Grid item md={6} sm={6} xs={12}>
-            <Box mt={-0.6}>
-              {customerCareLinks.map((item, ind) => (
+          <Grid item md={5} xs={12}>
+            {/* CUSTOMER CARE LINKS */}
+            <Box mt={{ md: 6, xs: 2 }} mb={2}>
+              {CUSTOMER_CARE_LINKS.map((item, ind) => (
                 <StyledLink href="/" key={ind} sx={{ color: "grey.300" }}>
                   {item}
                 </StyledLink>
               ))}
             </Box>
 
-            <FlexBox className="flex" mx={-0.625} mt={2}>
-              {iconList.map((item, ind) => (
-                <a href={item.url} target="_blank" rel="noreferrer noopenner" key={ind}>
-                  <IconButton
-                    sx={{
-                      margin: 0.5,
-                      fontSize: 12,
-                      padding: "10px",
-                      backgroundColor: "rgba(0,0,0,0.2)",
-                    }}
-                  >
-                    <item.icon fontSize="inherit" sx={{ color: "white" }} />
-                  </IconButton>
-                </a>
-              ))}
-            </FlexBox>
+            {/* SOCIAL LINKS WITH ICON */}
+            <SocialLinks />
           </Grid>
         </Grid>
       </Container>
     </StyledRoot>
   );
 };
-
-const customerCareLinks = [
-  "Help Center",
-  "Track Your Order",
-  "Corporate & Bulk Purchasing",
-  "Returns & Refunds",
-];
-
-const iconList = [
-  { icon: Facebook, url: "https://www.facebook.com/UILibOfficial" },
-  { icon: Twitter, url: "https://twitter.com/uilibofficial" },
-  { icon: Youtube, url: "https://www.youtube.com/channel/UCsIyD-TSO1wQFz-n2Y4i3Rg" },
-  { icon: Google, url: "https://www.google.com/search?q=ui-lib.com" },
-  { icon: Instagram, url: "https://www.instagram.com/uilibofficial/" },
-];
 
 export default Footer3;

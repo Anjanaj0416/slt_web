@@ -12,11 +12,13 @@ export const NAV_LINK_STYLES = {
 
 export const StyledNavLink = styled(NavLink)({ ...NAV_LINK_STYLES });
 
-export const ParentNav = styled(Box)(({ theme }) => ({
+export const ParentNav = styled(Box)<{ active: number }>(({ theme, active }) => ({
+  position: "relative",
   "&:hover": {
     color: theme.palette.primary.main,
     "& > .parent-nav-item": { display: "block" },
   },
+  ...(active && { color: theme.palette.primary.main }),
 }));
 
 export const ParentNavItem = styled(Box)(({ theme }) => ({

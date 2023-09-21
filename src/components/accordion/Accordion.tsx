@@ -1,15 +1,15 @@
-import { styled } from "@mui/material/styles";
 import { Children, cloneElement, FC, ReactElement, useEffect, useRef, useState } from "react";
+import { styled } from "@mui/material/styles";
 
 // STYLED COMPONENT PROPS
-type StyledWrapperProps = {
+type WrapperProps = {
   open: boolean;
   parent_height: number;
   header_height: number;
 };
 
 // STYLED COMPONENT
-const Wrapper = styled("div")<StyledWrapperProps>((props) => ({
+const Wrapper = styled("div")<WrapperProps>((props) => ({
   cursor: "pointer",
   overflow: "hidden",
   transition: "height 250ms ease-in-out",

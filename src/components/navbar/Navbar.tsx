@@ -1,10 +1,11 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
+import { usePathname } from "next/navigation";
 import MenuItem from "@mui/material/MenuItem";
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import ArrowRight from "@mui/icons-material/ArrowRight";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 // GLOBAL CUSTOM COMPONENTS
+import { Span } from "components/Typography";
 import { NavLink } from "components/nav-link";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
@@ -45,6 +46,7 @@ const Navbar: FC<Props> = ({
   hideCategories = false,
 }) => {
   const { settings } = useSettings();
+  const pathname = usePathname();
 
   const renderNestedNav = (list: any[] = [], isRoot = false) => {
     return list.map((nav: NavList) => {
@@ -100,12 +102,12 @@ const Navbar: FC<Props> = ({
         }
 
         if (nav.child) {
+          const isActive = nav.child.flat().find((item) => item.url === pathname);
+
           return (
-            <ParentNav position="relative" minWidth="230px" key={nav.title}>
+            <ParentNav key={nav.title} minWidth={230} active={isActive ? 1 : 0}>
               <MenuItem color="grey.700">
-                <Box flex="1 1 0" component="span">
-                  {nav.title}
-                </Box>
+                <Span flex="1 1 0">{nav.title}</Span>
 
                 {settings.direction === "ltr" ? (
                   <ArrowRight fontSize="small" />

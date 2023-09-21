@@ -3,8 +3,10 @@
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
+// LOCAL CUSTOM COMPONENT
+import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS
-import { BannerCard1, BannerCard2 } from "components/banners";
+import { BannerCard1 } from "components/banners";
 
 const Section5 = () => {
   const { direction } = useTheme();
@@ -25,7 +27,7 @@ const Section5 = () => {
 
         {/* SALES BANNER CARD */}
         <Grid item md={4} xs={12}>
-          <BannerCard2
+          <BannerCard
             url="#"
             text3="Sale"
             text2="Black Friday"

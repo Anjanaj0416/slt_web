@@ -1,6 +1,8 @@
-import { Box, Avatar, styled, IconButton } from "@mui/material";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
 
-// custom styled components
 export const MainContainer = styled(Box)(({ theme }) => ({
   top: 50,
   right: 50,

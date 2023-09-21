@@ -4,7 +4,7 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-// Local CUSTOM COMPONENTS
+// LOCAL CUSTOM COMPONENTS
 import Card1 from "./common/card-1";
 import ProductCarousel from "./common/product-carousel";
 // GLOBAL CUSTOM COMPONENTS

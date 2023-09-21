@@ -1,12 +1,16 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Avatar, Box, Button, IconButton } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Close from "@mui/icons-material/Close";
 import Remove from "@mui/icons-material/Remove";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
-import { H5, Tiny } from "components/Typography";
+import { H6, Tiny } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
@@ -31,47 +35,47 @@ const MiniCartItem: FC<Props> = ({ item, handleCartAmountChange }) => {
     >
       <FlexBox alignItems="center" flexDirection="column">
         <Button
+          size="small"
           color="primary"
           variant="outlined"
           onClick={handleCartAmountChange(item.qty + 1, item)}
-          sx={{ height: "32px", width: "32px", borderRadius: "300px" }}
+          sx={{ height: 28, width: 28, borderRadius: 50 }}
         >
           <Add fontSize="small" />
         </Button>
 
-        <Box fontWeight={600} fontSize="15px" my="3px">
-          {item.qty}
-        </Box>
+        <H6 my="3px">{item.qty}</H6>
 
         <Button
+          size="small"
           color="primary"
           variant="outlined"
           disabled={item.qty === 1}
           onClick={handleCartAmountChange(item.qty - 1, item)}
-          sx={{ height: "32px", width: "32px", borderRadius: "300px" }}
+          sx={{ height: 28, width: 28, borderRadius: 50 }}
         >
           <Remove fontSize="small" />
         </Button>
       </FlexBox>
 
       <Link href={`/products/${item.id}`}>
-        <Avatar alt={item.name} src={item.imgUrl} sx={{ mx: 2, width: 76, height: 76 }} />
+        <Avatar alt={item.name} src={item.imgUrl} sx={{ mx: 1, width: 75, height: 75 }} />
       </Link>
 
-      <Box flex="1" sx={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+      <Box flex="1" textOverflow="ellipsis" whiteSpace="nowrap" overflow="hidden">
         <Link href={`/products/${item.slug}`}>
-          <H5 ellipsis fontSize="14px" className="title">
+          <H6 ellipsis className="title">
             {item.name}
-          </H5>
+          </H6>
         </Link>
 
         <Tiny color="grey.600">
           {currency(item.price)} x {item.qty}
         </Tiny>
 
-        <Box fontWeight={600} fontSize="14px" color="primary.main" mt={0.5}>
+        <H6 color="primary.main" mt={0.5}>
           {currency(item.qty * item.price)}
-        </Box>
+        </H6>
       </Box>
 
       <IconButton size="small" onClick={handleCartAmountChange(0, item)} sx={{ marginLeft: 2.5 }}>

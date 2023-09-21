@@ -16,17 +16,17 @@ const MobileNavigationBar = () => {
   if (DOWN_900) {
     return (
       <Wrapper>
-        {list.map((item) => (
-          <StyledNavLink href={item.href} key={item.title}>
-            {item.title === "Cart" ? (
+        {list.map(({ Icon, href, title }) => (
+          <StyledNavLink href={href} key={title}>
+            {title === "Cart" ? (
               <Badge badgeContent={state.cart.length} color="primary">
-                <item.icon fontSize="small" sx={iconStyle} />
+                <Icon fontSize="small" sx={iconStyle} />
               </Badge>
             ) : (
-              <item.icon sx={iconStyle} fontSize="small" />
+              <Icon sx={iconStyle} fontSize="small" />
             )}
 
-            {item.title}
+            {title}
           </StyledNavLink>
         ))}
       </Wrapper>
@@ -37,10 +37,10 @@ const MobileNavigationBar = () => {
 };
 
 const list = [
-  { title: "Home", icon: Home, href: "/" },
-  { title: "Category", icon: CategoryOutlined, href: "/mobile-category-nav" },
-  { title: "Cart", icon: ShoppingBagOutlined, href: "/cart" },
-  { title: "Account", icon: User2, href: "/profile" },
+  { title: "Home", Icon: Home, href: "/" },
+  { title: "Category", Icon: CategoryOutlined, href: "/mobile-category-nav" },
+  { title: "Cart", Icon: ShoppingBagOutlined, href: "/cart" },
+  { title: "Account", Icon: User2, href: "/profile" },
 ];
 
 export default MobileNavigationBar;

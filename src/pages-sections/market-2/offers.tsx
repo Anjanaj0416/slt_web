@@ -2,9 +2,10 @@
 
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+// LOCAL CUSTOM COMPONENT
+import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS
 import { NavLink3 } from "components/nav-link";
-import { BannerCard3 } from "components/banners";
 import { H4, Paragraph, Span } from "components/Typography";
 
 const Offers = () => {
@@ -13,7 +14,7 @@ const Offers = () => {
       <Grid container spacing={3}>
         {/* NEW ARRIVALS */}
         <Grid item md={4} xs={12}>
-          <BannerCard3 img="/assets/images/banners/banner-18.jpg">
+          <BannerCard img="/assets/images/banners/banner-18.jpg">
             <Paragraph fontSize={13} letterSpacing={1.2}>
               NEW ARRIVALS
             </Paragraph>
@@ -27,12 +28,12 @@ const Offers = () => {
             </H4>
 
             <NavLink3 href="#" text="Shop Now" color="dark.main" hoverColor="dark.main" />
-          </BannerCard3>
+          </BannerCard>
         </Grid>
 
         {/* BEST SELLER */}
         <Grid item md={4} xs={12}>
-          <BannerCard3 img="/assets/images/banners/banner-19.jpg">
+          <BannerCard img="/assets/images/banners/banner-19.jpg">
             <Paragraph color="white" fontSize={13} letterSpacing={1.2}>
               BEST SELLER
             </Paragraph>
@@ -44,12 +45,12 @@ const Offers = () => {
             </H4>
 
             <NavLink3 href="#" text="Shop Now" color="white" hoverColor="white" />
-          </BannerCard3>
+          </BannerCard>
         </Grid>
 
         {/* NEW ARRIVALS */}
         <Grid item md={4} xs={12}>
-          <BannerCard3 img="/assets/images/banners/banner-20.jpg">
+          <BannerCard img="/assets/images/banners/banner-20.jpg">
             <Paragraph fontSize={13} letterSpacing={1.2}>
               NEW ARRIVALS
             </Paragraph>
@@ -61,7 +62,7 @@ const Offers = () => {
             </H4>
 
             <NavLink3 href="#" text="Shop Now" color="dark.main" hoverColor="dark.main" />
-          </BannerCard3>
+          </BannerCard>
         </Grid>
       </Grid>
     </Container>
