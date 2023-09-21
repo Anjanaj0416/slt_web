@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { Carousel } from "components/carousel";
-import { AppStore } from "components/app-store";
+import AppStore from "components/footer/app-store";
 import { H1, H5, H6 } from "components/Typography";
 // CUSTOM DATA MODEL
 import { GroceryTwoCarouselItem } from "models/Carousel.model";
