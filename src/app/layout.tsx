@@ -24,7 +24,7 @@ import "__server__";
 // IMPORT i18n SUPPORT FILE
 import "i18n";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Bazaar - Next.js E-commerce Template",
   description: `Bazaar is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
   authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
