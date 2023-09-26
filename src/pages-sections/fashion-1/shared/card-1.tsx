@@ -6,7 +6,7 @@ import { NavLink2 } from "components/nav-link";
 import { H1, Paragraph, Span } from "components/Typography";
 
 // STYLED COMPONENTS
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled("div")(({ theme }) => ({
   height: "100%",
   borderRadius: 4,
   boxShadow: theme.shadows[4],

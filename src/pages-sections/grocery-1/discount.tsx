@@ -29,7 +29,7 @@ const DiscountSection = () => {
 
   return (
     <Container>
-      <Link href="/sale-page-1">
+      <Link href="/sales-1">
         <Grid container>
           <Grid className="content" item sm={7} xs={12}>
             <Paragraph>Till 10 Dec, 2021</Paragraph>
@@ -39,7 +39,7 @@ const DiscountSection = () => {
               color="primary"
               variant="contained"
               sx={{ mt: 5, fontSize: "12px" }}
-              onClick={() => router.push("/sale-page-1")}
+              onClick={() => router.push("/sales-1")}
             >
               Shop Now
             </Button>

@@ -10,7 +10,7 @@ import { H1, Paragraph } from "components/Typography";
 import { GiftCarouselItem } from "models/Carousel.model";
 
 // STYLED COMPONENTS
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled("div")(({ theme }) => ({
   marginBottom: 60,
   overflow: "hidden",
   backgroundColor: theme.palette.primary[100],
@@ -83,9 +83,9 @@ const Section1: FC<Props> = ({ carouselData }) => {
             <GridItemOne item md={6} sm={6} xs={12}>
               <Box py={6}>
                 <Paragraph color="primary.main">{subTitle}</Paragraph>
-                <Box className="titleBox">
+                <div className="titleBox">
                   <H1 maxWidth={400}>{title}</H1>
-                </Box>
+                </div>
 
                 <StyledButton variant="contained" sx={{ px: "30px", py: "8px" }}>
                   {buttonText}

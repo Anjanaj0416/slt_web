@@ -5,13 +5,6 @@ import Product from "models/Product.model";
 // SALES API FUNCTIONS
 import api from "utils/__api__/sales";
 
-// ==============================================================
-interface Props {
-  defaultSelectCategory?: string;
-  fetchCategory?: "primary" | "secondary";
-}
-// ==============================================================
-
 const useSales = (defaultSelectCategory = "women", fetchCategory = 0) => {
   const PRODUCT_PER_PAGE = 28;
 
@@ -46,7 +39,6 @@ const useSales = (defaultSelectCategory = "women", fetchCategory = 0) => {
     productList,
     selectedCategory,
     PRODUCT_PER_PAGE,
-
     handlePageChange,
     handleCategoryChange,
   };

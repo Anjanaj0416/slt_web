@@ -12,7 +12,9 @@ export const StyledCard = styled(Card)({
 
 type Props = { scrolled: number };
 
-export const StyledScrollbar = styled(Scrollbar)<Props>(({ theme, scrolled }) => ({
+export const StyledScrollbar = styled(Scrollbar, {
+  shouldForwardProp: (prop) => prop !== "scrolled",
+})<Props>(({ theme, scrolled }) => ({
   boxShadow: theme.shadows[1],
   transition: "all 0.4s ease-in-out",
   maxHeight: scrolled ? "100%" : `calc(100% - ${104}px)`,

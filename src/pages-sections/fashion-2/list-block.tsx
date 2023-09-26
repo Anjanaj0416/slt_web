@@ -44,14 +44,14 @@ const ListBlock: FC<Props> = ({ title, products }) => {
             </Box>
           </Link>
 
-          <Box>
+          <div>
             <NavLink href="#">
               <Paragraph fontSize={16}>{product.title}</Paragraph>
             </NavLink>
 
             <Paragraph fontWeight={700}>{currency(product.price)}</Paragraph>
             <Rating readOnly value={4} sx={{ fontSize: 14 }} />
-          </Box>
+          </div>
         </FlexBox>
       ))}
     </Grid>

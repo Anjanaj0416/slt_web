@@ -1,5 +1,4 @@
 import { FC, ReactNode, useCallback, useEffect, useState } from "react";
-import Box from "@mui/material/Box";
 import clsx from "clsx";
 import { layoutConstant } from "utils/constants";
 // STYLED COMPONENT
@@ -33,11 +32,11 @@ const SideNavContainer: FC<Props> = (props) => {
 
   return (
     <StyledContainer>
-      <Box className={clsx({ sidenav: true, fixed: isFixed })}>
+      <div className={clsx({ sidenav: true, fixed: isFixed })}>
         <SideNav />
-      </Box>
+      </div>
 
-      <Box className={clsx({ pageContent: true, pageContentLeft: isFixed })}>{children}</Box>
+      <div className={clsx({ pageContent: true, pageContentLeft: isFixed })}>{children}</div>
     </StyledContainer>
   );
 };

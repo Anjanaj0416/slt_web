@@ -66,7 +66,7 @@ const MultiLevelMenu = () => {
 
               <StyledText compact={COMPACT}>{item.name}</StyledText>
 
-              {item.badge && <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue>}
+              {item.badge ? <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue> : null}
             </NavItemButton>
           </ExternalLink>
         );
@@ -89,7 +89,7 @@ const MultiLevelMenu = () => {
 
             <StyledText compact={COMPACT}>{item.name}</StyledText>
 
-            {item.badge && <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue>}
+            {item.badge ? <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue> : null}
           </NavItemButton>
         </Box>
       );

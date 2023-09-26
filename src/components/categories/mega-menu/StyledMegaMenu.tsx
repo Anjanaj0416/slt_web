@@ -1,9 +1,8 @@
 import { PropsWithChildren } from "react";
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 // STYLED COMPONENT
-const Wrapper = styled(Box)(({ theme }) => ({
+const Wrapper = styled("div")(({ theme }) => ({
   display: "none",
   position: "absolute",
   left: "100%",

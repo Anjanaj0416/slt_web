@@ -83,8 +83,10 @@ const Section6: FC<Props> = ({ handleChangeFilter }) => {
                   <H2 fontSize={22} mb={1}>
                     {item.title}
                   </H2>
+
                   <Paragraph mb={2}>{item.subTitle}</Paragraph>
-                  <Box m="auto"></Box>
+                  <Box m="auto" />
+
                   <Button
                     onClick={handleNavigate(item.category)}
                     variant="outlined"

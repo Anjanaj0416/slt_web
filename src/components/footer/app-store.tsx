@@ -27,7 +27,7 @@ const AppStore = () => {
           >
             <item.icon />
 
-            <Box>
+            <div>
               <Box fontSize="8px" fontWeight="600" lineHeight="1">
                 {item.subtitle}
               </Box>
@@ -35,7 +35,7 @@ const AppStore = () => {
               <Box fontSize="14px" fontWeight="700">
                 {item.title}
               </Box>
-            </Box>
+            </div>
           </Box>
         </a>
       ))}

@@ -46,7 +46,9 @@ type StatusType = {
   //   | "Cancelled";
 };
 
-const StatusWrapper = styled(Box)<StatusType>(({ theme, status }) => {
+const StatusWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "status",
+})<StatusType>(({ theme, status }) => {
   let color = theme.palette.secondary.main;
   let backgroundColor = theme.palette.secondary[100];
 

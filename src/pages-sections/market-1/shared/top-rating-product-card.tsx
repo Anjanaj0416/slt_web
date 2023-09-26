@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 // GLOBAL CUSTOM COMPONENTS
 import HoverBox from "components/HoverBox";
@@ -23,7 +22,7 @@ const TopRatingProductCard: FC<Props> = (props) => {
   const { title, price, imgUrl, rating = 5, reviewCount = 10 } = props;
 
   return (
-    <Box>
+    <div>
       <HoverBox mb={2} mx="auto" borderRadius={2}>
         <LazyImage
           alt={title}
@@ -46,7 +45,7 @@ const TopRatingProductCard: FC<Props> = (props) => {
       <H4 fontSize={14} textAlign="center" color="primary.main">
         {currency(price)}
       </H4>
-    </Box>
+    </div>
   );
 };
 

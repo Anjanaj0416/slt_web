@@ -1,11 +1,11 @@
 "use client";
 
-import { Box, Drawer, styled } from "@mui/material";
+import { Drawer, styled } from "@mui/material";
 import { NavLink } from "components/nav-link";
 import { layoutConstant } from "utils/constants";
 
 // styled components
-const Wrapper = styled(Box)(({ theme }) => ({
+const Wrapper = styled("div")(({ theme }) => ({
   left: 0,
   right: 0,
   bottom: 0,
@@ -31,7 +31,7 @@ const StyledNavLink = styled(NavLink)({
   justifyContent: "center",
 });
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled("div")(({ theme }) => ({
   flex: "1 1 0",
   display: "flex",
   fontSize: "13px",
@@ -43,15 +43,13 @@ const StyledBox = styled(Box)(({ theme }) => ({
   "&:hover": { color: `${theme.palette.primary.main} !important` },
 }));
 
-const StyledDrawer = styled(Drawer)<{ totalheight: number }>(({ theme, totalheight }) => ({
+const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: 250,
   flexShrink: 0,
   "& .MuiDrawer-paper": {
     width: 250,
-    // top: totalheight,
     boxSizing: "border-box",
     boxShadow: theme.shadows[2],
-    // height: `calc(100% - ${totalheight + layoutConstant.mobileHeaderHeight}px)`,
   },
 }));
 

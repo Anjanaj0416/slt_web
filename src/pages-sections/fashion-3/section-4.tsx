@@ -8,7 +8,7 @@ import { H2, H3 } from "components/Typography";
 import WhiteButton from "components/WhiteButton";
 
 // STYLED COMPONENTS
-const ContentBox = styled(Box)({
+const ContentBox = styled("div")({
   top: 30,
   left: 0,
   right: 0,
@@ -16,13 +16,13 @@ const ContentBox = styled(Box)({
   position: "absolute",
 });
 
-const Category2Wrapper = styled(Box)({
+const Category2Wrapper = styled("div")({
   width: "100%",
   height: "50%",
   position: "relative",
 });
 
-const Category2ButtonWrapper = styled(Box)({
+const Category2ButtonWrapper = styled("div")({
   left: 0,
   right: 0,
   bottom: 30,
@@ -39,7 +39,7 @@ const Section4 = () => {
 
       <Grid container spacing={3}>
         <Grid item md={6} xs={12}>
-          <Box sx={{ width: "100%", height: "100%", position: "relative" }}>
+          <Box width="100%" height="100%" position="relative">
             <Image width={580} height={580} alt="category" src="/assets/images/categories/1.jpg" />
 
             <ContentBox>
@@ -51,8 +51,11 @@ const Section4 = () => {
 
             <FlexBox
               gap={2}
+              left={0}
+              right={0}
+              bottom={30}
+              position="absolute"
               justifyContent="center"
-              sx={{ position: "absolute", bottom: 30, left: 0, right: 0 }}
             >
               <WhiteButton size="large">Women&#39;s</WhiteButton>
 

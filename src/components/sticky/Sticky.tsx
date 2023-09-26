@@ -49,9 +49,9 @@ const Sticky: FC<Props> = ({ fixedOn, children, onSticky, scrollDistance = 0 }) 
 
   return (
     <StyledBox fixedOn={fixedOn} componentHeight={height} fixed={fixed}>
-      <Box className={clsx({ hold: !fixed, fixed: fixed })} ref={elementRef}>
+      <div className={clsx({ hold: !fixed, fixed: fixed })} ref={elementRef}>
         {children}
-      </Box>
+      </div>
     </StyledBox>
   );
 };

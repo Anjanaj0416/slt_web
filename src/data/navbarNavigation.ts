@@ -44,7 +44,7 @@ const megaMenus = [
       title: "Vendor Account",
       child: [
         { title: "Dashboard", url: "/vendor/dashboard" },
-        { title: "Profile", url: "/vendor/account-setting" },
+        { title: "Profile", url: "/vendor/account-settings" },
       ],
     },
     {
@@ -223,7 +223,7 @@ const navbarNavigation = [
           { title: "Order details", url: "/admin/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8" },
         ],
       },
-      { title: "Profile", url: "/vendor/account-setting" },
+      { title: "Profile", url: "/vendor/account-settings" },
     ],
   },
 ];

@@ -6,7 +6,7 @@ import { FlexRowCenter } from "components/flex-box";
 import { H2, H3, H4, Span } from "components/Typography";
 
 // STYLED COMPONENTS
-const Wrapper = styled(Box)(({ theme }) => ({
+const Wrapper = styled("div")(({ theme }) => ({
   rowGap: "1rem",
   padding: "3rem",
   display: "flex",

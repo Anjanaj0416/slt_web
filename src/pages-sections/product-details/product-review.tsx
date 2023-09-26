@@ -41,7 +41,7 @@ const ProductReview = () => {
   });
 
   return (
-    <Box>
+    <div>
       {commentList.map((item, ind) => (
         <ProductComment {...item} key={ind} />
       ))}
@@ -90,7 +90,7 @@ const ProductReview = () => {
           Submit
         </Button>
       </form>
-    </Box>
+    </div>
   );
 };
 

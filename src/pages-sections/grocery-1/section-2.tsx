@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
@@ -47,13 +46,13 @@ const Section2: FC<Props> = ({ id, services }) => {
                   </Icon>
                 </FlexBox>
 
-                <Box>
+                <div>
                   <H4 color="grey.900" fontSize="1rem" fontWeight="700">
                     {item.title}
                   </H4>
 
                   <Span color="grey.600">{item.description}</Span>
-                </Box>
+                </div>
               </StyledFlexBox>
             </Grid>
           );

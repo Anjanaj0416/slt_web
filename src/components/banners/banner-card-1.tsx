@@ -1,9 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, BoxProps, Divider, styled } from "@mui/material";
+import Divider from "@mui/material/Divider";
+import { styled } from "@mui/material/styles";
+import Box, { BoxProps } from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarImage from "components/BazaarImage";
-import { H2, Paragraph, Span } from "components/Typography";
+import { H2, Paragraph } from "components/Typography";
 
 // STYLED COMPONENTS
 const CardWrapper = styled(Box)({
@@ -29,7 +31,7 @@ const CardContent = styled(Box, {
   ...(contentAlign === "left" ? { left: 32 } : { right: 32, alignItems: "flex-end" }),
 }));
 
-const CardLink = styled(Span)({
+const CardLink = styled("span")({
   position: "relative",
   paddingBottom: "2px",
   textTransform: "uppercase",

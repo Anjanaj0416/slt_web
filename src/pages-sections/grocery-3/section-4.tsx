@@ -31,10 +31,10 @@ type Props = { products: Product[] };
 
 const Section4: FC<Props> = ({ products }) => {
   return (
-    <Box>
+    <div>
       <TitleBox my={4}>
         <H1>Our All Products</H1>
-        <Box />
+        <div />
       </TitleBox>
 
       <Grid container mb={-0.5} spacing={3}>
@@ -59,7 +59,7 @@ const Section4: FC<Props> = ({ products }) => {
           Load More...
         </Button>
       </Box>
-    </Box>
+    </div>
   );
 };
 

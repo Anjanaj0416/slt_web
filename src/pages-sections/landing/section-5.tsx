@@ -1,12 +1,15 @@
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 import Done from "@mui/icons-material/Done";
-import { Box, Container, Grid, styled } from "@mui/material";
 // CUSTOM COMPONENTS
-import { FlexBox } from "components/flex-box";
 import LazyImage from "components/LazyImage";
+import { FlexBox } from "components/flex-box";
 import { H2, Paragraph, Span } from "components/Typography";
 
 // STYLED COMPONENT
-const ImageBox = styled(Box)(({ theme }) => ({
+const ImageBox = styled("div")(({ theme }) => ({
   padding: 32,
   display: "flex",
   borderRadius: 16,

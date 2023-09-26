@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, Fragment, PropsWithChildren, useEffect, useState } from "react";
+import { FC, Fragment, memo, PropsWithChildren, useState } from "react";
 import { Theme, useMediaQuery, Box, Badge } from "@mui/material";
 // CUSTOM ICON COMPONENTS
 import Home from "icons/Home";
@@ -9,8 +9,6 @@ import CategoryOutlined from "icons/CategoryOutline";
 import ShoppingBagOutlined from "icons/ShoppingBagOutlined";
 // GLOBAL CUSTOM HOOKS
 import useCart from "hooks/useCart";
-// UTILS CONSTANTS
-import { layoutConstant } from "utils/constants";
 // STYLED COMPONENTS
 import { iconStyle, StyledBox, StyledDrawer, StyledNavLink, Wrapper } from "./styles";
 
@@ -25,32 +23,13 @@ const MobileNavigationBar2: FC<PropsWithChildren> = ({ children }) => {
   const [open, setOpen] = useState(false);
   const DOWN_900 = useMediaQuery((theme: Theme) => theme.breakpoints.down(900));
 
-  const { mobileNavHeight, topbarHeight } = layoutConstant;
-  const total = mobileNavHeight + topbarHeight;
-  const [totalHeight, setTotalHeight] = useState<number>(total);
-
-  const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
-
-  useEffect(() => {
-    const listener = () => {
-      if (window.scrollY > 30) setTotalHeight(mobileNavHeight);
-      else setTotalHeight(total);
-    };
-
-    window.addEventListener("scroll", listener);
-    return () => window.removeEventListener("scroll", listener);
-  }, [mobileNavHeight, total]);
+  const handleDrawerToggle = () => setOpen((state) => !state);
 
   if (DOWN_900) {
     return (
       <Box position="relative" display="flex" flexDirection="column">
-        <StyledDrawer
-          open={open}
-          anchor="left"
-          totalheight={totalHeight}
-          onClose={handleDrawerClose}
-        >
+        <StyledDrawer open={open} anchor="left" onClose={handleDrawerClose}>
           {children}
         </StyledDrawer>
 
@@ -78,7 +57,7 @@ const MobileNavigationBar2: FC<PropsWithChildren> = ({ children }) => {
                 {CONTENT}
               </StyledNavLink>
             ) : (
-              <StyledBox key={title} onClick={open ? handleDrawerClose : handleDrawerOpen}>
+              <StyledBox key={title} onClick={handleDrawerToggle}>
                 {CONTENT}
               </StyledBox>
             );
@@ -98,4 +77,4 @@ const list = [
   { title: "Account", Icon: User2, href: "/profile" },
 ];
 
-export default MobileNavigationBar2;
+export default memo(MobileNavigationBar2);

@@ -10,7 +10,7 @@ const LEFT_IMG = "/assets/images/headers/Header BG1.png";
 const RIGHT_IMG = "/assets/images/headers/Header BG2.png";
 
 // STYLED COMPONENT
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled("div")(({ theme }) => ({
   height: 650,
   padding: 20,
   width: "100%",
@@ -80,7 +80,7 @@ const Section1 = () => {
         Get your grocery delivery within 30 minutes
       </H1>
 
-      <Box className="searchBox">
+      <div className="searchBox">
         <TextField
           fullWidth
           placeholder="Searching for..."
@@ -90,7 +90,7 @@ const Section1 = () => {
             startAdornment: <SearchOutlinedIcon fontSize="small" />,
           }}
         />
-      </Box>
+      </div>
     </Container>
   );
 };

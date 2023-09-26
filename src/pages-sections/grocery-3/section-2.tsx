@@ -30,7 +30,7 @@ const Section2: FC<Props> = ({ offers }) => {
     <Grid container spacing={3}>
       {offers.map((item, ind) => (
         <Grid key={ind} item md={6} sm={12} xs={12}>
-          <Link href="/sale-page-1">
+          <Link href="/sales-1">
             <StyledCard>
               <Box width="60%">
                 <Paragraph fontWeight={600}>{item.title}</Paragraph>

@@ -7,7 +7,9 @@ interface Props extends CardProps {
 }
 // ===============================================
 
-const BazaarCard = styled(Card)<Props>(({ theme, hoverEffect }) => ({
+const BazaarCard = styled(Card, {
+  shouldForwardProp: (prop) => prop !== "hoverEffect",
+})<Props>(({ theme, hoverEffect }) => ({
   overflow: "unset",
   borderRadius: "8px",
   transition: "all 250ms ease-in-out",

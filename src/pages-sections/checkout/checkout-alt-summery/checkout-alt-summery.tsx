@@ -14,7 +14,7 @@ const CheckoutAltSummary = () => {
   const { state } = useCart();
 
   return (
-    <Box>
+    <div>
       <Paragraph color="secondary.900" fontWeight={700} mb={2}>
         Your order
       </Paragraph>
@@ -33,7 +33,7 @@ const CheckoutAltSummary = () => {
       <Box component={Divider} borderColor="grey.300" mb={1} />
 
       <ListItem title="Total" value={2650} color="inherit" />
-    </Box>
+    </div>
   );
 };
 

@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FC, Fragment, ReactElement } from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
-import { Box, Card, IconButton, styled } from "@mui/material";
 // CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { FlexBox } from "components/flex-box";
@@ -10,29 +13,29 @@ import { FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
 const Wrapper = styled(Box)(({ theme }) => ({
   cursor: "pointer",
+  marginTop: "1rem",
   position: "relative",
   borderRadius: "0.5rem",
-  marginTop: "1rem",
   backgroundColor: theme.palette.grey[200],
   border: `1px solid ${theme.palette.grey[300]}`,
   "& .overlay": { transition: "0.3s ease-in-out" },
   "&:hover": { ".overlay": { opacity: 1 } },
 }));
 
-const StatusChip = styled(Box)(({ theme }) => ({
-  position: "absolute",
-  top: "10px",
-  zIndex: 11,
-  right: "8px",
+const StatusChip = styled("div")(({ theme }) => ({
   width: 44,
   height: 44,
+  zIndex: 11,
+  top: "10px",
+  right: "8px",
   color: "#fff",
-  fontSize: "13px",
   fontWeight: 700,
-  background: theme.palette.dark.main,
-  padding: "11px 7px",
+  fontSize: "13px",
   borderRadius: 36,
+  padding: "11px 7px",
+  position: "absolute",
   boxShadow: theme.shadows[2],
+  background: theme.palette.dark.main,
 }));
 
 const StyledFlex = styled(FlexBox)({

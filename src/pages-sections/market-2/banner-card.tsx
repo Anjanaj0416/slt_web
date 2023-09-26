@@ -10,7 +10,7 @@ const CardWrapper = styled(Box)({
   position: "relative",
 });
 
-const CardContent = styled(Box)(({ theme }) => ({
+const CardContent = styled("div")(({ theme }) => ({
   top: 0,
   left: 32,
   zIndex: 1,

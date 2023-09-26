@@ -1,13 +1,17 @@
 import { FC } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import navigations from "data/navigations";
-import CategoryMenuItem from "./category-menu-item";
+// LOCAL CUSTOM COMPONENTS
 import MegaMenu1 from "./mega-menu/mega-menu-1";
 import MegaMenu2 from "./mega-menu/mega-menu-2";
+import CategoryMenuItem from "./category-menu-item";
+// NAVIGATION DATA
+import navigation from "data/navigations";
 
 // styled component
-const Wrapper = styled(Box)<CategoryMenuCardProps>(({ theme, position, open }) => ({
+const Wrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "position" && prop !== "open",
+})<Props>(({ theme, position, open }) => ({
   left: 0,
   zIndex: 98,
   right: "auto",
@@ -23,20 +27,20 @@ const Wrapper = styled(Box)<CategoryMenuCardProps>(({ theme, position, open }) =
 }));
 
 // ===============================================================
-type CategoryMenuCardProps = {
+interface Props {
   open?: boolean;
   position?: "absolute" | "relative";
-};
+}
 // ===============================================================
 
-const CategoryMenuCard: FC<CategoryMenuCardProps> = (props) => {
+const CategoryMenuCard: FC<Props> = (props) => {
   const { open, position = "absolute" } = props;
 
   const megaMenu = { MegaMenu1, MegaMenu2 };
 
   return (
     <Wrapper open={open} position={position}>
-      {navigations.map((item) => {
+      {navigation.map((item) => {
         let MegaMenu = megaMenu[item.menuComponent];
 
         return (

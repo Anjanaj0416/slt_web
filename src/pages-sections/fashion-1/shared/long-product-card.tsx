@@ -38,7 +38,7 @@ const LongProductCard: FC<Props> = ({
   hideFavoriteIcon,
 }) => {
   return (
-    <Box>
+    <div>
       <Link href={`/products/${slug}`}>
         <HoverBox>
           <BazaarImage src={imgUrl} width="100%" height="auto" alt={title} mx="auto" />
@@ -70,7 +70,7 @@ const LongProductCard: FC<Props> = ({
           </IconButton>
         ) : null}
       </FlexBetween>
-    </Box>
+    </div>
   );
 };
 

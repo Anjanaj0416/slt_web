@@ -22,7 +22,7 @@ type Props = { body: string; title: string; imgUrl: string };
 
 const Card1: FC<Props> = ({ title, body, imgUrl }) => {
   return (
-    <Link href="/sale-page-1">
+    <Link href="/sales-1">
       <StyledGrid container>
         <Grid item sm={6} xs={6}>
           <BazaarImage

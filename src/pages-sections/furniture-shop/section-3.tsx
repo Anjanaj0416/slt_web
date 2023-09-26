@@ -45,7 +45,7 @@ const Section3: FC<Props> = ({ products, heading, description }) => {
   };
 
   return (
-    <Box>
+    <div>
       <Box my={2}>
         <H1 mb="4px">{heading}</H1>
         <Paragraph color="grey.600">{description}</Paragraph>
@@ -74,7 +74,7 @@ const Section3: FC<Props> = ({ products, heading, description }) => {
           </Box>
         ))}
       </Carousel>
-    </Box>
+    </div>
   );
 };
 

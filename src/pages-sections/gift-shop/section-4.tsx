@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
-import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
@@ -32,20 +31,8 @@ const Section4: FC<Props> = ({ categoryList }) => {
     else setVisibleSlides(3);
   }, [width]);
 
-  // const CAROUSEL_STYLE = {
-  //   "& #backArrowButton, #backForwardButton": {
-  //     width: 35,
-  //     height: 35,
-  //     borderRadius: 0,
-  //     boxShadow: theme.shadows[2],
-  //     color: theme.palette.primary.main,
-  //     background: theme.palette.primary[50],
-  //     "&:hover": { background: theme.palette.primary[100] },
-  //   },
-  // };
-
   return (
-    <Box>
+    <div>
       <H1 my={2}>Top Categories</H1>
       <Carousel
         infinite={true}
@@ -59,7 +46,7 @@ const Section4: FC<Props> = ({ categoryList }) => {
           </Link>
         ))}
       </Carousel>
-    </Box>
+    </div>
   );
 };
 

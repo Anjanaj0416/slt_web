@@ -8,7 +8,7 @@ import WhiteButton from "components/WhiteButton";
 import { H3, Paragraph, Span } from "components/Typography";
 
 // STYLED COMPONENT
-const BannerWrapper = styled(Box)(({ theme }) => ({
+const BannerWrapper = styled("div")(({ theme }) => ({
   gap: "5rem",
   padding: "2rem",
   display: "flex",

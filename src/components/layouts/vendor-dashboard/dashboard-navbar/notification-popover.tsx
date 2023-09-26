@@ -3,7 +3,6 @@ import Notifications from "@mui/icons-material/Notifications";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import {
   Tab,
-  Box,
   Fade,
   Badge,
   Paper,
@@ -112,7 +111,7 @@ const NotificationsPopover = () => {
 
   return (
     <ClickAwayListener onClickAway={handleClose}>
-      <Box>
+      <div>
         <IconButton onClick={handleClick}>
           <Badge color="secondary" variant="dot" badgeContent={1}>
             <Notifications sx={{ color: "grey.500" }} />
@@ -197,7 +196,7 @@ const NotificationsPopover = () => {
             </Fade>
           )}
         </Popper>
-      </Box>
+      </div>
     </ClickAwayListener>
   );
 };
@@ -207,7 +206,7 @@ type ListItemProps = {
   type: string;
   title: string;
   createdAt: Date;
-  Icon: (props: SvgIconProps<"svg", {}>) => JSX.Element;
+  Icon: (props: SvgIconProps) => JSX.Element;
 };
 
 function ListItem(props: ListItemProps) {
@@ -217,12 +216,12 @@ function ListItem(props: ListItemProps) {
     <ListItemWrapper p={2} gap={2} alignItems="center">
       <Icon color="info" />
 
-      <Box>
+      <div>
         <H6 fontSize={13}>{title}</H6>
         <Paragraph fontSize={11}>
           {formatDistance(createdAt, new Date(), { addSuffix: true })}
         </Paragraph>
-      </Box>
+      </div>
     </ListItemWrapper>
   );
 }

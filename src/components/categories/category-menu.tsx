@@ -1,10 +1,11 @@
 import { FC, cloneElement, useCallback, useEffect, useRef, useState } from "react";
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import CategoryMenuCard from "./category-menu-card";
 
 // styled component
-const Wrapper = styled(Box)<{ open: boolean }>(({ open, theme: { direction } }) => ({
+const Wrapper = styled("div", {
+  shouldForwardProp: (prop) => prop !== "open",
+})<{ open: boolean }>(({ open, theme: { direction } }) => ({
   cursor: "pointer",
   position: "relative",
   "& .dropdown-icon": {

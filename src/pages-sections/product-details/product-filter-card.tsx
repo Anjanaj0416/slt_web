@@ -1,8 +1,16 @@
 "use client";
-
-import { Box, Card, Checkbox, Divider, FormControlLabel, Rating, TextField } from "@mui/material";
+import { Fragment, useState } from "react";
+import {
+  Box,
+  Card,
+  Rating,
+  Divider,
+  Collapse,
+  Checkbox,
+  TextField,
+  FormControlLabel,
+} from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
-import Accordion from "components/accordion/accordion";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
 import AccordionHeader from "components/accordion/accordion-header";
@@ -20,6 +28,8 @@ const otherOptions = ["On Sale", "In Stock", "Featured"];
 const colorList = ["#1C1C1C", "#FF7A7A", "#FFC672", "#84FFB5", "#70F6FF", "#6B7AFF"];
 
 const ProductFilterCard = () => {
+  const [collapsed, setCollapsed] = useState(true);
+
   return (
     <Card sx={{ p: "18px 27px", overflow: "auto" }} elevation={1}>
       {/* CATEGORY VARIANT FILTER */}
@@ -27,24 +37,30 @@ const ProductFilterCard = () => {
 
       {categoryList.map((item) =>
         item.subCategories ? (
-          <Accordion key={item.title} expanded>
-            <AccordionHeader sx={{ padding: ".5rem 0" }} color="grey.600">
-              <Span sx={{ cursor: "pointer", mr: "9px" }}>{item.title}</Span>
+          <Fragment key={item.title}>
+            <AccordionHeader
+              open={collapsed}
+              onClick={() => setCollapsed((state) => !state)}
+              sx={{ padding: ".5rem 0", cursor: "pointer", color: "grey.600" }}
+            >
+              <Span>{item.title}</Span>
             </AccordionHeader>
 
-            {item.subCategories.map((name) => (
-              <Paragraph
-                pl="22px"
-                py={0.75}
-                key={name}
-                fontSize="14px"
-                color="grey.600"
-                sx={{ cursor: "pointer" }}
-              >
-                {name}
-              </Paragraph>
-            ))}
-          </Accordion>
+            <Collapse in={collapsed}>
+              {item.subCategories.map((name) => (
+                <Paragraph
+                  pl="22px"
+                  py={0.75}
+                  key={name}
+                  fontSize="14px"
+                  color="grey.600"
+                  sx={{ cursor: "pointer" }}
+                >
+                  {name}
+                </Paragraph>
+              ))}
+            </Collapse>
+          </Fragment>
         ) : (
           <Paragraph
             key={item.title}

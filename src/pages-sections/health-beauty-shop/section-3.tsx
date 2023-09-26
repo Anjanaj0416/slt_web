@@ -39,7 +39,7 @@ const Section3: FC<Props> = ({ products }) => {
     "& #backForwardButton": { right: 0, borderRadius: "8px 0 0 8px" },
   };
   return (
-    <Box>
+    <div>
       <SectionHeader title="Top New Products" seeMoreLink="#" />
       <SubTitle>Best deal with medical and beauty items</SubTitle>
 
@@ -63,7 +63,7 @@ const Section3: FC<Props> = ({ products }) => {
           </Box>
         ))}
       </Carousel>
-    </Box>
+    </div>
   );
 };
 

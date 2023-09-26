@@ -1,7 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
@@ -30,7 +29,7 @@ type Props = { categories: Category[] };
 
 const Section3: FC<Props> = ({ categories = [] }) => {
   return (
-    <Box>
+    <div>
       <H3 fontSize={25} mb={3}>
         Shop By Category
       </H3>
@@ -42,16 +41,16 @@ const Section3: FC<Props> = ({ categories = [] }) => {
               <StyledBazaarCard hoverEffect>
                 <Image width={46} height={46} alt={item.name} src={item.image} />
 
-                <Box>
+                <div>
                   <Tiny color="primary.main">{item.description}</Tiny>
                   <H5>{item.name}</H5>
-                </Box>
+                </div>
               </StyledBazaarCard>
             </Link>
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </div>
   );
 };
 

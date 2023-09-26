@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, memo } from "react";
 import Box from "@mui/material/Box";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
@@ -8,9 +8,8 @@ import appIcons from "icons";
 import Scrollbar from "components/Scrollbar";
 import { Span } from "components/Typography";
 import { FlexBox } from "components/flex-box";
-import { Accordion, AccordionHeader } from "components/accordion";
 // LOCAL CUSTOM COMPONENTS
-import { renderChild } from "./render-child";
+import Accordion from "./nav-accordion";
 import CategoryTitle from "./category-title";
 // STYLED COMPONENTS
 import { NavbarRoot } from "./styles";
@@ -44,32 +43,22 @@ const SideNavbar: FC<Props> = (props) => {
       <NavbarRoot fixed={isFixed} sidebar={sidebarStyle}>
         {navList.map((item, ind) => {
           return (
-            <Box key={ind}>
+            <div key={ind}>
               <CategoryTitle title={item.category} line={lineStyle} />
 
               {item.categoryItem.map((item, ind) => {
-                const Icon = appIcons[item.icon];
+                type Keys = keyof typeof appIcons;
+                const Icon = appIcons[item.icon as Keys];
 
                 return (
                   <Box mb="2px" color="grey.700" key={ind}>
                     {item.child ? (
-                      <Accordion>
-                        {/* ACCORDION / COLLAPSE HEADER */}
-                        <AccordionHeader
-                          px={0}
-                          py={0.75}
-                          className="linkList"
-                          sx={{ ":hover": { color: "primary.main" } }}
-                        >
-                          <FlexBox gap={1.5} alignItems="center">
-                            <Icon fontSize="small" />
-                            <Span fontWeight="600">{item.title}</Span>
-                          </FlexBox>
-                        </AccordionHeader>
-
-                        {/* RENDER NESTED NAV ITEMS */}
-                        {item.child ? renderChild(item.child, handleSelect) : null}
-                      </Accordion>
+                      <Accordion
+                        Icon={Icon}
+                        child={item.child}
+                        title={item.title}
+                        handleSelect={handleSelect}
+                      />
                     ) : (
                       <Box
                         key={item.title}
@@ -85,7 +74,7 @@ const SideNavbar: FC<Props> = (props) => {
                   </Box>
                 );
               })}
-            </Box>
+            </div>
           );
         })}
       </NavbarRoot>
@@ -93,4 +82,4 @@ const SideNavbar: FC<Props> = (props) => {
   );
 };
 
-export default SideNavbar;
+export default memo(SideNavbar);

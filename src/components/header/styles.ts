@@ -1,8 +1,9 @@
-import { Box, Container, styled } from "@mui/material";
+import Container from "@mui/material/Container";
+import { styled } from "@mui/material/styles";
 // CONSTANT VARIABLES
 import { layoutConstant } from "utils/constants";
 
-export const HeaderWrapper = styled(Box)(({ theme }) => ({
+export const HeaderWrapper = styled("div")(({ theme }) => ({
   zIndex: 3,
   position: "relative",
   height: layoutConstant.headerHeight,

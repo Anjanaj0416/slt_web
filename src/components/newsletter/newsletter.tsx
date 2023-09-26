@@ -21,7 +21,9 @@ import { H1, Paragraph, Span } from "../Typography";
 import SocialIcons from "./social-icons";
 
 // styled components
-const Wrapper = styled(Box)<{ img: string }>(({ theme, img }) => ({
+const Wrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "img",
+})<{ img: string }>(({ theme, img }) => ({
   top: "50%",
   padding: 0,
   left: "50%",

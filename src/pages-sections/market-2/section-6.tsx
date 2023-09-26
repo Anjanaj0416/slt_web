@@ -1,13 +1,15 @@
 "use client";
 
-import { Box, Container, Divider, Grid, styled } from "@mui/material";
+import { Container, Divider, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H4, Paragraph, Span } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 
 // STYLED COMPONENT
-const BannerBox = styled(Box)<{ img: string }>(({ theme, img }) => ({
+const BannerBox = styled("div", {
+  shouldForwardProp: (prop) => prop !== "img",
+})<{ img: string }>(({ theme, img }) => ({
   padding: 32,
   overflow: "hidden",
   borderRadius: "3px",

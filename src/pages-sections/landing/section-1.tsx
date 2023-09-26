@@ -10,7 +10,7 @@ import { FlexBox, FlexRowCenter } from "components/flex-box";
 
 const Section1 = () => {
   return (
-    <Box>
+    <div>
       <Header />
 
       <Container id="section-1" sx={{ mt: 12, position: "relative" }}>
@@ -96,7 +96,7 @@ const Section1 = () => {
           sx={{ display: "grid" }}
         />
       </Container>
-    </Box>
+    </div>
   );
 };
 

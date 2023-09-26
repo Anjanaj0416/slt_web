@@ -38,13 +38,13 @@ const Footer1 = () => {
               About Us
             </H6>
 
-            <Box>
+            <div>
               {ABOUT_LINKS.map((item, ind) => (
                 <StyledLink href="/" key={ind}>
                   {item}
                 </StyledLink>
               ))}
-            </Box>
+            </div>
           </Grid>
 
           {/* CUSTOMER CARE LINKS */}

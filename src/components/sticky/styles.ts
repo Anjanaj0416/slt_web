@@ -11,7 +11,9 @@ const slideDown = keyframes`
     to {transform: translateY(0)}
 `;
 
-export const StyledBox = styled("div")<Props>(({ theme, componentHeight, fixedOn, fixed }) => ({
+export const StyledBox = styled("div", {
+  shouldForwardProp: (prop) => prop !== "componentHeight" && prop !== "fixed" && prop !== "fixedOn",
+})<Props>(({ theme, componentHeight, fixedOn, fixed }) => ({
   paddingTop: fixed ? componentHeight : 0,
 
   "& .hold": {

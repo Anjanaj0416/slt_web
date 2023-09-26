@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -25,7 +24,7 @@ type Props = { products: Product[]; title?: string };
 
 const AllProducts: FC<Props> = ({ products, title = "All Products" }) => {
   return (
-    <Box>
+    <div>
       <SectionHeader title={title} seeMoreLink="#" />
       <SubTitle>Best collection in 2021 for you!</SubTitle>
 
@@ -50,7 +49,7 @@ const AllProducts: FC<Props> = ({ products, title = "All Products" }) => {
           Load More...
         </Button>
       </FlexRowCenter>
-    </Box>
+    </div>
   );
 };
 

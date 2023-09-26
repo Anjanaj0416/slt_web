@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FC, useState } from "react";
-import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 // LOCAL CUSTOM COMPONENTS
 import ProductPrice from "./product-price";
@@ -37,7 +36,7 @@ const ProductCard2: FC<Props> = ({
   const [favorite, setFavorite] = useState(false);
 
   return (
-    <Box>
+    <div>
       <Link href={`/products/${slug}`}>
         <HoverBox overflow="hidden" borderRadius={2}>
           <LazyImage width={270} height={270} alt={title} src={imgUrl} />
@@ -45,7 +44,7 @@ const ProductCard2: FC<Props> = ({
       </Link>
 
       <FlexBetween mt={2}>
-        <Box>
+        <div>
           <H6 mb={0.5} title={title} ellipsis>
             {title}
           </H6>
@@ -53,7 +52,7 @@ const ProductCard2: FC<Props> = ({
           {!hideReview ? <Rating size="small" value={rating} color="warn" readOnly /> : null}
 
           <ProductPrice price={price} off={off} />
-        </Box>
+        </div>
 
         {!hideFavoriteIcon ? (
           <FavoriteButton
@@ -62,7 +61,7 @@ const ProductCard2: FC<Props> = ({
           />
         ) : null}
       </FlexBetween>
-    </Box>
+    </div>
   );
 };
 

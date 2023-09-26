@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Link from "next/link";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
@@ -8,7 +7,7 @@ import BazaarImage from "components/BazaarImage";
 import { H1, H3, Paragraph } from "components/Typography";
 
 // STYLED COMPONENTS
-const CardWrapper = styled(Box)({
+const CardWrapper = styled("div")({
   maxHeight: 240,
   overflow: "hidden",
   borderRadius: "10px",
@@ -17,7 +16,7 @@ const CardWrapper = styled(Box)({
   ":hover": { img: { transform: "scale(1.1)" } },
 });
 
-const CardContent = styled(Box)({
+const CardContent = styled("div")({
   top: 0,
   zIndex: 1,
   padding: 32,
@@ -46,13 +45,13 @@ const BannerCard: FC<Props> = ({ img, url, text1, text2, text3 }) => {
       <BazaarImage alt="category" height="100%" width="100%" src={img} />
 
       <CardContent>
-        <Box>
+        <div>
           <Paragraph fontWeight={600}>{text1}</Paragraph>
           <H3>{text2}</H3>
           <H1 fontSize={52} lineHeight={1}>
             {text3}
           </H1>
-        </Box>
+        </div>
 
         <Button LinkComponent={Link} href={url} variant="outlined" size="large" color="info">
           Shop Now

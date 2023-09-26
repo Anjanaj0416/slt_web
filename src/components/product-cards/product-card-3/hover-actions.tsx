@@ -36,7 +36,7 @@ const HoverActions: FC<Props> = (props) => {
 
   return (
     <HoverButtonBox className="hoverButtonBox">
-      <Box className="buttonBox">
+      <div className="buttonBox">
         <ItemController>
           <Span onClick={toggleDialog}>
             <RemoveRedEye />
@@ -78,7 +78,7 @@ const HoverActions: FC<Props> = (props) => {
             <Add /> Add to Cart
           </Button>
         )}
-      </Box>
+      </div>
     </HoverButtonBox>
   );
 };

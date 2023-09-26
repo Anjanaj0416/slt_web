@@ -1,7 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { styled, useTheme } from "@mui/material/styles";
 // CUSTOM ICON COMPONENTS
@@ -13,7 +12,7 @@ import { H4, Span } from "components/Typography";
 import Service from "models/Service.model";
 
 // STYLED COMPONENTS
-const Container = styled(Box)({
+const Container = styled("div")({
   margin: "auto",
   maxWidth: "1200px",
   paddingBottom: "3rem",

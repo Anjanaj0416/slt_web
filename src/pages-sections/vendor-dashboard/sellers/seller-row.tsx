@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
@@ -30,10 +29,10 @@ const SellerRow: FC<Props> = ({ seller }) => {
         <FlexBox alignItems="center" gap={1.5}>
           <Avatar src={image} alt={name} />
 
-          <Box>
+          <div>
             <Paragraph fontWeight={600}>{name}</Paragraph>
             <Small color="grey.600">{phone}</Small>
-          </Box>
+          </div>
         </FlexBox>
       </StyledTableCell>
 

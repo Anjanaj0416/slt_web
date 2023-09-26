@@ -27,7 +27,7 @@ from { top: -${headerHeight}px; }
 to { top: 0; }`;
 
 // STYLED COMPONENT
-const HeaderWrapper = styled(Box)(({ theme }) => ({
+const HeaderWrapper = styled("div")(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.grey[200]}`,
   "& .link": {
     cursor: "pointer",
@@ -77,7 +77,7 @@ const Header = () => {
   return (
     <Fragment>
       <HeaderWrapper>
-        <Box className={clsx({ fixedHeader: isFixed })}>
+        <div className={clsx({ fixedHeader: isFixed })}>
           <Container>
             <FlexBox height={headerHeight} alignItems="center">
               <Scroll to="top" duration={400} smooth={true} isDynamic>
@@ -86,7 +86,7 @@ const Header = () => {
                 </Box>
               </Scroll>
 
-              <Box sx={{ mx: "auto" }}></Box>
+              <Box mx="auto" />
 
               <FlexBox className="right-links" alignItems="center">
                 <Scroll to="features" duration={400} offset={-headerHeight - 16} smooth={true}>
@@ -174,7 +174,7 @@ const Header = () => {
               )}
             </FlexBox>
           </Container>
-        </Box>
+        </div>
       </HeaderWrapper>
 
       {isFixed && <Box height={headerHeight} />}

@@ -1,8 +1,12 @@
-import { Box, Button, Container, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
+// GLOBAL CUSTOM COMPONENTS
 import { NavLink } from "components/nav-link";
 import BazaarCard from "components/BazaarCard";
 
-// const common css style
+// COMMON STYLED OBJECT
 export const NAV_LINK_STYLES = {
   cursor: "pointer",
   transition: "color 150ms ease-in-out",
@@ -12,7 +16,9 @@ export const NAV_LINK_STYLES = {
 
 export const StyledNavLink = styled(NavLink)({ ...NAV_LINK_STYLES });
 
-export const ParentNav = styled(Box)<{ active: number }>(({ theme, active }) => ({
+export const ParentNav = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "active",
+})<{ active: number }>(({ theme, active }) => ({
   position: "relative",
   "&:hover": {
     color: theme.palette.primary.main,
@@ -35,7 +41,9 @@ export const ParentNavItem = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const NavBarWrapper = styled(BazaarCard)<{ border: number }>(({ theme, border }) => ({
+export const NavBarWrapper = styled(BazaarCard, {
+  shouldForwardProp: (prop) => prop !== "border",
+})<{ border: number }>(({ theme, border }) => ({
   height: "60px",
   display: "block",
   borderRadius: "0px",

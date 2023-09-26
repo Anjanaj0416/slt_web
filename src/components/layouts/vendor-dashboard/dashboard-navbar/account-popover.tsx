@@ -4,7 +4,7 @@ import { Avatar, Box, IconButton, Menu, MenuItem, styled } from "@mui/material";
 import { H6, Small } from "components/Typography";
 
 // STYLED COMPONENT
-const Divider = styled(Box)(({ theme }) => ({
+const Divider = styled("div")(({ theme }) => ({
   margin: "0.5rem 0",
   border: `1px dashed ${theme.palette.grey[200]}`,
 }));
@@ -16,7 +16,7 @@ const AccountPopover = () => {
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <Box>
+    <div>
       <IconButton
         sx={{ padding: 0 }}
         aria-haspopup="true"
@@ -80,7 +80,7 @@ const AccountPopover = () => {
         <Divider />
         <MenuItem>Logout</MenuItem>
       </Menu>
-    </Box>
+    </div>
   );
 };
 

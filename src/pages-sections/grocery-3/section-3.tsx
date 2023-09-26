@@ -54,10 +54,10 @@ const Section3: FC<Props> = ({ products }) => {
   };
 
   return (
-    <Box>
+    <div>
       <TitleBox my={4}>
         <H1>Top Sales Products</H1>
-        <Box />
+        <div />
       </TitleBox>
 
       <Carousel
@@ -81,7 +81,7 @@ const Section3: FC<Props> = ({ products }) => {
           </Box>
         ))}
       </Carousel>
-    </Box>
+    </div>
   );
 };
 

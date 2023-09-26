@@ -1,12 +1,17 @@
-import { Chip, styled, Box } from "@mui/material";
-import Scrollbar from "components/Scrollbar";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import { styled } from "@mui/material/styles";
+// GLOBAL CUSTOM COMPONENTS
 import { H5 } from "components/Typography";
+import Scrollbar from "components/Scrollbar";
 import { FlexRowCenter } from "components/flex-box";
 
 type Selected = { selected: number };
 
 /** USED IN SALES -1 PAGE VIEW COMPONENT */
-export const CategoryBoxWrapper = styled(FlexRowCenter)<Selected>(({ selected, theme }) => ({
+export const CategoryBoxWrapper = styled(FlexRowCenter, {
+  shouldForwardProp: (prop) => prop !== "selected",
+})<Selected>(({ selected, theme }) => ({
   flex: "1 1 0",
   height: "175px",
   margin: "0.75rem",
@@ -20,7 +25,9 @@ export const CategoryBoxWrapper = styled(FlexRowCenter)<Selected>(({ selected, t
   background: selected ? "white" : "transparent",
 }));
 
-export const StyledChip = styled(Chip)<Selected>(({ selected, theme }) => ({
+export const StyledChip = styled(Chip, {
+  shouldForwardProp: (prop) => prop !== "selected",
+})<Selected>(({ selected, theme }) => ({
   top: "1rem",
   right: "1rem",
   fontWeight: 600,
@@ -32,7 +39,9 @@ export const StyledChip = styled(Chip)<Selected>(({ selected, theme }) => ({
   backgroundColor: selected ? theme.palette.primary.main : theme.palette.grey[300],
 }));
 
-export const CategoryWrapper = styled(Box)<{ show: number }>(({ show, theme }) => ({
+export const CategoryWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "show",
+})<{ show: number }>(({ show, theme }) => ({
   left: 0,
   zIndex: 99,
   width: "100%",
@@ -52,7 +61,9 @@ export const StyledScrollbar = styled(Scrollbar)({
   },
 });
 
-export const Title = styled(H5)<Selected>(({ selected, theme }) => ({
+export const Title = styled(H5, {
+  shouldForwardProp: (prop) => prop !== "selected",
+})<Selected>(({ selected, theme }) => ({
   fontSize: 12,
   textAlign: "center",
   fontWeight: selected ? "600" : "400",

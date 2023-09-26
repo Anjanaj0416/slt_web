@@ -26,19 +26,12 @@ const ProductCarousel: FC<Props> = (props) => {
   }, [width]);
 
   return (
-    <Box>
+    <div>
       <H3 fontSize={25} mb={3}>
         {title}
       </H3>
 
-      <Carousel
-        step={3}
-        showDots
-        // showArrowOnHover={true}
-        // arrowButtonColor="inherit"
-        totalSlides={products.length}
-        visibleSlides={visibleSlides}
-      >
+      <Carousel step={3} showDots totalSlides={products.length} visibleSlides={visibleSlides}>
         {products.map((item) => (
           <Box py={0.5} key={item.id}>
             <ProductCard1
@@ -55,7 +48,7 @@ const ProductCarousel: FC<Props> = (props) => {
           </Box>
         ))}
       </Carousel>
-    </Box>
+    </div>
   );
 };
 

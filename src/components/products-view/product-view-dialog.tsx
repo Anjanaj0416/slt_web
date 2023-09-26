@@ -1,7 +1,5 @@
 import { FC } from "react";
-
 import {
-  Box,
   Grid,
   Button,
   Dialog,
@@ -26,7 +24,7 @@ import useCart from "hooks/useCart";
 import { currency } from "lib";
 
 // styled components
-const ContentWrapper = styled(Box)(({ theme }) => ({
+const ContentWrapper = styled("div")(({ theme }) => ({
   "& .carousel:hover": {
     cursor: "pointer",
     "& .carousel__back-button": { opacity: 1, left: 10 },

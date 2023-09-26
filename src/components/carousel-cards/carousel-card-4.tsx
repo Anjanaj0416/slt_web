@@ -7,7 +7,9 @@ import { styled } from "@mui/material/styles";
 import { H1, H4, Paragraph, Span } from "components/Typography";
 
 // STYLED COMPONENT
-const CardWrapper = styled(Box)<{ img: string; mode: string }>(({ theme, img, mode }) => ({
+const CardWrapper = styled("div", {
+  shouldForwardProp: (prop) => prop !== "img" && prop !== "mode",
+})<{ img: string; mode: string }>(({ theme, img, mode }) => ({
   minHeight: 500,
   display: "flex",
   alignItems: "center",

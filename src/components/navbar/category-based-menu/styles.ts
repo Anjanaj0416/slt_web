@@ -36,7 +36,9 @@ const CategoryList = styled(List)(({ theme }) => ({
   borderRight: `1px solid ${theme.palette.grey[200]}`,
 }));
 
-const CategoryListItem = styled(ListItem)<{ active: number }>(({ theme, active }) => ({
+const CategoryListItem = styled(ListItem, {
+  shouldForwardProp: (prop) => prop !== "active",
+})<{ active: number }>(({ theme, active }) => ({
   padding: "1rem 1.5rem",
   transition: "all 0.3s",
   justifyContent: "space-between",
@@ -58,7 +60,6 @@ const SubCategoryListItem = styled(ListItem)(({ theme }) => ({
   gap: 12,
   fontSize: 13,
   padding: "0",
-  // fontWeight: 600,
   alignItems: "center",
   marginBottom: "1.5rem",
   transition: "all 0.3s",

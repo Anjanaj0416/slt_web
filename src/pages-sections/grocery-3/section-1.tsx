@@ -8,7 +8,7 @@ import { Carousel } from "components/carousel";
 import { MainCarouselItem } from "models/Grocery-3.model";
 
 // STYLED COMPONENTS
-const StyledBox = styled(Box)({
+const StyledBox = styled("div")({
   marginBottom: 60,
   overflow: "hidden",
   "& .carousel-dot": {
@@ -20,7 +20,7 @@ const StyledBox = styled(Box)({
   },
 });
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.paste[50],
 }));
 
@@ -49,7 +49,7 @@ const GridItemOne = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: { width: "100%" },
 }));
 
-const TextBox = styled(Box)(({ theme }) => ({
+const TextBox = styled("div")(({ theme }) => ({
   marginBottom: 40,
   "& h1": { fontSize: 50, fontWeight: 600, lineHeight: "1.35" },
   [theme.breakpoints.down("lg")]: { "& h1": { fontSize: 45 } },

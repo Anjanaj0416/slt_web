@@ -1,16 +1,16 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H4 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 
 // STYLED COMPONENTS
-const Wrapper = styled(Box)(({ theme }) => ({
+const Wrapper = styled("div")(({ theme }) => ({
   height: "100%",
   cursor: "pointer",
   overflow: "hidden",
   borderRadius: "4px",
+  position: "relative",
   "& img": { transition: "all 0.3s" },
   ":hover": {
     img: { transform: "scale(1.1)" },
@@ -21,7 +21,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-const CategoryTitle = styled(Box)({
+const CategoryTitle = styled("div")({
   left: 10,
   right: 10,
   bottom: 10,
@@ -39,7 +39,7 @@ type Props = { image: string; title: string };
 
 const CategoryCard1: FC<Props> = ({ image, title }) => {
   return (
-    <Wrapper position="relative">
+    <Wrapper>
       <LazyImage
         src={image}
         width={213}

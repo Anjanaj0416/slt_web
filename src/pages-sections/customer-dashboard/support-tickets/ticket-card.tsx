@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Link from "next/link";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
@@ -22,7 +21,7 @@ const TicketCard: FC<Props> = ({ ticket }) => {
   return (
     <Link href={`/support-tickets/${slug}`} key={id}>
       <FlexBetween component={Card} px={2.5} py={2} mb={2}>
-        <Box>
+        <div>
           <Paragraph mb={1.5} lineHeight={1}>
             {title}
           </Paragraph>
@@ -37,7 +36,7 @@ const TicketCard: FC<Props> = ({ ticket }) => {
 
             <Span color="grey.600">{category}</Span>
           </FlexBox>
-        </Box>
+        </div>
 
         <IconButton>
           <East

@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { alpha, Box, styled, SvgIconProps } from "@mui/material";
+import { alpha, styled, SvgIconProps } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H3, Paragraph } from "components/Typography";
 
 // STYLED COMPONENT
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled("div")(({ theme }) => ({
   height: "100%",
   display: "flex",
   borderRadius: 4,
@@ -19,14 +19,14 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 // ==========================================================
-type ShowcaseCard4Props = {
+interface Props {
   body: string;
   title: string;
   Icon: (props: SvgIconProps) => JSX.Element;
-};
+}
 // ==========================================================
 
-const ShowcaseCard4: FC<ShowcaseCard4Props> = ({ title, body, Icon }) => {
+const ShowcaseCard4: FC<Props> = ({ title, body, Icon }) => {
   return (
     <StyledBox>
       <Icon

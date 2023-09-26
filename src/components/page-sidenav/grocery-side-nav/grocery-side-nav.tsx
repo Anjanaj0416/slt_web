@@ -7,6 +7,7 @@ import { Span } from "components/Typography";
 import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
 import { Accordion, AccordionHeader } from "components/accordion";
+// LOCAL CUSTOM COMPONENT
 import { renderChild } from "./render-child";
 // GLOBAL CUSTOM HOOK
 import useScroll from "./use-scroll";
@@ -14,6 +15,7 @@ import useScroll from "./use-scroll";
 import { StyledCard, StyledScrollbar } from "./styles";
 // CUSTOM DATA MODEL
 import { CategoryItem } from "models/CategoryNavList.model";
+import NavAccordion from "./nav-accordion";
 
 // ===========================================================
 type Props = { navigation: CategoryItem[] };
@@ -31,17 +33,7 @@ const GrocerySideNav: FC<Props> = ({ navigation }) => {
           return (
             <Box mb={1} color="grey.700" key={ind}>
               {item.child ? (
-                <Accordion expanded>
-                  <AccordionHeader sx={{ px: 0 }}>
-                    <FlexBox gap={1.5} alignItems="center">
-                      <Icon fontSize="small" />
-                      <Span fontWeight={600}>{item.title}</Span>
-                    </FlexBox>
-                  </AccordionHeader>
-
-                  {/* RENDER NESTED ITEMS */}
-                  {item.child ? renderChild(item.child) : null}
-                </Accordion>
+                <NavAccordion Icon={Icon} title={item.title} child={item.child} />
               ) : (
                 <NavLink key={item.title} href={item.href} color="grey.700">
                   <FlexBox py={0.75} gap={1.5}>

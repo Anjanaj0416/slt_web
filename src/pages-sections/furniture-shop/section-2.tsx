@@ -23,7 +23,7 @@ const Section2 = () => {
       <Grid container spacing={3}>
         {/* BIG SALE BANNER CARD */}
         <Grid item xs={12} sm={7} md={7}>
-          <Link href="/sale-page-1">
+          <Link href="/sales-1">
             <LeftContentBox imgUrl={product1} sx={{ p: "20px 30px" }}>
               <RightContent>
                 <H6>Modern Furniture.</H6>
@@ -31,7 +31,7 @@ const Section2 = () => {
                   Big Sale
                 </H1>
                 <H3 fontSize={23}>UP TO 50% OFF</H3>
-                <CustomButton onClick={() => router.push("/sale-page-1")}>Shop Now</CustomButton>
+                <CustomButton onClick={() => router.push("/sales-1")}>Shop Now</CustomButton>
               </RightContent>
 
               <Box />
@@ -41,14 +41,14 @@ const Section2 = () => {
 
         {/* UPTO 60% OFF BANNER CARD */}
         <Grid item xs={12} sm={5} md={5}>
-          <Link href="/sale-page-1">
+          <Link href="/sales-1">
             <RightContentBox imgUrl={product2} sx={{ pt: "20px" }}>
               <Box textAlign="center">
                 <H6>Sofa Collection</H6>
                 <H3 fontSize={23} color="primary.main">
                   UP TO 60% OFF
                 </H3>
-                <CustomButton onClick={() => router.push("/sale-page-1")}>Shop Now</CustomButton>
+                <CustomButton onClick={() => router.push("/sales-1")}>Shop Now</CustomButton>
               </Box>
 
               <Box className="content" />
@@ -65,7 +65,7 @@ const Section2 = () => {
       >
         {/* WINTER OFFER 50% OFF BANNER CARD */}
         <Grid item xs={12} sm={7} md={7}>
-          <Link href="/sale-page-1">
+          <Link href="/sales-1">
             <RightContentBox
               imgUrl={product4}
               sx={{
@@ -84,7 +84,7 @@ const Section2 = () => {
 
                 <H6>All Kind of Furniture Items</H6>
 
-                <CustomButton onClick={() => router.push("/sale-page-1")}>Shop Now</CustomButton>
+                <CustomButton onClick={() => router.push("/sales-1")}>Shop Now</CustomButton>
               </Box>
 
               <Box className="content" />
@@ -95,7 +95,7 @@ const Section2 = () => {
         {/* SOFA & CHAIR COLLECTION BANNER CARDS */}
         <Grid item xs={12} sm={5} md={5}>
           {/* CHAR COLLECTION BANNER CARD */}
-          <Link href="/sale-page-1">
+          <Link href="/sales-1">
             <LeftContentBox imgUrl={product5} sx={{ py: "20px", pl: "20px" }}>
               <RightContent>
                 <Paragraph>Modern & Comfortable</Paragraph>
@@ -104,7 +104,7 @@ const Section2 = () => {
                   Chair Collection
                 </H3>
 
-                <CustomButton onClick={() => router.push("/sale-page-1")}>Shop Now</CustomButton>
+                <CustomButton onClick={() => router.push("/sales-1")}>Shop Now</CustomButton>
               </RightContent>
 
               <Box />
@@ -112,7 +112,7 @@ const Section2 = () => {
           </Link>
 
           {/* SOFA CHAIR BANNER CARD */}
-          <Link href="/sale-page-1">
+          <Link href="/sales-1">
             <LeftContentBox imgUrl={product3} sx={{ mt: 3, py: "20px", pl: "20px" }}>
               <RightContent>
                 <Paragraph>December New!</Paragraph>
@@ -121,7 +121,7 @@ const Section2 = () => {
                   Sofa Chair
                 </H3>
 
-                <CustomButton onClick={() => router.push("/sale-page-1")}>Shop Now</CustomButton>
+                <CustomButton onClick={() => router.push("/sales-1")}>Shop Now</CustomButton>
               </RightContent>
 
               <Box />

@@ -1,6 +1,5 @@
 import NextImage from "next/image";
 import { FormEvent, useState } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -10,7 +9,7 @@ import DropZone from "components/DropZone";
 import { FlexBox } from "components/flex-box";
 
 // STYLED COMPONENTS
-const UploadBox = styled(Box)({
+const UploadBox = styled("div")({
   width: 170,
   height: "auto",
   overflow: "hidden",

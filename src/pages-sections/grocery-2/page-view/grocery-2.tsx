@@ -49,7 +49,7 @@ const GroceryTwoPageView = (props: Props) => {
 
   return (
     <Fragment>
-      <Box id="grocerySection" />
+      <div id="grocerySection" />
 
       <SideNavContainer navFixedComponentID="grocerySection" SideNav={SideNav}>
         <Stack spacing={6}>
@@ -94,7 +94,7 @@ const GroceryTwoPageView = (props: Props) => {
       {/* SMALL DEVICE BOTTOM NAVIGATION */}
       <MobileNavigationBar2>
         <Scrollbar>
-          <GrocerySideNav navigation={props.navigationList} />
+          <SideNav />
         </Scrollbar>
       </MobileNavigationBar2>
     </Fragment>

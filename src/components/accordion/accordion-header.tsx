@@ -4,7 +4,9 @@ import ChevronRight from "@mui/icons-material/ChevronRight";
 import { FlexBox } from "components/flex-box";
 
 // STYLED COMPONENT
-const RootContainer = styled(FlexBox)<{ open: number }>(({ open, theme }) => ({
+const RootContainer = styled(FlexBox, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<{ open: number }>(({ open, theme }) => ({
   alignItems: "center",
   padding: ".5rem 1rem",
   justifyContent: "space-between",

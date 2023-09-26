@@ -1,5 +1,4 @@
 import { FC, PropsWithChildren } from "react";
-import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { styled } from "@mui/material/styles";
 
@@ -11,7 +10,7 @@ interface Props extends PropsWithChildren {
 }
 // ==========================================================
 
-const Wrapper = styled(Box)(({ theme }) => ({
+const Wrapper = styled("div")(({ theme }) => ({
   height: "100%",
   width: "inherit",
   position: "fixed",

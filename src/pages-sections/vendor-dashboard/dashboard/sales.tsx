@@ -1,6 +1,5 @@
 "use client";
 
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
 // LOCAL CUSTOM COMPONENT
@@ -20,7 +19,7 @@ const Sales = () => {
   const totalOrderSeries = [{ name: "Weekly", data: [7600, 8500, 10100, 9800, 8700, 1050, 9100] }];
 
   return (
-    <Box>
+    <div>
       <Grid container spacing={3}>
         {/* WEEKLY SALE CHART */}
         <Grid item xl={3} lg={3} md={6} xs={12}>
@@ -70,7 +69,7 @@ const Sales = () => {
           </Card2>
         </Grid>
       </Grid>
-    </Box>
+    </div>
   );
 };
 

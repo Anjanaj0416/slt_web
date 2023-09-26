@@ -7,10 +7,9 @@ import Scrollbar from "components/Scrollbar";
 import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
 import { H4, Span } from "components/Typography";
-import { Accordion, AccordionHeader } from "components/accordion";
-// RENDER NESTED ITEMS FUNCTION
-import { renderChild } from "./render-child";
-// styled components
+// LOCAL CUSTOM COMPONENT
+import NavAccordion from "./nav-accordion";
+// STYLED COMPONENT
 import { NavbarRoot } from "./styles";
 // CUSTOM DATA MODEL
 import { CategoryItem } from "models/CategoryNavList.model";
@@ -38,18 +37,7 @@ const HealthBeautySideNav: FC<Props> = ({ navigation }) => {
           return (
             <Box mb="2px" color="grey.700" key={ind}>
               {item.child ? (
-                <Accordion>
-                  {/* ACCORDION / COLLAPSE HEADER */}
-                  <AccordionHeader px={0} py={0.75} className="linkList">
-                    <FlexBox py={0.3} gap={1.5} alignItems="center">
-                      <Icon fontSize="small" />
-                      <Span fontWeight={600}>{item.title}</Span>
-                    </FlexBox>
-                  </AccordionHeader>
-
-                  {/* RENDER NESTED NAV ITEMS */}
-                  {item.child ? renderChild(item.child) : null}
-                </Accordion>
+                <NavAccordion title={item.title} Icon={Icon} child={item.child} />
               ) : (
                 <NavLink key={item.title} href={item.href} color="grey.700">
                   <FlexBox className="linkList" py={0.75} gap={1.5}>

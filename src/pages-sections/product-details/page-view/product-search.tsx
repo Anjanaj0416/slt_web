@@ -3,7 +3,6 @@
 import { useCallback, useState } from "react";
 import { Apps, FilterList, ViewList } from "@mui/icons-material";
 import {
-  Box,
   Card,
   Grid,
   Theme,
@@ -53,10 +52,10 @@ const ProductSearchPageView = () => {
           p: { sm: "1rem 1.25rem", md: "0.5rem 1.25rem", xs: "1.25rem 1.25rem 0.25rem" },
         }}
       >
-        <Box>
+        <div>
           <H5>Searching for “ mobile phone ”</H5>
           <Paragraph color="grey.600">48 results found</Paragraph>
-        </Box>
+        </div>
 
         <FlexBox alignItems="center" columnGap={4} flexWrap="wrap" my="0.5rem">
           <FlexBox alignItems="center" gap={1} flex="1 1 0">

@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
@@ -38,14 +37,14 @@ const UserAnalytics: FC<Props> = ({ user }) => {
           <Avatar src={user.avatar} sx={{ height: 64, width: 64 }} />
 
           <FlexBetween flexWrap="wrap" flex={1}>
-            <Box>
+            <div>
               <H5>{`${user.name.firstName} ${user.name.lastName}`}</H5>
 
               <FlexBox alignItems="center" gap={1}>
                 <Paragraph color="grey.600">Balance:</Paragraph>
                 <Paragraph color="primary.main">{currency(500)}</Paragraph>
               </FlexBox>
-            </Box>
+            </div>
 
             <Paragraph color="grey.600" letterSpacing={3}>
               SILVER USER

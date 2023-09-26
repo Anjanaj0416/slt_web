@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM HOOK
@@ -54,10 +53,10 @@ const Section9 = () => {
     <Container sx={{ pb: 8 }}>
       <FlexBetween gap={2} flexWrap="wrap" mb={3}>
         {/* SECTION TITLE */}
-        <Box>
+        <div>
           <H3>Selected Products</H3>
           <Paragraph>All our new arrivals in a exclusive brand selection</Paragraph>
-        </Box>
+        </div>
 
         {/* FILTERED BUTTON LIST */}
         <FlexBox flexWrap="wrap" gap={1} sx={{ "& button": { flexGrow: 1 } }}>

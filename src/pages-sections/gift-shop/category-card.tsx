@@ -12,7 +12,7 @@ const StyledCard = styled(Box)(({ theme }) => ({
   "&:hover": { "& h6": { color: theme.palette.primary.main } },
 }));
 
-const ImgBox = styled(Box)(({ theme }) => ({
+const ImgBox = styled("div")(({ theme }) => ({
   height: "100%",
   padding: "0 40px 20px 40px",
   background: theme.palette.primary[100],

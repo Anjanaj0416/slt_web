@@ -31,14 +31,14 @@ const Card2: FC<Props> = ({ children, title, amount, percentage }) => {
         <FlexBox flexDirection="column" justifyContent="space-between" height="inherit">
           <H6 color="grey.600">{title}</H6>
 
-          <Box>
+          <div>
             <H3>{amount}</H3>
 
             <FlexBox mt={0.3} alignItems="center" color="info.main">
               <ArrowDropUp />
               <Paragraph fontSize={12}>{percentage}</Paragraph>
             </FlexBox>
-          </Box>
+          </div>
         </FlexBox>
       </Box>
 

@@ -12,8 +12,8 @@ const ProductStatus: FC<Props> = ({ status }) => {
     <StatusChipBox>
       <StatusChip>{status}</StatusChip>
       <Box width="100%" display="flex">
-        <Box className="triangle-left" />
-        <Box className="triangle-right" />
+        <div className="triangle-left" />
+        <div className="triangle-right" />
       </Box>
     </StatusChipBox>
   ) : null;

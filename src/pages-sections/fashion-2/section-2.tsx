@@ -1,7 +1,8 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Container, styled } from "@mui/material";
+import Container from "@mui/material/Container";
+import { styled } from "@mui/material/styles";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS
@@ -11,7 +12,7 @@ import { FlexRowCenter } from "components/flex-box";
 import Service from "models/Service.model";
 
 // STYLED COMPONENTS
-const StyledFlexBox = styled(Box)(({ theme }) => ({
+const StyledFlexBox = styled("div")(({ theme }) => ({
   display: "grid",
   padding: "2rem 0",
   boxShadow: theme.shadows[2],
@@ -50,10 +51,10 @@ const Section2: FC<Props> = ({ serviceList }) => {
           return (
             <ServiceItem flexGrow={1} gap={2} key={ind}>
               <Icon sx={{ fontSize: 40 }} />
-              <Box>
+              <div>
                 <H4 lineHeight={1.3}>{item.title}</H4>
                 <Span color="grey.600">{item.description}</Span>
-              </Box>
+              </div>
             </ServiceItem>
           );
         })}

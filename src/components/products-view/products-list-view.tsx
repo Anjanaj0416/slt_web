@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
@@ -14,7 +13,7 @@ type Props = { products: Product[] };
 
 const ProductsListView: FC<Props> = ({ products }) => {
   return (
-    <Box>
+    <div>
       {products.map((item) => (
         <ProductCard9
           id={item.id}
@@ -32,7 +31,7 @@ const ProductsListView: FC<Props> = ({ products }) => {
         <Span color="grey.600">Showing 1-9 of 1.3k Products</Span>
         <Pagination count={10} variant="outlined" color="primary" />
       </FlexBetween>
-    </Box>
+    </div>
   );
 };
 

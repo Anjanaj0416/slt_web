@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
@@ -41,10 +40,10 @@ const ProductRow: FC<Props> = ({ product }) => {
         <FlexBox alignItems="center" gap={1.5}>
           <Avatar src={image} sx={{ borderRadius: 2 }} />
 
-          <Box>
+          <div>
             <Paragraph fontWeight={600}>{name}</Paragraph>
             <Small color="grey.600">#{id.split("-")[0]}</Small>
-          </Box>
+          </div>
         </FlexBox>
       </StyledTableCell>
 

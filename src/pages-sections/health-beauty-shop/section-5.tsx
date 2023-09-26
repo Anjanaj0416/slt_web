@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 // CUSTOM ICON COMPONENT
 import appIcons from "icons";
@@ -32,13 +31,13 @@ const Section5: FC<Props> = ({ services = [] }) => {
                   </Icon>
                 </IconBox>
 
-                <Box>
+                <div>
                   <H4 fontSize={16} fontWeight="700" sx={{ color: "primary.main" }}>
                     {item.title}
                   </H4>
 
                   <Span color="grey.600">{item.description}</Span>
-                </Box>
+                </div>
               </StyledFlexBox>
             </Grid>
           );

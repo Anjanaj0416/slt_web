@@ -10,7 +10,9 @@ type CollapseCompact = { collapsed: number; compact: number };
 type ChevronLeftProps = { sidebar_compact: number; compact: number };
 // ===============================================================
 
-const SidebarWrapper = styled(Box)<Compact>(({ theme, compact }) => ({
+const SidebarWrapper = styled("div", {
+  shouldForwardProp: (prop) => prop !== "compact",
+})<Compact>(({ theme, compact }) => ({
   width: 280,
   height: "100vh",
   position: "fixed",
@@ -21,7 +23,9 @@ const SidebarWrapper = styled(Box)<Compact>(({ theme, compact }) => ({
   ...(compact && { width: 86, "&:hover": { width: 280 } }),
 }));
 
-const NavItemButton = styled(ButtonBase)<Active>(({ theme, active }) => ({
+const NavItemButton = styled(ButtonBase, {
+  shouldForwardProp: (prop) => prop !== "active",
+})<Active>(({ theme, active }) => ({
   height: 44,
   width: "100%",
   borderRadius: 8,
@@ -36,7 +40,9 @@ const NavItemButton = styled(ButtonBase)<Active>(({ theme, active }) => ({
   }),
 }));
 
-const ListLabel = styled(Paragraph)<Compact>(({ compact }) => ({
+const ListLabel = styled(Paragraph, {
+  shouldForwardProp: (prop) => prop !== "compact",
+})<Compact>(({ compact }) => ({
   fontWeight: 600,
   fontSize: "12px",
   marginTop: "20px",
@@ -69,14 +75,18 @@ const ExternalLink = styled("a")({
   textDecoration: "none",
 });
 
-const StyledText = styled(Span)<Compact>(({ compact }) => ({
+const StyledText = styled(Span, {
+  shouldForwardProp: (prop) => prop !== "compact",
+})<Compact>(({ compact }) => ({
   whiteSpace: "nowrap",
   // paddingLeft: "0.8rem",
   transition: "all 0.15s ease",
   ...(compact && { opacity: 0, width: 0 }),
 }));
 
-const BulletIcon = styled("div")<Active>(({ theme, active }) => ({
+const BulletIcon = styled("div", {
+  shouldForwardProp: (prop) => prop !== "active",
+})<Active>(({ theme, active }) => ({
   width: 3,
   height: 3,
   marginLeft: "10px",
@@ -87,14 +97,18 @@ const BulletIcon = styled("div")<Active>(({ theme, active }) => ({
   boxShadow: active ? `0px 0px 0px 4px ${alpha(theme.palette.info[500], 0.2)}` : "none",
 }));
 
-const BadgeValue = styled(Box)<Compact>(({ compact }) => ({
+const BadgeValue = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "compact",
+})<Compact>(({ compact }) => ({
   padding: "1px 8px",
   overflow: "hidden",
   borderRadius: "300px",
   display: compact ? "none" : "unset",
 }));
 
-const ChevronLeftIcon = styled(ChevronLeft)<ChevronLeftProps>(({ compact, sidebar_compact }) => ({
+const ChevronLeftIcon = styled(ChevronLeft, {
+  shouldForwardProp: (prop) => prop !== "compact" && prop !== "sidebar_compact",
+})<ChevronLeftProps>(({ compact, sidebar_compact }) => ({
   color: "rgba(255, 255, 255, .6)",
   cursor: "pointer",
   width: 40,
@@ -110,16 +124,16 @@ const ChevronLeftIcon = styled(ChevronLeft)<ChevronLeftProps>(({ compact, sideba
   },
 }));
 
-const ChevronRightIcon = styled(ChevronRight)<CollapseCompact>(
-  ({ collapsed, compact, theme: { direction } }) => ({
-    fontSize: 18,
-    color: "white",
-    transform: collapsed ? "0deg" : "rotate(90deg)",
-    transition: "transform 0.3s cubic-bezier(0, 0, 0.2, 1) 0ms",
-    ...(compact && { display: "none", width: 0 }),
-    ...(collapsed && direction === "rtl" && { transform: "rotate(180deg)" }),
-  })
-);
+const ChevronRightIcon = styled(ChevronRight, {
+  shouldForwardProp: (prop) => prop !== "compact" && prop !== "collapsed",
+})<CollapseCompact>(({ collapsed, compact, theme: { direction } }) => ({
+  fontSize: 18,
+  color: "white",
+  transform: collapsed ? "0deg" : "rotate(90deg)",
+  transition: "transform 0.3s cubic-bezier(0, 0, 0.2, 1) 0ms",
+  ...(compact && { display: "none", width: 0 }),
+  ...(collapsed && direction === "rtl" && { transform: "rotate(180deg)" }),
+}));
 
 export {
   ListLabel,

@@ -5,7 +5,9 @@ import { styled } from "@mui/material/styles";
 import clsx from "clsx";
 
 // STYLED COMPONENT
-const StyledLink = styled(Link)<{ active: number }>(({ theme, active }) => ({
+const StyledLink = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "active",
+})<{ active: number }>(({ theme, active }) => ({
   position: "relative",
   transition: "color 150ms ease-in-out",
   color: active ? theme.palette.primary.main : "inherit",

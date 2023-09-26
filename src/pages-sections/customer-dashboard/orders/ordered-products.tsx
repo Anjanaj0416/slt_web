@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
@@ -35,12 +34,12 @@ const OrderedProducts: FC<Props> = ({ order }) => {
           <FlexBox gap={2.5} alignItems="center">
             <Avatar src={item.product_img} sx={{ height: 64, width: 64 }} />
 
-            <Box>
+            <div>
               <H6>{item.product_name}</H6>
               <Paragraph color="grey.600">
                 {currency(item.product_price)} x {item.product_quantity}
               </Paragraph>
-            </Box>
+            </div>
           </FlexBox>
 
           <Paragraph color="grey.600" ellipsis>

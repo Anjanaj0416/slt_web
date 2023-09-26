@@ -33,23 +33,23 @@ const Section2 = () => {
       </ContentBox>
 
       <ContentBox sx={{ px: "20px" }}>
-        <Box className="content">
+        <div className="content">
           <Paragraph fontSize={12}>BEAUTY PACK</Paragraph>
           <H4 fontWeight="700">CREAM BRIGHT</H4>
           <H4 fontWeight="700">UP TO 25%</H4>
           <StyledButton LinkComponent={Link} href="/shops/scarlett-beauty">
             Shop Now
           </StyledButton>
-        </Box>
+        </div>
 
-        <Box className="content">
+        <div className="content">
           <LazyImage
             alt="shop"
             width={800}
             height={800}
             src="/assets/images/Health Shop/Product (4).png"
           />
-        </Box>
+        </div>
       </ContentBox>
     </Box>
   );

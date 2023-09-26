@@ -74,7 +74,7 @@ const HealthBeautyPageView = (props: Props) => {
 
       {/* SMALL DEVICE BOTTOM NAVIGATION */}
       <MobileNavigationBar2>
-        <HealthBeautySideNav navigation={props.navigationList} />
+        <SideNav />
       </MobileNavigationBar2>
     </Fragment>
   );

@@ -45,7 +45,7 @@ interface Props extends PropsWithChildren {
 // ==============================================================
 
 const Sidebar: FC<Props> = ({ children, navList }) => {
-  const pageContentRef = useRef<HTMLElement>();
+  const pageContentRef = useRef<HTMLDivElement>();
   const [sidebarHeight, setSidebarHeight] = useState(0);
 
   useEffect(() => setSidebarHeight(pageContentRef.current.offsetHeight), []);
@@ -53,18 +53,18 @@ const Sidebar: FC<Props> = ({ children, navList }) => {
   return (
     <StyledContainer>
       {/* SIDE NAV BAR */}
-      <Box className="sidenav">
+      <div className="sidenav">
         <SideNavbar
           lineStyle="dash"
           navList={navList}
           sidebarStyle="style2"
           sidebarHeight={sidebarHeight || "85vh"}
         />
-      </Box>
+      </div>
 
-      <Box className="pageContent" ref={pageContentRef}>
+      <div className="pageContent" ref={pageContentRef}>
         {children}
-      </Box>
+      </div>
     </StyledContainer>
   );
 };

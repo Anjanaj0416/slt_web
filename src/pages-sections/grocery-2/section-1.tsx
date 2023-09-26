@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
@@ -11,7 +10,7 @@ import { H1, H5, H6 } from "components/Typography";
 import { GroceryTwoCarouselItem } from "models/Carousel.model";
 
 // STYLED COMPONENTS
-const StyledBox = styled(Box)({
+const StyledBox = styled("div")({
   overflow: "hidden",
   borderRadius: "8px",
   "& .carousel-dot": { position: "absolute", bottom: "30px", left: "40px" },

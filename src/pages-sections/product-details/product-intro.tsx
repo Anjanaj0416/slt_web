@@ -93,7 +93,7 @@ const ProductIntro: FC<Props> = ({ product }) => {
 
           {/* PRODUCT BRAND */}
           <FlexBox alignItems="center" mb={1}>
-            <Box>Brand:</Box>
+            <div>Brand:</div>
             <H6>Xiaomi</H6>
           </FlexBox>
 
@@ -171,7 +171,7 @@ const ProductIntro: FC<Props> = ({ product }) => {
 
           {/* SHOP NAME */}
           <FlexBox alignItems="center" gap={1} mb={2}>
-            <Box>Sold By:</Box>
+            <div>Sold By:</div>
             <Link href="/shops/scarlett-beauty">
               <H6>Mobile Store</H6>
             </Link>

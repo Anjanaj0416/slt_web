@@ -5,7 +5,9 @@ import { FlexRowCenter } from "components/flex-box";
 import { H2, H4, Paragraph, Span } from "components/Typography";
 import PageCard from "./page-card";
 
-const FilterButton = styled(Button)<{ selected: number }>(({ theme, selected }) => ({
+const FilterButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== "selected",
+})<{ selected: number }>(({ theme, selected }) => ({
   color: selected ? theme.palette.primary.main : "inherit",
   ":hover": {
     backgroundColor: "transparent",
@@ -238,7 +240,7 @@ const demoPageList = [
 
 const shopPageList = [
   {
-    imgUrl: "/assets/images/landing/shop/sale-page-1.jpg",
+    imgUrl: "/assets/images/landing/shop/sales-1.jpg",
     previewUrl: "/sales-1",
     title: "Sale Page",
     page: "shop",
@@ -472,7 +474,7 @@ const vendorPageList = [
   },
   {
     imgUrl: "/assets/images/landing/vendor/account-setting.jpg",
-    previewUrl: "/vendor/account-setting",
+    previewUrl: "/vendor/account-settings",
     title: "Account Settings",
     status: "New",
     page: "admin",

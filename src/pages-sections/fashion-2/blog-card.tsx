@@ -1,6 +1,8 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Card, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { NavLink3 } from "components/nav-link";

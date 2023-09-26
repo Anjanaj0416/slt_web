@@ -28,7 +28,7 @@ const ProductComment: FC<Props> = (props) => {
       <FlexBox alignItems="center" mb={2} gap={2}>
         <Avatar src={imgUrl} sx={{ width: 48, height: 48 }} />
 
-        <Box>
+        <div>
           <H5 mb={1}>{name}</H5>
 
           <FlexBox alignItems="center" gap={1.25}>
@@ -36,7 +36,7 @@ const ProductComment: FC<Props> = (props) => {
             <H6>{rating}</H6>
             <Span>{getDateDifference(date)}</Span>
           </FlexBox>
-        </Box>
+        </div>
       </FlexBox>
 
       <Paragraph color="grey.700">{comment}</Paragraph>

@@ -1,17 +1,16 @@
 "use client";
 
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import { FlexRowCenter } from "components/flex-box";
 import { H4, Span } from "components/Typography";
+import { FlexRowCenter } from "components/flex-box";
 // CUSTOM DATA MODEL
 import Service from "models/Service.model";
 
 // STYLED COMPONENTS
-const StyledFlexBox = styled(Box)(({ theme }) => ({
+const StyledFlexBox = styled("div")(({ theme }) => ({
   display: "grid",
   padding: "2rem 0",
   gridTemplateColumns: "repeat(4, 1fr)",

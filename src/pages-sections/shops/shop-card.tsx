@@ -1,17 +1,19 @@
 import { FC } from "react";
 import Link from "next/link";
-import { alpha, Avatar, Box, Card, IconButton, Rating, styled } from "@mui/material";
+import { alpha, Avatar, Card, IconButton, Rating, styled } from "@mui/material";
 import Call from "@mui/icons-material/Call";
 import East from "@mui/icons-material/East";
 import Place from "@mui/icons-material/Place";
 // GLOBAL CUSTOM COMPONENTS
-import { FlexBetween, FlexBox } from "components/flex-box";
 import { H3, Span } from "components/Typography";
+import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM DATA MODEL
 import Shop from "models/Shop.model";
 
 // STYLED COMPONENT
-const ContentWrapper = styled(Box)<{ img: string }>(({ theme, img }) => ({
+const ContentWrapper = styled("div", {
+  shouldForwardProp: (prop) => prop !== "img",
+})<{ img: string }>(({ theme, img }) => ({
   color: "white",
   backgroundSize: "cover",
   padding: "17px 30px 56px",

@@ -19,7 +19,7 @@ const ConversationCard: FC<Props> = ({ message }) => {
     <FlexBox gap={2} mb={4}>
       <Avatar src={imgUrl} />
 
-      <Box>
+      <div>
         <H5 fontWeight="600" mt={0} mb={0}>
           {name}
         </H5>
@@ -29,7 +29,7 @@ const ConversationCard: FC<Props> = ({ message }) => {
         <Box borderRadius={2} bgcolor="grey.300" p={2} mt={2} lineHeight={1.7} textAlign="justify">
           {text}
         </Box>
-      </Box>
+      </div>
     </FlexBox>
   );
 };

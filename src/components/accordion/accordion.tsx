@@ -1,4 +1,4 @@
-import { Children, cloneElement, FC, ReactElement, useEffect, useRef, useState } from "react";
+import { Children, cloneElement, FC, memo, ReactElement, useEffect, useRef, useState } from "react";
 import { styled } from "@mui/material/styles";
 
 // STYLED COMPONENT PROPS
@@ -9,7 +9,10 @@ type WrapperProps = {
 };
 
 // STYLED COMPONENT
-const Wrapper = styled("div")<WrapperProps>((props) => ({
+const Wrapper = styled("div", {
+  shouldForwardProp: (prop) =>
+    prop !== "open" && prop !== "parent_height" && prop !== "header_height",
+})<WrapperProps>((props) => ({
   cursor: "pointer",
   overflow: "hidden",
   transition: "height 250ms ease-in-out",
@@ -51,4 +54,4 @@ const Accordion: FC<Props> = ({ expanded = false, children }) => {
   );
 };
 
-export default Accordion;
+export default memo(Accordion);

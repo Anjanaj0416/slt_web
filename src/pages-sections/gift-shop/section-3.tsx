@@ -52,16 +52,16 @@ const Section3 = () => {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} sm={7} md={7}>
-        <Link href="/sale-page-1">
+        <Link href="/sales-1">
           <LeftContentBox>
             <RightContent px="20px">
               <H6>Holiday’s Offer!</H6>
               <H3>Sale 50% Off</H3>
               <Paragraph sx={{ mt: 1 }}>Use Code : Holi50</Paragraph>
 
-              <Box>
+              <div>
                 <StyledButton>Shop Now</StyledButton>
-              </Box>
+              </div>
             </RightContent>
           </LeftContentBox>
         </Link>
@@ -77,14 +77,15 @@ const Section3 = () => {
           [breakpoints.down("sm")]: { pl: "0 !important" },
         }}
       >
-        <Link href="/sale-page-1">
+        <Link href="/sales-1">
           <RightContentBox sx={{ p: "20px" }}>
             <Box textAlign="center">
               <H6>Shop Online Gift Under</H6>
               <H3>$20.00</H3>
               <StyledButton>Shop Now</StyledButton>
             </Box>
-            <Box className="content" />
+
+            <div className="content" />
           </RightContentBox>
         </Link>
       </Grid>

@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { FC, ReactNode } from "react";
-import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
+// GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
 
 // STYLED COMPONENT
-const Wrapper = styled(Box)(({ theme }) => ({
+const Wrapper = styled("div")(({ theme }) => ({
   "& .category-dropdown-link": {
     height: 40,
     display: "flex",

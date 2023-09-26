@@ -15,7 +15,9 @@ export const StyledFooter = styled("footer")(({ theme }) => ({
   [theme.breakpoints.down("md")]: { marginBottom: "4rem" },
 }));
 
-export const StyledRoot = styled("footer")<{ bgcolor?: string }>(({ theme, bgcolor }) => ({
+export const StyledRoot = styled("footer", {
+  shouldForwardProp: (prop) => prop !== "bgcolor",
+})<{ bgcolor?: string }>(({ theme, bgcolor }) => ({
   color: "white",
   padding: "40px",
   background: bgcolor ? bgcolor : theme.palette.secondary.main,

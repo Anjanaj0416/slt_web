@@ -1,6 +1,5 @@
 "use client";
 
-import Box from "@mui/material/Box";
 import { useEffect, useRef, useState } from "react";
 // Local CUSTOM COMPONENT
 import Section2 from "./section-2";
@@ -18,27 +17,29 @@ interface Props {
 // ==============================================================
 
 const Sidebar = ({ navList }: Props) => {
-  const pageContentRef = useRef<HTMLElement>();
+  const ref = useRef<HTMLDivElement>();
   const [sidebarHeight, setSidebarHeight] = useState(0);
 
-  useEffect(() => setSidebarHeight(pageContentRef.current.offsetHeight), []);
+  useEffect(() => {
+    if (ref.current) setSidebarHeight(ref.current.offsetHeight);
+  }, []);
 
   return (
     <StyledContainer>
       {/* LEFT SIDEBAR */}
-      <Box className="sidenav">
+      <div className="sidenav">
         <SideNavbar
           lineStyle="dash"
           navList={navList}
           sidebarStyle="style2"
           sidebarHeight={sidebarHeight || "85vh"}
         />
-      </Box>
+      </div>
 
       {/* OFFER BANNERS */}
-      <Box className="pageContent" ref={pageContentRef}>
+      <div className="pageContent" ref={ref}>
         <Section2 />
-      </Box>
+      </div>
     </StyledContainer>
   );
 };

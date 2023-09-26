@@ -32,7 +32,7 @@ const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWid
                       {item.title}
                     </NavLink>
                   ) : (
-                    <Box className="title-link">{item.title}</Box>
+                    <div className="title-link">{item.title}</div>
                   )}
 
                   {item.subCategories?.map((sub, ind) => (

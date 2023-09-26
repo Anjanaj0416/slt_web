@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import Instagram from "@mui/icons-material/Instagram";
-import { Box, Container, Grid, styled } from "@mui/material";
+import { Container, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
 import LazyImage from "components/LazyImage";
@@ -10,7 +10,7 @@ import LazyImage from "components/LazyImage";
 import Blog from "models/Blog.model";
 
 // STYLED COMPONENTS
-const ImageWrapper = styled(Box)(({ theme }) => ({
+const ImageWrapper = styled("div")(({ theme }) => ({
   cursor: "pointer",
   position: "relative",
   display: "flex",

@@ -1,6 +1,8 @@
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Box, Collapse, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Collapse from "@mui/material/Collapse";
+import { styled } from "@mui/material/styles";
 // LOCAL CUSTOM HOOK
 import { useLayout } from "../dashboard-layout-context";
 // STYLED COMPONENTS
@@ -14,8 +16,7 @@ import {
 } from "./styles";
 
 // STYLED COMPONENT
-const NavExpandRoot = styled(Box)({
-  // "& .subMenu": { padding: 0 },
+const NavExpandRoot = styled("div")({
   "& .expansion-panel": {
     overflow: "hidden",
     "& .expansion-panel": { paddingLeft: 8 },
@@ -81,7 +82,7 @@ const SidebarAccordion: FC<Props> = ({ item, children }) => {
       </NavItemButton>
 
       <Collapse in={collapsed} unmountOnExit>
-        <Box className="expansion-panel">{children}</Box>
+        <div className="expansion-panel">{children}</div>
       </Collapse>
     </NavExpandRoot>
   );

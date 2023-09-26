@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Done from "@mui/icons-material/Done";
-import { styled, Table, TableContainer, Box, TableBody, TableCell, TableRow } from "@mui/material";
+import { styled, Table, TableContainer, TableBody, TableCell, TableRow } from "@mui/material";
 // GLOBAL CUSTOM HOOK
 import useMuiTable from "hooks/useMuiTable";
 // CUSTOM ICON COMPONENT
@@ -24,7 +24,9 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   ":first-of-type": { paddingLeft: 24 },
 }));
 
-const StatusWrapper = styled(FlexBox)<{ payment: any }>(({ theme, payment }) => ({
+const StatusWrapper = styled(FlexBox, {
+  shouldForwardProp: (prop) => prop !== "payment",
+})<{ payment: any }>(({ theme, payment }) => ({
   borderRadius: "8px",
   padding: "3px 12px",
   display: "inline-flex",
@@ -87,7 +89,7 @@ const DataListTable: FC<Props> = ({ dataList, tableHeading, type }) => {
 
               <StyledTableCell align="left">
                 <StatusWrapper gap={1} alignItems="center" payment={payment === "Pending" ? 1 : 0}>
-                  <Box>{payment}</Box>
+                  <div>{payment}</div>
                   {payment === "Pending" && <Reload sx={{ fontSize: 13 }} />}
                   {payment !== "Pending" && <Done sx={{ fontSize: 13 }} />}
                 </StatusWrapper>

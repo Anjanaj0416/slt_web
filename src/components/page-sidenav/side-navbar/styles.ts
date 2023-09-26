@@ -4,21 +4,20 @@ import { Span } from "components/Typography";
 import BazaarCard from "components/BazaarCard";
 import { FlexBetween, FlexBox } from "components/flex-box";
 
-export const NavbarRoot = styled(BazaarCard)<{
-  fixed: boolean;
-  sidebar: "style1" | "style2";
-}>(({ fixed, theme, sidebar }) => ({
+export const NavbarRoot = styled(BazaarCard, {
+  shouldForwardProp: (prop) => prop !== "fixed" && prop !== "sidebar",
+})<{ fixed: boolean; sidebar: "style1" | "style2" }>(({ fixed, theme, sidebar }) => ({
   height: "100%",
   boxShadow: "none",
   borderRadius: "8px",
   position: "relative",
   overflow: fixed ? "auto" : "unset",
   "& .linkList": {
-    transition: "all 0.2s",
     padding: "8px 20px",
+    transition: "all 0.2s",
   },
   ...(sidebar === "style2" && {
-    height: "auto",
+    // height: "100%",
     paddingBottom: 10,
     backgroundColor: theme.palette.primary[50],
   }),
@@ -32,7 +31,9 @@ export const StyledList = styled(FlexBox)(({ theme }) => ({
   "&:hover": { "& .listCircle": { background: theme.palette.primary[300] } },
 }));
 
-export const BorderBox = styled(FlexBetween)<{ line: "dash" | "solid" }>(({ theme, line }) => ({
+export const BorderBox = styled(FlexBetween, {
+  shouldForwardProp: (prop) => prop !== "line",
+})<{ line: "dash" | "solid" }>(({ theme, line }) => ({
   marginTop: 5,
   marginBottom: 15,
   "& span": { width: "100%" },
@@ -44,7 +45,9 @@ export const BorderBox = styled(FlexBetween)<{ line: "dash" | "solid" }>(({ them
   }),
 }));
 
-export const ColorBorder = styled(Span)<{ grey?: any }>(({ grey, theme }) => ({
+export const ColorBorder = styled(Span, {
+  shouldForwardProp: (prop) => prop !== "grey",
+})<{ grey?: number }>(({ grey, theme }) => ({
   borderRadius: "2px 0 0 2px",
   height: grey ? "2px" : "3px",
   background: grey ? theme.palette.grey[400] : theme.palette.primary[200],

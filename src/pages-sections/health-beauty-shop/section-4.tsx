@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 // GLOBAL CUSTOM COMPONENTS
@@ -17,7 +16,7 @@ type Props = { products: Product[] };
 
 const Section4: FC<Props> = ({ products }) => {
   return (
-    <Box>
+    <div>
       <SectionHeader title="All Products" seeMoreLink="#" />
       <SubTitle>Best deal with medical and beauty items</SubTitle>
 
@@ -42,7 +41,7 @@ const Section4: FC<Props> = ({ products }) => {
           Load More...
         </Button>
       </FlexRowCenter>
-    </Box>
+    </div>
   );
 };
 

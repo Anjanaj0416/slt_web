@@ -10,7 +10,9 @@ interface Props extends BoxProps {
 }
 // ==============================================================
 
-const StyledBox = styled(Box)<Ellipsis>(({ ellipsis }) => ({
+const StyledBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "ellipsis",
+})<Ellipsis>(({ ellipsis }) => ({
   ...(ellipsis && {
     overflow: "hidden",
     whiteSpace: "nowrap",

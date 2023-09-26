@@ -70,7 +70,7 @@ const ShopIntroCard: FC<Props> = (props) => {
           </FlexBetween>
 
           <FlexBetween flexWrap="wrap">
-            <Box>
+            <div>
               <FlexBox alignItems="center" gap={1} mb={2}>
                 <Rating color="warn" size="small" value={5} readOnly />
                 <Small color="grey.600" display="block">
@@ -87,7 +87,7 @@ const ShopIntroCard: FC<Props> = (props) => {
                 <Call fontSize="small" sx={{ fontSize: 18, mt: "2px" }} />
                 <Span color="grey.600">{phone}</Span>
               </FlexBox>
-            </Box>
+            </div>
 
             <a href="mailto:scarletbeauty@xmail.com">
               <Button variant="outlined" color="primary" sx={{ my: 1.5 }}>

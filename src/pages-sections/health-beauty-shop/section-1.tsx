@@ -8,7 +8,7 @@ import { Carousel } from "components/carousel";
 import { HealthCarouselItem } from "models/Carousel.model";
 
 // STYLED COMPONENTS
-const StyledBox = styled(Box)({
+const StyledBox = styled("div")({
   overflow: "hidden",
   backgroundColor: "#efefef",
   "& .carousel-dot": {
@@ -78,9 +78,9 @@ const Section1: FC<Props> = ({ carouselData }) => {
         {carouselData.map((item) => (
           <StyledGrid container key={item.id}>
             <GridItemOne item md={7} sm={7} xs={12}>
-              <Box className="titleBox">
+              <div className="titleBox">
                 <H1 maxWidth={380}>{item.title}</H1>
-              </Box>
+              </div>
 
               <StyledButton variant="contained" sx={{ px: "25px" }}>
                 Shop Now

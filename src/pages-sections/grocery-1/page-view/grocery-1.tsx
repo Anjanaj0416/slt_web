@@ -94,7 +94,7 @@ const GroceryOnePageView = (props: Props) => {
 
       {/* MOBILE NAVIGATION WITH SIDE NAVBAR */}
       <MobileNavigationBar2>
-        <SideNavbar navList={props.grocery1NavList} handleSelect={handleSelectCategory} />
+        <SideNav />
       </MobileNavigationBar2>
     </Fragment>
   );

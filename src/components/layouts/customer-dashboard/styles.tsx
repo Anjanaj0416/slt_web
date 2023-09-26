@@ -15,7 +15,8 @@ export const MainContainer = styled(Card)(({ theme }) => ({
 type Props = { isCurrentPath: boolean };
 
 export const StyledNavLink = styled<FC<Props & NavLinkProps>>(
-  ({ children, isCurrentPath, ...rest }) => <NavLink {...rest}>{children}</NavLink>
+  ({ children, isCurrentPath, ...rest }) => <NavLink {...rest}>{children}</NavLink>,
+  { shouldForwardProp: (prop) => prop !== "isCurrentPath" }
 )<Props>(({ theme, isCurrentPath }) => ({
   display: "flex",
   alignItems: "center",

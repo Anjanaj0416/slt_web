@@ -9,7 +9,7 @@ import FlexBox from "components/flex-box/flex-box";
 import { Navigation } from "components/layouts/customer-dashboard";
 
 // STYLED COMPONENT
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled("div")(({ theme }) => ({
   display: "flex",
   marginTop: theme.spacing(-2),
   marginBottom: theme.spacing(3),
@@ -37,9 +37,9 @@ type WithButton = {
 
 type WithoutButton = {
   title: string;
-  Icon: SvgIconComponent;
   href?: never;
   buttonText?: never;
+  Icon: SvgIconComponent;
 };
 
 type Props = WithoutButton | WithButton;
@@ -70,11 +70,11 @@ const DashboardHeader: FC<Props> = ({ title, buttonText, href, Icon }) => {
           </H2>
         </FlexBox>
 
-        <Box className="sidenav">
+        <div className="sidenav">
           <SideNav position="left" handle={<Menu fontSize="small" />}>
             <Navigation />
           </SideNav>
-        </Box>
+        </div>
 
         {!isTablet && buttonText ? HEADER_LINK : null}
       </FlexBox>

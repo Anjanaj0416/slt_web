@@ -20,11 +20,11 @@ const OrderedProduct: FC<Props> = ({ product }) => {
   const { product_img, product_name, product_price, product_quantity } = product || {};
 
   return (
-    <Box my={2} gap={2} sx={{ display: "grid", gridTemplateColumns: { md: "1fr 1fr", xs: "1fr" } }}>
+    <Box my={2} gap={2} display="grid" gridTemplateColumns={{ md: "1fr 1fr", xs: "1fr" }}>
       <FlexBox flexShrink={0} gap={1.5} alignItems="center">
         <Avatar src={product_img} sx={{ height: 64, width: 64, borderRadius: 2 }} />
 
-        <Box>
+        <div>
           <H6 mb={1}>{product_name}</H6>
 
           <FlexBox alignItems="center" gap={1}>
@@ -36,7 +36,7 @@ const OrderedProduct: FC<Props> = ({ product }) => {
               <TextField defaultValue={product_quantity} type="number" fullWidth />
             </Box>
           </FlexBox>
-        </Box>
+        </div>
       </FlexBox>
 
       <FlexBetween flexShrink={0}>
