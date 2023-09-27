@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { useRouter } from "next/navigation";
 import { Avatar, Box, Container, Button, Grid } from "@mui/material";
+import { scroller } from "react-scroll";
 // CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { H2, Paragraph } from "components/Typography";
@@ -44,10 +44,8 @@ interface Props {
 // ==================================================================
 
 const Section6: FC<Props> = ({ handleChangeFilter }) => {
-  const router = useRouter();
-
   const handleNavigate = (active: string) => () => {
-    router.push("#section-3");
+    scroller.scrollTo("section-3", {});
     handleChangeFilter(active);
   };
 

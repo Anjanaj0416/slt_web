@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import NProgress from "nprogress";
 import { GlobalStyles, useTheme } from "@mui/material";
 
+import "nprogress/nprogress.css";
+
 type PushStateInput = [data: any, unused: string, url?: string | URL | null | undefined];
 
 const ProgressBar = () => {

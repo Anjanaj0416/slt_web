@@ -2,6 +2,8 @@ import { FC, ReactNode } from "react";
 import { alpha, styled, SxProps } from "@mui/material";
 import SimpleBar, { Props } from "simplebar-react";
 
+import "simplebar-react/dist/simplebar.min.css";
+
 const StyledScrollBar = styled(SimpleBar)(({ theme }) => ({
   maxHeight: "100%",
   "& .simplebar-scrollbar": {
@@ -21,12 +23,10 @@ interface ScrollbarProps extends Props {
 }
 // =============================================================
 
-const Scrollbar: FC<ScrollbarProps> = ({ children, autoHide = true, sx, ...props }) => {
-  return (
-    <StyledScrollBar sx={sx} autoHide={autoHide} {...props}>
-      {children}
-    </StyledScrollBar>
-  );
-};
+const Scrollbar: FC<ScrollbarProps> = ({ children, autoHide = true, sx, ...props }) => (
+  <StyledScrollBar sx={sx} autoHide={autoHide} {...props}>
+    {children}
+  </StyledScrollBar>
+);
 
 export default Scrollbar;

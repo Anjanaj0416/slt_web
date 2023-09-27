@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { FC } from "react";
 import { Box, Button, Container, Grid, styled } from "@mui/material";
+// GLOBAL CUSTOM COMPONENTS
 import { FlexRowCenter } from "components/flex-box";
 import { H2, H4, Paragraph, Span } from "components/Typography";
+// LOCAL CUSTOM COMPONENT
 import PageCard from "./page-card";
 
 const FilterButton = styled(Button, {
@@ -240,7 +242,7 @@ const demoPageList = [
 
 const shopPageList = [
   {
-    imgUrl: "/assets/images/landing/shop/sales-1.jpg",
+    imgUrl: "/assets/images/landing/shop/sale-page-1.jpg",
     previewUrl: "/sales-1",
     title: "Sale Page",
     page: "shop",
