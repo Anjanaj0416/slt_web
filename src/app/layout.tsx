@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { PropsWithChildren } from "react";
 import { Open_Sans } from "next/font/google";
 
