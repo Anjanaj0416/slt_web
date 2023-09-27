@@ -1,9 +1,10 @@
-import { Box, ListItem, styled } from "@mui/material";
+import ListItem from "@mui/material/ListItem";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { NavLink } from "components/nav-link";
 
 // STYLED COMPONENTS
-export const Wrapper = styled(Box)(({ theme }) => ({
+export const Wrapper = styled("div")(({ theme }) => ({
   cursor: "pointer",
   position: "relative",
   transition: "color 150ms ease-in-out",

@@ -27,7 +27,7 @@ export const ParentNav = styled(Box, {
   ...(active && { color: theme.palette.primary.main }),
 }));
 
-export const ParentNavItem = styled(Box)(({ theme }) => ({
+export const ParentNavItem = styled("div")(({ theme }) => ({
   top: 0,
   zIndex: 5,
   left: "100%",
@@ -65,7 +65,7 @@ export const CategoryMenuButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.grey[100],
 }));
 
-export const ChildNavListWrapper = styled(Box)({
+export const ChildNavListWrapper = styled("div")({
   zIndex: 5,
   left: "50%",
   top: "100%",

@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Box, Button, Divider } from "@mui/material";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
 import {
   Add,
   Remove,

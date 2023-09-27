@@ -25,10 +25,10 @@ const MultiLevelMenu = () => {
 
   const { COMPACT, TOP_HEADER_AREA, handleCloseMobileSidebar } = useLayout();
 
-  // handle active current page
+  // HANDLE ACTIVE CURRENT PAGE
   const activeRoute = (path: string) => (pathname === path ? 1 : 0);
 
-  // handle navigate to another route and close sidebar drawer in mobile device
+  // HANDLE NAVIGATE TO ANOTHER ROUTE & CLOSE SIDEBAR DRAWER IN MOBILE DEVICE
   const handleNavigation = (path: string) => {
     router.push(path);
     handleCloseMobileSidebar();
@@ -73,25 +73,24 @@ const MultiLevelMenu = () => {
       }
 
       return (
-        <Box key={index}>
-          <NavItemButton
-            className="navItem"
-            active={activeRoute(item.path)}
-            onClick={() => handleNavigation(item.path)}
-          >
-            {item?.icon ? (
-              <ListIconWrapper>
-                <item.icon />
-              </ListIconWrapper>
-            ) : (
-              <BulletIcon active={activeRoute(item.path)} />
-            )}
+        <NavItemButton
+          key={index}
+          className="navItem"
+          active={activeRoute(item.path)}
+          onClick={() => handleNavigation(item.path)}
+        >
+          {item?.icon ? (
+            <ListIconWrapper>
+              <item.icon />
+            </ListIconWrapper>
+          ) : (
+            <BulletIcon active={activeRoute(item.path)} />
+          )}
 
-            <StyledText compact={COMPACT}>{item.name}</StyledText>
+          <StyledText compact={COMPACT}>{item.name}</StyledText>
 
-            {item.badge ? <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue> : null}
-          </NavItemButton>
-        </Box>
+          {item.badge ? <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue> : null}
+        </NavItemButton>
       );
     });
   };

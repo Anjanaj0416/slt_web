@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { FlexBetween } from "components/flex-box";
 
 export const ARROW_BUTTON_STYLE = {
@@ -7,14 +7,14 @@ export const ARROW_BUTTON_STYLE = {
 };
 
 /** USED IN SECTION - 5 */
-export const ContentWrapper = styled(Box)(({ theme }) => ({
+export const ContentWrapper = styled("div")(({ theme }) => ({
   borderRadius: "8px",
   position: "relative",
   backgroundColor: "#F3F6F9",
   boxShadow: theme.shadows[1],
 }));
 
-export const BadgeBox = styled(Box)(({ theme }) => ({
+export const BadgeBox = styled("div")(({ theme }) => ({
   top: 0,
   right: "3rem",
   position: "absolute",

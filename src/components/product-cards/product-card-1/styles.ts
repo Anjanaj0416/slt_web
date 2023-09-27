@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENT
 import BazaarCard from "components/BazaarCard";
@@ -16,14 +15,14 @@ export const StyledBazaarCard = styled(BazaarCard)({
   ":hover": { "& .hover-box": { opacity: 1 } },
 });
 
-export const ImageWrapper = styled(Box)(({ theme }) => ({
+export const ImageWrapper = styled("div")(({ theme }) => ({
   textAlign: "center",
   position: "relative",
   display: "inline-block",
   [theme.breakpoints.down("sm")]: { display: "block" },
 }));
 
-export const HoverIconWrapper = styled(Box)({
+export const HoverIconWrapper = styled("div")({
   zIndex: 2,
   top: "7px",
   opacity: 0,
@@ -35,7 +34,7 @@ export const HoverIconWrapper = styled(Box)({
   transition: "all 0.3s ease-in-out",
 });
 
-export const ContentWrapper = styled(Box)({
+export const ContentWrapper = styled("div")({
   gap: 8,
   display: "flex",
   padding: "1rem",

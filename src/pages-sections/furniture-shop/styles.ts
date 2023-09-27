@@ -26,7 +26,7 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
 }));
 
 /** USED IN SECTION-1 FILE */
-export const StyledBox = styled(Box)({
+export const StyledBox = styled("div")({
   marginBottom: 60,
   overflow: "hidden",
   "& .carousel-dot": {
@@ -38,7 +38,7 @@ export const StyledBox = styled(Box)({
   },
 });
 
-export const ContainerBox = styled(Box)(({ theme }) => ({
+export const ContainerBox = styled("div")(({ theme }) => ({
   minHeight: 650,
   display: "flex",
   alignItems: "center",
@@ -79,7 +79,7 @@ export const StyledButton = styled(Button)({
   padding: "8px 30px",
 });
 
-export const TextBox = styled(Box)(({ theme }) => ({
+export const TextBox = styled("div")(({ theme }) => ({
   marginTop: 5,
   marginBottom: 40,
   paddingRight: 100,
@@ -120,7 +120,7 @@ export const RightContentBox = styled(Box, {
   backgroundOrigin: "content-box",
 }));
 
-export const RightContent = styled(Box)({
+export const RightContent = styled("div")({
   "& p": { fontSize: 13, lineHeight: 1.4 },
 });
 

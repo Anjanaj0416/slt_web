@@ -1,8 +1,7 @@
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
-import { FlexBetween, FlexBox } from "components/flex-box";
+import { FlexBetween } from "components/flex-box";
 
 export const StyledBazaarCard = styled(BazaarCard)(({ theme }) => ({
   margin: "auto",
@@ -20,7 +19,7 @@ export const StyledBazaarCard = styled(BazaarCard)(({ theme }) => ({
   },
 }));
 
-export const ImageWrapper = styled(Box)(({ theme }) => ({
+export const ImageWrapper = styled("div")(({ theme }) => ({
   height: "100%",
   textAlign: "center",
   position: "relative",
@@ -28,7 +27,7 @@ export const ImageWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: { display: "block" },
 }));
 
-export const ImageBox = styled(Box)(({ theme }) => ({
+export const ImageBox = styled("div")(({ theme }) => ({
   padding: 32,
   height: "100%",
   borderBottom: `1px solid ${theme.palette.grey[300]}`,
@@ -65,10 +64,13 @@ export const HoverWrapper = styled(FlexBetween)(({ theme }) => ({
     justifyContent: "center",
     "&:hover": { cursor: "pointer", background: "#f3f5f9" },
   },
-  "& svg": { fontSize: 18, color: theme.palette.grey[600] },
+  "& svg": {
+    fontSize: 18,
+    color: theme.palette.grey[600],
+  },
 }));
 
-export const ContentWrapper = styled(Box)({
+export const ContentWrapper = styled("div")({
   padding: "1rem",
   "& .title, & .categories": {
     overflow: "hidden",
@@ -77,8 +79,9 @@ export const ContentWrapper = styled(Box)({
   },
 });
 
-export const ButtonBox = styled(FlexBox)(({ theme }) => ({
+export const ButtonBox = styled("div")(({ theme }) => ({
   gap: 10,
+  display: "flex",
   marginTop: "15px",
   justifyContent: "space-between",
   "& button": {

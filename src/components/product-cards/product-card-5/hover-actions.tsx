@@ -1,6 +1,9 @@
 import { FC } from "react";
 import Divider from "@mui/material/Divider";
-import { Favorite, FavoriteBorder, AddShoppingCart, RemoveRedEye } from "@mui/icons-material";
+import Favorite from "@mui/icons-material/Favorite";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
 // GLOBAL CUSTOM COMPONENT
 import { Span } from "components/Typography";
 // STYLED COMPONENT

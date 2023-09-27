@@ -2,43 +2,15 @@
 
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS
-import { FlexBox } from "components/flex-box";
 import { H4, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Service from "models/Service.model";
-
 // STYLED COMPONENTS
-const Container = styled("div")({
-  margin: "auto",
-  maxWidth: "1200px",
-  paddingBottom: "3rem",
-});
-
-const StyledFlexBox = styled(FlexBox)(({ theme }) => ({
-  flexWrap: "wrap",
-  background: "#fff",
-  alignItems: "center",
-  padding: "1.5rem 0.8rem",
-  justifyContent: "center",
-  border: `1px solid ${theme.palette.grey[300]}`,
-  [theme.breakpoints.down("sm")]: {
-    textAlign: "center",
-    padding: "1rem 0.5rem",
-    flexDirection: "column",
-  },
-}));
-
-const IconBox = styled(FlexBox)(({ theme }) => ({
-  padding: "12px",
-  fontSize: "22px",
-  borderRadius: "50%",
-  alignItems: "center",
-  background: theme.palette.info[50],
-}));
+import { SectionContainer, StyledFlexBox, IconBox } from "./styles";
 
 // ==================================================
 type Props = { serviceList: Service[] };
@@ -49,7 +21,7 @@ const Section2: FC<Props> = ({ serviceList = [] }) => {
   const servicesData = serviceList.slice(0, 3);
 
   return (
-    <Container>
+    <SectionContainer>
       <Grid container spacing={3}>
         {servicesData.map((item, ind) => {
           const Icon = appIcons[item.icon];
@@ -74,7 +46,7 @@ const Section2: FC<Props> = ({ serviceList = [] }) => {
           );
         })}
       </Grid>
-    </Container>
+    </SectionContainer>
   );
 };
 

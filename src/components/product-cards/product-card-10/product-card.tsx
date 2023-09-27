@@ -44,7 +44,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
   };
 
   return (
-    <Card height="100%">
+    <Card>
       <CardMedia>
         {/* PRODUCT IMAGE / THUMBNAIL */}
         <Link href={`/products/${slug}`}>

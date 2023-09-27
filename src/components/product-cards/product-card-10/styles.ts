@@ -1,8 +1,8 @@
-import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 
-export const Card = styled(Box)(({ theme }) => ({
+export const Card = styled("div")(({ theme }) => ({
+  height: "100%",
   borderRadius: "3px",
   transition: "all 0.3s",
   backgroundColor: theme.palette.common.white,
@@ -14,7 +14,7 @@ export const Card = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const CardMedia = styled(Box)({
+export const CardMedia = styled("div")({
   width: "100%",
   maxHeight: 300,
   cursor: "pointer",

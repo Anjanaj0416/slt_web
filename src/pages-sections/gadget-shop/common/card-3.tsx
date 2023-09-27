@@ -33,7 +33,7 @@ type Props = {
 const Card3: FC<Props> = ({ body, title, color, imgUrl, bgColor }) => {
   return (
     <Link href="/sales-1">
-      <Wrapper sx={{ backgroundColor: bgColor, color, pr: 0, height: "100%" }}>
+      <Wrapper bgcolor={bgColor} color={color} pr={0} height="100%">
         <Box width="60%" className="content">
           <H3 lineHeight={1.3}>{title}</H3>
           <Paragraph color={color ? color : "grey.600"} mt={1} mb={2}>

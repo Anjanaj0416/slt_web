@@ -7,10 +7,7 @@ import { Paragraph } from "components/Typography";
 import { calculateDiscount, currency } from "lib";
 
 // ==============================================================
-interface Props {
-  price: number;
-  discount: number;
-}
+type Props = { price: number; discount: number };
 // ==============================================================
 
 const ProductPrice: FC<Props> = ({ discount, price }) => {

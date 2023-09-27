@@ -1,7 +1,10 @@
-import { Box, List, ListItem, styled } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { styled } from "@mui/material/styles";
+// LOCAL CUSTOM COMPONENT
 import BazaarCard from "components/BazaarCard";
 
-const Wrapper = styled(Box)(({ theme }) => ({
+const Wrapper = styled("div")(({ theme }) => ({
   cursor: "pointer",
   transition: "color 150ms ease-in-out",
   ":hover": {
@@ -10,7 +13,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-const MenusContainer = styled(Box)({
+const MenusContainer = styled("div")({
   left: 0,
   zIndex: 2,
   top: "68%",

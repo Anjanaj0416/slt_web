@@ -1,9 +1,8 @@
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENT
 import { FlexBetween } from "components/flex-box";
 
-export const StyledBazaarCard = styled(Box)({
+export const StyledBazaarCard = styled("div")({
   height: "100%",
   margin: "auto",
   display: "flex",
@@ -13,7 +12,7 @@ export const StyledBazaarCard = styled(Box)({
   justifyContent: "space-between",
 });
 
-export const ImageWrapper = styled(Box)(({ theme }) => ({
+export const ImageWrapper = styled("div")(({ theme }) => ({
   height: "100%",
   borderRadius: 8,
   overflow: "hidden",
@@ -27,7 +26,7 @@ export const ImageWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const HoverButtonBox = styled(Box)({
+export const HoverButtonBox = styled("div")({
   opacity: 0,
   top: "50%",
   left: "50%",
@@ -54,7 +53,7 @@ export const HoverButtonBox = styled(Box)({
   },
 });
 
-export const ImageBox = styled(Box)({
+export const ImageBox = styled("div")({
   opacity: 1,
   height: "100%",
   padding: "44px 40px",
@@ -80,7 +79,7 @@ export const ItemController = styled(FlexBetween)(({ theme }) => ({
   "& svg": { fontSize: 22, color: theme.palette.grey[600] },
 }));
 
-export const ContentWrapper = styled(Box)({
+export const ContentWrapper = styled("div")({
   padding: "1rem",
   "& .title, & .categories": {
     overflow: "hidden",

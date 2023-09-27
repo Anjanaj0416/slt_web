@@ -10,11 +10,11 @@ const HoverBox = styled(Box)({
     zIndex: 1,
     opacity: 0,
     content: '""',
+    width: "100%",
+    height: "100%",
     position: "absolute",
     backgroundColor: "black",
     transition: "all 250ms ease-in-out",
-    width: "100%",
-    height: "100%",
   },
   "&:hover:after": { opacity: 0.3 },
 });

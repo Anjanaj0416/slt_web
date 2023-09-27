@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import { Carousel } from "components/carousel";
@@ -9,22 +9,8 @@ import { ProductCard3 } from "components/product-cards/product-card-3";
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
-
 // STYLED COMPONENT
-const TitleBox = styled(Box)(({ theme }) => ({
-  textAlign: "center",
-  "& h1": {
-    fontSize: 40,
-    fontWeight: 600,
-    marginBottom: "10px",
-  },
-  "& div": {
-    width: 200,
-    height: "2px",
-    margin: "auto",
-    background: theme.palette.primary.main,
-  },
-}));
+import { TitleBox } from "./styles";
 
 // ===============================================================
 type Props = { products: Product[] };
@@ -55,7 +41,7 @@ const Section3: FC<Props> = ({ products }) => {
 
   return (
     <div>
-      <TitleBox my={4}>
+      <TitleBox>
         <H1>Top Sales Products</H1>
         <div />
       </TitleBox>

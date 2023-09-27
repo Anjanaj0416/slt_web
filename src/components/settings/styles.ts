@@ -1,9 +1,8 @@
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 
-export const MainContainer = styled(Box)(({ theme }) => ({
+export const MainContainer = styled("div")(({ theme }) => ({
   top: 50,
   right: 50,
   zIndex: 1501,
@@ -24,10 +23,9 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   ":hover": { backgroundColor: theme.palette.primary.main },
 }));
 
-export const BodyWrapper = styled(Box, {
+export const BodyWrapper = styled("div", {
   shouldForwardProp: (props) => props !== "showBody",
 })<{ showBody: number }>(({ theme, showBody }) => ({
-  // overflow: "auto",
   borderRadius: "4px",
   backgroundColor: "white",
   opacity: showBody ? 1 : 0,

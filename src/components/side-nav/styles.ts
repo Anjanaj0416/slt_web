@@ -1,9 +1,8 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
 import { layoutConstant } from "utils/constants";
 
-export const Wrapper = styled(Box)({
+export const Wrapper = styled("div")({
   "& .handle": { cursor: "pointer" },
 });
 

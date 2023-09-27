@@ -1,22 +1,14 @@
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
-import { Paragraph } from "components/Typography";
 import { FlexRowCenter } from "components/flex-box";
 import { SectionHeader } from "components/section-header";
 import { ProductCard4 } from "components/product-cards/product-card-4";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
-
 // STYLED COMPONENT
-const SubTitle = styled(Paragraph)(({ theme }) => ({
-  fontSize: 12,
-  marginTop: "-20px",
-  marginBottom: "20px",
-  color: theme.palette.grey[600],
-}));
+import { SubTitle } from "./styles";
 
 // ========================================================
 type Props = { products: Product[]; title?: string };

@@ -3,10 +3,7 @@ import Link from "next/link";
 import { H3 } from "components/Typography";
 
 // ==============================================================
-interface Props {
-  title: string;
-  slug: string;
-}
+type Props = { title: string; slug: string };
 // ==============================================================
 
 const ProductTitle: FC<Props> = ({ title, slug }) => (

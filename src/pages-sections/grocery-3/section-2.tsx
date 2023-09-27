@@ -1,25 +1,15 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Button, Card, Grid, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H3, Paragraph } from "components/Typography";
 // CUSTOM DATA MODEL
 import { OfferCard } from "models/Grocery-3.model";
-
 // STYLED COMPONENT
-const StyledCard = styled(Card)(({ theme }) => ({
-  display: "flex",
-  boxShadow: "none",
-  alignItems: "center",
-  padding: "20px 50px",
-  justifyContent: "center",
-  background: theme.palette.paste[50],
-  [theme.breakpoints.down("sm")]: {
-    padding: "20px 30px",
-    "& h3": { fontSize: 20 },
-  },
-}));
+import { StyledCard } from "./styles";
 
 // ============================================================
 type Props = { offers: OfferCard[] };

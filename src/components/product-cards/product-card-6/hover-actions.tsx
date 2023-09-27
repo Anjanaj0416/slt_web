@@ -4,7 +4,6 @@ import Favorite from "@mui/icons-material/Favorite";
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
-
 // GLOBAL CUSTOM COMPONENT
 import { Span } from "components/Typography";
 // STYLED COMPONENT

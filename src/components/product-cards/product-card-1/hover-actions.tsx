@@ -1,7 +1,8 @@
-import Link from "next/link";
-import { FC, Fragment, useCallback, useState } from "react";
+import { FC } from "react";
 import IconButton from "@mui/material/IconButton";
-import { Favorite, RemoveRedEye, FavoriteBorder } from "@mui/icons-material";
+import Favorite from "@mui/icons-material/Favorite";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 // STYLED COMPONENTS
 import { HoverIconWrapper } from "./styles";
 

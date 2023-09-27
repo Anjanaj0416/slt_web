@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
-import { FlexBox } from "components/flex-box";
 
 export const StyledCard = styled(Box)(({ theme }) => ({
   height: "100%",
@@ -20,14 +19,14 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ImgBox = styled(Box)(({ theme }) => ({
+export const ImgBox = styled("div")(({ theme }) => ({
   height: 250,
   marginBottom: 100,
   padding: "60px 40px 20px 40px",
   background: theme.palette.primary[50],
 }));
 
-export const ContentWrapper = styled(Box)({
+export const ContentWrapper = styled("div")({
   gap: 8,
   display: "flex",
   padding: "1rem",
@@ -38,7 +37,7 @@ export const ContentWrapper = styled(Box)({
   },
 });
 
-export const StatusChipBox = styled(Box)(({ theme }) => ({
+export const StatusChipBox = styled("div")(({ theme }) => ({
   width: 40,
   height: 42,
   zIndex: 11,
@@ -71,14 +70,18 @@ export const StatusChip = styled(Span)({
   justifyContent: "center",
 });
 
-export const ColorBox = styled(FlexBox)(({ theme }) => ({
+export const ColorBox = styled("div")(({ theme }) => ({
   gap: 8,
+  display: "flex",
   padding: "10px 5px",
   "& span": {
     width: 12,
     height: 12,
     borderRadius: 8,
-    "&:hover": { cursor: "pointer", outline: `2px solid ${theme.palette.grey[200]}` },
+    "&:hover": {
+      cursor: "pointer",
+      outline: `2px solid ${theme.palette.grey[200]}`,
+    },
   },
 }));
 

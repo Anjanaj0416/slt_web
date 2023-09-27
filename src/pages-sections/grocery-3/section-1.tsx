@@ -1,61 +1,22 @@
 import { FC } from "react";
-import { Box, Button, Grid, styled, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 import { Carousel } from "components/carousel";
 // CUSTOM DATA MODEL
 import { MainCarouselItem } from "models/Grocery-3.model";
-
 // STYLED COMPONENTS
-const StyledBox = styled("div")({
-  marginBottom: 60,
-  overflow: "hidden",
-  "& .carousel-dot": {
-    left: 0,
-    right: 0,
-    bottom: "30px",
-    margin: "auto",
-    position: "absolute",
-  },
-});
-
-const Container = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.paste[50],
-}));
-
-const StyledGrid = styled(Grid)(({ theme }) => ({
-  maxWidth: 1280,
-  alignItems: "center",
-  margin: " 0 auto",
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column-reverse",
-  },
-}));
-
-const GridItemTwo = styled(Grid)(({ theme }) => ({
-  paddingLeft: 80,
-  [theme.breakpoints.down("md")]: { paddingLeft: 40 },
-  [theme.breakpoints.down("sm")]: { paddingLeft: 0, textAlign: "center" },
-}));
-
-const StyledButton = styled(Button)({
-  color: "#fff",
-  fontWeight: 400,
-  fontSize: "16px",
-});
-
-const GridItemOne = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: { width: "100%" },
-}));
-
-const TextBox = styled("div")(({ theme }) => ({
-  marginBottom: 40,
-  "& h1": { fontSize: 50, fontWeight: 600, lineHeight: "1.35" },
-  [theme.breakpoints.down("lg")]: { "& h1": { fontSize: 45 } },
-  [theme.breakpoints.down("md")]: { "& h1": { fontSize: 38 } },
-  [theme.breakpoints.down("sm")]: { paddingTop: 30 },
-}));
+import {
+  TextBox,
+  StyledBox,
+  Container,
+  StyledGrid,
+  GridItemOne,
+  GridItemTwo,
+  StyledButton,
+} from "./styles";
 
 // ===================================================================
 type Props = { mainCarouselData: MainCarouselItem[] };

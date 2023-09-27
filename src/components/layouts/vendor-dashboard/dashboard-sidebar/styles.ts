@@ -1,6 +1,6 @@
+import { alpha, ButtonBase, styled } from "@mui/material";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
-import { alpha, Box, ButtonBase, styled } from "@mui/material";
 import { Paragraph, Span } from "components/Typography";
 
 // ===============================================================
@@ -53,7 +53,7 @@ const ListLabel = styled(Paragraph, {
   ...(compact && { opacity: 0, width: 0 }),
 }));
 
-const ListIconWrapper = styled(Box)(({ theme }) => ({
+const ListIconWrapper = styled("div")(({ theme }) => ({
   width: 22,
   height: 22,
   flexShrink: 0,
@@ -79,7 +79,6 @@ const StyledText = styled(Span, {
   shouldForwardProp: (prop) => prop !== "compact",
 })<Compact>(({ compact }) => ({
   whiteSpace: "nowrap",
-  // paddingLeft: "0.8rem",
   transition: "all 0.15s ease",
   ...(compact && { opacity: 0, width: 0 }),
 }));
@@ -97,7 +96,7 @@ const BulletIcon = styled("div", {
   boxShadow: active ? `0px 0px 0px 4px ${alpha(theme.palette.info[500], 0.2)}` : "none",
 }));
 
-const BadgeValue = styled(Box, {
+const BadgeValue = styled("div", {
   shouldForwardProp: (prop) => prop !== "compact",
 })<Compact>(({ compact }) => ({
   padding: "1px 8px",
@@ -109,13 +108,13 @@ const BadgeValue = styled(Box, {
 const ChevronLeftIcon = styled(ChevronLeft, {
   shouldForwardProp: (prop) => prop !== "compact" && prop !== "sidebar_compact",
 })<ChevronLeftProps>(({ compact, sidebar_compact }) => ({
-  color: "rgba(255, 255, 255, .6)",
-  cursor: "pointer",
   width: 40,
   height: 40,
   padding: 8,
+  cursor: "pointer",
   borderRadius: "50%",
   transition: "all 0.3s",
+  color: "rgba(255, 255, 255, .6)",
   display: compact ? "none" : "block",
   transform: sidebar_compact ? "rotate(180deg)" : "rotate(0deg)",
   "&:hover": {

@@ -1,6 +1,8 @@
-import { Box, Button, IconButton, styled } from "@mui/material";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
 
-export const Card = styled(Box)({
+export const Card = styled("div")({
   ":hover": {
     "& .product-actions": { right: 10 },
     "& img": { transform: "scale(1.1)" },
@@ -8,7 +10,7 @@ export const Card = styled(Box)({
   },
 });
 
-export const CardMedia = styled(Box)(({ theme }) => ({
+export const CardMedia = styled("div")(({ theme }) => ({
   maxHeight: 300,
   cursor: "pointer",
   overflow: "hidden",

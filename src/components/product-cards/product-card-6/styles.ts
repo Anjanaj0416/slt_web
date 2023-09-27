@@ -16,7 +16,7 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ImgBox = styled(Box)(({ theme }) => ({
+export const ImgBox = styled("div")(({ theme }) => ({
   overflow: "hidden",
   position: "relative",
   padding: "0 40px 20px 40px",
@@ -49,7 +49,7 @@ export const ItemController = styled(FlexBetween)(({ theme }) => ({
   "& svg": { fontSize: 18, color: theme.palette.grey[600] },
 }));
 
-export const ContentWrapper = styled(Box)({
+export const ContentWrapper = styled("div")({
   display: "flex",
   alignItems: "center",
   flexDirection: "column",

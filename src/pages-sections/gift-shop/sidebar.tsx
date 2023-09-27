@@ -1,42 +1,12 @@
 "use client";
 
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
-import Container from "@mui/material/Container";
-// CUSTOM UTILS LIBRARY FUNCTION
-import { layoutConstant } from "utils/constants";
 // GLOBAL CUSTOM COMPONENTS
 import { SideNavbar } from "components/page-sidenav";
+// STYLED COMPONENT
+import { SidebarContainer } from "./styles";
 // CUSTOM DATA MODEL
 import CategoryNavList from "models/CategoryNavList.model";
-
-// STYLED COMPONENT
-const StyledContainer = styled(Container)(({ theme }) => ({
-  display: "flex",
-  marginBottom: "2rem",
-  ".sidenav": {
-    top: 0,
-    bottom: 0,
-    position: "relative",
-    transition: "all 350ms ease-in-out",
-    width: layoutConstant.grocerySidenavWidth,
-    minWidth: layoutConstant.grocerySidenavWidth,
-    "& .MuiPaper-root": { borderRadius: 0 },
-    [theme.breakpoints.down("md")]: { display: "none" },
-  },
-  ".pageContent": {
-    left: "unset",
-    position: "relative",
-    marginLeft: "1.75rem",
-    width: `calc(100% - 2.5rem - ${layoutConstant.grocerySidenavWidth}px)`,
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      "& .MuiGrid-item": { paddingLeft: 0 },
-      "& .categories": { marginLeft: "-1.75rem" },
-    },
-  },
-}));
 
 // ==============================================================
 interface Props extends PropsWithChildren {
@@ -51,7 +21,7 @@ const Sidebar: FC<Props> = ({ children, navList }) => {
   useEffect(() => setSidebarHeight(pageContentRef.current.offsetHeight), []);
 
   return (
-    <StyledContainer>
+    <SidebarContainer>
       {/* SIDE NAV BAR */}
       <div className="sidenav">
         <SideNavbar
@@ -65,7 +35,7 @@ const Sidebar: FC<Props> = ({ children, navList }) => {
       <div className="pageContent" ref={pageContentRef}>
         {children}
       </div>
-    </StyledContainer>
+    </SidebarContainer>
   );
 };
 

@@ -1,8 +1,7 @@
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
-import { FlexBetween, FlexBox } from "components/flex-box";
+import { FlexBetween } from "components/flex-box";
 
 export const StyledBazaarCard = styled(BazaarCard)(({ theme }) => ({
   height: "100%",
@@ -44,7 +43,7 @@ export const HoverWrapper = styled(FlexBetween)(({ theme }) => ({
   "& svg": { fontSize: 18, color: theme.palette.grey[600] },
 }));
 
-export const ImageWrapper = styled(Box)({
+export const ImageWrapper = styled("div")({
   minHeight: 288,
   display: "grid",
   overflow: "hidden",
@@ -55,7 +54,7 @@ export const ImageWrapper = styled(Box)({
   background: "#efefef",
 });
 
-export const ContentWrapper = styled(FlexBox)({
+export const ContentWrapper = styled("div")({
   gap: 8,
   display: "flex",
   padding: "1rem",

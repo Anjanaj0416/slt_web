@@ -1,23 +1,16 @@
 import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import { Paragraph } from "components/Typography";
 import { SectionHeader } from "components/section-header";
 import { ProductCard4 } from "components/product-cards/product-card-4";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
-
 // STYLED COMPONENT
-const SubTitle = styled(Paragraph)(({ theme }) => ({
-  fontSize: 12,
-  marginTop: "-20px",
-  marginBottom: "20px",
-  color: theme.palette.grey[600],
-}));
+import { SubTitle } from "./styles";
 
 // =================================================================
 type Props = { title: string; products: Product[] };

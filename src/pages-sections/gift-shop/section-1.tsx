@@ -1,63 +1,15 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Button, Grid, styled, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { Carousel } from "components/carousel";
 import { H1, Paragraph } from "components/Typography";
 // CUSTOM DATA MODEL
 import { GiftCarouselItem } from "models/Carousel.model";
-
 // STYLED COMPONENTS
-const StyledBox = styled("div")(({ theme }) => ({
-  marginBottom: 60,
-  overflow: "hidden",
-  backgroundColor: theme.palette.primary[100],
-  "& .carousel-dot": {
-    left: 0,
-    right: 0,
-    bottom: "30px",
-    margin: "auto",
-    position: "absolute",
-  },
-}));
-
-const StyledGrid = styled(Grid)(({ theme }) => ({
-  maxWidth: 1280,
-  margin: "auto",
-  alignItems: "center",
-  [theme.breakpoints.down("sm")]: { flexDirection: "column-reverse" },
-}));
-
-const GridItemOne = styled(Grid)(({ theme }) => ({
-  padding: 20,
-  "& .titleBox": {
-    marginTop: 10,
-    marginBottom: 30,
-    "& h1": { fontSize: 45, lineHeight: 1.3 },
-  },
-  [theme.breakpoints.down("md")]: {
-    "& .titleBox": { "& h1": { fontSize: 30 } },
-  },
-  [theme.breakpoints.down("sm")]: {
-    textAlign: "center",
-    "& .titleBox": { textAlign: "center", "& h1": { fontSize: 25 } },
-  },
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  color: "#fff",
-  fontWeight: 400,
-  borderRadius: 0,
-  fontSize: "16px",
-  background: theme.palette.primary.main,
-  "&:hover": { background: theme.palette.primary[400] },
-}));
-
-const GridItemTwo = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: { display: "none" },
-}));
+import { StyledBox, StyledGrid, GridItemOne, GridItemTwo, CarouselButton } from "./styles";
 
 // ==========================================================
 type Props = { carouselData: GiftCarouselItem[] };
@@ -87,9 +39,9 @@ const Section1: FC<Props> = ({ carouselData }) => {
                   <H1 maxWidth={400}>{title}</H1>
                 </div>
 
-                <StyledButton variant="contained" sx={{ px: "30px", py: "8px" }}>
+                <CarouselButton variant="contained" sx={{ px: "30px", py: "8px" }}>
                   {buttonText}
-                </StyledButton>
+                </CarouselButton>
               </Box>
             </GridItemOne>
 

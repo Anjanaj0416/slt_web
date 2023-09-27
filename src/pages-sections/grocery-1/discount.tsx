@@ -1,34 +1,15 @@
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H1, Paragraph } from "components/Typography";
-
 // STYLED COMPONENT
-const Container = styled(Card)(({ theme }) => ({
-  padding: "50px",
-  background: "#efefef",
-  transition: "all 0.3s",
-  [theme.breakpoints.down("sm")]: {
-    margin: "auto",
-    padding: "30px 20px",
-    "& .content": {
-      marginBottom: 30,
-      textAlign: "center",
-      "& h1": { fontSize: 25 },
-    },
-  },
-}));
+import { DiscountWrapper } from "./styles";
 
 const DiscountSection = () => {
-  const router = useRouter();
-
   return (
-    <Container>
+    <DiscountWrapper>
       <Link href="/sales-1">
         <Grid container>
           <Grid className="content" item sm={7} xs={12}>
@@ -36,10 +17,11 @@ const DiscountSection = () => {
             <H1>25% Special Off Today</H1>
             <H1>Only for Vegetables</H1>
             <Button
+              href="/sales-1"
               color="primary"
               variant="contained"
-              sx={{ mt: 5, fontSize: "12px" }}
-              onClick={() => router.push("/sales-1")}
+              LinkComponent={Link}
+              sx={{ mt: 5, fontSize: 12 }}
             >
               Shop Now
             </Button>
@@ -55,7 +37,7 @@ const DiscountSection = () => {
           </Grid>
         </Grid>
       </Link>
-    </Container>
+    </DiscountWrapper>
   );
 };
 

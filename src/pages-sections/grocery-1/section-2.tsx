@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
@@ -9,20 +8,8 @@ import { FlexBox } from "components/flex-box";
 import { H4, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Service from "models/Service.model";
-
 // STYLED COMPONENT
-const StyledFlexBox = styled(FlexBox)(({ theme }) => ({
-  flexWrap: "wrap",
-  padding: "1.5rem",
-  borderRadius: "8px",
-  background: "#fff",
-  boxShadow: theme.shadows[2],
-  [theme.breakpoints.down("sm")]: {
-    textAlign: "center",
-    padding: "1rem 0.5rem",
-    flexDirection: "column",
-  },
-}));
+import { ServiceCard } from "./styles";
 
 // =============================================================
 type Props = { id?: string; services: Service[] };
@@ -39,7 +26,7 @@ const Section2: FC<Props> = ({ id, services }) => {
 
           return (
             <Grid item lg={3} md={6} sm={6} xs={12} key={item.title}>
-              <StyledFlexBox alignItems="center" gap={2}>
+              <ServiceCard>
                 <FlexBox alignItems="center" color="grey.600" fontSize="50px">
                   <Icon fontSize="50px" color="grey.600">
                     {item.icon}
@@ -53,7 +40,7 @@ const Section2: FC<Props> = ({ id, services }) => {
 
                   <Span color="grey.600">{item.description}</Span>
                 </div>
-              </StyledFlexBox>
+              </ServiceCard>
             </Grid>
           );
         })}

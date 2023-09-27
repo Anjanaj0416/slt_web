@@ -52,7 +52,7 @@ export const SubTitle = styled(Paragraph)(({ theme }) => ({
 }));
 
 // FOR SECTION - 5
-export const Container = styled(Box)({
+export const Container = styled("div")({
   margin: "auto",
   maxWidth: "1200px",
   paddingBottom: "3rem",

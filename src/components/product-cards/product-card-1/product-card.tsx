@@ -4,21 +4,18 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { FlexBox } from "components/flex-box";
-import { H3, Paragraph, Span } from "components/Typography";
+import { Span } from "components/Typography";
 import ProductViewDialog from "components/products-view/product-view-dialog";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
 // LOCAL CUSTOM COMPONENTS
 import HoverActions from "./hover-actions";
-import DiscountChip from "../discount-chip";
-import QuantityButtons from "./quantity-buttons";
-// CUSTOM UTILS LIBRARY FUNCTIONS
-import { calculateDiscount, currency } from "lib";
-// STYLED COMPONENTS
-import { ImageWrapper, ContentWrapper, StyledBazaarCard } from "./styles";
 import ProductPrice from "../product-price";
 import ProductTitle from "../product-title";
+import DiscountChip from "../discount-chip";
+import QuantityButtons from "./quantity-buttons";
+// STYLED COMPONENTS
+import { ImageWrapper, ContentWrapper, StyledBazaarCard } from "./styles";
 
 // ========================================================
 type Props = {
