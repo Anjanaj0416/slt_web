@@ -52,7 +52,7 @@ const BlogCard: FC<Props> = ({ image, title, date, description }) => {
       </ImageBox>
 
       <Box px={2} pt={1} pb={3}>
-        <Link href="#">
+        <Link href="/">
           <H4 fontWeight={700}>{title}</H4>
         </Link>
 
@@ -60,7 +60,7 @@ const BlogCard: FC<Props> = ({ image, title, date, description }) => {
           {description}
         </Paragraph>
 
-        <NavLink3 text="Read More" href="#" />
+        <NavLink3 text="Read More" href="/" />
       </Box>
     </Card>
   );

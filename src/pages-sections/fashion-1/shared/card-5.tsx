@@ -1,4 +1,5 @@
-import { alpha, Grid, styled } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { alpha, styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H1, Paragraph, Span } from "components/Typography";

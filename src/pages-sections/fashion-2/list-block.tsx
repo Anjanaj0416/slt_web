@@ -45,7 +45,7 @@ const ListBlock: FC<Props> = ({ title, products }) => {
           </Link>
 
           <div>
-            <NavLink href="#">
+            <NavLink href="/">
               <Paragraph fontSize={16}>{product.title}</Paragraph>
             </NavLink>
 

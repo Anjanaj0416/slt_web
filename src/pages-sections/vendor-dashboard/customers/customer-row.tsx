@@ -23,7 +23,7 @@ const CustomerRow: FC<Props> = ({ customer }) => {
     <StyledTableRow tabIndex={-1} role="checkbox">
       <StyledTableCell align="left">
         <FlexBox alignItems="center" gap={1.5}>
-          <Avatar src={avatar} />
+          <Avatar alt={name} src={avatar} />
           <Paragraph fontWeight={600}>{name}</Paragraph>
         </FlexBox>
       </StyledTableCell>

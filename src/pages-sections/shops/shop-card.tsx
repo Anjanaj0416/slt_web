@@ -24,7 +24,7 @@ const ContentWrapper = styled("div", {
 }));
 
 const ShopCard: FC<Partial<Shop>> = (props) => {
-  const { name, rating, address, phone, coverPicture, profilePicture, slug } = props;
+  const { name, rating, address, phone, coverPicture, profilePicture, slug } = props || {};
 
   return (
     <Card>
@@ -48,9 +48,17 @@ const ShopCard: FC<Partial<Shop>> = (props) => {
 
       <FlexBetween pl={3} pr={1}>
         <Avatar
+          alt={name}
           src={profilePicture}
-          sx={{ width: 64, height: 64, mt: "-32px", border: "3px solid", borderColor: "grey.100" }}
+          sx={{
+            width: 64,
+            height: 64,
+            mt: "-32px",
+            border: "3px solid",
+            borderColor: "grey.100",
+          }}
         />
+
         <Link href={`/shops/${slug}`}>
           <IconButton sx={{ my: 0.5 }}>
             <East

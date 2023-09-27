@@ -68,6 +68,7 @@ const Section6: FC<Props> = ({ handleChangeFilter }) => {
             <Grid item md={6} xs={12} key={index}>
               <FlexBox gap={3} sx={{ flexDirection: { sm: "row", xs: "column" } }}>
                 <Avatar
+                  alt={item.title}
                   src={item.thumbnail}
                   sx={{
                     boxShadow: 1,

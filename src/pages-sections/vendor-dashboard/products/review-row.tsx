@@ -29,7 +29,7 @@ const ReviewRow: FC<Props> = ({ review }) => {
     <StyledTableRow tabIndex={-1} role="checkbox">
       <StyledTableCell align="left">
         <FlexBox alignItems="center" gap={1.5}>
-          <Avatar src={productImage} sx={{ borderRadius: 2 }} />
+          <Avatar alt="product" src={productImage} sx={{ borderRadius: 2 }} />
           <Paragraph fontWeight={600}>{product}</Paragraph>
         </FlexBox>
       </StyledTableCell>

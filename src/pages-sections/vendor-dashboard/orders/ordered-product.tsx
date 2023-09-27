@@ -22,7 +22,11 @@ const OrderedProduct: FC<Props> = ({ product }) => {
   return (
     <Box my={2} gap={2} display="grid" gridTemplateColumns={{ md: "1fr 1fr", xs: "1fr" }}>
       <FlexBox flexShrink={0} gap={1.5} alignItems="center">
-        <Avatar src={product_img} sx={{ height: 64, width: 64, borderRadius: 2 }} />
+        <Avatar
+          src={product_img}
+          alt={product_name}
+          sx={{ height: 64, width: 64, borderRadius: 2 }}
+        />
 
         <div>
           <H6 mb={1}>{product_name}</H6>

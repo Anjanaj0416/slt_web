@@ -1,5 +1,6 @@
-import { SxProps, Menu } from "@mui/material";
 import { Children, cloneElement, FC, Fragment, ReactElement, useState } from "react";
+import Menu from "@mui/material/Menu";
+import { SxProps } from "@mui/material/styles";
 
 // ===============================================================
 interface Props {

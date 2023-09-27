@@ -41,7 +41,7 @@ const CategoryRow: FC<Props> = ({ category, selected }) => {
       </StyledTableCell>
 
       <StyledTableCell align="left">
-        <Avatar src={image} sx={{ borderRadius: 2 }} />
+        <Avatar alt={name} src={image} sx={{ borderRadius: 2 }} />
       </StyledTableCell>
 
       <StyledTableCell align="left">{level}</StyledTableCell>

@@ -34,7 +34,7 @@ const UserAnalytics: FC<Props> = ({ user }) => {
             alignItems: "center",
           }}
         >
-          <Avatar src={user.avatar} sx={{ height: 64, width: 64 }} />
+          <Avatar alt={user.name.firstName} src={user.avatar} sx={{ height: 64, width: 64 }} />
 
           <FlexBetween flexWrap="wrap" flex={1}>
             <div>

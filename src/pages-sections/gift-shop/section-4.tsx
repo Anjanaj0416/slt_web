@@ -41,7 +41,7 @@ const Section4: FC<Props> = ({ categoryList }) => {
         totalSlides={categoryList.length}
       >
         {categoryList.map((item, ind) => (
-          <Link href="#" key={ind}>
+          <Link href="/" key={ind}>
             <CategoryCard title={item.name} available={item.description} imgUrl={item.image} />
           </Link>
         ))}

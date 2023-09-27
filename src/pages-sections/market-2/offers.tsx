@@ -27,7 +27,7 @@ const Offers = () => {
               </Span>
             </H4>
 
-            <NavLink3 href="#" text="Shop Now" color="dark.main" hoverColor="dark.main" />
+            <NavLink3 href="/" text="Shop Now" color="dark.main" hoverColor="dark.main" />
           </BannerCard>
         </Grid>
 
@@ -44,7 +44,7 @@ const Offers = () => {
               <Span fontWeight={400}>SUNGLASSES</Span>
             </H4>
 
-            <NavLink3 href="#" text="Shop Now" color="white" hoverColor="white" />
+            <NavLink3 href="/" text="Shop Now" color="white" hoverColor="white" />
           </BannerCard>
         </Grid>
 
@@ -61,7 +61,7 @@ const Offers = () => {
               <Span fontWeight={400}>COLLECTION</Span>
             </H4>
 
-            <NavLink3 href="#" text="Shop Now" color="dark.main" hoverColor="dark.main" />
+            <NavLink3 href="/" text="Shop Now" color="dark.main" hoverColor="dark.main" />
           </BannerCard>
         </Grid>
       </Grid>

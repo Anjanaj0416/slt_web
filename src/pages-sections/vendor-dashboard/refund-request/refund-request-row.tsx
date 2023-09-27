@@ -30,7 +30,7 @@ const RefundRequestRow: FC<Props> = ({ request }) => {
 
       <StyledTableCell align="left">
         <FlexBox alignItems="center" gap={1.5}>
-          <Avatar src={image} sx={{ borderRadius: 2 }} />
+          <Avatar alt={name} src={image} sx={{ borderRadius: 2 }} />
           <Paragraph>{name}</Paragraph>
         </FlexBox>
       </StyledTableCell>

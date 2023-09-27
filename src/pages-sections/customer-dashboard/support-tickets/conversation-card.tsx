@@ -17,7 +17,7 @@ const ConversationCard: FC<Props> = ({ message }) => {
 
   return (
     <FlexBox gap={2} mb={4}>
-      <Avatar src={imgUrl} />
+      <Avatar src={imgUrl} alt={name} />
 
       <div>
         <H5 fontWeight="600" mt={0} mb={0}>

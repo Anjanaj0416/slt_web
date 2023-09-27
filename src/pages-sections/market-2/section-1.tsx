@@ -77,7 +77,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
                   SALE 20% OFF
                 </H4>
 
-                <NavLink3 href="#" text="Shop Now" color="dark.main" />
+                <NavLink3 href="/" text="Shop Now" color="dark.main" />
               </BannerCard>
 
               {/* DESKTOP & LAPTOP BANNER */}
@@ -92,7 +92,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
                   LAPTOPS
                 </H4>
 
-                <NavLink3 href="#" text="Shop Now" color="dark.main" />
+                <NavLink3 href="/" text="Shop Now" color="dark.main" />
               </BannerCard>
             </Stack>
           </Grid>

@@ -5,8 +5,8 @@ import Container from "@mui/material/Container";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS
-import { H3, Span } from "components/Typography";
 import { FlexBox } from "components/flex-box";
+import { H3, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Service from "models/Service.model";
 // STYLED COMPONENTS

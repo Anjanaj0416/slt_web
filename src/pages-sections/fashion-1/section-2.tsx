@@ -3,8 +3,8 @@
 import { FC, useEffect, useState } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import { ProductCard2 } from "components/product-cards/product-card-2";
 import { SectionCreator } from "components/section-header";
+import { ProductCard2 } from "components/product-cards/product-card-2";
 // GLOBAL CUSTOM HOOK
 import useWindowSize from "hooks/useWindowSize";
 // CUSTOM ICON COMPONENT

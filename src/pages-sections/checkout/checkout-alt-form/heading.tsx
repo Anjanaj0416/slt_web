@@ -21,7 +21,9 @@ const Heading = ({ number, title, ...props }: Props) => {
 
   return (
     <FlexBox gap={1.5} alignItems="center" mb={3.5} {...props}>
-      <Avatar sx={STYLES}>{number}</Avatar>
+      <Avatar alt={title} sx={STYLES}>
+        {number}
+      </Avatar>
       <Paragraph fontSize={20}>{title}</Paragraph>
     </FlexBox>
   );

@@ -36,7 +36,16 @@ const BrandRow: FC<Props> = ({ brand, selected }) => {
       <StyledTableCell align="center">{name}</StyledTableCell>
 
       <StyledTableCell align="center">
-        <Avatar src={logo} sx={{ width: 55, height: "auto", margin: "auto", borderRadius: 0 }} />
+        <Avatar
+          alt={name}
+          src={logo}
+          sx={{
+            width: 55,
+            height: "auto",
+            margin: "auto",
+            borderRadius: 0,
+          }}
+        />
       </StyledTableCell>
 
       <StyledTableCell align="center">

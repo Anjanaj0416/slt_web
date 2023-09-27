@@ -2,14 +2,7 @@ import { FC, PropsWithChildren } from "react";
 import Drawer from "@mui/material/Drawer";
 import { styled } from "@mui/material/styles";
 
-// ==========================================================
-interface Props extends PropsWithChildren {
-  open: boolean;
-  onClose: () => void;
-  drawerWidth?: number;
-}
-// ==========================================================
-
+// STYLED COMPONENT
 const Wrapper = styled("div")(({ theme }) => ({
   height: "100%",
   width: "inherit",
@@ -21,8 +14,16 @@ const Wrapper = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.grey[900],
 }));
 
+// ==========================================================
+interface Props extends PropsWithChildren {
+  open: boolean;
+  onClose: () => void;
+  drawerWidth?: number;
+}
+// ==========================================================
+
 const LayoutDrawer: FC<Props> = (props) => {
-  const { children, open, onClose, drawerWidth = 280 } = props;
+  const { children, open, onClose, drawerWidth = 280 } = props || {};
 
   return (
     <Drawer open={open} anchor="left" onClose={onClose} PaperProps={{ sx: { width: drawerWidth } }}>

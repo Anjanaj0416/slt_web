@@ -8,7 +8,7 @@ import FlexBox from "components/flex-box/flex-box";
 const ProfilePicUpload = () => {
   return (
     <FlexBox alignItems="flex-end" mb={3}>
-      <Avatar src="/assets/images/faces/ralph.png" sx={{ height: 64, width: 64 }} />
+      <Avatar alt="user" src="/assets/images/faces/ralph.png" sx={{ height: 64, width: 64 }} />
 
       <IconButton
         size="small"

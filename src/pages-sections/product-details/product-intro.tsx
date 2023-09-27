@@ -23,7 +23,7 @@ type Props = { product: Product };
 // ================================================================
 
 const ProductIntro: FC<Props> = ({ product }) => {
-  const { id, price, title, images, slug, thumbnail } = product;
+  const { id, price, title, images, slug, thumbnail } = product || {};
 
   const { state, dispatch } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
@@ -80,7 +80,7 @@ const ProductIntro: FC<Props> = ({ product }) => {
                 mr={ind === images.length - 1 ? "auto" : "10px"}
                 borderColor={selectedImage === ind ? "primary.main" : "grey.400"}
               >
-                <Avatar src={url} variant="square" sx={{ height: 40 }} />
+                <Avatar alt="product" src={url} variant="square" sx={{ height: 40 }} />
               </FlexRowCenter>
             ))}
           </FlexBox>

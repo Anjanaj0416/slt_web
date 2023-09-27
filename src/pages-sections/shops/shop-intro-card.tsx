@@ -22,7 +22,7 @@ type Props = {
 // =======================================================
 
 const ShopIntroCard: FC<Props> = (props) => {
-  const { name, phone, address, coverPicture, profilePicture } = props;
+  const { name, phone, address, coverPicture, profilePicture } = props || {};
 
   return (
     <Card sx={{ mb: 4, pb: 2.5 }}>
@@ -30,6 +30,7 @@ const ShopIntroCard: FC<Props> = (props) => {
 
       <FlexBox mt={-8} px={3.75} flexWrap="wrap">
         <Avatar
+          alt={name}
           src={profilePicture}
           sx={{
             mr: "37px",

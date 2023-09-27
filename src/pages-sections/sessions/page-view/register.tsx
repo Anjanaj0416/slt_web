@@ -134,7 +134,7 @@ const RegisterPageView = () => {
           <FlexBox flexWrap="wrap" alignItems="center" justifyContent="flex-start" gap={1}>
             <Span display={{ sm: "inline-block", xs: "none" }}>By signing up, you agree to</Span>
             <Span display={{ sm: "none", xs: "inline-block" }}>Accept Our</Span>
-            <BoxLink title="Terms & Condition" href="#" />
+            <BoxLink title="Terms & Condition" href="/" />
           </FlexBox>
         }
       />

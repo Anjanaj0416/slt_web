@@ -21,6 +21,7 @@ const CoverPicSection = () => {
           badgeContent={<UploadButton id="profile-image" style={{ bgcolor: "grey.300" }} />}
         >
           <Avatar
+            alt="user"
             src="/assets/images/faces/propic(9).png"
             sx={{ width: 80, height: 80, border: "4px solid", borderColor: "grey.100" }}
           />

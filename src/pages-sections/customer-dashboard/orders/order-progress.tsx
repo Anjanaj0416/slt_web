@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import Done from "@mui/icons-material/Done";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
+import Done from "@mui/icons-material/Done";
 // CUSTOM ICON COMPONENTS
 import Delivery from "icons/Delivery";
 import PackageBox from "icons/PackageBox";
@@ -12,7 +12,7 @@ import TruckFilled from "icons/TruckFilled";
 import { Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 
-// STYLED COMPONENT
+// STYLED COMPONENTS
 const StyledFlexbox = styled(FlexBetween)(({ theme }) => ({
   flexWrap: "wrap",
   marginTop: "2rem",
@@ -24,6 +24,16 @@ const StyledFlexbox = styled(FlexBetween)(({ theme }) => ({
     flex: "1 1 0",
     [theme.breakpoints.down("sm")]: { flex: "unset", height: 50, minWidth: 4 },
   },
+}));
+
+const StyledAvatar = styled(Avatar)(({ theme }) => ({
+  top: -5,
+  right: -5,
+  width: 22,
+  height: 22,
+  position: "absolute",
+  bgcolor: theme.palette.grey[200],
+  color: theme.palette.success.main,
 }));
 
 const OrderProgress = () => {
@@ -40,6 +50,7 @@ const OrderProgress = () => {
           <Fragment key={ind}>
             <Box position="relative">
               <Avatar
+                alt="shipping"
                 sx={{
                   width: 64,
                   height: 64,
@@ -51,19 +62,9 @@ const OrderProgress = () => {
               </Avatar>
 
               {ind < statusIndex ? (
-                <Avatar
-                  sx={{
-                    top: -5,
-                    right: -5,
-                    width: 22,
-                    height: 22,
-                    bgcolor: "grey.200",
-                    position: "absolute",
-                    color: "success.main",
-                  }}
-                >
+                <StyledAvatar alt="done">
                   <Done color="inherit" sx={{ fontSize: 16 }} />
-                </Avatar>
+                </StyledAvatar>
               ) : null}
             </Box>
 

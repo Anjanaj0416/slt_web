@@ -38,7 +38,7 @@ const ProductRow: FC<Props> = ({ product }) => {
     <StyledTableRow tabIndex={-1} role="checkbox">
       <StyledTableCell align="left">
         <FlexBox alignItems="center" gap={1.5}>
-          <Avatar src={image} sx={{ borderRadius: 2 }} />
+          <Avatar alt={name} src={image} sx={{ borderRadius: 2 }} />
 
           <div>
             <Paragraph fontWeight={600}>{name}</Paragraph>

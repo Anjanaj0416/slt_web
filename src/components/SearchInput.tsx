@@ -3,7 +3,7 @@ import Search from "@mui/icons-material/Search";
 import InputBase, { InputBaseProps } from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
 
-// styled component
+// STYLED COMPONENT
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   height: 44,
   fontSize: 14,

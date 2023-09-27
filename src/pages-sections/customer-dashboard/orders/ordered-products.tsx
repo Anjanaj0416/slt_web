@@ -32,7 +32,7 @@ const OrderedProducts: FC<Props> = ({ order }) => {
       {items.map((item, ind) => (
         <FlexBetween px={2} py={1} flexWrap="wrap" key={ind}>
           <FlexBox gap={2.5} alignItems="center">
-            <Avatar src={item.product_img} sx={{ height: 64, width: 64 }} />
+            <Avatar alt={item.product_name} src={item.product_img} sx={{ height: 64, width: 64 }} />
 
             <div>
               <H6>{item.product_name}</H6>

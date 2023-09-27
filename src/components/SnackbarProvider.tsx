@@ -2,7 +2,7 @@ import { FC, PropsWithChildren } from "react";
 import { styled } from "@mui/material/styles";
 import { SnackbarProvider as NotistackProvider } from "notistack";
 
-// styled component
+// STYLED COMPONENT
 const Provider = styled(NotistackProvider)(({ theme }) => ({
   "&.SnackbarContent-root.SnackbarItem-contentRoot": {
     boxShadow: theme.shadows[2],
@@ -11,8 +11,12 @@ const Provider = styled(NotistackProvider)(({ theme }) => ({
     fontFamily: theme.typography.fontFamily,
   },
 
-  "&.SnackbarItem-variantSuccess .MuiSvgIcon-root": { color: theme.palette.success.main },
-  "&.SnackbarItem-variantError .MuiSvgIcon-root": { color: theme.palette.error.main },
+  "&.SnackbarItem-variantSuccess .MuiSvgIcon-root": {
+    color: theme.palette.success.main,
+  },
+  "&.SnackbarItem-variantError .MuiSvgIcon-root": {
+    color: theme.palette.error.main,
+  },
 }));
 
 const SnackbarProvider: FC<PropsWithChildren> = ({ children }) => {

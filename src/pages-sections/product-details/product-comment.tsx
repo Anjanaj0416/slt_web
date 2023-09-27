@@ -21,12 +21,12 @@ interface Props {
 // ===========================================================
 
 const ProductComment: FC<Props> = (props) => {
-  const { name, imgUrl, rating, date, comment } = props;
+  const { name, imgUrl, rating, date, comment } = props || {};
 
   return (
     <Box mb={4} maxWidth={600}>
       <FlexBox alignItems="center" mb={2} gap={2}>
-        <Avatar src={imgUrl} sx={{ width: 48, height: 48 }} />
+        <Avatar alt={name} src={imgUrl} sx={{ width: 48, height: 48 }} />
 
         <div>
           <H5 mb={1}>{name}</H5>
