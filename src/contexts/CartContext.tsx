@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, PropsWithChildren, useContext, useMemo, useReducer } from "react";
+import { createContext, PropsWithChildren, useMemo, useReducer } from "react";
 
 // =================================================================================
 type InitialState = { cart: CartItem[] };

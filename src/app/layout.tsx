@@ -30,7 +30,7 @@ import "simplebar-react/dist/simplebar.min.css";
 import "__server__";
 
 // IMPORT i18n SUPPORT FILE
-import "i18n";
+// import "i18n";
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
