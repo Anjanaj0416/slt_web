@@ -1,6 +1,7 @@
 import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import { Paragraph } from "components/Typography";
+import Image from "next/image";
 
 const EmptyCartView = () => {
   return (
@@ -10,9 +11,9 @@ const EmptyCartView = () => {
       justifyContent="center"
       height="calc(100% - 74px)"
     >
-      <LazyImage width={90} height={100} alt="banner" src="/assets/images/logos/shopping-bag.svg" />
+      <Image width={90} height={100} alt="banner" src="/assets/images/logos/shopping-bag.svg" />
 
-      <Paragraph mt={2} color="grey.600" textAlign="center" maxWidth="200px">
+      <Paragraph fontSize={15} mt={2} color="grey.600" textAlign="center" maxWidth={200}>
         Your shopping bag is empty. Start shopping
       </Paragraph>
     </FlexBox>

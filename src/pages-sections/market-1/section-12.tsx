@@ -38,7 +38,7 @@ const Section12: FC<Props> = ({ bigDiscountList }) => {
   return (
     <SectionCreator icon={<GiftBox />} title="Big Discounts" seeMoreLink="#">
       <Box my="-0.25rem">
-        <Carousel totalSlides={9} visibleSlides={visibleSlides}>
+        <Carousel totalSlides={bigDiscountList.length} visibleSlides={visibleSlides} showDots>
           {bigDiscountList.map(({ id, title, thumbnail, price, discount, slug }) => (
             <Box py={0.5} key={id}>
               <BazaarCard sx={{ p: "1rem" }}>

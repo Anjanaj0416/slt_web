@@ -44,8 +44,9 @@ const Sticky: FC<Props> = ({ fixedOn, children, onSticky, scrollDistance = 0 }) 
   useEffect(() => {
     if (elementRef.current) {
       setHeight(elementRef.current.offsetHeight);
+      scrollListener();
     }
-  }, []);
+  }, [scrollListener]);
 
   return (
     <StyledBox fixedOn={fixedOn} componentHeight={height} fixed={fixed}>

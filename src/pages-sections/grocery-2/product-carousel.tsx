@@ -31,12 +31,11 @@ const ProductCarousel: FC<Props> = (props) => {
         {title}
       </H3>
 
-      <Carousel step={3} showDots totalSlides={products.length} visibleSlides={visibleSlides}>
+      <Carousel showDots step={3} totalSlides={products.length} visibleSlides={visibleSlides}>
         {products.map((item) => (
           <Box py={0.5} key={item.id}>
             <ProductCard1
               hideRating
-              showProductSize
               id={item.id}
               slug={item.slug}
               price={item.price}

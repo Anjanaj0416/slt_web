@@ -1,21 +1,15 @@
-import { CSSProperties, FC, Fragment, ReactNode, Children } from "react";
+import { CSSProperties, FC, ReactNode, Children } from "react";
 import { SxProps } from "@mui/material/styles";
-import ArrowBack from "@mui/icons-material/ArrowBack";
-import ArrowForward from "@mui/icons-material/ArrowForward";
 import clsx from "clsx";
 import { Slide } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-//GLOBAL CUSTOM HOOK
-import useSettings from "hooks/useSettings";
+
+// LOCAL CUSTOM COMPONENTS
+import ArrowButton from "./arrow-button";
+import { renderDots } from "./render-dots";
 // STYLED COMPONENTS
-import {
-  StyledDot,
-  StyledSlider,
-  StyledDotGroup,
-  StyledArrowBackButton,
-  StyledArrowNextButton,
-  StyledCarouselProvider,
-} from "./styles";
+import { StyledSlider, StyledDotGroup, StyledCarouselProvider } from "./styles";
+import { Box } from "@mui/material";
 
 // ===================================================================
 export interface CarouselProps {
@@ -52,10 +46,10 @@ const Carousel: FC<CarouselProps> = ({
   dotColor,
   currentSlide,
   leftButtonClass,
-  leftButtonStyle,
+  leftButtonStyle = {},
   arrowButtonClass,
   rightButtonClass,
-  rightButtonStyle,
+  rightButtonStyle = {},
   sx = {},
   step = 1,
   interval = 2000,
@@ -72,9 +66,6 @@ const Carousel: FC<CarouselProps> = ({
   naturalSlideHeight = 125,
   dotGroupMarginTop = "2rem",
 }) => {
-  // site settings
-  const { settings } = useSettings();
-
   return (
     <StyledCarouselProvider
       sx={sx}
@@ -88,91 +79,38 @@ const Carousel: FC<CarouselProps> = ({
       visibleSlides={visibleSlides}
       hasMasterSpinner={hasMasterSpinner}
       isIntrinsicHeight={isIntrinsicHeight}
-      naturalSlideWidth={naturalSlideWidth || 100}
-      naturalSlideHeight={naturalSlideHeight || 125}
+      naturalSlideWidth={naturalSlideWidth}
+      naturalSlideHeight={naturalSlideHeight}
     >
-      <StyledSlider spacing={spacing}>
-        {Children.map(children, (child, ind) => (
-          <Slide index={ind}>{child}</Slide>
-        ))}
-      </StyledSlider>
+      <Box position="relative">
+        <StyledSlider spacing={spacing}>
+          {Children.map(children, (child, ind) => (
+            <Slide index={ind}>{child}</Slide>
+          ))}
+        </StyledSlider>
 
-      {showDots && (
+        {/* RENDER CAROUSEL ARROW BUTTONS */}
+        {showArrow ? (
+          <ArrowButton
+            arrowButtonClass={arrowButtonClass}
+            leftButtonClass={leftButtonClass}
+            leftButtonStyle={leftButtonStyle}
+            rightButtonClass={rightButtonClass}
+            rightButtonStyle={rightButtonStyle}
+          />
+        ) : null}
+      </Box>
+
+      {/* RENDER CAROUSEL DOT GROUPS */}
+      {showDots ? (
         <StyledDotGroup
           className={clsx(dotClass)}
           dot_margin_top={dotGroupMarginTop}
           renderDots={(props: any) => renderDots({ ...props, step, dotColor })}
         />
-      )}
-
-      {showArrow && (
-        <Fragment>
-          <StyledArrowBackButton
-            id="backArrowButton"
-            style={leftButtonStyle || {}}
-            className={clsx(leftButtonClass, arrowButtonClass)}
-          >
-            {settings.direction === "ltr" ? (
-              <ArrowBack fontSize="small" color="inherit" />
-            ) : (
-              <ArrowForward fontSize="small" color="inherit" />
-            )}
-          </StyledArrowBackButton>
-
-          <StyledArrowNextButton
-            id="backForwardButton"
-            style={rightButtonStyle || {}}
-            className={clsx(arrowButtonClass, rightButtonClass)}
-          >
-            {settings.direction === "ltr" ? (
-              <ArrowForward fontSize="small" color="inherit" />
-            ) : (
-              <ArrowBack fontSize="small" color="inherit" />
-            )}
-          </StyledArrowNextButton>
-        </Fragment>
-      )}
+      ) : null}
     </StyledCarouselProvider>
   );
-};
-
-const renderDots = ({
-  step,
-  dotColor,
-  totalSlides,
-  currentSlide,
-  visibleSlides,
-  carouselStore,
-}: any) => {
-  const dots = [];
-  const total = totalSlides - visibleSlides + 1;
-  // handle dot button
-  const handleClick = (currentSlide: number, autoPlay: boolean) => {
-    carouselStore.setStoreState({ autoPlay, currentSlide });
-  };
-
-  for (let i = 0; i < total; i += step) {
-    dots.push(
-      <StyledDot
-        dot_color={dotColor}
-        onClick={() => handleClick(i, false)}
-        dot_active={currentSlide === i ? i + 1 : 0}
-        key={(Math.random() * i + Date.now()).toString()}
-      />
-    );
-
-    if (total - (i + 1) < step && total - (i + 1) !== 0) {
-      dots.push(
-        <StyledDot
-          dot_color={dotColor}
-          dot_active={totalSlides - visibleSlides}
-          key={(Math.random() * i + Date.now()).toString()}
-          onClick={() => handleClick(totalSlides - visibleSlides, false)}
-        />
-      );
-    }
-  }
-  return dots;
 };
 
 export default Carousel;

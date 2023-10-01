@@ -84,7 +84,7 @@ const ProductCard1: FC<Props> = ({
       />
 
       <ContentWrapper>
-        <Box flex="1 1 0">
+        <Box flex="1 1 0" minWidth="0px" mr={1}>
           {/* PRODUCT NAME / TITLE */}
           <ProductTitle title={title} slug={slug} />
 
@@ -94,7 +94,7 @@ const ProductCard1: FC<Props> = ({
           {/* PRODUCT SIZE IF AVAILABLE */}
           {showProductSize ? (
             <Span color="grey.600" mb={1} display="block">
-              {showProductSize}
+              Liter
             </Span>
           ) : null}
 

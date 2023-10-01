@@ -49,7 +49,7 @@ const commonArrowBtnStyle = ({
 
 // styled components
 const StyledCarouselProvider = styled(CarouselProvider, {
-  shouldForwardProp: (prop) => prop !== "spacing",
+  shouldForwardProp: (prop) => prop !== "spacing" && prop !== "sx",
 })<StyledProps>(({ spacing }) => ({
   minWidth: 0,
   position: "relative",
@@ -88,22 +88,22 @@ const StyledDotGroup = styled(DotGroup, {
 const StyledDot = styled("div", {
   shouldForwardProp: (prop) => prop !== "dot_color" && prop !== "dot_active",
 })<{ dot_color?: string; dot_active?: any }>(({ dot_color, dot_active, theme }) => ({
-  width: 16,
-  height: 16,
+  width: 15,
+  height: 15,
   borderRadius: 300,
   margin: "0.25rem",
   cursor: "pointer",
   position: "relative",
   border: `1px solid ${dot_color || theme.palette.secondary.main}`,
   "&:after": {
+    inset: 0,
     width: 9,
     height: 9,
-    top: "50%",
-    left: "50%",
-    content: '" "',
+    content: '""',
+    margin: "auto",
     borderRadius: 300,
     position: "absolute",
-    transform: `translate(-50%, -50%) scaleX(${dot_active ? 1 : 0})`,
+    scale: dot_active ? 1 : 0,
     backgroundColor: dot_color || theme.palette.secondary.main,
   },
 }));
@@ -156,7 +156,7 @@ export {
   StyledDotGroup,
   carouselStyled,
   commonArrowBtnStyle,
-  StyledCarouselProvider,
   StyledArrowBackButton,
   StyledArrowNextButton,
+  StyledCarouselProvider,
 };

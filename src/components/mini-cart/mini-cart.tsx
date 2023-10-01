@@ -9,6 +9,8 @@ import TopHeader from "./top-header";
 import MiniCartItem from "./cart-item";
 import EmptyCartView from "./empty-view";
 import BottomActions from "./bottom-actions";
+// GLOBAL CUSTOM COMPONENT
+import Scrollbar from "components/Scrollbar";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
@@ -40,20 +42,27 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
   };
 
   return (
-    <Box width="100%" maxWidth={380}>
-      <Box overflow="auto" height={`calc(100vh - ${cartList.length ? "80px - 3.25rem" : "0px"})`}>
-        {/* HEADING SECTION */}
-        <TopHeader toggle={toggleSidenav} total={cartList.length} />
+    <Box width="100%" minWidth={380}>
+      {/* HEADING SECTION */}
+      <TopHeader toggle={toggleSidenav} total={cartList.length} />
 
-        <Divider />
+      <Divider />
 
-        {/* EMPTY CART VIEW */}
-        {cartList.length === 0 ? <EmptyCartView /> : null}
-
+      <Box height={`calc(100vh - ${cartList.length ? "207px" : "75px"})`}>
         {/* CART ITEM LIST */}
-        {cartList.map((item) => (
-          <MiniCartItem key={item.id} item={item} handleCartAmountChange={handleCartAmountChange} />
-        ))}
+        {cartList.length > 0 ? (
+          <Scrollbar>
+            {cartList.map((item) => (
+              <MiniCartItem
+                key={item.id}
+                item={item}
+                handleCartAmountChange={handleCartAmountChange}
+              />
+            ))}
+          </Scrollbar>
+        ) : (
+          <EmptyCartView />
+        )}
       </Box>
 
       {/* CART BOTTOM ACTION BUTTONS */}

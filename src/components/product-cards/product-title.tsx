@@ -10,6 +10,7 @@ const ProductTitle: FC<Props> = ({ title, slug }) => (
   <Link href={`/products/${slug}`}>
     <H3
       mb={1}
+      ellipsis
       title={title}
       fontSize={14}
       fontWeight={600}
