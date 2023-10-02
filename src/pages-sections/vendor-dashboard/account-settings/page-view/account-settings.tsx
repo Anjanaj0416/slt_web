@@ -1,6 +1,11 @@
 "use client";
 
-import { Box, Button, Card, Grid, TextField, Autocomplete } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import { Formik } from "formik";
 import * as yup from "yup";
 // DATA

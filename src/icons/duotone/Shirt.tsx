@@ -1,12 +1,8 @@
-import { SvgIcon, SvgIconProps } from "@mui/material";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const Shirt = (props: SvgIconProps) => {
   return (
-    <SvgIcon
-      viewBox="0 0 640 512"
-      sx={{ "& .secondary": { opacity: 0.4 } }}
-      {...props}
-    >
+    <SvgIcon viewBox="0 0 640 512" sx={{ "& .secondary": { opacity: 0.4 } }} {...props}>
       <path
         d="M209.6 16h32C249.1 52.47 281.4 80 320 80s70.95-27.53 78.38-64h32C422.5 70.13 376.3 112 320 112S217.5 70.13 209.6 16z"
         fill="currentColor"

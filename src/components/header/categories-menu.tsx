@@ -1,4 +1,5 @@
 import Button from "@mui/material/Button";
+// MUI ICON COMPONENT
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 // CUSTOM ICON COMPONENTS
 import Category from "icons/Category";

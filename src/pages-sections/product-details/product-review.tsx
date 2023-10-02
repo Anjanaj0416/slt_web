@@ -1,6 +1,9 @@
 "use client";
 
-import { Box, Button, TextField, Rating } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Rating from "@mui/material/Rating";
+import TextField from "@mui/material/TextField";
 import * as yup from "yup";
 import { useFormik } from "formik";
 // Local CUSTOM COMPONENT

@@ -25,6 +25,7 @@ export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionC
     cache.compat = true;
     const prevInsert = cache.insert;
     let inserted: { name: string; isGlobal: boolean }[] = [];
+
     cache.insert = (...args) => {
       const [selector, serialized] = args;
       if (cache.inserted[serialized.name] === undefined) {
@@ -35,26 +36,27 @@ export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionC
       }
       return prevInsert(...args);
     };
+
     const flush = () => {
       const prevInserted = inserted;
       inserted = [];
       return prevInserted;
     };
+
     return { cache, flush };
   });
 
   useServerInsertedHTML(() => {
     const inserted = registry.flush();
+
     if (inserted.length === 0) {
       return null;
     }
+
     let styles = "";
     let dataEmotionAttribute = registry.cache.key;
 
-    const globals: {
-      name: string;
-      style: string;
-    }[] = [];
+    const globals: { name: string; style: string }[] = [];
 
     inserted.forEach(({ name, isGlobal }) => {
       const style = registry.cache.inserted[name];

@@ -1,7 +1,7 @@
-import ExpandMore from "@mui/icons-material/ExpandMore";
 import Box from "@mui/material/Box";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 // GLOBAL CUSTOM COMPONENTS
 import { H6 } from "components/Typography";
 import { NavLink } from "components/nav-link";

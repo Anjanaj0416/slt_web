@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 import Card from "@mui/material/Card";
+// MUI ICON COMPONENTS
 import ArrowDropUp from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 // GLOBAL CUSTOM COMPONENTS

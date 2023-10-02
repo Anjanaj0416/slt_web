@@ -3,6 +3,7 @@ import { FormEvent, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
+// MUI ICON COMPONENT
 import Clear from "@mui/icons-material/Clear";
 // GLOBAL CUSTOM COMPONENTS
 import DropZone from "components/DropZone";

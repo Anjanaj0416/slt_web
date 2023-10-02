@@ -1,4 +1,4 @@
-import { BoxProps } from "@mui/material";
+import { BoxProps } from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import { FlexBox } from "components/flex-box";
 import { Paragraph } from "components/Typography";

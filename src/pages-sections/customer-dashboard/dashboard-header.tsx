@@ -1,7 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { Theme, styled } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+// MUI ICON COMPONENTS
 import { SvgIconComponent, Menu } from "@mui/icons-material";
-import { Box, Button, Theme, styled, useMediaQuery } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
 import { SideNav } from "components/side-nav";

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENTS
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 // GLOBAL CUSTOM COMPONENTS
 import HoverBox from "components/HoverBox";

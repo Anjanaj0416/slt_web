@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
+// MUI ICON COMPONENTS
 import Place from "@mui/icons-material/Place";
 import Person from "@mui/icons-material/Person";
 import CreditCard from "@mui/icons-material/CreditCard";

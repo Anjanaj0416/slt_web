@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { alpha, styled, SvgIconProps } from "@mui/material";
+import { alpha, styled } from "@mui/material/styles";
+import { SvgIconProps } from "@mui/material/SvgIcon";
 // GLOBAL CUSTOM COMPONENTS
 import { H3, Paragraph } from "components/Typography";
 

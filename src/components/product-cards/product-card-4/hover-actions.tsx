@@ -1,4 +1,5 @@
 import { FC } from "react";
+// MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";

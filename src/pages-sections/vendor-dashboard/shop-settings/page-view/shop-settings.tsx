@@ -1,6 +1,9 @@
 "use client";
 
-import { Box, Button, Card, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
 // GLOBAL CUSTOM COMPONENTS
 import { H3, Paragraph } from "components/Typography";
 // Local CUSTOM COMPONENT

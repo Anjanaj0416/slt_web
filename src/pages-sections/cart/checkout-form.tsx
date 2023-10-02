@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { Button, Card, Divider, TextField, Autocomplete, MenuItem } from "@mui/material";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 // GLOBAL CUSTOM HOOK
 import useCart from "hooks/useCart";
 // GLOBAL CUSTOM COMPONENTS

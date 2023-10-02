@@ -1,12 +1,8 @@
-import { SvgIcon, SvgIconProps } from "@mui/material";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const Ecommerce = (props: SvgIconProps) => {
   return (
-    <SvgIcon
-      viewBox="0 0 16 15"
-      sx={{ "& .secondary": { opacity: 0.4 } }}
-      {...props}
-    >
+    <SvgIcon viewBox="0 0 16 15" sx={{ "& .secondary": { opacity: 0.4 } }} {...props}>
       <path
         d="M1.30573 6.98718V7.7596L1.9803 14.0496C2.00696 14.3021 2.12617 14.5357 2.31493 14.7054C2.50368 14.8752 2.74861 14.969 3.00246 14.9688H12.9975C13.2513 14.969 13.4963 14.8752 13.685 14.7054C13.8738 14.5357 13.993 14.3021 14.0197 14.0496L14.6942 7.7596V6.98718H1.30573Z"
         className="secondary"

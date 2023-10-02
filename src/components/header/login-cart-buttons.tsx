@@ -2,6 +2,7 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENT
 import PersonOutline from "@mui/icons-material/PersonOutline";
 // GLOBAL CUSTOM COMPONENT
 import { FlexBox } from "components/flex-box";

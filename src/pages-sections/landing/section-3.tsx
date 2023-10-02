@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { FC } from "react";
-import { Box, Button, Container, Grid, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexRowCenter } from "components/flex-box";
 import { H2, H4, Paragraph, Span } from "components/Typography";

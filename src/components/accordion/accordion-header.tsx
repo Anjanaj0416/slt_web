@@ -1,6 +1,9 @@
 import { FC, ReactNode } from "react";
-import { BoxProps, styled, SxProps } from "@mui/material";
+import { BoxProps } from "@mui/material/Box";
+import { styled, SxProps } from "@mui/material/styles";
+// MUI ICON COMPONENTS
 import ChevronRight from "@mui/icons-material/ChevronRight";
+// GLOBAL CUSTOM COMPONENT
 import { FlexBox } from "components/flex-box";
 
 // STYLED COMPONENT

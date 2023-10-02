@@ -1,7 +1,11 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Container, CSSObject, Grid, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
+import { CSSObject } from "@mui/material/styles";
 // LOCAL CUSTOM COMPONENT
 import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS

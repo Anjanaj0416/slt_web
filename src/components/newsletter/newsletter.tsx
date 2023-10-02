@@ -1,19 +1,18 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import {
-  Box,
-  Grid,
-  Modal,
-  styled,
-  Button,
-  debounce,
-  Checkbox,
-  TextField,
-  IconButton,
-  FormControlLabel,
-  ClickAwayListener,
-} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { debounce } from "@mui/material/utils";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+// MUI ICON COMPONENTS
 import Clear from "@mui/icons-material/Clear";
 // GLOBAL CUSTOM COMPONENTS
 import { H1, Paragraph, Span } from "../Typography";

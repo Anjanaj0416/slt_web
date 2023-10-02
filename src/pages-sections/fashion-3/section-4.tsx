@@ -1,7 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Box, Container, Grid, Stack, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { H2, H3 } from "components/Typography";

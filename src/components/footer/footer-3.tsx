@@ -1,6 +1,9 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Container, Grid, SxProps } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { SxProps } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 // LOCAL CUSTOM COMPONENT
 import AppStore from "./app-store";
 import SocialLinks from "./social-links";

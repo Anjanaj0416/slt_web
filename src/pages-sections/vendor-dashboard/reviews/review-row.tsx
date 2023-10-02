@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import Rating from "@mui/material/Rating";
+// MUI ICON COMPONENT
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";

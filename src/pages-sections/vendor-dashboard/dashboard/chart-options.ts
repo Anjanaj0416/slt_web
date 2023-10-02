@@ -1,4 +1,4 @@
-import { Theme } from "@mui/material";
+import { Theme } from "@mui/material/styles";
 import { ApexOptions } from "apexcharts";
 
 export const weeklyChartOptions = (theme: Theme): ApexOptions => ({

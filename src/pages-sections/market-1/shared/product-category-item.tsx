@@ -1,10 +1,11 @@
 import { FC, HtmlHTMLAttributes } from "react";
-import { styled, SxProps } from "@mui/material";
-import BazaarImage from "components/BazaarImage";
-import BazaarCard from "components/BazaarCard";
+import { styled, SxProps } from "@mui/material/styles";
+// GLOBAL CUSTOM COMPONENTS
 import { H4 } from "components/Typography";
+import BazaarCard from "components/BazaarCard";
+import BazaarImage from "components/BazaarImage";
 
-// styled component
+// STYLED COMPONENT
 const StyledBazaarCard = styled(BazaarCard)(({ theme }) => ({
   gap: "1rem",
   display: "flex",

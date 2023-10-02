@@ -1,5 +1,10 @@
 import { ChangeEvent, FC } from "react";
-import { Checkbox, styled, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Checkbox from "@mui/material/Checkbox";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableSortLabel from "@mui/material/TableSortLabel";
 // CUSTOM ICON COMPONENT
 import UpDown from "icons/UpDown";
 

@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import Tooltip from "@mui/material/Tooltip";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+// MUI ICON COMPONENTS
 import Close from "@mui/icons-material/Close";
 import Settings from "@mui/icons-material/Settings";
-import { Button, Divider, Tooltip, ClickAwayListener } from "@mui/material";
 // LOCAL CUSTOM COMPONENTS
 import { H6 } from "../Typography";
 import Scrollbar from "../Scrollbar";

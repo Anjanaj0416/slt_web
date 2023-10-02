@@ -1,4 +1,4 @@
-import { Components } from "@mui/material";
+import { Components } from "@mui/material/styles";
 import { dark, grey, primary, secondary, success } from "./theme-colors";
 import { typography } from "./typography";
 

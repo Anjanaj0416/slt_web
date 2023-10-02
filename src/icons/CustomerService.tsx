@@ -1,4 +1,4 @@
-import { createSvgIcon } from "@mui/material";
+import { createSvgIcon } from "@mui/material/utils";
 
 const CustomerService = createSvgIcon(
   <svg viewBox="0 0 64 64" fill="currentColor">

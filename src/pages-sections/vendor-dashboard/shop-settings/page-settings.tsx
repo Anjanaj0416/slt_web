@@ -1,6 +1,12 @@
 import { useState } from "react";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENT
 import Delete from "@mui/icons-material/Delete";
-import { Box, Button, IconButton, MenuItem, Stack, TextField } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import DropZone from "components/DropZone";
 import { FlexBox } from "components/flex-box";

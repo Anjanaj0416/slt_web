@@ -1,9 +1,14 @@
-import { Grid, Card, TextField, Autocomplete, FormControlLabel, Checkbox } from "@mui/material";
+import { FC } from "react";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 import { H6 } from "components/Typography";
 // DUMMY CUSTOM DATA
 import countryList from "data/countryList";
-import { FC } from "react";
 
 // ==============================================================
 interface Props {

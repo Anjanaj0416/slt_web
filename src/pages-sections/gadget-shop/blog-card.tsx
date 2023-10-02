@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import format from "date-fns/format";
+// MUI ICON COMPONENTS
 import AccessTime from "@mui/icons-material/AccessTime";
 import CommentOutlined from "@mui/icons-material/CommentOutlined";
 // GLOBAL CUSTOM COMPONENTS

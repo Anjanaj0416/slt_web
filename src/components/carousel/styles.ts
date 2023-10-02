@@ -1,4 +1,4 @@
-import { CSSObject, Theme, styled } from "@mui/material";
+import { CSSObject, Theme, styled } from "@mui/material/styles";
 import { ButtonBack, ButtonNext, CarouselProvider, DotGroup, Slider } from "pure-react-carousel";
 
 // StyledCarouselProvider and StyledSlider component props type

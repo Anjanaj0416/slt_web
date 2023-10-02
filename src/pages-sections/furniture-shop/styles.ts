@@ -1,5 +1,9 @@
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 import { layoutConstant } from "utils/constants";
-import { Box, Button, Grid, Container, styled } from "@mui/material";
 
 /** USED IN PAGE-VIEW FILE */
 export const StyledContainer = styled(Container)(({ theme }) => ({

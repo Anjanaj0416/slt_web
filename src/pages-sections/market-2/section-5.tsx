@@ -1,14 +1,20 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import { Card, Container, Grid, List, ListItem, styled } from "@mui/material";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import { styled } from "@mui/material/styles";
+import ListItem from "@mui/material/ListItem";
+import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
-import useWindowSize from "hooks/useWindowSize";
 import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 import { carouselStyled } from "components/carousel/styles";
+// GLOBAL CUSTOM HOOK
+import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import { CategoryBasedProducts } from "models/Market-2.model";
 

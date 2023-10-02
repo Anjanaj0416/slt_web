@@ -1,15 +1,13 @@
 "use client";
 import { Fragment, useState } from "react";
-import {
-  Box,
-  Card,
-  Rating,
-  Divider,
-  Collapse,
-  Checkbox,
-  TextField,
-  FormControlLabel,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Rating from "@mui/material/Rating";
+import Divider from "@mui/material/Divider";
+import Collapse from "@mui/material/Collapse";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";

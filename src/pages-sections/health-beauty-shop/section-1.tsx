@@ -1,5 +1,7 @@
 import { FC } from "react";
-import { Box, Button, Grid, styled, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled, useTheme } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import LazyImage from "components/LazyImage";

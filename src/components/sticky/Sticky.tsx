@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState, FC, ReactNode } from "react";
 import clsx from "clsx";
 import { StyledBox } from "./styles";
-import { Box } from "@mui/material";
 
 // ============================================================
 interface Props {

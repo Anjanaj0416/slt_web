@@ -2,6 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Close from "@mui/icons-material/Close";
 import Remove from "@mui/icons-material/Remove";

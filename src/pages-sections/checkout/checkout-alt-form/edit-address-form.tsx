@@ -1,5 +1,9 @@
 import { FC, useState } from "react";
-import { Button, Dialog, DialogContent, Grid, TextField } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Dialog from "@mui/material/Dialog";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import DialogContent from "@mui/material/DialogContent";
 import { useFormik } from "formik";
 import * as yup from "yup";
 // GLOBAL CUSTOM COMPONENT

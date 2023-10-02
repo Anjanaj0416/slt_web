@@ -1,7 +1,6 @@
 "use client";
 
 import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
-import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { Sticky } from "components/sticky";
 import { Topbar } from "components/topbar";

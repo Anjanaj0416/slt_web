@@ -1,6 +1,9 @@
-import { alpha, ButtonBase, styled } from "@mui/material";
+import ButtonBase from "@mui/material/ButtonBase";
+import { alpha, styled } from "@mui/material/styles";
+// MUI ICON COMPONENTS
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
+// GLOBAL CUSTOM COMPONENTS
 import { Paragraph, Span } from "components/Typography";
 
 // ===============================================================

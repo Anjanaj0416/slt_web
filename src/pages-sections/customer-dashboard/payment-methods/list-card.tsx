@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Card from "@mui/material/Card";
 import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENTS
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
 // GLOBAL CUSTOM COMPONENTS

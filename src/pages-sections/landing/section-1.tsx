@@ -1,5 +1,9 @@
-import { Box, Button, Container, Tooltip } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import Container from "@mui/material/Container";
 import { Link as Scroll } from "react-scroll";
+// MUI ICON COMPONENTS
 import HelpIcon from "@mui/icons-material/Help";
 import DoneIcon from "@mui/icons-material/Done";
 // CUSTOM COMPONENTS

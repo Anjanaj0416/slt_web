@@ -1,8 +1,11 @@
 "use client";
 
 import { FC } from "react";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
+// MUI ICON COMPONENTS
 import Instagram from "@mui/icons-material/Instagram";
-import { Container, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
 import LazyImage from "components/LazyImage";

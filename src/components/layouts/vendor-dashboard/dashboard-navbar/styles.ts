@@ -1,4 +1,8 @@
-import { Button, styled, AppBar, Toolbar, InputBase } from "@mui/material";
+import Button from "@mui/material/Button";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import { styled } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 import { FlexRowCenter } from "components/flex-box";
 
 export const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({

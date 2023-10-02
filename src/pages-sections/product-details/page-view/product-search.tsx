@@ -1,17 +1,18 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { Apps, FilterList, ViewList } from "@mui/icons-material";
-import {
-  Card,
-  Grid,
-  Theme,
-  MenuItem,
-  Container,
-  TextField,
-  IconButton,
-  useMediaQuery,
-} from "@mui/material";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import { Theme } from "@mui/material/styles";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import useMediaQuery from "@mui/material/useMediaQuery";
+// MUI ICON COMPONENTS
+import Apps from "@mui/icons-material/Apps";
+import ViewList from "@mui/icons-material/ViewList";
+import FilterList from "@mui/icons-material/FilterList";
 // Local CUSTOM COMPONENT
 import ProductFilterCard from "../product-filter-card";
 // GLOBAL CUSTOM COMPONENTS

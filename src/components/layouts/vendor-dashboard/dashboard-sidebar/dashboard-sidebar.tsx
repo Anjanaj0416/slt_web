@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { Theme, useMediaQuery, Box } from "@mui/material";
+import Box from "@mui/material/Box";
+import { Theme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 // Local CUSTOM COMPONENTS
 import LogoArea from "./logo-area";
 import LayoutDrawer from "../../layout-drawer";

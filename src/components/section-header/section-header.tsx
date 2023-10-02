@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FC, ReactNode } from "react";
+// MUI ICON COMPONENTS
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import ArrowRight from "@mui/icons-material/ArrowRight";
 // LOCAL CUSTOM COMPONENTS

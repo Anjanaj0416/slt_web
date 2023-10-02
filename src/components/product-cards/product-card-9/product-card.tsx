@@ -1,6 +1,10 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Card, Grid, Rating, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Rating from "@mui/material/Rating";
+import { styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import Image from "components/BazaarImage";
 import { H5 } from "components/Typography";

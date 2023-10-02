@@ -1,14 +1,12 @@
 import { FC, useState } from "react";
-import {
-  Box,
-  Card,
-  Grid,
-  Button,
-  Checkbox,
-  MenuItem,
-  TextField,
-  FormControlLabel,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import { Formik } from "formik";
 import * as yup from "yup";
 // GLOBAL CUSTOM COMPONENTS

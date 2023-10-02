@@ -1,7 +1,10 @@
 "use client";
 
 import { FC, Fragment, memo, PropsWithChildren, useState } from "react";
-import { Theme, useMediaQuery, Box, Badge } from "@mui/material";
+import Box from "@mui/material/Box";
+import Badge from "@mui/material/Badge";
+import { Theme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 // CUSTOM ICON COMPONENTS
 import Home from "icons/Home";
 import User2 from "icons/User2";

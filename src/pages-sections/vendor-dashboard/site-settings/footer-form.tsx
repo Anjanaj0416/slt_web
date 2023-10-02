@@ -1,7 +1,12 @@
 import { Fragment } from "react";
-import Delete from "@mui/icons-material/Delete";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
 import { FieldArray, Formik } from "formik";
-import { Button, Divider, Grid, IconButton, TextField } from "@mui/material";
+// MUI ICON COMPONENT
+import Delete from "@mui/icons-material/Delete";
 // GLOBAL CUSTOM COMPONENTS
 import DropZone from "components/DropZone";
 import { H4 } from "components/Typography";

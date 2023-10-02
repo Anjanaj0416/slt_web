@@ -1,5 +1,8 @@
 import { FC, Fragment } from "react";
-import { Dialog, Drawer, useMediaQuery, Theme } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import Drawer from "@mui/material/Drawer";
+import { Theme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 // LOGIN FORM
 import { LoginPageView } from "pages-sections/sessions/page-view";
 // GLOBAL CUSTOM COMPONENTS

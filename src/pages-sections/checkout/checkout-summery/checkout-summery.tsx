@@ -1,9 +1,14 @@
-import { Button, Card, Divider, Stack, TextField } from "@mui/material";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
+// LOCAL CUSTOM COMPONENT
+import ListItem from "../list-item";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
-import ListItem from "../list-item";
 
 const CheckoutSummary = () => {
   return (

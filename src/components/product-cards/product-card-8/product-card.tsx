@@ -2,6 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
+// MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCart from "@mui/icons-material/AddShoppingCart";

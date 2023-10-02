@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Button from "@mui/material/Button";
+// MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 

@@ -1,14 +1,13 @@
 import { FC } from "react";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import {
-  Add,
-  Remove,
-  Favorite,
-  RemoveRedEye,
-  FavoriteBorder,
-  AddShoppingCart,
-} from "@mui/icons-material";
+// MUI ICON COMPONENTS
+import Add from "@mui/icons-material/Add";
+import Remove from "@mui/icons-material/Remove";
+import Favorite from "@mui/icons-material/Favorite";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
 // GLOBAL CUSTOM COMPONENT
 import { Span } from "components/Typography";
 // STYLED COMPONENTS

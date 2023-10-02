@@ -1,5 +1,9 @@
 import { Fragment } from "react";
-import { Button, Divider, Grid, IconButton, TextField } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
 import Delete from "@mui/icons-material/Delete";
 import { FieldArray, Formik } from "formik";
 // GLOBAL CUSTOM COMPONENTS

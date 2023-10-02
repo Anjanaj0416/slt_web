@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Box, Card, styled, Tab } from "@mui/material";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Card from "@mui/material/Card";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import TabContext from "@mui/lab/TabContext";
+import { styled } from "@mui/material/styles";
 // Local CUSTOM COMPONENTS
 import TopbarForm from "../topbar-form";
 import FooterForm from "../footer-form";

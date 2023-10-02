@@ -1,6 +1,10 @@
 import { FC } from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+// MUI ICON COMPONENT
 import Favorite from "@mui/icons-material/Favorite";
-import { Box, Button, Grid, styled } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarImage from "components/BazaarImage";
 import { Countdown } from "components/countdown";

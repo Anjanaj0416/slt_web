@@ -1,7 +1,12 @@
 import { FC } from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Avatar from "@mui/material/Avatar";
+import Rating from "@mui/material/Rating";
+import Button from "@mui/material/Button";
+// MUI ICON COMPONENTS
 import Call from "@mui/icons-material/Call";
 import Place from "@mui/icons-material/Place";
-import { Avatar, Box, Button, Card, Rating } from "@mui/material";
 // GLOBAL CUSTOM COMPONENTS
 import { H3, Small, Span } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";

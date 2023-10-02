@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import Avatar from "@mui/material/Avatar";
+// MUI ICON COMPONENT
 import Delete from "@mui/icons-material/Delete";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";

@@ -1,4 +1,9 @@
-import { Theme, styled, Card, Box, Button, Container, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import { styled, Theme } from "@mui/material/styles";
 import { FlexBox } from "components/flex-box";
 import { layoutConstant } from "utils/constants";
 

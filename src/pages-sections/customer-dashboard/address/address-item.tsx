@@ -1,8 +1,10 @@
 import { FC } from "react";
 import Link from "next/link";
+import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENTS
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
-import IconButton from "@mui/material/IconButton";
+
 import { Paragraph } from "components/Typography";
 // Local CUSTOM COMPONENT
 import TableRow from "../table-row";

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { usePathname } from "next/navigation";
 import MenuItem from "@mui/material/MenuItem";
+// MUI ICON COMPONENTS
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import ArrowRight from "@mui/icons-material/ArrowRight";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";

@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import { FC, useState } from "react";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import Grid from "@mui/material/Grid";
+import Avatar from "@mui/material/Avatar";
+import Rating from "@mui/material/Rating";
+import Button from "@mui/material/Button";
+// MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
-import { Avatar, Box, Button, Chip, Grid, Rating } from "@mui/material";
 // GLOBAL CUSTOM HOOK
 import useCart from "hooks/useCart";
 // GLOBAL CUSTOM COMPONENTS

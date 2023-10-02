@@ -3,9 +3,10 @@
 import { Children, FC, PropsWithChildren, useState } from "react";
 import { Swiper, SwiperProps, SwiperSlide, SwiperSlideProps } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
+import { alpha, styled } from "@mui/material/styles";
+// MUI ICON COMPONENTS
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import ArrowForward from "@mui/icons-material/ArrowForward";
-import { alpha, styled } from "@mui/material";
 
 // Import Swiper styles
 import "swiper/css";

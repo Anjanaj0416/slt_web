@@ -1,6 +1,10 @@
 "use client";
 
-import { Container, Grid, IconButton, useMediaQuery, Theme } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { Theme } from "@mui/material/styles";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import FilterList from "@mui/icons-material/FilterList";
 // GLOBAL CUSTOM COMPONENTS
 import { SideNav } from "components/side-nav";

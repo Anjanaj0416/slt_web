@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
+// MUI ICON COMPONENTS
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";

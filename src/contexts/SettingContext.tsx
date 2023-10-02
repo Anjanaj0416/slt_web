@@ -1,6 +1,6 @@
 "use client";
 
-import { Direction } from "@mui/material";
+import { Direction } from "@mui/material/styles";
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 
 // ============================================================

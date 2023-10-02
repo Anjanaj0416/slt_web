@@ -1,10 +1,11 @@
 "use client";
 
-import { Drawer, styled } from "@mui/material";
+import Drawer from "@mui/material/Drawer";
+import { styled } from "@mui/material/styles";
 import { NavLink } from "components/nav-link";
 import { layoutConstant } from "utils/constants";
 
-// styled components
+// STYLED COMPONENTS
 const Wrapper = styled("div")(({ theme }) => ({
   left: 0,
   right: 0,

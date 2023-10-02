@@ -1,10 +1,11 @@
 import { FC, useState } from "react";
-import DeleteOutline from "@mui/icons-material/DeleteOutline";
-import ModeEditOutline from "@mui/icons-material/ModeEditOutline";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import { FormikErrors } from "formik";
+// MUI ICON COMPONENTS
+import DeleteOutline from "@mui/icons-material/DeleteOutline";
+import ModeEditOutline from "@mui/icons-material/ModeEditOutline";
 // LOCAL CUSTOM COMPONENTS
 import Heading from "./heading";
 import NewAddressForm from "./new-address-form";

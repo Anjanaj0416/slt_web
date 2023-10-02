@@ -1,13 +1,8 @@
-import { SvgIcon, SvgIconProps } from "@mui/material";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const Vest = (props: SvgIconProps) => {
   return (
-    <SvgIcon
-      viewBox="0 0 448 512"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <SvgIcon viewBox="0 0 448 512" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path d="M437.3 239.9L384 160V32c0-17.67-14.33-32-32-32h-32l-96 288v224h192c17.67 0 32-14.33 32-32V275.4C448 262.7 444.3 250.4 437.3 239.9zM387.3 419.3C384.2 422.4 380.1 424 376 424s-8.188-1.562-11.31-4.688l-48-48c-6.25-6.25-6.25-16.38 0-22.62s16.38-6.25 22.62 0l48 48C393.6 402.9 393.6 413.1 387.3 419.3zM96 0C78.33 0 64 14.33 64 32v128L10.75 239.9C3.74 250.4 0 262.7 0 275.4V480c0 17.67 14.33 32 32 32h160V282.8l15.13-45.4L128 0H96zM131.3 371.3l-48 48C80.19 422.4 76.09 424 72 424s-8.188-1.562-11.31-4.688c-6.25-6.25-6.25-16.38 0-22.62l48-48c6.25-6.25 16.38-6.25 22.62 0S137.6 365.1 131.3 371.3z" />
       <path
         className="secondary"

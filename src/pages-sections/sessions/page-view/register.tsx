@@ -1,6 +1,8 @@
 "use client";
 
-import { Button, Checkbox, FormControlLabel } from "@mui/material";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import { useFormik } from "formik";
 import * as yup from "yup";
 // LOCAL CUSTOM COMPONENTS

@@ -1,4 +1,5 @@
 import { FC } from "react";
+// MUI ICON COMPONENT
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // STYLED COMPONENTS
 import { StatusWrapper, StyledTableRow, StyledTableCell, StyledIconButton } from "../styles";

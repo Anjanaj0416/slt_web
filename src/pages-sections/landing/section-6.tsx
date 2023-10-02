@@ -1,5 +1,9 @@
 import { FC } from "react";
-import { Avatar, Box, Container, Button, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
+import Container from "@mui/material/Container";
 import { scroller } from "react-scroll";
 // CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";

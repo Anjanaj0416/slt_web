@@ -1,5 +1,6 @@
 import { FC, Fragment } from "react";
-import { Button, SxProps } from "@mui/material";
+import Button from "@mui/material/Button";
+import { SxProps } from "@mui/material/styles";
 import CameraAlt from "@mui/icons-material/CameraAlt";
 
 // ==============================================================

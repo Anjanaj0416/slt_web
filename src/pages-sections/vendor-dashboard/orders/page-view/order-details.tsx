@@ -1,6 +1,9 @@
 "use client";
 
-import { Card, Grid, Button, Box } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 // GLOBAL CUSTOM COMPONENT
 import { H3 } from "components/Typography";
 // Local CUSTOM COMPONENT

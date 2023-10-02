@@ -4,8 +4,14 @@ import Chip from "@mui/material/Chip";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import TouchRipple from "@mui/material/ButtonBase";
-import { Add, ExpandMore, Facebook, Instagram, Remove, Twitter } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+// MUI ICON COMPONENTS
+import Add from "@mui/icons-material/Add";
+import Remove from "@mui/icons-material/Remove";
+import Twitter from "@mui/icons-material/Twitter";
+import Facebook from "@mui/icons-material/Facebook";
+import Instagram from "@mui/icons-material/Instagram";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
 import BazaarMenu from "components/BazaarMenu";

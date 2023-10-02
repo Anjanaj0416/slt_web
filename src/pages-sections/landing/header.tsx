@@ -1,19 +1,15 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
-import debounce from "lodash/debounce";
-import { Link as Scroll } from "react-scroll";
-import {
-  Box,
-  Theme,
-  Button,
-  styled,
-  Container,
-  keyframes,
-  IconButton,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { styled, keyframes, Theme } from "@mui/material/styles";
 import Menu from "@mui/icons-material/Menu";
+import { Link as Scroll } from "react-scroll";
+import debounce from "lodash/debounce";
 import clsx from "clsx";
 // CUSTOM COMPONENT
 import Image from "components/BazaarImage";

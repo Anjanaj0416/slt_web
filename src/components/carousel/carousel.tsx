@@ -1,5 +1,6 @@
 import { CSSProperties, FC, ReactNode, Children } from "react";
 import { SxProps } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 import clsx from "clsx";
 import { Slide } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
@@ -9,7 +10,6 @@ import ArrowButton from "./arrow-button";
 import { renderDots } from "./render-dots";
 // STYLED COMPONENTS
 import { StyledSlider, StyledDotGroup, StyledCarouselProvider } from "./styles";
-import { Box } from "@mui/material";
 
 // ===================================================================
 export interface CarouselProps {

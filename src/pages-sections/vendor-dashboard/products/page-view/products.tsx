@@ -1,6 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Box, Card, Stack, Table, TableContainer, TableBody } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableContainer from "@mui/material/TableContainer";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import Scrollbar from "components/Scrollbar";

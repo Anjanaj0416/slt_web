@@ -1,7 +1,10 @@
 "use client";
 
 import { FC } from "react";
-import { Box, Container, Grid, keyframes, styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import { keyframes, styled } from "@mui/material/styles";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import WhiteButton from "components/WhiteButton";

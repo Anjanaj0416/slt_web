@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { FC, Fragment, ReactElement } from "react";
-import { Badge, Box, Drawer, IconButton } from "@mui/material";
+import Box from "@mui/material/Box";
+import Badge from "@mui/material/Badge";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENT
 import Clear from "@mui/icons-material/Clear";
 // CUSTOM ICON COMPONENTS
 import Icon from "icons";

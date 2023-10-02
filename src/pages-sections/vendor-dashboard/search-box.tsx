@@ -1,7 +1,9 @@
 import { FC } from "react";
 import Link from "next/link";
 import Add from "@mui/icons-material/Add";
-import { Button, Theme, useMediaQuery } from "@mui/material";
+import Button from "@mui/material/Button";
+import { Theme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import SearchInput from "components/SearchInput";

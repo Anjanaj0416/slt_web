@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Divider from "@mui/material/Divider";
+// MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";

@@ -1,6 +1,13 @@
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
 import { Formik } from "formik";
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
-import { Button, Divider, Grid, TextField } from "@mui/material";
+// MUI ICON COMPONENTS
+import Twitter from "@mui/icons-material/Twitter";
+import YouTube from "@mui/icons-material/YouTube";
+import Facebook from "@mui/icons-material/Facebook";
+import Instagram from "@mui/icons-material/Instagram";
 // CUSTOM ICON COMPONENTS
 import PlayStore from "icons/PlayStore";
 import AppleStore from "icons/AppleStore";

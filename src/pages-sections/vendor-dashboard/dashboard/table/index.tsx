@@ -1,6 +1,11 @@
 import { FC } from "react";
+import Table from "@mui/material/Table";
+import TableRow from "@mui/material/TableRow";
+import { styled } from "@mui/material/styles";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+import TableContainer from "@mui/material/TableContainer";
 import Done from "@mui/icons-material/Done";
-import { styled, Table, TableContainer, TableBody, TableCell, TableRow } from "@mui/material";
 // GLOBAL CUSTOM HOOK
 import useMuiTable from "hooks/useMuiTable";
 // CUSTOM ICON COMPONENT

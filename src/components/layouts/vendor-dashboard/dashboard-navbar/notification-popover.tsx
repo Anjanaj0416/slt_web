@@ -1,17 +1,17 @@
 import { SyntheticEvent, useState } from "react";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import TabContext from "@mui/lab/TabContext";
+import Tab from "@mui/material/Tab";
+import Fade from "@mui/material/Fade";
+import Badge from "@mui/material/Badge";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import { SvgIconProps } from "@mui/material/SvgIcon";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Notifications from "@mui/icons-material/Notifications";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
-import {
-  Tab,
-  Fade,
-  Badge,
-  Paper,
-  Popper,
-  styled,
-  IconButton,
-  SvgIconProps,
-  ClickAwayListener,
-} from "@mui/material";
 import formatDistance from "date-fns/formatDistance";
 // CUSTOM ICON COMPONENTS
 import CartX from "icons/CartX";

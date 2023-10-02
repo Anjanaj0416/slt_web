@@ -1,5 +1,8 @@
 import IconButton from "@mui/material/IconButton";
-import { Twitter, Instagram, Google } from "@mui/icons-material";
+// MUI ICON COMPONENTS
+import Google from "@mui/icons-material/Google";
+import Twitter from "@mui/icons-material/Twitter";
+import Instagram from "@mui/icons-material/Instagram";
 import { FlexRowCenter } from "components/flex-box";
 import Facebook from "icons/Facebook";
 

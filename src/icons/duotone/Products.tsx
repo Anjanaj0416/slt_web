@@ -1,13 +1,8 @@
-import { SvgIcon, SvgIconProps } from "@mui/material";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const Products = (props: SvgIconProps) => {
   return (
-    <SvgIcon
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <SvgIcon viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M8 9.0049C8 7.0583 9.59259 5.47897 11.5556 5.47897C13.5185 5.47897 15.1111 7.0583 15.1111 9.0049C15.1111 10.9515 13.5185 12.5308 11.5556 12.5308C9.59259 12.5308 8 10.9515 8 9.0049ZM13.2173 8.49805C13.3728 8.34624 13.3728 8.09649 13.2173 7.94467C13.0642 7.79042 12.8123 7.79042 12.6593 7.94467L11.1605 9.43095L10.4519 8.72821C10.2988 8.57395 10.0469 8.57395 9.89383 8.72821C9.73827 8.88002 9.73827 9.12978 9.89383 9.28159L10.8815 10.261C11.0346 10.4153 11.2864 10.4153 11.4395 10.261L13.2173 8.49805Z"
         fill="currentColor"

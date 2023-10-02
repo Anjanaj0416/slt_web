@@ -1,6 +1,8 @@
 import { FC } from "react";
 import format from "date-fns/format";
-import { Theme, useMediaQuery, Card } from "@mui/material";
+import Card from "@mui/material/Card";
+import { Theme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 // GLOBAL CUSTOM COMPONENTS
 import FlexBox from "components/flex-box/flex-box";
 import { Small, Span } from "components/Typography";

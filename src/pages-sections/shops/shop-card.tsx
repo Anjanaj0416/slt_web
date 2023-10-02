@@ -1,6 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
-import { alpha, Avatar, Card, IconButton, Rating, styled } from "@mui/material";
+import Card from "@mui/material/Card";
+import Avatar from "@mui/material/Avatar";
+import Rating from "@mui/material/Rating";
+import IconButton from "@mui/material/IconButton";
+import { alpha, styled } from "@mui/material/styles";
+// MUI ICON COMPONENTS
 import Call from "@mui/icons-material/Call";
 import East from "@mui/icons-material/East";
 import Place from "@mui/icons-material/Place";

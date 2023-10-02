@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
+// MUI ICON COMPONENTS
 import Menu from "@mui/icons-material/Menu";
 import Clear from "@mui/icons-material/Clear";
 // GLOBAL CUSTOM COMPONENT

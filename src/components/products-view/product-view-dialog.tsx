@@ -1,14 +1,12 @@
 import { FC } from "react";
-import {
-  Grid,
-  Button,
-  Dialog,
-  Rating,
-  styled,
-  Divider,
-  IconButton,
-  DialogContent,
-} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Rating from "@mui/material/Rating";
+import Dialog from "@mui/material/Dialog";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import DialogContent from "@mui/material/DialogContent";
 // MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Close from "@mui/icons-material/Close";
