@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Switch, { SwitchProps } from "@mui/material/Switch";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT
 const StyledSwitch = styled(Switch)(({ theme }) => ({

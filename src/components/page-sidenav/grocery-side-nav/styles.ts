@@ -1,5 +1,5 @@
 import Card from "@mui/material/Card";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENT
 import Scrollbar from "components/Scrollbar";
 

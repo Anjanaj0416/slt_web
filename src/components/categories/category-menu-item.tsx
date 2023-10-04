@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FC, ReactNode } from "react";
 import MenuItem from "@mui/material/MenuItem";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // MUI ICON COMPONENTS
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";

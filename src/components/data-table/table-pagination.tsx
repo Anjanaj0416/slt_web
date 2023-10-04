@@ -1,5 +1,5 @@
 import Pagination, { PaginationProps } from "@mui/material/Pagination";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT
 const StyledPagination = styled(Pagination)(({ theme }) => ({

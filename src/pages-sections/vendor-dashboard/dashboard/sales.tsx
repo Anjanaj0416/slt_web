@@ -1,7 +1,7 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 // LOCAL CUSTOM COMPONENT
 import ApexChart from "./apex-chart";
 // Local CUSTOM COMPONENT

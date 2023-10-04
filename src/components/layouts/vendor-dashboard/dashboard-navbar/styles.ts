@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import InputBase from "@mui/material/InputBase";
 import { FlexRowCenter } from "components/flex-box";
 

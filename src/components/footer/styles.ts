@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   borderRadius: 4,

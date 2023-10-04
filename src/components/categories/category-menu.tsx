@@ -1,5 +1,5 @@
 import { FC, cloneElement, useCallback, useEffect, useRef, useState } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import CategoryMenuCard from "./category-menu-card";
 
 // styled component

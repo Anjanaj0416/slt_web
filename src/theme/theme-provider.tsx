@@ -4,8 +4,9 @@ import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiThemeProvider from "@mui/material/styles/ThemeProvider";
-import { createTheme, ThemeOptions, responsiveFontSizes } from "@mui/material/styles";
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import responsiveFontSizes from "@mui/material/styles/responsiveFontSizes";
+import createTheme, { ThemeOptions } from "@mui/material/styles/createTheme";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import merge from "lodash/merge";
 

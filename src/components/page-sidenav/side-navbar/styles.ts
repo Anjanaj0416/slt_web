@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
 import BazaarCard from "components/BazaarCard";

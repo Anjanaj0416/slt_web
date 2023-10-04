@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";

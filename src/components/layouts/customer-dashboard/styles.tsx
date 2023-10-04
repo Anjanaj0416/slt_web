@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Card from "@mui/material/Card";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import NavLink, { NavLinkProps } from "components/nav-link/nav-link";
 
 export const MainContainer = styled(Card)(({ theme }) => ({

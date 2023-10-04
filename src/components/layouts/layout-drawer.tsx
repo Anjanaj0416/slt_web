@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import Drawer from "@mui/material/Drawer";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT
 const Wrapper = styled("div")(({ theme }) => ({

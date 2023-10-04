@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // LOCAL CUSTOM HOOK
 import { useLayout } from "./dashboard-layout-context";
 

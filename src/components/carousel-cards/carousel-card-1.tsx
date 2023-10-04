@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarImage from "components/BazaarImage";
 import { FlexBetween } from "components/flex-box";

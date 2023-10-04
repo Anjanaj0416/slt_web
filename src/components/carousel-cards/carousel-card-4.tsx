@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import { H1, H4, Paragraph, Span } from "components/Typography";
 

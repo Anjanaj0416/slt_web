@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnchorHTMLAttributes, CSSProperties, FC } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import clsx from "clsx";
 
 // STYLED COMPONENT

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // LOCAL CUSTOM COMPONENTS
 import MegaMenu1 from "./mega-menu/mega-menu-1";
 import MegaMenu2 from "./mega-menu/mega-menu-2";

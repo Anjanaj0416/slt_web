@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H3, H5 } from "components/Typography";

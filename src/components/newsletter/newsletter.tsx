@@ -1,8 +1,6 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
-import { debounce } from "@mui/material/utils";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Modal from "@mui/material/Modal";
@@ -12,6 +10,9 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+// MUI UTILS METHODS
+import styled from "@mui/material/styles/styled";
+import debounce from "@mui/material/utils/debounce";
 // MUI ICON COMPONENTS
 import Clear from "@mui/icons-material/Clear";
 // GLOBAL CUSTOM COMPONENTS

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";

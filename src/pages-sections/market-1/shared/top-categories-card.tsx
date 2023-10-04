@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import HoverBox from "components/HoverBox";
 import LazyImage from "components/LazyImage";

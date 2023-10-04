@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT
 const Wrapper = styled("div")(({ theme }) => ({

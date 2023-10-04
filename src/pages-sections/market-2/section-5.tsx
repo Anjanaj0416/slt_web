@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import ListItem from "@mui/material/ListItem";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS

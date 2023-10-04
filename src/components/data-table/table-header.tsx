@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import Checkbox from "@mui/material/Checkbox";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";

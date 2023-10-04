@@ -3,7 +3,6 @@
 import { FC, PropsWithChildren, useEffect } from "react";
 import createCache, { StylisPlugin } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-// import { useTheme } from "@mui/material/styles";
 import stylisRTLPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import useSettings from "hooks/useSettings";

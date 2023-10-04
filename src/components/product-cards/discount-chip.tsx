@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Chip, { ChipProps } from "@mui/material/Chip";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT
 const StyledChip = styled(Chip)(({ theme }) => ({

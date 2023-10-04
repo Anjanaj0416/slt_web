@@ -1,6 +1,6 @@
 import { FC } from "react";
 import InputBase, { InputBaseProps } from "@mui/material/InputBase";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // MUI ICON COMPONENT
 import Search from "@mui/icons-material/Search";
 

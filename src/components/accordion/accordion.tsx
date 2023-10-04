@@ -1,5 +1,5 @@
 import { Children, cloneElement, FC, memo, ReactElement, useEffect, useRef, useState } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT PROPS
 type WrapperProps = {

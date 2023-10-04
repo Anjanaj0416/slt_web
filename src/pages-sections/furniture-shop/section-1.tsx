@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { H1, H6, Paragraph } from "components/Typography";

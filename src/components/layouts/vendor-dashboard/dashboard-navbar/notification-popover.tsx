@@ -7,7 +7,7 @@ import Fade from "@mui/material/Fade";
 import Badge from "@mui/material/Badge";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import IconButton from "@mui/material/IconButton";
 import { SvgIconProps } from "@mui/material/SvgIcon";
 import ClickAwayListener from "@mui/material/ClickAwayListener";

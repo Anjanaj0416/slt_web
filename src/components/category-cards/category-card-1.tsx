@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import { H4 } from "components/Typography";
 import LazyImage from "components/LazyImage";

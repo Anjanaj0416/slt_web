@@ -1,5 +1,5 @@
 import Card from "@mui/material/Card";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import { Paragraph } from "components/Typography";
 
 const LEFT_IMG = "/assets/images/headers/Header BG1.png";

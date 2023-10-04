@@ -3,7 +3,7 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexRowCenter } from "components/flex-box";

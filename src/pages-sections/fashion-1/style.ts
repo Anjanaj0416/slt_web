@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import { FlexBetween } from "components/flex-box";
 
 export const ARROW_BUTTON_STYLE = {

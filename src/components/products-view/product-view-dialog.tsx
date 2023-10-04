@@ -4,7 +4,7 @@ import Rating from "@mui/material/Rating";
 import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import IconButton from "@mui/material/IconButton";
 import DialogContent from "@mui/material/DialogContent";
 // MUI ICON COMPONENTS

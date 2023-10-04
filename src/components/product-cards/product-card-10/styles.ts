@@ -1,5 +1,5 @@
 import IconButton from "@mui/material/IconButton";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 export const Card = styled("div")(({ theme }) => ({
   height: "100%",

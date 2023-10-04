@@ -33,5 +33,10 @@
     "prefix": "af",
     "body": ["// API FUNCTIONS"],
     "description": "Custom Api Functions"
+  },
+  "svg": {
+    "prefix": "svg",
+    "body": ["import createSvgIcon from '@mui/material/utils/createSvgIcon';"],
+    "description": "Create SVG"
   }
 }

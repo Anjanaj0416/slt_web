@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import { layoutConstant } from "utils/constants";
 
 export const Wrapper = styled("div")({

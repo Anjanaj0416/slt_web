@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
 import { H3, H5, Tiny } from "components/Typography";

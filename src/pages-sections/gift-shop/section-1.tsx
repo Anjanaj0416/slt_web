@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import Box from "@mui/material/Box";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { Carousel } from "components/carousel";

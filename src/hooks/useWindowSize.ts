@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { debounce } from "@mui/material/utils";
+import debounce from "@mui/material/utils/debounce";
 
 const useWindowSize = () => {
   const [width, setWidth] = useState(0);

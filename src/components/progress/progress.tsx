@@ -3,7 +3,7 @@
 "use client";
 import { useEffect } from "react";
 import NProgress from "nprogress";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 import GlobalStyles from "@mui/material/GlobalStyles";
 
 import "nprogress/nprogress.css";

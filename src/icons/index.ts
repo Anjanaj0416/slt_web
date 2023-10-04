@@ -115,7 +115,7 @@ import Flower from "./gift-shop/Flower";
 import Children from "./gift-shop/Children";
 import BabyToys from "./gift-shop/BabyToys";
 import Football from "./gift-shop/Football";
-import Chirstmas from "./gift-shop/Christmas";
+import Christmas from "./gift-shop/Christmas";
 import TeddyBear from "./gift-shop/TeddyBear";
 import WeddingGift from "./gift-shop/WeddingGift";
 import NewYearGift from "./gift-shop/NewYearGift";
@@ -179,7 +179,7 @@ const appIcons = {
   BabyToys,
   Children,
   Football,
-  Chirstmas,
+  Chirstmas: Christmas,
   TeddyBear,
   WeddingGift,
   NewYearGift,

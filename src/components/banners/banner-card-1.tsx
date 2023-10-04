@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import Divider from "@mui/material/Divider";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import Box, { BoxProps } from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarImage from "components/BazaarImage";

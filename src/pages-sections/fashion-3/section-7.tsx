@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H4, Span } from "components/Typography";

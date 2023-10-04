@@ -2,7 +2,7 @@
 
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 // LOCAL CUSTOM COMPONENT
 import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS

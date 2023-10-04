@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import Container from "@mui/material/Container";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // CUSTOM ICON COMPONENT
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS

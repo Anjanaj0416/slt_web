@@ -1,5 +1,5 @@
 import Card, { CardProps } from "@mui/material/Card";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 
 // ===============================================
 interface Props extends CardProps {

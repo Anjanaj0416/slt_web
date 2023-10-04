@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 // CUSTOM ICON COMPONENTS
 import appIcons from "icons";
 // GLOBAL CUSTOM COMPONENTS

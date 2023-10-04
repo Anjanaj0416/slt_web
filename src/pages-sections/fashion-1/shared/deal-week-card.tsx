@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENT
 import { Paragraph } from "components/Typography";
 

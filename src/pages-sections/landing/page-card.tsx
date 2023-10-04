@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FC, Fragment, ReactElement } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import { styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 // CUSTOM COMPONENTS

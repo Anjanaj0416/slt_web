@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC, Fragment, ReactElement } from "react";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import clsx from "clsx";
 // LOCAL CUSTOM HOOKS

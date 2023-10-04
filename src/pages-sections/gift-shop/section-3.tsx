@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 import { H3, H6, Paragraph } from "components/Typography";
 // STYLED COMPONENTS
 import { LeftContentBox, RightContent, RightContentBox, StyledButton } from "./styles";

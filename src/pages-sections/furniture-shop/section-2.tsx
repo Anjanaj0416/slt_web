@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
+import useTheme from "@mui/material/styles/useTheme";
 import { H1, H3, H6, Paragraph } from "components/Typography";
 // STYLED COMPONENTS
 import { LeftContentBox, RightContent, RightContentBox, CustomButton } from "./styles";
