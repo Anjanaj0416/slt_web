@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect, useState, FC } from "react";
+import { FC } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import BazaarImage from "components/BazaarImage";
 import { FlexRowCenter } from "components/flex-box";
 // CUSTOM DATA MODEL
@@ -18,28 +16,18 @@ type Props = { brands: Brand[] };
 // ==========================================================
 
 const Section8: FC<Props> = ({ brands }) => {
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(6);
-
-  useEffect(() => {
-    if (width < 650) setVisibleSlides(2);
-    else if (width < 800) setVisibleSlides(3);
-    else if (width < 1024) setVisibleSlides(4);
-    else setVisibleSlides(5);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 1024, settings: { slidesToShow: 4 } },
+    { breakpoint: 800, settings: { slidesToShow: 3 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+  ];
 
   return (
     <Container sx={{ my: 8 }}>
       <H3 mb={3}>Featured Brands</H3>
 
-      <Box padding={4} bgcolor="white">
-        <Carousel
-          autoPlay
-          showArrow={false}
-          totalSlides={brands.length}
-          visibleSlides={visibleSlides}
-          sx={{ ":hover": { cursor: "grab" } }}
-        >
+      <Box padding={4} bgcolor="white" sx={{ ".slick-slide": { textAlign: "center" } }}>
+        <Carousel slidesToShow={5} arrows={false} responsive={responsive}>
           {brands.map(({ id, image }) => (
             <FlexRowCenter maxWidth={110} height="100%" margin="auto" key={id}>
               <BazaarImage alt="brand" width="100%" src={image} sx={{ filter: "grayscale(1)" }} />

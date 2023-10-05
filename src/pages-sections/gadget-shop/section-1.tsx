@@ -8,11 +8,9 @@ import Container from "@mui/material/Container";
 import Card1 from "./common/card-1";
 import ProductCarousel from "./common/product-carousel";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { CarouselCard3 } from "components/carousel-cards";
 import { SectionCreator } from "components/section-header";
-// GLOBAL CUSTOM HOOK
-import useSettings from "hooks/useSettings";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -21,27 +19,13 @@ type Props = { topPickList: Product[]; mainCarousel: Product[] };
 // =================================================================
 
 const Section1: FC<Props> = ({ topPickList, mainCarousel }) => {
-  const { settings } = useSettings();
-
-  const ARROW_BUTTON_STYLE = {
-    boxShadow: "none",
-    color: "#7D879C",
-    background: "transparent",
-  };
-
-  // dynamically change arrow icon
-  const left = settings.direction === "ltr" ? "left" : "right";
-  const right = settings.direction === "ltr" ? "right" : "left";
-
   return (
     <Container sx={{ pt: 6 }}>
       <Grid container spacing={5}>
         <Grid item md={5} xs={12}>
           <Carousel
-            visibleSlides={1}
-            totalSlides={mainCarousel.length}
-            leftButtonStyle={{ ...ARROW_BUTTON_STYLE, [left]: 8 }}
-            rightButtonStyle={{ ...ARROW_BUTTON_STYLE, [right]: 8 }}
+            slidesToShow={1}
+            arrowStyles={{ boxShadow: 0, color: "dark.main", background: "transparent" }}
           >
             {mainCarousel.map((product) => (
               <CarouselCard3 product={product} key={product.id} />

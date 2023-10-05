@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import AppStore from "components/footer/app-store";
 import { H1, H5, H6 } from "components/Typography";
 // CUSTOM DATA MODEL
@@ -11,12 +11,12 @@ import { GroceryTwoCarouselItem } from "models/Carousel.model";
 
 // STYLED COMPONENTS
 const StyledBox = styled("div")({
+  borderRadius: 8,
   overflow: "hidden",
-  borderRadius: "8px",
-  "& .carousel-dot": { position: "absolute", bottom: "30px", left: "40px" },
 });
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
+  display: "flex !important",
   position: "relative",
   alignItems: "center",
   padding: "2rem 1rem 5rem 40px",
@@ -38,14 +38,13 @@ const Section1: FC<Props> = ({ carouselData }) => {
   return (
     <StyledBox>
       <Carousel
-        spacing="0px"
-        showDots={true}
+        dots
+        autoplay
+        arrows={false}
+        spaceBetween={0}
+        slidesToShow={1}
         dotColor="white"
-        autoPlay={false}
-        showArrow={false}
-        visibleSlides={1}
-        dotClass="carousel-dot"
-        totalSlides={carouselData.length}
+        dotStyles={{ left: 40, bottom: 25, position: "absolute" }}
       >
         {carouselData.map((item) => (
           <StyledGrid container key={item.id}>

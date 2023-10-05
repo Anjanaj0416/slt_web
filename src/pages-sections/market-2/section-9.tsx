@@ -4,21 +4,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { H3, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
-import { carouselStyled } from "components/carousel/styles";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
 const Section9 = () => {
-  const width = useWindowSize();
   const [selected, setSelected] = useState("new");
-  const [visibleSlides, setVisibleSlides] = useState(4);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -27,13 +22,12 @@ const Section9 = () => {
       .then(({ data }) => setProducts(data));
   }, [selected]);
 
-  useEffect(() => {
-    if (width < 426) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 1024) setVisibleSlides(3);
-    else if (width < 1200) setVisibleSlides(4);
-    else setVisibleSlides(5);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 1200, settings: { slidesToShow: 4 } },
+    { breakpoint: 1024, settings: { slidesToShow: 3 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 426, settings: { slidesToShow: 1 } },
+  ];
 
   // SELECTED BUTTON
   const handleSelected = (item: string) => () => setSelected(item);
@@ -75,9 +69,9 @@ const Section9 = () => {
 
       {/* PRODUCT CAROUSEL */}
       <Carousel
-        visibleSlides={visibleSlides}
-        totalSlides={products.length}
-        sx={{ ...carouselStyled, "& .carousel__inner-slide": { pb: 0.5 } }}
+        slidesToShow={5}
+        responsive={responsive}
+        arrowStyles={{ backgroundColor: "dark.main" }}
       >
         {products.map((product) => (
           <ProductCard10 product={product} key={product.id} />

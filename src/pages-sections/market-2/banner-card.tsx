@@ -1,8 +1,7 @@
+import Image from "next/image";
 import { FC, ReactNode } from "react";
 import Box, { BoxProps } from "@mui/material/Box";
 import styled from "@mui/material/styles/styled";
-// GLOBAL CUSTOM COMPONENT
-import LazyImage from "components/LazyImage";
 
 // STYLED COMPONENTS
 const CardWrapper = styled(Box)({
@@ -26,13 +25,24 @@ const CardContent = styled("div")(({ theme }) => ({
 interface Props extends BoxProps {
   img: string;
   children: ReactNode;
+  imageFull?: boolean;
 }
 // ========================================================
 
-const BannerCard: FC<Props> = ({ img, children, ...props }) => {
+const BannerCard: FC<Props> = ({ img, children, imageFull, ...props }) => {
   return (
     <CardWrapper {...props}>
-      <LazyImage alt="category" height={239} width={330} src={img} />
+      <Image
+        src={img}
+        width={330}
+        height={239}
+        alt="category"
+        style={{
+          width: "100%",
+          height: imageFull ? "100%" : "auto",
+          objectFit: "cover",
+        }}
+      />
       <CardContent>{children}</CardContent>
     </CardWrapper>
   );

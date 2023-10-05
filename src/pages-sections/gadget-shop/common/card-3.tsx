@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
-import { alpha, styled } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H3, Paragraph, Small } from "components/Typography";
@@ -14,23 +14,22 @@ const Wrapper = styled(Box)(({ theme }) => ({
   alignItems: "center",
   boxShadow: theme.shadows[4],
   transition: "all 250ms ease-in-out",
-  backgroundColor: alpha(theme.palette.background.paper, 1),
   "& .content": { paddingLeft: "2rem" },
   "&:hover": { boxShadow: theme.shadows[2] },
   [theme.breakpoints.down("sm")]: { "& .content": { padding: "1.5rem" } },
 }));
 
 // =====================================================
-type Props = {
+interface Props {
   body: string;
   title: string;
   color?: string;
   imgUrl: string;
   bgColor?: string;
-};
+}
 // =====================================================
 
-const Card3: FC<Props> = ({ body, title, color, imgUrl, bgColor }) => {
+const Card3: FC<Props> = ({ body, title, color, imgUrl, bgColor = "white" }) => {
   return (
     <Link href="/sales-1">
       <Wrapper bgcolor={bgColor} color={color} pr={0} height="100%">

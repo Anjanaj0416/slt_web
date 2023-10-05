@@ -38,13 +38,6 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 export const StyledBox = styled("div")({
   marginBottom: 60,
   overflow: "hidden",
-  "& .carousel-dot": {
-    left: 0,
-    right: 0,
-    bottom: "30px",
-    margin: "auto",
-    position: "absolute",
-  },
 });
 
 export const Container = styled("div")(({ theme }) => ({

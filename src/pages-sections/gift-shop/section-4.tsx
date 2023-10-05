@@ -1,45 +1,31 @@
 "use client";
 
+import { FC } from "react";
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
-import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 // LOCAL CUSTOM COMPONENT
 import CategoryCard from "./category-card";
-// GLOBAL CUSTOM HOOKS
-import useWindowSize from "hooks/useWindowSize";
+// COMMON CAROUSEL STYLES
+import { CAROUSEL_ARROW_STYLE } from "./styles";
 // CUSTOM DATA MODEL
 import Category from "models/Category.model";
-// COMMON CAROUSEL STYLES
-import { CAROUSEL_STYLE } from "./styles";
 
 // ===============================================
 type Props = { categoryList: Partial<Category>[] };
 // ===============================================
 
 const Section4: FC<Props> = ({ categoryList }) => {
-  const theme = useTheme();
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(3);
-
-  useEffect(() => {
-    if (width < 500) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 950) setVisibleSlides(3);
-    else setVisibleSlides(3);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 500, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <div>
       <H1 my={2}>Top Categories</H1>
-      <Carousel
-        infinite={true}
-        sx={CAROUSEL_STYLE(theme)}
-        visibleSlides={visibleSlides}
-        totalSlides={categoryList.length}
-      >
+      <Carousel slidesToShow={3} responsive={responsive} arrowStyles={CAROUSEL_ARROW_STYLE}>
         {categoryList.map((item, ind) => (
           <Link href="/" key={ind}>
             <CategoryCard title={item.name} available={item.description} imgUrl={item.image} />

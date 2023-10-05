@@ -21,6 +21,7 @@ const Section2: FC<Props> = ({ featuredCategories }) => {
   return (
     <Container sx={{ mb: 8 }}>
       <SectionHeader title="Featured Categories" />
+
       <Grid container spacing={3}>
         <Grid item md={6} xs={12}>
           <Card2

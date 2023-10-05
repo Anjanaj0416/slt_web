@@ -1,13 +1,10 @@
 "use client";
 
-import { FC, Fragment, useEffect, useState } from "react";
+import { FC, Fragment } from "react";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
-import { Carousel } from "components/carousel";
-import { carouselStyled } from "components/carousel/styles";
+import { Carousel } from "components/carousel-2";
 import { ProductCard8 } from "components/product-cards/product-card-8";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -17,16 +14,12 @@ type Props = { products: Product[] };
 // ======================================================================
 
 const Section6: FC<Props> = ({ products }) => {
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(4);
-
-  useEffect(() => {
-    if (width < 426) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 1024) setVisibleSlides(3);
-    else if (width < 1200) setVisibleSlides(4);
-    else setVisibleSlides(5);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 1200, settings: { slidesToShow: 4 } },
+    { breakpoint: 1024, settings: { slidesToShow: 3 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 426, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <Fragment>
@@ -36,7 +29,11 @@ const Section6: FC<Props> = ({ products }) => {
           Featured Products
         </H2>
 
-        <Carousel totalSlides={products.length} visibleSlides={visibleSlides} sx={carouselStyled}>
+        <Carousel
+          slidesToShow={5}
+          responsive={responsive}
+          arrowStyles={{ backgroundColor: "dark.main", top: "34%" }}
+        >
           {products.map((product) => (
             <ProductCard8 key={product.id} product={product} />
           ))}

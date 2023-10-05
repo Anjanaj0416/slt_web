@@ -1,19 +1,17 @@
 "use client";
 
+import { FC } from "react";
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 // CUSTOM ICON COMPONENT
 import GiftBox from "icons/GiftBox";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import HoverBox from "components/HoverBox";
 import { H6 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
@@ -25,22 +23,19 @@ type Props = { bigDiscountList: Product[] };
 // ========================================================
 
 const Section12: FC<Props> = ({ bigDiscountList }) => {
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(6);
-
-  useEffect(() => {
-    if (width < 370) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 950) setVisibleSlides(4);
-    else setVisibleSlides(6);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 1024, settings: { slidesToShow: 5 } },
+    { breakpoint: 959, settings: { slidesToShow: 4 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 370, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <SectionCreator icon={<GiftBox />} title="Big Discounts" seeMoreLink="#">
       <Box my="-0.25rem">
-        <Carousel totalSlides={bigDiscountList.length} visibleSlides={visibleSlides} showDots>
+        <Carousel dots slidesToShow={6} responsive={responsive}>
           {bigDiscountList.map(({ id, title, thumbnail, price, discount, slug }) => (
-            <Box py={0.5} key={id}>
+            <Box key={id} pb={1}>
               <BazaarCard sx={{ p: "1rem" }}>
                 <Link href={`/products/${slug}`}>
                   <HoverBox borderRadius={2} mb={1}>

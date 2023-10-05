@@ -7,7 +7,7 @@ import Quote from "icons/Quote";
 // Local CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { H5, Paragraph } from "components/Typography";
 
 // STYLED COMPONENTS
@@ -56,7 +56,7 @@ type Props = { testimonials: any[] };
 
 const Section9: FC<Props> = ({ testimonials = [] }) => {
   return (
-    <Carousel spacing="0px" showDots={true} totalSlides={3} visibleSlides={1}>
+    <Carousel slidesToShow={1} spaceBetween={0}>
       {testimonials.map((data, ind) => (
         <StyledBazaarCard key={ind}>
           <StyledFlexBox position="relative" flexWrap="wrap">

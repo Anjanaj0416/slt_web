@@ -1,12 +1,10 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { SectionCreator } from "components/section-header";
 import { ProductCard2 } from "components/product-cards/product-card-2";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // CUSTOM ICON COMPONENT
 import Light from "icons/Light";
 // COMMON STYLES
@@ -19,25 +17,15 @@ type Props = { flashDeals: Product[] };
 // =================================================
 
 const Section2: FC<Props> = ({ flashDeals }) => {
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(4);
-
-  useEffect(() => {
-    if (width < 500) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 950) setVisibleSlides(3);
-    else setVisibleSlides(4);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 950, settings: { slidesToShow: 3 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 500, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <SectionCreator icon={<Light color="primary" />} title="Flash Deals">
-      <Carousel
-        infinite={true}
-        visibleSlides={visibleSlides}
-        totalSlides={flashDeals.length}
-        leftButtonStyle={ARROW_BUTTON_STYLE}
-        rightButtonStyle={ARROW_BUTTON_STYLE}
-      >
+      <Carousel slidesToShow={4} responsive={responsive} arrowStyles={ARROW_BUTTON_STYLE}>
         {flashDeals.map((item) => (
           <ProductCard2
             key={item.id}

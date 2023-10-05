@@ -5,12 +5,11 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import { CSSObject } from "@mui/material/styles";
 // LOCAL CUSTOM COMPONENT
 import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS
 import { NavLink3 } from "components/nav-link";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { H4, Paragraph } from "components/Typography";
 import { CarouselCard4 } from "components/carousel-cards";
 // CUSTOM DATA MODEL
@@ -22,17 +21,12 @@ type Props = { carouselData: MainCarouselItem[] };
 
 const Section1: FC<Props> = ({ carouselData }) => {
   // CUSTOM CAROUSEL STYLES
-  const CAROUSEL_STYLES: CSSObject = {
-    overflow: "hidden",
-    borderRadius: "3px",
-    "& .carousel__dot-group": {
-      mt: 0,
-      left: 0,
-      right: 0,
-      bottom: 10,
-      position: "absolute",
-      "& div": { borderColor: "dark.main", "::after": { backgroundColor: "dark.main" } },
-    },
+  const CAROUSEL_DOT_STYLES = {
+    left: 0,
+    right: 0,
+    bottom: 25,
+    position: "absolute",
+    "& span": { borderColor: "dark.main", "::after": { backgroundColor: "dark.main" } },
   };
 
   return (
@@ -42,14 +36,11 @@ const Section1: FC<Props> = ({ carouselData }) => {
           {/* MAIN CAROUSEL AREA */}
           <Grid item md={9} xs={12}>
             <Carousel
-              spacing="0px"
-              infinite={true}
-              showDots={true}
-              autoPlay={false}
-              visibleSlides={1}
-              showArrow={false}
-              sx={CAROUSEL_STYLES}
-              totalSlides={carouselData.length}
+              dots
+              arrows={false}
+              spaceBetween={0}
+              slidesToShow={1}
+              dotStyles={CAROUSEL_DOT_STYLES}
             >
               {carouselData.map((item, ind) => (
                 <CarouselCard4
@@ -70,7 +61,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
           <Grid item md={3} xs={12}>
             <Stack height="100%" direction={{ md: "column", sm: "row", xs: "column" }} spacing={2}>
               {/* SUMMER SALE BANNER */}
-              <BannerCard flex={1} img="/assets/images/banners/banner-17.jpg">
+              <BannerCard imageFull flex={1} img="/assets/images/banners/banner-17.jpg">
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   NEW ARRIVALS
                 </Paragraph>
@@ -85,7 +76,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
               </BannerCard>
 
               {/* DESKTOP & LAPTOP BANNER */}
-              <BannerCard flex={1} img="/assets/images/banners/banner-16.jpg">
+              <BannerCard imageFull flex={1} img="/assets/images/banners/banner-16.jpg">
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   GAMING 4K
                 </Paragraph>

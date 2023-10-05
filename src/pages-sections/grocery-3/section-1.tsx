@@ -1,10 +1,9 @@
 import { FC } from "react";
 import Box from "@mui/material/Box";
-import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import LazyImage from "components/LazyImage";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 // CUSTOM DATA MODEL
 import { MainCarouselItem } from "models/Grocery-3.model";
 // STYLED COMPONENTS
@@ -23,19 +22,15 @@ type Props = { mainCarouselData: MainCarouselItem[] };
 // ===================================================================
 
 const Section1: FC<Props> = ({ mainCarouselData }) => {
-  const { palette } = useTheme();
-
   return (
     <StyledBox id="carouselBox">
       <Carousel
-        spacing="0px"
-        showDots={true}
-        autoPlay={false}
-        showArrow={false}
-        visibleSlides={1}
-        dotClass="carousel-dot"
-        dotColor={palette.primary.main}
-        totalSlides={mainCarouselData.length}
+        dots
+        autoplay
+        arrows={false}
+        spaceBetween={0}
+        slidesToShow={1}
+        dotStyles={{ left: 0, right: 0, bottom: 30, position: "absolute" }}
       >
         {mainCarouselData.map((item, ind) => (
           <Container key={ind}>

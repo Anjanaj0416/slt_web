@@ -22,6 +22,16 @@ export const CAROUSEL_STYLE = (theme: Theme, slider = false) => {
   };
 };
 
+export const CAROUSEL_ARROW_STYLE = {
+  width: 35,
+  height: 35,
+  borderRadius: 0,
+  boxShadow: 2,
+  color: "primary.main",
+  backgroundColor: "primary.50",
+  "&:hover": { backgroundColor: "primary.100" },
+};
+
 // USED IN SIDEBAR COMPONENT
 export const SidebarContainer = styled(Container)(({ theme }) => ({
   display: "flex",
@@ -54,13 +64,6 @@ export const StyledBox = styled("div")(({ theme }) => ({
   marginBottom: 60,
   overflow: "hidden",
   backgroundColor: theme.palette.primary[100],
-  "& .carousel-dot": {
-    left: 0,
-    right: 0,
-    bottom: "30px",
-    margin: "auto",
-    position: "absolute",
-  },
 }));
 
 export const StyledGrid = styled(Grid)(({ theme }) => ({

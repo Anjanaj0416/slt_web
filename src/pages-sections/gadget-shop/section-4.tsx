@@ -1,13 +1,11 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { SectionCreator } from "components/section-header";
 import { ProductCard2 } from "components/product-cards/product-card-2";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -16,30 +14,19 @@ type Props = { mostViewedList: Product[] };
 // =============================================
 
 const Section4: FC<Props> = ({ mostViewedList }) => {
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(4);
-
-  useEffect(() => {
-    if (width < 500) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 950) setVisibleSlides(3);
-    else setVisibleSlides(4);
-  }, [width]);
-
-  const ARROW_BUTTON_STYLE = {
-    backgroundColor: "white",
-    color: "#2B3445",
-  };
+  const responsive = [
+    { breakpoint: 950, settings: { slidesToShow: 3 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 500, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <SectionCreator title="Most Viewed">
       <Box mt={-0.5} mb={-0.5}>
         <Carousel
-          infinite={true}
-          visibleSlides={visibleSlides}
-          totalSlides={mostViewedList.length}
-          leftButtonStyle={ARROW_BUTTON_STYLE}
-          rightButtonStyle={ARROW_BUTTON_STYLE}
+          slidesToShow={4}
+          responsive={responsive}
+          arrowStyles={{ color: "dark.main", backgroundColor: "white" }}
         >
           {mostViewedList.map((item, ind) => (
             <Box py={0.5} key={ind}>

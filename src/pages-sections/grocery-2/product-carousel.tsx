@@ -1,11 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import ProductCard1 from "components/product-cards/product-card-1";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -13,17 +11,11 @@ import Product from "models/Product.model";
 type Props = { title: string; products: Product[] };
 // =======================================================
 
-const ProductCarousel: FC<Props> = (props) => {
-  const { products, title } = props;
-
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(3);
-
-  useEffect(() => {
-    if (width < 500) setVisibleSlides(1);
-    else if (width < 950) setVisibleSlides(2);
-    else setVisibleSlides(3);
-  }, [width]);
+const ProductCarousel: FC<Props> = ({ products, title }) => {
+  const responsive = [
+    { breakpoint: 950, settings: { slidesToShow: 2 } },
+    { breakpoint: 500, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <div>
@@ -31,7 +23,7 @@ const ProductCarousel: FC<Props> = (props) => {
         {title}
       </H3>
 
-      <Carousel showDots step={3} totalSlides={products.length} visibleSlides={visibleSlides}>
+      <Carousel slidesToShow={3} responsive={responsive}>
         {products.map((item) => (
           <Box py={0.5} key={item.id}>
             <ProductCard1

@@ -1,12 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Box from "@mui/material/Box";
-import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
-import { Carousel } from "components/carousel";
+import { Carousel } from "components/carousel-2";
 import { ProductCard3 } from "components/product-cards/product-card-3";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 // STYLED COMPONENT
@@ -17,27 +14,10 @@ type Props = { products: Product[] };
 // ===============================================================
 
 const Section3: FC<Props> = ({ products }) => {
-  const theme = useTheme();
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(3);
-
-  useEffect(() => {
-    if (width < 500) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 950) setVisibleSlides(3);
-    else setVisibleSlides(3);
-  }, [width]);
-
-  const CAROUSEL_STYLES = {
-    "& #backArrowButton, #backForwardButton": {
-      width: 40,
-      height: 40,
-      borderRadius: 0,
-      background: "#fff",
-      boxShadow: theme.shadows[2],
-      color: theme.palette.primary.main,
-    },
-  };
+  const responsive = [
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 500, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <div>
@@ -47,10 +27,16 @@ const Section3: FC<Props> = ({ products }) => {
       </TitleBox>
 
       <Carousel
-        infinite={true}
-        sx={CAROUSEL_STYLES}
-        visibleSlides={visibleSlides}
-        totalSlides={products.length}
+        responsive={responsive}
+        slidesToShow={3}
+        arrowStyles={{
+          width: 40,
+          height: 40,
+          boxShadow: 2,
+          borderRadius: 0,
+          color: "primary.main",
+          backgroundColor: "white",
+        }}
       >
         {products.map((item) => (
           <Box py={0.5} key={item.id}>

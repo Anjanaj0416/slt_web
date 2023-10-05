@@ -1,16 +1,13 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM HOOKS
-import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
+import { Carousel } from "components/carousel-2";
 import { FlexBetween } from "components/flex-box";
-import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
-import { carouselStyled } from "components/carousel/styles";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -19,16 +16,12 @@ type Props = { products: Product[] };
 // ======================================================================
 
 const Section4: FC<Props> = ({ products }) => {
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(4);
-
-  useEffect(() => {
-    if (width < 426) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 1024) setVisibleSlides(3);
-    else if (width < 1200) setVisibleSlides(4);
-    else setVisibleSlides(5);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 1200, settings: { slidesToShow: 4 } },
+    { breakpoint: 1024, settings: { slidesToShow: 3 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 426, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <Container sx={{ py: 8 }}>
@@ -37,7 +30,11 @@ const Section4: FC<Props> = ({ products }) => {
         <NavLink3 text="More Products" href="/" hoverColor="dark.main" />
       </FlexBetween>
 
-      <Carousel totalSlides={products.length} visibleSlides={visibleSlides} sx={carouselStyled}>
+      <Carousel
+        slidesToShow={5}
+        responsive={responsive}
+        arrowStyles={{ backgroundColor: "dark.main" }}
+      >
         {products.map((product) => (
           <ProductCard10 product={product} key={product.id} />
         ))}

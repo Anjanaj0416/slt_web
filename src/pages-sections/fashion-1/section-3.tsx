@@ -1,12 +1,10 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel";
-import { ProductCard2 } from "components/product-cards/product-card-2";
+import { Carousel } from "components/carousel-2";
 import { SectionCreator } from "components/section-header";
-// GLOBAL CUSTOM HOOK
-import useWindowSize from "hooks/useWindowSize";
+import { ProductCard2 } from "components/product-cards/product-card-2";
 // COMMON STYLES
 import { ARROW_BUTTON_STYLE } from "./style";
 // CUSTOM DATA MODEL
@@ -17,25 +15,15 @@ type Props = { newArrivals: Product[] };
 // ==========================================================
 
 const Section3: FC<Props> = ({ newArrivals }) => {
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(6);
-
-  useEffect(() => {
-    if (width < 500) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 950) setVisibleSlides(4);
-    else setVisibleSlides(6);
-  }, [width]);
+  const responsive = [
+    { breakpoint: 950, settings: { slidesToShow: 4 } },
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 500, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <SectionCreator title="New Arrivals" seeMoreLink="#">
-      <Carousel
-        infinite={true}
-        visibleSlides={visibleSlides}
-        totalSlides={newArrivals.length}
-        leftButtonStyle={ARROW_BUTTON_STYLE}
-        rightButtonStyle={ARROW_BUTTON_STYLE}
-      >
+      <Carousel slidesToShow={6} responsive={responsive} arrowStyles={ARROW_BUTTON_STYLE}>
         {newArrivals.map((item, ind) => (
           <ProductCard2
             hideReview
