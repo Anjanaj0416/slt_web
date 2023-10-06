@@ -4,10 +4,11 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { CarouselCard4 } from "components/carousel-cards";
 // CUSTOM DATA MODEL
 import { MainCarouselItem } from "models/Market-2.model";
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
 
 // ======================================================
 type Props = { carouselData: MainCarouselItem[] };
@@ -23,12 +24,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
           spaceBetween={0}
           slidesToShow={1}
           dotColor="white"
-          dotStyles={{
-            left: 0,
-            right: 0,
-            bottom: 20,
-            position: "absolute",
-          }}
+          dotStyles={COMMON_DOT_STYLES}
         >
           {carouselData.map((item, ind) => (
             <CarouselCard4

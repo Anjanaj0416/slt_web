@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { SectionCreator } from "components/section-header";
 import { ProductCard2 } from "components/product-cards/product-card-2";
 // COMMON STYLES

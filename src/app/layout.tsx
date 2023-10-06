@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Open_Sans } from "next/font/google";
 
 export const openSans = Open_Sans({ subsets: ["latin"] });
@@ -25,12 +25,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={openSans.className}>
         <CartProvider>
           <SettingsProvider>
-            <RTL>
-              <ThemeProvider>
-                <ProgressBar />
-                {children}
-              </ThemeProvider>
-            </RTL>
+            <ThemeProvider>
+              <ProgressBar />
+              <RTL>{children}</RTL>
+            </ThemeProvider>
           </SettingsProvider>
         </CartProvider>
       </body>

@@ -5,29 +5,24 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
+import useTheme from "@mui/material/styles/useTheme";
 // LOCAL CUSTOM COMPONENT
 import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS
 import { NavLink3 } from "components/nav-link";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { H4, Paragraph } from "components/Typography";
 import { CarouselCard4 } from "components/carousel-cards";
 // CUSTOM DATA MODEL
 import { MainCarouselItem } from "models/Market-2.model";
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
 
 // ======================================================
 type Props = { carouselData: MainCarouselItem[] };
 // ======================================================
 
 const Section1: FC<Props> = ({ carouselData }) => {
-  // CUSTOM CAROUSEL STYLES
-  const CAROUSEL_DOT_STYLES = {
-    left: 0,
-    right: 0,
-    bottom: 25,
-    position: "absolute",
-    "& span": { borderColor: "dark.main", "::after": { backgroundColor: "dark.main" } },
-  };
+  const { palette } = useTheme();
 
   return (
     <Box pt={3}>
@@ -40,7 +35,8 @@ const Section1: FC<Props> = ({ carouselData }) => {
               arrows={false}
               spaceBetween={0}
               slidesToShow={1}
-              dotStyles={CAROUSEL_DOT_STYLES}
+              dotColor={palette.dark.main}
+              dotStyles={COMMON_DOT_STYLES}
             >
               {carouselData.map((item, ind) => (
                 <CarouselCard4

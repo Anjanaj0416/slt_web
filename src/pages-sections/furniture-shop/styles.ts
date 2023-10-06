@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import styled from "@mui/material/styles/styled";
 import Container from "@mui/material/Container";
@@ -30,49 +29,24 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
 }));
 
 /** USED IN SECTION-1 FILE */
-export const StyledBox = styled("div")({
+export const Wrapper = styled("div")({
   marginBottom: 60,
   overflow: "hidden",
-  "& .carousel-dot": {
-    left: 0,
-    right: 0,
-    bottom: "30px",
-    margin: "auto",
-    position: "absolute",
-  },
+  ".carousel-content": { maxWidth: 600 },
 });
 
-export const ContainerBox = styled("div")(({ theme }) => ({
+export const ContentWrapper = styled("div")(({ theme }) => ({
   minHeight: 650,
   display: "flex",
   alignItems: "center",
-  backgroundImage: "url('/assets/images/Furniture Shop/Furniture Shop Header.jpg')",
+  justifyContent: "center",
+  flexDirection: "column",
   backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
-  transition: "all 0.3s",
-  [theme.breakpoints.down("md")]: { height: "60vh" },
-  [theme.breakpoints.down("sm")]: { height: "50vh" },
-}));
-
-export const StyledGrid = styled(Grid)({
-  maxWidth: 1280,
-  margin: "auto",
-  position: "relative",
-  alignItems: "center",
-  padding: "2rem 0px 5rem 0px",
-});
-
-export const GridItemOne = styled(Grid)(({ theme }) => ({
-  padding: 20,
-  "& h1": { fontSize: 60 },
-  [theme.breakpoints.down("md")]: {
-    "& h1": { fontSize: 50 },
-  },
-  [theme.breakpoints.down("sm")]: {
-    textAlign: "center",
-    "& h1": { fontSize: 40 },
-  },
+  backgroundRepeat: "no-repeat",
+  backgroundImage: "url('/assets/images/Furniture Shop/Furniture Shop Header.jpg')",
+  [theme.breakpoints.down("md")]: { h1: { fontSize: 50 }, paddingInline: 16 },
+  [theme.breakpoints.down("sm")]: { textAlign: "center", h1: { fontSize: 40 } },
 }));
 
 export const StyledButton = styled(Button)({
@@ -82,13 +56,6 @@ export const StyledButton = styled(Button)({
   fontSize: "16px",
   padding: "8px 30px",
 });
-
-export const TextBox = styled("div")(({ theme }) => ({
-  marginTop: 5,
-  marginBottom: 40,
-  paddingRight: 100,
-  [theme.breakpoints.down("md")]: { paddingRight: 0 },
-}));
 
 /** USED IN SECTION-2 FILE */
 const BOX_STYLE = {
@@ -124,14 +91,10 @@ export const RightContentBox = styled(Box, {
   backgroundOrigin: "content-box",
 }));
 
-export const RightContent = styled("div")({
-  "& p": { fontSize: 13, lineHeight: 1.4 },
-});
-
 export const CustomButton = styled(Button)({
+  fontSize: 12,
+  marginTop: 5,
   fontWeight: 600,
-  fontSize: "12px",
-  marginTop: "5px",
   padding: "4px 12px",
   textDecoration: "underline",
 });

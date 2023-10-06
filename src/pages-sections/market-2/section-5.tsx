@@ -10,7 +10,7 @@ import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL
 import { CategoryBasedProducts } from "models/Market-2.model";

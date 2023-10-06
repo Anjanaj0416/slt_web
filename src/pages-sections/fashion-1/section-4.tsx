@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 // LOCAL CUSTOM COMPONENT
 import DealWeekCard from "./shared/deal-week-card";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { SectionCreator } from "components/section-header";
 
 // ==========================================================

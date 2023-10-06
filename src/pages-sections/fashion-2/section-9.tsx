@@ -4,7 +4,7 @@ import { FC } from "react";
 import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import BazaarImage from "components/BazaarImage";
 import { FlexRowCenter } from "components/flex-box";
 // CUSTOM DATA MODEL

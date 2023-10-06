@@ -6,7 +6,7 @@ import Link from "next/link";
 import CategoryIcon from "icons/Category";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { SectionCreator } from "components/section-header";
 // LOCAL CUSTOM COMPONENT
 import TopCategoriesCard from "./shared/top-categories-card";

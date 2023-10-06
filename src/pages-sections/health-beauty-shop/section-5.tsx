@@ -32,7 +32,7 @@ const Section5: FC<Props> = ({ services = [] }) => {
                 </IconBox>
 
                 <div>
-                  <H4 fontSize={16} fontWeight="700" sx={{ color: "primary.main" }}>
+                  <H4 fontSize={16} fontWeight="700" color="primary.main">
                     {item.title}
                   </H4>
 

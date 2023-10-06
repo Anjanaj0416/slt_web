@@ -8,7 +8,7 @@ import Container from "@mui/material/Container";
 import Card1 from "./common/card-1";
 import ProductCarousel from "./common/product-carousel";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { CarouselCard3 } from "components/carousel-cards";
 import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL

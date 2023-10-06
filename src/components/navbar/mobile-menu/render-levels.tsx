@@ -22,7 +22,7 @@ const ACCORDION_SUMMARY_STYLES = {
   },
 };
 
-export const renderLevels = (data: any[]) => {
+export const renderLevels = (data: any[], handleClose: () => void) => {
   return data.map((item: any, index: number) => {
     if (item.child) {
       return (
@@ -31,7 +31,7 @@ export const renderLevels = (data: any[]) => {
             <H6>{item.title}</H6>
           </AccordionSummary>
 
-          <Box mx={2}>{renderLevels(item.child)}</Box>
+          <Box mx={2}>{renderLevels(item.child, handleClose)}</Box>
         </Accordion>
       );
     }
@@ -46,7 +46,9 @@ export const renderLevels = (data: any[]) => {
 
     return (
       <Box key={index} py={1}>
-        <NavLink href={item.url}>{item.title}</NavLink>
+        <NavLink href={item.url} onClick={handleClose}>
+          {item.title}
+        </NavLink>
       </Box>
     );
   });

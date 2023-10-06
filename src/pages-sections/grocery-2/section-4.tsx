@@ -6,7 +6,7 @@ import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H3, H5 } from "components/Typography";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 
 // STYLED COMPONENT
 const StyledGrid = styled(Grid)(({ theme }) => ({

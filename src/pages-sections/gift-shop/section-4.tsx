@@ -4,7 +4,7 @@ import { FC } from "react";
 import Link from "next/link";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 // LOCAL CUSTOM COMPONENT
 import CategoryCard from "./category-card";
 // COMMON CAROUSEL STYLES

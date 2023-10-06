@@ -1,162 +1,85 @@
-import { CSSObject, Theme, styled } from "@mui/material/styles";
-import { ButtonBack, ButtonNext, CarouselProvider, DotGroup, Slider } from "pure-react-carousel";
+import Box from "@mui/material/Box";
+import styled from "@mui/material/styles/styled";
 
-// StyledCarouselProvider and StyledSlider component props type
-type StyledProps = { spacing: string | undefined };
-
-// StyledArrowButton components props type
-type ArrowButtonProps = {
-  showDots?: boolean;
-  showArrowOnHover?: boolean;
-  dot_margin_top?: string | number;
+export const COMMON_DOT_STYLES = {
+  left: 0,
+  right: 0,
+  bottom: 25,
+  position: "absolute",
 };
 
-// common styles for arrow back and next button
-const commonArrowBtnStyle = ({
-  theme,
-  showDots,
-  dot_margin_top,
-  showArrowOnHover,
-}: ArrowButtonProps & { theme: Theme }): CSSObject => ({
-  width: 35,
-  border: 0,
-  height: 35,
-  opacity: 0,
-  alignItems: "center",
-  position: "absolute",
-  justifyContent: "center",
-  transform: "translateY(-50%)",
-  background: theme.palette.secondary.main,
-  color: theme.palette.secondary.contrastText,
-  display: showArrowOnHover ? "none" : "flex",
-  boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
-  top: `calc(50% - ${showDots ? dot_margin_top : "0px"})`,
-  transition: "all 0.4s ease",
-
-  "&:disabled": {
-    cursor: "not-allowed",
-    color: theme.palette.secondary.main,
-    background: theme.palette.text.disabled,
-  },
-
-  "&:hover:not(:disabled)": {
-    background: theme.palette.secondary.main,
-    color: theme.palette.secondary.contrastText,
-  },
-
-  [theme.breakpoints.down("xs")]: { display: "block !important" },
-});
-
-// styled components
-const StyledCarouselProvider = styled(CarouselProvider, {
-  shouldForwardProp: (prop) => prop !== "spacing" && prop !== "sx",
-})<StyledProps>(({ spacing }) => ({
-  minWidth: 0,
-  position: "relative",
-  "& .focusRing___1airF.carousel__slide-focus-ring": {
-    outline: "none !important",
-  },
-
-  "& .carousel__inner-slide": {
-    margin: "auto",
-    width: `calc(100% - ${spacing || "0px"})`,
-  },
-
-  "&:hover $arrowButton": { display: "flex" },
-
+export const RootStyle = styled("div", {
+  shouldForwardProp: (prop) => prop !== "space",
+})<{ space: number }>(({ space }) => ({
+  ".slick-list": { marginInline: -space },
+  ".slick-slide": { paddingInline: space },
   ":hover": {
-    "& #backArrowButton": { opacity: 1 },
-    "& #backForwardButton": { opacity: 1 },
+    ".slick-arrow": {
+      opacity: 1,
+      "&.next": { right: 5 },
+      "&.prev": { left: 5 },
+    },
   },
 }));
 
-const StyledSlider = styled(Slider, {
-  shouldForwardProp: (prop) => prop !== "spacing",
-})<StyledProps>(({ spacing }) => ({
-  marginLeft: `calc(-1 * ${spacing || "0px"} / 2)`,
-  marginRight: `calc(-1 * ${spacing || "0px"} / 2)`,
-}));
-
-const StyledDotGroup = styled(DotGroup, {
-  shouldForwardProp: (prop) => prop !== "dot_margin_top",
-})<{ dot_margin_top?: string | number }>(({ dot_margin_top }) => ({
+export const DotList = styled(Box)(({ theme }) => ({
+  gap: 6,
+  zIndex: 1,
+  margin: 0,
+  padding: 0,
   display: "flex",
+  alignItems: "center",
   justifyContent: "center",
-  marginTop: dot_margin_top || "0px",
+  color: theme.palette.primary.main,
+  "& li": {
+    width: 15,
+    height: 15,
+    display: "flex",
+    cursor: "pointer",
+    alignItems: "center",
+    justifyContent: "center",
+    "&.slick-active span::after": { scale: "1" },
+  },
 }));
 
-const StyledDot = styled("div", {
-  shouldForwardProp: (prop) => prop !== "dot_color" && prop !== "dot_active",
-})<{ dot_color?: string; dot_active?: any }>(({ dot_color, dot_active, theme }) => ({
-  width: 15,
-  height: 15,
-  borderRadius: 300,
-  margin: "0.25rem",
+export const Dot = styled("span", {
+  shouldForwardProp: (prop) => prop !== "dotColor",
+})<{ dotColor?: string }>(({ dotColor, theme }) => ({
+  width: "100%",
+  height: "100%",
   cursor: "pointer",
+  borderRadius: "50%",
   position: "relative",
-  border: `1px solid ${dot_color || theme.palette.secondary.main}`,
+  border: `1px solid ${dotColor || theme.palette.secondary.main}`,
   "&:after": {
+    scale: 0,
     inset: 0,
     width: 9,
     height: 9,
     content: '""',
     margin: "auto",
-    borderRadius: 300,
+    borderRadius: "50%",
     position: "absolute",
-    scale: dot_active ? 1 : 0,
-    backgroundColor: dot_color || theme.palette.secondary.main,
+    transition: "scale 500ms ease-in-out",
+    backgroundColor: dotColor || theme.palette.secondary.main,
   },
 }));
 
-const StyledArrowBackButton = styled(ButtonBack, {
-  shouldForwardProp: (prop) =>
-    prop !== "showArrowOnHover" && prop !== "showDots" && prop !== "dot_margin_top",
-})<ArrowButtonProps>(({ theme, showArrowOnHover, showDots, dot_margin_top }) => ({
-  left: 0,
-  ...commonArrowBtnStyle({ theme, showDots, showArrowOnHover, dot_margin_top }),
-  [theme.breakpoints.down("md")]: { height: "36px", width: "36px", left: "-12px" },
+export const ArrowButton = styled(Box)(({ theme }) => ({
+  zIndex: 1,
+  width: 35,
+  height: 35,
+  padding: 0,
+  opacity: 0,
+  top: "50%",
+  display: "flex",
+  cursor: "pointer",
+  position: "absolute",
+  alignItems: "center",
+  justifyContent: "center",
+  transform: "translate(0, -50%)",
+  transition: "all 0.2s ease-in-out",
+  color: theme.palette.secondary.contrastText,
+  backgroundColor: theme.palette.secondary.main,
+  boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
 }));
-
-const StyledArrowNextButton = styled(ButtonNext, {
-  shouldForwardProp: (prop) =>
-    prop !== "showArrowOnHover" && prop !== "showDots" && prop !== "dot_margin_top",
-})<ArrowButtonProps>(({ theme, showArrowOnHover, showDots, dot_margin_top }) => ({
-  right: 0,
-  ...commonArrowBtnStyle({ theme, showDots, showArrowOnHover, dot_margin_top }),
-  [theme.breakpoints.down("md")]: { height: "36px", width: "36px", right: "-12px" },
-}));
-
-const carouselStyled: CSSObject = {
-  overflow: "hidden",
-  "& .carousel__back-button, & .carousel__next-button": {
-    width: 30,
-    opacity: 1,
-    color: "white",
-    borderRadius: 0,
-    transition: "0.3s",
-    backgroundColor: "dark.main",
-    ":hover:not(:disabled)": { color: "white", backgroundColor: "dark.main" },
-  },
-  "& .carousel__back-button": {
-    left: 0,
-    boxShadow: "-4px 0 7px -5px rgb(0 0 0 / 20%)",
-  },
-  "& .carousel__next-button": {
-    right: 0,
-    boxShadow: "4px 0 7px -5px rgb(0 0 0 / 20%)",
-  },
-  "& .carousel__next-button:disabled, & .carousel__back-button:disabled": {
-    opacity: 0.6,
-  },
-};
-
-export {
-  StyledDot,
-  StyledSlider,
-  StyledDotGroup,
-  carouselStyled,
-  commonArrowBtnStyle,
-  StyledArrowBackButton,
-  StyledArrowNextButton,
-  StyledCarouselProvider,
-};

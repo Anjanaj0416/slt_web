@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { FlexBetween } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL

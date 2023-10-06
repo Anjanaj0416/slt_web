@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { SectionHeader } from "components/section-header";
 import { ProductCard4 } from "components/product-cards/product-card-4";
 // CUSTOM DATA MODEL

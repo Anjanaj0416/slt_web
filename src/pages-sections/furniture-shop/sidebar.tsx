@@ -11,9 +11,7 @@ import CategoryNavList from "models/CategoryNavList.model";
 import { StyledContainer } from "./styles";
 
 // ==============================================================
-interface Props {
-  navList: CategoryNavList[];
-}
+type Props = { navList: CategoryNavList[] };
 // ==============================================================
 
 const Sidebar = ({ navList }: Props) => {

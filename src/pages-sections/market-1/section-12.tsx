@@ -11,7 +11,7 @@ import { H6 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";

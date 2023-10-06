@@ -7,7 +7,7 @@ import Light from "icons/Light";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { SectionCreator } from "components/section-header";
 import ProductCard1 from "components/product-cards/product-card-1";
 

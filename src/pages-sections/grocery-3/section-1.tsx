@@ -3,10 +3,11 @@ import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import LazyImage from "components/LazyImage";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 // CUSTOM DATA MODEL
 import { MainCarouselItem } from "models/Grocery-3.model";
 // STYLED COMPONENTS
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
 import {
   TextBox,
   StyledBox,
@@ -30,7 +31,7 @@ const Section1: FC<Props> = ({ mainCarouselData }) => {
         arrows={false}
         spaceBetween={0}
         slidesToShow={1}
-        dotStyles={{ left: 0, right: 0, bottom: 30, position: "absolute" }}
+        dotStyles={COMMON_DOT_STYLES}
       >
         {mainCarouselData.map((item, ind) => (
           <Container key={ind}>

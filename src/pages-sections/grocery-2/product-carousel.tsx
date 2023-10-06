@@ -2,7 +2,7 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import ProductCard1 from "components/product-cards/product-card-1";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";

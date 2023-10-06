@@ -6,11 +6,12 @@ import Container from "@mui/material/Container";
 import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { H1, Paragraph } from "components/Typography";
 // CUSTOM DATA MODEL
 import { GiftCarouselItem } from "models/Carousel.model";
 // STYLED COMPONENTS
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
 import { StyledBox, StyledGrid, GridItemOne, GridItemTwo, CarouselButton } from "./styles";
 
 // ==========================================================
@@ -29,13 +30,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
           spaceBetween={0}
           slidesToShow={1}
           dotColor={palette.primary.main}
-          dotStyles={{
-            left: 0,
-            right: 0,
-            bottom: 30,
-            margin: "auto",
-            position: "absolute",
-          }}
+          dotStyles={COMMON_DOT_STYLES}
         >
           {carouselData.map(({ id, title, subTitle, buttonText, imgUrl }) => (
             <div key={id}>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { H3, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";

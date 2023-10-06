@@ -46,6 +46,7 @@ const StyledBox = styled("div")(({ theme }) => ({
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: 250,
+  zIndex: 1501,
   flexShrink: 0,
   "& .MuiDrawer-paper": {
     width: 250,

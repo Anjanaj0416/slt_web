@@ -29,16 +29,7 @@ const Section3 = () => {
         </Link>
       </Grid>
 
-      <Grid
-        item
-        xs={12}
-        sm={5}
-        md={5}
-        sx={{
-          pl: "24px !important",
-          [breakpoints.down("sm")]: { pl: "0 !important" },
-        }}
-      >
+      <Grid item xs={12} sm={5} md={5}>
         <Link href="/sales-1">
           <RightContentBox sx={{ p: "20px" }}>
             <Box textAlign="center">

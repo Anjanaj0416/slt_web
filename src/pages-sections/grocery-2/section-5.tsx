@@ -7,7 +7,7 @@ import Quote from "icons/Quote";
 // Local CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { H5, Paragraph } from "components/Typography";
 
 // STYLED COMPONENTS

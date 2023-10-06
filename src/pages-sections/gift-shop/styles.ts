@@ -53,8 +53,9 @@ export const SidebarContainer = styled(Container)(({ theme }) => ({
     width: `calc(100% - 2.5rem - ${layoutConstant.grocerySidenavWidth}px)`,
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      "& .MuiGrid-item": { paddingLeft: 0 },
-      "& .categories": { marginLeft: "-1.75rem" },
+      marginLeft: 0,
+      // "& .MuiGrid-item": { paddingLeft: 0 },
+      // "& .categories": { marginLeft: "-1.75rem" },
     },
   },
 }));

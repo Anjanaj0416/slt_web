@@ -1,25 +1,20 @@
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { styled, useTheme } from "@mui/material/styles";
+import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import { H1 } from "components/Typography";
 import LazyImage from "components/LazyImage";
 import { Carousel } from "components/carousel";
 // CUSTOM DATA MODEL
 import { HealthCarouselItem } from "models/Carousel.model";
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
 
 // STYLED COMPONENTS
 const StyledBox = styled("div")({
   overflow: "hidden",
   backgroundColor: "#efefef",
-  "& .carousel-dot": {
-    left: 0,
-    right: 0,
-    bottom: "30px",
-    margin: "auto",
-    position: "absolute",
-  },
 });
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -50,6 +45,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   color: "#fff",
   fontWeight: 400,
   fontSize: "14px",
+  paddingInline: 25,
   background: theme.palette.primary.main,
   "&:hover": { background: theme.palette.primary[400] },
 }));
@@ -68,31 +64,28 @@ const Section1: FC<Props> = ({ carouselData }) => {
   return (
     <StyledBox id="carouselBox">
       <Carousel
-        spacing="0px"
-        showDots={true}
-        autoPlay={false}
-        showArrow={false}
-        visibleSlides={1}
-        dotClass="carousel-dot"
+        dots
+        arrows={false}
+        slidesToShow={1}
         dotColor={palette.primary.main}
-        totalSlides={carouselData.length}
+        dotStyles={COMMON_DOT_STYLES}
       >
         {carouselData.map((item) => (
-          <StyledGrid container key={item.id}>
-            <GridItemOne item md={7} sm={7} xs={12}>
-              <div className="titleBox">
-                <H1 maxWidth={380}>{item.title}</H1>
-              </div>
+          <div key={item.id}>
+            <StyledGrid container>
+              <GridItemOne item md={7} sm={7} xs={12}>
+                <div className="titleBox">
+                  <H1 maxWidth={380}>{item.title}</H1>
+                </div>
 
-              <StyledButton variant="contained" sx={{ px: "25px" }}>
-                Shop Now
-              </StyledButton>
-            </GridItemOne>
+                <StyledButton variant="contained">Shop Now</StyledButton>
+              </GridItemOne>
 
-            <GridItemTwo item md={5} sm={5} xs={12}>
-              <LazyImage priority width={570} height={360} src={item.imgUrl} alt={item.title} />
-            </GridItemTwo>
-          </StyledGrid>
+              <GridItemTwo item md={5} sm={5} xs={12}>
+                <LazyImage priority width={570} height={360} src={item.imgUrl} alt={item.title} />
+              </GridItemTwo>
+            </StyledGrid>
+          </div>
         ))}
       </Carousel>
     </StyledBox>

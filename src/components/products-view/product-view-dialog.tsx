@@ -4,7 +4,6 @@ import Rating from "@mui/material/Rating";
 import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import styled from "@mui/material/styles/styled";
 import IconButton from "@mui/material/IconButton";
 import DialogContent from "@mui/material/DialogContent";
 // MUI ICON COMPONENTS
@@ -13,36 +12,13 @@ import Close from "@mui/icons-material/Close";
 import Remove from "@mui/icons-material/Remove";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
+import { Carousel } from "components/carousel";
 import BazaarImage from "components/BazaarImage";
-import Carousel from "components/carousel/carousel";
 import { H1, H2, H3, H6, Paragraph } from "components/Typography";
 // LOCAL CUSTOM HOOKS
 import useCart from "hooks/useCart";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
-
-// styled components
-const ContentWrapper = styled("div")(({ theme }) => ({
-  "& .carousel:hover": {
-    cursor: "pointer",
-    "& .carousel__back-button": { opacity: 1, left: 10 },
-    "& .carousel__next-button": { opacity: 1, right: 10 },
-  },
-  "& .carousel__next-button, & .carousel__back-button": {
-    opacity: 0,
-    boxShadow: "none",
-    transition: "all 0.3s",
-    background: "transparent",
-    color: theme.palette.primary.main,
-    ":disabled": { color: theme.palette.grey[500] },
-    ":hover": {
-      color: theme.palette.primary.main,
-      backgroundColor: "transparent",
-    },
-  },
-  "& .carousel__back-button": { left: 0 },
-  "& .carousel__next-button": { right: 0 },
-}));
 
 // =====================================================
 interface Props {
@@ -73,10 +49,17 @@ const ProductViewDialog: FC<Props> = (props) => {
   return (
     <Dialog open={openDialog} maxWidth={false} onClose={handleCloseDialog} sx={{ zIndex: 1501 }}>
       <DialogContent sx={{ maxWidth: 900, width: "100%" }}>
-        <ContentWrapper>
+        <div>
           <Grid container spacing={3}>
             <Grid item md={6} xs={12}>
-              <Carousel totalSlides={product.imgGroup.length} visibleSlides={1}>
+              <Carousel
+                slidesToShow={1}
+                arrowStyles={{
+                  boxShadow: 0,
+                  color: "primary.main",
+                  backgroundColor: "transparent",
+                }}
+              >
                 {product.imgGroup.map((item: string, index: number) => (
                   <BazaarImage
                     key={index}
@@ -153,7 +136,7 @@ const ProductViewDialog: FC<Props> = (props) => {
               )}
             </Grid>
           </Grid>
-        </ContentWrapper>
+        </div>
 
         <IconButton sx={{ position: "absolute", top: 3, right: 3 }} onClick={handleCloseDialog}>
           <Close fontSize="small" color="secondary" />

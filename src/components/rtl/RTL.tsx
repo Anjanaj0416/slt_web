@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, PropsWithChildren, useEffect } from "react";
-import createCache, { StylisPlugin } from "@emotion/cache";
+import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import stylisRTLPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
@@ -14,15 +14,17 @@ const RTL: FC<PropsWithChildren> = ({ children }) => {
     document.dir = settings.direction;
   }, [settings.direction]);
 
-  const cacheRTL = createCache({
-    key: settings.direction === "rtl" ? "rtl" : "css",
-    stylisPlugins:
-      settings.direction === "rtl" ? ([prefixer, stylisRTLPlugin] as StylisPlugin[]) : [],
+  const cacheRtl = createCache({
+    key: "rtl",
+    prepend: true,
+    stylisPlugins: [prefixer, stylisRTLPlugin],
   });
 
-  cacheRTL.compat = true;
+  if (settings.direction === "rtl") {
+    return <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
+  }
 
-  return <CacheProvider value={cacheRTL}>{children}</CacheProvider>;
+  return <>{children}</>;
 };
 
 export default RTL;

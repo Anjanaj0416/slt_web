@@ -34,7 +34,7 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
+      <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           {children}

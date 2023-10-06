@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import AppStore from "components/footer/app-store";
 import { H1, H5, H6 } from "components/Typography";
 // CUSTOM DATA MODEL

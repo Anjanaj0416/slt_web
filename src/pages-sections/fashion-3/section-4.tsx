@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import styled from "@mui/material/styles/styled";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
+import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import { H2, H3 } from "components/Typography";
 import WhiteButton from "components/WhiteButton";
@@ -44,7 +44,12 @@ const Section4 = () => {
       <Grid container spacing={3}>
         <Grid item md={6} xs={12}>
           <Box width="100%" height="100%" position="relative">
-            <Image width={580} height={580} alt="category" src="/assets/images/categories/1.jpg" />
+            <LazyImage
+              width={580}
+              height={580}
+              alt="category"
+              src="/assets/images/categories/1.jpg"
+            />
 
             <ContentBox>
               <H2 fontSize={24}>PADDED CLOTHES</H2>
@@ -99,7 +104,7 @@ type SingleCategoryProps = {
 function SingleCategory({ img, url, buttonText }: SingleCategoryProps) {
   return (
     <Category2Wrapper>
-      <Image width={580} height={280} alt="category" src={img} />
+      <LazyImage width={580} height={280} alt="category" src={img} />
 
       <Category2ButtonWrapper>
         <WhiteButton size="large">{buttonText}</WhiteButton>

@@ -4,7 +4,7 @@ import { FC } from "react";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H2 } from "components/Typography";
-import { Carousel } from "components/carousel-2";
+import { Carousel } from "components/carousel";
 import { ProductCard8 } from "components/product-cards/product-card-8";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";

@@ -1,10 +1,7 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Box from "@mui/material/Box";
-import useTheme from "@mui/material/styles/useTheme";
-// GLOBAL CUSTOM HOOKS
-import useWindowSize from "hooks/useWindowSize";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { H1, Paragraph } from "components/Typography";
@@ -21,28 +18,10 @@ interface Props {
 // ====================================================
 
 const Section3: FC<Props> = ({ products, heading, description }) => {
-  const theme = useTheme();
-  const width = useWindowSize();
-  const [visibleSlides, setVisibleSlides] = useState(3);
-
-  useEffect(() => {
-    if (width < 500) setVisibleSlides(1);
-    else if (width < 650) setVisibleSlides(2);
-    else if (width < 950) setVisibleSlides(3);
-    else setVisibleSlides(3);
-  }, [width]);
-
-  const CAROUSEL_STYLE = {
-    "& #backArrowButton, #backForwardButton": {
-      width: 40,
-      height: 40,
-      borderRadius: 0,
-      boxShadow: theme.shadows[2],
-      color: theme.palette.primary.main,
-      background: theme.palette.primary[50],
-      "&:hover": { background: theme.palette.primary[100] },
-    },
-  };
+  const responsive = [
+    { breakpoint: 650, settings: { slidesToShow: 2 } },
+    { breakpoint: 500, settings: { slidesToShow: 1 } },
+  ];
 
   return (
     <div>
@@ -52,10 +31,17 @@ const Section3: FC<Props> = ({ products, heading, description }) => {
       </Box>
 
       <Carousel
-        totalSlides={products.length}
-        visibleSlides={visibleSlides}
-        infinite={true}
-        sx={CAROUSEL_STYLE}
+        responsive={responsive}
+        slidesToShow={3}
+        arrowStyles={{
+          width: 40,
+          height: 40,
+          boxShadow: 2,
+          borderRadius: 0,
+          color: "primary.main",
+          backgroundColor: "primary.50",
+          "&:hover": { backgroundColor: "primary.100" },
+        }}
       >
         {products.map((item) => (
           <Box py={2} key={item.id}>
