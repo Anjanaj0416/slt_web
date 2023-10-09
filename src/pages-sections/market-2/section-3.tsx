@@ -45,7 +45,7 @@ const AdTitle1 = styled(H3)(({ theme }) => ({
   textTransform: "uppercase",
   color: theme.palette.dark.main,
   "::after": {
-    top: -36,
+    top: theme.direction === "rtl" ? -16 : -36,
     bottom: 0,
     zIndex: -1,
     right: -17,

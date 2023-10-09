@@ -32,6 +32,8 @@ const Section6: FC<Props> = ({ carList, carBrands }) => {
       <FlexBox gap="1.75rem">
         <BazaarCard
           sx={{
+            width: "100%",
+            maxWidth: 250,
             height: "100%",
             minWidth: "240px",
             padding: "1.25rem",

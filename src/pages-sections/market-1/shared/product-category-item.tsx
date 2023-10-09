@@ -40,7 +40,7 @@ const ProductCategoryItem: FC<ProductCategoryItemProps> = ({
     >
       {imgUrl && <BazaarImage alt="" width={30} src={imgUrl} />}
 
-      <H4 lineHeight="1" textTransform="capitalize">
+      <H4 lineHeight="1" textTransform="capitalize" ellipsis>
         {title}
       </H4>
     </StyledBazaarCard>

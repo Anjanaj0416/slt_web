@@ -51,12 +51,7 @@ export const SidebarContainer = styled(Container)(({ theme }) => ({
     position: "relative",
     marginLeft: "1.75rem",
     width: `calc(100% - 2.5rem - ${layoutConstant.grocerySidenavWidth}px)`,
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      marginLeft: 0,
-      // "& .MuiGrid-item": { paddingLeft: 0 },
-      // "& .categories": { marginLeft: "-1.75rem" },
-    },
+    [theme.breakpoints.down("md")]: { width: "100%", marginLeft: 0 },
   },
 }));
 
@@ -141,30 +136,30 @@ const BOX_STYLE = {
   alignItems: "center",
 };
 
-export const LeftContentBox = styled(Card)(({ theme }) => ({
+export const LeftCard = styled(Card)(({ theme }) => ({
   ...BOX_STYLE,
+  position: "relative",
   background: theme.palette.primary[100],
-  backgroundImage: "url('/assets/images/Gift Shop/Offer Card.png')",
-  backgroundSize: "contain",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "right bottom",
-  "& .content": { width: "50%" },
+  ".content": {
+    zIndex: 1,
+    paddingInline: 20,
+    position: "absolute",
+    ...(theme.direction === "rtl" ? { right: 20, textAlign: "right" } : { left: 20 }),
+  },
 }));
 
-export const RightContentBox = styled(Card)(({ theme }) => ({
+export const RightCard = styled(Card)(({ theme }) => ({
   ...BOX_STYLE,
+  position: "relative",
   background: theme.palette.primary[100],
-  backgroundImage: "url('/assets/images/Gift Shop/Offer 1.png')",
-  backgroundSize: "contain",
-  backgroundPosition: "bottom",
-  backgroundRepeat: "no-repeat",
-  display: "block",
+  ".content": {
+    top: 20,
+    zIndex: 1,
+    width: "100%",
+    textAlign: "center",
+    position: "absolute",
+  },
 }));
-
-export const RightContent = styled(Box)({
-  paddingLeft: 60,
-  "& p": { fontSize: 13, lineHeight: 1.4 },
-});
 
 export const StyledButton = styled(Button)({
   fontWeight: 600,

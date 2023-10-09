@@ -30,6 +30,15 @@ const StyledQuote = styled(Quote)(({ theme }) => ({
   position: "absolute",
   color: theme.palette.text.primary,
   [theme.breakpoints.down("sm")]: { fontSize: "3rem" },
+  "&.first": {
+    top: 0,
+    ...(theme.direction === "rtl" ? { right: 0 } : { left: 0 }),
+  },
+  "&.last": {
+    bottom: 0,
+    transform: "rotate(180deg)",
+    ...(theme.direction === "rtl" ? { left: 0 } : { right: 0 }),
+  },
 }));
 
 const StyledAvatar = styled(Avatar)({
@@ -60,7 +69,7 @@ const Section9: FC<Props> = ({ testimonials = [] }) => {
       {testimonials.map((data, ind) => (
         <StyledBazaarCard key={ind}>
           <StyledFlexBox position="relative" flexWrap="wrap">
-            <StyledQuote sx={{ left: 0, top: 0 }} />
+            <StyledQuote className="first" />
 
             <StyledGridContainer container spacing={1}>
               <Grid item lg={2} md={3}>
@@ -75,7 +84,7 @@ const Section9: FC<Props> = ({ testimonials = [] }) => {
               </Grid>
             </StyledGridContainer>
 
-            <StyledQuote sx={{ right: 0, bottom: 0, transform: "rotate(180deg)" }} />
+            <StyledQuote className="last" />
           </StyledFlexBox>
         </StyledBazaarCard>
       ))}

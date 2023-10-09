@@ -18,12 +18,7 @@ const CardWrapper = styled("div", {
   backgroundImage: `url(${img})`,
   backgroundColor: mode === "dark" ? "#000" : "#fff",
   color: mode === "light" ? theme.palette.dark.main : "#fff",
-  ...(theme.direction === "rtl" && {
-    textAlign: "right",
-    paddingRight: "5rem",
-    justifyContent: "flex-end",
-    "& > .MuiBox-root": { padding: 0 },
-  }),
+  ".content": theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
   [theme.breakpoints.down("md")]: {
     padding: 24,
     textAlign: "center",
@@ -57,7 +52,7 @@ const CarouselCard4: FC<Props> = ({
 }) => {
   return (
     <CardWrapper img={bgImage} mode={mode}>
-      <Box pl={{ md: 10 }}>
+      <div className="content">
         <H4
           mb={1}
           lineHeight={1}
@@ -89,7 +84,7 @@ const CarouselCard4: FC<Props> = ({
         >
           {buttonText}
         </Button>
-      </Box>
+      </div>
     </CardWrapper>
   );
 };

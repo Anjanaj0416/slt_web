@@ -47,6 +47,8 @@ const Section7: FC<Props> = (props) => {
       <FlexBox gap="1.75rem">
         <BazaarCard
           sx={{
+            width: "100%",
+            maxWidth: 250,
             height: "100%",
             padding: "1.25rem",
             borderRadius: "10px",
@@ -98,9 +100,7 @@ const Section7: FC<Props> = (props) => {
 
           <ProductCategoryItem
             title={`View All ${type}`}
-            isSelected={!!selected.match(`all-${type}`)}
-            onClick={handleCategoryClick(`all-${type}`)}
-            sx={{ mt: 8, bgcolor: selected.match(`all-${type}`) }}
+            sx={{ mt: 8, bgcolor: "grey.100", justifyContent: "center" }}
           />
         </BazaarCard>
 

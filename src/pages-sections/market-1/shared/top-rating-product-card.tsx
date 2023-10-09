@@ -34,7 +34,7 @@ const TopRatingProductCard: FC<Props> = (props) => {
       </HoverBox>
 
       <FlexRowCenter mb={0.5} gap={0.5}>
-        <Rating size="small" value={rating} color="warn" readOnly />
+        <Rating size="small" value={rating} color="warn" readOnly sx={{ fontSize: 12 }} />
         <Small fontWeight={600}>({reviewCount})</Small>
       </FlexRowCenter>
 

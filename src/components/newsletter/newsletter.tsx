@@ -36,14 +36,31 @@ const Wrapper = styled(Box, {
   boxShadow: theme.shadows[3],
   transform: "translate(-50%, -50%)",
   backgroundColor: theme.palette.background.paper,
-  [theme.breakpoints.between("sm", "md")]: { maxWidth: 620, padding: 24 },
+  [theme.breakpoints.between("sm", "md")]: {
+    padding: 24,
+    maxWidth: 620,
+  },
   [theme.breakpoints.up("md")]: {
     padding: 32,
     height: 550,
-    backgroundImage: `url(${img})`,
-    backgroundRepeat: "no-repeat",
-    //   backgroundSize: "contain",
-    backgroundPosition: "left",
+    ":after": {
+      content: "''",
+      width: "100%",
+      height: "100%",
+      backgroundImage: `url(${img})`,
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "left",
+      top: 0,
+      left: 0,
+      zIndex: 1,
+      position: "absolute",
+      ...(theme.direction === "rtl" && {
+        right: 0,
+        marginRight: "auto",
+        backgroundPosition: "right",
+        transform: "rotateX(180deg) rotateZ(180deg)",
+      }),
+    },
   },
 }));
 

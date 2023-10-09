@@ -1,11 +1,11 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import styled from "@mui/material/styles/styled";
 // MUI ICON COMPONENT
 import Favorite from "@mui/icons-material/Favorite";
 // GLOBAL CUSTOM COMPONENTS
+import { FlexBox } from "components/flex-box";
 import BazaarImage from "components/BazaarImage";
 import { Countdown } from "components/countdown";
 import { H2, H3, H4, Paragraph } from "components/Typography";
@@ -67,13 +67,12 @@ const CarouselCard2: FC<Props> = ({ imgUrl, productName, expireDate }) => {
           {/* countdown time */}
           <Countdown expireDate={expireDate} />
 
-          <Box mt={3}>
+          <FlexBox gap={2} mt={3}>
             <Button
               color="primary"
               disableElevation
               variant="contained"
-              className="button-link"
-              sx={{ px: "1.75rem", height: "44px", borderRadius: "8px", mr: "1rem" }}
+              sx={{ px: 4, borderRadius: 2 }}
             >
               BUY NOW
             </Button>
@@ -81,7 +80,7 @@ const CarouselCard2: FC<Props> = ({ imgUrl, productName, expireDate }) => {
             <FavoriteButton>
               <Favorite />
             </FavoriteButton>
-          </Box>
+          </FlexBox>
         </ContentWrapper>
       </Grid>
     </Grid>

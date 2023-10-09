@@ -41,7 +41,7 @@ const LongProductCard: FC<Props> = ({
   return (
     <div>
       <Link href={`/products/${slug}`}>
-        <HoverBox>
+        <HoverBox borderRadius={1}>
           <BazaarImage src={imgUrl} width="100%" height="auto" alt={title} mx="auto" />
         </HoverBox>
       </Link>

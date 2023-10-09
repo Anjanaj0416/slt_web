@@ -9,6 +9,7 @@ import { H3, Paragraph, Span } from "components/Typography";
 
 // STYLED COMPONENT
 const BannerWrapper = styled("div")(({ theme }) => ({
+  zIndex: 1,
   gap: "5rem",
   padding: "2rem",
   display: "flex",
@@ -16,11 +17,25 @@ const BannerWrapper = styled("div")(({ theme }) => ({
   overflow: "hidden",
   borderRadius: "3px",
   alignItems: "center",
-  backgroundSize: "cover",
+  position: "relative",
   justifyContent: "flex-end",
-  backgroundPosition: "center left",
-  backgroundRepeat: "no-repeat",
-  backgroundImage: `url(/assets/images/banners/long-banner.jpg)`,
+  ":after": {
+    top: 0,
+    left: 0,
+    zIndex: -1,
+    content: "''",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    backgroundSize: "cover",
+    backgroundPosition: "center left",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(/assets/images/banners/long-banner.jpg)`,
+    ...(theme.direction === "rtl" && {
+      transform: "rotateX(180deg) rotateZ(180deg)",
+    }),
+  },
+
   [theme.breakpoints.down("md")]: {
     gap: "1rem",
     flexDirection: "column",

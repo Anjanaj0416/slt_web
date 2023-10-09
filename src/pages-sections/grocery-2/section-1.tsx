@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Grid from "@mui/material/Grid";
 import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { Carousel } from "components/carousel";
@@ -16,11 +17,12 @@ const StyledBox = styled("div")({
 });
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
-  display: "flex !important",
   position: "relative",
   alignItems: "center",
-  padding: "2rem 1rem 5rem 40px",
+  display: "flex !important",
+  padding: "2rem 1rem 5rem 2.5rem",
   backgroundColor: theme.palette.primary.main,
+  ...(theme.direction === "rtl" && { padding: "2rem 2.5rem 5rem 1rem" }),
   [theme.breakpoints.down("sm")]: { flexDirection: "column-reverse" },
 }));
 
@@ -35,16 +37,22 @@ type Props = { carouselData: GroceryTwoCarouselItem[] };
 // ========================================================================
 
 const Section1: FC<Props> = ({ carouselData }) => {
+  const { direction } = useTheme();
+
   return (
     <StyledBox>
       <Carousel
         dots
-        autoplay
+        // autoplay
         arrows={false}
         spaceBetween={0}
         slidesToShow={1}
         dotColor="white"
-        dotStyles={{ left: 40, bottom: 25, position: "absolute" }}
+        dotStyles={{
+          bottom: 25,
+          position: "absolute",
+          ...(direction === "rtl" ? { right: 40 } : { left: 40 }),
+        }}
       >
         {carouselData.map((item) => (
           <StyledGrid container key={item.id}>
