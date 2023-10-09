@@ -41,7 +41,15 @@ const ProfileEditForm: FC<Props> = ({ user }) => {
       initialValues={INITIAL_VALUES}
       validationSchema={VALIDATION_SCHEMA}
     >
-      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        setFieldValue,
+      }) => (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item md={6} xs={12}>
@@ -109,7 +117,8 @@ const ProfileEditForm: FC<Props> = ({ user }) => {
                     size: "small",
                     fullWidth: true,
                     error: Boolean(!!touched.birth_date && !!errors.birth_date),
-                    helperText: (touched.birth_date && errors.birth_date) as string,
+                    helperText: (touched.birth_date &&
+                      errors.birth_date) as string,
                   },
                 }}
               />

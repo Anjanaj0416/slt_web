@@ -33,18 +33,43 @@ interface Props {
 // =======================================================
 
 const ProductCard17: FC<Props> = (props) => {
-  const { sx, off, status, id, title, price, imgUrl, rating, hideRating, productColors, slug } =
-    props;
+  const {
+    sx,
+    off,
+    status,
+    id,
+    title,
+    price,
+    imgUrl,
+    rating,
+    hideRating,
+    productColors,
+    slug,
+  } = props;
 
   const { cartItem, handleCartAmountChange } = useProduct(slug);
 
   const handleIncrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) + 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) + 1,
+    };
     handleCartAmountChange(product);
   };
 
   const handleDecrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) - 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) - 1,
+    };
     handleCartAmountChange(product, "remove");
   };
 
@@ -59,7 +84,13 @@ const ProductCard17: FC<Props> = (props) => {
           <DiscountChip discount={off} sx={{ borderRadius: 0 }} />
 
           {/* PRODUCT IMAGE / THUMBNAIL */}
-          <LazyImage alt={title} width={500} height={500} src={imgUrl} id="productImg" />
+          <LazyImage
+            alt={title}
+            width={500}
+            height={500}
+            src={imgUrl}
+            id="productImg"
+          />
         </ImgBox>
       </Link>
 

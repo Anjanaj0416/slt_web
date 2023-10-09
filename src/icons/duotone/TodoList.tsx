@@ -8,7 +8,7 @@ const TodoList = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "TodoList"
+  "TodoList",
 );
 
 export default TodoList;

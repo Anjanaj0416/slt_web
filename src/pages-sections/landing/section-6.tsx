@@ -21,14 +21,16 @@ const list = [
   {
     title: "Shop Pages",
     thumbnail: "/assets/images/landing/inner-pages.png",
-    subTitle: "Clean Shop inner pages. Vendor shop, Sale/discount pages, checkout, cart and etc.",
+    subTitle:
+      "Clean Shop inner pages. Vendor shop, Sale/discount pages, checkout, cart and etc.",
     category: "shop",
     buttonText: "Browse Pages",
   },
   {
     title: "User Dashboard",
     thumbnail: "/assets/images/landing/user-dashboard.png",
-    subTitle: "Structured user dashboard for managing user account, orders, address and etc.",
+    subTitle:
+      "Structured user dashboard for managing user account, orders, address and etc.",
     category: "user",
     buttonText: "Browse User Dashboard",
   },
@@ -70,7 +72,10 @@ const Section6: FC<Props> = ({ handleChangeFilter }) => {
         <Grid container spacing={6}>
           {list.map((item, index) => (
             <Grid item md={6} xs={12} key={index}>
-              <FlexBox gap={3} sx={{ flexDirection: { sm: "row", xs: "column" } }}>
+              <FlexBox
+                gap={3}
+                sx={{ flexDirection: { sm: "row", xs: "column" } }}
+              >
                 <Avatar
                   alt={item.title}
                   src={item.thumbnail}

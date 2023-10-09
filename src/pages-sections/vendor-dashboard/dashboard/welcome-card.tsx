@@ -23,7 +23,9 @@ const WelcomeCard = () => {
       <H5 color="info.main" mb={0.5}>
         Good Morning, Maruf!
       </H5>
-      <Paragraph color="grey.600">Here’s what happening with your store today!</Paragraph>
+      <Paragraph color="grey.600">
+        Here’s what happening with your store today!
+      </Paragraph>
 
       <H3 mt={3}>15,350.25</H3>
       <Paragraph color="grey.600">Today’s Visit</Paragraph>

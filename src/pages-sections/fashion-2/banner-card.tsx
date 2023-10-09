@@ -53,7 +53,13 @@ const BannerCard: FC<Props> = ({ img, url, text1, text2, text3 }) => {
           </H1>
         </div>
 
-        <Button LinkComponent={Link} href={url} variant="outlined" size="large" color="info">
+        <Button
+          LinkComponent={Link}
+          href={url}
+          variant="outlined"
+          size="large"
+          color="info"
+        >
           Shop Now
         </Button>
       </CardContent>

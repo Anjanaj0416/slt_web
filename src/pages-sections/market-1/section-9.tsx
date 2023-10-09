@@ -33,7 +33,11 @@ type Props = { categories: Category[] };
 const Section9: FC<Props> = ({ categories }) => {
   return (
     <Container sx={{ mb: "70px" }}>
-      <SectionHeader seeMoreLink="#" title="Categories" icon={<CategoryIcon color="primary" />} />
+      <SectionHeader
+        seeMoreLink="#"
+        title="Categories"
+        icon={<CategoryIcon color="primary" />}
+      />
 
       <Grid container spacing={3}>
         {categories.map((item, ind) => (

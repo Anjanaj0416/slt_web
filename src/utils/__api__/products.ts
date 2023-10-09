@@ -15,9 +15,13 @@ const getProduct = cache(async (slug: string): Promise<Product> => {
 });
 
 // search products
-const searchProducts = cache(async (name?: string, category?: string): Promise<string[]> => {
-  const response = await axios.get("/api/products/search", { params: { name, category } });
-  return response.data;
-});
+const searchProducts = cache(
+  async (name?: string, category?: string): Promise<string[]> => {
+    const response = await axios.get("/api/products/search", {
+      params: { name, category },
+    });
+    return response.data;
+  },
+);
 
 export default { getSlugs, getProduct, searchProducts };

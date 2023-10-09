@@ -13,7 +13,13 @@ import ShoppingBagOutlined from "icons/ShoppingBagOutlined";
 // GLOBAL CUSTOM HOOKS
 import useCart from "hooks/useCart";
 // STYLED COMPONENTS
-import { iconStyle, StyledBox, StyledDrawer, StyledNavLink, Wrapper } from "./styles";
+import {
+  iconStyle,
+  StyledBox,
+  StyledDrawer,
+  StyledNavLink,
+  Wrapper,
+} from "./styles";
 
 /**
  * Difference between MobileNavigationBar and MobileNavigationBar2

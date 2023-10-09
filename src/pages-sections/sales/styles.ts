@@ -35,8 +35,12 @@ export const StyledChip = styled(Chip, {
   padding: "5px 10px",
   position: "absolute",
   color: selected ? "white" : "inherit",
-  boxShadow: selected ? "0px 8px 20px -5px rgba(255, 103, 128, 0.9)" : "inherit",
-  backgroundColor: selected ? theme.palette.primary.main : theme.palette.grey[300],
+  boxShadow: selected
+    ? "0px 8px 20px -5px rgba(255, 103, 128, 0.9)"
+    : "inherit",
+  backgroundColor: selected
+    ? theme.palette.primary.main
+    : theme.palette.grey[300],
 }));
 
 export const CategoryWrapper = styled(Box, {

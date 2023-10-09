@@ -14,7 +14,12 @@ interface ArrowProps extends CustomArrowProps {
 
 function NextArrow({ onClick, sx }: ArrowProps) {
   return (
-    <ArrowButton onClick={onClick} className="slick-arrow next" right={0} sx={{ ...sx }}>
+    <ArrowButton
+      onClick={onClick}
+      className="slick-arrow next"
+      right={0}
+      sx={{ ...sx }}
+    >
       <ArrowForward fontSize="small" color="inherit" />
     </ArrowButton>
   );
@@ -22,7 +27,12 @@ function NextArrow({ onClick, sx }: ArrowProps) {
 
 function PrevArrow({ onClick, sx }: ArrowProps) {
   return (
-    <ArrowButton onClick={onClick} className="slick-arrow prev" left={0} sx={{ ...sx }}>
+    <ArrowButton
+      onClick={onClick}
+      className="slick-arrow prev"
+      left={0}
+      sx={{ ...sx }}
+    >
       <ArrowBack fontSize="small" color="inherit" />
     </ArrowButton>
   );

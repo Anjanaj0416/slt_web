@@ -21,13 +21,14 @@ const ResetPassword = () => {
     email: yup.string().email("invalid email").required("Email is required"),
   });
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
 
   return (
     <Fragment>
@@ -36,7 +37,13 @@ const ResetPassword = () => {
       </H3>
 
       {/* FORM AREA */}
-      <Box onSubmit={handleSubmit} component="form" display="flex" flexDirection="column" gap={2}>
+      <Box
+        onSubmit={handleSubmit}
+        component="form"
+        display="flex"
+        flexDirection="column"
+        gap={2}
+      >
         <TextField
           fullWidth
           name="email"

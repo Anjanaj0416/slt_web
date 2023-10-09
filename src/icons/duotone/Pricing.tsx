@@ -8,7 +8,7 @@ const Pricing = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "Pricing"
+  "Pricing",
 );
 
 export default Pricing;

@@ -42,7 +42,9 @@ const ShippingForm: FC<Props> = ({
             onChange={handleChange}
             value={values.shipping_name}
             error={!!touched.shipping_name && !!errors.shipping_name}
-            helperText={(touched.shipping_name && errors.shipping_name) as string}
+            helperText={
+              (touched.shipping_name && errors.shipping_name) as string
+            }
           />
 
           <TextField
@@ -54,7 +56,9 @@ const ShippingForm: FC<Props> = ({
             name="shipping_contact"
             value={values.shipping_contact}
             error={!!touched.shipping_contact && !!errors.shipping_contact}
-            helperText={(touched.shipping_contact && errors.shipping_contact) as string}
+            helperText={
+              (touched.shipping_contact && errors.shipping_contact) as string
+            }
           />
 
           <TextField
@@ -78,7 +82,9 @@ const ShippingForm: FC<Props> = ({
             name="shipping_address1"
             value={values.shipping_address1}
             error={!!touched.shipping_address1 && !!errors.shipping_address1}
-            helperText={(touched.shipping_address1 && errors.shipping_address1) as string}
+            helperText={
+              (touched.shipping_address1 && errors.shipping_address1) as string
+            }
           />
         </Grid>
 
@@ -93,7 +99,9 @@ const ShippingForm: FC<Props> = ({
             onChange={handleChange}
             value={values.shipping_email}
             error={!!touched.shipping_email && !!errors.shipping_email}
-            helperText={(touched.shipping_email && errors.shipping_email) as string}
+            helperText={
+              (touched.shipping_email && errors.shipping_email) as string
+            }
           />
 
           <TextField
@@ -105,7 +113,9 @@ const ShippingForm: FC<Props> = ({
             name="shipping_company"
             value={values.shipping_company}
             error={!!touched.shipping_company && !!errors.shipping_company}
-            helperText={(touched.shipping_company && errors.shipping_company) as string}
+            helperText={
+              (touched.shipping_company && errors.shipping_company) as string
+            }
           />
 
           <Autocomplete
@@ -121,7 +131,10 @@ const ShippingForm: FC<Props> = ({
                 variant="outlined"
                 placeholder="Select Country"
                 error={!!touched.shipping_country && !!errors.shipping_country}
-                helperText={(touched.shipping_country && errors.shipping_country) as string}
+                helperText={
+                  (touched.shipping_country &&
+                    errors.shipping_country) as string
+                }
                 {...params}
               />
             )}
@@ -135,7 +148,9 @@ const ShippingForm: FC<Props> = ({
             name="shipping_address2"
             value={values.shipping_address2}
             error={!!touched.shipping_address2 && !!errors.shipping_address2}
-            helperText={(touched.shipping_address2 && errors.shipping_address2) as string}
+            helperText={
+              (touched.shipping_address2 && errors.shipping_address2) as string
+            }
           />
         </Grid>
       </Grid>

@@ -27,7 +27,11 @@ const OrderDetailsPageView = ({ order }: Props) => {
         <Grid item xs={12}>
           <Card sx={{ p: 3 }}>
             {/* ADD PRODUCT & CHANGE ORDER STATUS ACTION  */}
-            <OrderActions id={order.id} createdAt={order.createdAt} status={order.status} />
+            <OrderActions
+              id={order.id}
+              createdAt={order.createdAt}
+              status={order.status}
+            />
 
             {/* ORDERED PRODUCT LIST */}
             {order.items.map((item, index) => (

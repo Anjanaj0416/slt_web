@@ -23,7 +23,9 @@ interface Props extends ChipProps {
 // ==============================================================
 
 const DiscountChip: FC<Props> = ({ discount = 0, ...props }) => {
-  return discount > 0 ? <StyledChip size="small" label={`${discount}% off`} {...props} /> : null;
+  return discount > 0 ? (
+    <StyledChip size="small" label={`${discount}% off`} {...props} />
+  ) : null;
 };
 
 export default DiscountChip;

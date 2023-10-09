@@ -14,8 +14,14 @@ export const categoryNavigation = [
         title: "Fresh Frutes",
         href: "/products/search/Fresh Frutes",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -30,17 +36,37 @@ export const categoryNavigation = [
       },
     ],
   },
-  { icon: "Milk", title: "Dariry & Eggs", href: "/products/search/Dariry & Eggs" },
+  {
+    icon: "Milk",
+    title: "Dariry & Eggs",
+    href: "/products/search/Dariry & Eggs",
+  },
   { icon: "Breakfast", title: "Breakfast", href: "/products/search/Breakfast" },
   { icon: "Yogurt", title: "Frozen", href: "/products/search/Frozen" },
   { icon: "Honey", title: "Organic", href: "/products/search/Organic" },
   { icon: "Beer", title: "Canned Food", href: "/products/search/Canned Food" },
-  { icon: "Snack", title: "Coffee & Snacks", href: "/products/search/Coffee & Snacks" },
-  { icon: "Bottle", title: "Sauces & Jems", href: "/products/search/Sauces & Jems" },
+  {
+    icon: "Snack",
+    title: "Coffee & Snacks",
+    href: "/products/search/Coffee & Snacks",
+  },
+  {
+    icon: "Bottle",
+    title: "Sauces & Jems",
+    href: "/products/search/Sauces & Jems",
+  },
   { icon: "Honey", title: "Organic", href: "/products/search/Organic" },
   { icon: "Beer", title: "Canned Food", href: "/products/search/Canned Food" },
-  { icon: "Snack", title: "Coffee & Snacks", href: "/products/search/Coffee & Snacks" },
-  { icon: "Bottle", title: "Sauces & Jems", href: "/products/search/Sauces & Jems" },
+  {
+    icon: "Snack",
+    title: "Coffee & Snacks",
+    href: "/products/search/Coffee & Snacks",
+  },
+  {
+    icon: "Bottle",
+    title: "Sauces & Jems",
+    href: "/products/search/Sauces & Jems",
+  },
 ];
 
 // carousel-data
@@ -241,7 +267,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 6,
-    thumbnail: "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
+    thumbnail:
+      "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
     images: [
       "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
       "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
@@ -461,7 +488,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 6,
-    thumbnail: "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
+    thumbnail:
+      "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
     images: [
       "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
       "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
@@ -571,7 +599,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 8,
-    thumbnail: "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
+    thumbnail:
+      "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
     images: [
       "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
       "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
@@ -626,7 +655,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 6,
-    thumbnail: "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
+    thumbnail:
+      "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
     images: [
       "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
       "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
@@ -681,7 +711,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 5,
-    thumbnail: "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
+    thumbnail:
+      "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
     images: [
       "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
       "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
@@ -737,7 +768,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 8,
-    thumbnail: "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
     images: [
       "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
       "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
@@ -792,7 +824,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 10,
-    thumbnail: "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
     images: [
       "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
       "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
@@ -902,7 +935,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 5,
-    thumbnail: "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
     images: [
       "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
       "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
@@ -1122,7 +1156,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 6,
-    thumbnail: "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
     images: [
       "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
       "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
@@ -1177,7 +1212,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 7,
-    thumbnail: "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
     images: [
       "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
       "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
@@ -1232,7 +1268,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 6,
-    thumbnail: "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
     images: [
       "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
       "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
@@ -1287,7 +1324,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 7,
-    thumbnail: "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
     images: [
       "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
       "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
@@ -1342,7 +1380,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 5,
-    thumbnail: "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
     images: [
       "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
       "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
@@ -1563,7 +1602,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 5,
-    thumbnail: "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
+    thumbnail:
+      "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
     images: [
       "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
       "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
@@ -2004,7 +2044,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 10,
-    thumbnail: "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
+    thumbnail:
+      "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
     images: [
       "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
       "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
@@ -2169,7 +2210,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 10,
-    thumbnail: "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
+    thumbnail:
+      "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
     images: [
       "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
       "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",

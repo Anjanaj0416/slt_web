@@ -8,7 +8,12 @@ import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 import FlexBox from "components/flex-box/flex-box";
 import { Paragraph } from "components/Typography";
 // STYLED COMPONENTS
-import { StatusWrapper, StyledTableRow, StyledTableCell, StyledIconButton } from "../styles";
+import {
+  StatusWrapper,
+  StyledTableRow,
+  StyledTableCell,
+  StyledIconButton,
+} from "../styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // DATA TYPES

@@ -49,7 +49,9 @@ const SocialLinksForm = () => {
                 onChange={handleChange}
                 placeholder="https://example.com"
                 InputProps={{
-                  startAdornment: <Facebook fontSize="small" color="info" sx={{ mr: 1 }} />,
+                  startAdornment: (
+                    <Facebook fontSize="small" color="info" sx={{ mr: 1 }} />
+                  ),
                 }}
               />
             </Grid>
@@ -65,7 +67,9 @@ const SocialLinksForm = () => {
                 onChange={handleChange}
                 placeholder="https://example.com"
                 InputProps={{
-                  startAdornment: <Twitter fontSize="small" color="info" sx={{ mr: 1 }} />,
+                  startAdornment: (
+                    <Twitter fontSize="small" color="info" sx={{ mr: 1 }} />
+                  ),
                 }}
               />
             </Grid>
@@ -81,7 +85,9 @@ const SocialLinksForm = () => {
                 value={values.instagram}
                 placeholder="https://example.com"
                 InputProps={{
-                  startAdornment: <Instagram fontSize="small" color="info" sx={{ mr: 1 }} />,
+                  startAdornment: (
+                    <Instagram fontSize="small" color="info" sx={{ mr: 1 }} />
+                  ),
                 }}
               />
             </Grid>
@@ -97,7 +103,9 @@ const SocialLinksForm = () => {
                 onChange={handleChange}
                 placeholder="https://example.com"
                 InputProps={{
-                  startAdornment: <YouTube fontSize="small" color="info" sx={{ mr: 1 }} />,
+                  startAdornment: (
+                    <YouTube fontSize="small" color="info" sx={{ mr: 1 }} />
+                  ),
                 }}
               />
             </Grid>
@@ -121,7 +129,9 @@ const SocialLinksForm = () => {
                 onChange={handleChange}
                 placeholder="https://example.com"
                 InputProps={{
-                  startAdornment: <PlayStore fontSize="small" color="info" sx={{ mr: 1 }} />,
+                  startAdornment: (
+                    <PlayStore fontSize="small" color="info" sx={{ mr: 1 }} />
+                  ),
                 }}
               />
             </Grid>
@@ -137,7 +147,9 @@ const SocialLinksForm = () => {
                 onChange={handleChange}
                 placeholder="https://example.com"
                 InputProps={{
-                  startAdornment: <AppleStore fontSize="small" color="info" sx={{ mr: 1 }} />,
+                  startAdornment: (
+                    <AppleStore fontSize="small" color="info" sx={{ mr: 1 }} />
+                  ),
                 }}
               />
             </Grid>

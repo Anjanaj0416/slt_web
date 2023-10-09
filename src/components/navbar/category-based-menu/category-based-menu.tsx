@@ -22,7 +22,8 @@ const CategoryBasedMenu: FC<Props> = ({ title, menuList }) => {
   return (
     <Wrapper>
       <FlexRowCenter alignItems="flex-end" gap={0.3}>
-        {title} <KeyboardArrowDown sx={{ color: "grey.500", fontSize: "1.1rem" }} />
+        {title}{" "}
+        <KeyboardArrowDown sx={{ color: "grey.500", fontSize: "1.1rem" }} />
       </FlexRowCenter>
 
       <MenusContainer className="menu-list">

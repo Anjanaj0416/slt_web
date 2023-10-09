@@ -17,7 +17,9 @@ Mock.onGet("/api/market-1/main-carousel").reply(async () => {
 
 Mock.onGet("/api/market-1/top-categories").reply(async () => {
   try {
-    const topCategories = db.categories.filter((item) => item.for.type === "top-categories");
+    const topCategories = db.categories.filter(
+      (item) => item.for.type === "top-categories",
+    );
     return [200, topCategories];
   } catch (err) {
     console.error(err);
@@ -27,7 +29,9 @@ Mock.onGet("/api/market-1/top-categories").reply(async () => {
 
 Mock.onGet("/api/market-1/flash-deals").reply(async () => {
   try {
-    const products = db.products.filter((item) => item.for.type === "flash-deals");
+    const products = db.products.filter(
+      (item) => item.for.type === "flash-deals",
+    );
     return [200, products];
   } catch (err) {
     console.error(err);
@@ -37,7 +41,9 @@ Mock.onGet("/api/market-1/flash-deals").reply(async () => {
 
 Mock.onGet("/api/market-1/big-discounts").reply(async () => {
   try {
-    const products = db.products.filter((item) => item.for.type === "big-discounts");
+    const products = db.products.filter(
+      (item) => item.for.type === "big-discounts",
+    );
     return [200, products];
   } catch (err) {
     console.error(err);
@@ -47,7 +53,9 @@ Mock.onGet("/api/market-1/big-discounts").reply(async () => {
 
 Mock.onGet("/api/market-1/toprated-product").reply(async () => {
   try {
-    const products = db.products.filter((item) => item.for.type === "top-ratings");
+    const products = db.products.filter(
+      (item) => item.for.type === "top-ratings",
+    );
     return [200, products];
   } catch (err) {
     console.error(err);
@@ -57,7 +65,9 @@ Mock.onGet("/api/market-1/toprated-product").reply(async () => {
 
 Mock.onGet("/api/market-1/new-arrivals").reply(async () => {
   try {
-    const products = db.products.filter((item) => item.for.type === "new-arrivals");
+    const products = db.products.filter(
+      (item) => item.for.type === "new-arrivals",
+    );
     return [200, products];
   } catch (err) {
     console.error(err);
@@ -67,7 +77,9 @@ Mock.onGet("/api/market-1/new-arrivals").reply(async () => {
 
 Mock.onGet("/api/market-1/toprated-brand").reply(async () => {
   try {
-    const featureBrands = db.brands.filter((item) => item.for.type === "featured-brands");
+    const featureBrands = db.brands.filter(
+      (item) => item.for.type === "featured-brands",
+    );
     return [200, featureBrands];
   } catch (err) {
     console.error(err);
@@ -77,7 +89,9 @@ Mock.onGet("/api/market-1/toprated-brand").reply(async () => {
 
 Mock.onGet("/api/market-1/car-brand-list").reply(async () => {
   try {
-    const carBrands = db.brands.filter((item) => item.for.type === "car-brands");
+    const carBrands = db.brands.filter(
+      (item) => item.for.type === "car-brands",
+    );
     return [200, carBrands];
   } catch (err) {
     console.error(err);
@@ -97,7 +111,9 @@ Mock.onGet("/api/market-1/car-list").reply(async () => {
 
 Mock.onGet("/api/market-1/mobile-brand-list").reply(async () => {
   try {
-    const mobileBrands = db.brands.filter((item) => item.for.type === "mobile-brands");
+    const mobileBrands = db.brands.filter(
+      (item) => item.for.type === "mobile-brands",
+    );
     return [200, mobileBrands];
   } catch (err) {
     console.error(err);
@@ -108,7 +124,9 @@ Mock.onGet("/api/market-1/mobile-brand-list").reply(async () => {
 Mock.onGet("/api/market-1/mobile-shop-list").reply(async () => {
   try {
     const imageNames = ["herman miller", "otobi", "hatil", "steelcase"];
-    const shopList = shops.slice(4, 8).map((item, i) => ({ ...item, thumbnail: imageNames[i] }));
+    const shopList = shops
+      .slice(4, 8)
+      .map((item, i) => ({ ...item, thumbnail: imageNames[i] }));
 
     return [200, shopList];
   } catch (err) {
@@ -119,7 +137,9 @@ Mock.onGet("/api/market-1/mobile-shop-list").reply(async () => {
 
 Mock.onGet("/api/market-1/mobile-list").reply(async () => {
   try {
-    const products = db.products.filter((item) => item.for.type === "mobile-phones");
+    const products = db.products.filter(
+      (item) => item.for.type === "mobile-phones",
+    );
     return [200, products];
   } catch (err) {
     console.error(err);
@@ -129,7 +149,9 @@ Mock.onGet("/api/market-1/mobile-list").reply(async () => {
 
 Mock.onGet("/api/market-1/optics/watch-brands").reply(async () => {
   try {
-    const opticsBrands = db.brands.filter((item) => item.for.type === "optics-brands");
+    const opticsBrands = db.brands.filter(
+      (item) => item.for.type === "optics-brands",
+    );
     return [200, opticsBrands];
   } catch (err) {
     console.error(err);
@@ -140,7 +162,9 @@ Mock.onGet("/api/market-1/optics/watch-brands").reply(async () => {
 Mock.onGet("/api/market-1/optics/watch-shops").reply(async () => {
   try {
     const imageNames = ["herman miller", "zeiss", "hatil", "steelcase"];
-    const shopList = shops.slice(0, 4).map((item, i) => ({ ...item, thumbnail: imageNames[i] }));
+    const shopList = shops
+      .slice(0, 4)
+      .map((item, i) => ({ ...item, thumbnail: imageNames[i] }));
 
     return [200, shopList];
   } catch (err) {
@@ -161,7 +185,9 @@ Mock.onGet("/api/market-1/optics-list").reply(async () => {
 
 Mock.onGet("/api/market-1/bottom-categories").reply(async () => {
   try {
-    const categories = db.categories.filter((item) => item.for.type === "categories");
+    const categories = db.categories.filter(
+      (item) => item.for.type === "categories",
+    );
     return [200, categories];
   } catch (err) {
     console.error(err);
@@ -171,7 +197,9 @@ Mock.onGet("/api/market-1/bottom-categories").reply(async () => {
 
 Mock.onGet("/api/market-1/get-more-items").reply(async () => {
   try {
-    const products = db.products.filter((item) => item.for.type === "more-products");
+    const products = db.products.filter(
+      (item) => item.for.type === "more-products",
+    );
     return [200, products];
   } catch (err) {
     console.error(err);

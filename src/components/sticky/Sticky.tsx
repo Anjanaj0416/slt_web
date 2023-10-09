@@ -12,7 +12,12 @@ interface Props {
 
 // ============================================================
 
-const Sticky: FC<Props> = ({ fixedOn, children, onSticky, scrollDistance = 0 }) => {
+const Sticky: FC<Props> = ({
+  fixedOn,
+  children,
+  onSticky,
+  scrollDistance = 0,
+}) => {
   const [fixed, setFixed] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);

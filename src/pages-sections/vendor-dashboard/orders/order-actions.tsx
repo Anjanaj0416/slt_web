@@ -24,7 +24,8 @@ const OrderActions: FC<Props> = ({ id, createdAt, status }) => {
         </Paragraph>
 
         <Paragraph>
-          <Span color="grey.600">Placed on:</Span> {format(new Date(createdAt), "dd MMM, yyyy")}
+          <Span color="grey.600">Placed on:</Span>{" "}
+          {format(new Date(createdAt), "dd MMM, yyyy")}
         </Paragraph>
       </FlexBox>
 
@@ -46,7 +47,9 @@ const OrderActions: FC<Props> = ({ id, createdAt, status }) => {
           defaultValue={status}
           label="Order Status"
           inputProps={{
-            IconComponent: () => <KeyboardArrowDown sx={{ color: "grey.600", mr: 1 }} />,
+            IconComponent: () => (
+              <KeyboardArrowDown sx={{ color: "grey.600", mr: 1 }} />
+            ),
           }}
         >
           <MenuItem value="Processing">Processing</MenuItem>

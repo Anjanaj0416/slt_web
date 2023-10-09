@@ -14,7 +14,14 @@ const ShippingVatForm = () => {
 
   return (
     <Formik onSubmit={handleFormSubmit} initialValues={initialValues}>
-      {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <Grid container spacing={3}>
             <Grid item xs={12}>

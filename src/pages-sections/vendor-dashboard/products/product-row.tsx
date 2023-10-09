@@ -12,7 +12,12 @@ import { Paragraph, Small } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import { StyledTableRow, CategoryWrapper, StyledTableCell, StyledIconButton } from "../styles";
+import {
+  StyledTableRow,
+  CategoryWrapper,
+  StyledTableCell,
+  StyledIconButton,
+} from "../styles";
 
 // ========================================================================
 interface Product {
@@ -30,7 +35,8 @@ type Props = { product: Product };
 // ========================================================================
 
 const ProductRow: FC<Props> = ({ product }) => {
-  const { category, name, price, image, brand, id, published, slug } = product || {};
+  const { category, name, price, image, brand, id, published, slug } =
+    product || {};
 
   const router = useRouter();
   const [productPublish, setProductPublish] = useState(published);
@@ -53,7 +59,10 @@ const ProductRow: FC<Props> = ({ product }) => {
       </StyledTableCell>
 
       <StyledTableCell align="left">
-        <Avatar src={brand} sx={{ width: 55, height: "auto", borderRadius: 0 }} />
+        <Avatar
+          src={brand}
+          sx={{ width: 55, height: "auto", borderRadius: 0 }}
+        />
       </StyledTableCell>
 
       <StyledTableCell align="left">{currency(price)}</StyledTableCell>
@@ -67,7 +76,9 @@ const ProductRow: FC<Props> = ({ product }) => {
       </StyledTableCell>
 
       <StyledTableCell align="center">
-        <StyledIconButton onClick={() => router.push(`/admin/products/${slug}`)}>
+        <StyledIconButton
+          onClick={() => router.push(`/admin/products/${slug}`)}
+        >
           <Edit />
         </StyledIconButton>
 

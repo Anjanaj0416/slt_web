@@ -24,9 +24,18 @@ const ConversationCard: FC<Props> = ({ message }) => {
           {name}
         </H5>
 
-        <Span color="grey.600">{format(new Date(date), "hh:mm:a | dd MMM yyyy")}</Span>
+        <Span color="grey.600">
+          {format(new Date(date), "hh:mm:a | dd MMM yyyy")}
+        </Span>
 
-        <Box borderRadius={2} bgcolor="grey.300" p={2} mt={2} lineHeight={1.7} textAlign="justify">
+        <Box
+          borderRadius={2}
+          bgcolor="grey.300"
+          p={2}
+          mt={2}
+          lineHeight={1.7}
+          textAlign="justify"
+        >
           {text}
         </Box>
       </div>

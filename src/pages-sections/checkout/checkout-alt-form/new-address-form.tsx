@@ -56,7 +56,11 @@ const NewAddressForm: FC<Props> = ({ handleAddNewAddress }) => {
 
   return (
     <Fragment>
-      <Button color="primary" variant="outlined" onClick={() => setOpenModal(true)}>
+      <Button
+        color="primary"
+        variant="outlined"
+        onClick={() => setOpenModal(true)}
+      >
         Add New Address
       </Button>
 

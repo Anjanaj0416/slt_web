@@ -4,7 +4,10 @@ import { notFound } from "next/navigation";
 import { ProductDetailsPageView } from "pages-sections/product-details/page-view";
 // API FUNCTIONS
 import api from "utils/__api__/products";
-import { getFrequentlyBought, getRelatedProducts } from "utils/__api__/related-products";
+import {
+  getFrequentlyBought,
+  getRelatedProducts,
+} from "utils/__api__/related-products";
 
 export const metadata: Metadata = {
   title: "Product Details - Bazaar Next.js E-commerce Template",

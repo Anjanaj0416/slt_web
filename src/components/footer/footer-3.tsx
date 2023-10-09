@@ -30,9 +30,9 @@ const Footer3: FC<Props> = ({ sx, id, bgcolor }) => {
             </Link>
 
             <Paragraph mb={2.5} color="grey.300" maxWidth="370px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in
-              gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at
-              amet.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
+              libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat
+              et lectus vel ut sollicitudin elit at amet.
             </Paragraph>
 
             <AppStore />

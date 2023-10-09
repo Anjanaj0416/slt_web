@@ -20,7 +20,10 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const themeOptions = customThemeOptions(pathname);
 
-  const mergedThemeOptions = merge({}, { ...themeOptions, direction: settings.direction });
+  const mergedThemeOptions = merge(
+    {},
+    { ...themeOptions, direction: settings.direction },
+  );
 
   let theme = createTheme(mergedThemeOptions as ThemeOptions);
 

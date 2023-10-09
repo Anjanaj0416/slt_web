@@ -60,7 +60,12 @@ const Section5: FC<Props> = ({ data }) => {
               ))}
             </List>
 
-            <NavLink3 href="/" text="Browse All" color="dark.main" hoverColor="dark.main" />
+            <NavLink3
+              href="/"
+              text="Browse All"
+              color="dark.main"
+              hoverColor="dark.main"
+            />
           </StyledCard>
         </Grid>
 

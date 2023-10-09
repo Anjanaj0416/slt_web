@@ -3,16 +3,30 @@ export const categoryNavigation = [
   {
     category: "Top Categories",
     categoryItem: [
-      { icon: "Milk", title: "Dariry & Eggs", href: "/products/search/Dariry & Eggs" },
-      { icon: "Breakfast", title: "Breakfast", href: "/products/search/Breakfast" },
+      {
+        icon: "Milk",
+        title: "Dariry & Eggs",
+        href: "/products/search/Dariry & Eggs",
+      },
+      {
+        icon: "Breakfast",
+        title: "Breakfast",
+        href: "/products/search/Breakfast",
+      },
       { icon: "Yogurt", title: "Frozen", href: "/products/search/Frozen" },
       {
         icon: "Carrot",
         title: "Vegetables",
         href: "/products/search/vegetables",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -31,8 +45,14 @@ export const categoryNavigation = [
         title: "Dariry & Eggs",
         href: "/products/search/Dariry & Eggs",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -46,8 +66,14 @@ export const categoryNavigation = [
         title: "Fish and Mil",
         href: "/products/search/vegetables",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -66,18 +92,44 @@ export const categoryNavigation = [
         title: "Dress and something",
         href: "/products/search/Dariry & Eggs",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
-      { icon: "Milk", title: "Dariry & Eggs", href: "/products/search/Dariry & Eggs" },
-      { icon: "Breakfast", title: "Breakfast", href: "/products/search/Breakfast" },
+      {
+        icon: "Milk",
+        title: "Dariry & Eggs",
+        href: "/products/search/Dariry & Eggs",
+      },
+      {
+        icon: "Breakfast",
+        title: "Breakfast",
+        href: "/products/search/Breakfast",
+      },
       { icon: "Yogurt", title: "Frozen", href: "/products/search/Frozen" },
       { icon: "Honey", title: "Organic", href: "/products/search/Organic" },
-      { icon: "Beer", title: "Canned Food", href: "/products/search/Canned Food" },
-      { icon: "Snack", title: "Coffee & Snacks", href: "/products/search/Coffee & Snacks" },
-      { icon: "Bottle", title: "Sauces & Jems", href: "/products/search/Sauces & Jems" },
+      {
+        icon: "Beer",
+        title: "Canned Food",
+        href: "/products/search/Canned Food",
+      },
+      {
+        icon: "Snack",
+        title: "Coffee & Snacks",
+        href: "/products/search/Coffee & Snacks",
+      },
+      {
+        icon: "Bottle",
+        title: "Sauces & Jems",
+        href: "/products/search/Sauces & Jems",
+      },
     ],
   },
 ];
@@ -159,7 +211,10 @@ export const products = [
     colors: [],
     discount: 7,
     thumbnail: "/assets/images/Groceries Shop/lime.png",
-    images: ["/assets/images/Groceries Shop/lime.png", "/assets/images/Groceries Shop/lime.png"],
+    images: [
+      "/assets/images/Groceries Shop/lime.png",
+      "/assets/images/Groceries Shop/lime.png",
+    ],
     categories: [],
     status: null,
     reviews: [],
@@ -318,7 +373,10 @@ export const products = [
     colors: [],
     discount: 7,
     thumbnail: "/assets/images/Groceries Shop/Lemon.png",
-    images: ["/assets/images/Groceries Shop/Lemon.png", "/assets/images/Groceries Shop/Lemon.png"],
+    images: [
+      "/assets/images/Groceries Shop/Lemon.png",
+      "/assets/images/Groceries Shop/Lemon.png",
+    ],
     categories: [],
     status: null,
     reviews: [],
@@ -423,7 +481,10 @@ export const products = [
     colors: [],
     discount: 12,
     thumbnail: "/assets/images/Groceries Shop/lime.png",
-    images: ["/assets/images/Groceries Shop/lime.png", "/assets/images/Groceries Shop/lime.png"],
+    images: [
+      "/assets/images/Groceries Shop/lime.png",
+      "/assets/images/Groceries Shop/lime.png",
+    ],
     categories: [],
     status: null,
     reviews: [],
@@ -528,7 +589,10 @@ export const products = [
     colors: [],
     discount: 9,
     thumbnail: "/assets/images/Groceries Shop/Lemon.png",
-    images: ["/assets/images/Groceries Shop/Lemon.png", "/assets/images/Groceries Shop/Lemon.png"],
+    images: [
+      "/assets/images/Groceries Shop/Lemon.png",
+      "/assets/images/Groceries Shop/Lemon.png",
+    ],
     categories: [],
     status: null,
     reviews: [],
@@ -634,7 +698,10 @@ export const products = [
     colors: [],
     discount: 7,
     thumbnail: "/assets/images/Groceries Shop/lime.png",
-    images: ["/assets/images/Groceries Shop/lime.png", "/assets/images/Groceries Shop/lime.png"],
+    images: [
+      "/assets/images/Groceries Shop/lime.png",
+      "/assets/images/Groceries Shop/lime.png",
+    ],
     categories: [],
     status: null,
     reviews: [],
@@ -793,7 +860,10 @@ export const products = [
     colors: [],
     discount: 7,
     thumbnail: "/assets/images/Groceries Shop/Lemon.png",
-    images: ["/assets/images/Groceries Shop/Lemon.png", "/assets/images/Groceries Shop/Lemon.png"],
+    images: [
+      "/assets/images/Groceries Shop/Lemon.png",
+      "/assets/images/Groceries Shop/Lemon.png",
+    ],
     categories: [],
     status: null,
     reviews: [],
@@ -953,7 +1023,10 @@ export const products = [
     colors: [],
     discount: 12,
     thumbnail: "/assets/images/Groceries Shop/lime.png",
-    images: ["/assets/images/Groceries Shop/lime.png", "/assets/images/Groceries Shop/lime.png"],
+    images: [
+      "/assets/images/Groceries Shop/lime.png",
+      "/assets/images/Groceries Shop/lime.png",
+    ],
     categories: [],
     status: null,
     reviews: [],
@@ -1058,7 +1131,10 @@ export const products = [
     colors: [],
     discount: 9,
     thumbnail: "/assets/images/Groceries Shop/Lemon.png",
-    images: ["/assets/images/Groceries Shop/Lemon.png", "/assets/images/Groceries Shop/Lemon.png"],
+    images: [
+      "/assets/images/Groceries Shop/Lemon.png",
+      "/assets/images/Groceries Shop/Lemon.png",
+    ],
     categories: [],
     status: null,
     reviews: [],

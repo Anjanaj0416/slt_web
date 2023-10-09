@@ -15,15 +15,23 @@ const Sales = () => {
   const theme = useTheme();
 
   // weekly chart series
-  const series = [{ name: "Weekly", data: [7600, 8500, 10100, 9800, 8700, 1050, 9100] }];
-  const totalOrderSeries = [{ name: "Weekly", data: [7600, 8500, 10100, 9800, 8700, 1050, 9100] }];
+  const series = [
+    { name: "Weekly", data: [7600, 8500, 10100, 9800, 8700, 1050, 9100] },
+  ];
+  const totalOrderSeries = [
+    { name: "Weekly", data: [7600, 8500, 10100, 9800, 8700, 1050, 9100] },
+  ];
 
   return (
     <div>
       <Grid container spacing={3}>
         {/* WEEKLY SALE CHART */}
         <Grid item xl={3} lg={3} md={6} xs={12}>
-          <Card2 title="Weekly Sales" percentage="25.25%" amount={currency(10240, 0)}>
+          <Card2
+            title="Weekly Sales"
+            percentage="25.25%"
+            amount={currency(10240, 0)}
+          >
             <ApexChart
               type="bar"
               height={100}
@@ -47,7 +55,11 @@ const Sales = () => {
 
         {/* TOTAL ORDERS CHART */}
         <Grid item xl={3} lg={3} md={6} xs={12}>
-          <Card2 title="Total Order" percentage="2.65%" amount={currency(12260, 0)}>
+          <Card2
+            title="Total Order"
+            percentage="2.65%"
+            amount={currency(12260, 0)}
+          >
             <ApexChart
               type="area"
               height={80}
@@ -59,7 +71,11 @@ const Sales = () => {
 
         {/* MARKET SHARE CHART */}
         <Grid item xl={3} lg={3} md={6} xs={12}>
-          <Card2 title="Market Share" percentage="2.65%" amount={currency(14260, 0)}>
+          <Card2
+            title="Market Share"
+            percentage="2.65%"
+            amount={currency(14260, 0)}
+          >
             <ApexChart
               height={130}
               type="radialBar"

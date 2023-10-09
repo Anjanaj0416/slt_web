@@ -28,7 +28,11 @@ const Card2: FC<Props> = ({ children, title, amount, percentage }) => {
       }}
     >
       <Box flexShrink={0} height="inherit">
-        <FlexBox flexDirection="column" justifyContent="space-between" height="inherit">
+        <FlexBox
+          flexDirection="column"
+          justifyContent="space-between"
+          height="inherit"
+        >
           <H6 color="grey.600">{title}</H6>
 
           <div>

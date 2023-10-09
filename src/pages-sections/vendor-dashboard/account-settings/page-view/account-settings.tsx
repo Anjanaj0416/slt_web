@@ -52,7 +52,15 @@ const AccountSettingsPageView = () => {
           initialValues={INITIAL_VALUES}
           validationSchema={ACCOUNT_SCHEMA}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            setFieldValue,
+          }) => (
             <form onSubmit={handleSubmit}>
               <Grid container spacing={3}>
                 <Grid item md={6} xs={12}>
@@ -66,7 +74,9 @@ const AccountSettingsPageView = () => {
                     onChange={handleChange}
                     value={values.first_name}
                     error={!!touched.first_name && !!errors.first_name}
-                    helperText={(touched.first_name && errors.first_name) as string}
+                    helperText={
+                      (touched.first_name && errors.first_name) as string
+                    }
                   />
                 </Grid>
 
@@ -81,7 +91,9 @@ const AccountSettingsPageView = () => {
                     onChange={handleChange}
                     value={values.last_name}
                     error={!!touched.last_name && !!errors.last_name}
-                    helperText={(touched.last_name && errors.last_name) as string}
+                    helperText={
+                      (touched.last_name && errors.last_name) as string
+                    }
                   />
                 </Grid>
 
@@ -132,7 +144,9 @@ const AccountSettingsPageView = () => {
                         variant="outlined"
                         placeholder="Select Country"
                         error={!!touched.country && !!errors.country}
-                        helperText={(touched.country && errors.country) as string}
+                        helperText={
+                          (touched.country && errors.country) as string
+                        }
                         {...params}
                         size="medium"
                       />

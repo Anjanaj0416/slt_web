@@ -11,7 +11,7 @@ const Milk = createSvgIcon(
       <path d="M11.4098 14.6565L10.7878 14.7183L11.0359 17.2182L11.6579 17.1565L11.4098 14.6565Z" />
     </g>
   </svg>,
-  "Milk"
+  "Milk",
 );
 
 export default Milk;

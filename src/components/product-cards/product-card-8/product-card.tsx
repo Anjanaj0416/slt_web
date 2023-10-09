@@ -16,7 +16,13 @@ import ProductViewDialog from "components/products-view/product-view-dialog";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM COMPONENTS
-import { AddToCartButton, Card, CardMedia, FavoriteButton, QuickViewButton } from "./styles";
+import {
+  AddToCartButton,
+  Card,
+  CardMedia,
+  FavoriteButton,
+  QuickViewButton,
+} from "./styles";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 
@@ -25,10 +31,17 @@ type Props = { product: Product };
 // ==============================================================
 
 const ProductCard18: FC<Props> = ({ product }) => {
-  const { slug, id, title, price, thumbnail, images, categories, reviews } = product || {};
+  const { slug, id, title, price, thumbnail, images, categories, reviews } =
+    product || {};
 
-  const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
-    useProduct(slug);
+  const {
+    cartItem,
+    handleCartAmountChange,
+    isFavorite,
+    openModal,
+    toggleDialog,
+    toggleFavorite,
+  } = useProduct(slug);
 
   // HANDLE ADD TO CART PRODUCT
   const handleAddToCart = () => {
@@ -93,7 +106,9 @@ const ProductCard18: FC<Props> = ({ product }) => {
 
       <Box p={1} textAlign="center">
         {/* PRODUCT CATEGORY */}
-        {categories.length > 0 ? <Small color="grey.500">{categories[0]}</Small> : null}
+        {categories.length > 0 ? (
+          <Small color="grey.500">{categories[0]}</Small>
+        ) : null}
 
         {/* PRODUCT TITLE / NAME */}
         <Paragraph fontWeight="bold">{title}</Paragraph>

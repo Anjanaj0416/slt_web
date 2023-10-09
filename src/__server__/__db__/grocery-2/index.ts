@@ -50,7 +50,9 @@ Mock.onGet("/api/grocery-2/category-navigation").reply(() => {
   }
 });
 
-const products = db.products.filter((item) => item.for.type === "featured-items");
+const products = db.products.filter(
+  (item) => item.for.type === "featured-items",
+);
 Mock.onGet("/api/grocery-2/featured-products").reply(async () => {
   try {
     return [200, products];
@@ -60,7 +62,9 @@ Mock.onGet("/api/grocery-2/featured-products").reply(async () => {
   }
 });
 
-const bestSellProducts = db.products.filter((item) => item.for.type === "best-sell-products");
+const bestSellProducts = db.products.filter(
+  (item) => item.for.type === "best-sell-products",
+);
 Mock.onGet("/api/grocery-2/best-sell-products").reply(() => {
   try {
     return [200, bestSellProducts];
@@ -70,7 +74,9 @@ Mock.onGet("/api/grocery-2/best-sell-products").reply(() => {
   }
 });
 
-const essProducts = db.products.filter((item) => item.for.type === "home-essentials-products");
+const essProducts = db.products.filter(
+  (item) => item.for.type === "home-essentials-products",
+);
 Mock.onGet("/api/grocery-2/home-essentials-products").reply(() => {
   try {
     return [200, essProducts];
@@ -80,7 +86,9 @@ Mock.onGet("/api/grocery-2/home-essentials-products").reply(() => {
   }
 });
 
-const moreProducts = db.products.filter((item) => item.for.type === "more-products");
+const moreProducts = db.products.filter(
+  (item) => item.for.type === "more-products",
+);
 Mock.onGet("/api/grocery-2/more-products").reply(() => {
   try {
     return [200, moreProducts];

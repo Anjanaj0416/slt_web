@@ -46,11 +46,17 @@ const Analytics = () => {
   const series = [
     {
       name: "Sales",
-      data: [15000, 45000, 12000, 50000, 75000, 13000, 30000, 99000, 75000, 90000, 55000, 15000],
+      data: [
+        15000, 45000, 12000, 50000, 75000, 13000, 30000, 99000, 75000, 90000,
+        55000, 15000,
+      ],
     },
     {
       name: "Expense",
-      data: [1500, 48000, 19000, 59000, 25000, 9000, 36000, 9000, 79000, 70000, 57000, 5000],
+      data: [
+        1500, 48000, 19000, 59000, 25000, 9000, 36000, 9000, 79000, 70000,
+        57000, 5000,
+      ],
     },
   ];
 
@@ -62,7 +68,9 @@ const Analytics = () => {
         <StyledSelect
           value={selectType}
           IconComponent={() => <KeyboardArrowDown />}
-          onChange={(e: SelectChangeEvent<string>) => setSelectType(e.target.value)}
+          onChange={(e: SelectChangeEvent<string>) =>
+            setSelectType(e.target.value)
+          }
         >
           <MenuItem value="yearly">Yearly</MenuItem>
           <MenuItem value="monthly">Monthly</MenuItem>

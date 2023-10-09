@@ -10,11 +10,16 @@ const Furniture = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_6800_50485">
-        <rect width="18" height="18" fill="white" transform="translate(0.496094 0.0400391)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.496094 0.0400391)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "Furniture"
+  "Furniture",
 );
 
 export default Furniture;

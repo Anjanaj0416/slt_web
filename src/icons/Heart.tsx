@@ -9,7 +9,7 @@ const Heart = createSvgIcon(
       strokeLinejoin="round"
     />
   </svg>,
-  "Heart"
+  "Heart",
 );
 
 export default Heart;

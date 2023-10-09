@@ -13,7 +13,10 @@ import { products as grocery2 } from "../grocery-2/data";
 import { products as grocery3 } from "../grocery-3/data";
 import { products as furniture } from "../furniture/data";
 import { products as healthBeauty } from "../health-beauty/data";
-import { relatedProducts, frequentlyBoughtData } from "../related-products/data";
+import {
+  relatedProducts,
+  frequentlyBoughtData,
+} from "../related-products/data";
 import { uniq } from "lodash";
 
 const dbProducts = [...bazaarReactDatabase, ...products];
@@ -39,11 +42,13 @@ const productList = [
 
 // get unique products from product list
 const uniqueProducts = uniq(productList.map((item) => item.slug)).map((item) =>
-  productList.find((it) => it.slug === item)
+  productList.find((it) => it.slug === item),
 );
 
 // get the all slugs
-const slugs = uniqueProducts.map((item) => ({ params: { slug: item?.slug as string } }));
+const slugs = uniqueProducts.map((item) => ({
+  params: { slug: item?.slug as string },
+}));
 
 // get product names for search
 const search = uniqueProducts.slice(0, 6).map((item) => item?.title);

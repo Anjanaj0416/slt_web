@@ -82,7 +82,12 @@ const CarouselCard1: FC<Props> = ({
           <BazaarImage
             src={imgUrl}
             alt="apple-watch-1"
-            sx={{ mx: "auto", maxHeight: 400, display: "block", maxWidth: "100%" }}
+            sx={{
+              mx: "auto",
+              maxHeight: 400,
+              display: "block",
+              maxWidth: "100%",
+            }}
           />
         </Grid>
       </Grid>

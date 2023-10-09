@@ -22,7 +22,11 @@ const ShopLayout2: FC<PropsWithChildren> = ({ children }) => {
 
   // FOR HANDLE TOP BAR AREA
   let TOP_BAR_CONTENT = null;
-  const SHOW_TOP_BAR = ["/grocery-2", "/health-beauty-shop", "/checkout-alternative"];
+  const SHOW_TOP_BAR = [
+    "/grocery-2",
+    "/health-beauty-shop",
+    "/checkout-alternative",
+  ];
   if (SHOW_TOP_BAR.includes(pathname)) {
     TOP_BAR_CONTENT = <Topbar />;
   }

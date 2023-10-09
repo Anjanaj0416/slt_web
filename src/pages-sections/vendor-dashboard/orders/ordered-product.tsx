@@ -18,10 +18,16 @@ type Props = { product: Order["items"][0] };
 // ==============================================================
 
 const OrderedProduct: FC<Props> = ({ product }) => {
-  const { product_img, product_name, product_price, product_quantity } = product || {};
+  const { product_img, product_name, product_price, product_quantity } =
+    product || {};
 
   return (
-    <Box my={2} gap={2} display="grid" gridTemplateColumns={{ md: "1fr 1fr", xs: "1fr" }}>
+    <Box
+      my={2}
+      gap={2}
+      display="grid"
+      gridTemplateColumns={{ md: "1fr 1fr", xs: "1fr" }}
+    >
       <FlexBox flexShrink={0} gap={1.5} alignItems="center">
         <Avatar
           src={product_img}
@@ -38,7 +44,11 @@ const OrderedProduct: FC<Props> = ({ product }) => {
             </Paragraph>
 
             <Box maxWidth={60}>
-              <TextField defaultValue={product_quantity} type="number" fullWidth />
+              <TextField
+                defaultValue={product_quantity}
+                type="number"
+                fullWidth
+              />
             </Box>
           </FlexBox>
         </div>

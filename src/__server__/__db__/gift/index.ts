@@ -41,7 +41,8 @@ Mock.onGet("/api/gift-shop-navigation").reply(() => {
   }
 });
 
-const getProducts = (type: string) => db.products.filter((item) => item.for.type === type);
+const getProducts = (type: string) =>
+  db.products.filter((item) => item.for.type === type);
 const allProducts = getProducts("all-products");
 const popularProducts = getProducts("popular-items");
 const topSailedProducts = getProducts("top-saled-items");

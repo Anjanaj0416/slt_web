@@ -1,4 +1,11 @@
-import { FC, cloneElement, useCallback, useEffect, useRef, useState } from "react";
+import {
+  FC,
+  cloneElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styled from "@mui/material/styles/styled";
 import CategoryMenuCard from "./category-menu-card";
 
@@ -10,7 +17,9 @@ const Wrapper = styled("div", {
   position: "relative",
   "& .dropdown-icon": {
     transition: "all 250ms ease-in-out",
-    transform: `rotate(${open ? (direction === "rtl" ? "-90deg" : "90deg") : "0deg"})`,
+    transform: `rotate(${
+      open ? (direction === "rtl" ? "-90deg" : "90deg") : "0deg"
+    })`,
   },
 }));
 

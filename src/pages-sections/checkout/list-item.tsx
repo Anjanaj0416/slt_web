@@ -14,7 +14,12 @@ interface Props {
 }
 // ==============================================================
 
-const ListItem: FC<Props> = ({ title, value, mb = 0.5, color = "grey.600" }) => {
+const ListItem: FC<Props> = ({
+  title,
+  value,
+  mb = 0.5,
+  color = "grey.600",
+}) => {
   return (
     <FlexBetween mb={mb}>
       <Paragraph color={color}>{title}:</Paragraph>

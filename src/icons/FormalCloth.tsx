@@ -11,11 +11,16 @@ const FormalCloth = createSvgIcon(
 
     <defs>
       <clipPath id="clip0_33_5573">
-        <rect width="18" height="18" fill="white" transform="translate(0 0.5)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0 0.5)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "FormalCloth"
+  "FormalCloth",
 );
 
 export default FormalCloth;

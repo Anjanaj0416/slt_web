@@ -7,7 +7,12 @@ import AppleStore from "icons/AppleStore";
 
 const DATA = [
   { url: "/", icon: PlayStore, title: "Google Play", subtitle: "Get it on" },
-  { url: "/", icon: AppleStore, title: "App Store", subtitle: "Download on the" },
+  {
+    url: "/",
+    icon: AppleStore,
+    title: "App Store",
+    subtitle: "Download on the",
+  },
 ];
 
 const AppStore = () => {

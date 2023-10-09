@@ -6,7 +6,9 @@ import Mock from "../../mock";
 import * as db from "./data";
 
 const products = db.products.filter((item) => item.for.type === "all-products");
-const topProducts = db.products.filter((item) => item.for.type === "top-new-products");
+const topProducts = db.products.filter(
+  (item) => item.for.type === "top-new-products",
+);
 
 Mock.onGet("/api/health-beauty/products?tag=new").reply(async () => {
   try {

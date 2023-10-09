@@ -78,27 +78,54 @@ const Header = () => {
             <FlexBox height={headerHeight} alignItems="center">
               <Scroll to="top" duration={400} smooth={true} isDynamic>
                 <Box sx={{ cursor: "pointer" }}>
-                  <Image width="96px" height="44px" src="/assets/images/logo2.svg" alt="logo" />
+                  <Image
+                    width="96px"
+                    height="44px"
+                    src="/assets/images/logo2.svg"
+                    alt="logo"
+                  />
                 </Box>
               </Scroll>
 
               <Box mx="auto" />
 
               <FlexBox className="right-links" alignItems="center">
-                <Scroll to="features" duration={400} offset={-headerHeight - 16} smooth={true}>
-                  <Typography className="link" color="grey.600" p="0.25rem 1.25rem">
+                <Scroll
+                  to="features"
+                  duration={400}
+                  offset={-headerHeight - 16}
+                  smooth={true}
+                >
+                  <Typography
+                    className="link"
+                    color="grey.600"
+                    p="0.25rem 1.25rem"
+                  >
                     Features
                   </Typography>
                 </Scroll>
 
-                <Scroll to="demos" duration={400} offset={-headerHeight - 16} smooth={true}>
-                  <Typography className="link" color="grey.600" p="0.25rem 1.25rem">
+                <Scroll
+                  to="demos"
+                  duration={400}
+                  offset={-headerHeight - 16}
+                  smooth={true}
+                >
+                  <Typography
+                    className="link"
+                    color="grey.600"
+                    p="0.25rem 1.25rem"
+                  >
                     Demos
                   </Typography>
                 </Scroll>
 
                 <a href="https://bazaar-doc.netlify.app/" target="__blank">
-                  <Typography className="link" color="grey.600" p="0.25rem 1.25rem">
+                  <Typography
+                    className="link"
+                    color="grey.600"
+                    p="0.25rem 1.25rem"
+                  >
                     Documentation
                   </Typography>
                 </a>
@@ -133,14 +160,32 @@ const Header = () => {
                       },
                     }}
                   >
-                    <Scroll to="features" duration={400} offset={-headerHeight - 16} smooth={true}>
-                      <Typography className="link" py={1} onClick={toggleSidenav}>
+                    <Scroll
+                      to="features"
+                      duration={400}
+                      offset={-headerHeight - 16}
+                      smooth={true}
+                    >
+                      <Typography
+                        className="link"
+                        py={1}
+                        onClick={toggleSidenav}
+                      >
                         Features
                       </Typography>
                     </Scroll>
 
-                    <Scroll to="demos" duration={400} offset={-headerHeight - 16} smooth={true}>
-                      <Typography className="link" py={1} onClick={toggleSidenav}>
+                    <Scroll
+                      to="demos"
+                      duration={400}
+                      offset={-headerHeight - 16}
+                      smooth={true}
+                    >
+                      <Typography
+                        className="link"
+                        py={1}
+                        onClick={toggleSidenav}
+                      >
                         Demos
                       </Typography>
                     </Scroll>
@@ -151,7 +196,12 @@ const Header = () => {
                       to="technologies"
                       offset={-headerHeight - 16}
                     >
-                      <Typography className="link" py={1} mb={2} onClick={toggleSidenav}>
+                      <Typography
+                        className="link"
+                        py={1}
+                        mb={2}
+                        onClick={toggleSidenav}
+                      >
                         Technologies
                       </Typography>
                     </Scroll>

@@ -38,7 +38,12 @@ const Section1: FC<Props> = ({ mainCarouselData }) => {
             <StyledGrid container>
               <GridItemOne item md={6} sm={6} xs={12}>
                 <Box pt={6}>
-                  <LazyImage width={800} height={886} alt={item.title} src={item.imgUrl} />
+                  <LazyImage
+                    width={800}
+                    height={886}
+                    alt={item.title}
+                    src={item.imgUrl}
+                  />
                 </Box>
               </GridItemOne>
 
@@ -47,7 +52,11 @@ const Section1: FC<Props> = ({ mainCarouselData }) => {
                   <H1 maxWidth={400}>{item.title}</H1>
                 </TextBox>
 
-                <StyledButton variant="contained" color="primary" sx={{ px: "30px", py: "6px" }}>
+                <StyledButton
+                  variant="contained"
+                  color="primary"
+                  sx={{ px: "30px", py: "6px" }}
+                >
                   {item.buttonText}
                 </StyledButton>
               </GridItemTwo>

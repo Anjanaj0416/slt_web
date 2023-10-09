@@ -69,7 +69,10 @@ const OrderProgress = () => {
             </Box>
 
             {ind < STEP_ICONS.length - 1 ? (
-              <Box className="line" bgcolor={ind < statusIndex ? "primary.main" : "grey.300"} />
+              <Box
+                className="line"
+                bgcolor={ind < statusIndex ? "primary.main" : "grey.300"}
+              />
             ) : null}
           </Fragment>
         ))}

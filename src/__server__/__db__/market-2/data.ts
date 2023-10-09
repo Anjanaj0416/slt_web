@@ -128,7 +128,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
@@ -181,7 +182,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
@@ -287,7 +289,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
@@ -340,7 +343,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
@@ -393,7 +397,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",

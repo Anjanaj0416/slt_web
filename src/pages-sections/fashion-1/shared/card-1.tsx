@@ -44,14 +44,20 @@ const ShowcaseCard1 = () => {
         <Paragraph mb={1}>SPECIAL OFFER</Paragraph>
 
         <H1 lineHeight={1.3}>
-          <Span lineHeight={1.3}>Comfortable</Span> Original <br /> Cotton Sneaker
+          <Span lineHeight={1.3}>Comfortable</Span> Original <br /> Cotton
+          Sneaker
         </H1>
 
         <Paragraph mt={1} mb={2}>
-          Handcrafted from genuine Italian leather. One inner compartment with black satin lining
+          Handcrafted from genuine Italian leather. One inner compartment with
+          black satin lining
         </Paragraph>
 
-        <NavLink2 url="/shops/scarlett-beauty" title="SHOP NOW" borderColor="grey.100" />
+        <NavLink2
+          url="/shops/scarlett-beauty"
+          title="SHOP NOW"
+          borderColor="grey.100"
+        />
       </Box>
     </StyledBox>
   );

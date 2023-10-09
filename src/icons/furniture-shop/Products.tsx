@@ -23,18 +23,39 @@ const Products = createSvgIcon(
         stroke="#7D879C"
         strokeMiterlimit="10"
       />
-      <path d="M6.19531 3.10449H18.5703" stroke="#7D879C" strokeMiterlimit="10" />
-      <path d="M6.19531 7.60449H16.3203" stroke="#7D879C" strokeMiterlimit="10" />
-      <path d="M6.19531 12.1045H14.0703" stroke="#7D879C" strokeMiterlimit="10" />
-      <path d="M6.19531 16.6045H16.3203" stroke="#7D879C" strokeMiterlimit="10" />
+      <path
+        d="M6.19531 3.10449H18.5703"
+        stroke="#7D879C"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M6.19531 7.60449H16.3203"
+        stroke="#7D879C"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M6.19531 12.1045H14.0703"
+        stroke="#7D879C"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M6.19531 16.6045H16.3203"
+        stroke="#7D879C"
+        strokeMiterlimit="10"
+      />
     </g>
     <defs>
       <clipPath id="clip0_6800_50540">
-        <rect width="18" height="18" fill="white" transform="translate(0.851562 0.854492)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.851562 0.854492)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "Products"
+  "Products",
 );
 
 export default Products;

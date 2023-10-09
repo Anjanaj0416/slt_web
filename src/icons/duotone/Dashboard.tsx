@@ -12,7 +12,7 @@ const Dashboard = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Dashboard"
+  "Dashboard",
 );
 
 export default Dashboard;

@@ -16,7 +16,11 @@ interface Props {
 }
 // ==============================================================
 
-const QuantityButtons: FC<Props> = ({ quantity, handleDecrement, handleIncrement }) => {
+const QuantityButtons: FC<Props> = ({
+  quantity,
+  handleDecrement,
+  handleIncrement,
+}) => {
   return (
     <FlexBox
       width="30px"

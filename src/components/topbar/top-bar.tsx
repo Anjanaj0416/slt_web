@@ -63,7 +63,11 @@ const Topbar: FC<Props> = ({ bgColor }) => {
             <Span className="title">{t("Free Express Shipping")}</Span>
           </FlexBox>
 
-          <IconButton disableRipple className="expand" onClick={() => setExpand((state) => !state)}>
+          <IconButton
+            disableRipple
+            className="expand"
+            onClick={() => setExpand((state) => !state)}
+          >
             {expand ? <Remove /> : <Add />}
           </IconButton>
         </FlexBetween>
@@ -84,7 +88,9 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                 key={languageOptions[language].title}
                 onClick={() => handleChangeLanguage(language)}
               >
-                <Span className="menuTitle">{languageOptions[language].title}</Span>
+                <Span className="menuTitle">
+                  {languageOptions[language].title}
+                </Span>
               </MenuItem>
             ))}
           </BazaarMenu>

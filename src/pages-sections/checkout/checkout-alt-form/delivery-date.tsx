@@ -19,7 +19,9 @@ interface Props {
 // ==============================================================
 
 const DeliveryDate: FC<Props> = ({ errors, handleChange, touched, values }) => {
-  const [dateList, setDateList] = useState<{ label: string; value: string }[]>([]);
+  const [dateList, setDateList] = useState<{ label: string; value: string }[]>(
+    [],
+  );
 
   useEffect(() => {
     let list = [];

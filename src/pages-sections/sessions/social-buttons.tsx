@@ -48,7 +48,10 @@ const SocialButtons = (props: Props) => {
         className="googleButton"
         sx={{ fontSize: 12 }}
         startIcon={
-          <Image alt="google" src={require("../../../public/assets/images/icons/google-1.svg")} />
+          <Image
+            alt="google"
+            src={require("../../../public/assets/images/icons/google-1.svg")}
+          />
         }
       >
         Continue with Google

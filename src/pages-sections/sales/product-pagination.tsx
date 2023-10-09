@@ -15,7 +15,12 @@ interface Props {
 }
 // ==============================================================
 
-const ProductPagination: FC<Props> = ({ page, perPage, totalProducts, handlePageChange }) => {
+const ProductPagination: FC<Props> = ({
+  page,
+  perPage,
+  totalProducts,
+  handlePageChange,
+}) => {
   return (
     <FlexBetween flexWrap="wrap" my={8}>
       <Span>{renderProductCount(page, perPage, totalProducts)}</Span>

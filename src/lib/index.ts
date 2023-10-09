@@ -20,7 +20,11 @@ function getDateDifference(date: string | number | Date) {
  * @returns
  */
 
-function renderProductCount(page: number, perPageProduct: number, totalProduct: number) {
+function renderProductCount(
+  page: number,
+  perPageProduct: number,
+  totalProduct: number,
+) {
   let startNumber = (page - 1) * perPageProduct;
   let endNumber = page * perPageProduct;
 

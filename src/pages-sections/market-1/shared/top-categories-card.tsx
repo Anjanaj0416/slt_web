@@ -34,10 +34,21 @@ const TopCategoriesCard: FC<Props> = ({ title, subtitle, imgUrl }) => {
         sx={{ left: 12, backgroundColor: "secondary.main", color: "white" }}
       />
 
-      <StyledChip color="default" label={subtitle} size="small" sx={{ right: 12, zIndex: 2 }} />
+      <StyledChip
+        color="default"
+        label={subtitle}
+        size="small"
+        sx={{ right: 12, zIndex: 2 }}
+      />
 
       <HoverBox borderRadius={2}>
-        <LazyImage priority src={imgUrl} width={1035} height={348} alt={title} />
+        <LazyImage
+          priority
+          src={imgUrl}
+          width={1035}
+          height={348}
+          alt={title}
+        />
       </HoverBox>
     </Card>
   );

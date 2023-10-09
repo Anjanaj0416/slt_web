@@ -23,7 +23,11 @@ const Section6: FC<Props> = ({ products }) => {
 
   return (
     <SectionCreator title="Top Sale Items" seeMoreLink="#">
-      <Carousel slidesToShow={4} responsive={responsive} arrowStyles={CAROUSEL_ARROW_STYLE}>
+      <Carousel
+        slidesToShow={4}
+        responsive={responsive}
+        arrowStyles={CAROUSEL_ARROW_STYLE}
+      >
         {products.map((item) => (
           <Box pb={2} key={item.id}>
             <ProductCard6

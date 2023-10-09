@@ -7,7 +7,7 @@ const RoundTable = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "RoundTable"
+  "RoundTable",
 );
 
 export default RoundTable;

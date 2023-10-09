@@ -19,7 +19,12 @@ import Navigation from "./navigation";
 const CustomerDashboardLayout: FC<PropsWithChildren> = ({ children }) => (
   <Container sx={{ my: 4 }}>
     <Grid container spacing={3}>
-      <Grid item lg={3} xs={12} sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+      <Grid
+        item
+        lg={3}
+        xs={12}
+        sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+      >
         <Navigation />
       </Grid>
 

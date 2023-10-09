@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function WishList({ searchParams }) {
-  const { products, totalProducts } = await getWishListProducts(searchParams.page);
+  const { products, totalProducts } = await getWishListProducts(
+    searchParams.page,
+  );
   return <WishListPageView products={products} totalProducts={totalProducts} />;
 }

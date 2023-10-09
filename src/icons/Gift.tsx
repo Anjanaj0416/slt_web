@@ -11,7 +11,7 @@ const Gift = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Gift"
+  "Gift",
 );
 
 export default Gift;

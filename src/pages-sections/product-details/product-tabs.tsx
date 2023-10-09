@@ -15,7 +15,11 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
   marginTop: 80,
   marginBottom: 24,
   borderBottom: `1px solid ${theme.palette.text.disabled}`,
-  "& .inner-tab": { minHeight: 40, fontWeight: 600, textTransform: "capitalize" },
+  "& .inner-tab": {
+    minHeight: 40,
+    fontWeight: 600,
+    textTransform: "capitalize",
+  },
 }));
 
 const ProductTabs = () => {

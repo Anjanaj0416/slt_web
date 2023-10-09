@@ -18,7 +18,10 @@ type MegaMenu = { categories: Category[]; rightImage?: Image };
 type MegaMenuProps = { data: MegaMenu; minWidth?: string };
 // ====================================================================================
 
-const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWidth = "760px" }) => {
+const MegaMenu3: FC<MegaMenuProps> = ({
+  data: { categories, rightImage },
+  minWidth = "760px",
+}) => {
   return categories ? (
     <StyledMegaMenu>
       <BazaarCard sx={{ ml: "1rem", minWidth }} elevation={2}>
@@ -55,7 +58,13 @@ const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWid
         </FlexBox>
 
         <Link href="/sale-page-2">
-          <Grid className="h-full" container spacing={0} wrap="wrap-reverse" alignItems="center">
+          <Grid
+            className="h-full"
+            container
+            spacing={0}
+            wrap="wrap-reverse"
+            alignItems="center"
+          >
             <Grid item sm={6} xs={12}>
               <Box px={2.5}>
                 <H3 mb={1}>Big Sale Upto 60% Off</H3>
@@ -64,7 +73,11 @@ const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWid
                   Handcrafted from genuine Italian Leather
                 </Box>
 
-                <Small fontWeight="700" borderBottom="2px solid" borderColor="primary.main">
+                <Small
+                  fontWeight="700"
+                  borderBottom="2px solid"
+                  borderColor="primary.main"
+                >
                   SHOP NOW
                 </Small>
               </Box>

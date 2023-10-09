@@ -12,7 +12,7 @@ const UserTie = createSvgIcon(
       d="M96 128C96 57.31 153.3 0 224 0C294.7 0 352 57.31 352 128C352 198.7 294.7 256 224 256C153.3 256 96 198.7 96 128z"
     />
   </svg>,
-  "UserTie"
+  "UserTie",
 );
 
 export default UserTie;

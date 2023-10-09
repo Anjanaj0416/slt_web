@@ -21,7 +21,12 @@ type Props = {
 // =======================================================
 
 const FrequentlyProductCard: FC<Props> = (props) => {
-  const { imgUrl = "/assets/images/products/Rectangle 116.png", price, title, slug } = props;
+  const {
+    imgUrl = "/assets/images/products/Rectangle 116.png",
+    price,
+    title,
+    slug,
+  } = props;
 
   return (
     <BazaarCard

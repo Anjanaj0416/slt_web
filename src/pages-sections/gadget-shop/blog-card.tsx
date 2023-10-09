@@ -39,7 +39,9 @@ const BlogCard = ({ blog }: Props) => {
         <FlexBox alignItems="center" mt="5px" gap={3}>
           <FlexBox alignItems="center" gap={0.5}>
             <AccessTime sx={ICON_STYLE} />
-            <Paragraph>{format(new Date(blog.createdAt), "dd MMMM, yyyy")}</Paragraph>
+            <Paragraph>
+              {format(new Date(blog.createdAt), "dd MMMM, yyyy")}
+            </Paragraph>
           </FlexBox>
 
           <FlexBox alignItems="center" gap={0.5}>

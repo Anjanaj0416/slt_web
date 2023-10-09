@@ -34,26 +34,35 @@ const Section12: FC<Props> = ({ bigDiscountList }) => {
     <SectionCreator icon={<GiftBox />} title="Big Discounts" seeMoreLink="#">
       <Box my="-0.25rem">
         <Carousel dots slidesToShow={6} responsive={responsive}>
-          {bigDiscountList.map(({ id, title, thumbnail, price, discount, slug }) => (
-            <Box key={id} pb={1}>
-              <BazaarCard sx={{ p: "1rem" }}>
-                <Link href={`/products/${slug}`}>
-                  <HoverBox borderRadius={2} mb={1}>
-                    <LazyImage width={500} height={500} alt={title} src={thumbnail} />
-                  </HoverBox>
+          {bigDiscountList.map(
+            ({ id, title, thumbnail, price, discount, slug }) => (
+              <Box key={id} pb={1}>
+                <BazaarCard sx={{ p: "1rem" }}>
+                  <Link href={`/products/${slug}`}>
+                    <HoverBox borderRadius={2} mb={1}>
+                      <LazyImage
+                        width={500}
+                        height={500}
+                        alt={title}
+                        src={thumbnail}
+                      />
+                    </HoverBox>
 
-                  <H6 mb={0.5}>{title}</H6>
+                    <H6 mb={0.5}>{title}</H6>
 
-                  <FlexBox gap={1}>
-                    <H6 color="primary.main">{calculateDiscount(price, discount)}</H6>
-                    <Box component="del" fontWeight={600} color="grey.600">
-                      {currency(price)}
-                    </Box>
-                  </FlexBox>
-                </Link>
-              </BazaarCard>
-            </Box>
-          ))}
+                    <FlexBox gap={1}>
+                      <H6 color="primary.main">
+                        {calculateDiscount(price, discount)}
+                      </H6>
+                      <Box component="del" fontWeight={600} color="grey.600">
+                        {currency(price)}
+                      </Box>
+                    </FlexBox>
+                  </Link>
+                </BazaarCard>
+              </Box>
+            ),
+          )}
         </Carousel>
       </Box>
     </SectionCreator>

@@ -24,7 +24,11 @@ const Section2: FC<Props> = ({ flashDeals }) => {
   ];
 
   return (
-    <SectionCreator icon={<Light color="primary" />} title="Flash Deals" seeMoreLink="#">
+    <SectionCreator
+      icon={<Light color="primary" />}
+      title="Flash Deals"
+      seeMoreLink="#"
+    >
       <Carousel responsive={responsive}>
         {flashDeals.map((item) => (
           <Box pb={0.6} key={item.id}>

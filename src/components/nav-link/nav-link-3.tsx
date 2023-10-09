@@ -54,7 +54,8 @@ const NavLink3: FC<Props> = ({
           sx={{
             fontSize: 14,
             flexShrink: 0,
-            transform: ({ direction }) => `rotate(${direction === "rtl" ? "180deg" : "0deg"})`,
+            transform: ({ direction }) =>
+              `rotate(${direction === "rtl" ? "180deg" : "0deg"})`,
           }}
         />
       </Span>

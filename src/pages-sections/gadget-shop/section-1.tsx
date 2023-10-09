@@ -25,7 +25,11 @@ const Section1: FC<Props> = ({ topPickList, mainCarousel }) => {
         <Grid item md={5} xs={12}>
           <Carousel
             slidesToShow={1}
-            arrowStyles={{ boxShadow: 0, color: "dark.main", background: "transparent" }}
+            arrowStyles={{
+              boxShadow: 0,
+              color: "dark.main",
+              background: "transparent",
+            }}
           >
             {mainCarousel.map((product) => (
               <CarouselCard3 product={product} key={product.id} />

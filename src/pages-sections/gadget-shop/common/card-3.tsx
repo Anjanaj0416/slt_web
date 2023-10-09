@@ -29,7 +29,13 @@ interface Props {
 }
 // =====================================================
 
-const Card3: FC<Props> = ({ body, title, color, imgUrl, bgColor = "white" }) => {
+const Card3: FC<Props> = ({
+  body,
+  title,
+  color,
+  imgUrl,
+  bgColor = "white",
+}) => {
   return (
     <Link href="/sales-1">
       <Wrapper bgcolor={bgColor} color={color} pr={0} height="100%">
@@ -45,7 +51,12 @@ const Card3: FC<Props> = ({ body, title, color, imgUrl, bgColor = "white" }) => 
         </Box>
 
         <Box width="40%" display="flex">
-          <LazyImage width={260} src={imgUrl} height={249} alt="apple-watch-1" />
+          <LazyImage
+            width={260}
+            src={imgUrl}
+            height={249}
+            alt="apple-watch-1"
+          />
         </Box>
       </Wrapper>
     </Link>

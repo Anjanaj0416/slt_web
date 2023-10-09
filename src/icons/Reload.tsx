@@ -7,7 +7,7 @@ const Reload = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Reload"
+  "Reload",
 );
 
 export default Reload;

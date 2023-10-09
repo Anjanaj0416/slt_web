@@ -41,7 +41,12 @@ const TotalSummery: FC<Props> = ({ total, discount }) => {
 
         <FlexBox alignItems="center" gap={1} maxWidth={100}>
           <Paragraph>$</Paragraph>
-          <TextField color="info" defaultValue={discount} type="number" fullWidth />
+          <TextField
+            color="info"
+            defaultValue={discount}
+            type="number"
+            fullWidth
+          />
         </FlexBox>
       </FlexBetween>
 

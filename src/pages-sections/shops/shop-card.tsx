@@ -24,12 +24,16 @@ const ContentWrapper = styled("div", {
   padding: "17px 30px 56px",
   backgroundPosition: "center",
   backgroundImage: `linear-gradient(to bottom,
-    ${alpha(theme.palette.grey[900], 0.8)}, ${alpha(theme.palette.grey[900], 0.8)}), 
+    ${alpha(theme.palette.grey[900], 0.8)}, ${alpha(
+      theme.palette.grey[900],
+      0.8,
+    )}), 
     url(${img})`,
 }));
 
 const ShopCard: FC<Partial<Shop>> = (props) => {
-  const { name, rating, address, phone, coverPicture, profilePicture, slug } = props || {};
+  const { name, rating, address, phone, coverPicture, profilePicture, slug } =
+    props || {};
 
   return (
     <Card>
@@ -38,7 +42,13 @@ const ShopCard: FC<Partial<Shop>> = (props) => {
           {name}
         </H3>
 
-        <Rating value={rating || 0} color="warn" size="small" readOnly sx={{ mb: "0.75rem" }} />
+        <Rating
+          value={rating || 0}
+          color="warn"
+          size="small"
+          readOnly
+          sx={{ mb: "0.75rem" }}
+        />
 
         <FlexBox mb={1} gap={1}>
           <Place fontSize="small" sx={{ fontSize: 17, mt: "3px" }} />
@@ -69,7 +79,8 @@ const ShopCard: FC<Partial<Shop>> = (props) => {
             <East
               sx={{
                 fontSize: 19,
-                transform: ({ direction }) => `rotate(${direction === "rtl" ? "180deg" : "0deg"})`,
+                transform: ({ direction }) =>
+                  `rotate(${direction === "rtl" ? "180deg" : "0deg"})`,
               }}
             />
           </IconButton>

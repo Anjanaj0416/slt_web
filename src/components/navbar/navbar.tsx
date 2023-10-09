@@ -54,13 +54,23 @@ const Navbar: FC<Props> = ({
       if (isRoot) {
         // SHOW MEGA MENU
         if (nav.megaMenu) {
-          return <MegaMenu key={nav.title} title={nav.title} menuList={nav.child as any} />;
+          return (
+            <MegaMenu
+              key={nav.title}
+              title={nav.title}
+              menuList={nav.child as any}
+            />
+          );
         }
 
         // SHOW MEGA MENU WITH SUB ITEMS
         if (nav.megaMenuWithSub) {
           return (
-            <CategoryBasedMenu key={nav.title} title={nav.title} menuList={nav.child as any} />
+            <CategoryBasedMenu
+              key={nav.title}
+              title={nav.title}
+              menuList={nav.child as any}
+            />
           );
         }
 
@@ -79,14 +89,22 @@ const Navbar: FC<Props> = ({
               alignItems="center"
               position="relative"
               flexDirection="column"
-              sx={{ "&:hover": { "& > .child-nav-item": { display: "block" } } }}
+              sx={{
+                "&:hover": { "& > .child-nav-item": { display: "block" } },
+              }}
             >
               <FlexBox alignItems="flex-end" gap={0.3} sx={NAV_LINK_STYLES}>
-                {nav.title} <KeyboardArrowDown sx={{ color: "grey.500", fontSize: "1.1rem" }} />
+                {nav.title}{" "}
+                <KeyboardArrowDown
+                  sx={{ color: "grey.500", fontSize: "1.1rem" }}
+                />
               </FlexBox>
 
               <ChildNavListWrapper className="child-nav-item">
-                <BazaarCard elevation={3} sx={{ mt: 2.5, py: 1, minWidth: 200 }}>
+                <BazaarCard
+                  elevation={3}
+                  sx={{ mt: 2.5, py: 1, minWidth: 200 }}
+                >
                   {renderNestedNav(nav.child)}
                 </BazaarCard>
               </ChildNavListWrapper>
@@ -103,7 +121,9 @@ const Navbar: FC<Props> = ({
         }
 
         if (nav.child) {
-          const isActive = nav.child.flat().find((item) => item.url === pathname);
+          const isActive = nav.child
+            .flat()
+            .find((item) => item.url === pathname);
 
           return (
             <ParentNav key={nav.title} minWidth={230} active={isActive ? 1 : 0}>
@@ -118,7 +138,10 @@ const Navbar: FC<Props> = ({
               </MenuItem>
 
               <ParentNavItem className="parent-nav-item">
-                <BazaarCard sx={{ py: "0.5rem", minWidth: "230px" }} elevation={3}>
+                <BazaarCard
+                  sx={{ py: "0.5rem", minWidth: "230px" }}
+                  elevation={3}
+                >
                   {renderNestedNav(nav.child)}
                 </BazaarCard>
               </ParentNavItem>
@@ -129,12 +152,16 @@ const Navbar: FC<Props> = ({
     });
   };
 
-  const CONTENT = <FlexBox gap={4}>{renderNestedNav(navigation, true)}</FlexBox>;
+  const CONTENT = (
+    <FlexBox gap={4}>{renderNestedNav(navigation, true)}</FlexBox>
+  );
 
   return (
     <NavBarWrapper hoverEffect={false} elevation={elevation} border={border}>
       {hideCategories ? (
-        <InnerContainer sx={{ justifyContent: "center" }}>{CONTENT}</InnerContainer>
+        <InnerContainer sx={{ justifyContent: "center" }}>
+          {CONTENT}
+        </InnerContainer>
       ) : (
         <InnerContainer>
           {/* CATEGORY MEGA MENU */}

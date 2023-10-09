@@ -10,10 +10,11 @@ const useSearch = () => {
   const [categoryTitle, setCategoryTitle] = useState("All Categories");
 
   // HANDLE CHANGE THE CATEGORY
-  const handleCategoryChange = (cat: { title: string; value: string }) => () => {
-    setCategory(cat.value);
-    setCategoryTitle(cat.title);
-  };
+  const handleCategoryChange =
+    (cat: { title: string; value: string }) => () => {
+      setCategory(cat.value);
+      setCategoryTitle(cat.title);
+    };
 
   // FETCH PRODUCTS VIA API
   const getProducts = async (searchText: string, category?: string) => {

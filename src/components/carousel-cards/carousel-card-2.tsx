@@ -56,8 +56,8 @@ const CarouselCard2: FC<Props> = ({ imgUrl, productName, expireDate }) => {
           <H2>{productName}</H2>
 
           <Paragraph mt="0.3rem">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu,
-            quam etiam at quis ut convallis.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
+            lobortis consequat eu, quam etiam at quis ut convallis.
           </Paragraph>
 
           <H4 mt="1.5rem" mb="0.3rem">
@@ -73,7 +73,12 @@ const CarouselCard2: FC<Props> = ({ imgUrl, productName, expireDate }) => {
               disableElevation
               variant="contained"
               className="button-link"
-              sx={{ px: "1.75rem", height: "44px", borderRadius: "8px", mr: "1rem" }}
+              sx={{
+                px: "1.75rem",
+                height: "44px",
+                borderRadius: "8px",
+                mr: "1rem",
+              }}
             >
               BUY NOW
             </Button>

@@ -1,4 +1,13 @@
-import { Children, cloneElement, FC, memo, ReactElement, useEffect, useRef, useState } from "react";
+import {
+  Children,
+  cloneElement,
+  FC,
+  memo,
+  ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT PROPS
@@ -48,7 +57,12 @@ const Accordion: FC<Props> = ({ expanded = false, children }) => {
   });
 
   return (
-    <Wrapper ref={ref} open={open} header_height={headerHeight} parent_height={parentHeight}>
+    <Wrapper
+      ref={ref}
+      open={open}
+      header_height={headerHeight}
+      parent_height={parentHeight}
+    >
       {modifiedChildren}
     </Wrapper>
   );

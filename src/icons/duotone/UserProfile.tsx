@@ -8,7 +8,7 @@ const UserProfile = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "UserProfile"
+  "UserProfile",
 );
 
 export default UserProfile;

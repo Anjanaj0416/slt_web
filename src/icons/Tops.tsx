@@ -11,11 +11,16 @@ const Tops = createSvgIcon(
 
     <defs>
       <clipPath id="clip0_33_5532">
-        <rect width="18" height="18" fill="currentColor" transform="translate(0 0.5)" />
+        <rect
+          width="18"
+          height="18"
+          fill="currentColor"
+          transform="translate(0 0.5)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "Tops"
+  "Tops",
 );
 
 export default Tops;

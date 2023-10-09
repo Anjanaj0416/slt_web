@@ -19,7 +19,7 @@ const AutoMotive = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "AutoMotive"
+  "AutoMotive",
 );
 
 export default AutoMotive;

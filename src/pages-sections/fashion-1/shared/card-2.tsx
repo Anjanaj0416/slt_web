@@ -31,10 +31,15 @@ const ShowcaseCard2 = () => {
         </H1>
 
         <Paragraph mt={1} mb={2}>
-          Handcrafted from genuine Italian leather. One inner compartment with black satin lining
+          Handcrafted from genuine Italian leather. One inner compartment with
+          black satin lining
         </Paragraph>
 
-        <NavLink2 url="/shops/scarlett-beauty" title="SHOP NOW" borderColor="grey.100" />
+        <NavLink2
+          url="/shops/scarlett-beauty"
+          title="SHOP NOW"
+          borderColor="grey.100"
+        />
       </Grid>
 
       <Grid item sm={5} xs={12}>

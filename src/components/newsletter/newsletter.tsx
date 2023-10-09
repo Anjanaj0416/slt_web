@@ -51,7 +51,9 @@ const Wrapper = styled(Box, {
 type Props = { image?: string };
 // ======================================================
 
-const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" }) => {
+const Newsletter: FC<Props> = ({
+  image = "/assets/images/newsletter/bg-1.png",
+}) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
 
@@ -90,8 +92,8 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
                 </H1>
 
                 <Paragraph color="grey.600" mb={5}>
-                  Subscribe to the BAZAR eCommerce newsletter to receive timely updates from your
-                  favorite products.
+                  Subscribe to the BAZAR eCommerce newsletter to receive timely
+                  updates from your favorite products.
                 </Paragraph>
 
                 <TextField
@@ -100,22 +102,35 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
                   sx={{
                     mb: 2,
                     "& input": { padding: 2, textAlign: "center" },
-                    "& .MuiOutlinedInput-notchedOutline": { borderColor: "grey.300" },
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "grey.300",
+                    },
                   }}
                 />
 
-                <Button variant="contained" fullWidth color="primary" sx={{ p: 1.5 }}>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  color="primary"
+                  sx={{ p: 1.5 }}
+                >
                   SUBMIT
                 </Button>
 
                 <SocialIcons />
 
-                <FormControlLabel control={<Checkbox defaultChecked />} label="No, Thanks" />
+                <FormControlLabel
+                  control={<Checkbox defaultChecked />}
+                  label="No, Thanks"
+                />
               </Box>
             </Grid>
           </Grid>
 
-          <IconButton onClick={handleClose} sx={{ position: "absolute", top: 8, right: 8 }}>
+          <IconButton
+            onClick={handleClose}
+            sx={{ position: "absolute", top: 8, right: 8 }}
+          >
             <Clear sx={{ color: "grey.900" }} />
           </IconButton>
         </Wrapper>

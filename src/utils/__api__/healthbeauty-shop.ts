@@ -29,4 +29,10 @@ const getMainCarousel = cache(async (): Promise<HealthCarouselItem[]> => {
   return response.data;
 });
 
-export default { getProducts, getServices, getNavigation, getTopNewProducts, getMainCarousel };
+export default {
+  getProducts,
+  getServices,
+  getNavigation,
+  getTopNewProducts,
+  getMainCarousel,
+};

@@ -66,7 +66,9 @@ const TableHeader: FC<Props> = (props) => {
               onClick={() => onRequestSort(headCell.id)}
               direction={orderBy === headCell.id ? order : "asc"}
               sx={{ "& .MuiTableSortLabel-icon": { opacity: 1 } }}
-              IconComponent={() => <UpDown sx={{ fontSize: 14, ml: 1, color: "grey.600" }} />}
+              IconComponent={() => (
+                <UpDown sx={{ fontSize: 14, ml: 1, color: "grey.600" }} />
+              )}
             >
               {headCell.label}
             </TableSortLabel>

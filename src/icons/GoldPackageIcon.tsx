@@ -14,11 +14,16 @@ const GoldPackageIcon = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_8579_71335">
-        <rect width="60" height="58" fill="white" transform="translate(20 21)" />
+        <rect
+          width="60"
+          height="58"
+          fill="white"
+          transform="translate(20 21)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "GoldPackageIcon"
+  "GoldPackageIcon",
 );
 
 export default GoldPackageIcon;

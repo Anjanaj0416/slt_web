@@ -19,7 +19,10 @@ const DropZone: FC<Props> = ({
   title = "Drag & drop product image here",
   imageSize = "Upload 280*280 image",
 }) => {
-  const onDrop = useCallback((acceptedFiles: File[]) => onChange(acceptedFiles), [onChange]);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => onChange(acceptedFiles),
+    [onChange],
+  );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -51,13 +54,20 @@ const DropZone: FC<Props> = ({
         {title}
       </H5>
 
-      <Divider sx={{ "::before, ::after": { borderColor: "grey.300", width: 70 } }}>
+      <Divider
+        sx={{ "::before, ::after": { borderColor: "grey.300", width: 70 } }}
+      >
         <Small color="text.disabled" px={1}>
           OR
         </Small>
       </Divider>
 
-      <Button type="button" variant="outlined" color="info" sx={{ px: 4, my: 4 }}>
+      <Button
+        type="button"
+        variant="outlined"
+        color="info"
+        sx={{ px: 4, my: 4 }}
+      >
         Select files
       </Button>
 

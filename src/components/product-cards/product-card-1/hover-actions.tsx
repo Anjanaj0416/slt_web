@@ -15,7 +15,11 @@ interface Props {
 }
 // ==============================================================
 
-const HoverActions: FC<Props> = ({ isFavorite, toggleFavorite, toggleView }) => {
+const HoverActions: FC<Props> = ({
+  isFavorite,
+  toggleFavorite,
+  toggleView,
+}) => {
   return (
     <HoverIconWrapper className="hover-box">
       <IconButton onClick={toggleView}>

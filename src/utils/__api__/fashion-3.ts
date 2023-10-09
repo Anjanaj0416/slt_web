@@ -31,4 +31,10 @@ const getBlogs = cache(async (): Promise<Blog[]> => {
   return response.data;
 });
 
-export default { getProducts, getFeatureProducts, getMainCarouselData, getServices, getBlogs };
+export default {
+  getProducts,
+  getFeatureProducts,
+  getMainCarouselData,
+  getServices,
+  getBlogs,
+};

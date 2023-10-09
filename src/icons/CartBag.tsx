@@ -7,7 +7,7 @@ const CartBag = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "CartBag"
+  "CartBag",
 );
 
 export default CartBag;

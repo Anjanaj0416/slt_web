@@ -9,7 +9,7 @@ const Youtube = createSvgIcon(
       fill="white"
     />
   </svg>,
-  "Youtube"
+  "Youtube",
 );
 
 export default Youtube;

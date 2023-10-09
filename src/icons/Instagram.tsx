@@ -19,7 +19,7 @@ const Instagram = createSvgIcon(
       fill="white"
     />
   </svg>,
-  "Instagram"
+  "Instagram",
 );
 
 export default Instagram;

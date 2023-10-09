@@ -22,11 +22,16 @@ const Decoration = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_6800_50475">
-        <rect width="18" height="18" fill="white" transform="translate(0.496094 0.540039)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.496094 0.540039)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "Decoration"
+  "Decoration",
 );
 
 export default Decoration;

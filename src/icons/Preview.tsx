@@ -19,7 +19,7 @@ const Preview = createSvgIcon(
       />
     </g>
   </svg>,
-  "Preview"
+  "Preview",
 );
 
 export default Preview;

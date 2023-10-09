@@ -22,7 +22,13 @@ export interface NavLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 // ==============================================================
 
-const NavLink: FC<NavLinkProps> = ({ href, children, style, className, ...props }) => {
+const NavLink: FC<NavLinkProps> = ({
+  href,
+  children,
+  style,
+  className,
+  ...props
+}) => {
   const pathname = usePathname();
 
   // CHECK CURRENT ROUTE

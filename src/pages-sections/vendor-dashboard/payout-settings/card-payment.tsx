@@ -35,7 +35,14 @@ const CardPayment = () => {
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
       >
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
           <form onSubmit={handleSubmit}>
             <Stack spacing={3} mb={3}>
               <TextField
@@ -59,7 +66,9 @@ const CardPayment = () => {
                 label="Card Holder Name"
                 value={values.cardHolderName}
                 error={Boolean(errors.cardHolderName && touched.cardHolderName)}
-                helperText={(touched.cardHolderName && errors.cardHolderName) as string}
+                helperText={
+                  (touched.cardHolderName && errors.cardHolderName) as string
+                }
               />
 
               <TextField

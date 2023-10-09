@@ -14,7 +14,7 @@ const Lipstick = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Lipstick"
+  "Lipstick",
 );
 
 export default Lipstick;

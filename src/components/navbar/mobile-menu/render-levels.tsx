@@ -26,8 +26,17 @@ export const renderLevels = (data: any[], handleClose: () => void) => {
   return data.map((item: any, index: number) => {
     if (item.child) {
       return (
-        <Accordion square key={index} elevation={0} disableGutters sx={ACCORDION_STYLES}>
-          <AccordionSummary expandIcon={<ExpandMore />} sx={ACCORDION_SUMMARY_STYLES}>
+        <Accordion
+          square
+          key={index}
+          elevation={0}
+          disableGutters
+          sx={ACCORDION_STYLES}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMore />}
+            sx={ACCORDION_SUMMARY_STYLES}
+          >
             <H6>{item.title}</H6>
           </AccordionSummary>
 

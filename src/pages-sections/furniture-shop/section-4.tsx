@@ -19,7 +19,9 @@ const Section4: FC<Props> = ({ products }) => {
     <div>
       <Box my={2}>
         <H1 mb="4px">All Product</H1>
-        <Paragraph color="grey.600">Tall blind but were, been folks not the expand</Paragraph>
+        <Paragraph color="grey.600">
+          Tall blind but were, been folks not the expand
+        </Paragraph>
       </Box>
 
       <Grid container mb={-0.5} spacing={3}>

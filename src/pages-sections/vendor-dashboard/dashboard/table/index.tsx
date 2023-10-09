@@ -36,7 +36,9 @@ const StatusWrapper = styled(FlexBox, {
   padding: "3px 12px",
   display: "inline-flex",
   color: payment ? theme.palette.error.main : theme.palette.success.main,
-  backgroundColor: payment ? theme.palette.error[100] : theme.palette.success[100],
+  backgroundColor: payment
+    ? theme.palette.error[100]
+    : theme.palette.success[100],
 }));
 
 const StyledTableRow = styled(TableRow)({
@@ -72,7 +74,9 @@ const DataListTable: FC<Props> = ({ dataList, tableHeading, type }) => {
                 {stock}
               </StyledTableCell>
 
-              <StyledTableCell align="center">{currency(amount)}</StyledTableCell>
+              <StyledTableCell align="center">
+                {currency(amount)}
+              </StyledTableCell>
             </StyledTableRow>
           );
         })}
@@ -93,14 +97,20 @@ const DataListTable: FC<Props> = ({ dataList, tableHeading, type }) => {
               <StyledTableCell align="left">{product}</StyledTableCell>
 
               <StyledTableCell align="left">
-                <StatusWrapper gap={1} alignItems="center" payment={payment === "Pending" ? 1 : 0}>
+                <StatusWrapper
+                  gap={1}
+                  alignItems="center"
+                  payment={payment === "Pending" ? 1 : 0}
+                >
                   <div>{payment}</div>
                   {payment === "Pending" && <Reload sx={{ fontSize: 13 }} />}
                   {payment !== "Pending" && <Done sx={{ fontSize: 13 }} />}
                 </StatusWrapper>
               </StyledTableCell>
 
-              <StyledTableCell align="center">{currency(amount)}</StyledTableCell>
+              <StyledTableCell align="center">
+                {currency(amount)}
+              </StyledTableCell>
             </StyledTableRow>
           );
         })}

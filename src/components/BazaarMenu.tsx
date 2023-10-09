@@ -1,4 +1,11 @@
-import { Children, cloneElement, FC, Fragment, ReactElement, useState } from "react";
+import {
+  Children,
+  cloneElement,
+  FC,
+  Fragment,
+  ReactElement,
+  useState,
+} from "react";
 import Menu from "@mui/material/Menu";
 import { SxProps } from "@mui/material/styles";
 
@@ -36,7 +43,10 @@ const BazaarMenu: FC<Props> = ({
 
   return (
     <Fragment>
-      {handler && cloneElement(handler, { onClick: handler.props.onClick || handleClick })}
+      {handler &&
+        cloneElement(handler, {
+          onClick: handler.props.onClick || handleClick,
+        })}
 
       <Menu
         anchorEl={anchorEl}
@@ -47,7 +57,9 @@ const BazaarMenu: FC<Props> = ({
         {...props}
       >
         {Children.map(children, (child: ReactElement) =>
-          cloneElement(child, { onClick: handleMenuItemClick(child.props.onClick) })
+          cloneElement(child, {
+            onClick: handleMenuItemClick(child.props.onClick),
+          }),
         )}
       </Menu>
     </Fragment>

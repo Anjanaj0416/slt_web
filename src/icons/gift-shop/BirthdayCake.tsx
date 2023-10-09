@@ -90,11 +90,16 @@ const BirthdayCake = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_6820_24012">
-        <rect width="18" height="18" fill="white" transform="translate(0.496094 0.540039)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.496094 0.540039)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "BirthdayCake"
+  "BirthdayCake",
 );
 
 export default BirthdayCake;

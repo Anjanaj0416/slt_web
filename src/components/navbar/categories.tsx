@@ -17,7 +17,13 @@ const Categories = ({ open }: { open: boolean }) => {
     <CategoryMenu open={open}>
       <CategoryMenuButton variant="text">
         <Category fontSize="small" />
-        <Paragraph fontWeight="600" textAlign="left" flex="1 1 0" ml={1.25} color="grey.600">
+        <Paragraph
+          fontWeight="600"
+          textAlign="left"
+          flex="1 1 0"
+          ml={1.25}
+          color="grey.600"
+        >
           Categories
         </Paragraph>
 

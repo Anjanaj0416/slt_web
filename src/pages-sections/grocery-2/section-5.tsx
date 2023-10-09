@@ -75,7 +75,9 @@ const Section9: FC<Props> = ({ testimonials = [] }) => {
               </Grid>
             </StyledGridContainer>
 
-            <StyledQuote sx={{ right: 0, bottom: 0, transform: "rotate(180deg)" }} />
+            <StyledQuote
+              sx={{ right: 0, bottom: 0, transform: "rotate(180deg)" }}
+            />
           </StyledFlexBox>
         </StyledBazaarCard>
       ))}

@@ -22,11 +22,16 @@ const Popular = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_6800_50723">
-        <rect width="18" height="18" fill="white" transform="translate(0.851562 0.854492)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.851562 0.854492)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "Popular"
+  "Popular",
 );
 
 export default Popular;

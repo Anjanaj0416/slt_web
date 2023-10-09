@@ -25,7 +25,15 @@ const CheckoutForm = () => {
       initialValues={initialValues}
       validationSchema={checkoutSchema}
     >
-      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => {
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        setFieldValue,
+      }) => {
         const handleCheckboxChange = (checked: boolean) => {
           setSameAsShipping(checked);
           setFieldValue("same_as_shipping", checked);
@@ -69,7 +77,12 @@ const CheckoutForm = () => {
               </Grid>
 
               <Grid item sm={6} xs={12}>
-                <Button variant="contained" color="primary" type="submit" fullWidth>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  fullWidth
+                >
                   Proceed to Payment
                 </Button>
               </Grid>

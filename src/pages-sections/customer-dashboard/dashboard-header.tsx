@@ -50,7 +50,9 @@ type Props = WithoutButton | WithButton;
 // ==============================================================
 
 const DashboardHeader: FC<Props> = ({ title, buttonText, href, Icon }) => {
-  const isTablet = useMediaQuery((theme: Theme) => theme.breakpoints.down(1025));
+  const isTablet = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down(1025),
+  );
 
   const HEADER_LINK = (
     <Button

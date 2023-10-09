@@ -7,7 +7,7 @@ const PackageBox = createSvgIcon(
     <path d="M15.625 16.3275L11 13.9995V19.1145L9 17.101H7V11.986L2 9.46948V23.1415L15.625 30V16.3275Z" />
     <path d="M16.375 16.3275V30L30 23.1415V9.46948L16.375 16.3275Z" />
   </svg>,
-  "PackageBox"
+  "PackageBox",
 );
 
 export default PackageBox;

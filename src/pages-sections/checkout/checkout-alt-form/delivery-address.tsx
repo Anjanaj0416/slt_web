@@ -66,22 +66,34 @@ const DeliveryAddress: FC<Props> = ({ values, handleFieldValueChange }) => {
                 border: "1px solid",
                 position: "relative",
                 backgroundColor: "grey.100",
-                borderColor: item.street1 === values.address ? "primary.main" : "transparent",
+                borderColor:
+                  item.street1 === values.address
+                    ? "primary.main"
+                    : "transparent",
               }}
             >
               <FlexBox position="absolute" top={5} right={5}>
-                <IconButton size="small" onClick={() => setEditAddressId(item.id)}>
+                <IconButton
+                  size="small"
+                  onClick={() => setEditAddressId(item.id)}
+                >
                   <ModeEditOutline fontSize="inherit" />
                 </IconButton>
 
-                <IconButton size="small" color="error" onClick={() => handleDeleteAddress(item.id)}>
+                <IconButton
+                  size="small"
+                  color="error"
+                  onClick={() => handleDeleteAddress(item.id)}
+                >
                   <DeleteOutline fontSize="inherit" />
                 </IconButton>
               </FlexBox>
 
               <H6 mb={0.5}>{item.name}</H6>
               <Paragraph color="grey.700">{item.street1}</Paragraph>
-              {item.street2 ? <Paragraph color="grey.700">{item.street2}</Paragraph> : null}
+              {item.street2 ? (
+                <Paragraph color="grey.700">{item.street2}</Paragraph>
+              ) : null}
               <Paragraph color="grey.700">{item.phone}</Paragraph>
             </Card>
           </Grid>

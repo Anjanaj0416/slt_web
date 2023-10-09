@@ -8,7 +8,11 @@ import GlobalStyles from "@mui/material/GlobalStyles";
 
 import "nprogress/nprogress.css";
 
-type PushStateInput = [data: any, unused: string, url?: string | URL | null | undefined];
+type PushStateInput = [
+  data: any,
+  unused: string,
+  url?: string | URL | null | undefined,
+];
 
 const ProgressBar = () => {
   const theme = useTheme();
@@ -26,7 +30,9 @@ const ProgressBar = () => {
 
     const handleMutation: MutationCallback = () => {
       const anchorElements = document.querySelectorAll("a[href]");
-      anchorElements.forEach((anchor) => anchor.addEventListener("click", handleAnchorClick));
+      anchorElements.forEach((anchor) =>
+        anchor.addEventListener("click", handleAnchorClick),
+      );
     };
 
     const mutationObserver = new MutationObserver(handleMutation);

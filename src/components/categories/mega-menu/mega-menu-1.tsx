@@ -65,7 +65,12 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
           {rightImage ? (
             <Box mt={1.5}>
               <Link href={rightImage.href}>
-                <LazyImage src={rightImage.imgUrl} width={137} height={318} alt="banner" />
+                <LazyImage
+                  src={rightImage.imgUrl}
+                  width={137}
+                  height={318}
+                  alt="banner"
+                />
               </Link>
             </Box>
           ) : null}

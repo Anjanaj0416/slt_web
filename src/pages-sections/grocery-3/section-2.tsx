@@ -35,7 +35,12 @@ const Section2: FC<Props> = ({ offers }) => {
               </Box>
 
               <Box width="40%">
-                <LazyImage width={900} height={528} alt={item.title} src={item.imgUrl} />
+                <LazyImage
+                  width={900}
+                  height={528}
+                  alt={item.title}
+                  src={item.imgUrl}
+                />
               </Box>
             </StyledCard>
           </Link>

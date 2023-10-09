@@ -42,7 +42,13 @@ const LongProductCard: FC<Props> = ({
     <div>
       <Link href={`/products/${slug}`}>
         <HoverBox>
-          <BazaarImage src={imgUrl} width="100%" height="auto" alt={title} mx="auto" />
+          <BazaarImage
+            src={imgUrl}
+            width="100%"
+            height="auto"
+            alt={title}
+            mx="auto"
+          />
         </HoverBox>
       </Link>
 
@@ -52,7 +58,9 @@ const LongProductCard: FC<Props> = ({
             {title}
           </H4>
 
-          {!hideReview ? <Rating size="small" value={rating} color="warn" readOnly /> : null}
+          {!hideReview ? (
+            <Rating size="small" value={rating} color="warn" readOnly />
+          ) : null}
 
           <FlexBox alignItems="center" gap={1}>
             <H6 color="primary.main">{calculateDiscount(price, off)}</H6>
@@ -67,7 +75,11 @@ const LongProductCard: FC<Props> = ({
 
         {!hideFavoriteIcon ? (
           <IconButton disableRipple disableFocusRipple>
-            <FavoriteBorder fontSize="small" color="secondary" sx={{ opacity: 0.5 }} />
+            <FavoriteBorder
+              fontSize="small"
+              color="secondary"
+              sx={{ opacity: 0.5 }}
+            />
           </IconButton>
         ) : null}
       </FlexBetween>

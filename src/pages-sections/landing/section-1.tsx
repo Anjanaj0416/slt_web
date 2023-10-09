@@ -26,23 +26,48 @@ const Section1 = () => {
             </Box>
           </H1>
 
-          <Paragraph fontSize="18px" fontWeight={500} maxWidth="540px" mx="auto" mb={3}>
-            SEO friendly Next.js Ecommerce Template. Helps you to build performant online store
-            faster.
+          <Paragraph
+            fontSize="18px"
+            fontWeight={500}
+            maxWidth="540px"
+            mx="auto"
+            mb={3}
+          >
+            SEO friendly Next.js Ecommerce Template. Helps you to build
+            performant online store faster.
           </Paragraph>
 
-          <FlexRowCenter sx={{ mb: 5, flexDirection: { md: "row", xs: "column" } }}>
-            <FlexBox my={1} mr={2} alignItems="center" fontWeight={500} color="grey.900">
+          <FlexRowCenter
+            sx={{ mb: 5, flexDirection: { md: "row", xs: "column" } }}
+          >
+            <FlexBox
+              my={1}
+              mr={2}
+              alignItems="center"
+              fontWeight={500}
+              color="grey.900"
+            >
               <DoneIcon color="success" fontSize="small" sx={{ mr: 0.6 }} />
               SSR
             </FlexBox>
 
-            <FlexBox my={1} mr={2} alignItems="center" fontWeight={500} color="grey.900">
+            <FlexBox
+              my={1}
+              mr={2}
+              alignItems="center"
+              fontWeight={500}
+              color="grey.900"
+            >
               <DoneIcon color="success" fontSize="small" sx={{ mr: 0.6 }} />
               Rest API
             </FlexBox>
 
-            <FlexBox my={1} alignItems="center" fontWeight={500} color="grey.900">
+            <FlexBox
+              my={1}
+              alignItems="center"
+              fontWeight={500}
+              color="grey.900"
+            >
               <DoneIcon color="success" fontSize="small" sx={{ mr: 0.6 }} />
               Multi vendor Support
             </FlexBox>
@@ -50,13 +75,23 @@ const Section1 = () => {
 
           <FlexBox justifyContent="center" mb={3}>
             <Scroll to="get" duration={400} offset={-72 - 16} smooth={true}>
-              <Button variant="outlined" color="primary" size="large" sx={{ m: "0.5rem" }}>
+              <Button
+                variant="outlined"
+                color="primary"
+                size="large"
+                sx={{ m: "0.5rem" }}
+              >
                 What&apos;s inside
               </Button>
             </Scroll>
 
             <Scroll to="demos" duration={400} offset={-72 - 16} smooth={true}>
-              <Button variant="contained" color="primary" size="large" sx={{ m: "0.5rem" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                sx={{ m: "0.5rem" }}
+              >
                 View Demos
               </Button>
             </Scroll>
@@ -64,7 +99,11 @@ const Section1 = () => {
 
           <FlexBox justifyContent="center" alignItems="center">
             <Span sx={{ textDecoration: "underline", color: "text.secondary" }}>
-              <a href="https://support.ui-lib.com/bazaar-backend/" target="_blank" rel="noreferrer">
+              <a
+                href="https://support.ui-lib.com/bazaar-backend/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 I need server integration
               </a>
             </Span>
@@ -73,8 +112,8 @@ const Section1 = () => {
               placement="right"
               title={
                 <Paragraph>
-                  Bazaar has REST API integrated on the frontend. Click this link if you want server
-                  side help from us.
+                  Bazaar has REST API integrated on the frontend. Click this
+                  link if you want server side help from us.
                 </Paragraph>
               }
             >

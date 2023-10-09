@@ -72,7 +72,11 @@ const CategoriesPageView = ({ categories }: Props) => {
 
               <TableBody>
                 {filteredList.map((category) => (
-                  <CategoryRow key={category.id} category={category} selected={selected} />
+                  <CategoryRow
+                    key={category.id}
+                    category={category}
+                    selected={selected}
+                  />
                 ))}
               </TableBody>
             </Table>

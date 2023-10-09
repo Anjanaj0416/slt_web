@@ -18,7 +18,8 @@ type Props = {
 // ======================================================================
 
 const Section8: FC<Props> = (props) => {
-  const { saleProducts, popularProducts, bestWeekProducts, latestProducts } = props;
+  const { saleProducts, popularProducts, bestWeekProducts, latestProducts } =
+    props;
 
   return (
     <Container sx={{ py: 10 }}>

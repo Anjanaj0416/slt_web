@@ -34,7 +34,10 @@ const ServiceItem = styled(FlexRowCenter)(({ theme }) => ({
   borderRight: `1px solid ${theme.palette.grey[400]}`,
   ":last-child": { borderRight: 0 },
   [theme.breakpoints.down("md")]: { ":nth-of-type(even)": { borderRight: 0 } },
-  [theme.breakpoints.down("sm")]: { borderRight: 0, justifyContent: "flex-start" },
+  [theme.breakpoints.down("sm")]: {
+    borderRight: 0,
+    justifyContent: "flex-start",
+  },
 }));
 
 // ===========================================================

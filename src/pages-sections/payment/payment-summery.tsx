@@ -17,7 +17,12 @@ const PaymentSummary = () => {
 
       <Divider sx={{ my: 2 }} />
 
-      <Paragraph fontSize={25} fontWeight={600} lineHeight={1} textAlign="right">
+      <Paragraph
+        fontSize={25}
+        fontWeight={600}
+        lineHeight={1}
+        textAlign="right"
+      >
         {currency(2650)}
       </Paragraph>
     </Card>

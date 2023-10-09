@@ -12,7 +12,11 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default async function OrderDetails({ params }: { params: { id: string } }) {
+export default async function OrderDetails({
+  params,
+}: {
+  params: { id: string };
+}) {
   try {
     const order = await api.getOrder(String(params.id));
     return <OrderDetailsPageView order={order} />;

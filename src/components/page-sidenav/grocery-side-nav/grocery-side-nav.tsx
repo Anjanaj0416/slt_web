@@ -33,7 +33,11 @@ const GrocerySideNav: FC<Props> = ({ navigation }) => {
           return (
             <Box mb={1} color="grey.700" key={ind}>
               {item.child ? (
-                <NavAccordion Icon={Icon} title={item.title} child={item.child} />
+                <NavAccordion
+                  Icon={Icon}
+                  title={item.title}
+                  child={item.child}
+                />
               ) : (
                 <NavLink key={item.title} href={item.href} color="grey.700">
                   <FlexBox py={0.75} gap={1.5}>

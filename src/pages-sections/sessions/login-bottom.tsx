@@ -12,7 +12,13 @@ const LoginBottom = () => {
       </FlexRowCenter>
 
       {/* FORGET YOUR PASSWORD AREA */}
-      <FlexBox gap={1} py={2} borderRadius={1} justifyContent="center" bgcolor="grey.200">
+      <FlexBox
+        gap={1}
+        py={2}
+        borderRadius={1}
+        justifyContent="center"
+        bgcolor="grey.200"
+      >
         Forgot your password?
         <BoxLink title="Reset It" href="/reset-password" />
       </FlexBox>

@@ -31,7 +31,7 @@ const RankBadge = createSvgIcon(
       fill="#FAB400"
     />
   </svg>,
-  "RankBadge"
+  "RankBadge",
 );
 
 export default RankBadge;

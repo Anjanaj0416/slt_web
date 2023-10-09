@@ -30,11 +30,21 @@ const GeneralForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
     >
-      {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <DropZone onChange={(files) => console.log(files)} title="Drag & Drop Site Logo" />
+              <DropZone
+                onChange={(files) => console.log(files)}
+                title="Drag & Drop Site Logo"
+              />
             </Grid>
 
             <Grid item md={6} xs={12}>
@@ -63,7 +73,10 @@ const GeneralForm = () => {
                 label="Site Description"
                 value={values.site_description}
                 error={!!touched.site_description && !!errors.site_description}
-                helperText={(touched.site_description && errors.site_description) as string}
+                helperText={
+                  (touched.site_description &&
+                    errors.site_description) as string
+                }
               />
             </Grid>
 
@@ -80,7 +93,10 @@ const GeneralForm = () => {
                 label="Site Banner Text"
                 value={values.site_banner_text}
                 error={!!touched.site_banner_text && !!errors.site_banner_text}
-                helperText={(touched.site_banner_text && errors.site_banner_text) as string}
+                helperText={
+                  (touched.site_banner_text &&
+                    errors.site_banner_text) as string
+                }
               />
             </Grid>
 

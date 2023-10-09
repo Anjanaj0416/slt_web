@@ -27,13 +27,25 @@ const megaMenus = [
       title: "User Account",
       child: [
         { title: "Order List", url: "/orders" },
-        { title: "Order Details", url: "/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8" },
+        {
+          title: "Order Details",
+          url: "/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8",
+        },
         { title: "View Profile", url: "/profile" },
-        { title: "Edit Profile", url: "/profile/e42e28ea-528f-4bc8-81fb-97f658d67d75" },
+        {
+          title: "Edit Profile",
+          url: "/profile/e42e28ea-528f-4bc8-81fb-97f658d67d75",
+        },
         { title: "Address List", url: "/address" },
-        { title: "Add Address", url: "/address/d27d0e28-c35e-4085-af1e-f9f1b1bd9c34" },
+        {
+          title: "Add Address",
+          url: "/address/d27d0e28-c35e-4085-af1e-f9f1b1bd9c34",
+        },
         { title: "All tickets", url: "/support-tickets" },
-        { title: "Ticket details", url: "/support-tickets/when-will-my-product-arrive" },
+        {
+          title: "Ticket details",
+          url: "/support-tickets/when-will-my-product-arrive",
+        },
         { title: "Wishlist", url: "/wish-list" },
       ],
     },
@@ -58,7 +70,10 @@ const megaMenus = [
       title: "Orders",
       child: [
         { title: "All orders", url: "/admin/orders" },
-        { title: "Order details", url: "/admin/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8" },
+        {
+          title: "Order details",
+          url: "/admin/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8",
+        },
       ],
     },
     {
@@ -176,28 +191,40 @@ const navbarNavigation = [
         title: "Orders",
         child: [
           { title: "Order List", url: "/orders" },
-          { title: "Order Details", url: "/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8" },
+          {
+            title: "Order Details",
+            url: "/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8",
+          },
         ],
       },
       {
         title: "Profile",
         child: [
           { title: "View Profile", url: "/profile" },
-          { title: "Edit Profile", url: "/profile/e42e28ea-528f-4bc8-81fb-97f658d67d75" },
+          {
+            title: "Edit Profile",
+            url: "/profile/e42e28ea-528f-4bc8-81fb-97f658d67d75",
+          },
         ],
       },
       {
         title: "Address",
         child: [
           { title: "Address List", url: "/address" },
-          { title: "Add Address", url: "/address/d27d0e28-c35e-4085-af1e-f9f1b1bd9c34" },
+          {
+            title: "Add Address",
+            url: "/address/d27d0e28-c35e-4085-af1e-f9f1b1bd9c34",
+          },
         ],
       },
       {
         title: "Support tickets",
         child: [
           { title: "All tickets", url: "/support-tickets" },
-          { title: "Ticket details", url: "/support-tickets/when-will-my-product-arrive" },
+          {
+            title: "Ticket details",
+            url: "/support-tickets/when-will-my-product-arrive",
+          },
         ],
       },
       { title: "Wishlist", url: "/wish-list" },
@@ -220,7 +247,10 @@ const navbarNavigation = [
         title: "Orders",
         child: [
           { title: "All orders", url: "/admin/orders" },
-          { title: "Order details", url: "/admin/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8" },
+          {
+            title: "Order details",
+            url: "/admin/orders/f0ba538b-c8f3-45ce-b6c1-209cf07ba5f8",
+          },
         ],
       },
       { title: "Profile", url: "/vendor/account-settings" },

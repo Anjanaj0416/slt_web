@@ -25,7 +25,11 @@ const Section2: FC<Props> = ({ flashDeals }) => {
 
   return (
     <SectionCreator icon={<Light color="primary" />} title="Flash Deals">
-      <Carousel slidesToShow={4} responsive={responsive} arrowStyles={ARROW_BUTTON_STYLE}>
+      <Carousel
+        slidesToShow={4}
+        responsive={responsive}
+        arrowStyles={ARROW_BUTTON_STYLE}
+      >
         {flashDeals.map((item) => (
           <ProductCard2
             key={item.id}

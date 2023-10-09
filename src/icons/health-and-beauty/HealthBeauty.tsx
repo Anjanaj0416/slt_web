@@ -38,7 +38,7 @@ const HealthBeauty = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "HealthBeauty"
+  "HealthBeauty",
 );
 
 export default HealthBeauty;

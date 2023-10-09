@@ -2,7 +2,12 @@ import { FC } from "react";
 // MUI ICON COMPONENT
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // STYLED COMPONENTS
-import { StatusWrapper, StyledTableRow, StyledTableCell, StyledIconButton } from "../styles";
+import {
+  StatusWrapper,
+  StyledTableRow,
+  StyledTableCell,
+  StyledIconButton,
+} from "../styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // DATA TYPES
@@ -13,7 +18,8 @@ type Props = { request: Request };
 // ==============================================================
 
 const RequestRow: FC<Props> = ({ request }) => {
-  const { no, seller, shopName, totalAmount, requestAmount, date, status } = request || {};
+  const { no, seller, shopName, totalAmount, requestAmount, date, status } =
+    request || {};
 
   return (
     <StyledTableRow role="checkbox">

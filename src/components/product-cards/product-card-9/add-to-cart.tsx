@@ -15,7 +15,11 @@ interface Props {
 }
 // ==============================================================
 
-const AddToCartButton: FC<Props> = ({ quantity, handleDecrement, handleIncrement }) => {
+const AddToCartButton: FC<Props> = ({
+  quantity,
+  handleDecrement,
+  handleIncrement,
+}) => {
   return (
     <FlexBox mt={1}>
       {quantity ? (
@@ -43,7 +47,12 @@ const AddToCartButton: FC<Props> = ({ quantity, handleDecrement, handleIncrement
           </Button>
         </FlexBetween>
       ) : (
-        <Button color="primary" variant="contained" sx={{ height: 32 }} onClick={handleIncrement}>
+        <Button
+          color="primary"
+          variant="contained"
+          sx={{ height: 32 }}
+          onClick={handleIncrement}
+        >
           Add To Cart
         </Button>
       )}

@@ -9,7 +9,7 @@ const Twitter = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Twitter"
+  "Twitter",
 );
 
 export default Twitter;

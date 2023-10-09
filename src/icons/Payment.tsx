@@ -21,7 +21,7 @@ const Payment = createSvgIcon(
       />
     </g>
   </svg>,
-  "Payment"
+  "Payment",
 );
 
 export default Payment;

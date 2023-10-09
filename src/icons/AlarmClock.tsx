@@ -41,7 +41,7 @@ const AlarmClock = createSvgIcon(
       />
     </g>
   </svg>,
-  "AlarmClock"
+  "AlarmClock",
 );
 
 export default AlarmClock;

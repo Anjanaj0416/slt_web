@@ -20,7 +20,9 @@ const RegisterPageView = () => {
 
   // COMMON INPUT PROPS FOR TEXT FIELD
   const inputProps = {
-    endAdornment: <EyeToggleButton show={visiblePassword} click={togglePasswordVisible} />,
+    endAdornment: (
+      <EyeToggleButton show={visiblePassword} click={togglePasswordVisible} />
+    ),
   };
 
   // REGISTER FORM FIELDS INITIAL VALUES
@@ -46,18 +48,19 @@ const RegisterPageView = () => {
       .test(
         "agreement",
         "You have to agree with our Terms and Conditions!",
-        (value) => value === true
+        (value) => value === true,
       )
       .required("You have to agree with our Terms and Conditions!"),
   });
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -131,17 +134,36 @@ const RegisterPageView = () => {
         name="agreement"
         className="agreement"
         onChange={handleChange}
-        control={<Checkbox size="small" color="secondary" checked={values.agreement || false} />}
+        control={
+          <Checkbox
+            size="small"
+            color="secondary"
+            checked={values.agreement || false}
+          />
+        }
         label={
-          <FlexBox flexWrap="wrap" alignItems="center" justifyContent="flex-start" gap={1}>
-            <Span display={{ sm: "inline-block", xs: "none" }}>By signing up, you agree to</Span>
+          <FlexBox
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="flex-start"
+            gap={1}
+          >
+            <Span display={{ sm: "inline-block", xs: "none" }}>
+              By signing up, you agree to
+            </Span>
             <Span display={{ sm: "none", xs: "inline-block" }}>Accept Our</Span>
             <BoxLink title="Terms & Condition" href="/" />
           </FlexBox>
         }
       />
 
-      <Button fullWidth type="submit" color="primary" variant="contained" size="large">
+      <Button
+        fullWidth
+        type="submit"
+        color="primary"
+        variant="contained"
+        size="large"
+      >
         Create Account
       </Button>
     </form>

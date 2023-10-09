@@ -43,7 +43,12 @@ const PaymentForm = () => {
 
         {paymentMethod === "paypal" && (
           <FlexBox alignItems="flex-end" gap={2} mb={4}>
-            <TextField fullWidth name="email" type="email" label="Paypal Email" />
+            <TextField
+              fullWidth
+              name="email"
+              type="email"
+              label="Paypal Email"
+            />
             <Button variant="outlined" color="primary" type="button">
               Submit
             </Button>

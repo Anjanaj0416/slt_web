@@ -49,7 +49,9 @@ const ProductCard2: FC<Props> = ({
             {title}
           </H6>
 
-          {!hideReview ? <Rating size="small" value={rating} color="warn" readOnly /> : null}
+          {!hideReview ? (
+            <Rating size="small" value={rating} color="warn" readOnly />
+          ) : null}
 
           <ProductPrice price={price} off={off} />
         </div>

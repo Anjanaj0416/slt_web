@@ -33,7 +33,9 @@ const getLatestProducts = cache(async (): Promise<Product[]> => {
 });
 
 const getBestWeekProducts = cache(async (): Promise<Product[]> => {
-  const response = await axios.get("/api/fashion-shop-2/products?tag=best-week");
+  const response = await axios.get(
+    "/api/fashion-shop-2/products?tag=best-week",
+  );
   return response.data;
 });
 

@@ -9,7 +9,11 @@ import { ContentBox, RightContent, LeftContent, StyledButton } from "./styles";
 
 const Section2 = () => {
   return (
-    <Box display="grid" gridTemplateColumns={{ sm: "1fr 1fr", xs: "1fr" }} gap={3}>
+    <Box
+      display="grid"
+      gridTemplateColumns={{ sm: "1fr 1fr", xs: "1fr" }}
+      gap={3}
+    >
       <ContentBox>
         <RightContent px="20px">
           <Image

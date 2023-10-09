@@ -7,7 +7,12 @@ import { useLayout } from "../dashboard-layout-context";
 import { ChevronLeftIcon } from "./styles";
 
 const LogoArea = () => {
-  const { TOP_HEADER_AREA, COMPACT, sidebarCompact, handleSidebarCompactToggle } = useLayout();
+  const {
+    TOP_HEADER_AREA,
+    COMPACT,
+    sidebarCompact,
+    handleSidebarCompactToggle,
+  } = useLayout();
 
   return (
     <FlexBetween
@@ -17,7 +22,11 @@ const LogoArea = () => {
     >
       <Avatar
         alt="Bazaar Logo"
-        src={COMPACT ? "/assets/images/bazaar-white-sm.svg" : "/assets/images/logo.svg"}
+        src={
+          COMPACT
+            ? "/assets/images/bazaar-white-sm.svg"
+            : "/assets/images/logo.svg"
+        }
         sx={{ borderRadius: 0, width: "auto", marginLeft: COMPACT ? 0 : 1 }}
       />
 

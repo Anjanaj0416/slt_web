@@ -33,11 +33,17 @@ const ProductIntro: FC<Props> = ({ product }) => {
 
   const { state, dispatch } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectVariants, setSelectVariants] = useState({ option: "option 1", type: "type 1" });
+  const [selectVariants, setSelectVariants] = useState({
+    option: "option 1",
+    type: "type 1",
+  });
 
   // HANDLE CHANGE TYPE AND OPTIONS
   const handleChangeVariant = (variantName: string, value: string) => () => {
-    setSelectVariants((state) => ({ ...state, [variantName.toLowerCase()]: value }));
+    setSelectVariants((state) => ({
+      ...state,
+      [variantName.toLowerCase()]: value,
+    }));
   };
 
   // CHECK PRODUCT EXIST OR NOT IN THE CART
@@ -84,9 +90,16 @@ const ProductIntro: FC<Props> = ({ product }) => {
                 style={{ cursor: "pointer" }}
                 onClick={handleImageClick(ind)}
                 mr={ind === images.length - 1 ? "auto" : "10px"}
-                borderColor={selectedImage === ind ? "primary.main" : "grey.400"}
+                borderColor={
+                  selectedImage === ind ? "primary.main" : "grey.400"
+                }
               >
-                <Avatar alt="product" src={url} variant="square" sx={{ height: 40 }} />
+                <Avatar
+                  alt="product"
+                  src={url}
+                  variant="square"
+                  sx={{ height: 40 }}
+                />
               </FlexRowCenter>
             ))}
           </FlexBox>
@@ -122,7 +135,9 @@ const ProductIntro: FC<Props> = ({ product }) => {
                   onClick={handleChangeVariant(variant.title, value)}
                   sx={{ borderRadius: "4px", mr: 1, cursor: "pointer" }}
                   color={
-                    selectVariants[variant.title.toLowerCase()] === value ? "primary" : "default"
+                    selectVariants[variant.title.toLowerCase()] === value
+                      ? "primary"
+                      : "default"
                   }
                 />
               ))}

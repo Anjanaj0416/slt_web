@@ -24,7 +24,10 @@ const DashboardSidebar = () => {
 
   if (downLg) {
     return (
-      <LayoutDrawer open={showMobileSideBar ? true : false} onClose={handleCloseMobileSidebar}>
+      <LayoutDrawer
+        open={showMobileSideBar ? true : false}
+        onClose={handleCloseMobileSidebar}
+      >
         <Box p={2} maxHeight={TOP_HEADER_AREA}>
           <Image
             alt="Logo"

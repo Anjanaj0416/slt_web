@@ -13,10 +13,14 @@ const useProduct = (slug: string) => {
   const toggleFavorite = useCallback(() => setIsFavorite((fav) => !fav), []);
   const toggleDialog = useCallback(() => setOpenModal((open) => !open), []);
 
-  const handleCartAmountChange = (product: typeof cartItem, type?: "remove") => {
+  const handleCartAmountChange = (
+    product: typeof cartItem,
+    type?: "remove",
+  ) => {
     dispatch({ type: "CHANGE_CART_AMOUNT", payload: product });
     // SHOW ALERT PRODUCT ADDED OR REMOVE
-    if (type === "remove") enqueueSnackbar("Remove from Cart", { variant: "error" });
+    if (type === "remove")
+      enqueueSnackbar("Remove from Cart", { variant: "error" });
     else enqueueSnackbar("Added to Cart", { variant: "success" });
   };
 

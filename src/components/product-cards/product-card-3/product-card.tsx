@@ -12,7 +12,12 @@ import ProductPrice from "../product-price";
 import ProductTitle from "../product-title";
 import ProductRating from "../product-rating";
 // STYLED COMPONENTS
-import { ContentWrapper, ImageBox, ImageWrapper, StyledBazaarCard } from "./styles";
+import {
+  ContentWrapper,
+  ImageBox,
+  ImageWrapper,
+  StyledBazaarCard,
+} from "./styles";
 
 // ====================================================================
 type Props = {
@@ -30,8 +35,14 @@ type Props = {
 const ProductCard10: FC<Props> = (props) => {
   const { off, id, title, price, imgUrl, rating, hideRating, slug } = props;
 
-  const { handleCartAmountChange, cartItem, isFavorite, openModal, toggleDialog, toggleFavorite } =
-    useProduct(slug);
+  const {
+    handleCartAmountChange,
+    cartItem,
+    isFavorite,
+    openModal,
+    toggleDialog,
+    toggleFavorite,
+  } = useProduct(slug);
 
   const handleAddToCart = () => {
     const product = { price, imgUrl, id, name: title, qty: 1, slug };
@@ -39,7 +50,14 @@ const ProductCard10: FC<Props> = (props) => {
   };
 
   const handleRemoveFormCart = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: cartItem.qty - 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: cartItem.qty - 1,
+    };
     handleCartAmountChange(product, "remove");
   };
 

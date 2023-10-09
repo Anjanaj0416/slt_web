@@ -37,7 +37,10 @@ const ReasonType = () => {
         <FlexBox mb={2} gap={3} key={reason.id} alignItems="center">
           <Box sx={TITLE_STYLE}>{reason.title}</Box>
 
-          <IconButton onClick={handleDeleteReason(reason.id)} sx={{ backgroundColor: "grey.200" }}>
+          <IconButton
+            onClick={handleDeleteReason(reason.id)}
+            sx={{ backgroundColor: "grey.200" }}
+          >
             <Delete sx={{ fontSize: 19, color: "grey.600" }} />
           </IconButton>
         </FlexBox>

@@ -1,7 +1,10 @@
 import { Span } from "components/Typography";
 import { Circle, StyledList } from "./styles";
 
-export const renderChild = (childList: any[], handleSelect: (category: string) => void) => {
+export const renderChild = (
+  childList: any[],
+  handleSelect: (category: string) => void,
+) => {
   return childList.map((item) => (
     <StyledList
       key={item.title}

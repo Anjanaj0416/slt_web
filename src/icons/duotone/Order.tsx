@@ -12,7 +12,7 @@ const Order = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Order"
+  "Order",
 );
 
 export default Order;

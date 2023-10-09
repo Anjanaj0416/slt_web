@@ -76,7 +76,13 @@ const TopbarForm = () => {
                       <Button
                         color="info"
                         variant="contained"
-                        onClick={() => arrayHelper.push({ id: Date.now(), name: "", link: "" })}
+                        onClick={() =>
+                          arrayHelper.push({
+                            id: Date.now(),
+                            name: "",
+                            link: "",
+                          })
+                        }
                       >
                         Add Item
                       </Button>

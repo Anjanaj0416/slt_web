@@ -37,7 +37,9 @@ const Accordion = ({ title, Icon, child, handleSelect }: Props) => {
       </AccordionHeader>
 
       {/* RENDER NESTED NAV ITEMS */}
-      {child ? <Collapse in={open}>{renderChild(child, handleSelect)}</Collapse> : null}
+      {child ? (
+        <Collapse in={open}>{renderChild(child, handleSelect)}</Collapse>
+      ) : null}
     </Fragment>
   );
 };

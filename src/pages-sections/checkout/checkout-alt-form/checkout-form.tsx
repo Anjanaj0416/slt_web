@@ -41,7 +41,14 @@ const CheckoutForm2 = () => {
       initialValues={initialValues}
       validationSchema={checkoutSchema}
     >
-      {({ values, errors, touched, handleChange, handleSubmit, setFieldValue }) => {
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleSubmit,
+        setFieldValue,
+      }) => {
         // CHANGE FIELD VALUE DATA
         const handleFieldValueChange = (value: string, fieldName: string) => {
           setFieldValue(fieldName, value);
@@ -56,7 +63,10 @@ const CheckoutForm2 = () => {
               handleChange={handleChange}
             />
 
-            <DeliveryAddress handleFieldValueChange={handleFieldValueChange} values={values} />
+            <DeliveryAddress
+              handleFieldValueChange={handleFieldValueChange}
+              values={values}
+            />
 
             <PaymentDetails
               values={values}
