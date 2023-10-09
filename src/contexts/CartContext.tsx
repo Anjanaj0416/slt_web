@@ -28,7 +28,8 @@ const INITIAL_CART = [
     slug: "silver-high-neck-sweater",
     name: "Silver High Neck Sweater",
     id: "6e8f151b-277b-4465-97b6-547f6a72e5c9",
-    imgUrl: "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
+    imgUrl:
+      "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
   },
   {
     qty: 1,
@@ -36,7 +37,8 @@ const INITIAL_CART = [
     slug: "yellow-casual-sweater",
     name: "Yellow Casual Sweater",
     id: "76d14d65-21d0-4b41-8ee1-eef4c2232793",
-    imgUrl: "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
+    imgUrl:
+      "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
   },
   {
     qty: 1,
@@ -74,7 +76,7 @@ const reducer = (state: InitialState, action: CartActionType) => {
       // IF PRODUCT ALREADY EXITS IN CART
       if (exist) {
         const newCart = cartList.map((item) =>
-          item.id === cartItem.id ? { ...item, qty: cartItem.qty } : item
+          item.id === cartItem.id ? { ...item, qty: cartItem.qty } : item,
         );
 
         return { ...state, cart: newCart };
@@ -93,7 +95,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
-  return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
+  );
 };
 
 export default CartProvider;

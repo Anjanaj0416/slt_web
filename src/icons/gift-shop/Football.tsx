@@ -7,7 +7,7 @@ const Football = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Football"
+  "Football",
 );
 
 export default Football;

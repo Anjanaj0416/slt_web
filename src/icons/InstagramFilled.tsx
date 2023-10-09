@@ -20,7 +20,7 @@ const InstagramFilled = createSvgIcon(
       fill="white"
     />
   </svg>,
-  "InstagramFilled"
+  "InstagramFilled",
 );
 
 export default InstagramFilled;

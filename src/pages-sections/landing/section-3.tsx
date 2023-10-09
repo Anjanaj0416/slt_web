@@ -34,14 +34,24 @@ interface Props {
 // ==================================================================
 
 const Section3: FC<Props> = ({ filterDemo, setFilterDemo }) => {
-  const pages = [...demoPageList, ...shopPageList, ...vendorPageList, ...customerPageList];
-  const filtered = pages.filter((item) => (filterDemo !== "" ? item.page === filterDemo : true));
+  const pages = [
+    ...demoPageList,
+    ...shopPageList,
+    ...vendorPageList,
+    ...customerPageList,
+  ];
+  const filtered = pages.filter((item) =>
+    filterDemo !== "" ? item.page === filterDemo : true,
+  );
 
   return (
     <Box
       mb={14}
       id="demos"
-      sx={{ background: "url(/assets/images/landing/landing-bg-2.svg) center/contain no-repeat" }}
+      sx={{
+        background:
+          "url(/assets/images/landing/landing-bg-2.svg) center/contain no-repeat",
+      }}
     >
       <Container id="section-3" sx={{ position: "relative" }}>
         <Box maxWidth="830px" mx="auto" mb="2.5rem" textAlign="center">

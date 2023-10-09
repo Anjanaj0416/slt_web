@@ -43,7 +43,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
     <StyledBox>
       <Carousel
         dots
-        // autoplay
+        autoplay
         arrows={false}
         spaceBetween={0}
         slidesToShow={1}

@@ -8,7 +8,7 @@ const Session = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "Session"
+  "Session",
 );
 
 export default Session;

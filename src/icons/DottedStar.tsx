@@ -31,7 +31,7 @@ const DottedStar = createSvgIcon(
       fill="#FF9101"
     />
   </svg>,
-  "DottedStar"
+  "DottedStar",
 );
 
 export default DottedStar;

@@ -21,11 +21,19 @@ const NotFound = () => {
       </Box>
 
       <FlexBox flexWrap="wrap" gap={2}>
-        <Button variant="outlined" color="primary" onClick={() => router.back()}>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => router.back()}
+        >
           Go Back
         </Button>
 
-        <Button variant="contained" color="primary" onClick={() => router.push("/")}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => router.push("/")}
+        >
           Go to Home
         </Button>
       </FlexBox>

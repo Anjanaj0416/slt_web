@@ -55,9 +55,17 @@ const Section1: FC<Props> = ({ carouselData }) => {
           </Grid>
 
           <Grid item md={3} xs={12}>
-            <Stack height="100%" direction={{ md: "column", sm: "row", xs: "column" }} spacing={2}>
+            <Stack
+              height="100%"
+              direction={{ md: "column", sm: "row", xs: "column" }}
+              spacing={2}
+            >
               {/* SUMMER SALE BANNER */}
-              <BannerCard imageFull flex={1} img="/assets/images/banners/banner-17.jpg">
+              <BannerCard
+                imageFull
+                flex={1}
+                img="/assets/images/banners/banner-17.jpg"
+              >
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   NEW ARRIVALS
                 </Paragraph>
@@ -72,7 +80,11 @@ const Section1: FC<Props> = ({ carouselData }) => {
               </BannerCard>
 
               {/* DESKTOP & LAPTOP BANNER */}
-              <BannerCard imageFull flex={1} img="/assets/images/banners/banner-16.jpg">
+              <BannerCard
+                imageFull
+                flex={1}
+                img="/assets/images/banners/banner-16.jpg"
+              >
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   GAMING 4K
                 </Paragraph>

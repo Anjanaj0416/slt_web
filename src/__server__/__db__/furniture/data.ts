@@ -4,9 +4,21 @@ export const categoryNavigation = [
     category: "Top Categories",
     categoryItem: [
       { icon: "Home", title: "Home", href: "/products/search/Dariry & Eggs" },
-      { icon: "Popular", title: "Popular Products", href: "/products/search/Breakfast" },
-      { icon: "Trending", title: "Trending Products", href: "/products/search/Frozen" },
-      { icon: "Products", title: "All Products", href: "/products/search/vegetables" },
+      {
+        icon: "Popular",
+        title: "Popular Products",
+        href: "/products/search/Breakfast",
+      },
+      {
+        icon: "Trending",
+        title: "Trending Products",
+        href: "/products/search/Frozen",
+      },
+      {
+        icon: "Products",
+        title: "All Products",
+        href: "/products/search/vegetables",
+      },
     ],
   },
   {
@@ -17,8 +29,14 @@ export const categoryNavigation = [
         title: "Chair",
         href: "/products/search/vegetables",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -37,8 +55,14 @@ export const categoryNavigation = [
         title: "Interior",
         href: "/products/search/Dariry & Eggs",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -47,8 +71,14 @@ export const categoryNavigation = [
         title: "Furniture",
         href: "/products/search/Dariry & Eggs",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -57,8 +87,14 @@ export const categoryNavigation = [
         title: "Sofa",
         href: "/products/search/Breakfast",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -67,8 +103,14 @@ export const categoryNavigation = [
         title: "Stool",
         href: "/products/search/Frozen",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -77,8 +119,14 @@ export const categoryNavigation = [
         title: "Wardrobe",
         href: "/products/search/Organic",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
@@ -87,14 +135,32 @@ export const categoryNavigation = [
         title: "Dining",
         href: "/products/search/Canned Food",
         child: [
-          { title: "Pears, apples, quinces", href: "/products/search/Pears, apples, quinces" },
-          { title: "Peaches, plums, apricots", href: "/products/search/Peaches, plums, apricots" },
+          {
+            title: "Pears, apples, quinces",
+            href: "/products/search/Pears, apples, quinces",
+          },
+          {
+            title: "Peaches, plums, apricots",
+            href: "/products/search/Peaches, plums, apricots",
+          },
           { title: "Grapes", href: "/products/search/Grapes" },
         ],
       },
-      { icon: "Living", title: "Living", href: "/products/search/Coffee & Snacks" },
-      { icon: "RoundTable", title: "Coffee Tea Table", href: "/products/search/Coffee & Snacks" },
-      { icon: "RoomSet", title: "Living Room Sets", href: "/products/search/Coffee & Snacks" },
+      {
+        icon: "Living",
+        title: "Living",
+        href: "/products/search/Coffee & Snacks",
+      },
+      {
+        icon: "RoundTable",
+        title: "Coffee Tea Table",
+        href: "/products/search/Coffee & Snacks",
+      },
+      {
+        icon: "RoomSet",
+        title: "Living Room Sets",
+        href: "/products/search/Coffee & Snacks",
+      },
     ],
   },
 ];

@@ -12,7 +12,11 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default async function SupportTicketDetails({ params }: { params: { slug: string } }) {
+export default async function SupportTicketDetails({
+  params,
+}: {
+  params: { slug: string };
+}) {
   try {
     const ticket = await api.getTicket(String(params.slug));
     return <TicketDetailsPageView ticket={ticket} />;

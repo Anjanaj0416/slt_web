@@ -24,7 +24,9 @@ const Card2: FC<Props> = ({ imgUrl, title, headingStyle }) => {
     <Link href="/sales-1">
       <StyledCard>
         <LazyImage alt={title} src={imgUrl} width={527} height={532} />
-        <H5 sx={headingStyle ? headingStyle : { pb: "1rem", pl: "1.5rem" }}>{title}</H5>
+        <H5 sx={headingStyle ? headingStyle : { pb: "1rem", pl: "1.5rem" }}>
+          {title}
+        </H5>
       </StyledCard>
     </Link>
   );

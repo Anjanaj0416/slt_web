@@ -21,7 +21,8 @@ const SideNavContainer: FC<Props> = (props) => {
     const element = document.getElementById(navFixedComponentID)!;
     const elementBottom = element.getBoundingClientRect().bottom;
 
-    const position = elementBottom + window.scrollY - layoutConstant.headerHeight;
+    const position =
+      elementBottom + window.scrollY - layoutConstant.headerHeight;
     setFixed(window.scrollY > position);
   }, [navFixedComponentID]);
 
@@ -36,7 +37,9 @@ const SideNavContainer: FC<Props> = (props) => {
         <SideNav />
       </div>
 
-      <div className={clsx({ pageContent: true, pageContentLeft: isFixed })}>{children}</div>
+      <div className={clsx({ pageContent: true, pageContentLeft: isFixed })}>
+        {children}
+      </div>
     </StyledContainer>
   );
 };

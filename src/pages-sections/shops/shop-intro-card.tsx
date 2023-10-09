@@ -31,7 +31,10 @@ const ShopIntroCard: FC<Props> = (props) => {
 
   return (
     <Card sx={{ mb: 4, pb: 2.5 }}>
-      <Box height="202px" sx={{ background: `url(${coverPicture}) center/cover` }} />
+      <Box
+        height="202px"
+        sx={{ background: `url(${coverPicture}) center/cover` }}
+      />
 
       <FlexBox mt={-8} px={3.75} flexWrap="wrap">
         <Avatar
@@ -68,7 +71,12 @@ const ShopIntroCard: FC<Props> = (props) => {
 
             <FlexBox my={1} gap={1.5}>
               {socialLinks.map((item, ind) => (
-                <a href={item.url} target="_blank" rel="noreferrer noopener" key={ind}>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  key={ind}
+                >
                   <item.icon sx={{ fontSize: 27 }} />
                 </a>
               ))}

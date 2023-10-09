@@ -10,13 +10,14 @@ const MessageForm = () => {
     message: yup.string().required("Message is required"),
   });
 
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
+  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
 
   return (
     <form onSubmit={handleSubmit}>

@@ -26,7 +26,12 @@ const QuantityButtons: FC<Props> = (props) => {
       flexDirection="column-reverse"
       justifyContent={quantity ? "space-between" : "flex-start"}
     >
-      <Button color="primary" variant="outlined" onClick={handleIncrement} sx={{ padding: "3px" }}>
+      <Button
+        color="primary"
+        variant="outlined"
+        onClick={handleIncrement}
+        sx={{ padding: "3px" }}
+      >
         <Add fontSize="small" />
       </Button>
 

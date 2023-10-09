@@ -49,7 +49,9 @@ const Section9 = () => {
         {/* SECTION TITLE */}
         <div>
           <H3>Selected Products</H3>
-          <Paragraph>All our new arrivals in a exclusive brand selection</Paragraph>
+          <Paragraph>
+            All our new arrivals in a exclusive brand selection
+          </Paragraph>
         </div>
 
         {/* FILTERED BUTTON LIST */}

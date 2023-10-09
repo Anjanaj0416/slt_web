@@ -41,7 +41,7 @@ const MoneyGuarantee = createSvgIcon(
       />
     </g>
   </svg>,
-  "MoneyGuarantee"
+  "MoneyGuarantee",
 );
 
 export default MoneyGuarantee;

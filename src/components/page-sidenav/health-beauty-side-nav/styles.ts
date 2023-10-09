@@ -11,7 +11,10 @@ export const NavbarRoot = styled(BazaarCard)(({ theme }) => ({
     padding: "8px 11px",
     transition: "all 0.2s",
     background: theme.palette.primary[50],
-    "&:hover": { color: theme.palette.primary.main, background: theme.palette.primary[100] },
+    "&:hover": {
+      color: theme.palette.primary.main,
+      background: theme.palette.primary[100],
+    },
   },
 }));
 

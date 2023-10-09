@@ -29,7 +29,14 @@ const PaymentForm = () => {
       initialValues={INITIAL_VALUES}
       validationSchema={VALIDATION_SCHEMA}
     >
-      {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid item md={6} xs={12}>

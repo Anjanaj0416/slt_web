@@ -15,7 +15,10 @@ const EditBrandPageView = () => {
     <Box py={4}>
       <H3 mb={2}>Edit Brand</H3>
 
-      <BrandForm initialValues={INITIAL_VALUES} handleFormSubmit={handleFormSubmit} />
+      <BrandForm
+        initialValues={INITIAL_VALUES}
+        handleFormSubmit={handleFormSubmit}
+      />
     </Box>
   );
 };

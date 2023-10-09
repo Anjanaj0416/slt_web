@@ -35,7 +35,14 @@ const BankPayment = () => {
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
       >
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
           <form onSubmit={handleSubmit}>
             <Stack spacing={3} mb={3}>
               <TextField
@@ -58,8 +65,13 @@ const BankPayment = () => {
                 name="accountHolderName"
                 label="Account Holder Name"
                 value={values.accountHolderName}
-                error={Boolean(errors.accountHolderName && touched.accountHolderName)}
-                helperText={(touched.accountHolderName && errors.accountHolderName) as string}
+                error={Boolean(
+                  errors.accountHolderName && touched.accountHolderName,
+                )}
+                helperText={
+                  (touched.accountHolderName &&
+                    errors.accountHolderName) as string
+                }
               />
 
               <TextField

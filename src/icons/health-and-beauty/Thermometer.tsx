@@ -15,7 +15,7 @@ const Thermometer = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Thermometer"
+  "Thermometer",
 );
 
 export default Thermometer;

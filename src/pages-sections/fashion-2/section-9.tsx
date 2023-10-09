@@ -25,9 +25,19 @@ const Section9: FC<Props> = ({ brands }) => {
     <Container sx={{ mt: 8 }}>
       <Divider sx={{ mb: 4, borderColor: "grey.400" }} />
 
-      <Carousel autoplay arrows={false} slidesToShow={5} responsive={responsive}>
+      <Carousel
+        autoplay
+        arrows={false}
+        slidesToShow={5}
+        responsive={responsive}
+      >
         {brands.map((item) => (
-          <FlexRowCenter maxWidth={110} height="100%" margin="auto" key={item.id}>
+          <FlexRowCenter
+            maxWidth={110}
+            height="100%"
+            margin="auto"
+            key={item.id}
+          >
             <BazaarImage
               alt="brand"
               width="100%"

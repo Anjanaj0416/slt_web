@@ -15,7 +15,10 @@ import AccordionHeader from "components/accordion/accordion-header";
 
 // FILTER OPTIONS
 const categoryList = [
-  { title: "Bath Preparations", subCategories: ["Bubble Bath", "Bath Capsules", "Others"] },
+  {
+    title: "Bath Preparations",
+    subCategories: ["Bubble Bath", "Bath Capsules", "Others"],
+  },
   { title: "Eye Makeup Preparations" },
   { title: "Fragrance" },
   { title: "Hair Preparations" },
@@ -23,7 +26,14 @@ const categoryList = [
 
 const brandList = ["Mac", "Karts", "Baals", "Bukks", "Luasis"];
 const otherOptions = ["On Sale", "In Stock", "Featured"];
-const colorList = ["#1C1C1C", "#FF7A7A", "#FFC672", "#84FFB5", "#70F6FF", "#6B7AFF"];
+const colorList = [
+  "#1C1C1C",
+  "#FF7A7A",
+  "#FFC672",
+  "#84FFB5",
+  "#70F6FF",
+  "#6B7AFF",
+];
 
 const ProductFilterCard = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -62,11 +72,16 @@ const ProductFilterCard = () => {
         ) : (
           <Paragraph
             key={item.title}
-            sx={{ py: 0.75, cursor: "pointer", color: "grey.600", fontSize: 14 }}
+            sx={{
+              py: 0.75,
+              cursor: "pointer",
+              color: "grey.600",
+              fontSize: 14,
+            }}
           >
             {item.title}
           </Paragraph>
-        )
+        ),
       )}
 
       <Box component={Divider} my={3} />

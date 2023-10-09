@@ -7,7 +7,7 @@ const Verify = createSvgIcon(
       fill="#33D067"
     />
   </svg>,
-  "Verify"
+  "Verify",
 );
 
 export default Verify;

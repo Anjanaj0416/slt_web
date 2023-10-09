@@ -47,7 +47,12 @@ const ProductViewDialog: FC<Props> = (props) => {
   };
 
   return (
-    <Dialog open={openDialog} maxWidth={false} onClose={handleCloseDialog} sx={{ zIndex: 1501 }}>
+    <Dialog
+      open={openDialog}
+      maxWidth={false}
+      onClose={handleCloseDialog}
+      sx={{ zIndex: 1501 }}
+    >
       <DialogContent sx={{ maxWidth: 900, width: "100%" }}>
         <div>
           <Grid container spacing={3}>
@@ -91,8 +96,9 @@ const ProductViewDialog: FC<Props> = (props) => {
               </FlexBox>
 
               <Paragraph my={2}>
-                Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus
-                libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.
+                Sed egestas, ante et vulputate volutpat, eros pede semper est,
+                vitae luctus metus libero eu augue. Morbi purus liberpuro ate
+                vol faucibus adipiscing.
               </Paragraph>
 
               <Divider sx={{ mb: 2 }} />
@@ -138,7 +144,10 @@ const ProductViewDialog: FC<Props> = (props) => {
           </Grid>
         </div>
 
-        <IconButton sx={{ position: "absolute", top: 3, right: 3 }} onClick={handleCloseDialog}>
+        <IconButton
+          sx={{ position: "absolute", top: 3, right: 3 }}
+          onClick={handleCloseDialog}
+        >
           <Close fontSize="small" color="secondary" />
         </IconButton>
       </DialogContent>

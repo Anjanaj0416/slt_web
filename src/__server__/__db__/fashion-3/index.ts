@@ -1,8 +1,12 @@
 import Mock from "../../mock";
 import { mainCarouselData, products, serviceList, blogs } from "./data";
 
-const bestSell = products.filter((item) => item.for.type === "best-selling-product");
-const featureProducts = products.filter((item) => item.for.type === "featured-products");
+const bestSell = products.filter(
+  (item) => item.for.type === "best-selling-product",
+);
+const featureProducts = products.filter(
+  (item) => item.for.type === "featured-products",
+);
 
 // get all products
 Mock.onGet("/api/fashion-shop-3/products").reply(() => {

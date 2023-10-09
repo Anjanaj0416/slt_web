@@ -19,8 +19,12 @@ const VendorEarningRow: FC<Props> = ({ row }) => {
     <StyledTableRow role="checkbox">
       <StyledTableCell align="left">{no}</StyledTableCell>
       <StyledTableCell align="left">{orderNo}</StyledTableCell>
-      <StyledTableCell align="center">{currency(adminCommission)}</StyledTableCell>
-      <StyledTableCell align="center">{currency(sellerEarning)}</StyledTableCell>
+      <StyledTableCell align="center">
+        {currency(adminCommission)}
+      </StyledTableCell>
+      <StyledTableCell align="center">
+        {currency(sellerEarning)}
+      </StyledTableCell>
       <StyledTableCell align="left">{date}</StyledTableCell>
 
       <StyledTableCell align="center">

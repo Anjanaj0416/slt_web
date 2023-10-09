@@ -44,14 +44,15 @@ const EditAddressForm: FC<Props> = (props) => {
     street2: address.street2,
   };
 
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {
-      handleEditAddress(address.id, { ...values, id: address.id });
-      handleCloseModal();
-    },
-  });
+  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      onSubmit: (values) => {
+        handleEditAddress(address.id, { ...values, id: address.id });
+        handleCloseModal();
+      },
+    });
 
   return (
     <Dialog open={openModal} onClose={handleCloseModal} sx={{ zIndex: 99999 }}>

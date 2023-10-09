@@ -41,7 +41,8 @@ Mock.onGet("/api/gadget-store/main-carousel").reply(() => {
   }
 });
 
-const getProducts = (type: string) => db.products.filter((item) => item.for.type === type);
+const getProducts = (type: string) =>
+  db.products.filter((item) => item.for.type === type);
 const topPicksProducts = getProducts("top-picks-products");
 const mostViewProducts = getProducts("most-viewed-products");
 const newArrivalProducts = getProducts("new-arrival-products");

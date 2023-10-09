@@ -76,9 +76,15 @@ const SidebarAccordion: FC<Props> = ({ item, children }) => {
           <StyledText compact={COMPACT}>{name}</StyledText>
         </Box>
 
-        {badge ? <BadgeValue compact={COMPACT}>{badge.value}</BadgeValue> : null}
+        {badge ? (
+          <BadgeValue compact={COMPACT}>{badge.value}</BadgeValue>
+        ) : null}
 
-        <ChevronRightIcon color="disabled" compact={COMPACT} collapsed={collapsed ? 1 : 0} />
+        <ChevronRightIcon
+          color="disabled"
+          compact={COMPACT}
+          collapsed={collapsed ? 1 : 0}
+        />
       </NavItemButton>
 
       <Collapse in={collapsed} unmountOnExit>

@@ -9,7 +9,7 @@ const Pant = createSvgIcon(
       strokeWidth="0.3"
     />
   </svg>,
-  "Pant"
+  "Pant",
 );
 
 export default Pant;

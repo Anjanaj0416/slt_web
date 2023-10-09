@@ -37,7 +37,11 @@ const HealthBeautySideNav: FC<Props> = ({ navigation }) => {
           return (
             <Box mb="2px" color="grey.700" key={ind}>
               {item.child ? (
-                <NavAccordion title={item.title} Icon={Icon} child={item.child} />
+                <NavAccordion
+                  title={item.title}
+                  Icon={Icon}
+                  child={item.child}
+                />
               ) : (
                 <NavLink key={item.title} href={item.href} color="grey.700">
                   <FlexBox className="linkList" py={0.75} gap={1.5}>

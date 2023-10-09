@@ -37,7 +37,7 @@ const HealthBeautyPageView = (props: Props) => {
   // SIDE NAVBAR COMPONENT
   const SideNav = useCallback(
     () => <HealthBeautySideNav navigation={props.navigationList} />,
-    [props.navigationList]
+    [props.navigationList],
   );
 
   return (
@@ -47,7 +47,10 @@ const HealthBeautyPageView = (props: Props) => {
         <Section1 carouselData={props.mainCarouselData} />
       </Box>
 
-      <SideNavContainer navFixedComponentID="healthBeautySection1" SideNav={SideNav}>
+      <SideNavContainer
+        navFixedComponentID="healthBeautySection1"
+        SideNav={SideNav}
+      >
         <Stack spacing={6}>
           {/* BANNER AREA */}
           <Section2 />
@@ -62,7 +65,10 @@ const HealthBeautyPageView = (props: Props) => {
           <Section5 services={props.serviceList} />
 
           {/* FOOTER AREA */}
-          <Footer3 id="footer" sx={{ borderRadius: "8px", backgroundColor: "primary.800" }} />
+          <Footer3
+            id="footer"
+            sx={{ borderRadius: "8px", backgroundColor: "primary.800" }}
+          />
         </Stack>
       </SideNavContainer>
 

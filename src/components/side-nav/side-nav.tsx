@@ -18,7 +18,14 @@ interface Props {
 // ================================================================
 
 const SideNav: FC<Props> = (props) => {
-  const { position = "left", open = false, width = 280, handle, children, toggleSidenav } = props;
+  const {
+    position = "left",
+    open = false,
+    width = 280,
+    handle,
+    children,
+    toggleSidenav,
+  } = props;
 
   const [sideNavOpen, setSideNavOpen] = useState(open);
   const handleToggleSideNav = () => setSideNavOpen(!sideNavOpen);

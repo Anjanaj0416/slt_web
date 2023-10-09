@@ -19,7 +19,7 @@ const Powder = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Powder"
+  "Powder",
 );
 
 export default Powder;

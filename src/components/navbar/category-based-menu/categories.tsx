@@ -29,7 +29,9 @@ const Categories: FC<Props> = ({ categories, openList, handleOpen }) => {
           <ChevronRight
             fontSize="small"
             sx={{
-              transform: `rotate(${settings.direction === "rtl" ? "180deg" : "0"})`,
+              transform: `rotate(${
+                settings.direction === "rtl" ? "180deg" : "0"
+              })`,
             }}
           />
         </CategoryListItem>

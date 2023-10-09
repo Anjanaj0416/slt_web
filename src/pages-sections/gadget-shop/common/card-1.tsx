@@ -28,7 +28,12 @@ const Card1: FC<Props> = ({ title, body, imgUrl }) => {
           <BazaarImage
             src={imgUrl}
             alt="apple-watch-1"
-            sx={{ mx: "auto", maxWidth: "100%", maxHeight: "155px", p: "0.5rem" }}
+            sx={{
+              mx: "auto",
+              maxWidth: "100%",
+              maxHeight: "155px",
+              p: "0.5rem",
+            }}
           />
         </Grid>
 

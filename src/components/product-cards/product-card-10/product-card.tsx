@@ -28,8 +28,14 @@ type Props = { product: Product };
 const ProductCard20: FC<Props> = ({ product }) => {
   const { slug, id, price, rating, thumbnail, title, reviews } = product;
 
-  const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
-    useProduct(slug);
+  const {
+    cartItem,
+    handleCartAmountChange,
+    isFavorite,
+    openModal,
+    toggleDialog,
+    toggleFavorite,
+  } = useProduct(slug);
 
   const handleAddToCart = () => {
     const payload = {
@@ -91,14 +97,24 @@ const ProductCard20: FC<Props> = ({ product }) => {
 
         {/* PRODUCT RATINGS */}
         <FlexRowCenter gap={1} mb={2}>
-          <Rating name="read-only" value={rating || 4} readOnly sx={{ fontSize: 14 }} />
+          <Rating
+            name="read-only"
+            value={rating || 4}
+            readOnly
+            sx={{ fontSize: 14 }}
+          />
           <Small fontWeight={600} color="grey.500">
             ({reviews.length})
           </Small>
         </FlexRowCenter>
 
         {/* PRODUCT ADD TO CART BUTTON */}
-        <Button fullWidth color="dark" variant="outlined" onClick={handleAddToCart}>
+        <Button
+          fullWidth
+          color="dark"
+          variant="outlined"
+          onClick={handleAddToCart}
+        >
           Add To Cart
         </Button>
       </Box>

@@ -39,7 +39,10 @@ const NavItemButton = styled(ButtonBase, {
   ...(active && {
     color: theme.palette.info.main,
     backgroundColor: alpha(theme.palette.grey[800], 0.6),
-    "& .MuiSvgIcon-root .secondary": { color: theme.palette.info.main, opacity: 1 },
+    "& .MuiSvgIcon-root .secondary": {
+      color: theme.palette.info.main,
+      opacity: 1,
+    },
   }),
 }));
 
@@ -96,7 +99,9 @@ const BulletIcon = styled("div", {
   borderRadius: "50%",
   marginRight: "1.3rem",
   background: active ? theme.palette.info.main : theme.palette.common.white,
-  boxShadow: active ? `0px 0px 0px 4px ${alpha(theme.palette.info[500], 0.2)}` : "none",
+  boxShadow: active
+    ? `0px 0px 0px 4px ${alpha(theme.palette.info[500], 0.2)}`
+    : "none",
 }));
 
 const BadgeValue = styled("div", {

@@ -14,13 +14,22 @@ const Footer = () => {
       <FlexBox justifyContent="space-between" flexWrap="wrap">
         <FlexBox className="flex" alignItems="center">
           Developed with{" "}
-          <Favorite fontSize="small" color="primary" sx={{ mx: "0.5rem", fontSize: "16px" }} /> &
-          Care by &nbsp; <a href="https://ui-lib.com">UI Lib</a>
+          <Favorite
+            fontSize="small"
+            color="primary"
+            sx={{ mx: "0.5rem", fontSize: "16px" }}
+          />{" "}
+          & Care by &nbsp; <a href="https://ui-lib.com">UI Lib</a>
         </FlexBox>
 
         <FlexBox className="flex">
           {iconList.map((item, ind) => (
-            <a href={item.url} target="_blank" rel="noreferrer noopenner" key={ind}>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noreferrer noopenner"
+              key={ind}
+            >
               <item.icon
                 color="inherit"
                 sx={{

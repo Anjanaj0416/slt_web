@@ -23,7 +23,10 @@ export const CUSTOMER_CARE_LINKS = [
 export const SOCIAL_ICON_LINKS = [
   { Icon: Facebook, url: "https://www.facebook.com/UILibOfficial" },
   { Icon: Twitter, url: "https://twitter.com/uilibofficial" },
-  { Icon: Youtube, url: "https://www.youtube.com/channel/UCsIyD-TSO1wQFz-n2Y4i3Rg" },
+  {
+    Icon: Youtube,
+    url: "https://www.youtube.com/channel/UCsIyD-TSO1wQFz-n2Y4i3Rg",
+  },
   { Icon: Google, url: "https://www.google.com/search?q=ui-lib.com" },
   { Icon: Instagram, url: "https://www.instagram.com/uilibofficial/" },
 ];

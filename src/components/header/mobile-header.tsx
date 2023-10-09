@@ -28,8 +28,14 @@ interface Props {
 
 const MobileHeader: FC<Props> = ({ searchInput }) => {
   const { state } = useCart();
-  const { dialogOpen, sidenavOpen, searchBarOpen, toggleDialog, toggleSearchBar, toggleSidenav } =
-    useHeader();
+  const {
+    dialogOpen,
+    sidenavOpen,
+    searchBarOpen,
+    toggleDialog,
+    toggleSearchBar,
+    toggleSidenav,
+  } = useHeader();
 
   const ICON_STYLE = { color: "grey.600", fontSize: 20 };
 
@@ -43,7 +49,11 @@ const MobileHeader: FC<Props> = ({ searchInput }) => {
 
         {/* MIDDLE CONTENT - LOGO */}
         <Link href="/">
-          <Image height={44} src="/assets/images/bazaar-black-sm.svg" alt="logo" />
+          <Image
+            height={44}
+            src="/assets/images/bazaar-black-sm.svg"
+            alt="logo"
+          />
         </Link>
 
         {/* RIGHT CONTENT - LOGIN, CART, SEARCH BUTTON */}
@@ -65,7 +75,12 @@ const MobileHeader: FC<Props> = ({ searchInput }) => {
       </FlexBetween>
 
       {/* SEARCH FORM DRAWER */}
-      <Drawer open={searchBarOpen} anchor="top" onClose={toggleSearchBar} sx={{ zIndex: 9999 }}>
+      <Drawer
+        open={searchBarOpen}
+        anchor="top"
+        onClose={toggleSearchBar}
+        sx={{ zIndex: 9999 }}
+      >
         <Box sx={{ width: "auto", padding: 2, height: "100vh" }}>
           <FlexBetween mb={1}>
             <Paragraph>Search to Bazaar</Paragraph>

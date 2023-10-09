@@ -18,7 +18,9 @@ Mock.onGet("/api/tickets").reply(async () => {
 Mock.onGet("/api/tickets/single").reply(async (config) => {
   try {
     if (config.params?.slug) {
-      const ticket = ticketList.find((item) => item.slug === config.params.slug);
+      const ticket = ticketList.find(
+        (item) => item.slug === config.params.slug,
+      );
       if (ticket) {
         ticket.conversation = messageList;
         return [200, ticket];

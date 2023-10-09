@@ -20,7 +20,10 @@ const Wrapper = styled("div")(({ theme }) => ({
   backgroundPosition: "center center",
   backgroundImage: "url(/assets/images/banners/banner-14.jpg)",
   ":hover": { "& .offer": { transform: "rotate(-15deg) scale(1.1)" } },
-  ...(theme.direction === "rtl" && { justifyContent: "right", textAlign: "right" }),
+  ...(theme.direction === "rtl" && {
+    justifyContent: "right",
+    textAlign: "right",
+  }),
 }));
 
 const OfferBox = styled(FlexRowCenter)(({ theme }) => ({

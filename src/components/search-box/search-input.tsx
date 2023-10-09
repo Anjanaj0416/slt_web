@@ -18,7 +18,9 @@ const SearchInput = () => {
       borderRadius: 300,
       color: "grey.700",
       overflow: "hidden",
-      "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "primary.main" },
+      "&:hover .MuiOutlinedInput-notchedOutline": {
+        borderColor: "primary.main",
+      },
     },
     endAdornment: (
       <Button
@@ -34,7 +36,13 @@ const SearchInput = () => {
   };
 
   return (
-    <Box position="relative" flex="1 1 0" maxWidth="670px" mx="auto" {...{ ref: parentRef }}>
+    <Box
+      position="relative"
+      flex="1 1 0"
+      maxWidth="670px"
+      mx="auto"
+      {...{ ref: parentRef }}
+    >
       <TextField
         fullWidth
         variant="outlined"

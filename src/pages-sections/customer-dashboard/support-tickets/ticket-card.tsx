@@ -43,7 +43,8 @@ const TicketCard: FC<Props> = ({ ticket }) => {
             fontSize="small"
             sx={{
               color: "grey.500",
-              transform: ({ direction }) => `rotate(${direction === "rtl" ? "180deg" : "0deg"})`,
+              transform: ({ direction }) =>
+                `rotate(${direction === "rtl" ? "180deg" : "0deg"})`,
             }}
           />
         </IconButton>

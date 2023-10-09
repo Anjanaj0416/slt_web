@@ -28,7 +28,10 @@ const BazaarTextField: FC<Props> = ({ label, InputProps, ...props }) => {
 
       {/* INPUT FIELD SECTION */}
       <TextField
-        InputProps={{ ...InputProps, style: { ...InputProps?.style, height: 44 } }}
+        InputProps={{
+          ...InputProps,
+          style: { ...InputProps?.style, height: 44 },
+        }}
         {...textFieldProps}
       />
     </Box>

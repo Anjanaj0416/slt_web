@@ -50,7 +50,10 @@ const MarketOnePageView = async () => {
       <Section3 categoryList={topCategories} />
 
       {/* TOP RATED PRODUCTS */}
-      <Section4 topRatedList={topRatedProducts} topRatedBrands={topRatedBrands} />
+      <Section4
+        topRatedList={topRatedProducts}
+        topRatedBrands={topRatedBrands}
+      />
 
       {/* NEW ARRIVAL LIST */}
       <Section5 newArrivalsList={newArrivalsList} />

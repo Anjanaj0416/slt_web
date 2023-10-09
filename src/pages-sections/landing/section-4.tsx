@@ -69,9 +69,20 @@ const Section4 = () => {
                 }}
               >
                 <Box mb={2}>
-                  <LazyImage width={60} height={60} alt={item.title} src={item.imgUrl} />
+                  <LazyImage
+                    width={60}
+                    height={60}
+                    alt={item.title}
+                    src={item.imgUrl}
+                  />
                 </Box>
-                <H4 fontSize="18px" fontWeight="700" maxWidth="200px" textAlign="center" mx="auto">
+                <H4
+                  fontSize="18px"
+                  fontWeight="700"
+                  maxWidth="200px"
+                  textAlign="center"
+                  mx="auto"
+                >
                   {item.title}
                 </H4>
               </Card>

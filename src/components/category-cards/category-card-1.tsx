@@ -45,7 +45,11 @@ const CategoryCard1: FC<Props> = ({ image, title }) => {
         width={213}
         height={213}
         alt="category"
-        sx={{ height: "100%", objectFit: "cover", objectPosition: "center center" }}
+        sx={{
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center center",
+        }}
       />
 
       <CategoryTitle className="category-title">

@@ -22,11 +22,16 @@ const TeddyBear = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_6820_24095">
-        <rect width="18" height="18" fill="white" transform="translate(0.496094 0.0400391)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.496094 0.0400391)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "TeddyBear"
+  "TeddyBear",
 );
 
 export default TeddyBear;

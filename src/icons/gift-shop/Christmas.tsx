@@ -38,11 +38,16 @@ const Christmas = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_6820_24061">
-        <rect width="18" height="18" fill="white" transform="translate(0.496094 0.0419922)" />
+        <rect
+          width="18"
+          height="18"
+          fill="white"
+          transform="translate(0.496094 0.0419922)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "Christmas"
+  "Christmas",
 );
 
 export default Christmas;

@@ -52,7 +52,8 @@ const Section11: FC<Props> = ({ serviceList }) => {
                 </H4>
 
                 <Span textAlign="center" color="grey.600">
-                  We offer competitive prices on our 100 million plus product any range.
+                  We offer competitive prices on our 100 million plus product
+                  any range.
                 </Span>
               </BazaarCard>
             </Grid>

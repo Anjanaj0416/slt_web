@@ -40,15 +40,30 @@ type Props = {
 const ProductCard9: FC<Props> = (props) => {
   const { imgUrl, title, price, off, rating, id, slug } = props || {};
 
-  const { cartItem, handleCartAmountChange, isFavorite, toggleFavorite } = useProduct(slug);
+  const { cartItem, handleCartAmountChange, isFavorite, toggleFavorite } =
+    useProduct(slug);
 
   const handleIncrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) + 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) + 1,
+    };
     handleCartAmountChange(product);
   };
 
   const handleDecrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) - 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) - 1,
+    };
     handleCartAmountChange(product, "remove");
   };
 
@@ -69,7 +84,12 @@ const ProductCard9: FC<Props> = (props) => {
         </Grid>
 
         <Grid item sm={9} xs={12}>
-          <FlexBox flexDirection="column" justifyContent="center" height="100%" p={2}>
+          <FlexBox
+            flexDirection="column"
+            justifyContent="center"
+            height="100%"
+            p={2}
+          >
             {/* PRODUCT TITLE / NAME */}
             <Link href={`/products/${slug}`}>
               <H5 fontWeight="600" my="0.5rem">

@@ -16,7 +16,12 @@ import { ABOUT_LINKS, CUSTOMER_CARE_LINKS } from "./data";
 const Footer1 = () => {
   return (
     <Box component="footer" bgcolor="#222935" mb={{ sm: 0, xs: 7 }}>
-      <Box component={Container} py={{ sm: 10, xs: 4 }} color="white" overflow="hidden">
+      <Box
+        component={Container}
+        py={{ sm: 10, xs: 4 }}
+        color="white"
+        overflow="hidden"
+      >
         <Grid container spacing={3}>
           <Grid item lg={4} md={6} sm={6} xs={12}>
             <Link href="/">
@@ -24,9 +29,9 @@ const Footer1 = () => {
             </Link>
 
             <Paragraph mb={2.5} color="grey.500">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in
-              gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at
-              amet.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
+              libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat
+              et lectus vel ut sollicitudin elit at amet.
             </Paragraph>
 
             <AppStore />

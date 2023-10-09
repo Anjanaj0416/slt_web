@@ -81,7 +81,13 @@ const Section2 = () => {
                   src={`/assets/images/icons/${item.icon}.svg`}
                   sx={{ mb: "1.5rem", height: 64 }}
                 />
-                <H4 fontSize="18px" fontWeight="700" maxWidth="200px" textAlign="center" mx="auto">
+                <H4
+                  fontSize="18px"
+                  fontWeight="700"
+                  maxWidth="200px"
+                  textAlign="center"
+                  mx="auto"
+                >
                   {item.title}
                 </H4>
               </StyledCard>

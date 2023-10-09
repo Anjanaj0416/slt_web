@@ -97,7 +97,9 @@ const PageCard: FC<PageCardProps> = (props) => {
         {!disabled && (
           <Link href={previewUrl} target="_blank">
             <StyledFlex className="overlay">
-              <IconButton sx={{ bgcolor: "white", "&:hover": { bgcolor: "white" } }}>
+              <IconButton
+                sx={{ bgcolor: "white", "&:hover": { bgcolor: "white" } }}
+              >
                 <Visibility fontSize="small" />
               </IconButton>
             </StyledFlex>

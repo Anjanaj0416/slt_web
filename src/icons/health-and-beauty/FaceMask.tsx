@@ -30,7 +30,7 @@ const FaceMask = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "FaceMask"
+  "FaceMask",
 );
 
 export default FaceMask;

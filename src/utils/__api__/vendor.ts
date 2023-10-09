@@ -16,4 +16,8 @@ const getAllPayoutRequests = cache(async () => {
   return response.data;
 });
 
-export default { getAllProductReviews, getAllRefundRequests, getAllPayoutRequests };
+export default {
+  getAllProductReviews,
+  getAllRefundRequests,
+  getAllPayoutRequests,
+};

@@ -12,7 +12,13 @@ import { H1, Paragraph } from "components/Typography";
 import { GiftCarouselItem } from "models/Carousel.model";
 // STYLED COMPONENTS
 import { COMMON_DOT_STYLES } from "components/carousel/styles";
-import { StyledBox, StyledGrid, GridItemOne, GridItemTwo, CarouselButton } from "./styles";
+import {
+  StyledBox,
+  StyledGrid,
+  GridItemOne,
+  GridItemTwo,
+  CarouselButton,
+} from "./styles";
 
 // ==========================================================
 type Props = { carouselData: GiftCarouselItem[] };
@@ -42,14 +48,23 @@ const Section1: FC<Props> = ({ carouselData }) => {
                       <H1 maxWidth={400}>{title}</H1>
                     </div>
 
-                    <CarouselButton variant="contained" sx={{ px: "30px", py: "8px" }}>
+                    <CarouselButton
+                      variant="contained"
+                      sx={{ px: "30px", py: "8px" }}
+                    >
                       {buttonText}
                     </CarouselButton>
                   </Box>
                 </GridItemOne>
 
                 <GridItemTwo item md={6} sm={6} xs={12}>
-                  <LazyImage priority alt={title} width={600} height={450} src={imgUrl} />
+                  <LazyImage
+                    priority
+                    alt={title}
+                    width={600}
+                    height={450}
+                    src={imgUrl}
+                  />
                 </GridItemTwo>
               </StyledGrid>
             </div>

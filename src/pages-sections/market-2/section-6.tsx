@@ -38,7 +38,14 @@ const Section6 = () => {
               Sale up to 20% Off
             </H4>
 
-            <Divider sx={{ borderColor: "dark.main", borderWidth: 1, width: 60, my: 1 }} />
+            <Divider
+              sx={{
+                borderColor: "dark.main",
+                borderWidth: 1,
+                width: 60,
+                my: 1,
+              }}
+            />
 
             <Paragraph fontSize={16}>
               Only From{" "}
@@ -58,7 +65,9 @@ const Section6 = () => {
               Fine Smart Speaker
             </H4>
 
-            <Divider sx={{ borderColor: "white", borderWidth: 1, width: 60, my: 1 }} />
+            <Divider
+              sx={{ borderColor: "white", borderWidth: 1, width: 60, my: 1 }}
+            />
 
             <Paragraph fontSize={16} color="white">
               Starting at{" "}

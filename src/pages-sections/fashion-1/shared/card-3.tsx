@@ -26,7 +26,12 @@ const ShowcaseCard3 = () => {
         <LazyImage
           alt="t-shirt"
           src={require("../../../../public/assets/images/products/t-shirt2.png")}
-          sx={{ maxHeight: "225px", width: "auto", mx: "auto", display: "flex" }}
+          sx={{
+            maxHeight: "225px",
+            width: "auto",
+            mx: "auto",
+            display: "flex",
+          }}
         />
       </Grid>
 
@@ -38,10 +43,15 @@ const ShowcaseCard3 = () => {
         </H1>
 
         <Paragraph mt={1} mb={2} maxWidth={{ md: 350, xs: "100%" }}>
-          Handcrafted from genuine Italian leather. One inner compartment with black satin lining
+          Handcrafted from genuine Italian leather. One inner compartment with
+          black satin lining
         </Paragraph>
 
-        <NavLink2 url="/shops/scarlett-beauty" title="SHOP NOW" borderColor="grey.100" />
+        <NavLink2
+          url="/shops/scarlett-beauty"
+          title="SHOP NOW"
+          borderColor="grey.100"
+        />
       </Grid>
     </StyledGrid>
   );

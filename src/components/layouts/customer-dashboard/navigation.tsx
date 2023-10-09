@@ -28,7 +28,11 @@ const Navigation = () => {
           </Paragraph>
 
           {item.list.map(({ Icon, count, href, title }) => (
-            <StyledNavLink href={href} key={title} isCurrentPath={pathname.includes(href)}>
+            <StyledNavLink
+              href={href}
+              key={title}
+              isCurrentPath={pathname.includes(href)}
+            >
               <FlexBox alignItems="center" gap={1}>
                 <Icon color="inherit" fontSize="small" className="nav-icon" />
                 <Span>{title}</Span>
@@ -48,8 +52,18 @@ const MENUS = [
     title: "DASHBOARD",
     list: [
       { href: "/orders", title: "Orders", Icon: ShoppingBagOutlined, count: 5 },
-      { href: "/wish-list", title: "Wishlist", Icon: FavoriteBorder, count: 19 },
-      { href: "/support-tickets", title: "Support Tickets", Icon: CustomerService, count: 1 },
+      {
+        href: "/wish-list",
+        title: "Wishlist",
+        Icon: FavoriteBorder,
+        count: 19,
+      },
+      {
+        href: "/support-tickets",
+        title: "Support Tickets",
+        Icon: CustomerService,
+        count: 1,
+      },
     ],
   },
   {
@@ -57,7 +71,12 @@ const MENUS = [
     list: [
       { href: "/profile", title: "Profile Info", Icon: Person, count: 3 },
       { href: "/address", title: "Addresses", Icon: Place, count: 16 },
-      { href: "/payment-methods", title: "Payment Methods", Icon: CreditCard, count: 4 },
+      {
+        href: "/payment-methods",
+        title: "Payment Methods",
+        Icon: CreditCard,
+        count: 4,
+      },
     ],
   },
 ];

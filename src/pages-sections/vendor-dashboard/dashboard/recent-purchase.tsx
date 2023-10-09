@@ -34,7 +34,11 @@ const RecentPurchase: FC<Props> = ({ data }) => {
         </Button>
       </FlexBetween>
 
-      <DataListTable dataList={data} tableHeading={tableHeading} type="RECENT_PURCHASE" />
+      <DataListTable
+        dataList={data}
+        tableHeading={tableHeading}
+        type="RECENT_PURCHASE"
+      />
     </Card>
   );
 };

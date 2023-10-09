@@ -12,9 +12,11 @@ export const getTicket = cache(async (slug: string): Promise<Ticket> => {
   return response.data;
 });
 
-export const getSlugs = cache(async (): Promise<{ params: { slug: string } }[]> => {
-  const response = await axios.get("/api/tickets/slugs");
-  return response.data;
-});
+export const getSlugs = cache(
+  async (): Promise<{ params: { slug: string } }[]> => {
+    const response = await axios.get("/api/tickets/slugs");
+    return response.data;
+  },
+);
 
 export default { getTicketList, getTicket, getSlugs };

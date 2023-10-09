@@ -44,16 +44,36 @@ const ProductCard1: FC<Props> = ({
   discount = 5,
   showProductSize,
 }) => {
-  const { isFavorite, openModal, cartItem, toggleDialog, toggleFavorite, handleCartAmountChange } =
-    useProduct(slug);
+  const {
+    isFavorite,
+    openModal,
+    cartItem,
+    toggleDialog,
+    toggleFavorite,
+    handleCartAmountChange,
+  } = useProduct(slug);
 
   const handleIncrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) + 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) + 1,
+    };
     handleCartAmountChange(product);
   };
 
   const handleDecrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) - 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) - 1,
+    };
     handleCartAmountChange(product, "remove");
   };
 
@@ -72,7 +92,13 @@ const ProductCard1: FC<Props> = ({
 
         {/* PRODUCT IMAGE / THUMBNAIL */}
         <Link href={`/products/${slug}`}>
-          <LazyImage priority src={imgUrl} width={500} height={500} alt={title} />
+          <LazyImage
+            priority
+            src={imgUrl}
+            width={500}
+            height={500}
+            alt={title}
+          />
         </Link>
       </ImageWrapper>
 
@@ -89,7 +115,9 @@ const ProductCard1: FC<Props> = ({
           <ProductTitle title={title} slug={slug} />
 
           {/* PRODUCT RATINGS IF AVAILABLE */}
-          {!hideRating ? <Rating size="small" value={rating} color="warn" readOnly /> : null}
+          {!hideRating ? (
+            <Rating size="small" value={rating} color="warn" readOnly />
+          ) : null}
 
           {/* PRODUCT SIZE IF AVAILABLE */}
           {showProductSize ? (

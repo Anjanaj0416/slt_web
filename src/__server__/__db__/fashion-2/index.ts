@@ -1,7 +1,8 @@
 import * as db from "./data";
 import Mock from "../../mock";
 
-const getProducts = (type: string) => db.products.filter((item) => item.for.type === type);
+const getProducts = (type: string) =>
+  db.products.filter((item) => item.for.type === type);
 
 const saleProducts = getProducts("sale-products");
 const latestProducts = getProducts("latest-products");

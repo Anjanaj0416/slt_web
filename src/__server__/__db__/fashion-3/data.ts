@@ -65,7 +65,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
     images: [
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
@@ -119,7 +120,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
     images: [
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
@@ -173,7 +175,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
     images: [
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
@@ -281,7 +284,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -335,7 +339,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
@@ -389,7 +394,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -445,7 +451,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
@@ -499,7 +506,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
@@ -607,7 +615,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
@@ -661,7 +670,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
@@ -715,7 +725,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -979,7 +990,8 @@ export const blogs = [
   },
   {
     id: "3bc71b63-c646-4add-a199-46b617a827b6",
-    title: "Provident voluptate beatae nesciunt velit ducimus corrupti magnam ratione cupiditate.",
+    title:
+      "Provident voluptate beatae nesciunt velit ducimus corrupti magnam ratione cupiditate.",
     description:
       "Perspiciatis quos excepturi. Harum neque id voluptates corrupti natus enim dolore nesciunt. Placeat occaecati dolores quae aliquam quaerat rem accusantium. Qui iusto delectus consectetur deserunt debitis.",
     thumbnail: "/assets/images/blogs/post-3.jpg",

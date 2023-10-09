@@ -22,7 +22,9 @@ Mock.onGet("/api/furniture-shop/main-carousel").reply(() => {
 });
 
 // get new products
-const newProducts = db.products.filter((item) => item.for.type === "top-new-product");
+const newProducts = db.products.filter(
+  (item) => item.for.type === "top-new-product",
+);
 Mock.onGet("/api/furniture-shop/products?tag=new").reply(() => {
   try {
     return [200, newProducts];
@@ -33,7 +35,9 @@ Mock.onGet("/api/furniture-shop/products?tag=new").reply(() => {
 });
 
 // get top selling products
-const sellingProducts = db.products.filter((item) => item.for.type === "top-selling-product");
+const sellingProducts = db.products.filter(
+  (item) => item.for.type === "top-selling-product",
+);
 Mock.onGet("/api/furniture-shop/products?tag=top-selling").reply(() => {
   try {
     return [200, sellingProducts];
@@ -44,7 +48,9 @@ Mock.onGet("/api/furniture-shop/products?tag=top-selling").reply(() => {
 });
 
 // get all products
-const allProducts = db.products.filter((item) => item.for.type === "all-product");
+const allProducts = db.products.filter(
+  (item) => item.for.type === "all-product",
+);
 Mock.onGet("/api/furniture-shop/all-products").reply(() => {
   try {
     return [200, allProducts];

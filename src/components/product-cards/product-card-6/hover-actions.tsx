@@ -19,7 +19,12 @@ interface Props {
 }
 // ==============================================================
 
-const HoverActions: FC<Props> = ({ isFavorite, toggleView, toggleFavorite, handleAddToCart }) => {
+const HoverActions: FC<Props> = ({
+  isFavorite,
+  toggleView,
+  toggleFavorite,
+  handleAddToCart,
+}) => {
   return (
     <ItemController className="controlBox">
       <Span onClick={toggleView}>

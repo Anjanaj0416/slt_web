@@ -40,7 +40,8 @@ const Stepper: FC<Props> = ({ selectedStep = 1, stepperList, onChange }) => {
             label={`${ind + 1}. ${step.title}`}
             onClick={handleStepClick(step, ind)}
             sx={{
-              backgroundColor: ind <= selected ? "primary.main" : "primary.light",
+              backgroundColor:
+                ind <= selected ? "primary.main" : "primary.light",
               color: ind <= selected ? "primary.contrastText" : "primary.main",
               p: "0.5rem 1rem",
               fontSize: "14px",

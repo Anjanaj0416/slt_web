@@ -10,7 +10,7 @@ const YoutubeFilled = createSvgIcon(
       fill="white"
     />
   </svg>,
-  "YoutubeFilled"
+  "YoutubeFilled",
 );
 
 export default YoutubeFilled;

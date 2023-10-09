@@ -59,10 +59,19 @@ const MiniCartItem: FC<Props> = ({ item, handleCartAmountChange }) => {
       </FlexBox>
 
       <Link href={`/products/${item.id}`}>
-        <Avatar alt={item.name} src={item.imgUrl} sx={{ mx: 1, width: 75, height: 75 }} />
+        <Avatar
+          alt={item.name}
+          src={item.imgUrl}
+          sx={{ mx: 1, width: 75, height: 75 }}
+        />
       </Link>
 
-      <Box flex="1" textOverflow="ellipsis" whiteSpace="nowrap" overflow="hidden">
+      <Box
+        flex="1"
+        textOverflow="ellipsis"
+        whiteSpace="nowrap"
+        overflow="hidden"
+      >
         <Link href={`/products/${item.slug}`}>
           <H6 ellipsis className="title">
             {item.name}
@@ -78,7 +87,11 @@ const MiniCartItem: FC<Props> = ({ item, handleCartAmountChange }) => {
         </H6>
       </Box>
 
-      <IconButton size="small" onClick={handleCartAmountChange(0, item)} sx={{ marginLeft: 2.5 }}>
+      <IconButton
+        size="small"
+        onClick={handleCartAmountChange(0, item)}
+        sx={{ marginLeft: 2.5 }}
+      >
         <Close fontSize="small" />
       </IconButton>
     </FlexBox>

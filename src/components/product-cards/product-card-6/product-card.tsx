@@ -26,10 +26,27 @@ interface Props extends Partial<Product> {
 // ============================================================
 
 const ProductCard16: FC<Props> = (props) => {
-  const { sx, hideRating, discount, id, slug, title, price, thumbnail, rating, images } = props;
+  const {
+    sx,
+    hideRating,
+    discount,
+    id,
+    slug,
+    title,
+    price,
+    thumbnail,
+    rating,
+    images,
+  } = props;
 
-  const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
-    useProduct(slug);
+  const {
+    cartItem,
+    handleCartAmountChange,
+    isFavorite,
+    openModal,
+    toggleDialog,
+    toggleFavorite,
+  } = useProduct(slug);
 
   const handleAddToCart = () => {
     const product = {

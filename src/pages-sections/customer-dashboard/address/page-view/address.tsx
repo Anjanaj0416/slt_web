@@ -33,7 +33,11 @@ const AddressPageView = ({ addressList }: Props) => {
 
       {/* ALL ADDRESS LIST AREA */}
       {allAddress.map((address) => (
-        <AddressListItem key={address.id} address={address} handleDelete={handleAddressDelete} />
+        <AddressListItem
+          key={address.id}
+          address={address}
+          handleDelete={handleAddressDelete}
+        />
       ))}
 
       {/* PAGINATION AREA */}

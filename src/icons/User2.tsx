@@ -8,7 +8,7 @@ const User2 = createSvgIcon(
       strokeWidth="0.2"
     />
   </svg>,
-  "User2"
+  "User2",
 );
 
 export default User2;

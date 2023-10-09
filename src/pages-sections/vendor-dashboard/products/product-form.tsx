@@ -38,7 +38,9 @@ const ProductForm: FC<Props> = (props) => {
 
   // HANDLE UPDATE NEW IMAGE VIA DROP ZONE
   const handleChangeDropZone = (files: File[]) => {
-    files.forEach((file) => Object.assign(file, { preview: URL.createObjectURL(file) }));
+    files.forEach((file) =>
+      Object.assign(file, { preview: URL.createObjectURL(file) }),
+    );
     setFiles(files);
   };
 
@@ -54,7 +56,14 @@ const ProductForm: FC<Props> = (props) => {
         initialValues={initialValues}
         validationSchema={VALIDATION_SCHEMA}
       >
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item sm={6} xs={12}>
@@ -123,7 +132,9 @@ const ProductForm: FC<Props> = (props) => {
                   placeholder="Description"
                   value={values.description}
                   error={!!touched.description && !!errors.description}
-                  helperText={(touched.description && errors.description) as string}
+                  helperText={
+                    (touched.description && errors.description) as string
+                  }
                 />
               </Grid>
 
@@ -189,7 +200,9 @@ const ProductForm: FC<Props> = (props) => {
                   placeholder="Sale Price"
                   value={values.sale_price}
                   error={!!touched.sale_price && !!errors.sale_price}
-                  helperText={(touched.sale_price && errors.sale_price) as string}
+                  helperText={
+                    (touched.sale_price && errors.sale_price) as string
+                  }
                 />
               </Grid>
 

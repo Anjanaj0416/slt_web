@@ -34,7 +34,9 @@ const CategoryForm: FC<Props> = (props) => {
 
   // HANDLE UPDATE NEW IMAGE VIA DROP ZONE
   const handleChangeDropZone = (files: File[]) => {
-    files.forEach((file) => Object.assign(file, { preview: URL.createObjectURL(file) }));
+    files.forEach((file) =>
+      Object.assign(file, { preview: URL.createObjectURL(file) }),
+    );
     setFiles(files);
   };
 
@@ -50,7 +52,14 @@ const CategoryForm: FC<Props> = (props) => {
         initialValues={initialValues}
         validationSchema={VALIDATION_SCHEMA}
       >
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item sm={6} xs={12}>
@@ -98,7 +107,12 @@ const CategoryForm: FC<Props> = (props) => {
                   {files.map((file, index) => {
                     return (
                       <UploadImageBox key={index}>
-                        <Box component="img" alt="product" src={file.preview} width="100%" />
+                        <Box
+                          component="img"
+                          alt="product"
+                          src={file.preview}
+                          width="100%"
+                        />
                         <StyledClear onClick={handleFileDelete(file)} />
                       </UploadImageBox>
                     );

@@ -17,7 +17,9 @@ const SectionCreator: FC<Props> = (props) => {
   return (
     <Box mb={7.5} {...others}>
       <Container sx={{ pb: "1rem" }}>
-        {title ? <SectionHeader title={title} seeMoreLink={seeMoreLink} icon={icon} /> : null}
+        {title ? (
+          <SectionHeader title={title} seeMoreLink={seeMoreLink} icon={icon} />
+        ) : null}
 
         {children}
       </Container>

@@ -17,7 +17,11 @@ const PageSettings = () => {
   ]);
 
   const handleAddLink = () => {
-    const newLink = { id: Date.now(), name: "Links", value: "https://www.google.com" };
+    const newLink = {
+      id: Date.now(),
+      name: "Links",
+      value: "https://www.google.com",
+    };
     setLinks((state) => [...state, newLink]);
   };
 

@@ -19,7 +19,10 @@ const EditCategoryPageView = () => {
     <Box py={4}>
       <H3 mb={2}>Edit Category</H3>
 
-      <CategoryForm initialValues={INITIAL_VALUES} handleFormSubmit={handleFormSubmit} />
+      <CategoryForm
+        initialValues={INITIAL_VALUES}
+        handleFormSubmit={handleFormSubmit}
+      />
     </Box>
   );
 };

@@ -18,7 +18,11 @@ const CardContent = styled("div")(({ theme }) => ({
   position: "absolute",
   flexDirection: "column",
   justifyContent: "center",
-  ...(theme.direction === "rtl" && { left: "auto", right: 32, textAlign: "right" }),
+  ...(theme.direction === "rtl" && {
+    left: "auto",
+    right: 32,
+    textAlign: "right",
+  }),
 }));
 
 // ========================================================

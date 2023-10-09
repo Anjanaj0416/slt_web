@@ -14,11 +14,16 @@ const PremiumPackageIcon = createSvgIcon(
     </g>
     <defs>
       <clipPath id="clip0_8574_72329">
-        <rect width="60" height="58" fill="white" transform="translate(20 21)" />
+        <rect
+          width="60"
+          height="58"
+          fill="white"
+          transform="translate(20 21)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "PremiumPackageIcon"
+  "PremiumPackageIcon",
 );
 
 export default PremiumPackageIcon;

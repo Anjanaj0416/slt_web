@@ -31,18 +31,48 @@ type Props = {
 // ===============================================================
 
 const ProductCard13: FC<Props> = (props) => {
-  const { off, id, title, price, imgUrl, rating, hideRating, hoverEffect, slug } = props;
+  const {
+    off,
+    id,
+    title,
+    price,
+    imgUrl,
+    rating,
+    hideRating,
+    hoverEffect,
+    slug,
+  } = props;
 
-  const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
-    useProduct(slug);
+  const {
+    cartItem,
+    handleCartAmountChange,
+    isFavorite,
+    openModal,
+    toggleDialog,
+    toggleFavorite,
+  } = useProduct(slug);
 
   const handleIncrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) + 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) + 1,
+    };
     handleCartAmountChange(product);
   };
 
   const handleDecrementQuantity = () => {
-    const product = { id, slug, price, imgUrl, name: title, qty: (cartItem?.qty || 0) - 1 };
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) - 1,
+    };
     handleCartAmountChange(product, "remove");
   };
 

@@ -7,7 +7,7 @@ const Globe = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Globe"
+  "Globe",
 );
 
 export default Globe;

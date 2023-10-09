@@ -3711,7 +3711,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Electronics/20.TascuigoAriadryLight.png",
+    thumbnail:
+      "/assets/images/products/Electronics/20.TascuigoAriadryLight.png",
     images: [
       "/assets/images/products/Electronics/20.TascuigoAriadryLight.png",
       "/assets/images/products/Electronics/20.TascuigoAriadryLight.png",
@@ -4068,7 +4069,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Electronics/27.PinkWirelessEarphones.png",
+    thumbnail:
+      "/assets/images/products/Electronics/27.PinkWirelessEarphones.png",
     images: [
       "/assets/images/products/Electronics/27.PinkWirelessEarphones.png",
       "/assets/images/products/Electronics/27.PinkWirelessEarphones.png",
@@ -4374,7 +4376,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Electronics/33.beatswirelessearphones.png",
+    thumbnail:
+      "/assets/images/products/Electronics/33.beatswirelessearphones.png",
     images: [
       "/assets/images/products/Electronics/33.beatswirelessearphones.png",
       "/assets/images/products/Electronics/33.beatswirelessearphones.png",
@@ -4476,7 +4479,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Electronics/35.beatsbluetoothearpohones.png",
+    thumbnail:
+      "/assets/images/products/Electronics/35.beatsbluetoothearpohones.png",
     images: [
       "/assets/images/products/Electronics/35.beatsbluetoothearpohones.png",
       "/assets/images/products/Electronics/35.beatsbluetoothearpohones.png",
@@ -4527,7 +4531,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Electronics/36.sbsWirelessEarphones.png",
+    thumbnail:
+      "/assets/images/products/Electronics/36.sbsWirelessEarphones.png",
     images: [
       "/assets/images/products/Electronics/36.sbsWirelessEarphones.png",
       "/assets/images/products/Electronics/36.sbsWirelessEarphones.png",
@@ -4629,7 +4634,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/2.FunkySilverCap.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/2.FunkySilverCap.png",
     images: [
       "/assets/images/products/Fashion/Accessories/2.FunkySilverCap.png",
       "/assets/images/products/Fashion/Accessories/2.FunkySilverCap.png",
@@ -4884,7 +4890,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/7.PoliceGrayEyeglasses.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/7.PoliceGrayEyeglasses.png",
     images: [
       "/assets/images/products/Fashion/Accessories/7.PoliceGrayEyeglasses.png",
       "/assets/images/products/Fashion/Accessories/7.PoliceGrayEyeglasses.png",
@@ -4935,7 +4942,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/8.RayBanMattBlack.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/8.RayBanMattBlack.png",
     images: [
       "/assets/images/products/Fashion/Accessories/8.RayBanMattBlack.png",
       "/assets/images/products/Fashion/Accessories/8.RayBanMattBlack.png",
@@ -5088,7 +5096,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/11.SunglassesCollection.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/11.SunglassesCollection.png",
     images: [
       "/assets/images/products/Fashion/Accessories/11.SunglassesCollection.png",
       "/assets/images/products/Fashion/Accessories/11.SunglassesCollection.png",
@@ -5139,7 +5148,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/12.Xiaomimiband2.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/12.Xiaomimiband2.png",
     images: [
       "/assets/images/products/Fashion/Accessories/12.Xiaomimiband2.png",
       "/assets/images/products/Fashion/Accessories/12.Xiaomimiband2.png",
@@ -5190,7 +5200,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/13.FossilWatchBrown.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/13.FossilWatchBrown.png",
     images: [
       "/assets/images/products/Fashion/Accessories/13.FossilWatchBrown.png",
       "/assets/images/products/Fashion/Accessories/13.FossilWatchBrown.png",
@@ -5241,7 +5252,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/14.MVMTMWatchBlack.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/14.MVMTMWatchBlack.png",
     images: [
       "/assets/images/products/Fashion/Accessories/14.MVMTMWatchBlack.png",
       "/assets/images/products/Fashion/Accessories/14.MVMTMWatchBlack.png",
@@ -5292,7 +5304,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/15.BarihoWatchBlack.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/15.BarihoWatchBlack.png",
     images: [
       "/assets/images/products/Fashion/Accessories/15.BarihoWatchBlack.png",
       "/assets/images/products/Fashion/Accessories/15.BarihoWatchBlack.png",
@@ -5343,7 +5356,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/16.SkmeiWatchBlack.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/16.SkmeiWatchBlack.png",
     images: [
       "/assets/images/products/Fashion/Accessories/16.SkmeiWatchBlack.png",
       "/assets/images/products/Fashion/Accessories/16.SkmeiWatchBlack.png",
@@ -5394,7 +5408,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/17.DigitalWristWatch.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/17.DigitalWristWatch.png",
     images: [
       "/assets/images/products/Fashion/Accessories/17.DigitalWristWatch.png",
       "/assets/images/products/Fashion/Accessories/17.DigitalWristWatch.png",
@@ -5445,7 +5460,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Accessories/18.DragonRedWristWatch.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Accessories/18.DragonRedWristWatch.png",
     images: [
       "/assets/images/products/Fashion/Accessories/18.DragonRedWristWatch.png",
       "/assets/images/products/Fashion/Accessories/18.DragonRedWristWatch.png",
@@ -5496,7 +5512,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
@@ -5751,7 +5768,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/6.FashionCollectionforKids.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/6.FashionCollectionforKids.png",
     images: [
       "/assets/images/products/Fashion/Clothes/6.FashionCollectionforKids.png",
       "/assets/images/products/Fashion/Clothes/6.FashionCollectionforKids.png",
@@ -5802,7 +5820,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
     images: [
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
@@ -5853,7 +5872,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
     images: [
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
@@ -5904,7 +5924,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/9.DenimGabardineCollection.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/9.DenimGabardineCollection.png",
     images: [
       "/assets/images/products/Fashion/Clothes/9.DenimGabardineCollection.png",
       "/assets/images/products/Fashion/Clothes/9.DenimGabardineCollection.png",
@@ -6108,7 +6129,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/13.HighWaistedGabardine.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/13.HighWaistedGabardine.png",
     images: [
       "/assets/images/products/Fashion/Clothes/13.HighWaistedGabardine.png",
       "/assets/images/products/Fashion/Clothes/13.HighWaistedGabardine.png",
@@ -6261,7 +6283,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
     images: [
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
@@ -6312,7 +6335,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/17.StrechCargoPants.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/17.StrechCargoPants.png",
     images: [
       "/assets/images/products/Fashion/Clothes/17.StrechCargoPants.png",
       "/assets/images/products/Fashion/Clothes/17.StrechCargoPants.png",
@@ -6363,7 +6387,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/18.WoolOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/18.WoolOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/18.WoolOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/18.WoolOvercoatWomen.png",
@@ -6414,7 +6439,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
@@ -6465,7 +6491,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
@@ -6516,7 +6543,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
@@ -6618,7 +6646,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/23.AdidasWinterJacket.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/23.AdidasWinterJacket.png",
     images: [
       "/assets/images/products/Fashion/Clothes/23.AdidasWinterJacket.png",
       "/assets/images/products/Fashion/Clothes/23.AdidasWinterJacket.png",
@@ -6669,7 +6698,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -6720,7 +6750,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/25.KidsRainbowSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/25.KidsRainbowSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/25.KidsRainbowSweater.png",
       "/assets/images/products/Fashion/Clothes/25.KidsRainbowSweater.png",
@@ -6771,7 +6802,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/1.Heavy22ktGoldNecklaceSet.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/1.Heavy22ktGoldNecklaceSet.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/1.Heavy22ktGoldNecklaceSet.png",
       "/assets/images/products/Fashion/Jewellery/1.Heavy22ktGoldNecklaceSet.png",
@@ -6873,7 +6905,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/3.DiamondSilverRing.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/3.DiamondSilverRing.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/3.DiamondSilverRing.png",
       "/assets/images/products/Fashion/Jewellery/3.DiamondSilverRing.png",
@@ -6924,7 +6957,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/4.BlackStonesNecklace.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/4.BlackStonesNecklace.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/4.BlackStonesNecklace.png",
       "/assets/images/products/Fashion/Jewellery/4.BlackStonesNecklace.png",
@@ -6975,7 +7009,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/5.IndianPearlEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/5.IndianPearlEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/5.IndianPearlEarrings.png",
       "/assets/images/products/Fashion/Jewellery/5.IndianPearlEarrings.png",
@@ -7026,7 +7061,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
       "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
@@ -7077,7 +7113,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/7.IndianPearlSquareStoneNecklace.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/7.IndianPearlSquareStoneNecklace.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/7.IndianPearlSquareStoneNecklace.png",
       "/assets/images/products/Fashion/Jewellery/7.IndianPearlSquareStoneNecklace.png",
@@ -7128,7 +7165,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/8.IndianPearlThreadEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/8.IndianPearlThreadEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/8.IndianPearlThreadEarrings.png",
       "/assets/images/products/Fashion/Jewellery/8.IndianPearlThreadEarrings.png",
@@ -7179,7 +7217,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/9.Heavy20ktGoldNecklace.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/9.Heavy20ktGoldNecklace.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/9.Heavy20ktGoldNecklace.png",
       "/assets/images/products/Fashion/Jewellery/9.Heavy20ktGoldNecklace.png",
@@ -7230,7 +7269,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/10.Indian8ktGoldBracelet.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/10.Indian8ktGoldBracelet.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/10.Indian8ktGoldBracelet.png",
       "/assets/images/products/Fashion/Jewellery/10.Indian8ktGoldBracelet.png",
@@ -7281,7 +7321,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/11.Heavy5ktIndianEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/11.Heavy5ktIndianEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/11.Heavy5ktIndianEarrings.png",
       "/assets/images/products/Fashion/Jewellery/11.Heavy5ktIndianEarrings.png",
@@ -7332,7 +7373,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/12.BlueStoneLocket.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/12.BlueStoneLocket.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/12.BlueStoneLocket.png",
       "/assets/images/products/Fashion/Jewellery/12.BlueStoneLocket.png",
@@ -7383,7 +7425,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/13.BlackStoneModernLocket.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/13.BlackStoneModernLocket.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/13.BlackStoneModernLocket.png",
       "/assets/images/products/Fashion/Jewellery/13.BlackStoneModernLocket.png",
@@ -7434,7 +7477,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/14.DiamondWeddingRings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/14.DiamondWeddingRings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/14.DiamondWeddingRings.png",
       "/assets/images/products/Fashion/Jewellery/14.DiamondWeddingRings.png",
@@ -7485,7 +7529,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/15.Indian6ktGoldEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/15.Indian6ktGoldEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/15.Indian6ktGoldEarrings.png",
       "/assets/images/products/Fashion/Jewellery/15.Indian6ktGoldEarrings.png",
@@ -7536,7 +7581,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/16.CustomMadeThreadsBeadsNecklaceSet.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/16.CustomMadeThreadsBeadsNecklaceSet.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/16.CustomMadeThreadsBeadsNecklaceSet.png",
       "/assets/images/products/Fashion/Jewellery/16.CustomMadeThreadsBeadsNecklaceSet.png",
@@ -7587,7 +7633,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
       "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
@@ -7638,7 +7685,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/18.BeadsandThreadsSimpleEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/18.BeadsandThreadsSimpleEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/18.BeadsandThreadsSimpleEarrings.png",
       "/assets/images/products/Fashion/Jewellery/18.BeadsandThreadsSimpleEarrings.png",
@@ -7689,7 +7737,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/19.TamilWeddingNecklaceSet.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/19.TamilWeddingNecklaceSet.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/19.TamilWeddingNecklaceSet.png",
       "/assets/images/products/Fashion/Jewellery/19.TamilWeddingNecklaceSet.png",
@@ -7740,7 +7789,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/20.Shahi21ktGoldNecklaceSet.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/20.Shahi21ktGoldNecklaceSet.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/20.Shahi21ktGoldNecklaceSet.png",
       "/assets/images/products/Fashion/Jewellery/20.Shahi21ktGoldNecklaceSet.png",
@@ -7791,7 +7841,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/21.FeathersandBeadsBohemianNecklace.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/21.FeathersandBeadsBohemianNecklace.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/21.FeathersandBeadsBohemianNecklace.png",
       "/assets/images/products/Fashion/Jewellery/21.FeathersandBeadsBohemianNecklace.png",
@@ -7842,7 +7893,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/22.RedPeacockTailEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/22.RedPeacockTailEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/22.RedPeacockTailEarrings.png",
       "/assets/images/products/Fashion/Jewellery/22.RedPeacockTailEarrings.png",
@@ -7893,7 +7945,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/23.Heavy13ktGoldWeddingNecklaceSet.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/23.Heavy13ktGoldWeddingNecklaceSet.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/23.Heavy13ktGoldWeddingNecklaceSet.png",
       "/assets/images/products/Fashion/Jewellery/23.Heavy13ktGoldWeddingNecklaceSet.png",
@@ -9168,7 +9221,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
+    thumbnail:
+      "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
     images: [
       "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
       "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
@@ -9372,7 +9426,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
+    thumbnail:
+      "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
     images: [
       "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
       "/assets/images/products/Groceries/6.IndianGroceryProductsPack.png",
@@ -9474,7 +9529,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
+    thumbnail:
+      "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
     images: [
       "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
       "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
@@ -9525,7 +9581,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
+    thumbnail:
+      "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
     images: [
       "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
       "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
@@ -9576,7 +9633,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
+    thumbnail:
+      "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
     images: [
       "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
       "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
@@ -9882,7 +9940,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
+    thumbnail:
+      "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
     images: [
       "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
       "/assets/images/products/Groceries/16.ArtidoroRodriguezCoffee.png",
@@ -10188,7 +10247,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
+    thumbnail:
+      "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
     images: [
       "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
       "/assets/images/products/Groceries/22.OrganicCompanyProducts.png",
@@ -10341,7 +10401,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
+    thumbnail:
+      "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
     images: [
       "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
       "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
@@ -10596,7 +10657,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/2.AmorpacificProducts.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/2.AmorpacificProducts.png",
     images: [
       "/assets/images/products/Health&Beauty/2.AmorpacificProducts.png",
       "/assets/images/products/Health&Beauty/2.AmorpacificProducts.png",
@@ -10749,7 +10811,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/5.HudaBeautyNailpolish.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/5.HudaBeautyNailpolish.png",
     images: [
       "/assets/images/products/Health&Beauty/5.HudaBeautyNailpolish.png",
       "/assets/images/products/Health&Beauty/5.HudaBeautyNailpolish.png",
@@ -11055,7 +11118,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/11.RahuaClassicConditioner.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/11.RahuaClassicConditioner.png",
     images: [
       "/assets/images/products/Health&Beauty/11.RahuaClassicConditioner.png",
       "/assets/images/products/Health&Beauty/11.RahuaClassicConditioner.png",
@@ -11106,7 +11170,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/12.BeautySocietyantiacnemask.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/12.BeautySocietyantiacnemask.png",
     images: [
       "/assets/images/products/Health&Beauty/12.BeautySocietyantiacnemask.png",
       "/assets/images/products/Health&Beauty/12.BeautySocietyantiacnemask.png",
@@ -11310,7 +11375,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/16.CaudalieHandandNailCream.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/16.CaudalieHandandNailCream.png",
     images: [
       "/assets/images/products/Health&Beauty/16.CaudalieHandandNailCream.png",
       "/assets/images/products/Health&Beauty/16.CaudalieHandandNailCream.png",
@@ -11616,7 +11682,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/22.DetolLiquidHandWash.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/22.DetolLiquidHandWash.png",
     images: [
       "/assets/images/products/Health&Beauty/22.DetolLiquidHandWash.png",
       "/assets/images/products/Health&Beauty/22.DetolLiquidHandWash.png",
@@ -11718,7 +11785,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
     images: [
       "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
       "/assets/images/products/Health&Beauty/24.LorealKidsExtraGentleShampoo.png",
@@ -11769,7 +11837,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
+    thumbnail:
+      "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
     images: [
       "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
       "/assets/images/products/Health&Beauty/25.MarioBadescuSkinCareShampoo.png",
@@ -11871,7 +11940,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
     images: [
       "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
       "/assets/images/products/Home&Garden/2.Devil'sIvyIndoorPlant.png",
@@ -12075,7 +12145,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
     images: [
       "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
       "/assets/images/products/Home&Garden/6.GreenLeafPlantinGlassJar.png",
@@ -12126,7 +12197,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
     images: [
       "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
       "/assets/images/products/Home&Garden/7.SpiderPlantinRoundGlass.png",
@@ -12177,7 +12249,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
     images: [
       "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
       "/assets/images/products/Home&Garden/8.ChamaedoreaElegansPlantswithCeramicPot.png",
@@ -12228,7 +12301,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
     images: [
       "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
       "/assets/images/products/Home&Garden/9.HouseplantinJapanesePot.png",
@@ -12279,7 +12353,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
     images: [
       "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
       "/assets/images/products/Home&Garden/10.FiddleleafPlantinBambooBasket.png",
@@ -12330,7 +12405,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/11.BeautifulCactusinCeramicCup.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/11.BeautifulCactusinCeramicCup.png",
     images: [
       "/assets/images/products/Home&Garden/11.BeautifulCactusinCeramicCup.png",
       "/assets/images/products/Home&Garden/11.BeautifulCactusinCeramicCup.png",
@@ -12381,7 +12457,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/12.CactusinJapaneseCeramic.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/12.CactusinJapaneseCeramic.png",
     images: [
       "/assets/images/products/Home&Garden/12.CactusinJapaneseCeramic.png",
       "/assets/images/products/Home&Garden/12.CactusinJapaneseCeramic.png",
@@ -12432,7 +12509,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/13.GardenRosesinBlueVase.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/13.GardenRosesinBlueVase.png",
     images: [
       "/assets/images/products/Home&Garden/13.GardenRosesinBlueVase.png",
       "/assets/images/products/Home&Garden/13.GardenRosesinBlueVase.png",
@@ -12483,7 +12561,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/14.HangingPlanterswithGreenPlants.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/14.HangingPlanterswithGreenPlants.png",
     images: [
       "/assets/images/products/Home&Garden/14.HangingPlanterswithGreenPlants.png",
       "/assets/images/products/Home&Garden/14.HangingPlanterswithGreenPlants.png",
@@ -12534,7 +12613,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/15.TilandsiaFlexuosainWoodFrame.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/15.TilandsiaFlexuosainWoodFrame.png",
     images: [
       "/assets/images/products/Home&Garden/15.TilandsiaFlexuosainWoodFrame.png",
       "/assets/images/products/Home&Garden/15.TilandsiaFlexuosainWoodFrame.png",
@@ -12585,7 +12665,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/16.CopperPlanterwithMixedPlants.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/16.CopperPlanterwithMixedPlants.png",
     images: [
       "/assets/images/products/Home&Garden/16.CopperPlanterwithMixedPlants.png",
       "/assets/images/products/Home&Garden/16.CopperPlanterwithMixedPlants.png",
@@ -12636,7 +12717,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/17.MoldedwaxagaveinJapanesePlanter.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/17.MoldedwaxagaveinJapanesePlanter.png",
     images: [
       "/assets/images/products/Home&Garden/17.MoldedwaxagaveinJapanesePlanter.png",
       "/assets/images/products/Home&Garden/17.MoldedwaxagaveinJapanesePlanter.png",
@@ -12738,7 +12820,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/19.MammillariaElongataCactus.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/19.MammillariaElongataCactus.png",
     images: [
       "/assets/images/products/Home&Garden/19.MammillariaElongataCactus.png",
       "/assets/images/products/Home&Garden/19.MammillariaElongataCactus.png",
@@ -12789,7 +12872,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/20.SetgreenPlasticPot25CMSBlue.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/20.SetgreenPlasticPot25CMSBlue.png",
     images: [
       "/assets/images/products/Home&Garden/20.SetgreenPlasticPot25CMSBlue.png",
       "/assets/images/products/Home&Garden/20.SetgreenPlasticPot25CMSBlue.png",
@@ -12891,7 +12975,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/22.EuphorbiaLeuconeurawithOrangePot.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/22.EuphorbiaLeuconeurawithOrangePot.png",
     images: [
       "/assets/images/products/Home&Garden/22.EuphorbiaLeuconeurawithOrangePot.png",
       "/assets/images/products/Home&Garden/22.EuphorbiaLeuconeurawithOrangePot.png",
@@ -12942,7 +13027,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/23.EuphorbiaLacteainRoundClayPot.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/23.EuphorbiaLacteainRoundClayPot.png",
     images: [
       "/assets/images/products/Home&Garden/23.EuphorbiaLacteainRoundClayPot.png",
       "/assets/images/products/Home&Garden/23.EuphorbiaLacteainRoundClayPot.png",
@@ -12993,7 +13079,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/24.MixedSucculentinGlassJar.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/24.MixedSucculentinGlassJar.png",
     images: [
       "/assets/images/products/Home&Garden/24.MixedSucculentinGlassJar.png",
       "/assets/images/products/Home&Garden/24.MixedSucculentinGlassJar.png",
@@ -13044,7 +13131,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/25.PaintedLeafBegoniaPlant.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/25.PaintedLeafBegoniaPlant.png",
     images: [
       "/assets/images/products/Home&Garden/25.PaintedLeafBegoniaPlant.png",
       "/assets/images/products/Home&Garden/25.PaintedLeafBegoniaPlant.png",
@@ -13146,7 +13234,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Home&Garden/27.BlackCoralSansevieriaPlant.png",
+    thumbnail:
+      "/assets/images/products/Home&Garden/27.BlackCoralSansevieriaPlant.png",
     images: [
       "/assets/images/products/Home&Garden/27.BlackCoralSansevieriaPlant.png",
       "/assets/images/products/Home&Garden/27.BlackCoralSansevieriaPlant.png",
@@ -13248,7 +13337,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Music/2.Affordable4StringTenorBanjo.png",
+    thumbnail:
+      "/assets/images/products/Music/2.Affordable4StringTenorBanjo.png",
     images: [
       "/assets/images/products/Music/2.Affordable4StringTenorBanjo.png",
       "/assets/images/products/Music/2.Affordable4StringTenorBanjo.png",
@@ -13350,7 +13440,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Music/4.DetailedPaintedAcousticGuitar.png",
+    thumbnail:
+      "/assets/images/products/Music/4.DetailedPaintedAcousticGuitar.png",
     images: [
       "/assets/images/products/Music/4.DetailedPaintedAcousticGuitar.png",
       "/assets/images/products/Music/4.DetailedPaintedAcousticGuitar.png",
@@ -13860,7 +13951,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Music/14.LittlePercussionInstruments.png",
+    thumbnail:
+      "/assets/images/products/Music/14.LittlePercussionInstruments.png",
     images: [
       "/assets/images/products/Music/14.LittlePercussionInstruments.png",
       "/assets/images/products/Music/14.LittlePercussionInstruments.png",
@@ -14523,7 +14615,8 @@ export default [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Music/27.AffordableCordobaClassicalGuitar.png",
+    thumbnail:
+      "/assets/images/products/Music/27.AffordableCordobaClassicalGuitar.png",
     images: [
       "/assets/images/products/Music/27.AffordableCordobaClassicalGuitar.png",
       "/assets/images/products/Music/27.AffordableCordobaClassicalGuitar.png",

@@ -8,7 +8,8 @@ import products from "data/product-database";
 import Shop from "models/Shop.model";
 import Product from "models/Product.model";
 
-const getProducts = (slug: string) => products.filter((item) => item.shop.slug === slug);
+const getProducts = (slug: string) =>
+  products.filter((item) => item.shop.slug === slug);
 
 Mock.onGet("/api/shops").reply(async () => {
   try {

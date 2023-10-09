@@ -17,7 +17,7 @@ const Home = createSvgIcon(
       strokeLinejoin="round"
     />
   </svg>,
-  "Home"
+  "Home",
 );
 
 export default Home;

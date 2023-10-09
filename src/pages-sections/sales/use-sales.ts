@@ -11,13 +11,16 @@ const useSales = (defaultSelectCategory = "women", fetchCategory = 0) => {
   const [page, setPage] = useState(1);
   const [categories, setCategories] = useState<Category[]>([]);
   const [productList, setProductList] = useState<Product[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState(defaultSelectCategory);
+  const [selectedCategory, setSelectedCategory] = useState(
+    defaultSelectCategory,
+  );
 
   // HANDLE CHANGE PAGE
   const handlePageChange = (_, page: number) => setPage(page);
 
   // HANDLE THE CHANGE CATEGORY
-  const handleCategoryChange = (category: string) => () => setSelectedCategory(category);
+  const handleCategoryChange = (category: string) => () =>
+    setSelectedCategory(category);
 
   // FETCH CATEGORIES FROM SERVER
   useEffect(() => {

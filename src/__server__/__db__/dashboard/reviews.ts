@@ -201,7 +201,8 @@ export const reviews = [
       size: null,
       colors: [],
       discount: 10,
-      thumbnail: "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
+      thumbnail:
+        "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
       images: [
         "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
         "/assets/images/products/Groceries/25.CafeTorrefactionFraiche.png",
@@ -273,7 +274,8 @@ export const reviews = [
       size: null,
       colors: [],
       discount: 5,
-      thumbnail: "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
+      thumbnail:
+        "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
       images: [
         "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
         "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",

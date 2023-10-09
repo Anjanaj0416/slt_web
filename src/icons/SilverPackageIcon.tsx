@@ -11,7 +11,7 @@ const SilverPackageIcon = createSvgIcon(
       fill="#2B3445"
     />
   </svg>,
-  "SilverPackageIcon"
+  "SilverPackageIcon",
 );
 
 export default SilverPackageIcon;

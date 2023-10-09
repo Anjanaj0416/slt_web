@@ -181,7 +181,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
       "/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png",
@@ -235,7 +236,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/21.YellowCasualSweater.png",
@@ -343,7 +345,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
       "/assets/images/products/Fashion/Clothes/19.BlackWhiteSweater.png",
@@ -397,7 +400,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
@@ -451,7 +455,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -615,7 +620,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
     images: [
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
@@ -669,7 +675,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
     images: [
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
@@ -723,7 +730,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
     images: [
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
@@ -831,7 +839,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -885,7 +894,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
@@ -939,7 +949,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -995,7 +1006,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
     images: [
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
       "/assets/images/products/Fashion/Clothes/7.DenimClassicBlueJeans.png",
@@ -1049,7 +1061,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
     images: [
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
       "/assets/images/products/Fashion/Clothes/16.DoubleWoolOvercoat.png",
@@ -1103,7 +1116,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
     images: [
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
       "/assets/images/products/Fashion/Clothes/8.RoyalBlackSuitPant.png",
@@ -1323,7 +1337,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/2.Black Metal Ring.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/2.Black Metal Ring.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/2.Black Metal Ring.png",
       "/assets/images/products/Fashion/Jewellery/2.Black Metal Ring.png",
@@ -1377,7 +1392,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
       "/assets/images/products/Fashion/Jewellery/17.HeavyStoneColorfulNecklace.png",
@@ -1431,7 +1447,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
     images: [
       "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
       "/assets/images/products/Fashion/Jewellery/6.IndianCopperEarrings.png",
@@ -1487,7 +1504,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
     images: [
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
       "/assets/images/products/Fashion/Clothes/20.GrayOvercoatWomen.png",
@@ -1541,7 +1559,8 @@ export const products = [
     size: null,
     colors: [],
     discount: 0,
-    thumbnail: "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
+    thumbnail:
+      "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
     images: [
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
       "/assets/images/products/Fashion/Clothes/24.OliveCasualSweater.png",
@@ -1616,7 +1635,8 @@ export const articles = [
   {
     id: "20a83049-bc4b-41cc-9a29-0b2b69a7fd08",
     title: "30% Off Coupon for Black Friday",
-    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.…",
+    description:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.…",
     thumbnail: "/assets/images/blogs/blog-1.jpg",
     shop: {
       id: "e7c5030b-0504-4b4c-81dc-1627302bc1a4",
@@ -1669,7 +1689,8 @@ export const articles = [
   {
     id: "108015ad-897b-4c90-a90f-53b288ad162c",
     title: "10% Discount for Cosmatics",
-    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.…",
+    description:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.…",
     thumbnail: "/assets/images/blogs/blog-2.jpg",
     shop: {
       id: "d32b469e-4ccc-43b4-8427-98eba478355f",
@@ -1722,7 +1743,8 @@ export const articles = [
   {
     id: "f3f920ba-3f3e-47cd-a109-9183a15479fa",
     title: " Buy 2 get 1 free Offer",
-    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.…",
+    description:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.…",
     thumbnail: "/assets/images/blogs/blog-3.jpg",
     shop: {
       id: "e7c5030b-0504-4b4c-81dc-1627302bc1a4",

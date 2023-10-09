@@ -17,7 +17,11 @@ const CategoryItem: FC<Props> = ({ item }) => {
     <Link href={url}>
       <SubCategoryListItem>
         {img ? (
-          <Avatar alt={title} src={img} sx={{ backgroundColor: "grey.100", borderRadius: 1 }} />
+          <Avatar
+            alt={title}
+            src={img}
+            sx={{ backgroundColor: "grey.100", borderRadius: 1 }}
+          />
         ) : null}
 
         {Icon ? <Icon sx={{ fontSize: 16 }} /> : null}

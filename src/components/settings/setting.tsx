@@ -16,7 +16,12 @@ import { FlexBox } from "../flex-box";
 // GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
 // STYLED COMPONENTS
-import { BodyWrapper, MainContainer, StyledAvatar, StyledIconButton } from "./styles";
+import {
+  BodyWrapper,
+  MainContainer,
+  StyledAvatar,
+  StyledIconButton,
+} from "./styles";
 
 const Setting = () => {
   const { push } = useRouter();
@@ -40,7 +45,9 @@ const Setting = () => {
                 fullWidth
                 onClick={() => updateSettings({ direction: "rtl" })}
                 color={settings.direction === "rtl" ? "primary" : "secondary"}
-                variant={settings.direction === "rtl" ? "contained" : "outlined"}
+                variant={
+                  settings.direction === "rtl" ? "contained" : "outlined"
+                }
               >
                 RTL
               </Button>
@@ -49,7 +56,9 @@ const Setting = () => {
                 fullWidth
                 onClick={() => updateSettings({ direction: "ltr" })}
                 color={settings.direction === "ltr" ? "primary" : "secondary"}
-                variant={settings.direction === "ltr" ? "contained" : "outlined"}
+                variant={
+                  settings.direction === "ltr" ? "contained" : "outlined"
+                }
               >
                 LTR
               </Button>
@@ -63,7 +72,11 @@ const Setting = () => {
 
             <FlexBox gap={2} flexWrap="wrap">
               {demos.map((demo) => (
-                <StyledAvatar key={demo.id} src={demo.img} onClick={() => push(demo.path)} />
+                <StyledAvatar
+                  key={demo.id}
+                  src={demo.img}
+                  onClick={() => push(demo.path)}
+                />
               ))}
             </FlexBox>
           </Scrollbar>
@@ -80,12 +93,28 @@ const demos = [
   { id: 2, path: "/grocery-2", img: "/assets/images/landing/page-2.png" },
   { id: 10, path: "/grocery-3", img: "/assets/images/landing/grocery3.png" },
   { id: 3, path: "/fashion-1", img: "/assets/images/landing/page-3.png" },
-  { id: 4, path: "/fashion-2", img: "/assets/images/landing/home/fashion-2.jpg" },
-  { id: 5, path: "/fashion-3", img: "/assets/images/landing/home/fashion-3.jpg" },
+  {
+    id: 4,
+    path: "/fashion-2",
+    img: "/assets/images/landing/home/fashion-2.jpg",
+  },
+  {
+    id: 5,
+    path: "/fashion-3",
+    img: "/assets/images/landing/home/fashion-3.jpg",
+  },
   { id: 6, path: "/gadget-shop", img: "/assets/images/landing/page-4.png" },
-  { id: 7, path: "/furniture-shop", img: "/assets/images/landing/furniture.png" },
+  {
+    id: 7,
+    path: "/furniture-shop",
+    img: "/assets/images/landing/furniture.png",
+  },
   { id: 8, path: "/gift-shop", img: "/assets/images/landing/gift-shop.png" },
-  { id: 11, path: "/health-beauty-shop", img: "/assets/images/landing/healthbeauty.png" },
+  {
+    id: 11,
+    path: "/health-beauty-shop",
+    img: "/assets/images/landing/healthbeauty.png",
+  },
 ];
 
 export default Setting;

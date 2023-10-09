@@ -16,7 +16,9 @@ const RootContainer = styled(FlexBox, {
   ".caret": {
     transition: "transform 250ms ease-in-out",
     transform: `rotate(${open ? "90deg" : "0deg"})`,
-    ...(theme.direction === "rtl" && { transform: `rotate(${open ? "90deg" : "180deg"})` }),
+    ...(theme.direction === "rtl" && {
+      transform: `rotate(${open ? "90deg" : "180deg"})`,
+    }),
   },
 }));
 

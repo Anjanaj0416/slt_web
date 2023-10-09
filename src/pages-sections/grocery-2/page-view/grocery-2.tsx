@@ -43,7 +43,7 @@ const GroceryTwoPageView = (props: Props) => {
   // SIDE NAVBAR COMPONENT
   const SideNav = useCallback(
     () => <GrocerySideNav navigation={props.navigationList} />,
-    [props.navigationList]
+    [props.navigationList],
   );
 
   return (
@@ -62,19 +62,31 @@ const GroceryTwoPageView = (props: Props) => {
           <Section3 categories={props.categories} />
 
           {/* FEATURED ITEMS AREA */}
-          <ProductCarousel title="Featured Items" products={props.featuredProducts} />
+          <ProductCarousel
+            title="Featured Items"
+            products={props.featuredProducts}
+          />
 
           {/* BEST SELLER IN YOUR AREA */}
-          <ProductCarousel title="Best Seller in Your Area" products={props.bestSellProducts} />
+          <ProductCarousel
+            title="Best Seller in Your Area"
+            products={props.bestSellProducts}
+          />
 
           {/* DISCOUNT BANNER AREA */}
           <Section4 cardList={props.discountBanners} />
 
           {/* BEST OF HOME ESSENTIALS PRODUCTS AREA  */}
-          <ProductCarousel title="Best of Home Essentials" products={props.bestHomeProducts} />
+          <ProductCarousel
+            title="Best of Home Essentials"
+            products={props.bestHomeProducts}
+          />
 
           {/* SNACKS-DRINKS-DAIRY PRODUCTS AREA */}
-          <ProductCarousel title="Snacks, Drinks, Dairy & More" products={props.dairyProducts} />
+          <ProductCarousel
+            title="Snacks, Drinks, Dairy & More"
+            products={props.dairyProducts}
+          />
 
           {/* CLIENT TESTIMONIALS AREA */}
           <Section5 testimonials={props.testimonials} />

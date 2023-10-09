@@ -67,7 +67,10 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
 
       {/* CART BOTTOM ACTION BUTTONS */}
       {cartList.length > 0 ? (
-        <BottomActions total={currency(getTotalPrice())} handleNavigate={handleNavigate} />
+        <BottomActions
+          total={currency(getTotalPrice())}
+          handleNavigate={handleNavigate}
+        />
       ) : null}
     </Box>
   );

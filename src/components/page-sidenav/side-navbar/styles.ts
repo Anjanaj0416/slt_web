@@ -6,22 +6,24 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 
 export const NavbarRoot = styled(BazaarCard, {
   shouldForwardProp: (prop) => prop !== "fixed" && prop !== "sidebar",
-})<{ fixed: boolean; sidebar: "style1" | "style2" }>(({ fixed, theme, sidebar }) => ({
-  height: "100%",
-  boxShadow: "none",
-  borderRadius: "8px",
-  position: "relative",
-  overflow: fixed ? "auto" : "unset",
-  "& .linkList": {
-    padding: "8px 20px",
-    transition: "all 0.2s",
-  },
-  ...(sidebar === "style2" && {
-    // height: "100%",
-    paddingBottom: 10,
-    backgroundColor: theme.palette.primary[50],
+})<{ fixed: boolean; sidebar: "style1" | "style2" }>(
+  ({ fixed, theme, sidebar }) => ({
+    height: "100%",
+    boxShadow: "none",
+    borderRadius: "8px",
+    position: "relative",
+    overflow: fixed ? "auto" : "unset",
+    "& .linkList": {
+      padding: "8px 20px",
+      transition: "all 0.2s",
+    },
+    ...(sidebar === "style2" && {
+      // height: "100%",
+      paddingBottom: 10,
+      backgroundColor: theme.palette.primary[50],
+    }),
   }),
-}));
+);
 
 export const StyledList = styled(FlexBox)(({ theme }) => ({
   transition: "all 0.2s",

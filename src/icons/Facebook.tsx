@@ -7,7 +7,7 @@ const Facebook = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Facebook"
+  "Facebook",
 );
 
 export default Facebook;

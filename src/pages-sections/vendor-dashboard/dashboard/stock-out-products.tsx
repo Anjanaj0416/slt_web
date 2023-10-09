@@ -33,7 +33,11 @@ const StockOutProducts: FC<Props> = ({ data }) => {
         </Button>
       </FlexBetween>
 
-      <DataListTable dataList={data} tableHeading={tableHeading} type="STOCK_OUT" />
+      <DataListTable
+        dataList={data}
+        tableHeading={tableHeading}
+        type="STOCK_OUT"
+      />
     </Card>
   );
 };

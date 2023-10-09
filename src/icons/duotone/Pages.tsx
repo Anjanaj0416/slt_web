@@ -8,7 +8,7 @@ const Pages = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "Pages"
+  "Pages",
 );
 
 export default Pages;

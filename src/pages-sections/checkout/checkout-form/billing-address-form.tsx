@@ -65,7 +65,9 @@ const BillingAddressForm: FC<Props> = ({
               onChange={handleChange}
               value={values.billing_name}
               error={!!touched.billing_name && !!errors.billing_name}
-              helperText={(touched.billing_name && errors.billing_name) as string}
+              helperText={
+                (touched.billing_name && errors.billing_name) as string
+              }
             />
 
             <TextField
@@ -77,7 +79,9 @@ const BillingAddressForm: FC<Props> = ({
               onChange={handleChange}
               value={values.billing_contact}
               error={!!touched.billing_contact && !!errors.billing_contact}
-              helperText={(touched.billing_contact && errors.billing_contact) as string}
+              helperText={
+                (touched.billing_contact && errors.billing_contact) as string
+              }
             />
 
             <TextField
@@ -101,7 +105,9 @@ const BillingAddressForm: FC<Props> = ({
               name="billing_address1"
               value={values.billing_address1}
               error={!!touched.billing_address1 && !!errors.billing_address1}
-              helperText={(touched.billing_address1 && errors.billing_address1) as string}
+              helperText={
+                (touched.billing_address1 && errors.billing_address1) as string
+              }
             />
           </Grid>
 
@@ -116,7 +122,9 @@ const BillingAddressForm: FC<Props> = ({
               onChange={handleChange}
               value={values.billing_email}
               error={!!touched.billing_email && !!errors.billing_email}
-              helperText={(touched.billing_email && errors.billing_email) as string}
+              helperText={
+                (touched.billing_email && errors.billing_email) as string
+              }
             />
 
             <TextField
@@ -128,7 +136,9 @@ const BillingAddressForm: FC<Props> = ({
               onChange={handleChange}
               value={values.billing_company}
               error={!!touched.billing_company && !!errors.billing_company}
-              helperText={(touched.billing_company && errors.billing_company) as string}
+              helperText={
+                (touched.billing_company && errors.billing_company) as string
+              }
             />
 
             <Autocomplete
@@ -143,7 +153,10 @@ const BillingAddressForm: FC<Props> = ({
                   label="Country"
                   placeholder="Select Country"
                   error={!!touched.billing_country && !!errors.billing_country}
-                  helperText={(touched.billing_country && errors.billing_country) as string}
+                  helperText={
+                    (touched.billing_country &&
+                      errors.billing_country) as string
+                  }
                   {...params}
                 />
               )}
@@ -157,7 +170,9 @@ const BillingAddressForm: FC<Props> = ({
               onChange={handleChange}
               value={values.billing_address2}
               error={!!touched.billing_address2 && !!errors.billing_address2}
-              helperText={(touched.billing_address2 && errors.billing_address2) as string}
+              helperText={
+                (touched.billing_address2 && errors.billing_address2) as string
+              }
             />
           </Grid>
         </Grid>

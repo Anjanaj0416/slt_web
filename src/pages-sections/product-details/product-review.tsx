@@ -89,7 +89,12 @@ const ProductReview = () => {
           />
         </Box>
 
-        <Button variant="contained" color="primary" type="submit" disabled={!(dirty && isValid)}>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          disabled={!(dirty && isValid)}
+        >
           Submit
         </Button>
       </form>

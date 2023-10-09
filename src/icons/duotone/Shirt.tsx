@@ -12,7 +12,7 @@ const Shirt = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Shirt"
+  "Shirt",
 );
 
 export default Shirt;

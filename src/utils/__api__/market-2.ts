@@ -30,20 +30,32 @@ const getMainCarouselData = cache(async (): Promise<MainCarouselItem[]> => {
   return response.data;
 });
 
-const getElectronicsProducts = cache(async (): Promise<CategoryBasedProducts> => {
-  const response = await axios.get("/api/market-2/category-based-product?tag=electronics");
-  return response.data;
-});
+const getElectronicsProducts = cache(
+  async (): Promise<CategoryBasedProducts> => {
+    const response = await axios.get(
+      "/api/market-2/category-based-product?tag=electronics",
+    );
+    return response.data;
+  },
+);
 
-const getMenFashionProducts = cache(async (): Promise<CategoryBasedProducts> => {
-  const response = await axios.get("/api/market-2/category-based-product?tag=men");
-  return response.data;
-});
+const getMenFashionProducts = cache(
+  async (): Promise<CategoryBasedProducts> => {
+    const response = await axios.get(
+      "/api/market-2/category-based-product?tag=men",
+    );
+    return response.data;
+  },
+);
 
-const getWomenFashionProducts = cache(async (): Promise<CategoryBasedProducts> => {
-  const response = await axios.get("/api/market-2/category-based-product?tag=women");
-  return response.data;
-});
+const getWomenFashionProducts = cache(
+  async (): Promise<CategoryBasedProducts> => {
+    const response = await axios.get(
+      "/api/market-2/category-based-product?tag=women",
+    );
+    return response.data;
+  },
+);
 
 export default {
   getBrands,

@@ -38,17 +38,25 @@ const GroceryOnePageView = (props: Props) => {
   // FETCH PRODUCTS BASED ON THE SELECTED CATEGORY
   useEffect(() => {
     axios
-      .get("/api/grocery-1/category-based-products", { params: { category: selectedCategory } })
+      .get("/api/grocery-1/category-based-products", {
+        params: { category: selectedCategory },
+      })
       .then(({ data }) => setFilterProducts(data));
   }, [selectedCategory]);
 
   // HANDLE CHANGE CATEGORY
-  const handleSelectCategory = (category: string) => setSelectedCategory(category);
+  const handleSelectCategory = (category: string) =>
+    setSelectedCategory(category);
 
   // SIDE NAVBAR COMPONENT
   const SideNav = useCallback(
-    () => <SideNavbar navList={props.grocery1NavList} handleSelect={handleSelectCategory} />,
-    [props.grocery1NavList]
+    () => (
+      <SideNavbar
+        navList={props.grocery1NavList}
+        handleSelect={handleSelectCategory}
+      />
+    ),
+    [props.grocery1NavList],
   );
 
   return (
@@ -60,7 +68,10 @@ const GroceryOnePageView = (props: Props) => {
       <Section2 id="grocery1Services" services={props.serviceList} />
 
       {/* SIDEBAR WITH OTHER CONTENTS */}
-      <SideNavContainer navFixedComponentID="grocery1Services" SideNav={SideNav}>
+      <SideNavContainer
+        navFixedComponentID="grocery1Services"
+        SideNav={SideNav}
+      >
         <Stack spacing={6}>
           {selectedCategory ? (
             // FILTERED PRODUCT LIST
@@ -68,10 +79,16 @@ const GroceryOnePageView = (props: Props) => {
           ) : (
             <Fragment>
               {/* POPULAR PRODUCTS AREA */}
-              <ProductCarousel title="Popular Products" products={props.popularProducts} />
+              <ProductCarousel
+                title="Popular Products"
+                products={props.popularProducts}
+              />
 
               {/* TRENDING PRODUCTS AREA */}
-              <ProductCarousel title="Trending Products" products={props.trendingProducts} />
+              <ProductCarousel
+                title="Trending Products"
+                products={props.trendingProducts}
+              />
 
               {/* ALL PRODUCTS AREA */}
               <AllProducts products={props.products} />

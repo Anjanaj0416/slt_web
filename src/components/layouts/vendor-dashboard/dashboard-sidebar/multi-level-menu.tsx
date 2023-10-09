@@ -54,7 +54,12 @@ const MultiLevelMenu = () => {
 
       if (item.type === "extLink") {
         return (
-          <ExternalLink key={index} href={item.path} rel="noopener noreferrer" target="_blank">
+          <ExternalLink
+            key={index}
+            href={item.path}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <NavItemButton key={item.name} name="child" active={0}>
               {item.icon ? (
                 <ListIconWrapper>
@@ -66,7 +71,9 @@ const MultiLevelMenu = () => {
 
               <StyledText compact={COMPACT}>{item.name}</StyledText>
 
-              {item.badge ? <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue> : null}
+              {item.badge ? (
+                <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue>
+              ) : null}
             </NavItemButton>
           </ExternalLink>
         );
@@ -89,7 +96,9 @@ const MultiLevelMenu = () => {
 
           <StyledText compact={COMPACT}>{item.name}</StyledText>
 
-          {item.badge ? <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue> : null}
+          {item.badge ? (
+            <BadgeValue compact={COMPACT}>{item.badge.value}</BadgeValue>
+          ) : null}
         </NavItemButton>
       );
     });
@@ -99,7 +108,10 @@ const MultiLevelMenu = () => {
     <Scrollbar
       autoHide
       clickOnTrack={false}
-      sx={{ overflowX: "hidden", maxHeight: `calc(100vh - ${TOP_HEADER_AREA}px)` }}
+      sx={{
+        overflowX: "hidden",
+        maxHeight: `calc(100vh - ${TOP_HEADER_AREA}px)`,
+      }}
     >
       <Box height="100%" px={2}>
         {renderLevels(navigation)}

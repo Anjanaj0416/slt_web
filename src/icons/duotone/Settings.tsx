@@ -8,7 +8,7 @@ const Settings = createSvgIcon(
     />
     <path d="M8 10C9.38071 10 10.5 8.88071 10.5 7.5C10.5 6.11929 9.38071 5 8 5C6.61929 5 5.5 6.11929 5.5 7.5C5.5 8.88071 6.61929 10 8 10Z" />
   </svg>,
-  "Settings"
+  "Settings",
 );
 
 export default Settings;

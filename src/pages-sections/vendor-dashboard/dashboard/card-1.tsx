@@ -21,7 +21,14 @@ interface Props {
 // ========================================================
 
 const Card1: FC<Props> = (props) => {
-  const { title, amount1, amount2, percentage, status = "up", color = "info.main" } = props;
+  const {
+    title,
+    amount1,
+    amount2,
+    percentage,
+    status = "up",
+    color = "info.main",
+  } = props;
 
   return (
     <Card sx={{ p: 2 }}>

@@ -43,7 +43,11 @@ const OrdersPageView = ({ orders }: Props) => {
     filteredList,
     handleChangePage,
     handleRequestSort,
-  } = useMuiTable({ listData: filteredOrders, defaultSort: "purchaseDate", defaultOrder: "desc" });
+  } = useMuiTable({
+    listData: filteredOrders,
+    defaultSort: "purchaseDate",
+    defaultOrder: "desc",
+  });
 
   return (
     <Box py={4}>

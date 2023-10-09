@@ -3,7 +3,12 @@ import { FC } from "react";
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
 // STYLED COMPONENTS
-import { StatusWrapper, StyledTableRow, StyledTableCell, StyledIconButton } from "../styles";
+import {
+  StatusWrapper,
+  StyledTableRow,
+  StyledTableCell,
+  StyledIconButton,
+} from "../styles";
 // CUSTOM DATA MODEL
 import Ticket from "models/Ticket.model";
 

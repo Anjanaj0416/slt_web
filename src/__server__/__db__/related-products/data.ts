@@ -39,7 +39,8 @@ export const frequentlyBoughtData = [
     size: null,
     colors: [],
     discount: 11,
-    thumbnail: "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
+    thumbnail:
+      "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
     images: [
       "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
       "/assets/images/products/Groceries/2.PremiumGroceryCollection.png",
@@ -250,7 +251,8 @@ export const relatedProducts = [
     size: null,
     colors: [],
     discount: 12,
-    thumbnail: "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
+    thumbnail:
+      "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
     images: [
       "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
       "/assets/images/products/Groceries/8.ColgateAdvanceProtectionToothpaste.png",
@@ -302,7 +304,8 @@ export const relatedProducts = [
     size: null,
     colors: [],
     discount: 19,
-    thumbnail: "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
+    thumbnail:
+      "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
     images: [
       "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
       "/assets/images/products/Groceries/9.CatchSprinklersChatMasala.png",
@@ -354,7 +357,8 @@ export const relatedProducts = [
     size: null,
     colors: [],
     discount: 10,
-    thumbnail: "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
+    thumbnail:
+      "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
     images: [
       "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",
       "/assets/images/products/Groceries/10.CatchItalianSeasoningGrinder.png",

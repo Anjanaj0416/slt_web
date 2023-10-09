@@ -15,7 +15,11 @@ interface Props {
 }
 // ==============================================================
 
-const ButtonActions: FC<Props> = ({ hasQty, handleDecrementQuantity, handleIncrementQuantity }) => {
+const ButtonActions: FC<Props> = ({
+  hasQty,
+  handleDecrementQuantity,
+  handleIncrementQuantity,
+}) => {
   const BTN_STYLE = {
     py: "3px",
     fontSize: 13,
@@ -25,11 +29,19 @@ const ButtonActions: FC<Props> = ({ hasQty, handleDecrementQuantity, handleIncre
   return (
     <ButtonBox>
       {hasQty ? (
-        <Button variant="contained" onClick={handleDecrementQuantity} sx={BTN_STYLE}>
+        <Button
+          variant="contained"
+          onClick={handleDecrementQuantity}
+          sx={BTN_STYLE}
+        >
           <Remove /> Remove from Cart
         </Button>
       ) : (
-        <Button variant="contained" onClick={handleIncrementQuantity} sx={BTN_STYLE}>
+        <Button
+          variant="contained"
+          onClick={handleIncrementQuantity}
+          sx={BTN_STYLE}
+        >
           <Add /> Add to Cart
         </Button>
       )}

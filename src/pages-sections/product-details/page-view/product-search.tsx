@@ -50,7 +50,11 @@ const ProductSearchPageView = () => {
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "space-between",
-          p: { sm: "1rem 1.25rem", md: "0.5rem 1.25rem", xs: "1.25rem 1.25rem 0.25rem" },
+          p: {
+            sm: "1rem 1.25rem",
+            md: "0.5rem 1.25rem",
+            xs: "1.25rem 1.25rem 0.25rem",
+          },
         }}
       >
         <div>
@@ -87,11 +91,17 @@ const ProductSearchPageView = () => {
             </Paragraph>
 
             <IconButton onClick={toggleView("grid")}>
-              <Apps color={view === "grid" ? "primary" : "inherit"} fontSize="small" />
+              <Apps
+                color={view === "grid" ? "primary" : "inherit"}
+                fontSize="small"
+              />
             </IconButton>
 
             <IconButton onClick={toggleView("list")}>
-              <ViewList color={view === "list" ? "primary" : "inherit"} fontSize="small" />
+              <ViewList
+                color={view === "list" ? "primary" : "inherit"}
+                fontSize="small"
+              />
             </IconButton>
 
             {/* SHOW IN THE SMALL DEVICE */}

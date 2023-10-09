@@ -44,7 +44,8 @@ export const ContentWrapper = styled("div")(({ theme }) => ({
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  backgroundImage: "url('/assets/images/Furniture Shop/Furniture Shop Header.jpg')",
+  backgroundImage:
+    "url('/assets/images/Furniture Shop/Furniture Shop Header.jpg')",
   [theme.breakpoints.down("md")]: { h1: { fontSize: 50 }, paddingInline: 16 },
   [theme.breakpoints.down("sm")]: { textAlign: "center", h1: { fontSize: 40 } },
 }));

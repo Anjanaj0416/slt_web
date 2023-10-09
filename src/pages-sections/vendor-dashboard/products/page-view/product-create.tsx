@@ -25,7 +25,10 @@ const ProductCreatePageView = () => {
     <Box py={4}>
       <H3 mb={2}>Add New Product</H3>
 
-      <ProductForm initialValues={INITIAL_VALUES} handleFormSubmit={handleFormSubmit} />
+      <ProductForm
+        initialValues={INITIAL_VALUES}
+        handleFormSubmit={handleFormSubmit}
+      />
     </Box>
   );
 };

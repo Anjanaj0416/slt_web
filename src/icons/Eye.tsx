@@ -19,11 +19,16 @@ const Eye = createSvgIcon(
     <g clipPath="url(#clip0_8501_71183)"></g>
     <defs>
       <clipPath id="clip0_8501_71183">
-        <rect width="16" height="16" fill="currentColor" transform="translate(0 0.5)" />
+        <rect
+          width="16"
+          height="16"
+          fill="currentColor"
+          transform="translate(0 0.5)"
+        />
       </clipPath>
     </defs>
   </svg>,
-  "Eye"
+  "Eye",
 );
 
 export default Eye;

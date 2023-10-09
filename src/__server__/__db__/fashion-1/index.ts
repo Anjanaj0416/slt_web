@@ -5,7 +5,9 @@
 import Mock from "../../mock";
 import * as db from "./data";
 
-const flashItems = db.products.filter((item) => item.for.type === "flash-deals");
+const flashItems = db.products.filter(
+  (item) => item.for.type === "flash-deals",
+);
 Mock.onGet("/api/fashion-1/products?tag=flash").reply(async () => {
   try {
     return [200, flashItems];
@@ -25,7 +27,9 @@ Mock.onGet("/api/fashion-1/products?tag=new").reply(() => {
   }
 });
 
-const trendingItems = db.products.filter((item) => item.for.type === "trending-items");
+const trendingItems = db.products.filter(
+  (item) => item.for.type === "trending-items",
+);
 Mock.onGet("/api/fashion-1/products?tag=trending").reply(() => {
   try {
     return [200, trendingItems];

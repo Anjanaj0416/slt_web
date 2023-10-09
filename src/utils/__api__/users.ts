@@ -7,9 +7,11 @@ export const getUser = cache(async (): Promise<User> => {
   return response.data;
 });
 
-export const getUserIds = cache(async (): Promise<{ params: { id: string } }[]> => {
-  const response = await axios.get("/api/user-list/id-list");
-  return response.data;
-});
+export const getUserIds = cache(
+  async (): Promise<{ params: { id: string } }[]> => {
+    const response = await axios.get("/api/user-list/id-list");
+    return response.data;
+  },
+);
 
 export default { getUser, getUserIds };

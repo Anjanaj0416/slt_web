@@ -7,7 +7,12 @@ import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import { StatusWrapper, StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
+import {
+  StatusWrapper,
+  StyledIconButton,
+  StyledTableCell,
+  StyledTableRow,
+} from "../styles";
 
 // ========================================================================
 type Props = { order: any };

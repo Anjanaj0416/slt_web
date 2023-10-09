@@ -232,7 +232,10 @@ const navigations = [
         },
       ],
 
-      rightImage: { imgUrl: "/assets/images/promotion/offer-1.png", href: "/sales-1" },
+      rightImage: {
+        imgUrl: "/assets/images/promotion/offer-1.png",
+        href: "/sales-1",
+      },
     },
   },
   {
@@ -452,7 +455,10 @@ const navigations = [
         },
       ],
 
-      bottomImage: { imgUrl: "/assets/images/promotion/offer-5.png", href: "/" },
+      bottomImage: {
+        imgUrl: "/assets/images/promotion/offer-5.png",
+        href: "/",
+      },
     },
   },
   {
@@ -575,9 +581,24 @@ const navigations = [
           ],
         },
       },
-      { icon: Woman, title: "Woman", href: "/products/search/electronics", megaMenu: 2 },
-      { icon: BabyBoy, title: "Baby Boy", href: "/products/search/home&garden", megaMenu: 3 },
-      { icon: BabyGirl, title: "Baby Girl", href: "/products/search/bikes", megaMenu: "MegaMenu1" },
+      {
+        icon: Woman,
+        title: "Woman",
+        href: "/products/search/electronics",
+        megaMenu: 2,
+      },
+      {
+        icon: BabyBoy,
+        title: "Baby Boy",
+        href: "/products/search/home&garden",
+        megaMenu: 3,
+      },
+      {
+        icon: BabyGirl,
+        title: "Baby Girl",
+        href: "/products/search/bikes",
+        megaMenu: "MegaMenu1",
+      },
     ],
   },
   {
@@ -805,14 +826,30 @@ const navigations = [
     menuComponent: "MegaMenu2",
     menuData: [
       { icon: Dress, title: "Fashion", href: "/products/search/fashion" },
-      { icon: Laptop, title: "Electronics", href: "/products/search/electronics" },
-      { icon: PlantPot, title: "Home & Garden", href: "/products/search/home&garden" },
+      {
+        icon: Laptop,
+        title: "Electronics",
+        href: "/products/search/electronics",
+      },
+      {
+        icon: PlantPot,
+        title: "Home & Garden",
+        href: "/products/search/home&garden",
+      },
       { icon: MotorBike, title: "Bikes", href: "/products/search/bikes" },
       { icon: Gift, title: "Gifts", href: "/products/search/gifts" },
       { icon: Microphone, title: "Music", href: "/products/search/music" },
-      { icon: MakeUp, title: "Health & Beauty", href: "/products/search/health&beauty" },
+      {
+        icon: MakeUp,
+        title: "Health & Beauty",
+        href: "/products/search/health&beauty",
+      },
       { icon: Pets, title: "Pets", href: "/products/search/pets" },
-      { icon: TeddyBear, title: "Baby Toys", href: "/products/search/baby-toys" },
+      {
+        icon: TeddyBear,
+        title: "Baby Toys",
+        href: "/products/search/baby-toys",
+      },
       { icon: Food, title: "Groceries", href: "/products/search/groceries" },
       { icon: Car, title: "Automotive", href: "/products/search/automotive" },
     ],

@@ -155,7 +155,10 @@ const PaymentDetails: FC<Props> = ({
                   cursor: "pointer",
                   border: "1px solid",
                   backgroundColor: "grey.100",
-                  borderColor: item.last4Digits === values.card ? "primary.main" : "transparent",
+                  borderColor:
+                    item.last4Digits === values.card
+                      ? "primary.main"
+                      : "transparent",
                 }}
               >
                 <Box height={24} width={36} position="relative" mb={1}>
@@ -166,7 +169,9 @@ const PaymentDetails: FC<Props> = ({
                   />
                 </Box>
 
-                <Paragraph color="grey.700">**** **** **** {item.last4Digits}</Paragraph>
+                <Paragraph color="grey.700">
+                  **** **** **** {item.last4Digits}
+                </Paragraph>
                 <Paragraph color="grey.700">{item.name}</Paragraph>
               </Card>
             </Grid>

@@ -28,7 +28,9 @@ const CardContent = styled(Box, {
   position: "absolute",
   flexDirection: "column",
   justifyContent: "center",
-  ...(contentAlign === "left" ? { left: 32 } : { right: 32, alignItems: "flex-end" }),
+  ...(contentAlign === "left"
+    ? { left: 32 }
+    : { right: 32, alignItems: "flex-end" }),
 }));
 
 const CardLink = styled("span")({

@@ -20,7 +20,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchInput: FC<InputBaseProps> = (props) => {
-  return <StyledInputBase startAdornment={<Search sx={{ fontSize: 19, mr: 1 }} />} {...props} />;
+  return (
+    <StyledInputBase
+      startAdornment={<Search sx={{ fontSize: 19, mr: 1 }} />}
+      {...props}
+    />
+  );
 };
 
 export default SearchInput;

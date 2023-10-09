@@ -20,7 +20,15 @@ type Props = { seller: Seller };
 // ========================================================================
 
 const SellerRow: FC<Props> = ({ seller }) => {
-  const { name, phone, image, balance, published, shopName, package: sellerPackage } = seller || {};
+  const {
+    name,
+    phone,
+    image,
+    balance,
+    published,
+    shopName,
+    package: sellerPackage,
+  } = seller || {};
 
   const [shopPublish, setShopPublish] = useState(published);
 

@@ -13,7 +13,7 @@ const Pen = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Pen"
+  "Pen",
 );
 
 export default Pen;

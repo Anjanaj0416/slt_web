@@ -36,7 +36,10 @@ const SiteSettingsPageView = () => {
       <Card sx={{ px: 3, py: 2 }}>
         <TabContext value={selectTab}>
           <Box sx={{ borderBottom: 1, borderColor: "grey.300" }}>
-            <StyledTabList onChange={(_, value) => setSelectTab(value)} variant="scrollable">
+            <StyledTabList
+              onChange={(_, value) => setSelectTab(value)}
+              variant="scrollable"
+            >
               <Tab label="General" value="general" disableRipple />
               <Tab label="Topbar" value="topbar" disableRipple />
               <Tab label="Footer" value="footer" disableRipple />

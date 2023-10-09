@@ -31,7 +31,12 @@ const Section5 = () => {
     <Box mb={4}>
       <Container>
         <Box my={25}>
-          <Grid container spacing={{ md: 8, xs: 4 }} alignItems="center" justifyContent="center">
+          <Grid
+            container
+            spacing={{ md: 8, xs: 4 }}
+            alignItems="center"
+            justifyContent="center"
+          >
             <Grid item lg={4} md={5} sm={6} xs={10}>
               <ImageBox>
                 <LazyImage
@@ -44,7 +49,9 @@ const Section5 = () => {
             </Grid>
 
             <Grid item lg={4} md={5} sm={6} xs={10}>
-              <H2 fontSize={{ md: 28, xs: 27 }}>Data structure with Typescript Data models</H2>
+              <H2 fontSize={{ md: 28, xs: 27 }}>
+                Data structure with Typescript Data models
+              </H2>
 
               <Box mt={3}>
                 {model.map((item) => (
@@ -66,12 +73,24 @@ const Section5 = () => {
         </Box>
 
         <Box my={25}>
-          <Grid container spacing={{ md: 8, xs: 4 }} alignItems="center" justifyContent="center">
-            <Grid item lg={4} md={5} xs={10} textAlign={{ xs: "center", md: "start" }}>
+          <Grid
+            container
+            spacing={{ md: 8, xs: 4 }}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Grid
+              item
+              lg={4}
+              md={5}
+              xs={10}
+              textAlign={{ xs: "center", md: "start" }}
+            >
               <H2 fontSize={28}>REST API endpoints</H2>
 
               <Paragraph fontSize={16}>
-                Customize and use existing data structure to implement your server easily.
+                Customize and use existing data structure to implement your
+                server easily.
               </Paragraph>
             </Grid>
 

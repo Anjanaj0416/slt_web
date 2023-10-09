@@ -24,7 +24,12 @@ interface ScrollbarProps extends Props {
 }
 // =============================================================
 
-const Scrollbar: FC<ScrollbarProps> = ({ children, autoHide = true, sx, ...props }) => (
+const Scrollbar: FC<ScrollbarProps> = ({
+  children,
+  autoHide = true,
+  sx,
+  ...props
+}) => (
   <StyledScrollBar sx={sx} autoHide={autoHide} {...props}>
     {children}
   </StyledScrollBar>
