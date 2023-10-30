@@ -100,7 +100,7 @@ const Section1 = () => {
           <FlexBox justifyContent="center" alignItems="center">
             <Span sx={{ textDecoration: "underline", color: "text.secondary" }}>
               <a
-                href="https://support.ui-lib.com/bazaar-backend/"
+                href="https://www.getbazaar.io/"
                 target="_blank"
                 rel="noreferrer"
               >
