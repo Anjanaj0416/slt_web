@@ -72,7 +72,7 @@ const Section5 = () => {
           </Grid>
         </Box>
 
-        <Box my={25}>
+        <Box mt={25} mb={12}>
           <Grid
             container
             spacing={{ md: 8, xs: 4 }}
@@ -105,6 +105,9 @@ const Section5 = () => {
               </ImageBox>
             </Grid>
           </Grid>
+        </Box>
+        <Box display="flex" justifyContent="center" mb={10}>
+          <a href="https://www.getbazaar.io/" target="_blank"><img src="https://ui-lib.com/wp-content/uploads/2023/10/bazaar-server.jpg" alt="Bazaar server" /></a>
         </Box>
       </Container>
     </Box>
