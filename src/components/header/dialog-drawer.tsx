@@ -25,9 +25,7 @@ interface Props {
 const DialogDrawer: FC<Props> = (props) => {
   const { dialogOpen, sidenavOpen, toggleDialog, toggleSidenav } = props;
 
-  const isMobile = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("xs"),
-  );
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
 
   return (
     <Fragment>
@@ -40,18 +38,13 @@ const DialogDrawer: FC<Props> = (props) => {
       >
         <Wrapper>
           <LogoWithTitle />
-          <LoginPageView />
+          <LoginPageView closeDialog={toggleDialog} />
           <SocialButtons />
           <LoginBottom />
         </Wrapper>
       </Dialog>
 
-      <Drawer
-        open={sidenavOpen}
-        anchor="right"
-        onClose={toggleSidenav}
-        sx={{ zIndex: 9999 }}
-      >
+      <Drawer open={sidenavOpen} anchor="right" onClose={toggleSidenav} sx={{ zIndex: 9999 }}>
         <MiniCart toggleSidenav={toggleSidenav} />
       </Drawer>
     </Fragment>

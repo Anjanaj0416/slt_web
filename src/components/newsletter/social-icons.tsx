@@ -6,23 +6,25 @@ import Instagram from "@mui/icons-material/Instagram";
 import { FlexRowCenter } from "components/flex-box";
 import Facebook from "icons/Facebook";
 
+const STYLE = { fontSize: 20, color: "grey.900" };
+
 const SocialIcons = () => {
   return (
     <FlexRowCenter mt={4} mb={2}>
       <IconButton>
-        <Facebook sx={{ fontSize: 20, color: "grey.900" }} />
+        <Facebook sx={STYLE} />
       </IconButton>
 
       <IconButton>
-        <Twitter sx={{ fontSize: 20, color: "grey.900" }} />
+        <Twitter sx={STYLE} />
       </IconButton>
 
       <IconButton>
-        <Instagram sx={{ fontSize: 20, color: "grey.900" }} />
+        <Instagram sx={STYLE} />
       </IconButton>
 
       <IconButton>
-        <Google sx={{ fontSize: 20, color: "grey.900" }} />
+        <Google sx={STYLE} />
       </IconButton>
     </FlexRowCenter>
   );

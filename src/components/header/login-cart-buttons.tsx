@@ -23,22 +23,12 @@ const LoginCartButtons: FC<Props> = ({ toggleDialog, toggleSidenav }) => {
 
   return (
     <FlexBox gap={1.5} alignItems="center">
-      <Box
-        component={IconButton}
-        p={1.25}
-        bgcolor="grey.200"
-        onClick={toggleDialog}
-      >
+      <Box p={1.25} bgcolor="grey.200" component={IconButton} onClick={toggleDialog}>
         <PersonOutline />
       </Box>
 
       <Badge badgeContent={state.cart.length} color="primary">
-        <Box
-          p={1.25}
-          bgcolor="grey.200"
-          component={IconButton}
-          onClick={toggleSidenav}
-        >
+        <Box p={1.25} bgcolor="grey.200" component={IconButton} onClick={toggleSidenav}>
           <ShoppingBagOutlined />
         </Box>
       </Badge>

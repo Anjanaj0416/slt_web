@@ -10,7 +10,13 @@ import usePasswordVisible from "../use-password-visible";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarTextField from "components/BazaarTextField";
 
-const LoginPageView = () => {
+// ==============================================================
+interface Props {
+  closeDialog?: () => void;
+}
+// ==============================================================
+
+const LoginPageView = ({ closeDialog }: Props) => {
   const { visiblePassword, togglePasswordVisible } = usePasswordVisible();
 
   // LOGIN FORM FIELDS INITIAL VALUES
@@ -22,14 +28,14 @@ const LoginPageView = () => {
     email: yup.string().email("invalid email").required("Email is required"),
   });
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues,
-      validationSchema,
-      onSubmit: (values) => {
-        console.log(values);
-      },
-    });
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values) => {
+      console.log(values);
+      closeDialog?.();
+    },
+  });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -65,22 +71,11 @@ const LoginPageView = () => {
         error={!!touched.password && !!errors.password}
         helperText={(touched.password && errors.password) as string}
         InputProps={{
-          endAdornment: (
-            <EyeToggleButton
-              show={visiblePassword}
-              click={togglePasswordVisible}
-            />
-          ),
+          endAdornment: <EyeToggleButton show={visiblePassword} click={togglePasswordVisible} />,
         }}
       />
 
-      <Button
-        fullWidth
-        type="submit"
-        color="primary"
-        variant="contained"
-        size="large"
-      >
+      <Button fullWidth type="submit" color="primary" variant="contained" size="large">
         Login
       </Button>
     </form>

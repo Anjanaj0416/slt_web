@@ -21,7 +21,7 @@ import { H1, Paragraph, Span } from "../Typography";
 import SocialIcons from "./social-icons";
 
 // styled components
-const Wrapper = styled(Box, {
+const Wrapper = styled("div", {
   shouldForwardProp: (prop) => prop !== "img",
 })<{ img: string }>(({ theme, img }) => ({
   top: "50%",
@@ -36,6 +36,18 @@ const Wrapper = styled(Box, {
   boxShadow: theme.shadows[3],
   transform: "translate(-50%, -50%)",
   backgroundColor: theme.palette.background.paper,
+  ".clear-btn": {
+    top: 8,
+    right: 8,
+    zIndex: 2,
+    position: "absolute",
+    color: theme.palette.grey[900],
+  },
+  ".emailInput": {
+    marginBottom: 16,
+    "& input": { padding: 16, textAlign: "center" },
+    "& .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.grey[300] },
+  },
   [theme.breakpoints.between("sm", "md")]: {
     padding: 24,
     maxWidth: 620,
@@ -97,7 +109,7 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
             <Grid item lg={6} md={6} display={{ md: "flex", xs: "none" }} />
 
             <Grid item lg={6} md={6} xs={12} alignItems="center">
-              <Box textAlign="center" p={3}>
+              <Box textAlign="center" p={3} position="relative" zIndex={2}>
                 <Paragraph fontSize={22} fontWeight={700}>
                   UP TO <Span color="primary.main">30% OFF</Span>
                 </Paragraph>
@@ -113,12 +125,8 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
 
                 <TextField
                   fullWidth
+                  className="emailInput"
                   placeholder="Enter your email address"
-                  sx={{
-                    mb: 2,
-                    "& input": { padding: 2, textAlign: "center" },
-                    "& .MuiOutlinedInput-notchedOutline": { borderColor: "grey.300" },
-                  }}
                 />
 
                 <Button variant="contained" fullWidth color="primary" sx={{ p: 1.5 }}>
@@ -132,8 +140,8 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
             </Grid>
           </Grid>
 
-          <IconButton onClick={handleClose} sx={{ position: "absolute", top: 8, right: 8 }}>
-            <Clear sx={{ color: "grey.900" }} />
+          <IconButton onClick={handleClose} className="clear-btn">
+            <Clear color="inherit" />
           </IconButton>
         </Wrapper>
       </Modal>
