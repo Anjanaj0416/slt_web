@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marketplacer-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marketplacer-client
+  template:
+    metadata:
+      labels:
+        app: marketplacer-client
+    spec:
+      containers:
+        - name: marketplacer-partner
+          image: 694453004158.dkr.ecr.us-west-2.amazonaws.com/marketplacer-client:<VERSION>
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
