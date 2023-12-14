@@ -1,5 +1,7 @@
+import { ShopLayout1 } from "components/layouts/shop-layout-1";
 import { Metadata } from "next";
 import IndexPageView from "pages-sections/landing/page-view";
+import { MarketTwoPageView } from "pages-sections/market-2/page-view";
 
 export const metadata: Metadata = {
   title: "Bazaar - Next.js E-commerce Template",
@@ -10,5 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default function IndexPage() {
-  return <IndexPageView />;
+  return (
+    <ShopLayout1>
+      <MarketTwoPageView />
+    </ShopLayout1>
+  );
 }

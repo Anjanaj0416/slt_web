@@ -74,7 +74,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
 
         <FlexBox className="topbarRight" alignItems="center">
           {/* LANGUAGE MENU SELECTOR */}
-          <BazaarMenu
+          {/* <BazaarMenu
             handler={
               <TouchRipple className="handler marginRight">
                 <Span className="menuTitle">{selectedLanguage.title}</Span>
@@ -93,7 +93,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                 </Span>
               </MenuItem>
             ))}
-          </BazaarMenu>
+          </BazaarMenu> */}
 
           {/* SOCIAL LINKS AREA */}
           <FlexBox alignItems="center" gap={1.5}>
