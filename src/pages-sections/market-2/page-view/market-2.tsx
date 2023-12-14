@@ -68,10 +68,10 @@ const MarketTwoPageView = async () => {
       </Box>
 
       {/* POPUP NEWSLETTER FORM */}
-      <Newsletter />
+      {/* <Newsletter /> */}
 
       {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
-      <Setting />
+      {/* <Setting /> */}
     </Fragment>
   );
 };

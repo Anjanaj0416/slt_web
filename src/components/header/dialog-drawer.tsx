@@ -29,7 +29,7 @@ const DialogDrawer: FC<Props> = (props) => {
 
   return (
     <Fragment>
-      <Dialog
+      {/* <Dialog
         scroll="body"
         open={dialogOpen}
         fullWidth={isMobile}
@@ -42,7 +42,7 @@ const DialogDrawer: FC<Props> = (props) => {
           <SocialButtons />
           <LoginBottom />
         </Wrapper>
-      </Dialog>
+      </Dialog> */}
 
       <Drawer open={sidenavOpen} anchor="right" onClose={toggleSidenav} sx={{ zIndex: 9999 }}>
         <MiniCart toggleSidenav={toggleSidenav} />

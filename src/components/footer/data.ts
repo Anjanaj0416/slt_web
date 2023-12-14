@@ -4,6 +4,7 @@ import Twitter from "icons/Twitter";
 import Youtube from "icons/Youtube";
 import Facebook from "icons/Facebook";
 import Instagram from "icons/Instagram";
+import { ENVIRONMENT } from "config";
 
 export const ABOUT_LINKS = [
   "Careers",
@@ -21,12 +22,9 @@ export const CUSTOMER_CARE_LINKS = [
 ];
 
 export const SOCIAL_ICON_LINKS = [
-  { Icon: Facebook, url: "https://www.facebook.com/UILibOfficial" },
-  { Icon: Twitter, url: "https://twitter.com/uilibofficial" },
-  {
-    Icon: Youtube,
-    url: "https://www.youtube.com/channel/UCsIyD-TSO1wQFz-n2Y4i3Rg",
-  },
-  { Icon: Google, url: "https://www.google.com/search?q=ui-lib.com" },
-  { Icon: Instagram, url: "https://www.instagram.com/uilibofficial/" },
+  { Icon: Facebook, url: ENVIRONMENT.FACEBOOK_LINK },
+  { Icon: Twitter, url: ENVIRONMENT.TWITTER_LINK },
+  { Icon: Youtube, url: "#" },
+  { Icon: Google, url: "#" },
+  { Icon: Instagram, url: ENVIRONMENT.INSTAGRAM_LINK },
 ];
