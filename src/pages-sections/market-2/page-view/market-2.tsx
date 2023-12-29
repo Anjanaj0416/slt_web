@@ -16,10 +16,14 @@ import Section8 from "../section-8";
 import Section9 from "../section-9";
 // API FUNCTIONS
 import api from "utils/__api__/market-2";
+import { getServerSession } from "next-auth";
+import request from "utils/request";
+import API from "constants/products";
 
 const MarketTwoPageView = async () => {
+  const products = await request(API.GET_PRODUCTS, { size: 10 });
   const brands = await api.getBrands();
-  const products = await api.getProducts();
+  // const products = await api.getProducts();
   const serviceList = await api.getServices();
   const categories = await api.getCategories();
   const mainCarouselData = await api.getMainCarouselData();
@@ -40,7 +44,7 @@ const MarketTwoPageView = async () => {
         <Section3 categories={categories} />
 
         {/* DEALS OF THE DAY AND OFFER BANNERS */}
-        <Section4 products={products} />
+        <Section4 products={products?.data} />
 
         {/* TOP OFFER BANNERS */}
         <Offers />
