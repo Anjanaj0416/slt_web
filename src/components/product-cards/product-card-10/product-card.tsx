@@ -19,31 +19,26 @@ import { StyledIconButton, Card, CardMedia, FavoriteButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import Product from "models/Product.model";
+import Product, { Product1 } from "models/Product.model";
+import { ENVIRONMENT } from "config";
 
 // ==============================================================
-type Props = { product: Product };
+type Props = { product: Product1 };
 // ==============================================================
 
 const ProductCard20: FC<Props> = ({ product }) => {
-  const { slug, id, price, rating, thumbnail, title, reviews } = product;
+  const { id, price, name, units, images } = product;
 
-  const {
-    cartItem,
-    handleCartAmountChange,
-    isFavorite,
-    openModal,
-    toggleDialog,
-    toggleFavorite,
-  } = useProduct(slug);
+  const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
+    useProduct(id);
 
   const handleAddToCart = () => {
     const payload = {
       id: id,
-      slug: slug,
-      name: title,
+      slug: id,
+      name: name,
       price: price,
-      imgUrl: thumbnail,
+      imgUrl: `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`,
       qty: (cartItem?.qty || 0) + 1,
     };
 
@@ -54,12 +49,12 @@ const ProductCard20: FC<Props> = ({ product }) => {
     <Card>
       <CardMedia>
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${slug}`}>
+        <Link href={`/products/${id}`}>
           <LazyImage
             width={300}
             height={300}
             alt="category"
-            src={thumbnail}
+            src={`${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`}
             className="product-img"
           />
         </Link>
@@ -83,12 +78,18 @@ const ProductCard20: FC<Props> = ({ product }) => {
       <ProductViewDialog
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
-        product={{ id, slug, title, price, imgGroup: [thumbnail, thumbnail] }}
+        product={{
+          id,
+          slug: id,
+          name,
+          price,
+          imgGroup: [`${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`],
+        }}
       />
 
       <Box p={2} textAlign="center">
         {/* PRODUCT TITLE */}
-        <Paragraph>{title}</Paragraph>
+        <Paragraph>{name}</Paragraph>
 
         {/* PRODUCT PRICE */}
         <H4 fontWeight={700} py={0.5}>
@@ -96,7 +97,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
         </H4>
 
         {/* PRODUCT RATINGS */}
-        <FlexRowCenter gap={1} mb={2}>
+        {/* <FlexRowCenter gap={1} mb={2}>
           <Rating
             name="read-only"
             value={rating || 4}
@@ -106,19 +107,82 @@ const ProductCard20: FC<Props> = ({ product }) => {
           <Small fontWeight={600} color="grey.500">
             ({reviews.length})
           </Small>
-        </FlexRowCenter>
+        </FlexRowCenter> */}
 
         {/* PRODUCT ADD TO CART BUTTON */}
-        <Button
-          fullWidth
-          color="dark"
-          variant="outlined"
-          onClick={handleAddToCart}
-        >
+        <Button fullWidth color="dark" variant="outlined" onClick={handleAddToCart}>
           Add To Cart
         </Button>
       </Box>
     </Card>
+    // <Card>
+    //   <CardMedia>
+    //     {/* PRODUCT IMAGE / THUMBNAIL */}
+    //     <Link href={`/products/${slug}`}>
+    //       <LazyImage
+    //         width={300}
+    //         height={300}
+    //         alt="category"
+    //         src={thumbnail}
+    //         className="product-img"
+    //       />
+    //     </Link>
+
+    //     {/* PRODUCT VIEW BUTTON */}
+    //     <StyledIconButton className="product-actions" onClick={toggleDialog}>
+    //       <RemoveRedEye color="disabled" fontSize="small" />
+    //     </StyledIconButton>
+
+    //     {/* PRODUCT FAVORITE BUTTON */}
+    //     <FavoriteButton className="product-actions" onClick={toggleFavorite}>
+    //       {isFavorite ? (
+    //         <Favorite color="primary" fontSize="small" />
+    //       ) : (
+    //         <FavoriteBorder color="disabled" fontSize="small" />
+    //       )}
+    //     </FavoriteButton>
+    //   </CardMedia>
+
+    //   {/* PRODUCT VIEW BOX */}
+    //   <ProductViewDialog
+    //     openDialog={openModal}
+    //     handleCloseDialog={toggleDialog}
+    //     product={{ id, slug, title, price, imgGroup: [thumbnail, thumbnail] }}
+    //   />
+
+    //   <Box p={2} textAlign="center">
+    //     {/* PRODUCT TITLE */}
+    //     <Paragraph>{title}</Paragraph>
+
+    //     {/* PRODUCT PRICE */}
+    //     <H4 fontWeight={700} py={0.5}>
+    //       {currency(price)}
+    //     </H4>
+
+    //     {/* PRODUCT RATINGS */}
+    //     <FlexRowCenter gap={1} mb={2}>
+    //       <Rating
+    //         name="read-only"
+    //         value={rating || 4}
+    //         readOnly
+    //         sx={{ fontSize: 14 }}
+    //       />
+    //       <Small fontWeight={600} color="grey.500">
+    //         ({reviews.length})
+    //       </Small>
+    //     </FlexRowCenter>
+
+    //     {/* PRODUCT ADD TO CART BUTTON */}
+    //     <Button
+    //       fullWidth
+    //       color="dark"
+    //       variant="outlined"
+    //       onClick={handleAddToCart}
+    //     >
+    //       Add To Cart
+    //     </Button>
+    //   </Box>
+    // </Card>
   );
 };
 

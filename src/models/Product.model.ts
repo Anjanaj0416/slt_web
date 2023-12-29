@@ -21,4 +21,15 @@ interface Product {
   published?: boolean;
 }
 
+//
+export interface Product1 {
+  units?: any;
+  price: number;
+  id: string;
+  brand?: string;
+  images?: string[];
+  category?: object;
+  name: string;
+}
+
 export default Product;

@@ -9,10 +9,10 @@ import { Carousel } from "components/carousel";
 import { FlexBetween } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL
-import Product from "models/Product.model";
+import { Product1 } from "models/Product.model";
 
 // ======================================================================
-type Props = { products: Product[] };
+type Props = { products: Product1[] };
 // ======================================================================
 
 const Section4: FC<Props> = ({ products }) => {
