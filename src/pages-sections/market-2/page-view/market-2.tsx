@@ -21,16 +21,19 @@ import request from "utils/request";
 import API from "constants/products";
 
 const MarketTwoPageView = async () => {
-  const products = await request(API.GET_PRODUCTS, { size: 10 });
+  const products = await request(API.GET_PRODUCTS, { query: "limit=5" });
   const brands = await api.getBrands();
+  const categories = await request(API.GET_CATEGORIES, { query: "limit=5&categoryType=PRODUCT" });
   // const products = await api.getProducts();
   const serviceList = await api.getServices();
-  const categories = await api.getCategories();
+  const categories2 = await api.getCategories();
   const mainCarouselData = await api.getMainCarouselData();
   const menFashionProducts = await api.getMenFashionProducts();
   const electronicsProducts = await api.getElectronicsProducts();
   const womenFashionProducts = await api.getWomenFashionProducts();
 
+  //console.log(categories2);
+  //console.log(electronicsProducts);
   return (
     <Fragment>
       <Box bgcolor="#F6F6F6">
@@ -38,19 +41,31 @@ const MarketTwoPageView = async () => {
         <Section1 carouselData={mainCarouselData} />
 
         {/* SERVICE CARDS */}
-        <Section2 serviceList={serviceList} />
+        {/* <Section2 serviceList={serviceList} /> */}
 
         {/* CATEGORIES AND ANIMATED OFFER BANNER */}
-        <Section3 categories={categories} />
+        <Section3 categories={categories2} />
 
         {/* DEALS OF THE DAY AND OFFER BANNERS */}
         <Section4 products={products?.data} />
 
         {/* TOP OFFER BANNERS */}
         <Offers />
-
+        {categories?.data.map(async (category, index) => {
+          const children = await request(API.GET_CATEGORIES, {
+            query: `limit=8&categoryType=PRODUCT&parentCategoryId=${category.id}`,
+          });
+          const categoryList = { id: category.id, title: category.name, children: children?.data };
+          return index % 2 == 0 ? (
+            <>
+              <Section5 data={{ category: categoryList }} key={category.id} />
+              <Section7 />
+            </>
+          ) : (
+            <Section5 data={{ category: categoryList }} key={category.id} />
+          );
+        })}
         {/* PRODUCT ROW WITH ELECTRONICS CATEGORY LIST */}
-        <Section5 data={electronicsProducts} />
 
         {/* OFFER BANNER */}
         <Section6 />

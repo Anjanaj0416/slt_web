@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
@@ -13,7 +13,9 @@ import { NavLink3 } from "components/nav-link";
 import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL
-import { CategoryBasedProducts } from "models/Market-2.model";
+import { CategoryList } from "models/Market-2.model";
+import API from "constants/products";
+import request from "utils/request";
 
 // STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -33,17 +35,27 @@ const StyledCard = styled(Card)(() => ({
 }));
 
 // ======================================================================
-type Props = { data: CategoryBasedProducts };
+type Props = { data: CategoryList };
 // ======================================================================
 
 const Section5: FC<Props> = ({ data }) => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts(data.category.id);
+  }, []);
   if (!data) return null;
-
   const responsive = [
     { breakpoint: 1200, settings: { slidesToShow: 3 } },
     { breakpoint: 650, settings: { slidesToShow: 2 } },
     { breakpoint: 426, settings: { slidesToShow: 1 } },
   ];
+
+  const getProducts = async (id) => {
+    const products = await request(API.GET_PRODUCTS, {
+      query: id == null ? "limit=5" : `limit=5&categoryId=${id}`,
+    });
+    setProducts(products?.data);
+  };
 
   return (
     <Container>
@@ -56,16 +68,13 @@ const Section5: FC<Props> = ({ data }) => {
             {/* SUB CATEGORY LIST */}
             <List sx={{ mb: 2 }}>
               {data.category.children.map((item) => (
-                <StyledListItem key={item}>{item}</StyledListItem>
+                <StyledListItem key={item.id} onClick={() => getProducts(item.id)}>
+                  {item.name}
+                </StyledListItem>
               ))}
             </List>
 
-            <NavLink3
-              href="/"
-              text="Browse All"
-              color="dark.main"
-              hoverColor="dark.main"
-            />
+            <NavLink3 href="/" text="Browse All" color="dark.main" hoverColor="dark.main" />
           </StyledCard>
         </Grid>
 
@@ -76,7 +85,7 @@ const Section5: FC<Props> = ({ data }) => {
             responsive={responsive}
             arrowStyles={{ backgroundColor: "dark.main" }}
           >
-            {data.products.map((product) => (
+            {products.map((product) => (
               <ProductCard10 product={product} key={product.id} />
             ))}
           </Carousel>
