@@ -14,9 +14,8 @@ import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL
 import { CategoryList } from "models/Market-2.model";
-import {
-  useLazyFilteredProductsQuery,
-} from "services/product-api";
+import { useLazyFilteredProductsQuery } from "services/product-api";
+import { Product1 } from "models/Product.model";
 
 // STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -41,7 +40,6 @@ type Props = { data: CategoryList };
 
 const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
-  //const { data: products, error, isLoading, refetch } = useListProductsQuery(0);
   const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
   useEffect(() => {
     getProducts(data.category.id);
@@ -54,9 +52,11 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   ];
 
   const getProducts = async (id) => {
-    const products = (await filteredProducts({ categoryId: id })).data?.data;
+    const products: Product1[] = (await filteredProducts({ categoryId: id })).data?.data;
     setProducts(products);
   };
+  
+  if (isLoading) return <Container>Loading...</Container>;
 
   return (
     <Container>
@@ -69,7 +69,9 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
             {/* SUB CATEGORY LIST */}
             <List sx={{ mb: 2 }}>
               {data.category.children.map((item) => (
-                <StyledListItem key={item.id} onClick={()=>getProducts(item.id)}>{item.name}</StyledListItem>
+                <StyledListItem key={item.id} onClick={() => getProducts(item.id)}>
+                  {item.name}
+                </StyledListItem>
               ))}
             </List>
 
@@ -85,10 +87,7 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
             arrowStyles={{ backgroundColor: "dark.main" }}
           >
             {products.map((product) => (
-              <ProductCard10
-                product={product}
-                key={product.id}
-              />
+              <ProductCard10 product={product} key={product.id} />
             ))}
           </Carousel>
         </Grid>
