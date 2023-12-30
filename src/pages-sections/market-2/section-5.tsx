@@ -52,7 +52,7 @@ const Section5: FC<Props> = ({ data }) => {
 
   const getProducts = async (id) => {
     const products = await request(API.GET_PRODUCTS, {
-      query: id == null ? "limit=5" : `limit=5&categoryId=${id}`,
+      query: `limit=5&categoryId=${id}`,
     });
     setProducts(products?.data);
   };
