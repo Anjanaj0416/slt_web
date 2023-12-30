@@ -73,8 +73,8 @@ const request = async (_metadata, data, multipart = false, isSecure = true) => {
     // credentials: 'include', // include, *same-origin, omit
     headers: {
       "Content-Type": multipart ? "multipart/form-data" : "application/json",
-     /*  "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS", */
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       ...(isSecure && {
         Authorization: "",
       }),

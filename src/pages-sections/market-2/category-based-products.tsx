@@ -14,8 +14,9 @@ import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL
 import { CategoryList } from "models/Market-2.model";
-import API from "constants/products";
-import request from "utils/request";
+import {
+  useLazyFilteredProductsQuery,
+} from "services/product-api";
 
 // STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -38,8 +39,10 @@ const StyledCard = styled(Card)(() => ({
 type Props = { data: CategoryList };
 // ======================================================================
 
-const Section5: FC<Props> = ({ data }) => {
+const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
+  //const { data: products, error, isLoading, refetch } = useListProductsQuery(0);
+  const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
   useEffect(() => {
     getProducts(data.category.id);
   }, []);
@@ -51,10 +54,8 @@ const Section5: FC<Props> = ({ data }) => {
   ];
 
   const getProducts = async (id) => {
-    const products = await request(API.GET_PRODUCTS, {
-      query: `limit=5&categoryId=${id}`,
-    });
-    setProducts(products?.data);
+    const products = (await filteredProducts({ categoryId: id })).data?.data;
+    setProducts(products);
   };
 
   return (
@@ -68,9 +69,7 @@ const Section5: FC<Props> = ({ data }) => {
             {/* SUB CATEGORY LIST */}
             <List sx={{ mb: 2 }}>
               {data.category.children.map((item) => (
-                <StyledListItem key={item.id} onClick={() => getProducts(item.id)}>
-                  {item.name}
-                </StyledListItem>
+                <StyledListItem key={item.id} onClick={()=>getProducts(item.id)}>{item.name}</StyledListItem>
               ))}
             </List>
 
@@ -86,7 +85,10 @@ const Section5: FC<Props> = ({ data }) => {
             arrowStyles={{ backgroundColor: "dark.main" }}
           >
             {products.map((product) => (
-              <ProductCard10 product={product} key={product.id} />
+              <ProductCard10
+                product={product}
+                key={product.id}
+              />
             ))}
           </Carousel>
         </Grid>
@@ -95,4 +97,4 @@ const Section5: FC<Props> = ({ data }) => {
   );
 };
 
-export default Section5;
+export default CategoryBasedProducts;
