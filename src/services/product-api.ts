@@ -7,6 +7,13 @@ export const productApi = createApi({
   baseQuery: baseQuery, // Custom base query for making HTTP requests
   tagTypes: ["PRODUCT", "PRODUCT"],
   endpoints: (builder) => ({
+    filteredProducts: builder.query({
+      query: ({ categoryId }) => `/products?&size=10&categoryId=${categoryId}`,
+      providesTags: (result, error, arg) =>
+        result
+          ? [...result.data.map(({ id }) => ({ type: "PRODUCT", id })), "PRODUCT"]
+          : ["PRODUCT"],
+    }),
     listProducts: builder.query({
       query: ({ page }) => `/products?page=${page}&size=10`,
       providesTags: (result, error, arg) =>
@@ -24,6 +31,8 @@ export const productApi = createApi({
 
 // Export the generated query hooks for the defined endpoints
 export const {
+  useFilteredProductsQuery,
+  useLazyFilteredProductsQuery,
   useListProductsQuery,
   useLazyListProductsQuery,
   useLazyGetProductQuery,

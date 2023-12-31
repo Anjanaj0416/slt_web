@@ -18,20 +18,24 @@ import "__server__";
 
 // IMPORT i18n SUPPORT FILE
 import "i18n";
+import ReduxProviderWrapper from "utils/redux-provider-wrapper";
+import { store } from "./redux/store";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={openSans.className}>
-        <CartProvider>
-          <SettingsProvider>
-            <ThemeProvider>
-              <ProgressBar />
-              <RTL>{children}</RTL>
-            </ThemeProvider>
-          </SettingsProvider>
-        </CartProvider>
-      </body>
-    </html>
+    <ReduxProviderWrapper store={store}>
+      <html lang="en" suppressHydrationWarning>
+        <body className={openSans.className}>
+          <CartProvider>
+            <SettingsProvider>
+              <ThemeProvider>
+                <ProgressBar />
+                <RTL>{children}</RTL>
+              </ThemeProvider>
+            </SettingsProvider>
+          </CartProvider>
+        </body>
+      </html>
+    </ReduxProviderWrapper>
   );
 }

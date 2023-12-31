@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from "./axios";
 
 export class ResponseError extends Error {
   constructor(error) {
@@ -26,7 +26,7 @@ const parseJSON = (response) => {
  * @return {object|undefined} Returns either the response, or throws an error
  */
 const errorHandling = async (error) => {
-  console.log(error)
+  console.log(error);
   const errorResponse = new ResponseError(error);
   errorResponse.message = error?.response?.data;
   throw errorResponse;
@@ -41,15 +41,17 @@ const errorHandling = async (error) => {
 const request = async (_metadata, data, multipart = false, isSecure = true) => {
   const payload = { ...data };
   const metadata = { ..._metadata };
-  const pathTokens = metadata.path.split(':');
+
+  const pathTokens = metadata.path.split(":");
+  
   //
-  if (metadata.path.indexOf(':') !== 0) {
+  if (metadata.path.indexOf(":") !== 0) {
     pathTokens.shift();
   }
   //
   pathTokens.forEach((token) => {
-    if (token.includes('/')) {
-      const key = token.split('/')[0];
+    if (token.includes("/")) {
+      const key = token.split("/")[0];
       metadata.path = metadata.path.replace(`:${key}`, `${payload[key]}`);
       delete payload[key];
     } else {
@@ -66,23 +68,23 @@ const request = async (_metadata, data, multipart = false, isSecure = true) => {
   const options = {
     method: metadata.method,
     // mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache',
+    cache: "no-cache",
     url: metadata.path,
     // credentials: 'include', // include, *same-origin, omit
     headers: {
-      'Content-Type': multipart ? 'multipart/form-data' : 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      "Content-Type": multipart ? "multipart/form-data" : "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       ...(isSecure && {
-        Authorization: '',
+        Authorization: "",
       }),
       ...(multipart && {
-        enctype: 'multipart/form-data',
+        enctype: "multipart/form-data",
       }),
     },
-    redirect: 'follow', // manual, *follow, error
-    referrer: 'no-referrer', // no-referrer, *client
-    ...(['POST', 'PUT', 'PATCH', 'DELETE'].includes(metadata.method) && {
+    redirect: "follow", // manual, *follow, error
+    referrer: "no-referrer", // no-referrer, *client
+    ...(["POST", "PUT", "PATCH", "DELETE"].includes(metadata.method) && {
       data: requestBody,
     }),
   };

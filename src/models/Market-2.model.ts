@@ -1,5 +1,3 @@
-import Product from "./Product.model";
-
 export interface MainCarouselItem {
   title?: string;
   imgUrl?: string;
@@ -10,7 +8,6 @@ export interface MainCarouselItem {
   description?: string;
 }
 
-export interface CategoryBasedProducts {
-  products: Product[];
-  category: { title: string; children: string[] };
+export interface CategoryList {
+  category: {id:string; title: string; children: any};
 }
