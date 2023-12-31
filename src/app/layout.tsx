@@ -24,18 +24,18 @@ import { store } from "./redux/store";
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <ReduxProviderWrapper store={store}>
-    <html lang="en" suppressHydrationWarning>
-      <body className={openSans.className}>
-        <CartProvider>
-          <SettingsProvider>
-            <ThemeProvider>
-              <ProgressBar />
-              <RTL>{children}</RTL>
-            </ThemeProvider>
-          </SettingsProvider>
-        </CartProvider>
-      </body>
-    </html>
+      <html lang="en" suppressHydrationWarning>
+        <body className={openSans.className}>
+          <CartProvider>
+            <SettingsProvider>
+              <ThemeProvider>
+                <ProgressBar />
+                <RTL>{children}</RTL>
+              </ThemeProvider>
+            </SettingsProvider>
+          </CartProvider>
+        </body>
+      </html>
     </ReduxProviderWrapper>
   );
 }
