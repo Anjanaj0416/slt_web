@@ -6,9 +6,11 @@ import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import WhiteButton from "components/WhiteButton";
 import { H3, Paragraph, Span } from "components/Typography";
+import Banner from "models/Banner.model";
+import { FC } from "react";
 
 // STYLED COMPONENT
-const BannerWrapper = styled("div")(({ theme }) => ({
+const BannerWrapper = styled("div")(({ theme, imageUrl }) => ({
   zIndex: 1,
   gap: "5rem",
   padding: "2rem",
@@ -30,7 +32,7 @@ const BannerWrapper = styled("div")(({ theme }) => ({
     backgroundSize: "cover",
     backgroundPosition: "center left",
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(/assets/images/banners/long-banner.jpg)`,
+    backgroundImage: `url(${imageUrl})`,
     ...(theme.direction === "rtl" && {
       transform: "rotateX(180deg) rotateZ(180deg)",
     }),
@@ -43,10 +45,14 @@ const BannerWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
-const Section7 = () => {
+// ======================================================================
+type Props = { data: Banner };
+// ======================================================================
+
+const FullBanner: FC<Props> = ({ data }) => {
   return (
     <Container sx={{ my: 8 }}>
-      <BannerWrapper>
+      <BannerWrapper imageUrl = {data?.imageUrl}>
         <Box textAlign="center">
           <H3 fontSize={{ sm: 36, xs: 28 }} lineHeight={1}>
             GIFT <Span color="primary.main">50% OFF</Span> PERFECT STYLES
@@ -63,4 +69,4 @@ const Section7 = () => {
   );
 };
 
-export default Section7;
+export default FullBanner;

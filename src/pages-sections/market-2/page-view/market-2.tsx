@@ -1,8 +1,5 @@
 import { Fragment } from "react";
 import Box from "@mui/material/Box";
-//GLOBAL CUSTOM COMPONENTS
-import { Setting } from "components/settings";
-import { Newsletter } from "components/newsletter";
 //LOCAL CUSTOM COMPONENTS
 import Offers from "../offers";
 import Section1 from "../section-1";
@@ -10,8 +7,8 @@ import Section2 from "../section-2";
 import Section3 from "../section-3";
 import Section4 from "../section-4";
 import CategoryBasedProducts from "../category-based-products";
-import Section6 from "../section-6";
-import Section7 from "../section-7";
+import HalfBanner from "../half-banner";
+import FullBanner from "../full-banner";
 import Section8 from "../section-8";
 import Section9 from "../section-9";
 // API FUNCTIONS
@@ -22,18 +19,19 @@ import API from "constants/products";
 
 const MarketTwoPageView = async () => {
   const products = await request(API.GET_PRODUCTS, { query: "size=5" });
-  const categories = await request(API.GET_CATEGORIES, { query: "size=5&categoryType=PRODUCT" });
+  const categories = await request(API.GET_CATEGORIES, {
+    query: "size=5&categoryType=PRODUCT&parentCategoryId=null",
+  });
+  const fullBanners = await request(API.GET_BANNERS, { query: "size=3&bannerType=FULL" });
+  const halfBanners = await request(API.GET_BANNERS, { query: "size=4&bannerType=HALF" });
   const brands = await api.getBrands();
-  // const products = await api.getProducts();
-  const serviceList = await api.getServices();
   const categories2 = await api.getCategories();
   const mainCarouselData = await api.getMainCarouselData();
-  const menFashionProducts = await api.getMenFashionProducts();
-  const electronicsProducts = await api.getElectronicsProducts();
-  const womenFashionProducts = await api.getWomenFashionProducts();
+  //const serviceList = await api.getServices();
+  // const menFashionProducts = await api.getMenFashionProducts();
+  // const electronicsProducts = await api.getElectronicsProducts();
+  // const womenFashionProducts = await api.getWomenFashionProducts();
 
-  //console.log(categories2);
-  //console.log(electronicsProducts);
   return (
     <Fragment>
       <Box bgcolor="#F6F6F6">
@@ -51,18 +49,17 @@ const MarketTwoPageView = async () => {
 
         {/* TOP OFFER BANNERS */}
         <Offers />
-        {categories?.data.map(async (category, index) => {
-          const children = await request(API.GET_CATEGORIES, {
-            query: `size=8&categoryType=PRODUCT&parentCategoryId=${category.id}`,
-          });
-          const categoryList = { id: category.id, title: category.name, children: children?.data };
+        {categories.data?.map(async (category, index) => {
           return index % 2 == 0 ? (
-            <>
-              <CategoryBasedProducts data={{ category: categoryList }} key={category.id} />
-              <Section7 />
-            </>
+            <Fragment>
+              <CategoryBasedProducts data={category} key={category.id} />
+              <FullBanner data={fullBanners.data?.pop()} />
+            </Fragment>
           ) : (
-            <CategoryBasedProducts data={{ category: categoryList }} key={category.id} />
+            <Fragment>
+              <CategoryBasedProducts data={category} key={category.id} />
+              <HalfBanner data={[halfBanners.data?.pop(), halfBanners.data?.pop()]} />
+            </Fragment>
           );
         })}
         {/* PRODUCT ROW WITH ELECTRONICS CATEGORY LIST */}
@@ -74,7 +71,7 @@ const MarketTwoPageView = async () => {
         {/* <CategoryBasedProducts data={menFashionProducts} /> */}
 
         {/* OFFER BANNER */}
-        <Section7 />
+        {/* <FullBanner /> */}
 
         {/* PRODUCT ROW WITH WOMEN'S FASHION CATEGORY LIST */}
         {/* <CategoryBasedProducts data={womenFashionProducts} /> */}

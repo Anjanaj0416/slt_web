@@ -1,3 +1,5 @@
+import Category1 from "./Category.model";
+
 export interface MainCarouselItem {
   title?: string;
   imgUrl?: string;
@@ -6,8 +8,4 @@ export interface MainCarouselItem {
   buttonLink?: string;
   buttonText?: string;
   description?: string;
-}
-
-export interface CategoryList {
-  category: {id:string; title: string; children: any};
 }

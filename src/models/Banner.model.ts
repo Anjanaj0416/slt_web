@@ -4,7 +4,7 @@ interface Banner {
     link: string;
     bannerType: string;
     index: number;
-    isFeatured?: boolean;
+    isFeatured: boolean;
   }
   
   export default Banner;

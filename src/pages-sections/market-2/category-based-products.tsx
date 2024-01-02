@@ -12,10 +12,10 @@ import { H3 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
 import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
-// CUSTOM DATA MODEL
-import { CategoryList } from "models/Market-2.model";
-import { useLazyFilteredProductsQuery } from "services/product-api";
+// PRODUCT DATA MODEL
 import { Product1 } from "models/Product.model";
+import { useLazyFilteredProductsQuery } from "services/product-api";
+import Category1 from "models/Category.model";
 
 // STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -35,14 +35,16 @@ const StyledCard = styled(Card)(() => ({
 }));
 
 // ======================================================================
-type Props = { data: CategoryList };
+type Props = { data: Category1 };
 // ======================================================================
 
 const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
   useEffect(() => {
-    getProducts(data.category.id);
+    const categoryIds: string[] = getAllSubCategoryIds(data);
+    categoryIds.push(data.id);
+    getProducts(categoryIds.join(","));
   }, []);
   if (!data) return null;
   const responsive = [
@@ -51,12 +53,29 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
     { breakpoint: 426, settings: { slidesToShow: 1 } },
   ];
 
-  const getProducts = async (id) => {
-    const products: Product1[] = (await filteredProducts({ categoryId: id })).data?.data;
+  const handleCategoryClick = (category: Category1) => {
+    const categoryIds: string[] = getAllSubCategoryIds(category);
+    categoryIds.push(category.id);
+    getProducts(categoryIds.join(","));
+  };
+
+  const getProducts = async (categoryIds) => {
+    console.log(categoryIds)
+    const products: Product1[] = (await filteredProducts({ categoryIds })).data?.data;
     setProducts(products);
   };
-  
-  if (isLoading) return <Container>Loading...</Container>;
+
+  const getAllSubCategoryIds = (category) => {
+    let subCategoryIds = [];
+    if (category.subCategories !== null && category.subCategories.length > 0) {
+      category.subCategories.forEach((subCategory) => {
+        subCategoryIds.push(subCategory.id);
+        subCategoryIds = subCategoryIds.concat(getAllSubCategoryIds(subCategory));
+      });
+    }
+    //
+    return subCategoryIds;
+  };
 
   return (
     <Container>
@@ -64,12 +83,12 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
         <Grid item md={3} xs={12}>
           <StyledCard elevation={0}>
             {/* MAIN CATEGORY NAME/TITLE */}
-            <H3>{data.category.title}</H3>
+            <H3>{data.name}</H3>
 
             {/* SUB CATEGORY LIST */}
             <List sx={{ mb: 2 }}>
-              {data.category.children.map((item) => (
-                <StyledListItem key={item.id} onClick={() => getProducts(item.id)}>
+              {data.subCategories?.map((item) => (
+                <StyledListItem key={item.id} onClick={() => handleCategoryClick(item)}>
                   {item.name}
                 </StyledListItem>
               ))}
@@ -80,17 +99,24 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
         </Grid>
 
         {/* CATEGORY BASED PRODUCTS CAROUSEL */}
-        <Grid item md={9} xs={12}>
-          <Carousel
-            slidesToShow={4}
-            responsive={responsive}
-            arrowStyles={{ backgroundColor: "dark.main" }}
-          >
-            {products.map((product) => (
-              <ProductCard10 product={product} key={product.id} />
-            ))}
-          </Carousel>
-        </Grid>
+        {
+          <Grid item md={9} xs={12}>
+            {isLoading ? (
+              //TODO: Add loading component
+              <Container>Loading...</Container>
+            ) : (
+              <Carousel
+                slidesToShow={4}
+                responsive={responsive}
+                arrowStyles={{ backgroundColor: "dark.main" }}
+              >
+                {products?.map((product) => (
+                  <ProductCard10 product={product} key={product.id} />
+                ))}
+              </Carousel>
+            )}
+          </Grid>
+        }
       </Grid>
     </Container>
   );

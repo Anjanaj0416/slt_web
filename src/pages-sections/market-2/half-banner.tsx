@@ -8,6 +8,8 @@ import Container from "@mui/material/Container";
 import { H4, Paragraph, Span } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+import Banner from "models/Banner.model";
+import { FC } from "react";
 
 // STYLED COMPONENT
 const BannerBox = styled("div", {
@@ -25,13 +27,17 @@ const BannerBox = styled("div", {
   }),
 }));
 
-const Section6 = () => {
+// ======================================================================
+type Props = { data: Banner[] };
+// ======================================================================
+
+const HalfBanner: FC<Props> = ({ data }) => {
   return (
     <Container sx={{ my: 8 }}>
       <Grid container spacing={3}>
         {/* FINAL REDUCTION BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img="/assets/images/banners/banner-21.jpg">
+          <BannerBox img={data[0]?.imageUrl}>
             <H4>Final Reduction</H4>
 
             <H4 fontSize={27} fontWeight={700}>
@@ -58,16 +64,14 @@ const Section6 = () => {
 
         {/* WEEKEND SALE BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img="/assets/images/banners/banner-22.jpg">
+          <BannerBox img={data[1]?.imageUrl}>
             <H4 color="white">Weekend Sale</H4>
 
             <H4 fontSize={27} fontWeight={700} color="white">
               Fine Smart Speaker
             </H4>
 
-            <Divider
-              sx={{ borderColor: "white", borderWidth: 1, width: 60, my: 1 }}
-            />
+            <Divider sx={{ borderColor: "white", borderWidth: 1, width: 60, my: 1 }} />
 
             <Paragraph fontSize={16} color="white">
               Starting at{" "}
@@ -82,4 +86,4 @@ const Section6 = () => {
   );
 };
 
-export default Section6;
+export default HalfBanner;
