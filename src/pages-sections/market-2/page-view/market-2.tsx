@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 //LOCAL CUSTOM COMPONENTS
 import Offers from "../offers";
 import Section1 from "../section-1";
-import Section2 from "../section-2";
 import Section3 from "../section-3";
 import Section4 from "../section-4";
 import CategoryBasedProducts from "../category-based-products";
@@ -49,33 +48,19 @@ const MarketTwoPageView = async () => {
 
         {/* TOP OFFER BANNERS */}
         <Offers />
-        {categories.data?.map(async (category, index) => {
-          return index % 2 == 0 ? (
-            <Fragment>
-              <CategoryBasedProducts data={category} key={category.id} />
+
+        {/* CATEGORY BASED PRODUCTS */}
+        {categories.data?.map(async (category, index) => (
+          <Fragment key={category.id}>
+            <CategoryBasedProducts data={category} />
+            {index % 2 === 0 ? (
               <FullBanner data={fullBanners.data?.pop()} />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <CategoryBasedProducts data={category} key={category.id} />
+            ) : (
               <HalfBanner data={[halfBanners.data?.pop(), halfBanners.data?.pop()]} />
-            </Fragment>
-          );
-        })}
-        {/* PRODUCT ROW WITH ELECTRONICS CATEGORY LIST */}
-
-        {/* OFFER BANNER */}
-        {/* <Section6 /> */}
-
-        {/* PRODUCT ROW WITH MEN'S FASHION CATEGORY LIST */}
-        {/* <CategoryBasedProducts data={menFashionProducts} /> */}
-
-        {/* OFFER BANNER */}
-        {/* <FullBanner /> */}
-
-        {/* PRODUCT ROW WITH WOMEN'S FASHION CATEGORY LIST */}
-        {/* <CategoryBasedProducts data={womenFashionProducts} /> */}
-
+            )}
+          </Fragment>
+        ))}
+        
         {/*  FEATURED BRANDS */}
         <Section8 brands={brands} />
 
