@@ -15,7 +15,7 @@ export const productApi = createApi({
           : ["PRODUCT"],
     }),
     listProducts: builder.query({
-      query: ({ page }) => `/products?page=${page}&size=10`,
+      query: ({ page, size }) => `/products?page=${page}&size=${size}`,
       providesTags: (result, error, arg) =>
         result
           ? [...result.data.map(({ id }) => ({ type: "PRODUCT", id })), "PRODUCT"]

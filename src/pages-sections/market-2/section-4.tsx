@@ -27,7 +27,7 @@ const Section4: FC<Props> = ({ products }) => {
     <Container sx={{ py: 8 }}>
       <FlexBetween mb={3}>
         <H3>Deals Of The Day</H3>
-        <NavLink3 text="More Products" href="/" hoverColor="dark.main" />
+        {/* <NavLink3 text="More Products" href="/" hoverColor="dark.main" /> */}
       </FlexBetween>
 
       <Carousel
