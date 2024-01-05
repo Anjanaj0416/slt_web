@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-  env: { theme: "DEFAULT", currency: "USD" },
-  publicRuntimeConfig: { theme: "DEFAULT", currency: "USD" },
+  env: { theme: "DEFAULT", currency: "LKR" },
+  publicRuntimeConfig: { theme: "DEFAULT", currency: "LKR" },
   images: {
     remotePatterns: [
       {

@@ -3,6 +3,7 @@ import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import { H4 } from "components/Typography";
 import LazyImage from "components/LazyImage";
+import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENTS
 const Wrapper = styled("div")(({ theme }) => ({
@@ -41,7 +42,7 @@ const CategoryCard1: FC<Props> = ({ image, title }) => {
   return (
     <Wrapper>
       <LazyImage
-        src={image}
+        src={`${ENVIRONMENT.S3_BUCKET_URL}/${image}`}
         width={213}
         height={213}
         alt="category"

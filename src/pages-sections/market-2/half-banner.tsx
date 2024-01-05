@@ -10,17 +10,19 @@ import { H4, Paragraph, Span } from "components/Typography";
 import { currency } from "lib";
 import Banner from "models/Banner.model";
 import { FC } from "react";
+import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENT
 const BannerBox = styled("div", {
   shouldForwardProp: (prop) => prop !== "img",
-})<{ img: string }>(({ theme, img }) => ({
+})<{ imageUrl: string }>(({ theme, imageUrl }) => ({
   padding: 32,
   overflow: "hidden",
   borderRadius: "3px",
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
-  backgroundImage: `url(${img})`,
+  height: "100%",
+  backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${imageUrl})`,
   ...(theme.direction === "rtl" && {
     textAlign: "right",
     "& > .MuiDivider-root": { marginLeft: "auto" },
@@ -33,53 +35,17 @@ type Props = { data: Banner[] };
 
 const HalfBanner: FC<Props> = ({ data }) => {
   return (
+    //TODO: Fix banner height
     <Container sx={{ my: 8 }}>
       <Grid container spacing={3}>
         {/* FINAL REDUCTION BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img={data[0]?.imageUrl}>
-            <H4>Final Reduction</H4>
-
-            <H4 fontSize={27} fontWeight={700}>
-              Sale up to 20% Off
-            </H4>
-
-            <Divider
-              sx={{
-                borderColor: "dark.main",
-                borderWidth: 1,
-                width: 60,
-                my: 1,
-              }}
-            />
-
-            <Paragraph fontSize={16}>
-              Only From{" "}
-              <Span fontWeight={700} color="primary.main" fontSize={21}>
-                {currency(270)}
-              </Span>
-            </Paragraph>
-          </BannerBox>
+          <BannerBox imageUrl={data[0]?.imageUrl}/>
         </Grid>
 
         {/* WEEKEND SALE BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img={data[1]?.imageUrl}>
-            <H4 color="white">Weekend Sale</H4>
-
-            <H4 fontSize={27} fontWeight={700} color="white">
-              Fine Smart Speaker
-            </H4>
-
-            <Divider sx={{ borderColor: "white", borderWidth: 1, width: 60, my: 1 }} />
-
-            <Paragraph fontSize={16} color="white">
-              Starting at{" "}
-              <Span fontWeight={700} color="primary.main" fontSize={21}>
-                {currency(185)}
-              </Span>
-            </Paragraph>
-          </BannerBox>
+          <BannerBox imageUrl={data[1]?.imageUrl}/>
         </Grid>
       </Grid>
     </Container>
