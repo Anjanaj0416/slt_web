@@ -35,6 +35,7 @@ type Props = { data: Banner[] };
 
 const HalfBanner: FC<Props> = ({ data }) => {
   return (
+    //TODO: Fix banner height
     <Container sx={{ my: 8 }}>
       <Grid container spacing={3}>
         {/* FINAL REDUCTION BANNER */}
