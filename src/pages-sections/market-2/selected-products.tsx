@@ -8,18 +8,18 @@ import { Carousel } from "components/carousel";
 import { H3, Paragraph } from "components/Typography";
 import { FlexBetween } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
+import { useLazyListProductsQuery } from "services/product-api";
 // PRODUCT DATA MODEL
 import { Product1 } from "models/Product.model";
 
 const SelectedProducts = () => {
   const [selected, setSelected] = useState("new");
   const [products, setProducts] = useState<Product1[]>([]);
+  const [listProducts, { isLoading }] = useLazyListProductsQuery();
 
   useEffect(() => {
-    axios
-      .get("/api/market-2/products", { params: { type: selected } })
-      .then(({ data }) => setProducts(data));
-  }, [selected]);
+    getProducts();
+  }, []);
 
   const responsive = [
     { breakpoint: 1200, settings: { slidesToShow: 4 } },
@@ -33,6 +33,11 @@ const SelectedProducts = () => {
 
   // BUTTON ACTIVE COLOR
   const activeColor = (item: string) => (item === selected ? "error" : "dark");
+
+  const getProducts = async () => {
+    const products: Product1[] = (await listProducts({ page:0, size:5 })).data?.data;
+    setProducts(products);
+  };
 
   // FILTERABLE BUTTON LIST
   const FILTER_BUTTONS = [
