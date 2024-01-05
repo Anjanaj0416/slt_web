@@ -11,7 +11,7 @@ import WhiteButton from "components/WhiteButton";
 import { CategoryCard1 } from "components/category-cards";
 import { H3, Paragraph, Span } from "components/Typography";
 // CUSTOM DATA MODEL
-import Category from "models/Category.model";
+import Category1 from "models/Category.model";
 
 // CSS ANIMATION NAME
 const slideX = keyframes`
@@ -61,17 +61,18 @@ const AdTitle1 = styled(H3)(({ theme }) => ({
 }));
 
 // ===========================================================
-type Props = { categories: Category[] };
+type Props = { categories: Category1[] };
 // ===========================================================
 
-const Section3: FC<Props> = ({ categories }) => {
+const AnimatedCategoryList: FC<Props> = ({ categories }) => {
+  console.log(categories)
   return (
     <Container sx={{ mt: 8 }}>
       <Grid container spacing={3}>
         {/* CATEGORY LIST AREA */}
         {categories.map((item) => (
           <Grid item lg={2} md={3} sm={4} xs={6} key={item.id}>
-            <CategoryCard1 image={item.image} title={item.name} />
+            <CategoryCard1 image={item.imageUrl} title={item.name} />
           </Grid>
         ))}
 
@@ -122,4 +123,4 @@ const Section3: FC<Props> = ({ categories }) => {
   );
 };
 
-export default Section3;
+export default AnimatedCategoryList;

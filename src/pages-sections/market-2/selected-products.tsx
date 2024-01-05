@@ -2,19 +2,18 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
 import { H3, Paragraph } from "components/Typography";
-import { FlexBetween, FlexBox } from "components/flex-box";
+import { FlexBetween } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
-// CUSTOM DATA MODEL
-import Product from "models/Product.model";
+// PRODUCT DATA MODEL
+import { Product1 } from "models/Product.model";
 
-const Section9 = () => {
+const SelectedProducts = () => {
   const [selected, setSelected] = useState("new");
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product1[]>([]);
 
   useEffect(() => {
     axios
@@ -55,7 +54,7 @@ const Section9 = () => {
         </div>
 
         {/* FILTERED BUTTON LIST */}
-        <FlexBox flexWrap="wrap" gap={1} sx={{ "& button": { flexGrow: 1 } }}>
+        {/* <FlexBox flexWrap="wrap" gap={1} sx={{ "& button": { flexGrow: 1 } }}>
           {FILTER_BUTTONS.map(({ id, title, value }) => (
             <Button
               key={id}
@@ -66,7 +65,7 @@ const Section9 = () => {
               {title}
             </Button>
           ))}
-        </FlexBox>
+        </FlexBox> */}
       </FlexBetween>
 
       {/* PRODUCT CAROUSEL */}
@@ -83,4 +82,4 @@ const Section9 = () => {
   );
 };
 
-export default Section9;
+export default SelectedProducts;

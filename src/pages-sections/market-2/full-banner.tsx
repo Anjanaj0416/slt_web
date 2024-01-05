@@ -1,16 +1,15 @@
 "use client";
 
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import WhiteButton from "components/WhiteButton";
-import { H3, Paragraph, Span } from "components/Typography";
 import Banner from "models/Banner.model";
 import { FC } from "react";
+import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENT
-const BannerWrapper = styled("div")(({ theme, imageUrl }) => ({
+const BannerWrapper = styled("div")<{ imageUrl: string }>(({ theme, imageUrl }) => ({
   zIndex: 1,
   gap: "5rem",
   padding: "2rem",
@@ -32,7 +31,7 @@ const BannerWrapper = styled("div")(({ theme, imageUrl }) => ({
     backgroundSize: "cover",
     backgroundPosition: "center left",
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${imageUrl})`,
+    backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${imageUrl})`,
     ...(theme.direction === "rtl" && {
       transform: "rotateX(180deg) rotateZ(180deg)",
     }),
@@ -52,17 +51,7 @@ type Props = { data: Banner };
 const FullBanner: FC<Props> = ({ data }) => {
   return (
     <Container sx={{ my: 8 }}>
-      <BannerWrapper imageUrl = {data?.imageUrl}>
-        <Box textAlign="center">
-          <H3 fontSize={{ sm: 36, xs: 28 }} lineHeight={1}>
-            GIFT <Span color="primary.main">50% OFF</Span> PERFECT STYLES
-          </H3>
-
-          <Paragraph fontSize={16}>
-            Only until the end of this week. Terms and conditions apply
-          </Paragraph>
-        </Box>
-
+      <BannerWrapper imageUrl={data?.imageUrl}>
         <WhiteButton size="large">Discover Now</WhiteButton>
       </BannerWrapper>
     </Container>
