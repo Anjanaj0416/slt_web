@@ -65,7 +65,6 @@ type Props = { categories: Category1[] };
 // ===========================================================
 
 const AnimatedCategoryList: FC<Props> = ({ categories }) => {
-  console.log(categories)
   return (
     <Container sx={{ mt: 8 }}>
       <Grid container spacing={3}>

@@ -42,7 +42,7 @@ const CarouselCard3: FC<Props> = ({ product }) => {
         </H2>
 
         <Paragraph color="grey.600" textAlign="center" mb="1.5rem">
-          Starting at ${product.price} & save upto {product.discount}%
+          Starting at LKR{product.price} & save upto {product.discount}%
         </Paragraph>
 
         <Link href={`/products/${product.slug}`}>
