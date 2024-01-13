@@ -1,4 +1,4 @@
-import Product from "./Product.model";
+import Category1 from "./Category.model";
 
 export interface MainCarouselItem {
   title?: string;
@@ -8,9 +8,4 @@ export interface MainCarouselItem {
   buttonLink?: string;
   buttonText?: string;
   description?: string;
-}
-
-export interface CategoryBasedProducts {
-  products: Product[];
-  category: { title: string; children: string[] };
 }

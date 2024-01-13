@@ -168,7 +168,7 @@ const Navbar: FC<Props> = ({
           <Categories open={navListOpen} />
 
           {/* HORIZONTAL MENU */}
-          {CONTENT}
+          {/* {CONTENT} */}
         </InnerContainer>
       )}
     </NavBarWrapper>

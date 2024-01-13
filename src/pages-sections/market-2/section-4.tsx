@@ -9,10 +9,10 @@ import { Carousel } from "components/carousel";
 import { FlexBetween } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL
-import Product from "models/Product.model";
+import { Product1 } from "models/Product.model";
 
 // ======================================================================
-type Props = { products: Product[] };
+type Props = { products: Product1[] };
 // ======================================================================
 
 const Section4: FC<Props> = ({ products }) => {
@@ -27,7 +27,7 @@ const Section4: FC<Props> = ({ products }) => {
     <Container sx={{ py: 8 }}>
       <FlexBetween mb={3}>
         <H3>Deals Of The Day</H3>
-        <NavLink3 text="More Products" href="/" hoverColor="dark.main" />
+        {/* <NavLink3 text="More Products" href="/" hoverColor="dark.main" /> */}
       </FlexBetween>
 
       <Carousel

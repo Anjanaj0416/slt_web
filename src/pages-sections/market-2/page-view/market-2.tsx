@@ -1,31 +1,38 @@
 import { Fragment } from "react";
 import Box from "@mui/material/Box";
-//GLOBAL CUSTOM COMPONENTS
-import { Setting } from "components/settings";
-import { Newsletter } from "components/newsletter";
 //LOCAL CUSTOM COMPONENTS
 import Offers from "../offers";
 import Section1 from "../section-1";
-import Section2 from "../section-2";
-import Section3 from "../section-3";
+import AnimatedCategoryList from "../animated-category-list";
 import Section4 from "../section-4";
-import Section5 from "../section-5";
-import Section6 from "../section-6";
-import Section7 from "../section-7";
+import CategoryBasedProducts from "../category-based-products";
+import HalfBanner from "../half-banner";
+import FullBanner from "../full-banner";
 import Section8 from "../section-8";
-import Section9 from "../section-9";
+import SelectedProducts from "../selected-products";
 // API FUNCTIONS
 import api from "utils/__api__/market-2";
+import { getServerSession } from "next-auth";
+import request from "utils/request";
+import API from "constants/products";
 
 const MarketTwoPageView = async () => {
+  const products = await request(API.GET_PRODUCTS, { query: "size=5" });
+  const mainCategories = await request(API.GET_CATEGORIES, {
+    query: "size=5&categoryType=PRODUCT&parentCategoryId=null",
+  });
+  const categories = await request(API.GET_CATEGORIES, {
+    query: "size=6&categoryType=PRODUCT",
+  });
+  const fullBanners = await request(API.GET_BANNERS, { query: "size=3&bannerType=FULL" });
+  const halfBanners = await request(API.GET_BANNERS, { query: "size=4&bannerType=HALF" });
   const brands = await api.getBrands();
-  const products = await api.getProducts();
-  const serviceList = await api.getServices();
-  const categories = await api.getCategories();
+  const categories2 = await api.getCategories();
   const mainCarouselData = await api.getMainCarouselData();
-  const menFashionProducts = await api.getMenFashionProducts();
-  const electronicsProducts = await api.getElectronicsProducts();
-  const womenFashionProducts = await api.getWomenFashionProducts();
+  //const serviceList = await api.getServices();
+  // const menFashionProducts = await api.getMenFashionProducts();
+  // const electronicsProducts = await api.getElectronicsProducts();
+  // const womenFashionProducts = await api.getWomenFashionProducts();
 
   return (
     <Fragment>
@@ -34,44 +41,41 @@ const MarketTwoPageView = async () => {
         <Section1 carouselData={mainCarouselData} />
 
         {/* SERVICE CARDS */}
-        <Section2 serviceList={serviceList} />
+        {/* <Section2 serviceList={serviceList} /> */}
 
         {/* CATEGORIES AND ANIMATED OFFER BANNER */}
-        <Section3 categories={categories} />
+        <AnimatedCategoryList categories={categories?.data} />
 
         {/* DEALS OF THE DAY AND OFFER BANNERS */}
-        <Section4 products={products} />
+        <Section4 products={products?.data} />
 
         {/* TOP OFFER BANNERS */}
         <Offers />
 
-        {/* PRODUCT ROW WITH ELECTRONICS CATEGORY LIST */}
-        <Section5 data={electronicsProducts} />
-
-        {/* OFFER BANNER */}
-        <Section6 />
-
-        {/* PRODUCT ROW WITH MEN'S FASHION CATEGORY LIST */}
-        <Section5 data={menFashionProducts} />
-
-        {/* OFFER BANNER */}
-        <Section7 />
-
-        {/* PRODUCT ROW WITH WOMEN'S FASHION CATEGORY LIST */}
-        <Section5 data={womenFashionProducts} />
-
+        {/* CATEGORY BASED PRODUCTS */}
+        {mainCategories.data?.map(async (category, index) => (
+          <Fragment key={category.id}>
+            <CategoryBasedProducts data={category} />
+            {index % 2 === 0 ? (
+              <FullBanner data={fullBanners.data?.pop()} />
+            ) : (
+              <HalfBanner data={[halfBanners.data?.pop(), halfBanners.data?.pop()]} />
+            )}
+          </Fragment>
+        ))}
+        
         {/*  FEATURED BRANDS */}
         <Section8 brands={brands} />
 
         {/* SELECTED PRODUCTS */}
-        <Section9 />
+        <SelectedProducts />
       </Box>
 
       {/* POPUP NEWSLETTER FORM */}
-      <Newsletter />
+      {/* <Newsletter /> */}
 
       {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
-      <Setting />
+      {/* <Setting /> */}
     </Fragment>
   );
 };

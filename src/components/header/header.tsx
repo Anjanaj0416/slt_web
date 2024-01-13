@@ -15,6 +15,7 @@ import CategoriesMenu from "./categories-menu";
 import LoginCartButtons from "./login-cart-buttons";
 // STYLED COMPONENTS
 import { HeaderWrapper, StyledContainer } from "./styles";
+import { signIn } from "next-auth/react";
 
 // ==============================================================
 interface Props {
@@ -47,7 +48,7 @@ const Header: FC<Props> = ({ isFixed, className, searchInput }) => {
       </FlexBox>
 
       {/* LOGIN AND CART BUTTON */}
-      <LoginCartButtons toggleDialog={toggleDialog} toggleSidenav={toggleSidenav} />
+      <LoginCartButtons toggleDialog={() => void signIn("keycloak", { callbackUrl: "/orders" })} toggleSidenav={toggleSidenav} />
 
       {/* LOGIN FORM DIALOG AND CART SIDE BAR  */}
       <DialogDrawer
