@@ -21,9 +21,9 @@ const Section3: FC<Props> = ({ categories }) => {
       </H2>
 
       <Grid container spacing={3}>
-        {categories.map((item) => (
+        {categories?.map((item: any) => (
           <Grid item md={3} sm={6} xs={12} key={item.id}>
-            <CategoryCard1 image={item.image} title={item.name} />
+            <CategoryCard1 image={item?.image} title={item.name} />
           </Grid>
         ))}
       </Grid>

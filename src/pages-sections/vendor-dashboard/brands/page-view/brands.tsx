@@ -26,7 +26,7 @@ type Props = { brands: Brand[] };
 
 const BrandsPageView = ({ brands }: Props) => {
   // RESHAPE THE PRODUCT LIST BASED TABLE HEAD CELL ID
-  const filteredBrands = brands.map((item) => ({
+  const filteredBrands = brands.map((item: any) => ({
     id: item.id,
     slug: item.slug,
     name: item.name,

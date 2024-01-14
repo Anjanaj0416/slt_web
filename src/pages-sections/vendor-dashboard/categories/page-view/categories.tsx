@@ -26,7 +26,7 @@ type Props = { categories: Category[] };
 
 const CategoriesPageView = ({ categories }: Props) => {
   // RESHAPE THE PRODUCT LIST BASED TABLE HEAD CELL ID
-  const filteredCategories = categories.map((item) => ({
+  const filteredCategories = categories.map((item: any) => ({
     id: item.id,
     name: item.name,
     slug: item.slug,
@@ -72,11 +72,7 @@ const CategoriesPageView = ({ categories }: Props) => {
 
               <TableBody>
                 {filteredList.map((category) => (
-                  <CategoryRow
-                    key={category.id}
-                    category={category}
-                    selected={selected}
-                  />
+                  <CategoryRow key={category.id} category={category} selected={selected} />
                 ))}
               </TableBody>
             </Table>

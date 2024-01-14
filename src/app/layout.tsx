@@ -20,6 +20,7 @@ import "__server__";
 import "i18n";
 import ReduxProviderWrapper from "utils/redux-provider-wrapper";
 import { store } from "./redux/store";
+import SnackbarProvider from "components/SnackbarProvider";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <SettingsProvider>
               <ThemeProvider>
                 <ProgressBar />
-                <RTL>{children}</RTL>
+                <RTL>
+                  <SnackbarProvider>{children}</SnackbarProvider>
+                </RTL>
               </ThemeProvider>
             </SettingsProvider>
           </CartProvider>
