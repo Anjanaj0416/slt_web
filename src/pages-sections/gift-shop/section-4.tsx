@@ -25,18 +25,10 @@ const Section4: FC<Props> = ({ categoryList }) => {
   return (
     <div>
       <H1 my={2}>Top Categories</H1>
-      <Carousel
-        slidesToShow={3}
-        responsive={responsive}
-        arrowStyles={CAROUSEL_ARROW_STYLE}
-      >
-        {categoryList.map((item, ind) => (
-          <Link href="/" key={ind}>
-            <CategoryCard
-              title={item.name}
-              available={item.description}
-              imgUrl={item.image}
-            />
+      <Carousel slidesToShow={3} responsive={responsive} arrowStyles={CAROUSEL_ARROW_STYLE}>
+        {categoryList.map((item: any, index) => (
+          <Link href="/" key={index}>
+            <CategoryCard title={item.name} available={item.description} imgUrl={item.image} />
           </Link>
         ))}
       </Carousel>

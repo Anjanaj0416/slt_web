@@ -23,7 +23,7 @@ const SalesNavbar: FC<Props> = ({ categories, selected, onChangeCategory }) => {
     <Box bgcolor="background.paper">
       <Container>
         <StyledScrollbar autoHide={false}>
-          {categories.map((item) => {
+          {categories.map((item: any) => {
             const Icon = appIcons[item.icon];
             const selectedItem = item.slug === selected ? 1 : 0;
 
@@ -38,10 +38,7 @@ const SalesNavbar: FC<Props> = ({ categories, selected, onChangeCategory }) => {
                   background: selectedItem ? "primary.light" : "transparent",
                 }}
               >
-                <Icon
-                  sx={{ fontSize: "1.75rem" }}
-                  color={selectedItem ? "primary" : "secondary"}
-                />
+                <Icon sx={{ fontSize: "1.75rem" }} color={selectedItem ? "primary" : "secondary"} />
                 <Title selected={selectedItem}>{item.name}</Title>
               </FlexRowCenter>
             );

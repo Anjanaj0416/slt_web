@@ -3,7 +3,7 @@ import axios from "axios";
 import Brand from "models/Brand.model";
 import Product from "models/Product.model";
 import Service from "models/Service.model";
-import { CategoryBasedProducts, MainCarouselItem } from "models/Market-2.model";
+import { MainCarouselItem } from "models/Market-2.model";
 
 const getProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get("/api/market-2/products");
@@ -30,32 +30,20 @@ const getMainCarouselData = cache(async (): Promise<MainCarouselItem[]> => {
   return response.data;
 });
 
-const getElectronicsProducts = cache(
-  async (): Promise<CategoryBasedProducts> => {
-    const response = await axios.get(
-      "/api/market-2/category-based-product?tag=electronics",
-    );
-    return response.data;
-  },
-);
+const getElectronicsProducts = cache(async (): Promise<any> => {
+  const response = await axios.get("/api/market-2/category-based-product?tag=electronics");
+  return response.data;
+});
 
-const getMenFashionProducts = cache(
-  async (): Promise<CategoryBasedProducts> => {
-    const response = await axios.get(
-      "/api/market-2/category-based-product?tag=men",
-    );
-    return response.data;
-  },
-);
+const getMenFashionProducts = cache(async (): Promise<any> => {
+  const response = await axios.get("/api/market-2/category-based-product?tag=men");
+  return response.data;
+});
 
-const getWomenFashionProducts = cache(
-  async (): Promise<CategoryBasedProducts> => {
-    const response = await axios.get(
-      "/api/market-2/category-based-product?tag=women",
-    );
-    return response.data;
-  },
-);
+const getWomenFashionProducts = cache(async (): Promise<any> => {
+  const response = await axios.get("/api/market-2/category-based-product?tag=women");
+  return response.data;
+});
 
 export default {
   getBrands,

@@ -15,7 +15,7 @@ type Props = { featuredCategories: Category[] };
 // =====================================================
 
 const Section2: FC<Props> = ({ featuredCategories }) => {
-  const firstItem = featuredCategories[0];
+  const firstItem = featuredCategories[0] as any;
   const featured = featuredCategories.slice(1, featuredCategories.length);
 
   return (
@@ -32,7 +32,7 @@ const Section2: FC<Props> = ({ featuredCategories }) => {
         </Grid>
 
         <Grid container item md={6} xs={12} spacing={3}>
-          {featured.map((category, ind) => (
+          {featured.map((category: any, ind) => (
             <Grid item xs={6} key={ind}>
               <Card2 title={category.name} imgUrl={category.image} />
             </Grid>

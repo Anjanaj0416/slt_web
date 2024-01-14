@@ -22,7 +22,7 @@ const CategoryList = forwardRef<HTMLDivElement, Props>(
   ({ categories, selectedCategory, handleCategoryChange }, ref) => (
     <Box mb={4} overflow="hidden" ref={ref}>
       <FlexBox m={-1.5} flexWrap="wrap">
-        {categories.map((item) => {
+        {categories.map((item: any) => {
           const selectedItem = item.slug === selectedCategory ? 1 : 0;
           const Icon = appIcons[item.icon];
 
@@ -38,9 +38,7 @@ const CategoryList = forwardRef<HTMLDivElement, Props>(
                 color={selectedItem ? "primary" : "secondary"}
               />
 
-              <H5 color={selectedItem ? "primary.main" : "inherit"}>
-                {item.name}
-              </H5>
+              <H5 color={selectedItem ? "primary.main" : "inherit"}>{item.name}</H5>
 
               <StyledChip
                 size="small"
@@ -53,7 +51,7 @@ const CategoryList = forwardRef<HTMLDivElement, Props>(
         })}
       </FlexBox>
     </Box>
-  ),
+  )
 );
 
 export default CategoryList;
