@@ -23,7 +23,6 @@ type Props = { carouselData: MainCarouselItem[] };
 
 const Section1: FC<Props> = ({ carouselData }) => {
   const { palette } = useTheme();
-
   return (
     <Box pt={3}>
       <Container>

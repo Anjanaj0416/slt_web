@@ -18,7 +18,7 @@ const refreshTokens = async (refreshToken: string) => {
     //
     return axiosRes?.data;
   } catch (error) {
-    console.log(error);
+    console.log(error?.data);
   }
 };
 //
@@ -61,11 +61,11 @@ const authOptions: AuthOptions = {
       } else if (trigger === "update") {
         token.user = session.user;
       }
-      const timeDifferenceInSeconds =
-        ((token.expires as number) * 1000 - Date.now()) / 1000;
+      //
+      const timeDifferenceInSeconds = ((token.expires as number) * 1000 - Date.now()) / 1000;
       if (timeDifferenceInSeconds > 60) {
         return token;
-      } else {
+      } else if (token?.expires) {
         // Renew tokens if access token is expired
         const newTokens = await refreshTokens(token?.refreshToken as string);
         return {
@@ -74,8 +74,7 @@ const authOptions: AuthOptions = {
           refreshToken: newTokens?.refresh_token,
           idToken: newTokens?.id_token,
           expires: Math.floor(Date.now() / 1000) + newTokens?.expires_in,
-          refreshTokenExpires:
-            Math.floor(Date.now() / 1000) + newTokens?.refresh_expires_in,
+          refreshTokenExpires: Math.floor(Date.now() / 1000) + newTokens?.refresh_expires_in,
         };
       }
     },
@@ -84,17 +83,9 @@ const authOptions: AuthOptions = {
   //
   events: {
     signOut: async ({ token }) => {
-      const url = new URL(
-        `${process.env.KEYCLOAK_CLIENT_ISSUER}/protocol/openid-connect/logout`,
-      );
-      url.searchParams.append(
-        "id_token_hint",
-        (token as { idToken: string }).idToken,
-      );
-      url.searchParams.append(
-        "post_logout_redirect_uri",
-        process.env.NEXTAUTH_URL,
-      );
+      const url = new URL(`${process.env.KEYCLOAK_CLIENT_ISSUER}/protocol/openid-connect/logout`);
+      url.searchParams.append("id_token_hint", (token as { idToken: string }).idToken);
+      url.searchParams.append("post_logout_redirect_uri", process.env.NEXTAUTH_URL);
       //
       await axios.get(url.href);
     },

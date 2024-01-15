@@ -51,7 +51,6 @@ function calculateDiscount(price: number, discount: number) {
 
 function currency(price: number, fraction: number = 2) {
   const formatCurrency = currencyJs(`${price}`).format({ precision: fraction, symbol: "LKR" });
-  console.log(formatCurrency);
   return formatCurrency;
 }
 
