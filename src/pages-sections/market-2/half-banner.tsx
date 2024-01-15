@@ -1,13 +1,9 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
 import styled from "@mui/material/styles/styled";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM COMPONENTS
-import { H4, Paragraph, Span } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
-import { currency } from "lib";
 import Banner from "models/Banner.model";
 import { FC } from "react";
 import { ENVIRONMENT } from "config";
@@ -40,12 +36,12 @@ const HalfBanner: FC<Props> = ({ data }) => {
       <Grid container spacing={3}>
         {/* FINAL REDUCTION BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img={data[0]?.img}/>
+          <BannerBox img={data[0]?.imageUrl}/>
         </Grid>
 
         {/* WEEKEND SALE BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img={data[1]?.img}/>
+          <BannerBox img={data[1]?.imageUrl}/>
         </Grid>
       </Grid>
     </Container>

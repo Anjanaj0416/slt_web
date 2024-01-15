@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Box from "@mui/material/Box";
 //LOCAL CUSTOM COMPONENTS
-import Offers from "../offers";
+import ThreeBanner from "../three-banner";
 import Section1 from "../section-1";
 import AnimatedCategoryList from "../animated-category-list";
 import Section4 from "../section-4";
@@ -12,7 +12,6 @@ import Section8 from "../section-8";
 import SelectedProducts from "../selected-products";
 // API FUNCTIONS
 import api from "utils/__api__/market-2";
-import { getServerSession } from "next-auth";
 import request from "utils/request";
 import API from "constants/products";
 
@@ -26,6 +25,7 @@ const MarketTwoPageView = async () => {
   });
   const fullBanners = await request(API.GET_BANNERS, { query: "size=3&bannerType=FULL" });
   const halfBanners = await request(API.GET_BANNERS, { query: "size=4&bannerType=HALF" });
+  const threeBanners = await request(API.GET_BANNERS, { query: "size=4&bannerType=THREE" });
   const brands = await api.getBrands();
   const mainCarouselData = await api.getMainCarouselData();
   //const serviceList = await api.getServices();
@@ -49,7 +49,7 @@ const MarketTwoPageView = async () => {
         <Section4 products={products?.data} />
 
         {/* TOP OFFER BANNERS */}
-        <Offers />
+        <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
 
         {/* CATEGORY BASED PRODUCTS */}
         {mainCategories.data?.map(async (category, index) => (

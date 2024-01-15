@@ -42,10 +42,14 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
   useEffect(() => {
-    const categoryIds: string[] = getAllSubCategoryIds(data);
-    categoryIds.push(data.id);
-    getProducts(categoryIds.join(","));
-  }, []);
+    console.log(data);
+    if (data?.id) {
+      const categoryIds: string[] = getAllSubCategoryIds(data);
+      categoryIds.push(data.id);
+      getProducts(categoryIds.join(","));
+    }
+  }, [data]);
+  //
   if (!data) return null;
   const responsive = [
     { breakpoint: 1200, settings: { slidesToShow: 3 } },
@@ -60,7 +64,6 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   };
 
   const getProducts = async (categoryIds) => {
-    console.log(categoryIds)
     const products: Product1[] = (await filteredProducts({ categoryIds })).data?.data;
     setProducts(products);
   };
@@ -110,9 +113,7 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
                 responsive={responsive}
                 arrowStyles={{ backgroundColor: "dark.main" }}
               >
-                {products?.map((product) => (
-                  <ProductCard10 product={product} key={product.id} />
-                ))}
+                {products?.map((product) => <ProductCard10 product={product} key={product.id} />)}
               </Carousel>
             )}
           </Grid>

@@ -42,10 +42,14 @@ const CategoryCard1: FC<Props> = ({ image, title }) => {
   return (
     <Wrapper>
       <LazyImage
-        src={`${ENVIRONMENT.S3_BUCKET_URL}/${image}`}
+        src={
+          !image
+            ? `${ENVIRONMENT.APP_URL}/assets/images/default-category.jpg`
+            : `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
+        }
         width={213}
         height={213}
-        alt="category"
+        alt={title}
         sx={{
           height: "100%",
           objectFit: "cover",

@@ -51,7 +51,7 @@ type Props = { data: Banner };
 const FullBanner: FC<Props> = ({ data }) => {
   return (
     <Container sx={{ my: 8 }}>
-      <BannerWrapper img={data?.img}>
+      <BannerWrapper img={data?.imageUrl}>
         <WhiteButton size="large">Discover Now</WhiteButton>
       </BannerWrapper>
     </Container>
