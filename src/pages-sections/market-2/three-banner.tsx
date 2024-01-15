@@ -14,6 +14,7 @@ type Props = { data: Banner[] };
 // ======================================================================
 
 const ThreeBanner: FC<Props>  = ({ data }) => {
+  console.log(data[2].id)
   return (
     <Container sx={{ pb: 8 }}>
       <Grid container spacing={3}>

@@ -42,10 +42,13 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
   useEffect(() => {
-    const categoryIds: string[] = getAllSubCategoryIds(data);
-    categoryIds.push(data.id);
-    getProducts(categoryIds.join(","));
-  });
+    console.log(data);
+    if (data?.id) {
+      const categoryIds: string[] = getAllSubCategoryIds(data);
+      categoryIds.push(data.id);
+      getProducts(categoryIds.join(","));
+    }
+  }, [data]);
   //
   if (!data) return null;
   const responsive = [
