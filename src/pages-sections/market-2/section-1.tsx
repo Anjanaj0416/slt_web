@@ -16,6 +16,7 @@ import { CarouselCard4 } from "components/carousel-cards";
 // CUSTOM DATA MODEL
 import { MainCarouselItem } from "models/Market-2.model";
 import { COMMON_DOT_STYLES } from "components/carousel/styles";
+import { ENVIRONMENT } from "config";
 
 // ======================================================
 type Props = { carouselData: MainCarouselItem[] };
@@ -54,16 +55,12 @@ const Section1: FC<Props> = ({ carouselData }) => {
           </Grid>
 
           <Grid item md={3} xs={12}>
-            <Stack
-              height="100%"
-              direction={{ md: "column", sm: "row", xs: "column" }}
-              spacing={2}
-            >
+            <Stack height="100%" direction={{ md: "column", sm: "row", xs: "column" }} spacing={2}>
               {/* SUMMER SALE BANNER */}
               <BannerCard
                 imageFull
                 flex={1}
-                img="/assets/images/banners/banner-17.jpg"
+                img={`${ENVIRONMENT.APP_URL}/assets/images/banners/banner-17.jpg`}
               >
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   NEW ARRIVALS
@@ -82,7 +79,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
               <BannerCard
                 imageFull
                 flex={1}
-                img="/assets/images/banners/banner-16.jpg"
+                img={`${ENVIRONMENT.APP_URL}//assets/images/banners/banner-16.jpg`}
               >
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   GAMING 4K
