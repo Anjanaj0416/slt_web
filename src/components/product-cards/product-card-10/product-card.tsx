@@ -27,7 +27,7 @@ type Props = { product: Product1 };
 // ==============================================================
 
 const ProductCard20: FC<Props> = ({ product }) => {
-  const { id, price, name, units, images } = product;
+  const { id, price, name, images } = product;
 
   const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
     useProduct(id);
@@ -53,8 +53,8 @@ const ProductCard20: FC<Props> = ({ product }) => {
           <LazyImage
             width={300}
             height={300}
-            alt="category"
-            src={`${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`}
+            alt={name}
+            src={images[0] == null ? "/assets/images/default-product.jpg" : `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`}
             className="product-img"
           />
         </Link>
