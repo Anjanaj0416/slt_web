@@ -42,7 +42,6 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
   useEffect(() => {
-    console.log(data);
     if (data?.id) {
       const categoryIds: string[] = getAllSubCategoryIds(data);
       categoryIds.push(data.id);
