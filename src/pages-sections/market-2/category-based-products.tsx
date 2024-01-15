@@ -60,7 +60,6 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   };
 
   const getProducts = async (categoryIds) => {
-    console.log(categoryIds)
     const products: Product1[] = (await filteredProducts({ categoryIds })).data?.data;
     setProducts(products);
   };
