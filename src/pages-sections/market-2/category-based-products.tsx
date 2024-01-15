@@ -45,7 +45,8 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
     const categoryIds: string[] = getAllSubCategoryIds(data);
     categoryIds.push(data.id);
     getProducts(categoryIds.join(","));
-  }, []);
+  });
+  //
   if (!data) return null;
   const responsive = [
     { breakpoint: 1200, settings: { slidesToShow: 3 } },
@@ -109,9 +110,7 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
                 responsive={responsive}
                 arrowStyles={{ backgroundColor: "dark.main" }}
               >
-                {products?.map((product) => (
-                  <ProductCard10 product={product} key={product.id} />
-                ))}
+                {products?.map((product) => <ProductCard10 product={product} key={product.id} />)}
               </Carousel>
             )}
           </Grid>

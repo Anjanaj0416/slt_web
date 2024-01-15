@@ -43,7 +43,7 @@ build_dev:
     - NEXT_PUBLIC_S3_BUCKET_URL=$(aws ssm get-parameter --name /dev-marketplacer-client-next_public_s3_bucket_url --query Parameter.Value --output text)
     - echo "NEXT_PUBLIC_S3_BUCKET_URL=$NEXT_PUBLIC_S3_BUCKET_URL" >> .env
     - NEXT_PUBLIC_DOMAIN=$(aws ssm get-parameter --name /dev-marketplacer-client-next_public_domain --query Parameter.Value --output text)
-    - echo "NEXT_PUBLIC_DOMAIN=$NEXT_PUBLIC_APP_URL" >> .env
+    - echo "NEXT_PUBLIC_DOMAIN=$NEXT_PUBLIC_DOMAIN" >> .env
     - NEXT_PUBLIC_APP_URL=$(aws ssm get-parameter --name /dev-marketplacer-client-next_public_app_url --query Parameter.Value --output text)
     - echo "NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL" >> .env
     - echo "Envs injection end --"
@@ -92,7 +92,7 @@ build_qa:
     - NEXT_PUBLIC_S3_BUCKET_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_s3_bucket_url --query Parameter.Value --output text)
     - echo "NEXT_PUBLIC_S3_BUCKET_URL=$NEXT_PUBLIC_S3_BUCKET_URL" >> .env
     - NEXT_PUBLIC_DOMAIN=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_domain --query Parameter.Value --output text)
-    - echo "NEXT_PUBLIC_DOMAIN=$NEXT_PUBLIC_APP_URL" >> .env
+    - echo "NEXT_PUBLIC_DOMAIN=$NEXT_PUBLIC_DOMAIN" >> .env
     - NEXT_PUBLIC_APP_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_app_url --query Parameter.Value --output text)
     - echo "NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL" >> .env
     - echo "Envs injection end --"
