@@ -41,7 +41,7 @@ const Section6: FC<Props> = ({ carList, carBrands }) => {
             display: { xs: "none", md: "block" },
           }}
         >
-          {carBrands.map((brand) => (
+          {carBrands.map((brand: any) => (
             <ProductCategoryItem
               id={brand.id}
               key={brand.id}

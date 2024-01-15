@@ -29,11 +29,7 @@ const Section4: FC<Props> = ({ topRatedBrands, topRatedList }) => {
         <Grid container spacing={4}>
           {/* TOP RATINGS AREA */}
           <Grid item lg={6} xs={12}>
-            <SectionHeader
-              icon={<RankBadge />}
-              title="Top Ratings"
-              seeMoreLink="#"
-            />
+            <SectionHeader icon={<RankBadge />} title="Top Ratings" seeMoreLink="#" />
 
             <BazaarCard sx={{ p: 2 }}>
               <Grid container spacing={4}>
@@ -56,15 +52,11 @@ const Section4: FC<Props> = ({ topRatedBrands, topRatedList }) => {
 
           {/* FEATURED BRANDS AREA */}
           <Grid item lg={6} xs={12}>
-            <SectionHeader
-              icon={<DottedStar />}
-              title="Featured Brands"
-              seeMoreLink="#"
-            />
+            <SectionHeader icon={<DottedStar />} title="Featured Brands" seeMoreLink="#" />
 
             <BazaarCard sx={{ p: 2 }}>
               <Grid container spacing={3}>
-                {topRatedBrands.map(({ id, name, image, slug }) => (
+                {topRatedBrands.map(({ id, name, image, slug }: any) => (
                   <Grid item sm={6} xs={12} key={id}>
                     <Link href={`/products/search/${slug}`}>
                       <FeaturedProductCard title={name} imgUrl={image} />

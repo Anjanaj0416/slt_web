@@ -27,7 +27,6 @@ const MarketTwoPageView = async () => {
   const fullBanners = await request(API.GET_BANNERS, { query: "size=3&bannerType=FULL" });
   const halfBanners = await request(API.GET_BANNERS, { query: "size=4&bannerType=HALF" });
   const brands = await api.getBrands();
-  const categories2 = await api.getCategories();
   const mainCarouselData = await api.getMainCarouselData();
   //const serviceList = await api.getServices();
   // const menFashionProducts = await api.getMenFashionProducts();

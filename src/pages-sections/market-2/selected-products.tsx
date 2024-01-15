@@ -1,6 +1,4 @@
 "use client";
-
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
@@ -79,7 +77,7 @@ const SelectedProducts = () => {
         responsive={responsive}
         arrowStyles={{ backgroundColor: "dark.main" }}
       >
-        {products.map((product) => (
+        {products?.map((product) => (
           <ProductCard10 product={product} key={product.id} />
         ))}
       </Carousel>
