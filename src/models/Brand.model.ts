@@ -3,7 +3,7 @@ interface Brand {
   name: string;
   slug: string;
   type: string;
-  imageUrl: string;
+  img: string;
   featured?: boolean;
 }
 

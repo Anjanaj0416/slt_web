@@ -35,7 +35,7 @@ const CategoryTitle = styled("div")({
 });
 
 // ============================================================
-type Props = { image: string; title: string };
+type Props = { image?: string; title: string };
 // ============================================================
 
 const CategoryCard1: FC<Props> = ({ image, title }) => {
