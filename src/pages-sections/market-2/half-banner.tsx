@@ -1,13 +1,9 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
 import styled from "@mui/material/styles/styled";
 import Container from "@mui/material/Container";
-// GLOBAL CUSTOM COMPONENTS
-import { H4, Paragraph, Span } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
-import { currency } from "lib";
 import Banner from "models/Banner.model";
 import { FC } from "react";
 import { ENVIRONMENT } from "config";

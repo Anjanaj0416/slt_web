@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FC, ReactNode } from "react";
 import Box, { BoxProps } from "@mui/material/Box";
 import styled from "@mui/material/styles/styled";
+import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENTS
 const CardWrapper = styled(Box)({
@@ -37,10 +38,10 @@ const BannerCard: FC<Props> = ({ img, children, imageFull, ...props }) => {
   return (
     <CardWrapper {...props}>
       <Image
-        src={img}
+        src={`${ENVIRONMENT.S3_BUCKET_URL}/${img}`}
         width={330}
         height={239}
-        alt="category"
+        alt="banner-image"
         style={{
           width: "100%",
           height: imageFull ? "100%" : "auto",
