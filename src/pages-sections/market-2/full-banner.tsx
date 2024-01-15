@@ -9,7 +9,7 @@ import { FC } from "react";
 import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENT
-const BannerWrapper = styled("div")<{ imageUrl: string }>(({ theme, imageUrl }) => ({
+const BannerWrapper = styled("div")<{ img: string }>(({ theme, img }) => ({
   zIndex: 1,
   gap: "5rem",
   padding: "2rem",
@@ -31,7 +31,7 @@ const BannerWrapper = styled("div")<{ imageUrl: string }>(({ theme, imageUrl }) 
     backgroundSize: "cover",
     backgroundPosition: "center left",
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${imageUrl})`,
+    backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${img})`,
     ...(theme.direction === "rtl" && {
       transform: "rotateX(180deg) rotateZ(180deg)",
     }),
@@ -51,7 +51,7 @@ type Props = { data: Banner };
 const FullBanner: FC<Props> = ({ data }) => {
   return (
     <Container sx={{ my: 8 }}>
-      <BannerWrapper imageUrl={data?.imageUrl}>
+      <BannerWrapper img={data?.img}>
         <WhiteButton size="large">Discover Now</WhiteButton>
       </BannerWrapper>
     </Container>

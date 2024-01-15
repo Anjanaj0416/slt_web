@@ -15,14 +15,14 @@ import { ENVIRONMENT } from "config";
 // STYLED COMPONENT
 const BannerBox = styled("div", {
   shouldForwardProp: (prop) => prop !== "img",
-})<{ imageUrl: string }>(({ theme, imageUrl }) => ({
+})<{ img: string }>(({ theme, img }) => ({
   padding: 32,
   overflow: "hidden",
   borderRadius: "3px",
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
   height: "100%",
-  backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${imageUrl})`,
+  backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${img})`,
   ...(theme.direction === "rtl" && {
     textAlign: "right",
     "& > .MuiDivider-root": { marginLeft: "auto" },
@@ -40,12 +40,12 @@ const HalfBanner: FC<Props> = ({ data }) => {
       <Grid container spacing={3}>
         {/* FINAL REDUCTION BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox imageUrl={data[0]?.imageUrl}/>
+          <BannerBox img={data[0]?.img}/>
         </Grid>
 
         {/* WEEKEND SALE BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox imageUrl={data[1]?.imageUrl}/>
+          <BannerBox img={data[1]?.img}/>
         </Grid>
       </Grid>
     </Container>
