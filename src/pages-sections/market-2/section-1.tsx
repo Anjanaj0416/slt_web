@@ -79,7 +79,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
               <BannerCard
                 imageFull
                 flex={1}
-                img={`${ENVIRONMENT.APP_URL}//assets/images/banners/banner-16.jpg`}
+                img={`${ENVIRONMENT.APP_URL}/assets/images/banners/banner-16.jpg`}
               >
                 <Paragraph fontSize={13} letterSpacing={1.2}>
                   GAMING 4K

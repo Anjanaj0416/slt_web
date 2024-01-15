@@ -38,7 +38,7 @@ const BannerCard: FC<Props> = ({ img, children, imageFull, ...props }) => {
   return (
     <CardWrapper {...props}>
       <Image
-        src={`${ENVIRONMENT.S3_BUCKET_URL}/${img}`}
+        src={img}
         width={330}
         height={239}
         alt="banner-image"

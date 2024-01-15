@@ -8,19 +8,19 @@ import BannerCard from "./banner-card";
 import { NavLink3 } from "components/nav-link";
 import { FC } from "react";
 import Banner from "models/Banner.model";
+import { ENVIRONMENT } from "config";
 
 // ======================================================================
 type Props = { data: Banner[] };
 // ======================================================================
 
-const ThreeBanner: FC<Props>  = ({ data }) => {
-  console.log(data[2].id)
+const ThreeBanner: FC<Props> = ({ data }) => {
   return (
     <Container sx={{ pb: 8 }}>
       <Grid container spacing={3}>
         {/* NEW ARRIVALS */}
         <Grid item md={4} xs={12}>
-          <BannerCard img={data[0]?.imageUrl}>
+          <BannerCard img={`${ENVIRONMENT.S3_BUCKET_URL}/${data[0]?.imageUrl}`}>
             <NavLink3
               href={data[0].link}
               text="Shop Now"
@@ -32,21 +32,14 @@ const ThreeBanner: FC<Props>  = ({ data }) => {
 
         {/* BEST SELLER */}
         <Grid item md={4} xs={12}>
-          <BannerCard img={data[1]?.imageUrl}>
-            <NavLink3
-              href={data[1].link}
-              text="Shop Now"
-              color="white"
-              hoverColor="white"
-            />
+          <BannerCard img={`${ENVIRONMENT.S3_BUCKET_URL}/${data[1]?.imageUrl}`}>
+            <NavLink3 href={data[1].link} text="Shop Now" color="white" hoverColor="white" />
           </BannerCard>
         </Grid>
 
         {/* NEW ARRIVALS */}
         <Grid item md={4} xs={12}>
-          <BannerCard img={data[2]?.imageUrl}>
-           
-
+          <BannerCard img={`${ENVIRONMENT.S3_BUCKET_URL}/${data[2]?.imageUrl}`}>
             <NavLink3
               href={data[2].link}
               text="Shop Now"
