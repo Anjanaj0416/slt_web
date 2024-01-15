@@ -140,4 +140,4 @@ deploy_prod:
    - kubectl apply -f ./manifests/deployment.yaml -n qa
    - kubectl apply -f ./manifests/service.yaml -n qa
  only:
-   - qa
+   - main
