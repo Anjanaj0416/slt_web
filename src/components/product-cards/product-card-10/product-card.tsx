@@ -44,7 +44,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
 
     handleCartAmountChange(payload);
   };
-
+  //
   return (
     <Card>
       <CardMedia>
@@ -54,7 +54,11 @@ const ProductCard20: FC<Props> = ({ product }) => {
             width={300}
             height={300}
             alt={name}
-            src={images[0] == null ? "/assets/images/default-product.jpg" : `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`}
+            src={
+              images[0] == null
+                ? `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
+                : `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+            }
             className="product-img"
           />
         </Link>

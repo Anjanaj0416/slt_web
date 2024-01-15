@@ -9,6 +9,7 @@ type Environment = {
   TWITTER_LINK: string;
   INSTAGRAM_LINK: string;
   S3_BUCKET_URL: string;
+  APP_URL: string;
 };
 // =========================================================
 
@@ -18,6 +19,7 @@ const ENVIRONMENT: Environment = {
   TWITTER_LINK: process.env.NEXT_PUBLIC_TWITTER_LINK,
   INSTAGRAM_LINK: process.env.NEXT_PUBLIC_INSTAGRAM_LINK,
   S3_BUCKET_URL: process.env.NEXT_PUBLIC_S3_BUCKET_URL,
+  APP_URL: process.env.NEXT_PUBLIC_APP_URL,
 };
 //
 export default ENVIRONMENT;
