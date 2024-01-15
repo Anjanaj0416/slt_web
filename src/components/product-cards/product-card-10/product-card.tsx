@@ -55,7 +55,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
             height={300}
             alt={name}
             src={
-              images[0] == null
+              !images[0]
                 ? `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
                 : `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
             }
