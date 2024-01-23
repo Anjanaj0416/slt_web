@@ -18,7 +18,7 @@ import API from "constants/products";
 const MarketTwoPageView = async () => {
   const products = await request(API.GET_PRODUCTS, { query: "size=5" });
   const mainCategories = await request(API.GET_CATEGORIES, {
-    query: "size=5&categoryType=PRODUCT&parentCategoryId=null",
+    query: "size=5&categoryType=PRODUCT&categoryStatus=APPROVED&parentCategoryId=null",
   });
   const categories = await request(API.GET_CATEGORIES, {
     query: "size=6&categoryType=PRODUCT",
