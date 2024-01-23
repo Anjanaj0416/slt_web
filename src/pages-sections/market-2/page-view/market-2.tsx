@@ -21,7 +21,7 @@ const MarketTwoPageView = async () => {
     query: "size=5&categoryType=PRODUCT&categoryStatus=APPROVED&parentCategoryId=null",
   });
   const categories = await request(API.GET_CATEGORIES, {
-    query: "size=6&categoryType=PRODUCT",
+    query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
   });
   const fullBanners = await request(API.GET_BANNERS, { query: "size=3&bannerType=FULL" });
   const halfBanners = await request(API.GET_BANNERS, { query: "size=4&bannerType=HALF" });
