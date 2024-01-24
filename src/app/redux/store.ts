@@ -4,15 +4,17 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import rtkQueryErrorLogger from "./middleware";
 import { productApi } from "services/product-api";
 import { authSlice } from "./features/auth/slice";
+import { categoryApi } from "services/category-api";
 
 // Combine all the reducers into one root reducer
 const rootReducers = combineReducers({
   [productApi.reducerPath]: productApi.reducer, // Use the reducer from the productApi slice
+  [categoryApi.reducerPath]: categoryApi.reducer,
   [authSlice.name]: authSlice.reducer,
 });
 
 // Define custom middlewares for the store
-const apiMiddlewares = [productApi.middleware]; // Middleware for Redux Toolkit Query
+const apiMiddlewares: any[] = [productApi.middleware, categoryApi.middleware]; // Middleware for Redux Toolkit Query
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors
 
 // Create the Redux store

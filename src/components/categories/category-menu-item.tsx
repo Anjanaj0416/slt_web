@@ -44,7 +44,6 @@ const CategoryMenuItem: FC<Props> = (props) => {
   const { href, title, caret = true, children, ...rest } = props;
 
   const { settings } = useSettings();
-
   return (
     <Wrapper>
       <Link href={href}>

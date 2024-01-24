@@ -35,7 +35,6 @@ type MegaMenuProps = {
 
 const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
   const { categories, rightImage, bottomImage } = data || {};
-
   return categories ? (
     <StyledMegaMenu>
       <Card elevation={2} sx={{ ml: "1rem", minWidth }}>
@@ -65,12 +64,7 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
           {rightImage ? (
             <Box mt={1.5}>
               <Link href={rightImage.href}>
-                <LazyImage
-                  src={rightImage.imgUrl}
-                  width={137}
-                  height={318}
-                  alt="banner"
-                />
+                <LazyImage src={rightImage.imgUrl} width={137} height={318} alt="banner" />
               </Link>
             </Box>
           ) : null}
