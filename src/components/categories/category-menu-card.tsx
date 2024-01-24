@@ -36,22 +36,22 @@ interface Props {
 
 const CategoryMenuCard: FC<Props> = (props) => {
   const { open, position = "absolute" } = props;
-  const { data, error, isLoading } = useFilteredCategoriesQuery({ size: 12 });
+  const { data, isLoading } = useFilteredCategoriesQuery({ size: 12 });
   const megaMenu = { MegaMenu1, MegaMenu2 };
 
-  function findMaxDepth(obj) {
+  const findMaxDepth = (category) => {
     if (
-      !obj ||
-      !obj.subCategories ||
-      !Array.isArray(obj.subCategories) ||
-      obj.subCategories.length === 0
+      !category ||
+      !category.subCategories ||
+      !Array.isArray(category.subCategories) ||
+      category.subCategories.length === 0
     ) {
-      return 0; // Base case: no subcategories or not an array
+      return 0;
     }
 
     let maxDepth = 0;
 
-    for (const subCategory of obj.subCategories) {
+    for (const subCategory of category.subCategories) {
       if (subCategory.subCategories && Array.isArray(subCategory.subCategories)) {
         const depth = findMaxDepth(subCategory);
         maxDepth = Math.max(maxDepth, depth);
@@ -59,7 +59,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
     }
 
     return 1 + maxDepth;
-  }
+  };
 
   if (isLoading) {
     return (
