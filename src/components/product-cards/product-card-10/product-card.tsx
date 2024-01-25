@@ -1,26 +1,27 @@
-import { FC } from "react";
-import Link from "next/link";
+"use client";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Rating from "@mui/material/Rating";
+import Link from "next/link";
+import { FC, use } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
-import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { FlexRowCenter } from "components/flex-box";
-import { H4, Paragraph, Small } from "components/Typography";
+import { H4, Paragraph } from "components/Typography";
 import ProductViewDialog from "components/products-view/product-view-dialog";
 // STYLED COMPONENTS
-import { StyledIconButton, Card, CardMedia, FavoriteButton } from "./styles";
+import { Card, CardMedia, FavoriteButton, StyledIconButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import Product, { Product1 } from "models/Product.model";
+import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 import { ENVIRONMENT } from "config";
+import { Product1 } from "models/Product.model";
+import { signOut, useSession } from "next-auth/react";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -28,21 +29,36 @@ type Props = { product: Product1 };
 
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
-
-  const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
-    useProduct(id);
-
-  const handleAddToCart = () => {
-    const payload = {
-      id: id,
-      slug: id,
-      name: name,
-      price: price,
-      imgUrl: `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`,
-      qty: (cartItem?.qty || 0) + 1,
-    };
-
-    handleCartAmountChange(payload);
+  const session = useSession();
+  //
+  const {
+    cartItem,
+    handleCartAmountChange,
+    isFavorite,
+    openModal,
+    toggleDialog,
+    toggleFavorite,
+  } = useProduct(id);
+  //
+  const { setIsOpen: setIsUnauthorizedModalOpen } = useUnAuthenticatedModal();
+  //
+  const handleAddToCart = async () => {
+    try {
+      if (!session.data.user) return setIsUnauthorizedModalOpen(true);
+      //
+      const payload = {
+        id: id,
+        slug: id,
+        name: name,
+        price: price,
+        imgUrl: `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`,
+        qty: (cartItem?.qty || 0) + 1,
+      };
+      //
+      handleCartAmountChange(payload);
+    } catch (error) {
+      setIsUnauthorizedModalOpen(true);
+    }
   };
   //
   return (
@@ -114,7 +130,12 @@ const ProductCard20: FC<Props> = ({ product }) => {
         </FlexRowCenter> */}
 
         {/* PRODUCT ADD TO CART BUTTON */}
-        <Button fullWidth color="dark" variant="outlined" onClick={handleAddToCart}>
+        <Button
+          fullWidth
+          color="dark"
+          variant="outlined"
+          onClick={handleAddToCart}
+        >
           Add To Cart
         </Button>
       </Box>
