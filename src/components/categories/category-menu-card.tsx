@@ -39,6 +39,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
   const { data, isLoading } = useFilteredCategoriesQuery({ size: 12 });
   const megaMenu = { MegaMenu1, MegaMenu2 };
 
+  // find sub categories max depth of category
   const findMaxDepth = (category) => {
     if (
       !category ||
@@ -68,7 +69,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
       </Wrapper>
     );
   }
-  // Category data mapping
+  // category data mapping
   const mappedCategories = data?.data.map((category, index) => {
     const parentName = category.name;
     const parentIcon = category.icon;
@@ -81,7 +82,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
       href: "#",
       menuComponent: maxDepth == 2 ? "MegaMenu1" : "MegaMenu2",
     };
-    // Available level 3
+    // available level 3
     if (maxDepth >= 3) {
       const categories =
         level1Categories.length > 12 ? level1Categories.slice(0, 12) : level1Categories;
@@ -152,7 +153,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
 
       mapped["menuData"] = level1CategoriesMapped;
     } else if (maxDepth > 1) {
-      // Available level 1 or level 2
+      // available level 1 or level 2
       const categories =
         level1Categories.length > 8 ? level1Categories.slice(0, 8) : level1Categories;
       //

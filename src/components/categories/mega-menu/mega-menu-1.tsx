@@ -1,10 +1,9 @@
 import { FC } from "react";
-import Link from "next/link";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 // GLOBAL CUSTOM COMPONENTS
-import LazyImage from "components/LazyImage";
+//import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
 // STYLED COMPONENTS
@@ -61,16 +60,16 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
             </Grid>
           </Box>
 
-          {rightImage ? (
+          {/*  {rightImage ? (
             <Box mt={1.5}>
               <Link href={rightImage.href}>
                 <LazyImage src={rightImage.imgUrl} width={137} height={318} alt="banner" />
               </Link>
             </Box>
-          ) : null}
+          ) : null} */}
         </FlexBox>
 
-        {bottomImage ? (
+        {/* {bottomImage ? (
           <Link href={bottomImage.href}>
             <Box position="relative" height={150} width="100%">
               <LazyImage
@@ -81,7 +80,7 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
               />
             </Box>
           </Link>
-        ) : null}
+        ) : null} */}
       </Card>
     </StyledMegaMenu>
   ) : null;

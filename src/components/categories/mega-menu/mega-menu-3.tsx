@@ -8,7 +8,7 @@ import { FlexBox } from "components/flex-box";
 import LazyImage from "components/LazyImage";
 import { NavLink } from "components/nav-link";
 import BazaarCard from "components/BazaarCard";
-import { H3, Small } from "components/Typography";
+//import { H3, Small } from "components/Typography";
 
 // ====================================================================================
 type Image = { imgUrl: string; href: string };
@@ -57,7 +57,7 @@ const MegaMenu3: FC<MegaMenuProps> = ({
           )}
         </FlexBox>
 
-        <Link href="/sale-page-2">
+       {/*  <Link href="/sale-page-2">
           <Grid
             className="h-full"
             container
@@ -99,7 +99,7 @@ const MegaMenu3: FC<MegaMenuProps> = ({
               </FlexBox>
             </Grid>
           </Grid>
-        </Link>
+        </Link> */}
       </BazaarCard>
     </StyledMegaMenu>
   ) : null;
