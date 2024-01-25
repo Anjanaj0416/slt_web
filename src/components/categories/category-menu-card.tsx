@@ -27,6 +27,10 @@ const Wrapper = styled(Box, {
   top: position === "absolute" ? "calc(100% + 0.7rem)" : "0.5rem",
 }));
 
+const MAX_CATEGORY_MENU_ITEM = 12;
+const MAX_CATEGORY_MEGA_MENU_LEVEL1 = 8;
+const MAX_CATEGORY_MEGA_MENU_LEVEL2 = 6;
+
 // ===============================================================
 interface Props {
   open?: boolean;
@@ -36,7 +40,7 @@ interface Props {
 
 const CategoryMenuCard: FC<Props> = (props) => {
   const { open, position = "absolute" } = props;
-  const { data, isLoading } = useFilteredCategoriesQuery({ size: 12 });
+  const { data, isLoading } = useFilteredCategoriesQuery({ size: MAX_CATEGORY_MENU_ITEM });
   const megaMenu = { MegaMenu1, MegaMenu2 };
 
   // find sub categories max depth of category
@@ -85,7 +89,9 @@ const CategoryMenuCard: FC<Props> = (props) => {
     // available level 3
     if (maxDepth >= 3) {
       const categories =
-        level1Categories.length > 12 ? level1Categories.slice(0, 12) : level1Categories;
+        level1Categories.length > MAX_CATEGORY_MENU_ITEM
+          ? level1Categories.slice(0, MAX_CATEGORY_MENU_ITEM)
+          : level1Categories;
       //level 1 mapping
       const level1CategoriesMapped = categories.map((level1Category) => {
         const level1Name = level1Category.name;
@@ -102,14 +108,16 @@ const CategoryMenuCard: FC<Props> = (props) => {
         //level 2 mapping
         if (maxDepth >= 2) {
           const categories =
-            level2Categories.length > 8 ? level2Categories.slice(0, 8) : level2Categories;
+            level2Categories.length > MAX_CATEGORY_MEGA_MENU_LEVEL1
+              ? level2Categories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL1)
+              : level2Categories;
           //
           const level2CategoriesMapped = categories.map((level2Category) => {
             const level2Name = level2Category.name;
             const level2Icon = level2Category.icon;
             const level3Categories =
-              level2Category.subCategories.length > 6
-                ? level2Category.subCategories.slice(0, 6)
+              level2Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2
+                ? level2Category.subCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL2)
                 : level2Category.subCategories;
             //
             const level2Mapped = {
@@ -132,37 +140,35 @@ const CategoryMenuCard: FC<Props> = (props) => {
           level1Mapped["menuData"] = { categories: level2CategoriesMapped };
         } else if (maxDepth == 1) {
           const categories =
-            level2Categories.length > 12 ? level2Categories.slice(0, 12) : level2Categories;
+            level2Categories.length > MAX_CATEGORY_MENU_ITEM
+              ? level2Categories.slice(0, MAX_CATEGORY_MENU_ITEM)
+              : level2Categories;
           //
-          const level2CategoriesMapped = categories.map((level2Category) => {
-            const level2Name = level2Category.name;
-            const level2Icon = level2Category.icon;
-            //
-            const level2Mapped = {
-              title: level2Name,
-              icon: level2Icon,
-              href: "#",
-              menuComponent: "MegaMenu2",
-            };
-            return level2Mapped;
-          });
+          const level2CategoriesMapped = categories.map((level2Category) => ({
+            title: level2Category.name,
+            icon: level2Category.icon,
+            href: "#",
+            menuComponent: "MegaMenu2",
+          }));
           level1Mapped["menuData"] = level2CategoriesMapped;
         }
         return level1Mapped;
       });
-
+      //
       mapped["menuData"] = level1CategoriesMapped;
     } else if (maxDepth > 1) {
       // available level 1 or level 2
       const categories =
-        level1Categories.length > 8 ? level1Categories.slice(0, 8) : level1Categories;
+        level1Categories.length > MAX_CATEGORY_MEGA_MENU_LEVEL1
+          ? level1Categories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL1)
+          : level1Categories;
       //
       const level1CategoriesMapped = categories.map((level1Category) => {
         const level1Name = level1Category.name;
         const level1Icon = level1Category.icon;
         const level2Categories =
-          level1Category.subCategories.length > 6
-            ? level1Category.subCategories.slice(0, 6)
+          level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2
+            ? level1Category.subCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL2)
             : level1Category.subCategories;
 
         const level2CategoriesMapped = level2Categories.map((level2Category) => ({
