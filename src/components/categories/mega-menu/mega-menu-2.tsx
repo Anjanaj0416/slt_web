@@ -4,6 +4,7 @@ import StyledMegaMenu from "./StyledMegaMenu";
 // GLOBAL CUSTOM COMPONENTS
 import BazaarCard from "components/BazaarCard";
 import CategoryMenuItem from "../category-menu-item";
+import { ENVIRONMENT } from "config";
 
 // =======================================================================
 type Data = { icon: string; href: string; title: string; menuData?: any };
@@ -17,14 +18,21 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data }) => {
         {data?.map((item) => (
           <CategoryMenuItem
             href={item.href}
-            icon={item.icon}
+            icon={
+              item.icon
+                ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.icon}`
+                : `${ENVIRONMENT.APP_URL}/assets/svg/default-category-icon.svg`
+            }
             key={item.title}
             title={item.title}
             caret={!!item.menuData}
           >
-            {item.menuData && (item.menuData.categories?
-              <MegaMenu3 minWidth="560px" data={item.menuData} />: <MegaMenu2 data={item.menuData} />
-            )}
+            {item.menuData &&
+              (item.menuData.categories ? (
+                <MegaMenu3 minWidth="560px" data={item.menuData} />
+              ) : (
+                <MegaMenu2 data={item.menuData} />
+              ))}
           </CategoryMenuItem>
         ))}
       </BazaarCard>

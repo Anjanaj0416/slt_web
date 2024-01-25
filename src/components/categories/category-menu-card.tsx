@@ -8,6 +8,7 @@ import CategoryMenuItem from "./category-menu-item";
 // NAVIGATION DATA
 import { useFilteredCategoriesQuery } from "services/category-api";
 import Container from "@mui/material/Container";
+import { ENVIRONMENT } from "config";
 
 // styled component
 const Wrapper = styled(Box, {
@@ -76,7 +77,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
   // category data mapping
   const mappedCategories = data?.data.map((category, index) => {
     const parentName = category.name;
-    const parentIcon = category.icon;
+    const parentIcon = category.iconUrl;
     const level1Categories = category.subCategories;
     const maxDepth = findMaxDepth(category);
 
@@ -95,7 +96,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
       //level 1 mapping
       const level1CategoriesMapped = categories.map((level1Category) => {
         const level1Name = level1Category.name;
-        const level1Icon = level1Category.icon;
+        const level1Icon = level1Category.iconUrl;
         const level2Categories = level1Category.subCategories;
         const maxDepth = findMaxDepth(level1Category);
         //
@@ -114,7 +115,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
           //
           const level2CategoriesMapped = categories.map((level2Category) => {
             const level2Name = level2Category.name;
-            const level2Icon = level2Category.icon;
+            const level2Icon = level2Category.iconUrl;
             const level3Categories =
               level2Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2
                 ? level2Category.subCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL2)
@@ -129,7 +130,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
             if (level3Categories?.length > 0) {
               const level3CategoriesMapped = level3Categories.map((level3Category) => ({
                 title: level3Category.name,
-                icon: level3Category.icon,
+                icon: level3Category.iconUrl,
                 href: "#",
               }));
 
@@ -146,7 +147,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
           //
           const level2CategoriesMapped = categories.map((level2Category) => ({
             title: level2Category.name,
-            icon: level2Category.icon,
+            icon: level2Category.iconUrl,
             href: "#",
             menuComponent: "MegaMenu2",
           }));
@@ -165,7 +166,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
       //
       const level1CategoriesMapped = categories.map((level1Category) => {
         const level1Name = level1Category.name;
-        const level1Icon = level1Category.icon;
+        const level1Icon = level1Category.iconUrl;
         const level2Categories =
           level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2
             ? level1Category.subCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL2)
@@ -173,7 +174,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
 
         const level2CategoriesMapped = level2Categories.map((level2Category) => ({
           title: level2Category.name,
-          icon: level2Category.icon,
+          icon: level2Category.iconUrl,
           href: "#",
         }));
         //
@@ -197,7 +198,11 @@ const CategoryMenuCard: FC<Props> = (props) => {
           <CategoryMenuItem
             key={item.title}
             href={item.href}
-            icon={item.icon}
+            icon={
+              item.icon
+                ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.icon}`
+                : `${ENVIRONMENT.APP_URL}/assets/svg/default-category-icon.svg`
+            }
             title={item.title}
             caret={!!item.menuData}
           >
