@@ -75,7 +75,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
     );
   }
   // category data mapping
-  const mappedCategories = data?.data.map((category, index) => {
+  const mappedCategories = data?.data.map((category) => {
     const parentName = category.name;
     const parentIcon = category.iconUrl;
     const level1Categories = category.subCategories;
@@ -108,10 +108,15 @@ const CategoryMenuCard: FC<Props> = (props) => {
         };
         //level 2 mapping
         if (maxDepth >= 2) {
+          // filter non empty subcategories
+          const filteredCategories = level2Categories.filter(
+            (category) => category.subCategories && category.subCategories.length > 0
+          );
+          // set category limit
           const categories =
-            level2Categories.length > MAX_CATEGORY_MEGA_MENU_LEVEL1
-              ? level2Categories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL1)
-              : level2Categories;
+            filteredCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL1
+              ? filteredCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL1)
+              : filteredCategories;
           //
           const level2CategoriesMapped = categories.map((level2Category) => {
             const level2Name = level2Category.name;
@@ -158,11 +163,15 @@ const CategoryMenuCard: FC<Props> = (props) => {
       //
       mapped["menuData"] = level1CategoriesMapped;
     } else if (maxDepth > 1) {
-      // available level 1 or level 2
+      // filter non empty subcategories
+      const filteredCategories = level1Categories.filter(
+        (category) => category.subCategories && category.subCategories.length > 0
+      );
+      // set category limit
       const categories =
-        level1Categories.length > MAX_CATEGORY_MEGA_MENU_LEVEL1
-          ? level1Categories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL1)
-          : level1Categories;
+        filteredCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL1
+          ? filteredCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL1)
+          : filteredCategories;
       //
       const level1CategoriesMapped = categories.map((level1Category) => {
         const level1Name = level1Category.name;
