@@ -5,13 +5,20 @@ import StyledMegaMenu from "./StyledMegaMenu";
 import BazaarCard from "components/BazaarCard";
 import CategoryMenuItem from "../category-menu-item";
 import { ENVIRONMENT } from "config";
+import { NavLink } from "components/nav-link";
 
 // =======================================================================
-type Data = { icon: string; href: string; title: string; menuData?: any };
-export type MegaMenu2Props = { data: Data[] };
+type Data = {
+  icon: string;
+  href: string;
+  title: string;
+  moreSubCategories?: boolean ,
+  menuData?: any;
+};
+export type MegaMenu2Props = { data: Data[]; moreSubCategories?: boolean };
 // =======================================================================
 
-const MegaMenu2: FC<MegaMenu2Props> = ({ data }) => {
+const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
   return (
     <StyledMegaMenu>
       <BazaarCard elevation={2} sx={{ ml: "1rem", py: "0.5rem" }}>
@@ -31,10 +38,15 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data }) => {
               (item.menuData.categories ? (
                 <MegaMenu3 minWidth="560px" data={item.menuData} />
               ) : (
-                <MegaMenu2 data={item.menuData} />
+                <MegaMenu2 data={item.menuData} moreSubCategories={item.moreSubCategories}/>
               ))}
           </CategoryMenuItem>
         ))}
+        {moreSubCategories && (
+          <NavLink style={{ color: "orange", textAlign: "center" }} className="child-link" href="#">
+            More Categories
+          </NavLink>
+        )}
       </BazaarCard>
     </StyledMegaMenu>
   );

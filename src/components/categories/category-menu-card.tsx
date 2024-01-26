@@ -9,6 +9,7 @@ import CategoryMenuItem from "./category-menu-item";
 import { useFilteredCategoriesQuery } from "services/category-api";
 import Container from "@mui/material/Container";
 import { ENVIRONMENT } from "config";
+import { NavLink } from "components/nav-link";
 
 // styled component
 const Wrapper = styled(Box, {
@@ -129,6 +130,8 @@ const CategoryMenuCard: FC<Props> = (props) => {
             const level2Mapped = {
               title: level2Name,
               icon: level2Icon,
+              moreSubCategories:
+                level2Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2,
               href: "#",
             };
             //level 3 mapping
@@ -156,11 +159,13 @@ const CategoryMenuCard: FC<Props> = (props) => {
             href: "#",
             menuComponent: "MegaMenu2",
           }));
+          level1Mapped["moreSubCategories"] = level2Categories.length > MAX_CATEGORY_MENU_ITEM;
           level1Mapped["menuData"] = level2CategoriesMapped;
         }
         return level1Mapped;
       });
       //
+      mapped["moreSubCategories"] = level1Categories.length > MAX_CATEGORY_MENU_ITEM;
       mapped["menuData"] = level1CategoriesMapped;
     } else if (maxDepth > 1) {
       // filter non empty subcategories
@@ -192,13 +197,14 @@ const CategoryMenuCard: FC<Props> = (props) => {
           icon: level1Icon,
           href: "#",
           subCategories: level2CategoriesMapped,
+          moreSubCategories: level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2,
         };
       });
       mapped["menuData"] = { categories: level1CategoriesMapped };
     }
     return mapped;
   });
-
+  //
   return (
     <Wrapper open={open} position={position}>
       {mappedCategories.map((item) => {
@@ -215,10 +221,15 @@ const CategoryMenuCard: FC<Props> = (props) => {
             title={item.title}
             caret={!!item.menuData}
           >
-            <MegaMenu data={item.menuData || {}} />
+            <MegaMenu data={item.menuData || {}} moreSubCategories={item.moreSubCategories} />
           </CategoryMenuItem>
         );
       })}
+      {data?.totalPages > 1 && (
+        <NavLink style={{ color: "orange", textAlign: "center" }} className="child-link" href="#">
+          More Categories
+        </NavLink>
+      )}
     </Wrapper>
   );
 };

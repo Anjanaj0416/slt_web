@@ -17,11 +17,13 @@ type SubCategory = { title: string; href: string };
 type Category = {
   title: string;
   href?: string;
+  moreSubCategories?: boolean;
   subCategories: SubCategory[];
 };
 
 type MegaMenu = {
   categories: Category[];
+
   rightImage?: Image;
   bottomImage?: Image;
 };
@@ -55,6 +57,16 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
                       {sub.title}
                     </NavLink>
                   ))}
+                  {item.moreSubCategories && (
+                    <NavLink
+                      style={{ color: "orange" }}
+                      className="child-link"
+                      href="#"
+                      key={ind}
+                    >
+                      More Categories
+                    </NavLink>
+                  )}
                 </Grid>
               ))}
             </Grid>
