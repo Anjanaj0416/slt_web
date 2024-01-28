@@ -38,7 +38,7 @@ const SalesLayout: FC<SaleLayoutProps> = (props) => {
   if (type == "one") {
     CONTENT = (
       <Fragment>
-        <Navbar />
+   
         {children}
       </Fragment>
     );

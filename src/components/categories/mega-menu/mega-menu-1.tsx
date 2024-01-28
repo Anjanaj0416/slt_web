@@ -1,10 +1,9 @@
 import { FC } from "react";
-import Link from "next/link";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 // GLOBAL CUSTOM COMPONENTS
-import LazyImage from "components/LazyImage";
+//import LazyImage from "components/LazyImage";
 import { FlexBox } from "components/flex-box";
 import { NavLink } from "components/nav-link";
 // STYLED COMPONENTS
@@ -18,11 +17,13 @@ type SubCategory = { title: string; href: string };
 type Category = {
   title: string;
   href?: string;
+  moreSubCategories?: boolean;
   subCategories: SubCategory[];
 };
 
 type MegaMenu = {
   categories: Category[];
+
   rightImage?: Image;
   bottomImage?: Image;
 };
@@ -35,7 +36,6 @@ type MegaMenuProps = {
 
 const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
   const { categories, rightImage, bottomImage } = data || {};
-
   return categories ? (
     <StyledMegaMenu>
       <Card elevation={2} sx={{ ml: "1rem", minWidth }}>
@@ -57,26 +57,31 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
                       {sub.title}
                     </NavLink>
                   ))}
+                  {item.moreSubCategories && (
+                    <NavLink
+                      style={{ color: "orange" }}
+                      className="child-link"
+                      href="#"
+                      key={ind}
+                    >
+                      More Categories
+                    </NavLink>
+                  )}
                 </Grid>
               ))}
             </Grid>
           </Box>
 
-          {rightImage ? (
+          {/*  {rightImage ? (
             <Box mt={1.5}>
               <Link href={rightImage.href}>
-                <LazyImage
-                  src={rightImage.imgUrl}
-                  width={137}
-                  height={318}
-                  alt="banner"
-                />
+                <LazyImage src={rightImage.imgUrl} width={137} height={318} alt="banner" />
               </Link>
             </Box>
-          ) : null}
+          ) : null} */}
         </FlexBox>
 
-        {bottomImage ? (
+        {/* {bottomImage ? (
           <Link href={bottomImage.href}>
             <Box position="relative" height={150} width="100%">
               <LazyImage
@@ -87,7 +92,7 @@ const MegaMenu1: FC<MegaMenuProps> = ({ data, minWidth = "760px" }) => {
               />
             </Box>
           </Link>
-        ) : null}
+        ) : null} */}
       </Card>
     </StyledMegaMenu>
   ) : null;

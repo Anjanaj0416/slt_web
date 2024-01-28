@@ -8,20 +8,22 @@ import { FlexBox } from "components/flex-box";
 import LazyImage from "components/LazyImage";
 import { NavLink } from "components/nav-link";
 import BazaarCard from "components/BazaarCard";
-import { H3, Small } from "components/Typography";
+//import { H3, Small } from "components/Typography";
 
 // ====================================================================================
 type Image = { imgUrl: string; href: string };
 type SubCategory = { title: string; href: string };
-type Category = { title: string; href?: string; subCategories: SubCategory[] };
+type Category = {
+  title: string;
+  href?: string;
+  moreSubCategories?: boolean;
+  subCategories: SubCategory[];
+};
 type MegaMenu = { categories: Category[]; rightImage?: Image };
 type MegaMenuProps = { data: MegaMenu; minWidth?: string };
 // ====================================================================================
 
-const MegaMenu3: FC<MegaMenuProps> = ({
-  data: { categories, rightImage },
-  minWidth = "760px",
-}) => {
+const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWidth = "760px" }) => {
   return categories ? (
     <StyledMegaMenu>
       <BazaarCard sx={{ ml: "1rem", minWidth }} elevation={2}>
@@ -43,21 +45,26 @@ const MegaMenu3: FC<MegaMenuProps> = ({
                       {sub.title}
                     </NavLink>
                   ))}
+                  {item.moreSubCategories && (
+                    <NavLink style={{ color: "orange" }} className="child-link" href="#" key={ind}>
+                      More Categories
+                    </NavLink>
+                  )}
                 </Grid>
               ))}
             </Grid>
           </Box>
 
-          {rightImage && (
+          {/* rightImage && (
             <Link href={rightImage.href}>
               <Box position="relative" width="153px" height="100%">
                 <LazyImage alt="banner" src={rightImage.imgUrl} />
               </Box>
             </Link>
-          )}
+          ) */}
         </FlexBox>
 
-        <Link href="/sale-page-2">
+        {/*  <Link href="/sale-page-2">
           <Grid
             className="h-full"
             container
@@ -99,7 +106,7 @@ const MegaMenu3: FC<MegaMenuProps> = ({
               </FlexBox>
             </Grid>
           </Grid>
-        </Link>
+        </Link> */}
       </BazaarCard>
     </StyledMegaMenu>
   ) : null;
