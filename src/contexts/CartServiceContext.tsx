@@ -28,6 +28,7 @@ type ContextState = {
   length: number;
   isLoading: boolean;
   totalPrice: number;
+  isItemInCart: (product: Product1) => CartItem | null | undefined;
 };
 //
 const initState: ContextState = {
@@ -45,6 +46,7 @@ const initState: ContextState = {
   length: 0,
   isLoading: false,
   totalPrice: 0,
+  isItemInCart: () => null,
 };
 //
 export const CartServiceContext = createContext<ContextState>(initState);
@@ -126,19 +128,28 @@ const CartServiceProvider = (props: Props) => {
     ]
   );
   //
+  const isItemInCart = useCallback(
+    (product: Product1) =>
+      cart.cartItems.find((item) => item.product.id === product.id),
+    [cart.cartItems]
+  );
+  //
   const handleAddToCart = useCallback(
     async (product: Product1, units: number) => {
       if (!user?.id || !user?.cart?.id) {
         openUnAuthenticatedModal(true);
         return;
       }
+
+      const availableCartItem = isItemInCart(product);
+
       try {
         //
-        if (
-          cart.cartItems.filter((item) => item.product.id === product.id)
-            .length > 0
-        ) {
-          handleUpdateQty(product, units);
+        if (availableCartItem) {
+          if (availableCartItem.units < product.units) {
+            handleUpdateQty(product, units);
+            return;
+          }
           return;
         }
         //
@@ -169,6 +180,7 @@ const CartServiceProvider = (props: Props) => {
     [
       cart.cartItems,
       handleUpdateQty,
+      isItemInCart,
       openUnAuthenticatedModal,
       updateCart,
       user?.cart?.id,
@@ -238,6 +250,7 @@ const CartServiceProvider = (props: Props) => {
       length: cart?.cartItems?.length,
       isLoading: isUpdating || isCartFetching,
       totalPrice,
+      isItemInCart,
     }),
     [
       cart,
@@ -246,6 +259,7 @@ const CartServiceProvider = (props: Props) => {
       handleRemoveFromCart,
       handleUpdateQty,
       isCartFetching,
+      isItemInCart,
       isUpdating,
       totalPrice,
     ]

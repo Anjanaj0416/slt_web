@@ -1,4 +1,5 @@
 "use client";
+
 import Box from "@mui/material/Box";
 import Link from "next/link";
 import { FC } from "react";
@@ -29,10 +30,14 @@ type Props = { product: Product1 };
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
   //
-  const { handleAddToCart, isLoading } = useCartService();
+  const { handleAddToCart, isLoading, isItemInCart } = useCartService();
   //
   const { isFavorite, openModal, toggleDialog, toggleFavorite } =
     useProduct(id);
+  //
+  const isOutOfStock = product.units <= 0;
+  //
+  const cartUnits = isItemInCart(product)?.units;
   //
   return (
     <Card>
@@ -108,8 +113,9 @@ const ProductCard20: FC<Props> = ({ product }) => {
           variant="outlined"
           onClick={() => handleAddToCart(product, 1)}
           loading={isLoading}
+          disabled={isOutOfStock || cartUnits >= product.units}
         >
-          Add To Cart
+          {isOutOfStock ? "Out of stock" : "Add To Cart"}
         </LoadingButton>
       </Box>
     </Card>
