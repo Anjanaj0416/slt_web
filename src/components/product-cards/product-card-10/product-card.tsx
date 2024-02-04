@@ -1,8 +1,7 @@
 "use client";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Link from "next/link";
-import { FC, use } from "react";
+import { FC } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -18,10 +17,10 @@ import { Card, CardMedia, FavoriteButton, StyledIconButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
+import { LoadingButton } from "@mui/lab";
 import { ENVIRONMENT } from "config";
+import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
-import { signOut, useSession } from "next-auth/react";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -29,37 +28,11 @@ type Props = { product: Product1 };
 
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
-  const session = useSession();
   //
-  const {
-    cartItem,
-    handleCartAmountChange,
-    isFavorite,
-    openModal,
-    toggleDialog,
-    toggleFavorite,
-  } = useProduct(id);
+  const { handleAddToCart, isLoading } = useCartService();
   //
-  const { setIsOpen: setIsUnauthorizedModalOpen } = useUnAuthenticatedModal();
-  //
-  const handleAddToCart = async () => {
-    try {
-      if (!session.data.user) return setIsUnauthorizedModalOpen(true);
-      //
-      const payload = {
-        id: id,
-        slug: id,
-        name: name,
-        price: price,
-        imgUrl: `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`,
-        qty: (cartItem?.qty || 0) + 1,
-      };
-      //
-      handleCartAmountChange(payload);
-    } catch (error) {
-      setIsUnauthorizedModalOpen(true);
-    }
-  };
+  const { isFavorite, openModal, toggleDialog, toggleFavorite } =
+    useProduct(id);
   //
   return (
     <Card>
@@ -71,9 +44,8 @@ const ProductCard20: FC<Props> = ({ product }) => {
             height={300}
             alt={name}
             src={
-              !images[0]
-                ? `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-                : `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+              images[0] ||
+              `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
             }
             className="product-img"
           />
@@ -130,14 +102,15 @@ const ProductCard20: FC<Props> = ({ product }) => {
         </FlexRowCenter> */}
 
         {/* PRODUCT ADD TO CART BUTTON */}
-        <Button
+        <LoadingButton
           fullWidth
           color="dark"
           variant="outlined"
-          onClick={handleAddToCart}
+          onClick={() => handleAddToCart(product, 1)}
+          loading={isLoading}
         >
           Add To Cart
-        </Button>
+        </LoadingButton>
       </Box>
     </Card>
     // <Card>

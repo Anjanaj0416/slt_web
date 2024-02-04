@@ -14,7 +14,7 @@ import Scrollbar from "components/Scrollbar";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import { CartItem } from "contexts/CartContext";
+import useCartService from "hooks/useCartService";
 
 // =========================================================
 type Props = { toggleSidenav: () => void };
@@ -22,19 +22,8 @@ type Props = { toggleSidenav: () => void };
 
 const MiniCart: FC<Props> = ({ toggleSidenav }) => {
   const { push } = useRouter();
-  const { state, dispatch } = useCart();
-  const cartList = state.cart;
-
-  const handleCartAmountChange = (amount: number, product: CartItem) => () => {
-    dispatch({
-      type: "CHANGE_CART_AMOUNT",
-      payload: { ...product, qty: amount },
-    });
-  };
-
-  const getTotalPrice = () => {
-    return cartList.reduce((acc, item) => acc + item.price * item.qty, 0);
-  };
+  const { cart, totalPrice } = useCartService();
+  const cartList = cart.cartItems;
 
   const handleNavigate = (path: string) => () => {
     toggleSidenav();
@@ -53,11 +42,7 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
         {cartList.length > 0 ? (
           <Scrollbar>
             {cartList.map((item) => (
-              <MiniCartItem
-                key={item.id}
-                item={item}
-                handleCartAmountChange={handleCartAmountChange}
-              />
+              <MiniCartItem key={item.product.id} item={item} />
             ))}
           </Scrollbar>
         ) : (
@@ -68,7 +53,7 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
       {/* CART BOTTOM ACTION BUTTONS */}
       {cartList.length > 0 ? (
         <BottomActions
-          total={currency(getTotalPrice())}
+          total={currency(totalPrice)}
           handleNavigate={handleNavigate}
         />
       ) : null}

@@ -23,27 +23,28 @@ import { store } from "./redux/store";
 import SnackbarProvider from "components/SnackbarProvider";
 import SessionProviderWrapper from "utils/session-provider-wrapper";
 import { UnauthenticatedModalProvider } from "components/modals/unauthenticated-action-modal";
-// 
+import CartServiceProvider from "contexts/CartServiceContext";
+//
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <ReduxProviderWrapper store={store}>
       <SessionProviderWrapper>
         <html lang="en" suppressHydrationWarning>
           <body className={openSans.className}>
-            <CartProvider>
-              <SettingsProvider>
-                <ThemeProvider>
-                  <ProgressBar />
-                  <RTL>
-                    <SnackbarProvider>
-                      <UnauthenticatedModalProvider>
-                        {children}
-                      </UnauthenticatedModalProvider>
-                    </SnackbarProvider>
-                  </RTL>
-                </ThemeProvider>
-              </SettingsProvider>
-            </CartProvider>
+            <UnauthenticatedModalProvider>
+              <CartServiceProvider>
+                <CartProvider>
+                  <SettingsProvider>
+                    <ThemeProvider>
+                      <ProgressBar />
+                      <RTL>
+                        <SnackbarProvider>{children}</SnackbarProvider>
+                      </RTL>
+                    </ThemeProvider>
+                  </SettingsProvider>
+                </CartProvider>
+              </CartServiceProvider>
+            </UnauthenticatedModalProvider>
           </body>
         </html>
       </SessionProviderWrapper>
