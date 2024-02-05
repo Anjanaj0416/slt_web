@@ -7,6 +7,7 @@ import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 // GLOBAL CUSTOM HOOK
 import useSettings from "hooks/useSettings";
+import Image from "next/image";
 
 // STYLED COMPONENT
 const Wrapper = styled("div")(({ theme }) => ({
@@ -32,7 +33,7 @@ const Wrapper = styled("div")(({ theme }) => ({
 
 // =============================================================
 interface Props {
-  icon?: any;
+  icon?: string;
   href: string;
   title: string;
   caret?: boolean;
@@ -44,14 +45,12 @@ const CategoryMenuItem: FC<Props> = (props) => {
   const { href, title, caret = true, children, ...rest } = props;
 
   const { settings } = useSettings();
-
   return (
     <Wrapper>
       <Link href={href}>
         <MenuItem className="category-dropdown-link">
-          {rest.icon && <rest.icon fontSize="small" color="inherit" />}
+          {rest.icon && <Image src={rest.icon} alt="icon" width={20} height={20} />}
           <span className="title">{title}</span>
-
           {caret &&
             (settings.direction === "ltr" ? (
               <ChevronRight fontSize="small" />

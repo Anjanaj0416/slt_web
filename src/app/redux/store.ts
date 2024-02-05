@@ -5,16 +5,23 @@ import rtkQueryErrorLogger from "./middleware";
 import { productApi } from "services/product-api";
 import { authSlice } from "./features/auth/slice";
 import { cartApi } from "services/cart-api";
+import { categoryApi } from "services/category-api";
 
 // Combine all the reducers into one root reducer
 const rootReducers = combineReducers({
   [productApi.reducerPath]: productApi.reducer, // Use the reducer from the productApi slice
   [cartApi.reducerPath]: cartApi.reducer,
+  [categoryApi.reducerPath]: categoryApi.reducer,
   [authSlice.name]: authSlice.reducer,
 });
 
 // Define custom middlewares for the store
-const apiMiddlewares = [productApi.middleware, cartApi.middleware]; // Middleware for Redux Toolkit Query
+const apiMiddlewares = [
+  productApi.middleware,
+  categoryApi.middleware,
+  cartApi.middleware,
+]; // Middleware for Redux Toolkit Query
+//
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors
 
 // Create the Redux store
@@ -31,4 +38,3 @@ setupListeners(store.dispatch);
 // Define types for RootState and AppDispatch for type safety
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-  
