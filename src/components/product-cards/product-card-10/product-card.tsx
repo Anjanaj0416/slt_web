@@ -2,7 +2,7 @@
 
 import Box from "@mui/material/Box";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -30,7 +30,8 @@ type Props = { product: Product1 };
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
   //
-  const { handleAddToCart, isLoading, isItemInCart } = useCartService();
+  const { handleAddToCart, isItemInCart, selectedProductId, isLoading } =
+    useCartService();
   //
   const { isFavorite, openModal, toggleDialog, toggleFavorite } =
     useProduct(id);
@@ -112,7 +113,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
           color="dark"
           variant="outlined"
           onClick={() => handleAddToCart(product, 1)}
-          loading={isLoading}
+          loading={selectedProductId === product.id && isLoading}
           disabled={isOutOfStock || cartUnits >= product.units}
         >
           {isOutOfStock ? "Out of stock" : "Add To Cart"}

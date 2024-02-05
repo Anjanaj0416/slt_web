@@ -4,6 +4,7 @@ import { useUnAuthenticatedModal } from "components/modals/unauthenticated-actio
 import { Product1 } from "models/Product.model";
 import { CartItem, User1, UserCart } from "models/User.model";
 import { useSession } from "next-auth/react";
+import { enqueueSnackbar } from "notistack";
 import {
   Dispatch,
   ReactNode,
@@ -29,6 +30,7 @@ type ContextState = {
   isLoading: boolean;
   totalPrice: number;
   isItemInCart: (product: Product1) => CartItem | null | undefined;
+  selectedProductId: string;
 };
 //
 const initState: ContextState = {
@@ -47,6 +49,7 @@ const initState: ContextState = {
   isLoading: false,
   totalPrice: 0,
   isItemInCart: () => null,
+  selectedProductId: "",
 };
 //
 export const CartServiceContext = createContext<ContextState>(initState);
@@ -59,6 +62,7 @@ const CartServiceProvider = (props: Props) => {
   const session = useSession();
   const user = session?.data?.user as User1 | undefined;
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
+  const [selectedProductId, setSelectedProductId] = useState<string>("");
   //
   const [cart, setCart] = useState<UserCart>({
     id: "",
@@ -95,11 +99,14 @@ const CartServiceProvider = (props: Props) => {
         openUnAuthenticatedModal(true);
         return;
       }
+      setSelectedProductId(product.id);
+      //
       const newCartList = cart.cartItems.map((item) =>
         item.product.id === product.id
           ? { ...item, units: item.units + units }
           : { ...item }
       );
+      //
       try {
         await updateCart({
           userId: user?.id,
@@ -117,6 +124,8 @@ const CartServiceProvider = (props: Props) => {
         }));
       } catch (error) {
         console.error(error);
+      } finally {
+        setSelectedProductId("");
       }
     },
     [
@@ -140,18 +149,18 @@ const CartServiceProvider = (props: Props) => {
         openUnAuthenticatedModal(true);
         return;
       }
-
+      //
       const availableCartItem = isItemInCart(product);
-
+      //
       try {
         //
         if (availableCartItem) {
           if (availableCartItem.units < product.units) {
-            handleUpdateQty(product, units);
-            return;
+            await handleUpdateQty(product, units);
           }
           return;
         }
+        setSelectedProductId(product.id);
         //
         const newItem: CartItem = {
           product,
@@ -175,6 +184,8 @@ const CartServiceProvider = (props: Props) => {
         }));
       } catch (error) {
         console.error(error);
+      } finally {
+        setSelectedProductId("");
       }
     },
     [
@@ -194,6 +205,7 @@ const CartServiceProvider = (props: Props) => {
         openUnAuthenticatedModal(true);
         return;
       }
+      setSelectedProductId(product.id);
       try {
         await updateCart({
           userId: user?.id,
@@ -214,8 +226,17 @@ const CartServiceProvider = (props: Props) => {
             (item) => item.product.id !== product.id
           ),
         }));
+        enqueueSnackbar(`${product.name} successfully removed from your cart`, {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "center",
+          },
+        });
       } catch (error) {
         console.error(error);
+      } finally {
+        setSelectedProductId("");
       }
     },
     [
@@ -251,6 +272,7 @@ const CartServiceProvider = (props: Props) => {
       isLoading: isUpdating || isCartFetching,
       totalPrice,
       isItemInCart,
+      selectedProductId,
     }),
     [
       cart,
@@ -262,6 +284,7 @@ const CartServiceProvider = (props: Props) => {
       isItemInCart,
       isUpdating,
       totalPrice,
+      selectedProductId,
     ]
   );
   //

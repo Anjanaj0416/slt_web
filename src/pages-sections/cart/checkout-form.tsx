@@ -75,13 +75,13 @@ const CheckoutForm = () => {
       </Button>
 
       <Divider sx={{ mb: 2 }} />
-
+      {/* 
       <Span fontWeight={600} mb={2} display="block">
         Shipping Estimates
-      </Span>
+      </Span> */}
 
       {/* COUNTRY TEXT FIELD */}
-      <Autocomplete
+      {/* <Autocomplete
         fullWidth
         sx={{ mb: 2 }}
         options={countryList}
@@ -94,10 +94,10 @@ const CheckoutForm = () => {
             placeholder="Select Country"
           />
         )}
-      />
+      /> */}
 
       {/* STATE/CITY TEXT FIELD */}
-      <TextField
+      {/* <TextField
         select
         fullWidth
         size="small"
@@ -111,10 +111,10 @@ const CheckoutForm = () => {
             {label}
           </MenuItem>
         ))}
-      </TextField>
+      </TextField> */}
 
       {/* ZIP-CODE TEXT FIELD */}
-      <TextField
+      {/* <TextField
         fullWidth
         size="small"
         label="Zip Code"
@@ -125,7 +125,7 @@ const CheckoutForm = () => {
 
       <Button variant="outlined" color="primary" fullWidth sx={{ my: 2 }}>
         Calculate Shipping
-      </Button>
+      </Button> */}
 
       <Button
         fullWidth
