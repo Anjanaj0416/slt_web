@@ -5,20 +5,27 @@ import { baseQuery } from "./base"; // Assuming 'base' is your custom base query
 export const productApi = createApi({
   reducerPath: "productApi", // Name of the reducer path for this API slice
   baseQuery: baseQuery, // Custom base query for making HTTP requests
-  tagTypes: ["PRODUCT", "PRODUCT"],
+  tagTypes: ["PRODUCT"],
   endpoints: (builder) => ({
     filteredProducts: builder.query({
-      query: ({ categoryIds }) => `/products?&size=10&categoryIds=${categoryIds}`,
+      query: ({ categoryIds }) =>
+        `/products?&size=10&categoryIds=${categoryIds}`,
       providesTags: (result, error, arg) =>
         result
-          ? [...result.data.map(({ id }) => ({ type: "PRODUCT", id })), "PRODUCT"]
+          ? [
+              ...result.data.map(({ id }) => ({ type: "PRODUCT", id })),
+              "PRODUCT",
+            ]
           : ["PRODUCT"],
     }),
     listProducts: builder.query({
       query: ({ page, size }) => `/products?page=${page}&size=${size}`,
       providesTags: (result, error, arg) =>
         result
-          ? [...result.data.map(({ id }) => ({ type: "PRODUCT", id })), "PRODUCT"]
+          ? [
+              ...result.data.map(({ id }) => ({ type: "PRODUCT", id })),
+              "PRODUCT",
+            ]
           : ["PRODUCT"],
     }),
     getProduct: builder.query({

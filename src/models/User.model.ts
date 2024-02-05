@@ -1,3 +1,5 @@
+import { Product1 } from "./Product.model";
+
 interface User {
   id: string;
   email: string;
@@ -9,6 +11,16 @@ interface User {
   name: { firstName: string; lastName: string };
 }
 //
+export interface CartItem {
+  product: Product1;
+  units: number;
+}
+//
+export interface UserCart {
+  id: string;
+  cartItems: Array<CartItem>;
+}
+//
 export interface User1 {
   id: string;
   email: string;
@@ -18,6 +30,7 @@ export interface User1 {
   firstName: string;
   lastName: string;
   username: string;
+  cart: UserCart;
 }
 //
 export default User;

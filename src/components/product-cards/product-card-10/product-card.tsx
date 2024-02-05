@@ -1,26 +1,27 @@
-import { FC } from "react";
-import Link from "next/link";
+"use client";
+
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Rating from "@mui/material/Rating";
+import Link from "next/link";
+import { FC, useState } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
-import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { FlexRowCenter } from "components/flex-box";
-import { H4, Paragraph, Small } from "components/Typography";
+import { H4, Paragraph } from "components/Typography";
 import ProductViewDialog from "components/products-view/product-view-dialog";
 // STYLED COMPONENTS
-import { StyledIconButton, Card, CardMedia, FavoriteButton } from "./styles";
+import { Card, CardMedia, FavoriteButton, StyledIconButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import Product, { Product1 } from "models/Product.model";
+import { LoadingButton } from "@mui/lab";
 import { ENVIRONMENT } from "config";
+import useCartService from "hooks/useCartService";
+import { Product1 } from "models/Product.model";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -28,22 +29,16 @@ type Props = { product: Product1 };
 
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
-
-  const { cartItem, handleCartAmountChange, isFavorite, openModal, toggleDialog, toggleFavorite } =
+  //
+  const { handleAddToCart, isItemInCart, selectedProductId, isLoading } =
+    useCartService();
+  //
+  const { isFavorite, openModal, toggleDialog, toggleFavorite } =
     useProduct(id);
-
-  const handleAddToCart = () => {
-    const payload = {
-      id: id,
-      slug: id,
-      name: name,
-      price: price,
-      imgUrl: `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`,
-      qty: (cartItem?.qty || 0) + 1,
-    };
-
-    handleCartAmountChange(payload);
-  };
+  //
+  const isOutOfStock = product.units <= 0;
+  //
+  const cartUnits = isItemInCart(product)?.units;
   //
   return (
     <Card>
@@ -55,9 +50,8 @@ const ProductCard20: FC<Props> = ({ product }) => {
             height={300}
             alt={name}
             src={
-              !images[0]
-                ? `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-                : `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+              images[0] ||
+              `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
             }
             className="product-img"
           />
@@ -114,9 +108,16 @@ const ProductCard20: FC<Props> = ({ product }) => {
         </FlexRowCenter> */}
 
         {/* PRODUCT ADD TO CART BUTTON */}
-        <Button fullWidth color="dark" variant="outlined" onClick={handleAddToCart}>
-          Add To Cart
-        </Button>
+        <LoadingButton
+          fullWidth
+          color="dark"
+          variant="outlined"
+          onClick={() => handleAddToCart(product, 1)}
+          loading={selectedProductId === product.id && isLoading}
+          disabled={isOutOfStock || cartUnits >= product.units}
+        >
+          {isOutOfStock ? "Out of stock" : "Add To Cart"}
+        </LoadingButton>
       </Box>
     </Card>
     // <Card>
