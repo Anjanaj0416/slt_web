@@ -13,22 +13,25 @@ import { FlexBox } from "components/flex-box";
 import { H6, Tiny } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+import { CartItem } from "models/User.model";
+import useCartService from "hooks/useCartService";
+import { ENVIRONMENT } from "config";
 // CUSTOM DATA MODEL
-import { CartItem } from "contexts/CartContext";
 
 // ==============================================================
 interface Props {
   item: CartItem;
-  handleCartAmountChange: (amount: number, product: CartItem) => () => void;
 }
 // ==============================================================
 
-const MiniCartItem: FC<Props> = ({ item, handleCartAmountChange }) => {
+const MiniCartItem: FC<Props> = ({ item }) => {
+  const { product, units } = item;
+  const { handleUpdateQty, handleRemoveFromCart, isLoading } = useCartService();
   return (
     <FlexBox
       py={2}
       px={2.5}
-      key={item.id}
+      key={product?.id}
       alignItems="center"
       borderBottom="1px solid"
       borderColor="divider"
@@ -38,30 +41,34 @@ const MiniCartItem: FC<Props> = ({ item, handleCartAmountChange }) => {
           size="small"
           color="primary"
           variant="outlined"
-          onClick={handleCartAmountChange(item.qty + 1, item)}
           sx={{ height: 28, width: 28, borderRadius: 50 }}
+          onClick={() => handleUpdateQty(product, 1)}
+          disabled={units >= product?.units || isLoading}
         >
           <Add fontSize="small" />
         </Button>
 
-        <H6 my="3px">{item.qty}</H6>
+        <H6 my="3px">{units}</H6>
 
         <Button
           size="small"
           color="primary"
           variant="outlined"
-          disabled={item.qty === 1}
-          onClick={handleCartAmountChange(item.qty - 1, item)}
+          disabled={units <= 1 || isLoading}
+          onClick={() => handleUpdateQty(product, -1)}
           sx={{ height: 28, width: 28, borderRadius: 50 }}
         >
           <Remove fontSize="small" />
         </Button>
       </FlexBox>
 
-      <Link href={`/products/${item.id}`}>
+      <Link href={`/products/${product?.id}`}>
         <Avatar
-          alt={item.name}
-          src={item.imgUrl}
+          alt={product?.name}
+          src={
+            product?.images[0] ||
+            `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
+          }
           sx={{ mx: 1, width: 75, height: 75 }}
         />
       </Link>
@@ -72,25 +79,26 @@ const MiniCartItem: FC<Props> = ({ item, handleCartAmountChange }) => {
         whiteSpace="nowrap"
         overflow="hidden"
       >
-        <Link href={`/products/${item.slug}`}>
+        <Link href={`/products/${product?.id}`}>
           <H6 ellipsis className="title">
-            {item.name}
+            {product?.name}
           </H6>
         </Link>
 
         <Tiny color="grey.600">
-          {currency(item.price)} x {item.qty}
+          {currency(product?.price)} x {units}
         </Tiny>
 
         <H6 color="primary.main" mt={0.5}>
-          {currency(item.qty * item.price)}
+          {currency(units * product?.price)}
         </H6>
       </Box>
 
       <IconButton
         size="small"
-        onClick={handleCartAmountChange(0, item)}
         sx={{ marginLeft: 2.5 }}
+        onClick={() => handleRemoveFromCart(product)}
+        disabled={isLoading}
       >
         <Close fontSize="small" />
       </IconButton>

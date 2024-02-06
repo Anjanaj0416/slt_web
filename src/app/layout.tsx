@@ -21,24 +21,33 @@ import "i18n";
 import ReduxProviderWrapper from "utils/redux-provider-wrapper";
 import { store } from "./redux/store";
 import SnackbarProvider from "components/SnackbarProvider";
-
+import SessionProviderWrapper from "utils/session-provider-wrapper";
+import { UnauthenticatedModalProvider } from "components/modals/unauthenticated-action-modal";
+import CartServiceProvider from "contexts/CartServiceContext";
+//
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <ReduxProviderWrapper store={store}>
-      <html lang="en" suppressHydrationWarning>
-        <body className={openSans.className}>
-          <CartProvider>
-            <SettingsProvider>
-              <ThemeProvider>
-                <ProgressBar />
-                <RTL>
-                  <SnackbarProvider>{children}</SnackbarProvider>
-                </RTL>
-              </ThemeProvider>
-            </SettingsProvider>
-          </CartProvider>
-        </body>
-      </html>
+      <SessionProviderWrapper>
+        <html lang="en" suppressHydrationWarning>
+          <body className={openSans.className}>
+            <UnauthenticatedModalProvider>
+              <CartServiceProvider>
+                <CartProvider>
+                  <SettingsProvider>
+                    <ThemeProvider>
+                      <ProgressBar />
+                      <RTL>
+                        <SnackbarProvider>{children}</SnackbarProvider>
+                      </RTL>
+                    </ThemeProvider>
+                  </SettingsProvider>
+                </CartProvider>
+              </CartServiceProvider>
+            </UnauthenticatedModalProvider>
+          </body>
+        </html>
+      </SessionProviderWrapper>
     </ReduxProviderWrapper>
   );
 }

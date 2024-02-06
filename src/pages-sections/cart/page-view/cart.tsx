@@ -1,32 +1,26 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-// GLOBAL CUSTOM HOOK
-import useCart from "hooks/useCart";
 // LOCAL CUSTOM COMPONENTS
 import CartItem from "../cart-item";
 import CheckoutForm from "../checkout-form";
+import useCartService from "hooks/useCartService";
+import { useEffect } from "react";
 
 const CartPageView = () => {
-  const { state } = useCart();
+  const { cart, handleFetch } = useCartService();
+  const { cartItems } = cart;
+
+  useEffect(() => {
+    handleFetch();
+  }, [handleFetch]);
 
   return (
     <Grid container spacing={3}>
       {/* CART PRODUCT LIST */}
       <Grid item md={8} xs={12}>
-        {state.cart.map(({ name, id, price, qty, slug, imgUrl }) => (
-          <CartItem
-            id={id}
-            key={id}
-            qty={qty}
-            name={name}
-            slug={slug}
-            price={price}
-            imgUrl={imgUrl}
-          />
-        ))}
+        {cartItems?.map((item) => <CartItem key={item.product.id} {...item} />)}
       </Grid>
-
       {/* CHECKOUT FORM */}
       <Grid item md={4} xs={12}>
         <CheckoutForm />
