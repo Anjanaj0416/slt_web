@@ -14,11 +14,10 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 import countryList from "data/countryList";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+import useCartService from "hooks/useCartService";
 
 const CheckoutForm = () => {
-  const { state } = useCart();
-
-  const getTotalPrice = () => state.cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+  const { totalPrice } = useCartService();
 
   const STATE_LIST = [
     { value: "new-york", label: "New York" },
@@ -31,7 +30,7 @@ const CheckoutForm = () => {
         <Span color="grey.600">Total:</Span>
 
         <Span fontSize={18} fontWeight={600} lineHeight="1">
-          {currency(getTotalPrice())}
+          {currency(totalPrice)}
         </Span>
       </FlexBetween>
 
@@ -58,20 +57,31 @@ const CheckoutForm = () => {
       <Divider sx={{ mb: 2 }} />
 
       {/* APPLY VOUCHER TEXT FIELD */}
-      <TextField fullWidth size="small" label="Voucher" variant="outlined" placeholder="Voucher" />
+      <TextField
+        fullWidth
+        size="small"
+        label="Voucher"
+        variant="outlined"
+        placeholder="Voucher"
+      />
 
-      <Button variant="outlined" color="primary" fullWidth sx={{ mt: 2, mb: 4 }}>
+      <Button
+        variant="outlined"
+        color="primary"
+        fullWidth
+        sx={{ mt: 2, mb: 4 }}
+      >
         Apply Voucher
       </Button>
 
       <Divider sx={{ mb: 2 }} />
-
+      {/* 
       <Span fontWeight={600} mb={2} display="block">
         Shipping Estimates
-      </Span>
+      </Span> */}
 
       {/* COUNTRY TEXT FIELD */}
-      <Autocomplete
+      {/* <Autocomplete
         fullWidth
         sx={{ mb: 2 }}
         options={countryList}
@@ -84,10 +94,10 @@ const CheckoutForm = () => {
             placeholder="Select Country"
           />
         )}
-      />
+      /> */}
 
       {/* STATE/CITY TEXT FIELD */}
-      <TextField
+      {/* <TextField
         select
         fullWidth
         size="small"
@@ -101,10 +111,10 @@ const CheckoutForm = () => {
             {label}
           </MenuItem>
         ))}
-      </TextField>
+      </TextField> */}
 
       {/* ZIP-CODE TEXT FIELD */}
-      <TextField
+      {/* <TextField
         fullWidth
         size="small"
         label="Zip Code"
@@ -115,9 +125,15 @@ const CheckoutForm = () => {
 
       <Button variant="outlined" color="primary" fullWidth sx={{ my: 2 }}>
         Calculate Shipping
-      </Button>
+      </Button> */}
 
-      <Button fullWidth color="primary" href="/checkout" variant="contained" LinkComponent={Link}>
+      <Button
+        fullWidth
+        color="primary"
+        href="/checkout"
+        variant="contained"
+        LinkComponent={Link}
+      >
         Checkout Now
       </Button>
     </Card>

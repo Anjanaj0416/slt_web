@@ -1,7 +1,7 @@
-import { FC } from "react";
-import Link from "next/link";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import Link from "next/link";
+import { FC } from "react";
 // MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Close from "@mui/icons-material/Close";
@@ -11,33 +11,18 @@ import Image from "components/BazaarImage";
 import { Span } from "components/Typography";
 import { FlexBox } from "components/flex-box";
 // GLOBAL CUSTOM HOOK
-import useCart from "hooks/useCart";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENT
+import useCartService from "hooks/useCartService";
+import { CartItem } from "models/User.model";
 import { Wrapper } from "./styles";
+import { ENVIRONMENT } from "config";
 
-// =========================================================
-type Props = {
-  qty: number;
-  name: string;
-  slug: string;
-  price: number;
-  imgUrl?: string;
-  id: string | number;
-};
-// =========================================================
+const CartItem: FC<CartItem> = (props) => {
+  const { id, name, units, price, images } = props.product;
 
-const CartItem: FC<Props> = ({ id, name, qty, price, imgUrl, slug }) => {
-  const { dispatch } = useCart();
-
-  // HANDLE CHANGE CART PRODUCT QUANTITY
-  const handleCartAmountChange = (amount: number) => () => {
-    dispatch({
-      type: "CHANGE_CART_AMOUNT",
-      payload: { id, name, price, imgUrl, qty: amount, slug },
-    });
-  };
+  const { handleRemoveFromCart, handleUpdateQty, isLoading } = useCartService();
 
   return (
     <Wrapper>
@@ -46,20 +31,24 @@ const CartItem: FC<Props> = ({ id, name, qty, price, imgUrl, slug }) => {
         width={140}
         height={140}
         display="block"
-        src={imgUrl || "/assets/images/products/iphone-xi.png"}
+        src={
+          images[0] ||
+          `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
+        }
       />
 
       {/* DELETE BUTTON */}
       <IconButton
         size="small"
-        onClick={handleCartAmountChange(0)}
+        onClick={() => handleRemoveFromCart(props?.product)}
         sx={{ position: "absolute", right: 15, top: 15 }}
+        disabled={isLoading}
       >
         <Close fontSize="small" />
       </IconButton>
 
       <FlexBox p={2} rowGap={2} width="100%" flexDirection="column">
-        <Link href={`/products/${slug}`}>
+        <Link href={`/products/${id}`}>
           <Span ellipsis fontWeight="600" fontSize={18}>
             {name}
           </Span>
@@ -68,11 +57,11 @@ const CartItem: FC<Props> = ({ id, name, qty, price, imgUrl, slug }) => {
         {/* PRODUCT PRICE SECTION */}
         <FlexBox gap={1} flexWrap="wrap" alignItems="center">
           <Span color="grey.600">
-            {currency(price)} x {qty}
+            {currency(price)} x {props?.units}
           </Span>
 
           <Span fontWeight={600} color="primary.main">
-            {currency(price * qty)}
+            {currency(price * props?.units)}
           </Span>
         </FlexBox>
 
@@ -82,21 +71,22 @@ const CartItem: FC<Props> = ({ id, name, qty, price, imgUrl, slug }) => {
             color="primary"
             sx={{ p: "5px" }}
             variant="outlined"
-            disabled={qty === 1}
-            onClick={handleCartAmountChange(qty - 1)}
+            disabled={props?.units <= 1 || isLoading}
+            onClick={() => handleUpdateQty(props?.product, -1)}
           >
             <Remove fontSize="small" />
           </Button>
 
           <Span mx={1} fontWeight={600} fontSize={15}>
-            {qty}
+            {props?.units}
           </Span>
 
           <Button
             color="primary"
             sx={{ p: "5px" }}
             variant="outlined"
-            onClick={handleCartAmountChange(qty + 1)}
+            onClick={() => handleUpdateQty(props?.product, 1)}
+            disabled={props?.units >= units || isLoading}
           >
             <Add fontSize="small" />
           </Button>
