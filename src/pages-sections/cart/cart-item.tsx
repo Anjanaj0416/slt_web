@@ -40,7 +40,7 @@ const CartItem: FC<CartItem> = (props) => {
       {/* DELETE BUTTON */}
       <IconButton
         size="small"
-        onClick={() => handleRemoveFromCart(props.product)}
+        onClick={() => handleRemoveFromCart(props?.product)}
         sx={{ position: "absolute", right: 15, top: 15 }}
         disabled={isLoading}
       >
@@ -57,11 +57,11 @@ const CartItem: FC<CartItem> = (props) => {
         {/* PRODUCT PRICE SECTION */}
         <FlexBox gap={1} flexWrap="wrap" alignItems="center">
           <Span color="grey.600">
-            {currency(price)} x {props.units}
+            {currency(price)} x {props?.units}
           </Span>
 
           <Span fontWeight={600} color="primary.main">
-            {currency(price * props.units)}
+            {currency(price * props?.units)}
           </Span>
         </FlexBox>
 
@@ -71,22 +71,22 @@ const CartItem: FC<CartItem> = (props) => {
             color="primary"
             sx={{ p: "5px" }}
             variant="outlined"
-            disabled={props.units <= 1 || isLoading}
-            onClick={() => handleUpdateQty(props.product, -1)}
+            disabled={props?.units <= 1 || isLoading}
+            onClick={() => handleUpdateQty(props?.product, -1)}
           >
             <Remove fontSize="small" />
           </Button>
 
           <Span mx={1} fontWeight={600} fontSize={15}>
-            {props.units}
+            {props?.units}
           </Span>
 
           <Button
             color="primary"
             sx={{ p: "5px" }}
             variant="outlined"
-            onClick={() => handleUpdateQty(props.product, 1)}
-            disabled={props.units >= units || isLoading}
+            onClick={() => handleUpdateQty(props?.product, 1)}
+            disabled={props?.units >= units || isLoading}
           >
             <Add fontSize="small" />
           </Button>

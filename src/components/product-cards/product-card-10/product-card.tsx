@@ -36,7 +36,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
   const { isFavorite, openModal, toggleDialog, toggleFavorite } =
     useProduct(id);
   //
-  const isOutOfStock = product.units <= 0;
+  const isOutOfStock = product?.units <= 0;
   //
   const cartUnits = isItemInCart(product)?.units;
   //
@@ -113,8 +113,8 @@ const ProductCard20: FC<Props> = ({ product }) => {
           color="dark"
           variant="outlined"
           onClick={() => handleAddToCart(product, 1)}
-          loading={selectedProductId === product.id && isLoading}
-          disabled={isOutOfStock || cartUnits >= product.units}
+          loading={selectedProductId === product?.id && isLoading}
+          disabled={isOutOfStock || cartUnits >= product?.units}
         >
           {isOutOfStock ? "Out of stock" : "Add To Cart"}
         </LoadingButton>
