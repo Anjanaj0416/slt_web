@@ -81,7 +81,7 @@ const CartServiceProvider = (props: Props) => {
         cartId: user?.cart?.id,
       });
       //
-      if (res.data) setCart(res.data);
+      if (res?.data) setCart(res?.data);
     } catch (error) {
       console.error(error);
     }
@@ -99,11 +99,11 @@ const CartServiceProvider = (props: Props) => {
         openUnAuthenticatedModal(true);
         return;
       }
-      setSelectedProductId(product.id);
+      setSelectedProductId(product?.id);
       //
-      const newCartList = cart.cartItems.map((item) =>
-        item.product.id === product.id
-          ? { ...item, units: item.units + units }
+      const newCartList = cart?.cartItems?.map((item) =>
+        item?.product?.id === product?.id
+          ? { ...item, units: item?.units + units }
           : { ...item }
       );
       //
@@ -112,9 +112,9 @@ const CartServiceProvider = (props: Props) => {
           userId: user?.id,
           cartId: user?.cart?.id,
           body: {
-            cartItems: newCartList.map((item) => ({
-              units: item.units,
-              productId: item.product.id,
+            cartItems: newCartList?.map((item) => ({
+              units: item?.units,
+              productId: item?.product?.id,
             })),
           },
         });
@@ -129,7 +129,7 @@ const CartServiceProvider = (props: Props) => {
       }
     },
     [
-      cart.cartItems,
+      cart?.cartItems,
       openUnAuthenticatedModal,
       updateCart,
       user?.cart?.id,
@@ -139,8 +139,8 @@ const CartServiceProvider = (props: Props) => {
   //
   const isItemInCart = useCallback(
     (product: Product1) =>
-      cart.cartItems.find((item) => item.product.id === product.id),
-    [cart.cartItems]
+      cart?.cartItems?.find((item) => item?.product?.id === product?.id),
+    [cart?.cartItems]
   );
   //
   const handleAddToCart = useCallback(
@@ -155,12 +155,12 @@ const CartServiceProvider = (props: Props) => {
       try {
         //
         if (availableCartItem) {
-          if (availableCartItem.units < product.units) {
+          if (availableCartItem?.units < product?.units) {
             await handleUpdateQty(product, units);
           }
           return;
         }
-        setSelectedProductId(product.id);
+        setSelectedProductId(product?.id);
         //
         const newItem: CartItem = {
           product,
@@ -171,16 +171,16 @@ const CartServiceProvider = (props: Props) => {
           userId: user?.id,
           cartId: user?.cart?.id,
           body: {
-            cartItems: [...cart.cartItems, newItem].map((item) => ({
-              units: item.units,
-              productId: item.product.id,
+            cartItems: [...cart?.cartItems, newItem]?.map((item) => ({
+              units: item?.units,
+              productId: item?.product?.id,
             })),
           },
         });
         //
         setCart((prev) => ({
           ...prev,
-          cartItems: [...cart.cartItems, newItem],
+          cartItems: [...cart?.cartItems, newItem],
         }));
       } catch (error) {
         console.error(error);
@@ -189,7 +189,7 @@ const CartServiceProvider = (props: Props) => {
       }
     },
     [
-      cart.cartItems,
+      cart?.cartItems,
       handleUpdateQty,
       isItemInCart,
       openUnAuthenticatedModal,
@@ -205,34 +205,37 @@ const CartServiceProvider = (props: Props) => {
         openUnAuthenticatedModal(true);
         return;
       }
-      setSelectedProductId(product.id);
+      setSelectedProductId(product?.id);
       try {
         await updateCart({
           userId: user?.id,
           cartId: user?.cart?.id,
           body: {
-            cartItems: cart.cartItems
-              .filter((item) => item.product.id !== product.id)
+            cartItems: cart?.cartItems
+              .filter((item) => item?.product?.id !== product?.id)
               .map((item) => ({
-                units: item.units,
-                productId: item.product.id,
+                units: item?.units,
+                productId: item?.product?.id,
               })),
           },
         });
         //
         setCart((prev) => ({
           ...prev,
-          cartItems: prev.cartItems.filter(
-            (item) => item.product.id !== product.id
+          cartItems: prev?.cartItems?.filter(
+            (item) => item?.product?.id !== product?.id
           ),
         }));
-        enqueueSnackbar(`${product.name} successfully removed from your cart`, {
-          variant: "success",
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "center",
-          },
-        });
+        enqueueSnackbar(
+          `${product?.name} successfully removed from your cart`,
+          {
+            variant: "success",
+            anchorOrigin: {
+              vertical: "top",
+              horizontal: "center",
+            },
+          }
+        );
       } catch (error) {
         console.error(error);
       } finally {
@@ -240,7 +243,7 @@ const CartServiceProvider = (props: Props) => {
       }
     },
     [
-      cart.cartItems,
+      cart?.cartItems,
       openUnAuthenticatedModal,
       updateCart,
       user?.cart?.id,
@@ -250,12 +253,13 @@ const CartServiceProvider = (props: Props) => {
   //
   const totalPrice = useMemo(
     () =>
-      cart.cartItems.reduce(
+      cart?.cartItems?.reduce(
         (accumulator, current) =>
-          (accumulator = accumulator + current.product.price * current.units),
+          (accumulator =
+            accumulator + current?.product?.price * current?.units),
         0
       ),
-    [cart.cartItems]
+    [cart?.cartItems]
   );
   //
   const returnValue: ContextState = useMemo(

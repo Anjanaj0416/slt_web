@@ -2,8 +2,6 @@ import { FC } from "react";
 import { useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-// GLOBAL CUSTOM HOOK
-import useCart from "hooks/useCart";
 // LOCAL CUSTOM COMPONENTS
 import TopHeader from "./top-header";
 import MiniCartItem from "./cart-item";
@@ -23,7 +21,7 @@ type Props = { toggleSidenav: () => void };
 const MiniCart: FC<Props> = ({ toggleSidenav }) => {
   const { push } = useRouter();
   const { cart, totalPrice } = useCartService();
-  const cartList = cart.cartItems;
+  const cartList = cart?.cartItems;
 
   const handleNavigate = (path: string) => () => {
     toggleSidenav();
@@ -33,16 +31,16 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
   return (
     <Box width="100%" minWidth={380}>
       {/* HEADING SECTION */}
-      <TopHeader toggle={toggleSidenav} total={cartList.length} />
+      <TopHeader toggle={toggleSidenav} total={cartList?.length} />
 
       <Divider />
 
-      <Box height={`calc(100vh - ${cartList.length ? "207px" : "75px"})`}>
+      <Box height={`calc(100vh - ${cartList?.length ? "207px" : "75px"})`}>
         {/* CART ITEM LIST */}
-        {cartList.length > 0 ? (
+        {cartList?.length > 0 ? (
           <Scrollbar>
-            {cartList.map((item) => (
-              <MiniCartItem key={item.product.id} item={item} />
+            {cartList?.map((item) => (
+              <MiniCartItem key={item?.product?.id} item={item} />
             ))}
           </Scrollbar>
         ) : (
@@ -51,7 +49,7 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
       </Box>
 
       {/* CART BOTTOM ACTION BUTTONS */}
-      {cartList.length > 0 ? (
+      {cartList?.length > 0 ? (
         <BottomActions
           total={currency(totalPrice)}
           handleNavigate={handleNavigate}
