@@ -16,6 +16,7 @@ import { ProductCard10 } from "components/product-cards/product-card-10";
 import { Product1 } from "models/Product.model";
 import { useLazyFilteredProductsQuery } from "services/product-api";
 import Category1 from "models/Category.model";
+import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -63,8 +64,19 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   };
 
   const getProducts = async (categoryIds) => {
-    const products: Product1[] = (await filteredProducts({ categoryIds })).data?.data;
-    setProducts(products);
+    const products: Product1[] = (await filteredProducts({ categoryIds })).data
+      ?.data;
+
+    setProducts(
+      products.map((product) => {
+        return {
+          ...product,
+          images: product.images.map(
+            (image) => `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
+          ),
+        };
+      })
+    );
   };
 
   const getAllSubCategoryIds = (category) => {
@@ -72,7 +84,9 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
     if (category.subCategories !== null && category.subCategories.length > 0) {
       category.subCategories.forEach((subCategory) => {
         subCategoryIds.push(subCategory.id);
-        subCategoryIds = subCategoryIds.concat(getAllSubCategoryIds(subCategory));
+        subCategoryIds = subCategoryIds.concat(
+          getAllSubCategoryIds(subCategory)
+        );
       });
     }
     //
@@ -90,13 +104,21 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
             {/* SUB CATEGORY LIST */}
             <List sx={{ mb: 2 }}>
               {data.subCategories?.map((item) => (
-                <StyledListItem key={item.id} onClick={() => handleCategoryClick(item)}>
+                <StyledListItem
+                  key={item.id}
+                  onClick={() => handleCategoryClick(item)}
+                >
                   {item.name}
                 </StyledListItem>
               ))}
             </List>
 
-            <NavLink3 href="/" text="Browse All" color="dark.main" hoverColor="dark.main" />
+            <NavLink3
+              href="/"
+              text="Browse All"
+              color="dark.main"
+              hoverColor="dark.main"
+            />
           </StyledCard>
         </Grid>
 
@@ -112,7 +134,9 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
                 responsive={responsive}
                 arrowStyles={{ backgroundColor: "dark.main" }}
               >
-                {products?.map((product) => <ProductCard10 product={product} key={product.id} />)}
+                {products?.map((product) => (
+                  <ProductCard10 product={product} key={product.id} />
+                ))}
               </Carousel>
             )}
           </Grid>
