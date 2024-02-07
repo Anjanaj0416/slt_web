@@ -81,7 +81,10 @@ const ProductCard20: FC<Props> = ({ product }) => {
           slug: id,
           name,
           price,
-          imgGroup: [`${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`],
+          imgGroup: [
+            images[0] ||
+              `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`,
+          ],
         }}
       />
 
