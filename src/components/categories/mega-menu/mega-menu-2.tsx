@@ -38,7 +38,7 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
               (item.menuData.categories ? (
                 <MegaMenu3 minWidth="560px" data={item.menuData} />
               ) : (
-                <MegaMenu2 data={item.menuData} moreSubCategories={item.moreSubCategories}/>
+                <MegaMenu2 data={item.menuData || []} moreSubCategories={item.moreSubCategories}/>
               ))}
           </CategoryMenuItem>
         ))}

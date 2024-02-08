@@ -221,7 +221,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
             title={item.title}
             caret={!!item.menuData}
           >
-            <MegaMenu data={item.menuData || {}} moreSubCategories={item.moreSubCategories} />
+            <MegaMenu data={item.menuData || []} moreSubCategories={item.moreSubCategories} />
           </CategoryMenuItem>
         );
       })}
