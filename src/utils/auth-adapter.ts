@@ -10,14 +10,12 @@ export default function AuthAdapter(): any {
       const createUserRequest = {
         firstName: data.name.split(" ")[0] ?? "",
         lastName: data.name.split(" ")[1] ?? "",
-        email: data.email ?? "",
-        username: data.email ?? "",
-        phone: data.phone ?? "",
+        email: data.email,
       };
       //
       const response = await axios.post(
         `${process.env.NEXTAUTH_URL}/api/auth/users`,
-        createUserRequest,
+        createUserRequest
       );
       return response?.data;
     } catch (error) {
@@ -32,8 +30,9 @@ export default function AuthAdapter(): any {
         const getUserBySubRequest = { params: { sub: id } };
         const response = await axios.get(
           `${process.env.NEXTAUTH_URL}/api/auth/users`,
-          getUserBySubRequest,
+          getUserBySubRequest
         );
+        //
         return response?.data?.data[0] as unknown as AdapterUser;
       } catch (error) {
         return;
@@ -44,8 +43,9 @@ export default function AuthAdapter(): any {
         const getUserByEmailRequest = { params: { email } };
         const response = await axios.get(
           `${process.env.NEXTAUTH_URL}/api/auth/users`,
-          getUserByEmailRequest,
+          getUserByEmailRequest
         );
+        //
         return response?.data?.data[0] as unknown as AdapterUser;
       } catch (error) {
         return;
@@ -56,8 +56,9 @@ export default function AuthAdapter(): any {
         const getUserBySubRequest = { params: { sub: providerAccountId } };
         const response = await axios.get(
           `${process.env.NEXTAUTH_URL}/api/auth/users`,
-          getUserBySubRequest,
+          getUserBySubRequest
         );
+        //
         return response?.data?.data[0] as unknown as AdapterUser;
       } catch (error) {
         return;
