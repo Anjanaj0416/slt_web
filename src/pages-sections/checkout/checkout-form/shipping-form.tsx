@@ -1,12 +1,10 @@
-import { FC } from "react";
-import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+import { FC } from "react";
 // GLOBAL CUSTOM COMPONENT
 import { H6 } from "components/Typography";
 // DUMMY CUSTOM DATA
-import countryList from "data/countryList";
 
 // ==============================================================
 interface Props {
@@ -25,7 +23,6 @@ const ShippingForm: FC<Props> = ({
   touched,
   handleBlur,
   handleChange,
-  setFieldValue,
 }) => {
   return (
     <Card sx={{ mb: 4, p: 3 }}>
@@ -35,7 +32,6 @@ const ShippingForm: FC<Props> = ({
         <Grid item sm={6} xs={12}>
           <TextField
             fullWidth
-            sx={{ mb: 2 }}
             label="Full Name"
             onBlur={handleBlur}
             name="shipping_name"
@@ -45,6 +41,10 @@ const ShippingForm: FC<Props> = ({
             helperText={
               (touched.shipping_name && errors.shipping_name) as string
             }
+            disabled
+            sx={{
+              mb: 2,
+            }}
           />
 
           <TextField
@@ -59,6 +59,7 @@ const ShippingForm: FC<Props> = ({
             helperText={
               (touched.shipping_contact && errors.shipping_contact) as string
             }
+            disabled
           />
 
           <TextField
@@ -72,85 +73,61 @@ const ShippingForm: FC<Props> = ({
             value={values.shipping_zip}
             error={!!touched.shipping_zip && !!errors.shipping_zip}
             helperText={(touched.shipping_zip && errors.shipping_zip) as string}
+            disabled
           />
 
           <TextField
             fullWidth
-            label="Address 1"
+            label="Address Line 1"
             onBlur={handleBlur}
             onChange={handleChange}
-            name="shipping_address1"
-            value={values.shipping_address1}
-            error={!!touched.shipping_address1 && !!errors.shipping_address1}
-            helperText={
-              (touched.shipping_address1 && errors.shipping_address1) as string
+            name="billing_address_line1"
+            value={values.billing_address_line1}
+            error={
+              !!touched.billing_address_line1 && !!errors.billing_address_line1
             }
+            helperText={
+              (touched.billing_address_line1 &&
+                errors.billing_address_line1) as string
+            }
+            disabled
           />
         </Grid>
 
         <Grid item sm={6} xs={12}>
           <TextField
             fullWidth
-            type="email"
-            sx={{ mb: 2 }}
+            label="Address Line 2"
             onBlur={handleBlur}
-            name="shipping_email"
-            label="Email Address"
             onChange={handleChange}
-            value={values.shipping_email}
-            error={!!touched.shipping_email && !!errors.shipping_email}
-            helperText={
-              (touched.shipping_email && errors.shipping_email) as string
+            name="billing_address_line2"
+            value={values.billing_address_line2}
+            error={
+              !!touched.billing_address_line2 && !!errors.billing_address_line2
             }
+            helperText={
+              (touched.billing_address_line2 &&
+                errors.billing_address_line2) as string
+            }
+            disabled
+            sx={{ mb: 2 }}
           />
-
           <TextField
             fullWidth
-            sx={{ mb: 2 }}
-            label="Company"
+            label="Province/State"
             onBlur={handleBlur}
+            name="shipping_province_or_state"
             onChange={handleChange}
-            name="shipping_company"
-            value={values.shipping_company}
-            error={!!touched.shipping_company && !!errors.shipping_company}
-            helperText={
-              (touched.shipping_company && errors.shipping_company) as string
+            value={values.shipping_province_or_state}
+            error={
+              !!touched.shipping_province_or_state &&
+              !!errors.shipping_province_or_state
             }
-          />
-
-          <Autocomplete
-            fullWidth
-            sx={{ mb: 2 }}
-            options={countryList}
-            value={values.shipping_country}
-            getOptionLabel={(option) => option.label}
-            onChange={(_, value) => setFieldValue("shipping_country", value)}
-            renderInput={(params) => (
-              <TextField
-                label="Country"
-                variant="outlined"
-                placeholder="Select Country"
-                error={!!touched.shipping_country && !!errors.shipping_country}
-                helperText={
-                  (touched.shipping_country &&
-                    errors.shipping_country) as string
-                }
-                {...params}
-              />
-            )}
-          />
-
-          <TextField
-            fullWidth
-            label="Address 2"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            name="shipping_address2"
-            value={values.shipping_address2}
-            error={!!touched.shipping_address2 && !!errors.shipping_address2}
             helperText={
-              (touched.shipping_address2 && errors.shipping_address2) as string
+              (touched.shipping_province_or_state &&
+                errors.shipping_province_or_state) as string
             }
+            disabled
           />
         </Grid>
       </Grid>
