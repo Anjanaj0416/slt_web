@@ -1,18 +1,19 @@
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import { ChangeEvent, Fragment, useState } from "react";
-import Card from "@mui/material/Card";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import TextField from "@mui/material/TextField";
-// GLOBAL CUSTOM COMPONENTS
-import { FlexBox } from "components/flex-box";
-// Local CUSTOM COMPONENTS
 import FormLabel from "./form-label";
-import CreditCardForm from "./credit-card-form";
+
+const PAYMENT_METHODS = {
+  CASH_ON_DELIVERY: "cash-on-deliver",
+} as const;
 
 const PaymentForm = () => {
-  const [paymentMethod, setPaymentMethod] = useState("credit-card");
+  const [paymentMethod, setPaymentMethod] = useState<string>(
+    PAYMENT_METHODS.CASH_ON_DELIVERY
+  );
 
   const handlePaymentMethodChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(event.target.name);
@@ -20,9 +21,15 @@ const PaymentForm = () => {
 
   return (
     <Fragment>
-      <Card sx={{ padding: { sm: 3, xs: 2 }, mb: 4 }}>
+      <Card
+        sx={{
+          paddingInline: { sm: 3, xs: 2 },
+          paddingBottom: { sm: 3, xs: 2 },
+          mb: 4,
+        }}
+      >
         {/* CREDIT CARD OPTION */}
-        <FormLabel
+        {/* <FormLabel
           name="credit-card"
           title="Pay with credit card"
           handleChange={handlePaymentMethodChange}
@@ -31,17 +38,17 @@ const PaymentForm = () => {
 
         {paymentMethod === "credit-card" && <CreditCardForm />}
 
-        <Divider sx={{ my: 3, mx: -4 }} />
+        <Divider sx={{ my: 3, mx: -4 }} /> */}
 
         {/* PAYPAL CARD OPTION */}
-        <FormLabel
+        {/* <FormLabel
           name="paypal"
           title="Pay with Paypal"
           handleChange={handlePaymentMethodChange}
           checked={paymentMethod === "paypal"}
-        />
+        /> */}
 
-        {paymentMethod === "paypal" && (
+        {/* {paymentMethod === "paypal" && (
           <FlexBox alignItems="flex-end" gap={2} mb={4}>
             <TextField
               fullWidth
@@ -53,16 +60,16 @@ const PaymentForm = () => {
               Submit
             </Button>
           </FlexBox>
-        )}
+        )} */}
 
-        <Divider sx={{ my: 3, mx: -4 }} />
+        <Divider sx={{ mt: 3, mx: -4 }} />
 
         {/* CASH ON DELIVERY OPTION */}
         <FormLabel
-          name="cod"
+          name={PAYMENT_METHODS.CASH_ON_DELIVERY}
           title="Cash On Delivery"
           handleChange={handlePaymentMethodChange}
-          checked={paymentMethod === "cod"}
+          checked={paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY}
         />
       </Card>
 

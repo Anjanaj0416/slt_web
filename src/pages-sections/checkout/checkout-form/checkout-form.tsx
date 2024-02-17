@@ -16,9 +16,9 @@ import BillingAddressForm from "./billing-address-form";
 import ShippingForm from "./shipping-form";
 import useCheckoutService from "hooks/useCheckoutService";
 import { CheckoutContextAddress } from "contexts/CheckoutServiceContext";
-
+// 
 const CheckoutForm = () => {
-  const { addressForm, handleSetAddressForm } = useCheckoutService();
+  const { addressForm, handleSetAddressForm,handleAddBillingAddress } = useCheckoutService();
   const router = useRouter();
   const session = useSession();
   //
@@ -87,7 +87,12 @@ const CheckoutForm = () => {
       shipping_address_id: shippingAddress?.id,
     };
     handleSetAddressForm(body);
-    router.push("/payment");
+    if(initialValues.same_as_shipping){
+      router.push(`/payment?address_id=${shippingAddress?.id}`)
+    }else{
+      const address = await handleAddBillingAddress();
+      if(address?.id) router.push(`/payment?address_id=${address?.id}`)
+    }
   };
   //
   console.log(addressForm);
