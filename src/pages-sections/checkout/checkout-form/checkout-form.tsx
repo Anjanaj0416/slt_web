@@ -14,11 +14,8 @@ import { useSession } from "next-auth/react";
 import { useLazyGetAddressesQuery } from "services/address-api";
 import BillingAddressForm from "./billing-address-form";
 import ShippingForm from "./shipping-form";
-import useCheckoutService from "hooks/useCheckoutService";
-import { CheckoutContextAddress } from "contexts/CheckoutServiceContext";
-// 
+//
 const CheckoutForm = () => {
-  const { addressForm, handleSetAddressForm,handleAddBillingAddress } = useCheckoutService();
   const router = useRouter();
   const session = useSession();
   //
@@ -80,22 +77,7 @@ const CheckoutForm = () => {
     [billingAddress, shippingAddress]
   );
   //
-  const handleFormSubmit = async (values: typeof initialValues) => {
-    const body: CheckoutContextAddress = {
-      ...values,
-      billing_address_id: billingAddress?.id,
-      shipping_address_id: shippingAddress?.id,
-    };
-    handleSetAddressForm(body);
-    if(initialValues.same_as_shipping){
-      router.push(`/payment?address_id=${shippingAddress?.id}`)
-    }else{
-      const address = await handleAddBillingAddress();
-      if(address?.id) router.push(`/payment?address_id=${address?.id}`)
-    }
-  };
-  //
-  console.log(addressForm);
+  const handleFormSubmit = async (values: typeof initialValues) => {};
   //
   return !isAddressesLoading ? (
     <Formik

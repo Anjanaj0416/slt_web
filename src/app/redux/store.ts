@@ -22,6 +22,7 @@ const apiMiddlewares = [
   productApi.middleware,
   categoryApi.middleware,
   cartApi.middleware,
+  addressApi.middleware,
 ]; // Middleware for Redux Toolkit Query
 //
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors

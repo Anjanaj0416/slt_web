@@ -2,7 +2,7 @@
 
 import Grid from "@mui/material/Grid";
 // LOCAL CUSTOM COMPONENTS
-import { CheckoutForm } from "../checkout-form";
+import { CheckoutForm } from "../checkout-alt-form";
 import { CheckoutSummary } from "../checkout-summery";
 
 const CheckoutPageView = () => {

@@ -8,8 +8,11 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 // GLOBAL CUSTOM COMPONENT
 import { H5 } from "components/Typography";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { Address } from "./_types";
+import { POSTAddressResponse } from "models/Address.model";
+import { Box, IconButton } from "@mui/material";
 
 const validationSchema = yup.object({
   address2: yup.string(),
@@ -21,7 +24,7 @@ const validationSchema = yup.object({
 // ================================================================
 interface Props {
   active: boolean;
-  address: Address;
+  address: POSTAddressResponse;
   changeEditAddressId: () => void;
   handleEditAddress: (id: number, data: Address) => void;
 }
@@ -39,9 +42,9 @@ const EditAddressForm: FC<Props> = (props) => {
 
   const initialValues = {
     name: address.name,
-    phone: address.phone,
-    street1: address.street1,
-    street2: address.street2,
+    // phone: address.phone,
+    // street1: address.street1,
+    // street2: address.street2,
   };
 
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
@@ -49,7 +52,7 @@ const EditAddressForm: FC<Props> = (props) => {
       initialValues,
       validationSchema,
       onSubmit: (values) => {
-        handleEditAddress(address.id, { ...values, id: address.id });
+        // handleEditAddress(address.id, { ...values, id: address.id });
         handleCloseModal();
       },
     });
@@ -57,7 +60,21 @@ const EditAddressForm: FC<Props> = (props) => {
   return (
     <Dialog open={openModal} onClose={handleCloseModal} sx={{ zIndex: 99999 }}>
       <DialogContent>
-        <H5 mb={4}>Edit Address Information</H5>
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          alignItems={"flex-start"}
+        >
+          <H5 mb={4}>Edit Address Information</H5>
+          <IconButton
+            size="small"
+            aria-label="close"
+            onClick={handleCloseModal}
+            sx={{ border: "1px solid black", width: 22, height: 22 }}
+          >
+            <CloseIcon sx={{ width: 16, height: 16 }} />
+          </IconButton>
+        </Box>
 
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
@@ -76,7 +93,7 @@ const EditAddressForm: FC<Props> = (props) => {
             </Grid>
 
             <Grid item sm={6} xs={12}>
-              <TextField
+              {/* <TextField
                 fullWidth
                 type="text"
                 name="street1"
@@ -86,11 +103,11 @@ const EditAddressForm: FC<Props> = (props) => {
                 onChange={handleChange}
                 helperText={touched.street1 && errors.street1}
                 error={touched.street1 && Boolean(errors.street1)}
-              />
+              /> */}
             </Grid>
 
             <Grid item sm={6} xs={12}>
-              <TextField
+              {/* <TextField
                 fullWidth
                 type="text"
                 name="street2"
@@ -100,11 +117,11 @@ const EditAddressForm: FC<Props> = (props) => {
                 onChange={handleChange}
                 helperText={touched.street2 && errors.street2}
                 error={touched.street2 && Boolean(errors.street2)}
-              />
+              /> */}
             </Grid>
 
             <Grid item sm={6} xs={12}>
-              <TextField
+              {/* <TextField
                 fullWidth
                 type="text"
                 name="phone"
@@ -114,7 +131,7 @@ const EditAddressForm: FC<Props> = (props) => {
                 onChange={handleChange}
                 helperText={touched.phone && errors.phone}
                 error={touched.phone && Boolean(errors.phone)}
-              />
+              /> */}
             </Grid>
 
             <Grid item sm={6} xs={12}>
