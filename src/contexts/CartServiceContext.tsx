@@ -31,6 +31,8 @@ type ContextState = {
   totalPrice: number;
   isItemInCart: (product: Product1) => CartItem | null | undefined;
   selectedProductId: string;
+  note: string;
+  setNote: Dispatch<SetStateAction<string>>;
 };
 //
 const initState: ContextState = {
@@ -50,6 +52,8 @@ const initState: ContextState = {
   totalPrice: 0,
   isItemInCart: () => null,
   selectedProductId: "",
+  note: "",
+  setNote: () => {},
 };
 //
 export const CartServiceContext = createContext<ContextState>(initState);
@@ -63,7 +67,8 @@ const CartServiceProvider = (props: Props) => {
   const user = session?.data?.user as User1 | undefined;
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const [selectedProductId, setSelectedProductId] = useState<string>("");
-  //
+  const [note, setNote] = useState<string>("");
+
   const [cart, setCart] = useState<UserCart>({
     id: "",
     cartItems: [],
@@ -277,6 +282,8 @@ const CartServiceProvider = (props: Props) => {
       totalPrice,
       isItemInCart,
       selectedProductId,
+      note,
+      setNote,
     }),
     [
       cart,
@@ -289,6 +296,7 @@ const CartServiceProvider = (props: Props) => {
       isUpdating,
       totalPrice,
       selectedProductId,
+      note,
     ]
   );
   //

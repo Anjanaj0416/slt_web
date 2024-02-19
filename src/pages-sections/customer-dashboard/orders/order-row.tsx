@@ -21,7 +21,7 @@ type Props = { order: Order };
 const OrderRow: FC<Props> = ({ order }) => {
   const getColor = (status: string) => {
     switch (status) {
-      case "Pending":
+      case "PENDING":
         return "secondary";
 
       case "Processing":
@@ -37,6 +37,13 @@ const OrderRow: FC<Props> = ({ order }) => {
         return "default";
     }
   };
+  const calculateTotalAmount = (payments) => {
+    let totalAmount = 0;
+    payments?.forEach((paymentItem) => {
+      totalAmount += paymentItem.amount;
+    });
+    return totalAmount;
+  };
 
   return (
     <Link href={`/orders/${order.id}`}>
@@ -46,8 +53,8 @@ const OrderRow: FC<Props> = ({ order }) => {
         <Box textAlign="center">
           <Chip
             size="small"
-            label={order.status}
-            color={getColor(order.status)}
+            label={order.orderStatus}
+            color={getColor(order.orderStatus)}
           />
         </Box>
 
@@ -55,7 +62,9 @@ const OrderRow: FC<Props> = ({ order }) => {
           {format(new Date(order.createdAt), "MMM dd, yyyy")}
         </Paragraph>
 
-        <Paragraph textAlign="center">{currency(order.totalPrice)}</Paragraph>
+        <Paragraph textAlign="center">
+          {currency(calculateTotalAmount(order?.payments))}
+        </Paragraph>
 
         <Box display={{ sm: "inline-flex", xs: "none" }} justifyContent="end">
           <IconButton>

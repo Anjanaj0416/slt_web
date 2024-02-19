@@ -14,13 +14,14 @@ type Props = { orders: Order[] };
 // ====================================================
 
 const OrdersPageView = ({ orders }: Props) => {
+  console.log(orders)
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
       <DashboardHeader Icon={ShoppingBag} title="My Orders" />
 
       {/* ORDER LIST AREA */}
-      {orders.map((order) => (
+      {orders?.map((order) => (
         <OrderRow order={order} key={order.id} />
       ))}
 

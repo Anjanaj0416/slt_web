@@ -21,4 +21,17 @@ interface Order {
   status: "Pending" | "Processing" | "Delivered" | "Cancelled";
 }
 
+export interface Order1 {
+  id: string;
+  tax: number;
+  items: Item[];
+  createdAt: Date;
+  discount: number;
+  deliveredAt: Date;
+  totalPrice: number;
+  isDelivered: boolean;
+  shippingAddress: string;
+  status: "Pending" | "Processing" | "Delivered" | "Cancelled";
+}
+
 export default Order;

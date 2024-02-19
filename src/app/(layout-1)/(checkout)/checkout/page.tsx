@@ -1,5 +1,9 @@
+import API from "constants/address";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { CheckoutPageView } from "pages-sections/checkout/page-view";
+import { auth } from "utils/auth";
+import request from "utils/request";
 
 export const metadata: Metadata = {
   title: "Checkout - Bazaar Next.js E-commerce Template",
@@ -9,6 +13,17 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default function Checkout() {
-  return <CheckoutPageView />;
+export default async function Checkout() {
+  try {
+    const { user } = await auth();
+    //
+    const { data } = await request(API.GET_ADDRESS, {
+      userId: user.id,
+    });
+    //
+    console.log('data',data)
+    return <CheckoutPageView address={data} />;
+  } catch (error) {
+    notFound();
+  }
 }

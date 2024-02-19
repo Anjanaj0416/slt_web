@@ -30,6 +30,14 @@ export const addressApi = createApi({
       }),
       invalidatesTags: ["ADDRESSES", "ADDRESS"],
     }),
+    updateAddress: builder.mutation({
+      query: ({ userId, addressId, body }) => ({
+        url: `/users/${userId}/addresses/${addressId}`,
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["ADDRESS", "ADDRESSES"],
+    }),
   }),
 });
 //
@@ -40,4 +48,5 @@ export const {
   useLazyGetAddressesQuery,
   usePostAddressMutation,
   useDeleteAddressMutation,
+  useUpdateAddressMutation
 } = addressApi;

@@ -5,18 +5,50 @@ import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import { ChangeEvent, Fragment, useState } from "react";
 import FormLabel from "./form-label";
+import { useCreateOrderMutation } from "services/order-api";
+import useCheckoutService from "hooks/useCheckoutService";
+import useCartService from "hooks/useCartService";
+import { useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
+import { useSnackbar } from "notistack";
+import { useRouter } from "next/navigation";
 
 const PAYMENT_METHODS = {
   CASH_ON_DELIVERY: "cash-on-deliver",
 } as const;
 
 const PaymentForm = () => {
+  const { push } = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
+  const { data: session } = useSession();
+  const user = session?.user as User1;
+  const { selectedBillingAddressId, selectedShippingAddressId } =
+    useCheckoutService();
+  const { note, totalPrice } = useCartService();
+  //
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
+  //
   const [paymentMethod, setPaymentMethod] = useState<string>(
     PAYMENT_METHODS.CASH_ON_DELIVERY
   );
-
+  //
   const handlePaymentMethodChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(event.target.name);
+  };
+  //
+  const placeOrder = async () => {
+    await createOrder({
+      body: {
+        cartId: user?.cart?.id,
+        userId: user?.id,
+        shippingAddressId: selectedShippingAddressId,
+        billingAddressId: selectedBillingAddressId,
+        note,
+        payments: [{ amount: totalPrice, paymentType: "COD" }],
+      },
+    });
+    enqueueSnackbar("Order places successfully", { variant: "success" });
+    push("/orders");
   };
 
   return (
@@ -90,11 +122,11 @@ const PaymentForm = () => {
           LinkComponent={Link}
           variant="contained"
           color="primary"
-          href="/orders"
+          onClick={placeOrder}
           type="submit"
           fullWidth
         >
-          Review
+          Place Order
         </Button>
       </Stack>
     </Fragment>

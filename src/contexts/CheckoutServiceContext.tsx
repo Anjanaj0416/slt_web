@@ -23,7 +23,7 @@ export const CheckoutServiceContext = createContext({
   selectedBillingAddressId: "",
   selectedShippingAddressId: "",
   handleSetSelectedBillingAddressId: (_: string) => {},
-  handleSelectedShippingAddressId: (_: string) => {},
+  handleSetSelectedShippingAddressId: (_: string) => {},
   handleDeleteAddress: (_: string): Promise<POSTAddressResponse | undefined> =>
     undefined,
 });
@@ -49,7 +49,7 @@ const CheckoutServiceContextProvider = (props: Props) => {
     setSelectedBillingAddressId(id);
   }, []);
   //
-  const handleSelectedShippingAddressId = useCallback((id: string) => {
+  const handleSetSelectedShippingAddressId = useCallback((id: string) => {
     setSelectedShippingAddressId(id);
   }, []);
   //
@@ -107,12 +107,12 @@ const CheckoutServiceContextProvider = (props: Props) => {
       selectedShippingAddressId,
       handleAddAddress,
       handleSetSelectedBillingAddressId,
-      handleSelectedShippingAddressId,
+      handleSetSelectedShippingAddressId,
       handleDeleteAddress,
     }),
     [
       handleAddAddress,
-      handleSelectedShippingAddressId,
+      handleSetSelectedShippingAddressId,
       handleSetSelectedBillingAddressId,
       handleDeleteAddress,
       isAddingAddress,
