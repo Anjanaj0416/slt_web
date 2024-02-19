@@ -1,10 +1,10 @@
-import { FC } from "react";
-import Link from "next/link";
+import East from "@mui/icons-material/East";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
-import East from "@mui/icons-material/East";
 import format from "date-fns/format";
+import Link from "next/link";
+import { FC } from "react";
 // GLOBAL CUSTOM COMPONENT
 import { H5, Paragraph } from "components/Typography";
 // Local CUSTOM COMPONENT
@@ -12,10 +12,10 @@ import TableRow from "../table-row";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import Order from "models/Order.model";
+import { Order1 } from "models/Order.model";
 
 // =================================================
-type Props = { order: Order };
+type Props = { order: Order1 };
 // =================================================
 
 const OrderRow: FC<Props> = ({ order }) => {

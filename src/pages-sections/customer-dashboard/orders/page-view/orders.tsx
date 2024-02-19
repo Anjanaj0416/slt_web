@@ -7,23 +7,20 @@ import OrderRow from "../order-row";
 import Pagination from "../../pagination";
 import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
-import Order from "models/Order.model";
+import { Order1 } from "models/Order.model";
 
 // ====================================================
-type Props = { orders: Order[] };
+type Props = { orders: Order1[] };
 // ====================================================
 
 const OrdersPageView = ({ orders }: Props) => {
-  console.log(orders)
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
       <DashboardHeader Icon={ShoppingBag} title="My Orders" />
 
       {/* ORDER LIST AREA */}
-      {orders?.map((order) => (
-        <OrderRow order={order} key={order.id} />
-      ))}
+      {orders?.map((order) => <OrderRow order={order} key={order.id} />)}
 
       {/* ORDERS PAGINATION */}
       <Pagination count={5} onChange={(data) => console.log(data)} />
