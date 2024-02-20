@@ -25,7 +25,7 @@ const SnackbarProvider: FC<PropsWithChildren> = ({ children }) => {
     <Provider
       maxSnack={4}
       autoHideDuration={2000}
-      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >
       {children}
     </Provider>

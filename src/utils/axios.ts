@@ -1,6 +1,7 @@
 import axios from "axios";
 //
 import { ENVIRONMENT } from "config";
+import { auth } from "./auth";
 //
 let newAccessToken = null;
 let refreshPromise = null;
@@ -8,10 +9,11 @@ let refreshPromise = null;
  * Function to select the tokens from the redux store
  * @returns {Object}
  */
-const getTokens = () => {
+const getTokens = async () => {
+  const session: any = await auth();
   // When initializing tokens, subscribing to redux store changes to
   // get an updated state each time the store state gets changed
-  return { refreshToken: "", accessToken: "" };
+  return { refreshToken: session?.refreshToken, accessToken: session?.accessToken };
 };
 // Create an axios config instance
 const axiosConfig = axios.create({
@@ -22,7 +24,7 @@ const axiosConfig = axios.create({
  * @returns {refreshToken}
  */
 const getNewTokens = async () => {
-  const { refreshToken } = getTokens();
+  const { refreshToken } = await getTokens();
   const tokenData = await axiosConfig.post("", {
     refreshToken,
   });
@@ -32,9 +34,9 @@ const getNewTokens = async () => {
  * Function to add axios interceptors to check the axios request
  * @returns {config}
  */
-axiosConfig.interceptors.request.use((requestConfig) => {
+axiosConfig.interceptors.request.use(async (requestConfig) => {
   const config = requestConfig;
-  const { accessToken } = getTokens();
+  const { accessToken } = await getTokens();
   if (accessToken && "Authorization" in config.headers) {
     config.headers.Authorization = `Bearer ${newAccessToken ?? accessToken}`;
   }
@@ -50,7 +52,7 @@ axiosConfig.interceptors.request.use((requestConfig) => {
 axiosConfig.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const { refreshToken } = getTokens();
+    const { refreshToken } = await getTokens();
     const originalRequest = error.config;
     if (error?.response?.status === 401 && refreshToken && !originalRequest._retry) {
       try {

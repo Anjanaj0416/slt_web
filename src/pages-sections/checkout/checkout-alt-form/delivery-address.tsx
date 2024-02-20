@@ -1,64 +1,82 @@
-import { FC, useState } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
-import { FormikErrors } from "formik";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 // MUI ICON COMPONENTS
 import DeleteOutline from "@mui/icons-material/DeleteOutline";
 import ModeEditOutline from "@mui/icons-material/ModeEditOutline";
 // LOCAL CUSTOM COMPONENTS
+import EditAddressForm from "./edit-address-form";
 import Heading from "./heading";
 import NewAddressForm from "./new-address-form";
-import EditAddressForm from "./edit-address-form";
 // GLOBAL CUSTOM COMPONENTS
 import { H6, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
-import { Address, InitialValues } from "./_types";
+import useCheckoutService from "hooks/useCheckoutService";
+import { POSTAddressResponse } from "models/Address.model";
+import { upperCaseToCapitalize } from "utils/strings";
+import { useSnackbar } from "notistack";
 
 // ==============================================================
 interface Props {
-  values: FormikErrors<InitialValues>;
-  handleFieldValueChange: (value: string, fieldName: string) => void;
+  addresses: Array<POSTAddressResponse>;
+  setAddresses: Dispatch<SetStateAction<POSTAddressResponse[]>>;
+  addressType: POSTAddressResponse["addressType"];
+  selectedAddressId: string;
+  section: number;
+  handleFetch: Function;
 }
 // ==============================================================
 
-const DeliveryAddress: FC<Props> = ({ values, handleFieldValueChange }) => {
-  const [addressList, setAddressList] = useState([...DUMMY_ADDRESS_LIST]);
-  const [editAddressId, setEditAddressId] = useState(0);
+const DeliveryAddress: FC<Props> = ({
+  addresses,
+  setAddresses,
+  addressType,
+  selectedAddressId,
+  section,
+  handleFetch,
+}) => {
+  const { enqueueSnackbar } = useSnackbar();
+  const {
+    handleSetSelectedBillingAddressId,
+    handleSetSelectedShippingAddressId,
+    handleDeleteAddress,
+  } = useCheckoutService();
 
-  const changeEditAddressId = () => setEditAddressId(0);
+  const [editAddressId, setEditAddressId] = useState("");
 
-  const handleAddNewAddress = (address: Address) => {
-    setAddressList((state) => [...state, { ...address, id: Date.now() }]);
-  };
-
-  const handleDeleteAddress = (addressId: number) => {
-    setAddressList((state) => state.filter((item) => item.id !== addressId));
-  };
-
-  const handleEditAddress = (addressId: number, data: Address) => {
-    setAddressList((state) => {
-      return state.map((item) => {
-        if (item.id === addressId) return { ...data };
-        else return item;
-      });
-    });
+  const handleDelete = async (id: string) => {
+    try {
+      await handleDeleteAddress(id);
+      setAddresses((prev) => prev.filter((item) => item?.id !== id));
+      enqueueSnackbar("Address successfully deleted", { variant: "success" });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <Card sx={{ p: 3, mb: 3 }}>
       {/* HEADING & BUTTON SECTION */}
       <FlexBetween mb={4}>
-        <Heading number={2} title="Delivery Address" mb={0} />
-        <NewAddressForm handleAddNewAddress={handleAddNewAddress} />
+        <Heading
+          number={section}
+          title={`${upperCaseToCapitalize(addressType)} Address`}
+          mb={0}
+        />
+        <NewAddressForm addressType={addressType} handleFetch={handleFetch} />
       </FlexBetween>
 
       {/* ADDRESS LIST SECTION */}
       <Grid container spacing={3}>
-        {addressList.map((item, ind) => (
+        {addresses?.map((item, ind) => (
           <Grid item md={4} sm={6} xs={12} key={ind}>
             <Card
-              onClick={() => handleFieldValueChange(item.street1, "address")}
+              onClick={() =>
+                item.addressType === "BILLING"
+                  ? handleSetSelectedBillingAddressId(item?.id)
+                  : handleSetSelectedShippingAddressId(item?.id)
+              }
               sx={{
                 padding: 2,
                 boxShadow: "none",
@@ -67,7 +85,7 @@ const DeliveryAddress: FC<Props> = ({ values, handleFieldValueChange }) => {
                 position: "relative",
                 backgroundColor: "grey.100",
                 borderColor:
-                  item.street1 === values.address
+                  selectedAddressId === item?.id
                     ? "primary.main"
                     : "transparent",
               }}
@@ -75,7 +93,7 @@ const DeliveryAddress: FC<Props> = ({ values, handleFieldValueChange }) => {
               <FlexBox position="absolute" top={5} right={5}>
                 <IconButton
                   size="small"
-                  onClick={() => setEditAddressId(item.id)}
+                  onClick={() => setEditAddressId(item?.id)}
                 >
                   <ModeEditOutline fontSize="inherit" />
                 </IconButton>
@@ -83,18 +101,18 @@ const DeliveryAddress: FC<Props> = ({ values, handleFieldValueChange }) => {
                 <IconButton
                   size="small"
                   color="error"
-                  onClick={() => handleDeleteAddress(item.id)}
+                  onClick={() => handleDelete(item?.id)}
                 >
                   <DeleteOutline fontSize="inherit" />
                 </IconButton>
               </FlexBox>
 
-              <H6 mb={0.5}>{item.name}</H6>
-              <Paragraph color="grey.700">{item.street1}</Paragraph>
-              {item.street2 ? (
-                <Paragraph color="grey.700">{item.street2}</Paragraph>
+              <H6 mb={0.5}>{item?.name}</H6>
+              <Paragraph color="grey.700">{item?.addressLine1}</Paragraph>
+              {item?.addressLine1 ? (
+                <Paragraph color="grey.700">{item?.addressLine2}</Paragraph>
               ) : null}
-              <Paragraph color="grey.700">{item.phone}</Paragraph>
+              <Paragraph color="grey.700">{item?.contactNumber}</Paragraph>
             </Card>
           </Grid>
         ))}
@@ -103,38 +121,14 @@ const DeliveryAddress: FC<Props> = ({ values, handleFieldValueChange }) => {
       {/* SHOW EDIT ADDRESS FORM MODAL WHEN CLICK EDIT BUTTON */}
       {editAddressId ? (
         <EditAddressForm
-          handleEditAddress={handleEditAddress}
           active={editAddressId ? true : false}
-          changeEditAddressId={changeEditAddressId}
-          address={addressList.find((item) => item.id === editAddressId)}
+          address={addresses.find((item) => item.id === selectedAddressId)}
+          setEditAddressId={setEditAddressId}
+          handleFetch={handleFetch}
         />
       ) : null}
     </Card>
   );
 };
-
-const DUMMY_ADDRESS_LIST = [
-  {
-    id: 1,
-    name: "Home",
-    phone: "+17804084466",
-    street2: "435 Bristol, MA 2351",
-    street1: "375 Subidbazaar, MA 2351",
-  },
-  {
-    id: 2,
-    name: "Office",
-    phone: "+18334271710",
-    street2: "968 Brockton, MA 2351",
-    street1: "645 Bondorbazaar, MA 2351",
-  },
-  {
-    id: 3,
-    name: "Office 2",
-    phone: "+17754739407",
-    street2: "777 Kazi, MA 2351",
-    street1: "324 Ambarkhana, MA 2351",
-  },
-];
 
 export default DeliveryAddress;

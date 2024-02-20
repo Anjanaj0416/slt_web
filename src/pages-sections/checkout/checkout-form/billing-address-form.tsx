@@ -1,14 +1,11 @@
-import { FC } from "react";
-import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Checkbox from "@mui/material/Checkbox";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import { FC } from "react";
 import { H6 } from "components/Typography";
 // DUMMY CUSTOM DATA
-import countryList from "data/countryList";
 
 // ==============================================================
 interface Props {
@@ -27,7 +24,6 @@ const BillingAddressForm: FC<Props> = ({
   errors,
   handleBlur,
   handleChange,
-  setFieldValue,
   touched,
   values,
   sameAsShipping,
@@ -99,14 +95,18 @@ const BillingAddressForm: FC<Props> = ({
 
             <TextField
               fullWidth
-              label="Address 1"
+              label="Address Line 1"
               onBlur={handleBlur}
               onChange={handleChange}
-              name="billing_address1"
-              value={values.billing_address1}
-              error={!!touched.billing_address1 && !!errors.billing_address1}
+              name="billing_address_line1"
+              value={values.billing_address_line1}
+              error={
+                !!touched.billing_address_line1 &&
+                !!errors.billing_address_line1
+              }
               helperText={
-                (touched.billing_address1 && errors.billing_address1) as string
+                (touched.billing_address_line1 &&
+                  errors.billing_address_line1) as string
               }
             />
           </Grid>
@@ -114,64 +114,35 @@ const BillingAddressForm: FC<Props> = ({
           <Grid item sm={6} xs={12}>
             <TextField
               fullWidth
-              type="email"
-              sx={{ mb: 2 }}
+              label="Address Line 2"
               onBlur={handleBlur}
-              name="billing_email"
-              label="Email Address"
+              name="billing_address_line2"
               onChange={handleChange}
-              value={values.billing_email}
-              error={!!touched.billing_email && !!errors.billing_email}
-              helperText={
-                (touched.billing_email && errors.billing_email) as string
+              value={values.billing_address_line2}
+              error={
+                !!touched.billing_address_line2 &&
+                !!errors.billing_address_line2
               }
+              helperText={
+                (touched.billing_address_line2 &&
+                  errors.billing_address_line2) as string
+              }
+              sx={{ mb: 2 }}
             />
-
             <TextField
               fullWidth
-              sx={{ mb: 2 }}
-              label="Company"
+              label="Province/State"
               onBlur={handleBlur}
-              name="billing_company"
+              name="billing_province_or_state"
               onChange={handleChange}
-              value={values.billing_company}
-              error={!!touched.billing_company && !!errors.billing_company}
-              helperText={
-                (touched.billing_company && errors.billing_company) as string
+              value={values.billing_province_or_state}
+              error={
+                !!touched.billing_province_or_state &&
+                !!errors.billing_province_or_state
               }
-            />
-
-            <Autocomplete
-              fullWidth
-              sx={{ mb: 2 }}
-              options={countryList}
-              value={values.billing_country}
-              getOptionLabel={(option) => option.label}
-              onChange={(_, value) => setFieldValue("billing_country", value)}
-              renderInput={(params) => (
-                <TextField
-                  label="Country"
-                  placeholder="Select Country"
-                  error={!!touched.billing_country && !!errors.billing_country}
-                  helperText={
-                    (touched.billing_country &&
-                      errors.billing_country) as string
-                  }
-                  {...params}
-                />
-              )}
-            />
-
-            <TextField
-              fullWidth
-              label="Address 2"
-              onBlur={handleBlur}
-              name="billing_address2"
-              onChange={handleChange}
-              value={values.billing_address2}
-              error={!!touched.billing_address2 && !!errors.billing_address2}
               helperText={
-                (touched.billing_address2 && errors.billing_address2) as string
+                (touched.billing_province_or_state &&
+                  errors.billing_province_or_state) as string
               }
             />
           </Grid>

@@ -19,7 +19,7 @@ const BottomActions: FC<Props> = ({ total, handleNavigate }) => {
         color="primary"
         variant="contained"
         sx={{ mb: "0.75rem", height: "40px" }}
-        onClick={handleNavigate("/checkout-alternative")}
+        onClick={handleNavigate("/checkout")}
         disabled={isLoading}
       >
         Checkout Now ({total})

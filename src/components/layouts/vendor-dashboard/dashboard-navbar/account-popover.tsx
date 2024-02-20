@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
@@ -7,6 +9,8 @@ import styled from "@mui/material/styles/styled";
 import IconButton from "@mui/material/IconButton";
 // GLOBAL CUSTOM COMPONENTS
 import { H6, Small } from "components/Typography";
+import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 // STYLED COMPONENT
 const Divider = styled("div")(({ theme }) => ({
@@ -17,6 +21,8 @@ const Divider = styled("div")(({ theme }) => ({
 const AccountPopover = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const router = useRouter();
 
   const handleClose = () => setAnchorEl(null);
 
@@ -73,17 +79,19 @@ const AccountPopover = () => {
           },
         }}
       >
-        <Box px={2} pt={1}>
+        {/* <Box px={2} pt={1}>
           <H6>Gage Paquette</H6>
           <Small color="grey.500">Admin</Small>
-        </Box>
+        </Box> */}
 
-        <Divider />
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My Orders</MenuItem>
-        <MenuItem>Settings</MenuItem>
-        <Divider />
-        <MenuItem>Logout</MenuItem>
+        {/* <Divider /> */}
+        <MenuItem onClick={() => router.push("/profile")}>Profile</MenuItem>
+        {/* <MenuItem>My Orders</MenuItem>
+        <MenuItem>Settings</MenuItem> */}
+        {/* <Divider /> */}
+        <MenuItem onClick={() => void signOut({ callbackUrl: "/" })}>
+          Logout
+        </MenuItem>
       </Menu>
     </div>
   );

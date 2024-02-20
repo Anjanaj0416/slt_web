@@ -24,6 +24,7 @@ import SnackbarProvider from "components/SnackbarProvider";
 import SessionProviderWrapper from "utils/session-provider-wrapper";
 import { UnauthenticatedModalProvider } from "components/modals/unauthenticated-action-modal";
 import CartServiceProvider from "contexts/CartServiceContext";
+import CheckoutServiceContextProvider from "contexts/CheckoutServiceContext";
 //
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -33,16 +34,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <body className={openSans.className}>
             <UnauthenticatedModalProvider>
               <CartServiceProvider>
-                <CartProvider>
-                  <SettingsProvider>
-                    <ThemeProvider>
-                      <ProgressBar />
-                      <RTL>
-                        <SnackbarProvider>{children}</SnackbarProvider>
-                      </RTL>
-                    </ThemeProvider>
-                  </SettingsProvider>
-                </CartProvider>
+                <CheckoutServiceContextProvider>
+                  <CartProvider>
+                    <SettingsProvider>
+                      <ThemeProvider>
+                        <ProgressBar />
+                        <RTL>
+                          <SnackbarProvider>{children}</SnackbarProvider>
+                        </RTL>
+                      </ThemeProvider>
+                    </SettingsProvider>
+                  </CartProvider>
+                </CheckoutServiceContextProvider>
               </CartServiceProvider>
             </UnauthenticatedModalProvider>
           </body>
