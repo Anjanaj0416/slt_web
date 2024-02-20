@@ -16,12 +16,10 @@ export const metadata: Metadata = {
 export default async function Checkout() {
   try {
     const { user } = await auth();
-    //
     const { data } = await request(API.GET_ADDRESS, {
-      userId: user.id,
+      userId: user?.id,
     });
     //
-    console.log('data',data)
     return <CheckoutPageView address={data} />;
   } catch (error) {
     notFound();

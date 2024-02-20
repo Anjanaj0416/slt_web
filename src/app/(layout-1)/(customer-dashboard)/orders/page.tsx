@@ -18,7 +18,7 @@ export default async function Orders() {
   const { user } = await auth();
   //
   const orders = await request(API.GET_USER_ORDERS, {
-    userId: user.id,
+    userId: user?.id,
     query: "size=10",
   });
   return <OrdersPageView orders={orders?.data} />;
