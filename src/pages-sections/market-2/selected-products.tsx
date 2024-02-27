@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
@@ -15,10 +15,17 @@ const SelectedProducts = () => {
   const [products, setProducts] = useState<Product1[]>([]);
   const [listProducts, { isLoading }] = useLazyListProductsQuery();
 
+  const handleFetch = useCallback(async () => {
+    const products: Product1[] = (await listProducts({ page: 0, size: 5 })).data
+      ?.data;
+    setProducts(products);
+    console.log(products);
+  }, [listProducts]);
+  //
   useEffect(() => {
-    getProducts();
-  }, []);
-
+    handleFetch();
+  }, [handleFetch]);
+  //
   const responsive = [
     { breakpoint: 1200, settings: { slidesToShow: 4 } },
     { breakpoint: 1024, settings: { slidesToShow: 3 } },
@@ -31,11 +38,6 @@ const SelectedProducts = () => {
 
   // BUTTON ACTIVE COLOR
   const activeColor = (item: string) => (item === selected ? "error" : "dark");
-
-  const getProducts = async () => {
-    const products: Product1[] = (await listProducts({ page:0, size:5 })).data?.data;
-    setProducts(products);
-  };
 
   // FILTERABLE BUTTON LIST
   const FILTER_BUTTONS = [
@@ -72,15 +74,19 @@ const SelectedProducts = () => {
       </FlexBetween>
 
       {/* PRODUCT CAROUSEL */}
-      <Carousel
-        slidesToShow={5}
-        responsive={responsive}
-        arrowStyles={{ backgroundColor: "dark.main" }}
-      >
-        {products?.map((product) => (
-          <ProductCard10 product={product} key={product.id} />
-        ))}
-      </Carousel>
+      {isLoading ? (
+        <Container>Loading...</Container>
+      ) : (
+        <Carousel
+          slidesToShow={5}
+          responsive={responsive}
+          arrowStyles={{ backgroundColor: "dark.main" }}
+        >
+          {products?.map((product) => (
+            <ProductCard10 product={product} key={product.id} />
+          ))}
+        </Carousel>
+      )}
     </Container>
   );
 };

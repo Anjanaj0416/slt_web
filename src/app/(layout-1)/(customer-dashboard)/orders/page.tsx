@@ -1,5 +1,6 @@
 import API from "constants/orders";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { OrdersPageView } from "pages-sections/customer-dashboard/orders/page-view";
 // API FUNCTIONS
 import api from "utils/__api__/orders";
@@ -15,11 +16,15 @@ export const metadata: Metadata = {
 };
 
 export default async function Orders() {
-  const { user } = await auth();
-  //
-  const orders = await request(API.GET_USER_ORDERS, {
-    userId: user?.id,
-    query: "size=10",
-  });
-  return <OrdersPageView orders={orders?.data} />;
+  try {
+    const { user } = await auth();
+    //
+    const orders = await request(API.GET_USER_ORDERS, {
+      userId: user?.id,
+      query: "size=10",
+    });
+    return <OrdersPageView orders={orders?.data} />;
+  } catch (error) {
+    notFound();
+  }
 }
