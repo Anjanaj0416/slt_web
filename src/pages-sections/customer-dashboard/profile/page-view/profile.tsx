@@ -7,13 +7,18 @@ import UserInfo from "../user-info";
 import UserAnalytics from "../user-analytics";
 import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
-import User from "models/User.model";
+import {User1} from "models/User.model";
+import { useSession } from "next-auth/react";
+import Container from "@mui/material/Container";
 
-// ============================================================
-type Props = { user: User };
-// ============================================================
+const ProfilePageView = () => {
+  const { data: session, status } = useSession();
+  //
+  const user = session?.user as User1;
 
-const ProfilePageView = ({ user }: Props) => {
+  if(status==="loading"){
+    return <Container>Loading...</Container>;
+  }
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
@@ -21,7 +26,7 @@ const ProfilePageView = ({ user }: Props) => {
         Icon={Person}
         title="My Profile"
         buttonText="Edit Profile"
-        href={`/profile/${user.id}`}
+        href={`/profile/${user?.id}`}
       />
 
       {/* USER PROFILE INFO */}

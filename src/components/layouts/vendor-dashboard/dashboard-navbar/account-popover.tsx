@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
 import styled from "@mui/material/styles/styled";
 import IconButton from "@mui/material/IconButton";
 // GLOBAL CUSTOM COMPONENTS
-import { H6, Small } from "components/Typography";
 import { useRouter } from "next/navigation";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
+import ENVIRONMENT from "config/environment";
 
 // STYLED COMPONENT
 const Divider = styled("div")(({ theme }) => ({
@@ -21,7 +21,7 @@ const Divider = styled("div")(({ theme }) => ({
 const AccountPopover = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
+  const { data: session } = useSession();
   const router = useRouter();
 
   const handleClose = () => setAnchorEl(null);
@@ -35,7 +35,12 @@ const AccountPopover = () => {
         aria-expanded={open ? "true" : undefined}
         aria-controls={open ? "account-menu" : undefined}
       >
-        <Avatar alt="Remy Sharp" src="/assets/images/avatars/001-man.svg" />
+        <Avatar alt="Remy Sharp" src={
+            (session?.user as User1)?.profilePictureUrl
+              ? `${ENVIRONMENT.S3_BUCKET_URL}/${(session?.user as User1)
+                  ?.profilePictureUrl}`
+              : "/assets/images/avatars/001-man.svg"
+          } />
       </IconButton>
 
       <Menu

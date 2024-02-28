@@ -31,6 +31,7 @@ export interface User1 {
   lastName: string;
   username: string;
   cart: UserCart;
+  profilePictureUrl: string;
 }
 //
 export default User;

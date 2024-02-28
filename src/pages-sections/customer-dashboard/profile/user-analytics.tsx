@@ -8,10 +8,11 @@ import { H3, H5, Paragraph, Small } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import User from "models/User.model";
+import { User1 } from "models/User.model";
+import ENVIRONMENT from "config/environment";
 
 // ==============================================================
-type Props = { user: User };
+type Props = { user: User1 };
 // ==============================================================
 
 const UserAnalytics: FC<Props> = ({ user }) => {
@@ -35,14 +36,14 @@ const UserAnalytics: FC<Props> = ({ user }) => {
           }}
         >
           <Avatar
-            alt={user.name.firstName}
-            src={user.avatar}
+            alt={user?.firstName}
+            src={`${ENVIRONMENT.S3_BUCKET_URL}/${user?.profilePictureUrl}`}
             sx={{ height: 64, width: 64 }}
           />
 
           <FlexBetween flexWrap="wrap" flex={1}>
             <div>
-              <H5>{`${user.name.firstName} ${user.name.lastName}`}</H5>
+              <H5>{`${user?.firstName} ${user?.lastName}`}</H5>
 
               <FlexBox alignItems="center" gap={1}>
                 <Paragraph color="grey.600">Balance:</Paragraph>

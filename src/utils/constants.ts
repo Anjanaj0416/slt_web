@@ -6,3 +6,13 @@ export const layoutConstant = {
   mobileHeaderHeight: 64,
   grocerySidenavWidth: 280,
 };
+
+export const fileTypes = {
+  PROFILE_PICTURE: "PROFILE_PICTURE",
+};
+//
+export const getFilePath = ({ uuid, extension, userId }: any, type: string) => {
+  if (type === fileTypes.PROFILE_PICTURE) {
+    return `users/${userId}/profile-picture/${uuid}.${extension}`;
+  }
+};

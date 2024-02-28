@@ -7,10 +7,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import FlexBox from "components/flex-box/flex-box";
 import { Small, Span } from "components/Typography";
 // CUSTOM DATA MODEL
-import User from "models/User.model";
+import { User1 } from "models/User.model";
 
 // ==============================================================
-type Props = { user: User };
+type Props = { user: User1 };
 // ==============================================================
 
 const UserInfo: FC<Props> = ({ user }) => {
@@ -32,13 +32,17 @@ const UserInfo: FC<Props> = ({ user }) => {
         }),
       }}
     >
-      <TableRowItem title="First Name" value={user.name.firstName} />
-      <TableRowItem title="Last Name" value={user.name.lastName} />
-      <TableRowItem title="Email" value={user.email} />
-      <TableRowItem title="Phone" value={user.phone} />
+      <TableRowItem title="First Name" value={user?.firstName} />
+      <TableRowItem title="Last Name" value={user?.lastName} />
+      <TableRowItem title="Email" value={user?.email} />
+      <TableRowItem title="Phone" value={user?.phone} />
       <TableRowItem
         title="Birth date"
-        value={format(new Date(user.dateOfBirth), "dd MMM, yyyy")}
+        value={
+          user?.birthDay && user?.birthDay !== ""
+            ? format(new Date(user?.birthDay), "dd MMM, yyyy")
+            : "-"
+        }
       />
     </Card>
   );

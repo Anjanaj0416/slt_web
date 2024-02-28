@@ -4,13 +4,43 @@ import IconButton from "@mui/material/IconButton";
 import CameraEnhance from "@mui/icons-material/CameraEnhance";
 // GLOBAL CUSTOM COMPONENTS
 import FlexBox from "components/flex-box/flex-box";
+import { FC, useState } from "react";
+import ENVIRONMENT from "config/environment";
+import CropDialog from "components/cropper-dialog-box";
 
-const ProfilePicUpload = () => {
+type Props = {
+  onProfileImage: (value: any) => void;
+  profilePictureUrl?: string;
+};
+// ===========================================================
+const ProfilePicUpload: FC<Props> = ({
+  onProfileImage,
+  profilePictureUrl,
+}: Props) => {
+  const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string>();
+
+  const handleCropImages = (croppedImages: File[]) => {
+    onProfileImage(croppedImages[0]);
+  };
   return (
     <FlexBox alignItems="flex-end" mb={3}>
+      <CropDialog
+        cropWidth={280}
+        cropHeight={280}
+        images={[selectedImage]}
+        onSubmit={handleCropImages}
+        open={open}
+        setOpen={setOpen}
+      />
       <Avatar
         alt="user"
-        src="/assets/images/faces/ralph.png"
+        src={
+          !open && selectedImage
+            ? selectedImage
+            : `${ENVIRONMENT.S3_BUCKET_URL}/${profilePictureUrl}` ||
+              "/assets/images/avatars/001-man.svg"
+        }
         sx={{ height: 64, width: 64 }}
       />
 
@@ -30,7 +60,10 @@ const ProfilePicUpload = () => {
         accept="image/*"
         component="input"
         id="profile-image"
-        onChange={(e) => console.log(e.target.files)}
+        onChange={(e) => {
+          setSelectedImage(URL.createObjectURL(e.target.files[0]));
+          setOpen(true);
+        }}
       />
     </FlexBox>
   );

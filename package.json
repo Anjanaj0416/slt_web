@@ -36,6 +36,7 @@
     "nprogress": "^0.2.0",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
+    "react-advanced-cropper": "^0.19.6",
     "react-apexcharts": "^1.4.1",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",

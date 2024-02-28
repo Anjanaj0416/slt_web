@@ -8,6 +8,8 @@ import { cartApi } from "services/cart-api";
 import { categoryApi } from "services/category-api";
 import { addressApi } from "services/address-api";
 import { orderApi } from "services/order-api";
+import { userApi } from "services/user-api";
+import { fileApi } from "services/file-api";
 
 // Combine all the reducers into one root reducer
 const rootReducers = combineReducers({
@@ -17,6 +19,8 @@ const rootReducers = combineReducers({
   [authSlice.name]: authSlice.reducer,
   [addressApi.reducerPath]: addressApi.reducer,
   [orderApi.reducerPath]: orderApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
+  [fileApi.reducerPath]: fileApi.reducer,
 });
 
 // Define custom middlewares for the store
@@ -26,6 +30,8 @@ const apiMiddlewares = [
   cartApi.middleware,
   addressApi.middleware,
   orderApi.middleware,
+  userApi.middleware,
+  fileApi.middleware
 ]; // Middleware for Redux Toolkit Query
 //
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors
