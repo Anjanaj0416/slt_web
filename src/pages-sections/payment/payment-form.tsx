@@ -1,28 +1,67 @@
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import { ChangeEvent, Fragment, useState } from "react";
-import Card from "@mui/material/Card";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import TextField from "@mui/material/TextField";
-// GLOBAL CUSTOM COMPONENTS
-import { FlexBox } from "components/flex-box";
-// Local CUSTOM COMPONENTS
 import FormLabel from "./form-label";
-import CreditCardForm from "./credit-card-form";
+import { useCreateOrderMutation } from "services/order-api";
+import useCheckoutService from "hooks/useCheckoutService";
+import useCartService from "hooks/useCartService";
+import { useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
+import { useSnackbar } from "notistack";
+import { useRouter } from "next/navigation";
+
+const PAYMENT_METHODS = {
+  CASH_ON_DELIVERY: "cash-on-deliver",
+} as const;
 
 const PaymentForm = () => {
-  const [paymentMethod, setPaymentMethod] = useState("credit-card");
-
+  const { push } = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
+  const { data: session } = useSession();
+  const user = session?.user as User1;
+  const { selectedBillingAddressId, selectedShippingAddressId } =
+    useCheckoutService();
+  const { note, totalPrice } = useCartService();
+  //
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
+  //
+  const [paymentMethod, setPaymentMethod] = useState<string>(
+    PAYMENT_METHODS.CASH_ON_DELIVERY
+  );
+  //
   const handlePaymentMethodChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(event.target.name);
+  };
+  //
+  const placeOrder = async () => {
+    await createOrder({
+      body: {
+        cartId: user?.cart?.id,
+        userId: user?.id,
+        shippingAddressId: selectedShippingAddressId,
+        billingAddressId: selectedBillingAddressId,
+        note,
+        payments: [{ amount: totalPrice, paymentType: "COD" }],
+      },
+    });
+    enqueueSnackbar("Order places successfully", { variant: "success" });
+    push("/orders");
   };
 
   return (
     <Fragment>
-      <Card sx={{ padding: { sm: 3, xs: 2 }, mb: 4 }}>
+      <Card
+        sx={{
+          paddingInline: { sm: 3, xs: 2 },
+          paddingBottom: { sm: 3, xs: 2 },
+          mb: 4,
+        }}
+      >
         {/* CREDIT CARD OPTION */}
-        <FormLabel
+        {/* <FormLabel
           name="credit-card"
           title="Pay with credit card"
           handleChange={handlePaymentMethodChange}
@@ -31,17 +70,17 @@ const PaymentForm = () => {
 
         {paymentMethod === "credit-card" && <CreditCardForm />}
 
-        <Divider sx={{ my: 3, mx: -4 }} />
+        <Divider sx={{ my: 3, mx: -4 }} /> */}
 
         {/* PAYPAL CARD OPTION */}
-        <FormLabel
+        {/* <FormLabel
           name="paypal"
           title="Pay with Paypal"
           handleChange={handlePaymentMethodChange}
           checked={paymentMethod === "paypal"}
-        />
+        /> */}
 
-        {paymentMethod === "paypal" && (
+        {/* {paymentMethod === "paypal" && (
           <FlexBox alignItems="flex-end" gap={2} mb={4}>
             <TextField
               fullWidth
@@ -53,16 +92,16 @@ const PaymentForm = () => {
               Submit
             </Button>
           </FlexBox>
-        )}
+        )} */}
 
-        <Divider sx={{ my: 3, mx: -4 }} />
+        <Divider sx={{ mt: 3, mx: -4 }} />
 
         {/* CASH ON DELIVERY OPTION */}
         <FormLabel
-          name="cod"
+          name={PAYMENT_METHODS.CASH_ON_DELIVERY}
           title="Cash On Delivery"
           handleChange={handlePaymentMethodChange}
-          checked={paymentMethod === "cod"}
+          checked={paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY}
         />
       </Card>
 
@@ -83,11 +122,11 @@ const PaymentForm = () => {
           LinkComponent={Link}
           variant="contained"
           color="primary"
-          href="/orders"
+          onClick={placeOrder}
           type="submit"
           fullWidth
         >
-          Review
+          Place Order
         </Button>
       </Stack>
     </Fragment>

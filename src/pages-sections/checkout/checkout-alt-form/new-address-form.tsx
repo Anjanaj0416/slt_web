@@ -8,47 +8,63 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 // LOCAL CUSTOM COMPONENT
 import { H5 } from "components/Typography";
+import CloseIcon from "@mui/icons-material/Close";
 // CUSTOM DATA MODEL
 import { Address } from "./_types";
+import { Box, Checkbox, FormControlLabel, IconButton } from "@mui/material";
+import { usePostAddressMutation } from "services/address-api";
+import { useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
+import { useSnackbar } from "notistack";
 
 const validationSchema = yup.object({
-  street2: yup.string(),
   name: yup.string().required("required"),
-  street1: yup.string().required("required"),
-  phone: yup.number().required("required"),
-  city: yup.string().required("required"),
-  state: yup.string().required("required"),
-  country: yup.string().required("required"),
-  zip: yup.number().required("required"),
+  addressLine1: yup.string().required("required"),
+  addressLine2: yup.string().required("required"),
+  postalCode: yup.number().required("required"),
+  provinceOrState: yup.string().required("required"),
+  contactNumber: yup.string().required("required"),
+  primary: yup.boolean(),
 });
 
 // ==================================================================
 interface Props {
-  handleAddNewAddress: (value: Omit<Address, "id">) => void;
+  addressType: string;
+  handleFetch: Function;
 }
 // ==================================================================
 
-const NewAddressForm: FC<Props> = ({ handleAddNewAddress }) => {
+const NewAddressForm: FC<Props> = ({
+  addressType,
+  handleFetch,
+}) => {
+  const { enqueueSnackbar } = useSnackbar();
+  const { data: session } = useSession();
+  const user = session?.user as User1;
+  //
+  const [createAddress, { isLoading }] = usePostAddressMutation();
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleCloseModal = () => setOpenModal(false);
 
   const initialValues = {
-    name: "UI Lib",
-    street1: "321, Subid Bazaar",
-    street2: "",
-    phone: "01789123456",
-    city: "Sylhet",
-    state: "Sylhet",
-    country: "Bangladesh",
-    zip: 4336,
+    name: "",
+    addressLine1: "",
+    addressLine2: "",
+    postalCode: "",
+    provinceOrState: "",
+    contactNumber: "",
+    primary: false,
+    addressType,
   };
 
   const { handleChange, handleSubmit, errors, touched, values } = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      handleAddNewAddress(values);
+    onSubmit: async (values, { resetForm }) => {
+      await createAddress({ body: values, userId: user?.id });
+      handleFetch();
+      enqueueSnackbar("Address successfully created", { variant: "success" });
       handleCloseModal();
       resetForm({});
     },
@@ -66,7 +82,21 @@ const NewAddressForm: FC<Props> = ({ handleAddNewAddress }) => {
 
       <Dialog open={openModal} onClose={handleCloseModal}>
         <DialogContent>
-          <H5 mb={4}>Add New Address Information</H5>
+          <Box
+            display={"flex"}
+            justifyContent={"space-between"}
+            alignItems={"flex-start"}
+          >
+            <H5 mb={4}>Add New Address Information</H5>
+            <IconButton
+              size="small"
+              aria-label="close"
+              onClick={handleCloseModal}
+              sx={{ border: "1px solid black", width: 22, height: 22 }}
+            >
+              <CloseIcon sx={{ width: 16, height: 16 }} />
+            </IconButton>
+          </Box>
 
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
@@ -87,12 +117,12 @@ const NewAddressForm: FC<Props> = ({ handleAddNewAddress }) => {
                 <TextField
                   fullWidth
                   type="text"
-                  name="street1"
-                  label="Street line 1"
-                  value={values.street1}
+                  name="addressLine1"
+                  label="Address line 1"
+                  value={values.addressLine1}
                   onChange={handleChange}
-                  helperText={touched.street1 && errors.street1}
-                  error={touched.street1 && Boolean(errors.street1)}
+                  helperText={touched.addressLine1 && errors.addressLine1}
+                  error={touched.addressLine1 && Boolean(errors.addressLine1)}
                 />
               </Grid>
 
@@ -100,77 +130,65 @@ const NewAddressForm: FC<Props> = ({ handleAddNewAddress }) => {
                 <TextField
                   fullWidth
                   type="text"
-                  name="street2"
+                  name="addressLine2"
                   label="Address line 2"
-                  value={values.street2}
+                  value={values.addressLine2}
                   onChange={handleChange}
-                  helperText={touched.street2 && errors.street2}
-                  error={touched.street2 && Boolean(errors.street2)}
+                  helperText={touched.addressLine2 && errors.addressLine2}
+                  error={touched.addressLine2 && Boolean(errors.addressLine2)}
                 />
               </Grid>
 
               <Grid item sm={6} xs={12}>
                 <TextField
                   fullWidth
+                  name="provinceOrState"
+                  label="Province or State"
+                  value={values.provinceOrState}
+                  onChange={handleChange}
+                  helperText={touched.provinceOrState && errors.provinceOrState}
+                  error={
+                    touched.provinceOrState && Boolean(errors.provinceOrState)
+                  }
+                />
+              </Grid>
+              <Grid item sm={6} xs={12}>
+                <TextField
+                  fullWidth
+                  name="postalCode"
+                  label="Postal Code"
+                  type="number"
+                  value={values.postalCode}
+                  onChange={handleChange}
+                  helperText={touched.postalCode && errors.postalCode}
+                  error={touched.postalCode && Boolean(errors.postalCode)}
+                />
+              </Grid>
+              <Grid item sm={6} xs={12}>
+                <TextField
+                  fullWidth
                   type="text"
-                  name="phone"
-                  value={values.phone}
+                  name="contactNumber"
+                  value={values.contactNumber}
                   onChange={handleChange}
                   label="Enter Your Phone"
-                  helperText={touched.phone && errors.phone}
-                  error={touched.phone && Boolean(errors.phone)}
+                  helperText={touched.contactNumber && errors.contactNumber}
+                  error={touched.contactNumber && Boolean(errors.contactNumber)}
                 />
               </Grid>
-
-              <Grid item sm={6} xs={12}>
-                <TextField
-                  fullWidth
-                  name="city"
-                  label="City"
-                  value={values.city}
+              <Grid item sm={12} xs={12}>
+                <FormControlLabel
+                  label="Is Primary"
+                  control={
+                    <Checkbox
+                      name="primary"
+                      checked={values.primary}
+                      size="small"
+                    />
+                  }
                   onChange={handleChange}
-                  helperText={touched.city && errors.city}
-                  error={touched.city && Boolean(errors.city)}
                 />
               </Grid>
-
-              <Grid item sm={6} xs={12}>
-                <TextField
-                  fullWidth
-                  name="state"
-                  label="State"
-                  value={values.state}
-                  onChange={handleChange}
-                  helperText={touched.state && errors.state}
-                  error={touched.state && Boolean(errors.state)}
-                />
-              </Grid>
-
-              <Grid item sm={6} xs={12}>
-                <TextField
-                  fullWidth
-                  name="zip"
-                  label="Zip"
-                  type="number"
-                  value={values.zip}
-                  onChange={handleChange}
-                  helperText={touched.zip && errors.zip}
-                  error={touched.zip && Boolean(errors.zip)}
-                />
-              </Grid>
-
-              <Grid item sm={6} xs={12}>
-                <TextField
-                  fullWidth
-                  name="country"
-                  label="Country"
-                  value={values.country}
-                  onChange={handleChange}
-                  helperText={touched.country && errors.country}
-                  error={touched.country && Boolean(errors.country)}
-                />
-              </Grid>
-
               <Grid item sm={6} xs={12}>
                 <Button color="primary" variant="contained" type="submit">
                   Save
@@ -183,5 +201,5 @@ const NewAddressForm: FC<Props> = ({ handleAddNewAddress }) => {
     </Fragment>
   );
 };
-
+//
 export default NewAddressForm;

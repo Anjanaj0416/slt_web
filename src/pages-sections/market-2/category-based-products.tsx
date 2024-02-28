@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
@@ -42,13 +42,47 @@ type Props = { data: Category1 };
 const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
+
+  const getProducts = useCallback(
+    async (categoryIds) => {
+      const products: Product1[] = (await filteredProducts({ categoryIds }))
+        .data?.data;
+
+      setProducts(
+        products.map((product) => {
+          return {
+            ...product,
+            images: product.images.map(
+              (image) => `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
+            ),
+          };
+        })
+      );
+    },
+    [filteredProducts]
+  );
+
+  const getAllSubCategoryIds = useCallback((category) => {
+    let subCategoryIds = [];
+    if (category.subCategories !== null && category.subCategories.length > 0) {
+      category.subCategories.forEach((subCategory) => {
+        subCategoryIds.push(subCategory.id);
+        subCategoryIds = subCategoryIds.concat(
+          getAllSubCategoryIds(subCategory)
+        );
+      });
+    }
+    //
+    return subCategoryIds;
+  }, []);
+
   useEffect(() => {
     if (data?.id) {
       const categoryIds: string[] = getAllSubCategoryIds(data);
       categoryIds.push(data.id);
       getProducts(categoryIds.join(","));
     }
-  }, [data]);
+  }, [data, getAllSubCategoryIds, getProducts]);
   //
   if (!data) return null;
   const responsive = [
@@ -61,36 +95,6 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
     const categoryIds: string[] = getAllSubCategoryIds(category);
     categoryIds.push(category.id);
     getProducts(categoryIds.join(","));
-  };
-
-  const getProducts = async (categoryIds) => {
-    const products: Product1[] = (await filteredProducts({ categoryIds })).data
-      ?.data;
-
-    setProducts(
-      products.map((product) => {
-        return {
-          ...product,
-          images: product.images.map(
-            (image) => `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
-          ),
-        };
-      })
-    );
-  };
-
-  const getAllSubCategoryIds = (category) => {
-    let subCategoryIds = [];
-    if (category.subCategories !== null && category.subCategories.length > 0) {
-      category.subCategories.forEach((subCategory) => {
-        subCategoryIds.push(subCategory.id);
-        subCategoryIds = subCategoryIds.concat(
-          getAllSubCategoryIds(subCategory)
-        );
-      });
-    }
-    //
-    return subCategoryIds;
   };
 
   return (

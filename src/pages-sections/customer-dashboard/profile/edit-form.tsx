@@ -8,38 +8,39 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Formik } from "formik";
 import * as yup from "yup";
 // CUSTOM DATA MODEL
-import User from "models/User.model";
+import { User1 } from "models/User.model";
 
 // ==============================================================
-type Props = { user: User };
+type Props = { user: User1; onSubmit: (values: any) => void };
 // ==============================================================
-
-const ProfileEditForm: FC<Props> = ({ user }) => {
-  const INITIAL_VALUES = {
-    email: user.email || "",
-    contact: user.phone || "",
-    last_name: user.name.lastName || "",
-    first_name: user.name.firstName || "",
-    birth_date: new Date(user.dateOfBirth) || new Date(),
+const ProfileEditForm: FC<Props> = ({ user, onSubmit }) => {
+  const initialValues = {
+    email: user?.email || "",
+    phone: user?.phone || "",
+    lastName: user?.lastName || "",
+    firstName: user?.firstName || "",
+    birthDay:
+      user?.birthDay && user?.birthDay !== ""
+        ? new Date(user?.birthDay)
+        : new Date(),
   };
-
-  const VALIDATION_SCHEMA = yup.object().shape({
-    first_name: yup.string().required("First name is required"),
-    last_name: yup.string().required("Last name is required"),
+  //
+  const validationSchema = yup.object().shape({
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
     email: yup.string().email("invalid email").required("Email is required"),
-    contact: yup.string().required("Contact is required"),
-    birth_date: yup.date().required("Birth date is required"),
+    phone: yup.string().required("Phone Number is required"),
+    birthDay: yup.date().required("Birth date is required"),
   });
-
-  const handleFormSubmit = async (values: typeof INITIAL_VALUES) => {
-    console.log(values);
-  };
-
+  console.log(initialValues);
+  
+  //
   return (
     <Formik
-      onSubmit={handleFormSubmit}
-      initialValues={INITIAL_VALUES}
-      validationSchema={VALIDATION_SCHEMA}
+      onSubmit={onSubmit}
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      enableReinitialize
     >
       {({
         values,
@@ -55,26 +56,26 @@ const ProfileEditForm: FC<Props> = ({ user }) => {
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
-                name="first_name"
+                name="firstName"
                 label="First Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.first_name}
-                error={!!touched.first_name && !!errors.first_name}
-                helperText={(touched.first_name && errors.first_name) as string}
+                value={values?.firstName}
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={(touched.firstName && errors.firstName) as string}
               />
             </Grid>
 
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
-                name="last_name"
+                name="lastName"
                 label="Last Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.last_name}
-                error={!!touched.last_name && !!errors.last_name}
-                helperText={(touched.last_name && errors.last_name) as string}
+                value={values?.lastName}
+                error={!!touched.lastName && !!errors.lastName}
+                helperText={(touched.lastName && errors.lastName) as string}
               />
             </Grid>
 
@@ -85,7 +86,7 @@ const ProfileEditForm: FC<Props> = ({ user }) => {
                 type="email"
                 label="Email"
                 onBlur={handleBlur}
-                value={values.email}
+                value={values?.email}
                 onChange={handleChange}
                 error={!!touched.email && !!errors.email}
                 helperText={(touched.email && errors.email) as string}
@@ -96,20 +97,20 @@ const ProfileEditForm: FC<Props> = ({ user }) => {
               <TextField
                 fullWidth
                 label="Phone"
-                name="contact"
+                name="phone"
                 onBlur={handleBlur}
-                value={values.contact}
+                value={values?.phone}
                 onChange={handleChange}
-                error={!!touched.contact && !!errors.contact}
-                helperText={(touched.contact && errors.contact) as string}
+                error={!!touched.phone && !!errors.phone}
+                helperText={(touched.phone && errors.phone) as string}
               />
             </Grid>
 
             <Grid item md={6} xs={12}>
               <DatePicker
                 label="Birth Date"
-                value={values.birth_date}
-                onChange={(newValue) => setFieldValue("birth_date", newValue)}
+                value={values?.birth_date}
+                onChange={(newValue) => setFieldValue("birthDay", newValue)}
                 slots={{ textField: TextField }}
                 slotProps={{
                   textField: {

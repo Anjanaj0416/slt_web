@@ -1,10 +1,10 @@
-import { FC } from "react";
-import Link from "next/link";
+import East from "@mui/icons-material/East";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
-import East from "@mui/icons-material/East";
 import format from "date-fns/format";
+import Link from "next/link";
+import { FC } from "react";
 // GLOBAL CUSTOM COMPONENT
 import { H5, Paragraph } from "components/Typography";
 // Local CUSTOM COMPONENT
@@ -12,16 +12,16 @@ import TableRow from "../table-row";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import Order from "models/Order.model";
+import { Order1 } from "models/Order.model";
 
 // =================================================
-type Props = { order: Order };
+type Props = { order: Order1 };
 // =================================================
 
 const OrderRow: FC<Props> = ({ order }) => {
   const getColor = (status: string) => {
     switch (status) {
-      case "Pending":
+      case "PENDING":
         return "secondary";
 
       case "Processing":
@@ -37,6 +37,13 @@ const OrderRow: FC<Props> = ({ order }) => {
         return "default";
     }
   };
+  const calculateTotalAmount = (payments) => {
+    let totalAmount = 0;
+    payments?.forEach((paymentItem) => {
+      totalAmount += paymentItem.amount;
+    });
+    return totalAmount;
+  };
 
   return (
     <Link href={`/orders/${order.id}`}>
@@ -46,8 +53,8 @@ const OrderRow: FC<Props> = ({ order }) => {
         <Box textAlign="center">
           <Chip
             size="small"
-            label={order.status}
-            color={getColor(order.status)}
+            label={order.orderStatus}
+            color={getColor(order.orderStatus)}
           />
         </Box>
 
@@ -55,7 +62,9 @@ const OrderRow: FC<Props> = ({ order }) => {
           {format(new Date(order.createdAt), "MMM dd, yyyy")}
         </Paragraph>
 
-        <Paragraph textAlign="center">{currency(order.totalPrice)}</Paragraph>
+        <Paragraph textAlign="center">
+          {currency(calculateTotalAmount(order?.payments))}
+        </Paragraph>
 
         <Box display={{ sm: "inline-flex", xs: "none" }} justifyContent="end">
           <IconButton>

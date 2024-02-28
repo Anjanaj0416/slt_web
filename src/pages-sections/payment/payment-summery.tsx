@@ -6,14 +6,16 @@ import PaymentItem from "./payment-item";
 import { Paragraph } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+import useCartService from "hooks/useCartService";
 
 const PaymentSummary = () => {
+  const { totalPrice } = useCartService();
   return (
     <Card sx={{ padding: { sm: 3, xs: 2 } }}>
-      <PaymentItem title="Subtotal:" amount={2610} />
+      <PaymentItem title="Subtotal:" amount={totalPrice} />
       <PaymentItem title="Shipping:" />
-      <PaymentItem title="Tax:" amount={40} />
-      <PaymentItem title="Discount:" amount={40} />
+      <PaymentItem title="Tax:" />
+      <PaymentItem title="Discount:" />
 
       <Divider sx={{ my: 2 }} />
 
@@ -23,7 +25,7 @@ const PaymentSummary = () => {
         lineHeight={1}
         textAlign="right"
       >
-        {currency(2650)}
+        {currency(totalPrice)}
       </Paragraph>
     </Card>
   );

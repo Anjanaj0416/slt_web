@@ -15,84 +15,90 @@ import API from "constants/products";
 import api from "utils/__api__/market-2";
 import request from "utils/request";
 import ENVIRONMENT from "config/environment";
+import { notFound } from "next/navigation";
 
 const MarketTwoPageView = async () => {
-  const products = await request(API.GET_PRODUCTS, { query: "size=5" });
-  const mappedProducts = products?.data.map((product) => {
-    return {
-      ...product,
-      images: product.images.map(
-        (image) => `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
-      ),
-    };
-  });
-  const mainCategories = await request(API.GET_CATEGORIES, {
-    query: "size=5&categoryType=PRODUCT&categoryStatus=APPROVED&parentCategoryId=null",
-  });
-  const categories = await request(API.GET_CATEGORIES, {
-    query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
-  });
-  const fullBanners = await request(API.GET_BANNERS, {
-    query: "size=3&bannerType=FULL",
-  });
-  const halfBanners = await request(API.GET_BANNERS, {
-    query: "size=4&bannerType=HALF",
-  });
-  const threeBanners = await request(API.GET_BANNERS, {
-    query: "size=4&bannerType=THREE",
-  });
-  const brands = await api.getBrands();
-  const mainCarouselData = await api.getMainCarouselData();
-  //const serviceList = await api.getServices();
-  // const menFashionProducts = await api.getMenFashionProducts();
-  // const electronicsProducts = await api.getElectronicsProducts();
-  // const womenFashionProducts = await api.getWomenFashionProducts();
-  return (
-    <Fragment>
-      <Box bgcolor="#F6F6F6">
-        {/* HERO SLIDER AND GRID */}
-        <Section1 carouselData={mainCarouselData} />
+  try {
+    const products = await request(API.GET_PRODUCTS, { query: "size=5" });
+    const mappedProducts = products?.data.map((product) => {
+      return {
+        ...product,
+        images: product.images.map(
+          (image) => `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
+        ),
+      };
+    });
+    const mainCategories = await request(API.GET_CATEGORIES, {
+      query:
+        "size=5&categoryType=PRODUCT&categoryStatus=APPROVED&parentCategoryId=null",
+    });
+    const categories = await request(API.GET_CATEGORIES, {
+      query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
+    });
+    const fullBanners = await request(API.GET_BANNERS, {
+      query: "size=3&bannerType=FULL",
+    });
+    const halfBanners = await request(API.GET_BANNERS, {
+      query: "size=4&bannerType=HALF",
+    });
+    const threeBanners = await request(API.GET_BANNERS, {
+      query: "size=4&bannerType=THREE",
+    });
+    const brands = await api.getBrands();
+    const mainCarouselData = await api.getMainCarouselData();
+    //const serviceList = await api.getServices();
+    // const menFashionProducts = await api.getMenFashionProducts();
+    // const electronicsProducts = await api.getElectronicsProducts();
+    // const womenFashionProducts = await api.getWomenFashionProducts();
+    return (
+      <Fragment>
+        <Box bgcolor="#F6F6F6">
+          {/* HERO SLIDER AND GRID */}
+          <Section1 carouselData={mainCarouselData} />
 
-        {/* SERVICE CARDS */}
-        {/* <Section2 serviceList={serviceList} /> */}
+          {/* SERVICE CARDS */}
+          {/* <Section2 serviceList={serviceList} /> */}
 
-        {/* CATEGORIES AND ANIMATED OFFER BANNER */}
-        <AnimatedCategoryList categories={categories?.data} />
+          {/* CATEGORIES AND ANIMATED OFFER BANNER */}
+          <AnimatedCategoryList categories={categories?.data} />
 
-        {/* DEALS OF THE DAY AND OFFER BANNERS */}
-        <Section4 products={mappedProducts} />
+          {/* DEALS OF THE DAY AND OFFER BANNERS */}
+          <Section4 products={mappedProducts} />
 
-        {/* TOP OFFER BANNERS */}
-        <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
+          {/* TOP OFFER BANNERS */}
+          <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
 
-        {/* CATEGORY BASED PRODUCTS */}
-        {mainCategories.data?.map(async (category, index) => (
-          <Fragment key={category.id}>
-            <CategoryBasedProducts data={category} />
-            {index % 2 === 0 ? (
-              <FullBanner data={fullBanners.data?.pop()} />
-            ) : (
-              <HalfBanner
-                data={[halfBanners.data?.pop(), halfBanners.data?.pop()]}
-              />
-            )}
-          </Fragment>
-        ))}
+          {/* CATEGORY BASED PRODUCTS */}
+          {mainCategories.data?.map(async (category, index) => (
+            <Fragment key={category.id}>
+              <CategoryBasedProducts data={category} />
+              {index % 2 === 0 ? (
+                <FullBanner data={fullBanners.data?.pop()} />
+              ) : (
+                <HalfBanner
+                  data={[halfBanners.data?.pop(), halfBanners.data?.pop()]}
+                />
+              )}
+            </Fragment>
+          ))}
 
-        {/*  FEATURED BRANDS */}
-        <Section8 brands={brands} />
+          {/*  FEATURED BRANDS */}
+          <Section8 brands={brands} />
 
-        {/* SELECTED PRODUCTS */}
-        <SelectedProducts />
-      </Box>
+          {/* SELECTED PRODUCTS */}
+          <SelectedProducts />
+        </Box>
 
-      {/* POPUP NEWSLETTER FORM */}
-      {/* <Newsletter /> */}
+        {/* POPUP NEWSLETTER FORM */}
+        {/* <Newsletter /> */}
 
-      {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
-      {/* <Setting /> */}
-    </Fragment>
-  );
+        {/* SETTINGS IS USED ONLY FOR DEMO, YOU CAN REMOVE THIS */}
+        {/* <Setting /> */}
+      </Fragment>
+    );
+  } catch (error) {
+    notFound();
+  }
 };
 
 export default MarketTwoPageView;

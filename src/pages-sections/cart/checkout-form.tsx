@@ -1,29 +1,34 @@
-import Link from "next/link";
-import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
-import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+import Link from "next/link";
 // GLOBAL CUSTOM HOOK
-import useCart from "hooks/useCart";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // DUMMY CUSTOM DATA
-import countryList from "data/countryList";
 // CUSTOM UTILS LIBRARY FUNCTION
-import { currency } from "lib";
 import useCartService from "hooks/useCartService";
+import { currency } from "lib";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const CheckoutForm = () => {
-  const { totalPrice } = useCartService();
+  const { push } = useRouter();
+  const [comments, setComments] = useState("");
+  const { totalPrice, setNote } = useCartService();
 
   const STATE_LIST = [
     { value: "new-york", label: "New York" },
     { value: "chicago", label: "Chicago" },
   ];
-
+  //
+  const navigateCheckout = () => {
+    setNote(comments);
+    push("/checkout");
+  };
+  //
   return (
     <Card sx={{ padding: 3 }}>
       <FlexBetween mb={2}>
@@ -52,7 +57,13 @@ const CheckoutForm = () => {
       </FlexBox>
 
       {/* COMMENTS TEXT FIELD */}
-      <TextField variant="outlined" rows={6} fullWidth multiline />
+      <TextField
+        variant="outlined"
+        onChange={(event) => setComments(event.target.value)}
+        rows={6}
+        fullWidth
+        multiline
+      />
 
       <Divider sx={{ mb: 2 }} />
 
@@ -130,7 +141,7 @@ const CheckoutForm = () => {
       <Button
         fullWidth
         color="primary"
-        href="/checkout"
+        onClick={navigateCheckout}
         variant="contained"
         LinkComponent={Link}
       >
