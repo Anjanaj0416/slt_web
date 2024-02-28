@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 
 export default async function ProfileEdit() {
   const user = await api.getUser();
-  return <ProfileEditPageView user={user} />;
+  return <ProfileEditPageView/>;
 }
