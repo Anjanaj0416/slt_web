@@ -19,7 +19,6 @@ const SelectedProducts = () => {
     const products: Product1[] = (await listProducts({ page: 0, size: 5 })).data
       ?.data;
     setProducts(products);
-    console.log(products);
   }, [listProducts]);
   //
   useEffect(() => {
