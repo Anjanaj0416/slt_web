@@ -14,7 +14,6 @@ import ThreeBanner from "../three-banner";
 import API from "constants/products";
 import api from "utils/__api__/market-2";
 import request from "utils/request";
-import ENVIRONMENT from "config/environment";
 import { notFound } from "next/navigation";
 
 const MarketTwoPageView = async () => {

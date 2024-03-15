@@ -48,9 +48,17 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
       const products: Product1[] = (await filteredProducts({ categoryIds }))
         .data?.data;
 
-      setProducts(
-        products
-      );
+      if (products.length > 0 && products.length < 4) {
+        if (products.length === 1) {
+          setProducts([...products, ...products]);
+        } else if (products.length === 2) {
+          setProducts([...products, ...products]);
+        } else {
+          setProducts([...products, ...products.slice(0, 1)]);
+        }
+      } else {
+        setProducts(products);
+      }
     },
     [filteredProducts]
   );

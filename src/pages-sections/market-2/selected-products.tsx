@@ -20,9 +20,17 @@ const SelectedProducts = () => {
     const products: Product1[] = (await listProducts({ page: 0, size: 5 })).data
       ?.data;
 
-    setProducts(
-      products
-    );
+    if (products.length > 0 && products.length < 4) {
+      if (products.length === 1) {
+        setProducts([...products, ...products]);
+      } else if (products.length === 2) {
+        setProducts([...products, ...products]);
+      } else {
+        setProducts([...products, ...products.slice(0, 1)]);
+      }
+    } else {
+      setProducts(products);
+    }
   }, [listProducts]);
   //
   useEffect(() => {
