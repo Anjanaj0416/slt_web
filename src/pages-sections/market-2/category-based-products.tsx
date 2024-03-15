@@ -49,14 +49,7 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
         .data?.data;
 
       setProducts(
-        products.map((product) => {
-          return {
-            ...product,
-            images: product.images.map(
-              (image) => `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
-            ),
-          };
-        })
+        products
       );
     },
     [filteredProducts]

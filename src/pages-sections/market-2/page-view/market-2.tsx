@@ -20,14 +20,7 @@ import { notFound } from "next/navigation";
 const MarketTwoPageView = async () => {
   try {
     const products = await request(API.GET_PRODUCTS, { query: "size=5" });
-    const mappedProducts = products?.data.map((product) => {
-      return {
-        ...product,
-        images: product.images.map(
-          (image) => `${ENVIRONMENT.S3_BUCKET_URL}/${image}`
-        ),
-      };
-    });
+
     const mainCategories = await request(API.GET_CATEGORIES, {
       query:
         "size=5&categoryType=PRODUCT&categoryStatus=APPROVED&parentCategoryId=null",
@@ -63,7 +56,7 @@ const MarketTwoPageView = async () => {
           <AnimatedCategoryList categories={categories?.data} />
 
           {/* DEALS OF THE DAY AND OFFER BANNERS */}
-          <Section4 products={mappedProducts} />
+          <Section4 products={products?.data} />
 
           {/* TOP OFFER BANNERS */}
           <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
