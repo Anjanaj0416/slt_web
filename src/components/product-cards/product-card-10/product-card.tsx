@@ -50,7 +50,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
             height={300}
             alt={name}
             src={
-              images[0] ||
+              images[0] ??
               `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
             }
             className="product-img"
@@ -82,7 +82,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
           name,
           price,
           imgGroup: [
-            images[0] ||
+            images[0] ??
               `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`,
           ],
         }}
