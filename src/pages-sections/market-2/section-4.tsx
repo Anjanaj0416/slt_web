@@ -35,7 +35,7 @@ const Section4: FC<Props> = ({ products }) => {
         responsive={responsive}
         arrowStyles={{ backgroundColor: "dark.main" }}
       >
-        {products.map((product) => (
+        {products?.map((product) => (
           <ProductCard10 product={product} key={product.id} />
         ))}
       </Carousel>
