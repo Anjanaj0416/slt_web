@@ -9,7 +9,6 @@ import { ProductCard10 } from "components/product-cards/product-card-10";
 import { useLazyListProductsQuery } from "services/product-api";
 // PRODUCT DATA MODEL
 import { Product1 } from "models/Product.model";
-import ENVIRONMENT from "config/environment";
 
 const SelectedProducts = () => {
   const [selected, setSelected] = useState("new");
