@@ -29,6 +29,8 @@ type Props = { product: Product1 };
 
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
+  console.log(product);
+
   //
   const { handleAddToCart, isItemInCart, selectedProductId, isLoading } =
     useCartService();
@@ -50,8 +52,9 @@ const ProductCard20: FC<Props> = ({ product }) => {
             height={300}
             alt={name}
             src={
-              `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}` ??
-              `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
+              images[0]
+                ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+                : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
             }
             className="product-img"
           />
@@ -82,8 +85,9 @@ const ProductCard20: FC<Props> = ({ product }) => {
           name,
           price,
           imgGroup: [
-            `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}` ??
-              `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`,
+            images[0]
+              ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+              : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`,
           ],
         }}
       />
