@@ -22,7 +22,7 @@ const MarketTwoPageView = async () => {
 
     const mainCategories = await request(API.GET_CATEGORIES, {
       query:
-        "size=5&categoryType=PRODUCT&categoryStatus=APPROVED&parentCategoryId=null",
+        "size=5&productsCountMoreThan=3",
     });
     const categories = await request(API.GET_CATEGORIES, {
       query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
