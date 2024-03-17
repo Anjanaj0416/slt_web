@@ -22,8 +22,9 @@ const MarketTwoPageView = async () => {
 
     const mainCategories = await request(API.GET_CATEGORIES, {
       query:
-        "size=5&categoryType=PRODUCT&categoryStatus=APPROVED&parentCategoryId=null",
+        "size=10&productsCountMoreThan=3",
     });
+    
     const categories = await request(API.GET_CATEGORIES, {
       query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
     });
@@ -61,7 +62,7 @@ const MarketTwoPageView = async () => {
           <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
 
           {/* CATEGORY BASED PRODUCTS */}
-          {mainCategories.data?.map(async (category, index) => (
+          {mainCategories.data?.slice(0,5).map(async (category, index) => (
             <Fragment key={category.id}>
               <CategoryBasedProducts data={category} />
               {index % 2 === 0 ? (
