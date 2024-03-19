@@ -27,8 +27,7 @@ interface Props {
 const MiniCartItem: FC<Props> = ({ item }) => {
   const { product, units } = item;
   const { handleUpdateQty, handleRemoveFromCart, isLoading } = useCartService();
-
-  if (product.images.length > 0) console.log(product);
+  //
   return (
     <FlexBox
       py={2}
