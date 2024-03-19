@@ -27,6 +27,8 @@ interface Props {
 const MiniCartItem: FC<Props> = ({ item }) => {
   const { product, units } = item;
   const { handleUpdateQty, handleRemoveFromCart, isLoading } = useCartService();
+
+  if (product.images.length > 0) console.log(product);
   return (
     <FlexBox
       py={2}
@@ -66,7 +68,7 @@ const MiniCartItem: FC<Props> = ({ item }) => {
         <Avatar
           alt={product?.name}
           src={
-            product?.images[0] ||
+            `${ENVIRONMENT.S3_BUCKET_URL}/${product.images[0]}` ||
             `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
           }
           sx={{ mx: 1, width: 75, height: 75 }}
