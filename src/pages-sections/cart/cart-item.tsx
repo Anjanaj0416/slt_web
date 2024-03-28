@@ -32,7 +32,7 @@ const CartItem: FC<CartItem> = (props) => {
         height={140}
         display="block"
         src={
-          images[0] ||
+          `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}` ||
           `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
         }
       />
