@@ -2,7 +2,7 @@
 
 import Box from "@mui/material/Box";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useContext } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -27,6 +27,7 @@ import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useUpdateWishlistMutation } from "services/wishlist-api";
 import { useSnackbar } from "notistack";
+import { WishlistContext } from "contexts/WishlistContext";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -35,15 +36,14 @@ type Props = { product: Product1 };
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
   const [updateWishlist] = useUpdateWishlistMutation();
-  const { data, update: updateSession } = useSession();
+  const { data } = useSession();
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const { enqueueSnackbar } = useSnackbar();
+  const { wishlist, setWishlist } = useContext(WishlistContext);
 
   const user = data?.user as User1;
-  // Map products to product ids
-  const wishListProductIds = user?.wishlist?.products?.map(
-    (product) => product.id
-  );
+  // Map wishlist products to product ids
+  const wishListProductIds = wishlist?.products?.map((product) => product.id);
   //
   const { handleAddToCart, isItemInCart, selectedProductId, isLoading } =
     useCartService();
@@ -56,27 +56,21 @@ const ProductCard20: FC<Props> = ({ product }) => {
 
   const toggleFavorite = async () => {
     if (user?.id) {
-      const products = wishListProductIds.includes(id)
-        ? user?.wishlist?.products.filter((product) => product.id != id)
-        : [...user?.wishlist?.products, product];
-      //
-      const newWishlist = { ...user?.wishlist, products };
-      updateSession({ ...data, user: { ...user, wishlist: newWishlist } });
+      const productIds = wishListProductIds.includes(id)
+        ? wishListProductIds?.filter((productId) => productId != id)
+        : [...wishListProductIds, id];
       //
       const response = await updateWishlist({
         userId: user.id,
         wishlistId: user.wishlist.id,
-        body: { productIds: products.map((product) => product.id) },
+        body: { productIds },
       });
       //
-      if (!("data" in response)) {
-        updateSession({ ...data, user: { ...user, wishlist: user?.wishlist } });
+      if ("data" in response) {
+        setWishlist(response.data);
+      } else {
         enqueueSnackbar("Something went to wrong", {
           variant: "error",
-          anchorOrigin: {
-            vertical: "bottom",
-            horizontal: "right",
-          },
         });
       }
     } else {

@@ -25,6 +25,7 @@ import SessionProviderWrapper from "utils/session-provider-wrapper";
 import { UnauthenticatedModalProvider } from "components/modals/unauthenticated-action-modal";
 import CartServiceProvider from "contexts/CartServiceContext";
 import CheckoutServiceContextProvider from "contexts/CheckoutServiceContext";
+import WishlistProvider from "contexts/WishlistContext";
 //
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -36,14 +37,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <CartServiceProvider>
                 <CheckoutServiceContextProvider>
                   <CartProvider>
-                    <SettingsProvider>
-                      <ThemeProvider>
-                        <ProgressBar />
-                        <RTL>
-                          <SnackbarProvider>{children}</SnackbarProvider>
-                        </RTL>
-                      </ThemeProvider>
-                    </SettingsProvider>
+                    <WishlistProvider>
+                      <SettingsProvider>
+                        <ThemeProvider>
+                          <ProgressBar />
+                          <RTL>
+                            <SnackbarProvider>{children}</SnackbarProvider>
+                          </RTL>
+                        </ThemeProvider>
+                      </SettingsProvider>
+                    </WishlistProvider>
                   </CartProvider>
                 </CheckoutServiceContextProvider>
               </CartServiceProvider>
