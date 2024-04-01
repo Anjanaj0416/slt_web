@@ -20,6 +20,11 @@ export interface UserCart {
   id: string;
   cartItems: Array<CartItem>;
 }
+
+export interface UserWishlist {
+  id: string;
+  products: Array<Product1>;
+}
 //
 export interface User1 {
   id: string;
@@ -31,6 +36,7 @@ export interface User1 {
   lastName: string;
   username: string;
   cart: UserCart;
+  wishlist: UserWishlist;
   profilePictureUrl: string;
 }
 //

@@ -10,6 +10,7 @@ import { addressApi } from "services/address-api";
 import { orderApi } from "services/order-api";
 import { userApi } from "services/user-api";
 import { fileApi } from "services/file-api";
+import { wishlistApi } from "services/wishlist-api";
 
 // Combine all the reducers into one root reducer
 const rootReducers = combineReducers({
@@ -21,6 +22,7 @@ const rootReducers = combineReducers({
   [orderApi.reducerPath]: orderApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
   [fileApi.reducerPath]: fileApi.reducer,
+  [wishlistApi.reducerPath]: wishlistApi.reducer,
 });
 
 // Define custom middlewares for the store
@@ -31,7 +33,8 @@ const apiMiddlewares = [
   addressApi.middleware,
   orderApi.middleware,
   userApi.middleware,
-  fileApi.middleware
+  fileApi.middleware,
+  wishlistApi.middleware
 ]; // Middleware for Redux Toolkit Query
 //
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors
