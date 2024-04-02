@@ -1,5 +1,3 @@
-"use client";
-
 import { FC } from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
@@ -18,72 +16,88 @@ import DiscountChip from "../discount-chip";
 import QuantityButtons from "./quantity-buttons";
 // STYLED COMPONENTS
 import { ImageWrapper, ContentWrapper, StyledBazaarCard } from "./styles";
-import useCartService from "hooks/useCartService";
-import { Product1 } from "models/Product.model";
-import ENVIRONMENT from "config/environment";
 
 // ========================================================
 type Props = {
-  product: Product1;
+  title: string;
+  slug: string;
+  price: number;
+  imgUrl: string;
   rating?: number;
-  isUpdating: boolean;
+  discount?: number;
+  id: string | number;
   hideRating?: boolean;
   hoverEffect?: boolean;
   showProductSize?: boolean;
-  handleFavorite: (id: string) => void;
 };
 // ========================================================
 
 const ProductCard1: FC<Props> = ({
-  product,
+  id,
+  slug,
+  title,
+  price,
+  imgUrl,
   rating = 5,
   hideRating,
   hoverEffect,
-  handleFavorite,
+  discount = 5,
   showProductSize,
-  isUpdating,
 }) => {
-  const { id, name, price, discount, images, discountType } = product;
-  const { openModal, toggleDialog } = useProduct(id);
-
-  const { handleAddToCart } = useCartService();
+  const {
+    isFavorite,
+    openModal,
+    cartItem,
+    toggleDialog,
+    toggleFavorite,
+    handleCartAmountChange,
+  } = useProduct(slug);
 
   const handleIncrementQuantity = () => {
-    handleAddToCart(product, 1);
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) + 1,
+    };
+    handleCartAmountChange(product);
   };
-  const imgUrl = images[0]
-    ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
-    : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
+
+  const handleDecrementQuantity = () => {
+    const product = {
+      id,
+      slug,
+      price,
+      imgUrl,
+      name: title,
+      qty: (cartItem?.qty || 0) - 1,
+    };
+    handleCartAmountChange(product, "remove");
+  };
+
   return (
     <StyledBazaarCard hoverEffect={hoverEffect}>
       <ImageWrapper>
         {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
-        <DiscountChip
-          discount={
-            !discount || discountType === "NONE"
-              ? 0
-              : discountType === "PERCENTAGE"
-                ? discount
-                : ((price - discount) * 100) / price
-          }
-        />
+        <DiscountChip discount={discount} />
 
         {/* HOVER ACTION ICONS */}
         <HoverActions
-          isFavorite={true}
-          disabledFavButton={isUpdating}
+          isFavorite={isFavorite}
           toggleView={toggleDialog}
-          toggleFavorite={() => handleFavorite(id)}
+          toggleFavorite={toggleFavorite}
         />
 
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${id}`}>
+        <Link href={`/products/${slug}`}>
           <LazyImage
             priority
             src={imgUrl}
             width={500}
             height={500}
-            alt={name}
+            alt={title}
           />
         </Link>
       </ImageWrapper>
@@ -92,13 +106,13 @@ const ProductCard1: FC<Props> = ({
       <ProductViewDialog
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
-        product={{ name, price, id, imgGroup: [imgUrl, imgUrl] }}
+        product={{ title, price, id, slug, imgGroup: [imgUrl, imgUrl] }}
       />
 
       <ContentWrapper>
         <Box flex="1 1 0" minWidth="0px" mr={1}>
           {/* PRODUCT NAME / TITLE */}
-          <ProductTitle title={name} id={id} />
+          <ProductTitle title={title} id={slug} />
 
           {/* PRODUCT RATINGS IF AVAILABLE */}
           {!hideRating ? (
@@ -113,23 +127,14 @@ const ProductCard1: FC<Props> = ({
           ) : null}
 
           {/* PRODUCT PRICE WITH DISCOUNT */}
-          <ProductPrice
-            discount={
-              !discount || discountType === "NONE"
-                ? 0
-                : discountType === "PERCENTAGE"
-                  ? discount
-                  : ((price - discount) * 100) / price
-            }
-            price={price}
-          />
+          <ProductPrice discount={discount} price={price} />
         </Box>
 
         {/* PRODUCT QUANTITY HANDLER BUTTONS */}
         <QuantityButtons
-          //quantity={cartItem?.qty || 0}
+          quantity={cartItem?.qty || 0}
           handleIncrement={handleIncrementQuantity}
-          //handleDecrement={handleDecrementQuantity}
+          handleDecrement={handleDecrementQuantity}
         />
       </ContentWrapper>
     </StyledBazaarCard>
