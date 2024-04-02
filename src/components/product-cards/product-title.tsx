@@ -3,11 +3,11 @@ import Link from "next/link";
 import { H3 } from "components/Typography";
 
 // ==============================================================
-type Props = { title: string; slug: string };
+type Props = { title: string; id: string };
 // ==============================================================
 
-const ProductTitle: FC<Props> = ({ title, slug }) => (
-  <Link href={`/products/${slug}`}>
+const ProductTitle: FC<Props> = ({ title, id }) => (
+  <Link href={`/products/${id}`}>
     <H3
       mb={1}
       ellipsis

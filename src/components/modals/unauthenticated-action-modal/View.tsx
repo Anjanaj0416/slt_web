@@ -18,12 +18,12 @@ const View = ({ isOpen, handleClose }: Props) => {
       <Stack sx={{ background: "white", p: 3, borderRadius: 1 }} spacing={4}>
         <Typography variant="h4">Welcome! Please Login to continue.</Typography>
         <FlexBox gap={2} justifyContent={"flex-end"}>
-          <Button variant="outlined" onClick={handleClose}>
+          <Button variant="outlined" color="error" onClick={handleClose}>
             Cancel
           </Button>
           <Button
             variant="contained"
-            color="info"
+            color="error"
             onClick={() => void signIn("keycloak", { callbackUrl: "/" })}
           >
             Login

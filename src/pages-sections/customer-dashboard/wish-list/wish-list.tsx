@@ -7,19 +7,23 @@ import Favorite from "@mui/icons-material/Favorite";
 import useWishList from "./use-wish-list";
 // GLOBAL CUSTOM COMPONENT
 import ProductCard1 from "components/product-cards/product-card-1";
-// CUSTOM DATA MODEL
-import Product from "models/Product.model";
 // Local CUSTOM COMPONENT
 import Pagination from "../pagination";
 import DashboardHeader from "../dashboard-header";
+import { useSession } from "next-auth/react";
+import { User1, UserWishlist } from "models/User.model";
 
 // ==================================================================
-type Props = { totalProducts: number; products: Product[] };
+type Props = { totalProducts: number; wishlist: UserWishlist };
 // ==================================================================
 
 const WishListPageView = (props: Props) => {
-  const { totalProducts, products } = props;
-  const { currentPage, handleChangePage } = useWishList();
+  const { data } = useSession();
+  //
+  const user = data?.user as User1;
+  const { totalProducts, wishlist } = props;
+  const { currentPage, handleChangePage, filteredWishlist, handleFavorite, isUpdating } =
+    useWishList(wishlist, user?.id);
 
   return (
     <Fragment>
@@ -28,27 +32,24 @@ const WishListPageView = (props: Props) => {
 
       {/* PRODUCT LIST AREA */}
       <Grid container spacing={3}>
-        {products.map((item) => (
+        {filteredWishlist.products.map((item) => (
           <Grid item lg={4} sm={6} xs={12} key={item.id}>
             <ProductCard1
-              id={item.id}
-              slug={item.slug}
-              title={item.title}
-              price={item.price}
-              rating={item.rating}
-              imgUrl={item.thumbnail}
-              discount={item.discount}
+              handleFavorite={handleFavorite}
+              product={item}
+              rating={5}
+              isUpdating={isUpdating}
             />
           </Grid>
         ))}
       </Grid>
 
       {/* PAGINATION AREA */}
-      <Pagination
+      {/* <Pagination
         page={currentPage}
         count={Math.ceil(totalProducts / 6)}
         onChange={(_, page) => handleChangePage(page)}
-      />
+      /> */}
     </Fragment>
   );
 };

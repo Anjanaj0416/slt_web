@@ -2,7 +2,7 @@
 
 import Box from "@mui/material/Box";
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, useContext } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -13,6 +13,7 @@ import useProduct from "../use-product";
 import LazyImage from "components/LazyImage";
 import { H4, Paragraph } from "components/Typography";
 import ProductViewDialog from "components/products-view/product-view-dialog";
+import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 // STYLED COMPONENTS
 import { Card, CardMedia, FavoriteButton, StyledIconButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
@@ -22,6 +23,11 @@ import { LoadingButton } from "@mui/lab";
 import { ENVIRONMENT } from "config";
 import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
+import { useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
+import { useUpdateWishlistMutation } from "services/wishlist-api";
+import { useSnackbar } from "notistack";
+import { WishlistContext } from "contexts/WishlistContext";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -29,18 +35,48 @@ type Props = { product: Product1 };
 
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
-  console.log(product);
+  const [updateWishlist] = useUpdateWishlistMutation();
+  const { data } = useSession();
+  const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
+  const { enqueueSnackbar } = useSnackbar();
+  const { wishlist, setWishlist } = useContext(WishlistContext);
 
+  const user = data?.user as User1;
+  // Map wishlist products to product ids
+  const wishListProductIds = wishlist?.products?.map((product) => product.id);
   //
   const { handleAddToCart, isItemInCart, selectedProductId, isLoading } =
     useCartService();
   //
-  const { isFavorite, openModal, toggleDialog, toggleFavorite } =
-    useProduct(id);
+  const { openModal, toggleDialog } = useProduct(id);
   //
   const isOutOfStock = product?.units <= 0;
   //
   const cartUnits = isItemInCart(product)?.units;
+
+  const toggleFavorite = async () => {
+    if (user?.id) {
+      const productIds = wishListProductIds.includes(id)
+        ? wishListProductIds?.filter((productId) => productId != id)
+        : [...wishListProductIds, id];
+      //
+      const response = await updateWishlist({
+        userId: user.id,
+        wishlistId: user.wishlist.id,
+        body: { productIds },
+      });
+      //
+      if ("data" in response) {
+        setWishlist(response.data);
+      } else {
+        enqueueSnackbar("Something went to wrong", {
+          variant: "error",
+        });
+      }
+    } else {
+      openUnAuthenticatedModal(true);
+    }
+  };
   //
   return (
     <Card>
@@ -67,7 +103,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
 
         {/* PRODUCT FAVORITE BUTTON */}
         <FavoriteButton className="product-actions" onClick={toggleFavorite}>
-          {isFavorite ? (
+          {wishListProductIds && wishListProductIds.includes(product.id) ? (
             <Favorite color="primary" fontSize="small" />
           ) : (
             <FavoriteBorder color="disabled" fontSize="small" />

@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 // MUI ICON COMPONENTS
 import Place from "@mui/icons-material/Place";
 import Person from "@mui/icons-material/Person";
@@ -15,10 +15,11 @@ import { Paragraph, Span } from "components/Typography";
 import CustomerService from "icons/CustomerService";
 // STYLED COMPONENTS
 import { MainContainer, StyledNavLink } from "./styles";
+import { WishlistContext } from "contexts/WishlistContext";
 
 const Navigation = () => {
   const pathname = usePathname();
-
+  const { wishlist } = useContext(WishlistContext);
   return (
     <MainContainer>
       {MENUS.map((item) => (
@@ -27,20 +28,25 @@ const Navigation = () => {
             {item.title}
           </Paragraph>
 
-          {item.list.map(({ Icon, count, href, title }) => (
-            <StyledNavLink
-              href={href}
-              key={title}
-              isCurrentPath={pathname.includes(href)}
-            >
-              <FlexBox alignItems="center" gap={1}>
-                <Icon color="inherit" fontSize="small" className="nav-icon" />
-                <Span>{title}</Span>
-              </FlexBox>
+          {item.list.map(({ Icon, count, href, title }) => {
+            if (title === "Wishlist") {
+              count = wishlist.products.length;
+            }
+            return (
+              <StyledNavLink
+                href={href}
+                key={title}
+                isCurrentPath={pathname.includes(href)}
+              >
+                <FlexBox alignItems="center" gap={1}>
+                  <Icon color="inherit" fontSize="small" className="nav-icon" />
+                  <Span>{title}</Span>
+                </FlexBox>
 
-              <Span>{count}</Span>
-            </StyledNavLink>
-          ))}
+                {count ? <Span>{count}</Span> : <Span></Span>}
+              </StyledNavLink>
+            );
+          })}
         </Fragment>
       ))}
     </MainContainer>

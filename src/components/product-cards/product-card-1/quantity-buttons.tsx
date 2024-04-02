@@ -9,9 +9,9 @@ import { Paragraph } from "components/Typography";
 
 // ==============================================================
 interface Props {
-  quantity: number;
-  handleDecrement: () => void;
-  handleIncrement: () => void;
+  quantity?: number;
+  handleDecrement?: () => void;
+  handleIncrement?: () => void;
 }
 // ==============================================================
 

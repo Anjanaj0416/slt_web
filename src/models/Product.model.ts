@@ -25,6 +25,8 @@ interface Product {
 export interface Product1 {
   units?: any;
   price: number;
+  discount: number;
+  discountType: "NONE" | "PERCENTAGE" | "FLAT";
   id: string;
   brand?: string;
   images?: string[];
