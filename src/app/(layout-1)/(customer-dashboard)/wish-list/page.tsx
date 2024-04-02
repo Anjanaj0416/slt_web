@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import { WishListPageView } from "pages-sections/customer-dashboard/wish-list";
 // API FUNCTIONS
 import { getWishListProducts } from "utils/__api__/wish-list";
-import { auth } from "../../../../../tools/output/src/utils/auth";
 import request from "utils/request";
 import API from "constants/wishlist";
 import { notFound } from "next/navigation";
+import { auth } from "utils/auth";
 
 export const metadata: Metadata = {
   title: "Wishlist - Bazaar Next.js E-commerce Template",
