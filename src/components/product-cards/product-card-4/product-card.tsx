@@ -106,7 +106,7 @@ const ProductCard13: FC<Props> = (props) => {
       <ContentWrapper>
         <Box flex="1 1 0" pt="3px">
           {/* PRODUCT NAME / TITLE */}
-          <ProductTitle title={title} slug={slug} />
+          <ProductTitle title={title} id={slug} />
 
           {/* PRODUCT RATING / REVIEW  */}
           <ProductRating showRating={!hideRating} rating={rating} />

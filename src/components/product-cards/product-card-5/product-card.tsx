@@ -114,7 +114,7 @@ const ProductCard14: FC<Props> = (props) => {
 
       <ContentWrapper>
         {/* PRODUCT NAME / TITLE */}
-        <ProductTitle slug={slug} title={title} />
+        <ProductTitle id={slug} title={title} />
 
         {/* PRODUCT RATINGS IF AVAILABLE */}
         <ProductRating rating={rating} showRating={!hideRating} />
