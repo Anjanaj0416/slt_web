@@ -98,7 +98,7 @@ const ProductCard16: FC<Props> = (props) => {
         <ProductPrice discount={discount} price={price} />
 
         {/* PRODUCT NAME / TITLE */}
-        <ProductTitle slug={slug} title={title} />
+        <ProductTitle id={slug} title={title} />
 
         {/* PRODUCT RATINGS IF AVAILABLE */}
         <ProductRating rating={rating} showRating={!hideRating} />
