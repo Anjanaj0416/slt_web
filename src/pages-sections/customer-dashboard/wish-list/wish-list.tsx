@@ -14,16 +14,21 @@ import { useSession } from "next-auth/react";
 import { User1, UserWishlist } from "models/User.model";
 
 // ==================================================================
-type Props = { totalProducts: number; wishlist: UserWishlist };
+type Props = { wishlist: UserWishlist };
 // ==================================================================
 
 const WishListPageView = (props: Props) => {
   const { data } = useSession();
   //
   const user = data?.user as User1;
-  const { totalProducts, wishlist } = props;
-  const { currentPage, handleChangePage, filteredWishlist, handleFavorite, isUpdating } =
-    useWishList(wishlist, user?.id);
+  const { wishlist } = props;
+  const {
+    currentPage,
+    handleChangePage,
+    filteredWishlist,
+    handleFavorite,
+    isUpdating,
+  } = useWishList(wishlist, user?.id);
 
   return (
     <Fragment>
@@ -32,24 +37,28 @@ const WishListPageView = (props: Props) => {
 
       {/* PRODUCT LIST AREA */}
       <Grid container spacing={3}>
-        {filteredWishlist.products.map((item) => (
-          <Grid item lg={4} sm={6} xs={12} key={item.id}>
-            <ProductCard11
-              handleFavorite={handleFavorite}
-              product={item}
-              rating={5}
-              isUpdating={isUpdating}
-            />
-          </Grid>
-        ))}
+        {filteredWishlist.products
+          .slice((currentPage - 1) * 6, (currentPage - 1) * 6 + 6)
+          .map((item) => (
+            <Grid item lg={4} sm={6} xs={12} key={item.id}>
+              <ProductCard11
+                handleFavorite={handleFavorite}
+                product={item}
+                rating={5}
+                isUpdating={isUpdating}
+              />
+            </Grid>
+          ))}
       </Grid>
 
       {/* PAGINATION AREA */}
-      {/* <Pagination
-        page={currentPage}
-        count={Math.ceil(totalProducts / 6)}
-        onChange={(_, page) => handleChangePage(page)}
-      /> */}
+      {!!filteredWishlist.products.length && (
+        <Pagination
+          page={currentPage}
+          count={Math.ceil(filteredWishlist.products.length / 6)}
+          onChange={(_, page) => handleChangePage(page)}
+        />
+      )}
     </Fragment>
   );
 };

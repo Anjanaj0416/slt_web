@@ -35,7 +35,7 @@ type Props = { product: Product1 };
 
 const ProductCard20: FC<Props> = ({ product }) => {
   const { id, price, name, images } = product;
-  const [updateWishlist] = useUpdateWishlistMutation();
+  const [updateWishlist, { error }] = useUpdateWishlistMutation();
   const { data } = useSession();
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const { enqueueSnackbar } = useSnackbar();
@@ -56,19 +56,29 @@ const ProductCard20: FC<Props> = ({ product }) => {
 
   const toggleFavorite = async () => {
     if (user?.id) {
-      const productIds = wishListProductIds.includes(id)
-        ? wishListProductIds?.filter((productId) => productId != id)
-        : [...wishListProductIds, id];
+      const oldWishlistProducts = [...wishlist?.products];
       //
-      const response = await updateWishlist({
+      const newWishListProducts = wishListProductIds.includes(id)
+        ? wishlist?.products.filter((product) => product.id != id)
+        : [...wishlist?.products, product];
+      setWishlist((prvState) => ({
+        ...prvState,
+        products: newWishListProducts,
+      }));
+      //
+      const productIds = newWishListProducts.map((product) => product.id);
+      //
+      await updateWishlist({
         userId: user.id,
         wishlistId: user.wishlist.id,
         body: { productIds },
       });
       //
-      if ("data" in response) {
-        setWishlist(response.data);
-      } else {
+      if (error) {
+        setWishlist((prvState) => ({
+          ...prvState,
+          products: oldWishlistProducts,
+        }));
         enqueueSnackbar("Something went to wrong", {
           variant: "error",
         });
