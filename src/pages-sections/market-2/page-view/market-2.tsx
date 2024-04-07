@@ -11,30 +11,31 @@ import Section8 from "../section-8";
 import SelectedProducts from "../selected-products";
 import ThreeBanner from "../three-banner";
 // API FUNCTIONS
-import API from "constants/products";
+import PRODUCT_API from "constants/products";
+import BANNER_API from "constants/banners";
+import CATEGORY_API from "constants/categories";
 import api from "utils/__api__/market-2";
 import request from "utils/request";
 import { notFound } from "next/navigation";
 
 const MarketTwoPageView = async () => {
   try {
-    const products = await request(API.GET_PRODUCTS, { query: "size=5" });
+    const products = await request(PRODUCT_API.GET_PRODUCTS, { query: "size=5" });
 
-    const mainCategories = await request(API.GET_CATEGORIES, {
-      query:
-        "size=10&productsCountMoreThan=3",
+    const mainCategories = await request(CATEGORY_API.GET_CATEGORIES, {
+      query: "size=10&productsCountMoreThan=3",
     });
-    
-    const categories = await request(API.GET_CATEGORIES, {
+
+    const categories = await request(CATEGORY_API.GET_CATEGORIES, {
       query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
     });
-    const fullBanners = await request(API.GET_BANNERS, {
+    const fullBanners = await request(BANNER_API.GET_BANNERS, {
       query: "size=3&bannerType=FULL",
     });
-    const halfBanners = await request(API.GET_BANNERS, {
+    const halfBanners = await request(BANNER_API.GET_BANNERS, {
       query: "size=4&bannerType=HALF",
     });
-    const threeBanners = await request(API.GET_BANNERS, {
+    const threeBanners = await request(BANNER_API.GET_BANNERS, {
       query: "size=4&bannerType=THREE",
     });
     const brands = await api.getBrands();
@@ -62,7 +63,7 @@ const MarketTwoPageView = async () => {
           <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
 
           {/* CATEGORY BASED PRODUCTS */}
-          {mainCategories.data?.slice(0,5).map(async (category, index) => (
+          {mainCategories.data?.slice(0, 5).map(async (category, index) => (
             <Fragment key={category.id}>
               <CategoryBasedProducts data={category} />
               {index % 2 === 0 ? (

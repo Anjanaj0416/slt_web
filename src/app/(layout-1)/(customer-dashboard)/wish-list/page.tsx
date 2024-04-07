@@ -24,12 +24,7 @@ export default async function WishList({ searchParams }) {
       wishlistId: user?.wishlist.id,
     });
 
-    return (
-      <WishListPageView
-        wishlist={wishlist}
-        totalProducts={wishlist?.products?.length}
-      />
-    );
+    return <WishListPageView wishlist={wishlist} />;
   } catch (error) {
     notFound();
   }

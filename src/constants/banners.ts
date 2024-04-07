@@ -2,10 +2,10 @@
  * Defines the API paths for products
  */
 const API = {
-  GET_PRODUCTS: {
-    path: "/products?:query",
+  GET_BANNERS: {
+    path: "/banners?:query",
     method: "GET",
-  }
+  },
 };
 //
 export default API;

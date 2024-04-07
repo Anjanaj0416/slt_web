@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { useUpdateWishlistMutation } from "services/wishlist-api";
 
 const useWishList = (wishlist: UserWishlist, userId: string) => {
-  const [updateWishlist, { isLoading: isUpdating }] =
+  const [updateWishlist, { isLoading: isUpdating, error }] =
     useUpdateWishlistMutation();
   const { wishlist: filteredWishlist, setWishlist } =
     useContext(WishlistContext);
@@ -26,28 +26,45 @@ const useWishList = (wishlist: UserWishlist, userId: string) => {
     setCurrentPage(page);
     router.push(`?page=${page}`);
   };
+
+  // HANDLE REMOVE FAVORITE
   const handleFavorite = async (id: string) => {
     if (userId) {
-      const wishListProductIds = filteredWishlist?.products?.map(
-        (product) => product.id
+      const oldWishlistProducts = [...filteredWishlist?.products];
+      const newWishListProducts = filteredWishlist?.products.filter(
+        (product) => product.id != id
       );
-      const productIds = wishListProductIds?.filter(
-        (productId) => productId != id
-      );
+      setWishlist((prvState) => ({
+        ...prvState,
+        products: newWishListProducts,
+      }));
       //
-      const response = await updateWishlist({
+      const productIds = newWishListProducts.map((product) => product.id);
+      //
+      await updateWishlist({
         userId: userId,
         wishlistId: filteredWishlist?.id,
         body: { productIds },
       });
       //
-      if ("data" in response) {
-        //setFilteredWishlist(response.data);
-        setWishlist(response.data);
-      } else {
+      if (error) {
+        setWishlist((prvState) => ({
+          ...prvState,
+          products: oldWishlistProducts,
+        }));
         enqueueSnackbar("Something went to wrong", {
           variant: "error",
         });
+      }
+      //
+      const currentPageProducts = newWishListProducts.slice(
+        (currentPage - 1) * 6,
+        (currentPage - 1) * 6 + 6
+      );
+      if (currentPageProducts.length < 1) {
+        console.log("yes");
+
+        handleChangePage(currentPage - 1);
       }
     }
   };
