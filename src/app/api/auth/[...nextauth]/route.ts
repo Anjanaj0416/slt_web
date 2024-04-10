@@ -44,11 +44,15 @@ const authOptions: AuthOptions = {
         idToken: token.idToken as string,
         refreshToken: token.refreshToken as string,
         expires: token.expires as string,
-        user: user,
+        user: {
+          ...user,
+          cart: { id: user.cart?.id, cartItems: null },
+          wishlist: { id: user.wishlist?.id, products: null },
+        },
       };
     },
     //
-    async jwt({ token, account, user, trigger, session }) {
+    async jwt({ token, account, user, trigger, session }: any) {
       // The processing of JWT occurs before handling sessions.
       if (account) {
         // 'account' is only available the first time this callback is called on a new session
@@ -57,12 +61,17 @@ const authOptions: AuthOptions = {
         token.idToken = account.id_token;
         token.expires = account.expires_at;
         token.refreshTokenExpires = account.refresh_expires_in;
-        token.user = user;
+        token.user = {
+          ...user,
+          cart: { id: user?.cart?.id, cartItems: null },
+          wishlist: { id: user?.wishlist?.id, products: null },
+        };
       } else if (trigger === "update") {
         token.user = session.user;
       }
       //
-      const timeDifferenceInSeconds = ((token.expires as number) * 1000 - Date.now()) / 1000;
+      const timeDifferenceInSeconds =
+        ((token.expires as number) * 1000 - Date.now()) / 1000;
       if (timeDifferenceInSeconds > 60) {
         return token;
       } else if (token?.expires) {
@@ -74,7 +83,8 @@ const authOptions: AuthOptions = {
           refreshToken: newTokens?.refresh_token,
           idToken: newTokens?.id_token,
           expires: Math.floor(Date.now() / 1000) + newTokens?.expires_in,
-          refreshTokenExpires: Math.floor(Date.now() / 1000) + newTokens?.refresh_expires_in,
+          refreshTokenExpires:
+            Math.floor(Date.now() / 1000) + newTokens?.refresh_expires_in,
         };
       }
     },
@@ -83,9 +93,17 @@ const authOptions: AuthOptions = {
   //
   events: {
     signOut: async ({ token }) => {
-      const url = new URL(`${process.env.KEYCLOAK_CLIENT_ISSUER}/protocol/openid-connect/logout`);
-      url.searchParams.append("id_token_hint", (token as { idToken: string }).idToken);
-      url.searchParams.append("post_logout_redirect_uri", process.env.NEXTAUTH_URL);
+      const url = new URL(
+        `${process.env.KEYCLOAK_CLIENT_ISSUER}/protocol/openid-connect/logout`
+      );
+      url.searchParams.append(
+        "id_token_hint",
+        (token as { idToken: string }).idToken
+      );
+      url.searchParams.append(
+        "post_logout_redirect_uri",
+        process.env.NEXTAUTH_URL
+      );
       //
       await axios.get(url.href);
     },
