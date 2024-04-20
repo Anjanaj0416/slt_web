@@ -63,8 +63,8 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
     [filteredProducts]
   );
 
-  const getAllSubCategoryIds = useCallback((category) => {
-    let subCategoryIds = [];
+  const getAllSubCategoryIds = useCallback((category): string[] => {
+    let subCategoryIds: string[] = [category.id];
     if (category.subCategories !== null && category.subCategories.length > 0) {
       category.subCategories.forEach((subCategory) => {
         subCategoryIds.push(subCategory.id);
@@ -79,8 +79,7 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
 
   useEffect(() => {
     if (data?.id) {
-      const categoryIds: string[] = getAllSubCategoryIds(data);
-      categoryIds.push(data.id);
+      const categoryIds = getAllSubCategoryIds(data);
       getProducts(categoryIds.join(","));
     }
   }, [data, getAllSubCategoryIds, getProducts]);
