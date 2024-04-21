@@ -89,7 +89,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
   };
   //
   return (
-    <Card>
+    <Card >
       <CardMedia>
         {/* PRODUCT IMAGE / THUMBNAIL */}
         <Link href={`/products/${id}`}>
