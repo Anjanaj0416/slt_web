@@ -16,7 +16,7 @@ import { ProductCard10 } from "components/product-cards/product-card-10";
 import { Product1 } from "models/Product.model";
 import { useLazyFilteredProductsQuery } from "services/product-api";
 import Category1 from "models/Category.model";
-import { ENVIRONMENT } from "config";
+import CircularProgress from "@mui/material/CircularProgress/CircularProgress";
 
 // STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -41,30 +41,29 @@ type Props = { data: Category1 };
 
 const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, { isLoading }] = useLazyFilteredProductsQuery();
+  const [filteredProducts, { isFetching }] = useLazyFilteredProductsQuery();
 
   const getProducts = useCallback(
     async (categoryIds) => {
       const products: Product1[] = (await filteredProducts({ categoryIds }))
         .data?.data;
-
-      if (products.length > 0 && products.length < 4) {
-        if (products.length === 1) {
-          setProducts([...products, ...products]);
-        } else if (products.length === 2) {
-          setProducts([...products, ...products]);
+      //
+      if (products?.length) {
+        const lengthDiff = 4 - products?.length;
+        if (lengthDiff > 0) {
+          setProducts((prvState) => [...products, ...new Array(lengthDiff)]);
         } else {
-          setProducts([...products, ...products.slice(0, 1)]);
+          setProducts((prvState) => products);
         }
       } else {
-        setProducts(products);
+        setProducts((prvState) => []);
       }
     },
     [filteredProducts]
   );
 
-  const getAllSubCategoryIds = useCallback((category) => {
-    let subCategoryIds = [];
+  const getAllSubCategoryIds = useCallback((category): string[] => {
+    let subCategoryIds: string[] = [category.id];
     if (category.subCategories !== null && category.subCategories.length > 0) {
       category.subCategories.forEach((subCategory) => {
         subCategoryIds.push(subCategory.id);
@@ -79,8 +78,7 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
 
   useEffect(() => {
     if (data?.id) {
-      const categoryIds: string[] = getAllSubCategoryIds(data);
-      categoryIds.push(data.id);
+      const categoryIds = getAllSubCategoryIds(data);
       getProducts(categoryIds.join(","));
     }
   }, [data, getAllSubCategoryIds, getProducts]);
@@ -130,18 +128,20 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
         {/* CATEGORY BASED PRODUCTS CAROUSEL */}
         {
           <Grid item md={9} xs={12}>
-            {isLoading ? (
-              //TODO: Add loading component
-              <Container>Loading...</Container>
+            {isFetching ? (
+              <CircularProgress />
             ) : (
               <Carousel
                 slidesToShow={4}
                 responsive={responsive}
                 arrowStyles={{ backgroundColor: "dark.main" }}
               >
-                {products?.map((product) => (
-                  <ProductCard10 product={product} key={product.id} />
-                ))}
+                {products?.map((product, index) => {
+                  if (product) {
+                    return <ProductCard10 product={product} key={product.id} />;
+                  }
+                  return <div key={index}></div>;
+                })}
               </Carousel>
             )}
           </Grid>
