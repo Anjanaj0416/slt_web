@@ -58,9 +58,24 @@ const ProductCard20: FC<Props> = ({ product }) => {
     if (user?.id) {
       const oldWishlistProducts = [...wishlist?.products];
       //
-      const newWishListProducts = wishListProductIds.includes(id)
-        ? wishlist?.products.filter((product) => product.id != id)
-        : [...wishlist?.products, product];
+      let newWishListProducts;
+      if (wishListProductIds.includes(id)) {
+        newWishListProducts = wishlist?.products.filter(
+          (product) => product.id != id
+        );
+      } else {
+        if (wishlist?.products.length >= Number(ENVIRONMENT.WISHLIST_LIMIT)) {
+          enqueueSnackbar(
+            `Wishlist max limit exceeded! Max product limit is ${ENVIRONMENT.WISHLIST_LIMIT}`,
+            {
+              variant: "error",
+            }
+          );
+          return;
+        }
+        newWishListProducts = [...wishlist?.products, product];
+      }
+      //
       setWishlist((prvState) => ({
         ...prvState,
         products: newWishListProducts,
@@ -89,7 +104,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
   };
   //
   return (
-    <Card >
+    <Card>
       <CardMedia>
         {/* PRODUCT IMAGE / THUMBNAIL */}
         <Link href={`/products/${id}`}>
