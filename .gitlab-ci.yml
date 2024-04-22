@@ -99,6 +99,10 @@ build_qa:
     - echo "NEXT_PUBLIC_DOMAIN=$NEXT_PUBLIC_DOMAIN" >> .env
     - NEXT_PUBLIC_APP_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_app_url --query Parameter.Value --output text)
     - echo "NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL" >> .env
+    - NEXT_PUBLIC_WISHLIST_LIMIT=$(aws ssm get-parameter --name /dev-marketplacer-client-next_public_wishlist_limit --query Parameter.Value --output text)
+    - echo "NEXT_PUBLIC_WISHLIST_LIMIT=$NEXT_PUBLIC_WISHLIST_LIMIT" >> .env
+    - NEXT_PUBLIC_SESSION_REFRESH_TIME=$(aws ssm get-parameter --name /dev-marketplacer-client-next_public_session_refresh_time --query Parameter.Value --output text)
+    - echo "NEXT_PUBLIC_SESSION_REFRESH_TIME=$NEXT_PUBLIC_SESSION_REFRESH_TIME" >> .env
     - echo "Envs injection end --"
   script:
     - echo "Building Docker image"
