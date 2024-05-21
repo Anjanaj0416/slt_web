@@ -8,15 +8,18 @@ export const categoryApi = createApi({
   tagTypes: ["CATEGORY", "CATEGORY"],
   endpoints: (builder) => ({
     filteredCategories: builder.query({
-      query: ({ size }) => `/categories?&size=${size}&categoryType=PRODUCT&parentCategoryId=null&categoryStatus=APPROVED`,
+      query: ({ size }) =>
+        `/categories?&size=${size}&categoryType=PRODUCT&parentCategoryId=null&categoryStatus=APPROVED`,
       providesTags: (result, error, arg) =>
         result
-          ? [...result.data.map(({ id }) => ({ type: "CATEGORY", id })), "CATEGORY"]
+          ? [
+              ...result.data.map(({ id }) => ({ type: "CATEGORY", id })),
+              "CATEGORY",
+            ]
           : ["CATEGORY"],
     }),
     getCategory: builder.query({
-      query: ({ categoryId }) =>
-        `/categories/${categoryId}`,
+      query: ({ categoryId }) => `/categories/${categoryId}`,
       providesTags: ["CATEGORY"],
     }),
   }),

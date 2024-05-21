@@ -19,7 +19,7 @@ const Shirt = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Shirt",
+  "Shirt"
 );
 
 export default Shirt;

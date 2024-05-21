@@ -23,7 +23,11 @@ const Section3: FC<Props> = ({ newArrivals }) => {
 
   return (
     <SectionCreator title="New Arrivals" seeMoreLink="#">
-      <Carousel slidesToShow={6} responsive={responsive} arrowStyles={ARROW_BUTTON_STYLE}>
+      <Carousel
+        slidesToShow={6}
+        responsive={responsive}
+        arrowStyles={ARROW_BUTTON_STYLE}
+      >
         {newArrivals.map((item, ind) => (
           <ProductCard2
             hideReview

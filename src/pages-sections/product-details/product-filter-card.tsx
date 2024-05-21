@@ -81,7 +81,7 @@ const ProductFilterCard = () => {
           >
             {item.title}
           </Paragraph>
-        ),
+        )
       )}
 
       <Box component={Divider} my={3} />

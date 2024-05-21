@@ -23,7 +23,7 @@ const Dining = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Dining",
+  "Dining"
 );
 
 export default Dining;

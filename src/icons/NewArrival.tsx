@@ -9,7 +9,7 @@ const NewArrival = createSvgIcon(
       />
     </g>
   </svg>,
-  "NewArrival",
+  "NewArrival"
 );
 
 export default NewArrival;

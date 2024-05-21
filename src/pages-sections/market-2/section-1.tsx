@@ -55,7 +55,11 @@ const Section1: FC<Props> = ({ carouselData }) => {
           </Grid>
 
           <Grid item md={3} xs={12}>
-            <Stack height="100%" direction={{ md: "column", sm: "row", xs: "column" }} spacing={2}>
+            <Stack
+              height="100%"
+              direction={{ md: "column", sm: "row", xs: "column" }}
+              spacing={2}
+            >
               {/* SUMMER SALE BANNER */}
               <BannerCard
                 imageFull

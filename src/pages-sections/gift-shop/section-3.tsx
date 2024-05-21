@@ -42,7 +42,13 @@ const Section3 = () => {
             <Image
               alt="offer"
               src={require("../../../public/assets/images/Gift Shop/Offer 1.png")}
-              style={{ width: "100%", height: "auto", zIndex: 0, bottom: 0, position: "absolute" }}
+              style={{
+                width: "100%",
+                height: "auto",
+                zIndex: 0,
+                bottom: 0,
+                position: "absolute",
+              }}
             />
           </RightCard>
         </Link>

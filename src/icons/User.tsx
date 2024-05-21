@@ -7,7 +7,7 @@ const User = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "User",
+  "User"
 );
 
 export default User;

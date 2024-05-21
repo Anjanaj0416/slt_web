@@ -47,7 +47,7 @@ const Christmas = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Christmas",
+  "Christmas"
 );
 
 export default Christmas;

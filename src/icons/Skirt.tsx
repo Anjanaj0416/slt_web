@@ -30,7 +30,7 @@ const Skirt = createSvgIcon(
       strokeLinejoin="round"
     />
   </svg>,
-  "Skirt",
+  "Skirt"
 );
 
 export default Skirt;

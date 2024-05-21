@@ -8,7 +8,7 @@ const Calendar = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "Calendar",
+  "Calendar"
 );
 
 export default Calendar;

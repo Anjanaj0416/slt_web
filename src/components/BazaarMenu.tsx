@@ -59,7 +59,7 @@ const BazaarMenu: FC<Props> = ({
         {Children.map(children, (child: ReactElement) =>
           cloneElement(child, {
             onClick: handleMenuItemClick(child.props.onClick),
-          }),
+          })
         )}
       </Menu>
     </Fragment>

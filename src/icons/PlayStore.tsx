@@ -37,7 +37,7 @@ const PlayStore = createSvgIcon(
       />
     </g>
   </svg>,
-  "PlayStore",
+  "PlayStore"
 );
 
 export default PlayStore;

@@ -47,7 +47,7 @@ const Sofa = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Sofa",
+  "Sofa"
 );
 
 export default Sofa;

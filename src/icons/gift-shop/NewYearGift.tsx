@@ -35,7 +35,7 @@ const NewYearGift = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "NewYearGift",
+  "NewYearGift"
 );
 
 export default NewYearGift;

@@ -55,7 +55,7 @@ const Products = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Products",
+  "Products"
 );
 
 export default Products;

@@ -32,14 +32,14 @@ const getTopPicksList = cache(async (): Promise<Product[]> => {
 
 const getMostViewedList = cache(async (): Promise<Product[]> => {
   const response = await axios.get(
-    "/api/gadget-store/products?tag=most-viewed",
+    "/api/gadget-store/products?tag=most-viewed"
   );
   return response.data;
 });
 
 const getNewArrival = cache(async (): Promise<Product[]> => {
   const response = await axios.get(
-    "/api/gadget-store/products?tag=new-arrival",
+    "/api/gadget-store/products?tag=new-arrival"
   );
   return response.data;
 });

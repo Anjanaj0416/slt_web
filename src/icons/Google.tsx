@@ -7,7 +7,7 @@ const Google = createSvgIcon(
       fill="white"
     />
   </svg>,
-  "Google",
+  "Google"
 );
 
 export default Google;

@@ -85,7 +85,7 @@ const ProfileEditPageView = () => {
       })
       .catch(() => {});
   };
-  
+
   if (isLoading) {
     return <Container>Loading...</Container>;
   }

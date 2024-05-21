@@ -23,7 +23,7 @@ const CategoryOutlined = createSvgIcon(
       d="M2 14C2 13.4477 2.44772 13 3 13H10C10.5523 13 11 13.4477 11 14V21C11 21.5523 10.5523 22 10 22H3C2.44772 22 2 21.5523 2 21V14ZM4 15V20H9V15H4Z"
     />
   </svg>,
-  "CategoryOutlined",
+  "CategoryOutlined"
 );
 
 export default CategoryOutlined;

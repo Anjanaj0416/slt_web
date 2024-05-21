@@ -31,7 +31,7 @@ const ValentineGift = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "ValentineGift",
+  "ValentineGift"
 );
 
 export default ValentineGift;

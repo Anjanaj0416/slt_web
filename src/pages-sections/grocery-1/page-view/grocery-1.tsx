@@ -56,7 +56,7 @@ const GroceryOnePageView = (props: Props) => {
         handleSelect={handleSelectCategory}
       />
     ),
-    [props.grocery1NavList],
+    [props.grocery1NavList]
   );
 
   return (

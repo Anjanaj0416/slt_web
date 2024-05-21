@@ -31,7 +31,7 @@ const ProgressBar = () => {
     const handleMutation: MutationCallback = () => {
       const anchorElements = document.querySelectorAll("a[href]");
       anchorElements.forEach((anchor) =>
-        anchor.addEventListener("click", handleAnchorClick),
+        anchor.addEventListener("click", handleAnchorClick)
       );
     };
 

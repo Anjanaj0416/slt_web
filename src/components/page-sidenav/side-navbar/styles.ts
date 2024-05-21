@@ -22,7 +22,7 @@ export const NavbarRoot = styled(BazaarCard, {
       paddingBottom: 10,
       backgroundColor: theme.palette.primary[50],
     }),
-  }),
+  })
 );
 
 export const StyledList = styled(FlexBox)(({ theme }) => ({

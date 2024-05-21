@@ -19,7 +19,7 @@ const Lotion = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Lotion",
+  "Lotion"
 );
 
 export default Lotion;

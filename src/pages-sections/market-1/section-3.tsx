@@ -24,7 +24,11 @@ const Section3: FC<Props> = ({ categoryList }) => {
   ];
 
   return (
-    <SectionCreator seeMoreLink="#" title="Top Categories" icon={<CategoryIcon color="primary" />}>
+    <SectionCreator
+      seeMoreLink="#"
+      title="Top Categories"
+      icon={<CategoryIcon color="primary" />}
+    >
       <Carousel slidesToShow={3} responsive={responsive}>
         {categoryList.map((item: any) => (
           <Link href={`/products/search/${item.slug}`} key={item.id}>

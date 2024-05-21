@@ -23,7 +23,10 @@ type MegaMenu = { categories: Category[]; rightImage?: Image };
 type MegaMenuProps = { data: MegaMenu; minWidth?: string };
 // ====================================================================================
 
-const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWidth = "760px" }) => {
+const MegaMenu3: FC<MegaMenuProps> = ({
+  data: { categories, rightImage },
+  minWidth = "760px",
+}) => {
   return categories ? (
     <StyledMegaMenu>
       <BazaarCard sx={{ ml: "1rem", minWidth }} elevation={2}>
@@ -46,7 +49,12 @@ const MegaMenu3: FC<MegaMenuProps> = ({ data: { categories, rightImage }, minWid
                     </NavLink>
                   ))}
                   {item.moreSubCategories && (
-                    <NavLink style={{ color: "orange" }} className="child-link" href="#" key={ind}>
+                    <NavLink
+                      style={{ color: "orange" }}
+                      className="child-link"
+                      href="#"
+                      key={ind}
+                    >
                       More Categories
                     </NavLink>
                   )}

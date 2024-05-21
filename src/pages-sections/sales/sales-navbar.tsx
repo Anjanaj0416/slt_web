@@ -38,7 +38,10 @@ const SalesNavbar: FC<Props> = ({ categories, selected, onChangeCategory }) => {
                   background: selectedItem ? "primary.light" : "transparent",
                 }}
               >
-                <Icon sx={{ fontSize: "1.75rem" }} color={selectedItem ? "primary" : "secondary"} />
+                <Icon
+                  sx={{ fontSize: "1.75rem" }}
+                  color={selectedItem ? "primary" : "secondary"}
+                />
                 <Title selected={selectedItem}>{item.name}</Title>
               </FlexRowCenter>
             );

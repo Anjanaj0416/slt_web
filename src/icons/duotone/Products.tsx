@@ -12,7 +12,7 @@ const Products = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Products",
+  "Products"
 );
 
 export default Products;

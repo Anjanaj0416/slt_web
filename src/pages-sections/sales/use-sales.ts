@@ -12,7 +12,7 @@ const useSales = (defaultSelectCategory = "women", fetchCategory = 0) => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [productList, setProductList] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState(
-    defaultSelectCategory,
+    defaultSelectCategory
   );
 
   // HANDLE CHANGE PAGE

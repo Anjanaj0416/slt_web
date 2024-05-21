@@ -16,7 +16,7 @@ export const getSlugs = cache(
   async (): Promise<{ params: { slug: string } }[]> => {
     const response = await axios.get("/api/tickets/slugs");
     return response.data;
-  },
+  }
 );
 
 export default { getTicketList, getTicket, getSlugs };

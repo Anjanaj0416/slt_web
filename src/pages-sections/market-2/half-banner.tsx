@@ -36,12 +36,12 @@ const HalfBanner: FC<Props> = ({ data }) => {
       <Grid container spacing={3}>
         {/* FINAL REDUCTION BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img={data[0]?.imageUrl}/>
+          <BannerBox img={data[0]?.imageUrl} />
         </Grid>
 
         {/* WEEKEND SALE BANNER */}
         <Grid item md={6} xs={12}>
-          <BannerBox img={data[1]?.imageUrl}/>
+          <BannerBox img={data[1]?.imageUrl} />
         </Grid>
       </Grid>
     </Container>

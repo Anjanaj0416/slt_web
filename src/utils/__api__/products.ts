@@ -21,7 +21,7 @@ const searchProducts = cache(
       params: { name, category },
     });
     return response.data;
-  },
+  }
 );
 
 export default { getSlugs, getProduct, searchProducts };

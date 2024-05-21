@@ -34,10 +34,7 @@ interface Props {
 }
 // ==================================================================
 
-const NewAddressForm: FC<Props> = ({
-  addressType,
-  handleFetch,
-}) => {
+const NewAddressForm: FC<Props> = ({ addressType, handleFetch }) => {
   const { enqueueSnackbar } = useSnackbar();
   const { data: session } = useSession();
   const user = session?.user as User1;

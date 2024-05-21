@@ -12,7 +12,7 @@ const Customers = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "Customers",
+  "Customers"
 );
 
 export default Customers;

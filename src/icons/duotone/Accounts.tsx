@@ -8,7 +8,7 @@ const Accounts = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "Accounts",
+  "Accounts"
 );
 
 export default Accounts;

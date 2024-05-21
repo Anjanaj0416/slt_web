@@ -46,7 +46,9 @@ const Wrapper = styled("div", {
   ".emailInput": {
     marginBottom: 16,
     "& input": { padding: 16, textAlign: "center" },
-    "& .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.grey[300] },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme.palette.grey[300],
+    },
   },
   [theme.breakpoints.between("sm", "md")]: {
     padding: 24,
@@ -80,7 +82,9 @@ const Wrapper = styled("div", {
 type Props = { image?: string };
 // ======================================================
 
-const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" }) => {
+const Newsletter: FC<Props> = ({
+  image = "/assets/images/newsletter/bg-1.png",
+}) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
 
@@ -119,8 +123,8 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
                 </H1>
 
                 <Paragraph color="grey.600" mb={5}>
-                  Subscribe to the BAZAR eCommerce newsletter to receive timely updates from your
-                  favorite products.
+                  Subscribe to the BAZAR eCommerce newsletter to receive timely
+                  updates from your favorite products.
                 </Paragraph>
 
                 <TextField
@@ -129,13 +133,21 @@ const Newsletter: FC<Props> = ({ image = "/assets/images/newsletter/bg-1.png" })
                   placeholder="Enter your email address"
                 />
 
-                <Button variant="contained" fullWidth color="primary" sx={{ p: 1.5 }}>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  color="primary"
+                  sx={{ p: 1.5 }}
+                >
                   SUBMIT
                 </Button>
 
                 <SocialIcons />
 
-                <FormControlLabel control={<Checkbox defaultChecked />} label="No, Thanks" />
+                <FormControlLabel
+                  control={<Checkbox defaultChecked />}
+                  label="No, Thanks"
+                />
               </Box>
             </Grid>
           </Grid>

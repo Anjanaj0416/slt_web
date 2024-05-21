@@ -8,7 +8,7 @@ const FacebookFilled = createSvgIcon(
       fill="white"
     />
   </svg>,
-  "FacebookFilled",
+  "FacebookFilled"
 );
 
 export default FacebookFilled;

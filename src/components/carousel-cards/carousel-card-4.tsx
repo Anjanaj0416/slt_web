@@ -18,7 +18,8 @@ const CardWrapper = styled("div", {
   backgroundImage: `url(${img})`,
   backgroundColor: mode === "dark" ? "#000" : "#fff",
   color: mode === "light" ? theme.palette.dark.main : "#fff",
-  ".content": theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
+  ".content":
+    theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
   [theme.breakpoints.down("md")]: {
     padding: 24,
     textAlign: "center",
@@ -63,11 +64,20 @@ const CarouselCard4: FC<Props> = ({
           {title}
         </H4>
 
-        <H1 fontSize={{ sm: 60, xs: 44 }} lineHeight={1} textTransform="uppercase">
+        <H1
+          fontSize={{ sm: 60, xs: 44 }}
+          lineHeight={1}
+          textTransform="uppercase"
+        >
           {category}
         </H1>
 
-        <H4 fontSize={{ sm: 30, xs: 24 }} lineHeight={1} mt={1.5} textTransform="uppercase">
+        <H4
+          fontSize={{ sm: 30, xs: 24 }}
+          lineHeight={1}
+          mt={1.5}
+          textTransform="uppercase"
+        >
           SALE UP TO <Span color="primary.main">{discount}% OFF</Span>
         </H4>
 

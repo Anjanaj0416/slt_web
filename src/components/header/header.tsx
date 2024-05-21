@@ -48,7 +48,10 @@ const Header: FC<Props> = ({ isFixed, className, searchInput }) => {
       </FlexBox>
 
       {/* LOGIN AND CART BUTTON */}
-      <LoginCartButtons toggleDialog={() => void signIn("keycloak", { callbackUrl: "/orders" })} toggleSidenav={toggleSidenav} />
+      <LoginCartButtons
+        toggleDialog={() => void signIn("keycloak", { callbackUrl: "/orders" })}
+        toggleSidenav={toggleSidenav}
+      />
 
       {/* LOGIN FORM DIALOG AND CART SIDE BAR  */}
       <DialogDrawer
@@ -63,7 +66,11 @@ const Header: FC<Props> = ({ isFixed, className, searchInput }) => {
   return (
     <HeaderWrapper className={clsx(className)}>
       <StyledContainer>
-        {downMd ? <MobileHeader searchInput={searchInput} /> : CONTENT_FOR_LARGE_DEVICE}
+        {downMd ? (
+          <MobileHeader searchInput={searchInput} />
+        ) : (
+          CONTENT_FOR_LARGE_DEVICE
+        )}
       </StyledContainer>
     </HeaderWrapper>
   );

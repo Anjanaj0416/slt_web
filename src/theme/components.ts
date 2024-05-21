@@ -127,7 +127,10 @@ export const components: Components = {
       labelSmall: { paddingInline: 12 },
       colorSuccess: { color: success.main, backgroundColor: success[100] },
       colorPrimary: { color: primary[500], backgroundColor: primary[100] },
-      colorSecondary: { color: secondary[500], backgroundColor: secondary[100] },
+      colorSecondary: {
+        color: secondary[500],
+        backgroundColor: secondary[100],
+      },
     },
   },
 };

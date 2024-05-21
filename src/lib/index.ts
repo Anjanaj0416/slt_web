@@ -20,7 +20,11 @@ function getDateDifference(date: string | number | Date) {
  * @returns
  */
 
-function renderProductCount(page: number, perPageProduct: number, totalProduct: number) {
+function renderProductCount(
+  page: number,
+  perPageProduct: number,
+  totalProduct: number
+) {
   let startNumber = (page - 1) * perPageProduct;
   let endNumber = page * perPageProduct;
 
@@ -50,7 +54,10 @@ function calculateDiscount(price: number, discount: number) {
  */
 
 function currency(price: number, fraction: number = 2) {
-  const formatCurrency = currencyJs(`${price}`).format({ precision: fraction, symbol: "LKR" });
+  const formatCurrency = currencyJs(`${price}`).format({
+    precision: fraction,
+    symbol: "LKR",
+  });
   return formatCurrency;
 }
 

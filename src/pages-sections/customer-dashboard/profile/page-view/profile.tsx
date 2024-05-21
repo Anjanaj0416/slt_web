@@ -7,7 +7,7 @@ import UserInfo from "../user-info";
 import UserAnalytics from "../user-analytics";
 import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
-import {User1} from "models/User.model";
+import { User1 } from "models/User.model";
 import { useSession } from "next-auth/react";
 import Container from "@mui/material/Container";
 
@@ -16,7 +16,7 @@ const ProfilePageView = () => {
   //
   const user = session?.user as User1;
 
-  if(status==="loading"){
+  if (status === "loading") {
     return <Container>Loading...</Container>;
   }
   return (

@@ -140,7 +140,7 @@ export const marketShareChartOptions = (theme: Theme): ApexOptions => ({
 
 export const analyticsChartOptions = (
   theme: Theme,
-  categories: any,
+  categories: any
 ): ApexOptions => ({
   chart: {
     background: "transparent",

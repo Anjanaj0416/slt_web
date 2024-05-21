@@ -12,7 +12,7 @@ const Seller = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Seller",
+  "Seller"
 );
 
 export default Seller;

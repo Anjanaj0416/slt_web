@@ -1,12 +1,12 @@
 export interface Address {
   id: number;
-  name: string,
-  addressLine1: string,
-  addressLine2: string,
-  postalCode: string,
-  provinceOrState: string,
-  contactNumber: string,
-  primary: boolean,
+  name: string;
+  addressLine1: string;
+  addressLine2: string;
+  postalCode: string;
+  provinceOrState: string;
+  contactNumber: string;
+  primary: boolean;
 }
 
 export interface InitialValues {

@@ -42,7 +42,7 @@ const request = async (_metadata, data, multipart = false, isSecure = true) => {
   const metadata = { ..._metadata };
 
   const pathTokens = metadata.path.split(":");
-  
+
   //
   if (metadata.path.indexOf(":") !== 0) {
     pathTokens.shift();

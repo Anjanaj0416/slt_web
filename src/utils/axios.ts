@@ -13,7 +13,10 @@ const getTokens = async () => {
   const session: any = await auth();
   // When initializing tokens, subscribing to redux store changes to
   // get an updated state each time the store state gets changed
-  return { refreshToken: session?.refreshToken, accessToken: session?.accessToken };
+  return {
+    refreshToken: session?.refreshToken,
+    accessToken: session?.accessToken,
+  };
 };
 // Create an axios config instance
 const axiosConfig = axios.create({
@@ -54,7 +57,11 @@ axiosConfig.interceptors.response.use(
   async (error) => {
     const { refreshToken } = await getTokens();
     const originalRequest = error.config;
-    if (error?.response?.status === 401 && refreshToken && !originalRequest._retry) {
+    if (
+      error?.response?.status === 401 &&
+      refreshToken &&
+      !originalRequest._retry
+    ) {
       try {
         originalRequest._retry = true;
         // If there is no pending promise, try to renew tokens (refreshPromise serves as a flag to prevent multiple refresh token invocations)

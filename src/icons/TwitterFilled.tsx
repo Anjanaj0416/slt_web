@@ -10,7 +10,7 @@ const TwitterFilled = createSvgIcon(
       fill="white"
     />
   </svg>,
-  "TwitterFilled",
+  "TwitterFilled"
 );
 
 export default TwitterFilled;

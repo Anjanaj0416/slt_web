@@ -9,7 +9,7 @@ const GiftBox = createSvgIcon(
       fill="#D23F57"
     />
   </svg>,
-  "GiftBox",
+  "GiftBox"
 );
 
 export default GiftBox;

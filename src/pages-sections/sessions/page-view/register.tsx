@@ -48,7 +48,7 @@ const RegisterPageView = () => {
       .test(
         "agreement",
         "You have to agree with our Terms and Conditions!",
-        (value) => value === true,
+        (value) => value === true
       )
       .required("You have to agree with our Terms and Conditions!"),
   });

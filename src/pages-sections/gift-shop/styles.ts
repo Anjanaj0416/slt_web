@@ -144,7 +144,9 @@ export const LeftCard = styled(Card)(({ theme }) => ({
     zIndex: 1,
     paddingInline: 20,
     position: "absolute",
-    ...(theme.direction === "rtl" ? { right: 20, textAlign: "right" } : { left: 20 }),
+    ...(theme.direction === "rtl"
+      ? { right: 20, textAlign: "right" }
+      : { left: 20 }),
   },
 }));
 

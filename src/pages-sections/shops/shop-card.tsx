@@ -26,7 +26,7 @@ const ContentWrapper = styled("div", {
   backgroundImage: `linear-gradient(to bottom,
     ${alpha(theme.palette.grey[900], 0.8)}, ${alpha(
       theme.palette.grey[900],
-      0.8,
+      0.8
     )}), 
     url(${img})`,
 }));

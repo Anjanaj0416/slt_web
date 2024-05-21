@@ -33,7 +33,7 @@ const ProfileEditForm: FC<Props> = ({ user, onSubmit }) => {
     birthDay: yup.date().required("Birth date is required"),
   });
   console.log(initialValues);
-  
+
   //
   return (
     <Formik

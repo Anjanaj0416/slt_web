@@ -7,7 +7,7 @@ import * as db from "./data";
 
 const products = db.products.filter((item) => item.for.type === "all-products");
 const topProducts = db.products.filter(
-  (item) => item.for.type === "top-saled-products",
+  (item) => item.for.type === "top-saled-products"
 );
 
 Mock.onGet("/api/grocery-3/products?tag=top-sailed").reply(async () => {

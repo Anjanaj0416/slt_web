@@ -18,7 +18,7 @@ const getProducts = cache(async (page: number = 1): Promise<Product[]> => {
   const PAGE_SIZE = 28;
   const currentProducts = products.slice(
     page * PAGE_SIZE,
-    (page + 1) * PAGE_SIZE,
+    (page + 1) * PAGE_SIZE
   );
   // @ts-ignore
   return currentProducts;

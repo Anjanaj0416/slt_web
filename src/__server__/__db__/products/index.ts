@@ -20,7 +20,7 @@ Mock.onGet("/api/products/slug").reply(async (config) => {
   try {
     if (config?.params?.slug) {
       const product = uniqueProducts.find(
-        (item) => item?.slug === config.params.slug,
+        (item) => item?.slug === config.params.slug
       );
 
       if (product) return [200, product];

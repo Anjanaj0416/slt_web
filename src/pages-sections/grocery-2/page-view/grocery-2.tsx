@@ -43,7 +43,7 @@ const GroceryTwoPageView = (props: Props) => {
   // SIDE NAVBAR COMPONENT
   const SideNav = useCallback(
     () => <GrocerySideNav navigation={props.navigationList} />,
-    [props.navigationList],
+    [props.navigationList]
   );
 
   return (

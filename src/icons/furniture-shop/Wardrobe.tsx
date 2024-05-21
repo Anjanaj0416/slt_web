@@ -95,7 +95,7 @@ const Wardrobe = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Wardrobe",
+  "Wardrobe"
 );
 
 export default Wardrobe;

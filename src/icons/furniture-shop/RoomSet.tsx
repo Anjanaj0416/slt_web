@@ -39,7 +39,7 @@ const RoomSet = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "RoomSet",
+  "RoomSet"
 );
 
 export default RoomSet;

@@ -20,7 +20,9 @@ import { notFound } from "next/navigation";
 
 const MarketTwoPageView = async () => {
   try {
-    const products = await request(PRODUCT_API.GET_PRODUCTS, { query: "size=5" });
+    const products = await request(PRODUCT_API.GET_PRODUCTS, {
+      query: "size=5",
+    });
 
     const mainCategories = await request(CATEGORY_API.GET_CATEGORIES, {
       query: "size=10&productsCountMoreThan=3",
@@ -60,7 +62,9 @@ const MarketTwoPageView = async () => {
           <Section4 products={products?.data} />
 
           {/* TOP OFFER BANNERS */}
-          <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
+          {threeBanners?.data.length > 2 && (
+            <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
+          )}
 
           {/* CATEGORY BASED PRODUCTS */}
           {mainCategories.data?.slice(0, 5).map(async (category, index) => (

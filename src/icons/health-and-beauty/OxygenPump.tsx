@@ -11,7 +11,7 @@ const OxygenPump = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "OxygenPump",
+  "OxygenPump"
 );
 
 export default OxygenPump;

@@ -7,7 +7,7 @@ const Stool = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Stool",
+  "Stool"
 );
 
 export default Stool;

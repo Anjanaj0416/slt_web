@@ -28,14 +28,15 @@ const LoginPageView = ({ closeDialog }: Props) => {
     email: yup.string().email("invalid email").required("Email is required"),
   });
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-      closeDialog?.();
-    },
-  });
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      onSubmit: (values) => {
+        console.log(values);
+        closeDialog?.();
+      },
+    });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -71,11 +72,22 @@ const LoginPageView = ({ closeDialog }: Props) => {
         error={!!touched.password && !!errors.password}
         helperText={(touched.password && errors.password) as string}
         InputProps={{
-          endAdornment: <EyeToggleButton show={visiblePassword} click={togglePasswordVisible} />,
+          endAdornment: (
+            <EyeToggleButton
+              show={visiblePassword}
+              click={togglePasswordVisible}
+            />
+          ),
         }}
       />
 
-      <Button fullWidth type="submit" color="primary" variant="contained" size="large">
+      <Button
+        fullWidth
+        type="submit"
+        color="primary"
+        variant="contained"
+        size="large"
+      >
         Login
       </Button>
     </form>

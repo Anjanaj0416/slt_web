@@ -3,7 +3,7 @@ import { Circle, StyledList } from "./styles";
 
 export const renderChild = (
   childList: any[],
-  handleSelect: (category: string) => void,
+  handleSelect: (category: string) => void
 ) => {
   return childList.map((item) => (
     <StyledList

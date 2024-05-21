@@ -21,7 +21,7 @@ const DropZone: FC<Props> = ({
 }) => {
   const onDrop = useCallback(
     (acceptedFiles: File[]) => onChange(acceptedFiles),
-    [onChange],
+    [onChange]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

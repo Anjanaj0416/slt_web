@@ -28,7 +28,7 @@ const Eye = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Eye",
+  "Eye"
 );
 
 export default Eye;

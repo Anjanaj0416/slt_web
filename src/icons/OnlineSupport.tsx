@@ -35,7 +35,7 @@ const OnlineSupport = createSvgIcon(
       fill="#2B3445"
     />
   </svg>,
-  "OnlineSupport",
+  "OnlineSupport"
 );
 
 export default OnlineSupport;

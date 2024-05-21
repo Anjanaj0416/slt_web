@@ -12,7 +12,7 @@ const getTopNewProducts = cache(async (): Promise<Product[]> => {
 
 const getTopSellingProducts = cache(async (): Promise<Product[]> => {
   const response = await axios.get(
-    "/api/furniture-shop/products?tag=top-selling",
+    "/api/furniture-shop/products?tag=top-selling"
   );
   return response.data;
 });
@@ -31,7 +31,7 @@ const getMainCarouselData = cache(
   async (): Promise<FurnitureCarouselItem[]> => {
     const response = await axios.get("/api/furniture-shop/main-carousel");
     return response.data;
-  },
+  }
 );
 
 export default {

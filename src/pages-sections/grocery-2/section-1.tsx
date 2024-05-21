@@ -72,7 +72,13 @@ const Section1: FC<Props> = ({ carouselData }) => {
             </GridItemOne>
 
             <GridItemTwo item md={5} sm={5} xs={12}>
-              <LazyImage priority width={570} height={360} src={item.imgUrl} alt={item.title} />
+              <LazyImage
+                priority
+                width={570}
+                height={360}
+                src={item.imgUrl}
+                alt={item.title}
+              />
             </GridItemTwo>
           </StyledGrid>
         ))}

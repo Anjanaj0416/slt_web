@@ -17,7 +17,7 @@ const CartIcon = createSvgIcon(
       fill="#879AB0"
     />
   </svg>,
-  "CartIcon",
+  "CartIcon"
 );
 
 export default CartIcon;

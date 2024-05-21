@@ -41,7 +41,7 @@ const Section3: FC<Props> = ({ filterDemo, setFilterDemo }) => {
     ...customerPageList,
   ];
   const filtered = pages.filter((item) =>
-    filterDemo !== "" ? item.page === filterDemo : true,
+    filterDemo !== "" ? item.page === filterDemo : true
   );
 
   return (

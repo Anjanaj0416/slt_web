@@ -31,7 +31,7 @@ const TeddyBear = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "TeddyBear",
+  "TeddyBear"
 );
 
 export default TeddyBear;

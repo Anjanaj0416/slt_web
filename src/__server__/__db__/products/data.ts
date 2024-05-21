@@ -42,7 +42,7 @@ const productList = [
 
 // get unique products from product list
 const uniqueProducts = uniq(productList.map((item) => item.slug)).map((item) =>
-  productList.find((it) => it.slug === item),
+  productList.find((it) => it.slug === item)
 );
 
 // get the all slugs

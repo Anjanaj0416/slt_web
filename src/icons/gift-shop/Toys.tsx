@@ -47,7 +47,7 @@ const Toys = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Toys",
+  "Toys"
 );
 
 export default Toys;

@@ -23,7 +23,7 @@ const GoldPackageIcon = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "GoldPackageIcon",
+  "GoldPackageIcon"
 );
 
 export default GoldPackageIcon;

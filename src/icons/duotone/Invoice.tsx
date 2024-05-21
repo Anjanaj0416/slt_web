@@ -8,7 +8,7 @@ const Invoice = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "Invoice",
+  "Invoice"
 );
 
 export default Invoice;

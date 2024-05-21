@@ -99,7 +99,7 @@ const BirthdayCake = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "BirthdayCake",
+  "BirthdayCake"
 );
 
 export default BirthdayCake;
