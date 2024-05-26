@@ -44,9 +44,9 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   const [filteredProducts, { isFetching }] = useLazyFilteredProductsQuery();
 
   const getProducts = useCallback(
-    async (categoryIds) => {
-      const products: Product1[] = (await filteredProducts({ categoryIds }))
-        .data?.data;
+    async (categoryId) => {
+      const products: Product1[] = (await filteredProducts({ categoryId })).data
+        ?.data;
       //
       if (products?.length) {
         const lengthDiff = 4 - products?.length;
@@ -62,26 +62,11 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
     [filteredProducts]
   );
 
-  const getAllSubCategoryIds = useCallback((category): string[] => {
-    let subCategoryIds: string[] = [category.id];
-    if (category.subCategories !== null && category.subCategories.length > 0) {
-      category.subCategories.forEach((subCategory) => {
-        subCategoryIds.push(subCategory.id);
-        subCategoryIds = subCategoryIds.concat(
-          getAllSubCategoryIds(subCategory)
-        );
-      });
-    }
-    //
-    return subCategoryIds;
-  }, []);
-
   useEffect(() => {
     if (data?.id) {
-      const categoryIds = getAllSubCategoryIds(data);
-      getProducts(categoryIds.join(","));
+      getProducts(data?.id);
     }
-  }, [data, getAllSubCategoryIds, getProducts]);
+  }, [data, getProducts]);
   //
   if (!data) return null;
   const responsive = [
@@ -91,9 +76,7 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
   ];
 
   const handleCategoryClick = (category: Category1) => {
-    const categoryIds: string[] = getAllSubCategoryIds(category);
-    categoryIds.push(category.id);
-    getProducts(categoryIds.join(","));
+    getProducts(category.id);
   };
 
   return (
