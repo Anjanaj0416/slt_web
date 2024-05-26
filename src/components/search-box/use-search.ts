@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useRef, useState, useTransition } from "react";
-import api from "utils/__api__/products";
+import { useLazySearchListProductsQuery } from "services/product-api";
 
 const useSearch = () => {
   const parentRef = useRef();
@@ -8,6 +8,7 @@ const useSearch = () => {
   const [category, setCategory] = useState("*");
   const [resultList, setResultList] = useState<string[]>([]);
   const [categoryTitle, setCategoryTitle] = useState("All Categories");
+  const [listProducts] = useLazySearchListProductsQuery();
 
   // HANDLE CHANGE THE CATEGORY
   const handleCategoryChange =
@@ -18,8 +19,15 @@ const useSearch = () => {
 
   // FETCH PRODUCTS VIA API
   const getProducts = async (searchText: string, category?: string) => {
-    const data = await api.searchProducts(searchText, category);
-    setResultList(data);
+    const productList = (
+      await listProducts({ name: searchText, categoryName: searchText })
+    ).data?.data;
+    if (productList.length) {
+      const data = productList.map((e) => e.name);
+      setResultList(data);
+    } else {
+      setResultList([]);
+    }
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
