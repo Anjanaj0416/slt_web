@@ -23,6 +23,7 @@ import ProductsGridView from "components/products-view/products-grid-view";
 import ProductsListView from "components/products-view/products-list-view";
 // PRODUCT DATA
 import productDatabase from "data/product-database";
+import { Product1 } from "models/Product.model";
 
 const SORT_OPTIONS = [
   { label: "Relevance", value: "Relevance" },
@@ -31,7 +32,15 @@ const SORT_OPTIONS = [
   { label: "Price High to Low", value: "Price High to Low" },
 ];
 
-const ProductSearchPageView = () => {
+// ==============================================================
+type Props = { products: Product1[]; searchText: string; totalResults: number };
+// ==============================================================
+
+const ProductSearchPageView = ({
+  products,
+  searchText,
+  totalResults,
+}: Props) => {
   const [view, setView] = useState("grid");
   const downMd = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 
@@ -58,8 +67,12 @@ const ProductSearchPageView = () => {
         }}
       >
         <div>
-          <H5>Searching for “ mobile phone ”</H5>
-          <Paragraph color="grey.600">48 results found</Paragraph>
+          <H5>{`Searching for “ ${searchText} ”`}</H5>
+          <Paragraph color="grey.600">
+            {totalResults > 1
+              ? `${totalResults} results found`
+              : `${totalResults} result found`}
+          </Paragraph>
         </div>
 
         <FlexBox alignItems="center" columnGap={4} flexWrap="wrap" my="0.5rem">
@@ -129,7 +142,7 @@ const ProductSearchPageView = () => {
         {/* PRODUCT VIEW AREA */}
         <Grid item md={9} xs={12}>
           {view === "grid" ? (
-            <ProductsGridView products={PRODUCTS} />
+            <ProductsGridView products={products} />
           ) : (
             <ProductsListView products={PRODUCTS} />
           )}

@@ -6,27 +6,20 @@ import { Span } from "components/Typography";
 import { FlexBetween } from "components/flex-box";
 import ProductCard1 from "components/product-cards/product-card-1";
 // CUSTOM DATA MODEL
-import Product from "models/Product.model";
+import { Product1 } from "models/Product.model";
+import { ProductCard10 } from "components/product-cards/product-card-10";
 
 // ========================================================
-type Props = { products: Product[] };
+type Props = { products: Product1[] };
 // ========================================================
 
 const ProductsGridView: FC<Props> = ({ products }) => {
   return (
     <Fragment>
       <Grid container spacing={3}>
-        {products.map((item: Product) => (
-          <Grid item lg={4} sm={6} xs={12} key={item.id}>
-            <ProductCard1
-              id={item.id}
-              slug={item.slug}
-              title={item.title}
-              price={item.price}
-              rating={item.rating}
-              imgUrl={item.thumbnail}
-              discount={item.discount}
-            />
+        {products.map((product: Product1) => (
+          <Grid item lg={4} sm={6} xs={12} key={product.id}>
+            <ProductCard10 product={product} />
           </Grid>
         ))}
       </Grid>

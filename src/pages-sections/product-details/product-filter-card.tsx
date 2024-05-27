@@ -139,7 +139,7 @@ const ProductFilterCard = () => {
       <Box component={Divider} my={3} />
 
       {/* COLORS VARIANT FILTER */}
-      <H6 mb={2}>Colors</H6>
+      {/* <H6 mb={2}>Colors</H6>
 
       <FlexBox mb={2} flexWrap="wrap" gap={1}>
         {colorList.map((item) => (
@@ -153,7 +153,7 @@ const ProductFilterCard = () => {
             sx={{ cursor: "pointer" }}
           />
         ))}
-      </FlexBox>
+      </FlexBox> */}
     </Card>
   );
 };
