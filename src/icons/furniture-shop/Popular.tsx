@@ -31,7 +31,7 @@ const Popular = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Popular",
+  "Popular"
 );
 
 export default Popular;

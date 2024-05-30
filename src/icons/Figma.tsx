@@ -23,7 +23,7 @@ const Figma = createSvgIcon(
       fill="#1ABCFE"
     />
   </svg>,
-  "Figma",
+  "Figma"
 );
 
 export default Figma;

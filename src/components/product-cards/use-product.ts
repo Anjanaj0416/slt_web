@@ -15,7 +15,7 @@ const useProduct = (id: string) => {
 
   const handleCartAmountChange = (
     product: typeof cartItem,
-    type?: "remove",
+    type?: "remove"
   ) => {
     dispatch({ type: "CHANGE_CART_AMOUNT", payload: product });
     // SHOW ALERT PRODUCT ADDED OR REMOVE

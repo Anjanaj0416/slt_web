@@ -93,7 +93,11 @@ const Section7: FC<Props> = (props) => {
               title={item.name}
               isSelected={!!selected.match(item.slug)}
               onClick={handleCategoryClick(item.slug)}
-              imgUrl={type === "shops" ? `/assets/images/shops/${item.thumbnail}.png` : item.image}
+              imgUrl={
+                type === "shops"
+                  ? `/assets/images/shops/${item.thumbnail}.png`
+                  : item.image
+              }
               sx={{
                 mb: "0.75rem",
                 bgcolor: selected.match(item.slug) ? "white" : "grey.100",

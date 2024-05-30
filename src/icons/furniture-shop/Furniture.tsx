@@ -19,7 +19,7 @@ const Furniture = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Furniture",
+  "Furniture"
 );
 
 export default Furniture;

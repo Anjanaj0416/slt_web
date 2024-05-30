@@ -15,7 +15,7 @@ const UpDown = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "UpDown",
+  "UpDown"
 );
 
 export default UpDown;

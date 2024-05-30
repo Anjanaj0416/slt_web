@@ -8,7 +8,7 @@ const DataTable = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "DataTable",
+  "DataTable"
 );
 
 export default DataTable;

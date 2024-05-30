@@ -35,7 +35,11 @@ const Section4: FC<Props> = ({ dealOfTheWeek }) => {
               {dealOfTheWeek.slice(firstIndex, lastIndex).map((item, ind) => (
                 <Grid item md={6} xs={12} key={ind}>
                   <Link href="/">
-                    <DealWeekCard imgUrl={item.imgUrl} title={item.brand} off={item.off} />
+                    <DealWeekCard
+                      imgUrl={item.imgUrl}
+                      title={item.brand}
+                      off={item.off}
+                    />
                   </Link>
                 </Grid>
               ))}

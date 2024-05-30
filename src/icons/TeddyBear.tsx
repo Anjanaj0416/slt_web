@@ -11,7 +11,7 @@ const TeddyBear = createSvgIcon(
       </g>
     </g>
   </svg>,
-  "TeddyBear",
+  "TeddyBear"
 );
 
 export default TeddyBear;

@@ -20,7 +20,7 @@ const Tops = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Tops",
+  "Tops"
 );
 
 export default Tops;

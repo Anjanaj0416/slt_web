@@ -12,7 +12,7 @@ type Data = {
   icon: string;
   href: string;
   title: string;
-  moreSubCategories?: boolean ,
+  moreSubCategories?: boolean;
   menuData?: any;
 };
 export type MegaMenu2Props = { data: Data[]; moreSubCategories?: boolean };
@@ -38,12 +38,19 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
               (item.menuData.categories ? (
                 <MegaMenu3 minWidth="560px" data={item.menuData} />
               ) : (
-                <MegaMenu2 data={item.menuData || []} moreSubCategories={item.moreSubCategories}/>
+                <MegaMenu2
+                  data={item.menuData || []}
+                  moreSubCategories={item.moreSubCategories}
+                />
               ))}
           </CategoryMenuItem>
         ))}
         {moreSubCategories && (
-          <NavLink style={{ color: "orange", textAlign: "center" }} className="child-link" href="#">
+          <NavLink
+            style={{ color: "orange", textAlign: "center" }}
+            className="child-link"
+            href="#"
+          >
             More Categories
           </NavLink>
         )}

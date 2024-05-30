@@ -12,7 +12,7 @@ const Refund = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Refund",
+  "Refund"
 );
 
 export default Refund;

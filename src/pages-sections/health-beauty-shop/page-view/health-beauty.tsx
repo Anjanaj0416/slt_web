@@ -37,7 +37,7 @@ const HealthBeautyPageView = (props: Props) => {
   // SIDE NAVBAR COMPONENT
   const SideNav = useCallback(
     () => <HealthBeautySideNav navigation={props.navigationList} />,
-    [props.navigationList],
+    [props.navigationList]
   );
 
   return (

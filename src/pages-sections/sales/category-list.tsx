@@ -38,7 +38,9 @@ const CategoryList = forwardRef<HTMLDivElement, Props>(
                 color={selectedItem ? "primary" : "secondary"}
               />
 
-              <H5 color={selectedItem ? "primary.main" : "inherit"}>{item.name}</H5>
+              <H5 color={selectedItem ? "primary.main" : "inherit"}>
+                {item.name}
+              </H5>
 
               <StyledChip
                 size="small"

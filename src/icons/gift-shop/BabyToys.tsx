@@ -31,7 +31,7 @@ const BabyToys = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "BabyToys",
+  "BabyToys"
 );
 
 export default BabyToys;

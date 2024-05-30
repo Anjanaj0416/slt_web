@@ -27,7 +27,7 @@ const Interior = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Interior",
+  "Interior"
 );
 
 export default Interior;

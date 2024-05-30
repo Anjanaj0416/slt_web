@@ -22,7 +22,7 @@ const AccountSetting = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "AccountSetting",
+  "AccountSetting"
 );
 
 export default AccountSetting;

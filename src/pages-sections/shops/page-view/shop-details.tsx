@@ -21,7 +21,7 @@ type Props = { shop: Shop };
 
 const ShopDetailsPageView = ({ shop }: Props) => {
   const isDownMd = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("md"),
+    theme.breakpoints.down("md")
   );
 
   const ICON_BUTTON = (

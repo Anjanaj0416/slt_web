@@ -58,7 +58,7 @@ const Pets = createSvgIcon(
       </g>
     </g>
   </svg>,
-  "Pets",
+  "Pets"
 );
 
 export default Pets;

@@ -8,7 +8,7 @@ export const getWishListProducts = async (page: number) => {
 
   const currentProducts = products.slice(
     (PAGE_NUMBER - 1) * PAGE_SIZE,
-    PAGE_NUMBER * PAGE_SIZE,
+    PAGE_NUMBER * PAGE_SIZE
   );
 
   return { products: currentProducts, totalProducts: products.length };

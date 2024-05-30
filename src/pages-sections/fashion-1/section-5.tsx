@@ -38,7 +38,12 @@ const Section5: FC<Props> = ({ hotDealList }) => {
         </Carousel>
 
         <BadgeBox>
-          <Image src="/assets/images/badges/hot.svg" width={110} height={130} alt="New" />
+          <Image
+            src="/assets/images/badges/hot.svg"
+            width={110}
+            height={130}
+            alt="New"
+          />
         </BadgeBox>
       </ContentWrapper>
     </Container>

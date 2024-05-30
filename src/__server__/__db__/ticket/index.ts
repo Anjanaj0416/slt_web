@@ -19,7 +19,7 @@ Mock.onGet("/api/tickets/single").reply(async (config) => {
   try {
     if (config.params?.slug) {
       const ticket = ticketList.find(
-        (item) => item.slug === config.params.slug,
+        (item) => item.slug === config.params.slug
       );
       if (ticket) {
         ticket.conversation = messageList;

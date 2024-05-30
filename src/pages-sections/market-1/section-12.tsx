@@ -61,7 +61,7 @@ const Section12: FC<Props> = ({ bigDiscountList }) => {
                   </Link>
                 </BazaarCard>
               </Box>
-            ),
+            )
           )}
         </Carousel>
       </Box>

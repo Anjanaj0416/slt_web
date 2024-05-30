@@ -39,7 +39,12 @@ const Section3: FC<Props> = ({ categories = [] }) => {
           <Grid item lg={4} xs={6} key={item.id}>
             <Link href={`/products/search/${item.slug}`}>
               <StyledBazaarCard hoverEffect>
-                <Image width={46} height={46} alt={item.name} src={item.image} />
+                <Image
+                  width={46}
+                  height={46}
+                  alt={item.name}
+                  src={item.image}
+                />
 
                 <div>
                   <Tiny color="primary.main">{item.description}</Tiny>

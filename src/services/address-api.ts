@@ -48,5 +48,5 @@ export const {
   useLazyGetAddressesQuery,
   usePostAddressMutation,
   useDeleteAddressMutation,
-  useUpdateAddressMutation
+  useUpdateAddressMutation,
 } = addressApi;

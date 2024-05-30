@@ -16,7 +16,8 @@ type Props = { products: Product[] };
 
 const Section6: FC<Props> = ({ products }) => {
   // GET THE FIRST PRODUCT
-  const { title, slug, id, price, discount, rating, thumbnail } = products[0] || {};
+  const { title, slug, id, price, discount, rating, thumbnail } =
+    products[0] || {};
 
   // REMAINING TRENDING PRODUCTS
   const TRENDING_ITEMS = products.slice(1, products.length);

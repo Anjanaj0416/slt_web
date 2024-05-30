@@ -23,7 +23,7 @@ const PremiumPackageIcon = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "PremiumPackageIcon",
+  "PremiumPackageIcon"
 );
 
 export default PremiumPackageIcon;

@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function Profile() {
-  return <ProfilePageView/>;
+  return <ProfilePageView />;
 }

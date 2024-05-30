@@ -54,6 +54,11 @@ const ProductCard20: FC<Props> = ({ product }) => {
   //
   const cartUnits = isItemInCart(product)?.units;
 
+  const imgUrl =
+    images && images[0]
+      ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+      : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
+
   const toggleFavorite = async () => {
     if (user?.id) {
       const oldWishlistProducts = [...wishlist?.products];
@@ -112,11 +117,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
             width={300}
             height={300}
             alt={name}
-            src={
-              images[0]
-                ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
-                : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-            }
+            src={imgUrl}
             className="product-img"
           />
         </Link>
@@ -145,11 +146,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
           slug: id,
           name,
           price,
-          imgGroup: [
-            images[0]
-              ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
-              : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`,
-          ],
+          imgGroup: [imgUrl],
         }}
       />
 

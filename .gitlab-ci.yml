@@ -144,16 +144,16 @@ deploy_qa:
     - qa
 
 deploy_prod:
- stage: deploy
- image:
-   name: bitnami/kubectl:latest
-   entrypoint: [""]
- script:
-   - echo "Deploying to Kubernetes"
-   - kubectl config get-contexts
-   - kubectl config use-context slt6491334/marketplace-front-end:dev-frontend-agent
-   - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
-   - kubectl apply -f ./manifests/deployment.yaml -n qa
-   - kubectl apply -f ./manifests/service.yaml -n qa
- only:
-   - main
+  stage: deploy
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: [""]
+  script:
+    - echo "Deploying to Kubernetes"
+    - kubectl config get-contexts
+    - kubectl config use-context slt6491334/marketplace-front-end:dev-frontend-agent
+    - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
+    - kubectl apply -f ./manifests/deployment.yaml -n qa
+    - kubectl apply -f ./manifests/service.yaml -n qa
+  only:
+    - main

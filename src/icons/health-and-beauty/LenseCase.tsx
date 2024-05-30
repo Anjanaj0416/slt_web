@@ -7,7 +7,7 @@ const LenseCase = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "LenseCase",
+  "LenseCase"
 );
 
 export default LenseCase;

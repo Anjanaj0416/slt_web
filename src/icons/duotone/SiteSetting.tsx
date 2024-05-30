@@ -7,7 +7,7 @@ const SiteSetting = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "SiteSetting",
+  "SiteSetting"
 );
 
 export default SiteSetting;

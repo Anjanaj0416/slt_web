@@ -35,7 +35,7 @@ const Robot = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Robot",
+  "Robot"
 );
 
 export default Robot;

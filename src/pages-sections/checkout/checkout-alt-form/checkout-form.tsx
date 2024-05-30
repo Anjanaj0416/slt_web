@@ -95,7 +95,7 @@ const CheckoutForm2 = ({ address }) => {
       enqueueSnackbar("Address successfully updated", { variant: "success" });
       return;
     }
-    push('/payment')
+    push("/payment");
   };
   //
   return (

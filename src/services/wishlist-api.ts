@@ -11,7 +11,8 @@ export const wishlistApi = createApi({
       providesTags: ["WISHLIST"],
     }),
     getWishlist: builder.query({
-      query: ({ userId, wishlistId }) => `/users/${userId}/wishlists/${wishlistId}`,
+      query: ({ userId, wishlistId }) =>
+        `/users/${userId}/wishlists/${wishlistId}`,
       providesTags: ["WISHLIST"],
     }),
     updateWishlist: builder.mutation({

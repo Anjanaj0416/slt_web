@@ -49,7 +49,9 @@ const CategoryMenuItem: FC<Props> = (props) => {
     <Wrapper>
       <Link href={href}>
         <MenuItem className="category-dropdown-link">
-          {rest.icon && <Image src={rest.icon} alt="icon" width={20} height={20} />}
+          {rest.icon && (
+            <Image src={rest.icon} alt="icon" width={20} height={20} />
+          )}
           <span className="title">{title}</span>
           {caret &&
             (settings.direction === "ltr" ? (

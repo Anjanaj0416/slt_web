@@ -33,7 +33,7 @@ const AppleStore = createSvgIcon(
       />
     </g>
   </svg>,
-  "AppleStore",
+  "AppleStore"
 );
 
 export default AppleStore;

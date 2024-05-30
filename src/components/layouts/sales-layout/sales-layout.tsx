@@ -36,12 +36,7 @@ const SalesLayout: FC<SaleLayoutProps> = (props) => {
 
   // FOR SALES 1 PAGE
   if (type == "one") {
-    CONTENT = (
-      <Fragment>
-   
-        {children}
-      </Fragment>
-    );
+    CONTENT = <Fragment>{children}</Fragment>;
   }
 
   // FOR SALES 2 PAGE

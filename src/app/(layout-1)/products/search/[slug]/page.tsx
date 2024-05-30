@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 // PAGE VIEW COMPONENT
 import { ProductSearchPageView } from "pages-sections/product-details/page-view";
+import request from "utils/request";
+import PRODUCT_API from "constants/products";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Product Search - Bazaar Next.js E-commerce Template",
@@ -11,5 +14,20 @@ export const metadata: Metadata = {
 };
 
 export default async function ProductSearch({ params }) {
-  return <ProductSearchPageView />;
+  try {
+    const slug = params.slug.replace(/%20/g, " ");
+    const result = await request(PRODUCT_API.GET_PRODUCTS, {
+      query: `size=10&name=${slug}&categoryName=${slug}`,
+    });
+    //
+    return (
+      <ProductSearchPageView
+        searchText={slug}
+        products={result?.data}
+        totalResults={result?.totalPages}
+      />
+    );
+  } catch (error) {
+    notFound();
+  }
 }

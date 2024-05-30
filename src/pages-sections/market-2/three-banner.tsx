@@ -22,7 +22,7 @@ const ThreeBanner: FC<Props> = ({ data }) => {
         <Grid item md={4} xs={12}>
           <BannerCard img={`${ENVIRONMENT.S3_BUCKET_URL}/${data[0]?.imageUrl}`}>
             <NavLink3
-              href={data[0].link}
+              href={data[0]?.link}
               text="Shop Now"
               color="dark.main"
               hoverColor="dark.main"
@@ -33,7 +33,12 @@ const ThreeBanner: FC<Props> = ({ data }) => {
         {/* BEST SELLER */}
         <Grid item md={4} xs={12}>
           <BannerCard img={`${ENVIRONMENT.S3_BUCKET_URL}/${data[1]?.imageUrl}`}>
-            <NavLink3 href={data[1].link} text="Shop Now" color="white" hoverColor="white" />
+            <NavLink3
+              href={data[1]?.link}
+              text="Shop Now"
+              color="white"
+              hoverColor="white"
+            />
           </BannerCard>
         </Grid>
 
@@ -41,7 +46,7 @@ const ThreeBanner: FC<Props> = ({ data }) => {
         <Grid item md={4} xs={12}>
           <BannerCard img={`${ENVIRONMENT.S3_BUCKET_URL}/${data[2]?.imageUrl}`}>
             <NavLink3
-              href={data[2].link}
+              href={data[2]?.link}
               text="Shop Now"
               color="dark.main"
               hoverColor="dark.main"

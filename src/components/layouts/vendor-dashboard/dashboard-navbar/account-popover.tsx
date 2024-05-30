@@ -35,12 +35,15 @@ const AccountPopover = () => {
         aria-expanded={open ? "true" : undefined}
         aria-controls={open ? "account-menu" : undefined}
       >
-        <Avatar alt="Remy Sharp" src={
+        <Avatar
+          alt="Remy Sharp"
+          src={
             (session?.user as User1)?.profilePictureUrl
               ? `${ENVIRONMENT.S3_BUCKET_URL}/${(session?.user as User1)
                   ?.profilePictureUrl}`
               : "/assets/images/avatars/001-man.svg"
-          } />
+          }
+        />
       </IconButton>
 
       <Menu

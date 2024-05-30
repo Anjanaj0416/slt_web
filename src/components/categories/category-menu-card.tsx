@@ -42,7 +42,9 @@ interface Props {
 
 const CategoryMenuCard: FC<Props> = (props) => {
   const { open, position = "absolute" } = props;
-  const { data, isLoading } = useFilteredCategoriesQuery({ size: MAX_CATEGORY_MENU_ITEM });
+  const { data, isLoading } = useFilteredCategoriesQuery({
+    size: MAX_CATEGORY_MENU_ITEM,
+  });
   const megaMenu = { MegaMenu1, MegaMenu2 };
 
   // find sub categories max depth of category
@@ -59,7 +61,10 @@ const CategoryMenuCard: FC<Props> = (props) => {
     let maxDepth = 0;
 
     for (const subCategory of category.subCategories) {
-      if (subCategory.subCategories && Array.isArray(subCategory.subCategories)) {
+      if (
+        subCategory.subCategories &&
+        Array.isArray(subCategory.subCategories)
+      ) {
         const depth = findMaxDepth(subCategory);
         maxDepth = Math.max(maxDepth, depth);
       }
@@ -111,7 +116,8 @@ const CategoryMenuCard: FC<Props> = (props) => {
         if (maxDepth >= 2) {
           // filter non empty subcategories
           const filteredCategories = level2Categories.filter(
-            (category) => category.subCategories && category.subCategories.length > 0
+            (category) =>
+              category.subCategories && category.subCategories.length > 0
           );
           // set category limit
           const categories =
@@ -123,24 +129,31 @@ const CategoryMenuCard: FC<Props> = (props) => {
             const level2Name = level2Category.name;
             const level2Icon = level2Category.iconUrl;
             const level3Categories =
-              level2Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2
-                ? level2Category.subCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL2)
+              level2Category.subCategories.length >
+              MAX_CATEGORY_MEGA_MENU_LEVEL2
+                ? level2Category.subCategories.slice(
+                    0,
+                    MAX_CATEGORY_MEGA_MENU_LEVEL2
+                  )
                 : level2Category.subCategories;
             //
             const level2Mapped = {
               title: level2Name,
               icon: level2Icon,
               moreSubCategories:
-                level2Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2,
+                level2Category.subCategories.length >
+                MAX_CATEGORY_MEGA_MENU_LEVEL2,
               href: "#",
             };
             //level 3 mapping
             if (level3Categories?.length > 0) {
-              const level3CategoriesMapped = level3Categories.map((level3Category) => ({
-                title: level3Category.name,
-                icon: level3Category.iconUrl,
-                href: "#",
-              }));
+              const level3CategoriesMapped = level3Categories.map(
+                (level3Category) => ({
+                  title: level3Category.name,
+                  icon: level3Category.iconUrl,
+                  href: "#",
+                })
+              );
 
               level2Mapped["subCategories"] = level3CategoriesMapped;
             }
@@ -159,18 +172,21 @@ const CategoryMenuCard: FC<Props> = (props) => {
             href: "#",
             menuComponent: "MegaMenu2",
           }));
-          level1Mapped["moreSubCategories"] = level2Categories.length > MAX_CATEGORY_MENU_ITEM;
+          level1Mapped["moreSubCategories"] =
+            level2Categories.length > MAX_CATEGORY_MENU_ITEM;
           level1Mapped["menuData"] = level2CategoriesMapped;
         }
         return level1Mapped;
       });
       //
-      mapped["moreSubCategories"] = level1Categories.length > MAX_CATEGORY_MENU_ITEM;
+      mapped["moreSubCategories"] =
+        level1Categories.length > MAX_CATEGORY_MENU_ITEM;
       mapped["menuData"] = level1CategoriesMapped;
     } else if (maxDepth > 1) {
       // filter non empty subcategories
       const filteredCategories = level1Categories.filter(
-        (category) => category.subCategories && category.subCategories.length > 0
+        (category) =>
+          category.subCategories && category.subCategories.length > 0
       );
       // set category limit
       const categories =
@@ -183,21 +199,27 @@ const CategoryMenuCard: FC<Props> = (props) => {
         const level1Icon = level1Category.iconUrl;
         const level2Categories =
           level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2
-            ? level1Category.subCategories.slice(0, MAX_CATEGORY_MEGA_MENU_LEVEL2)
+            ? level1Category.subCategories.slice(
+                0,
+                MAX_CATEGORY_MEGA_MENU_LEVEL2
+              )
             : level1Category.subCategories;
 
-        const level2CategoriesMapped = level2Categories.map((level2Category) => ({
-          title: level2Category.name,
-          icon: level2Category.iconUrl,
-          href: "#",
-        }));
+        const level2CategoriesMapped = level2Categories.map(
+          (level2Category) => ({
+            title: level2Category.name,
+            icon: level2Category.iconUrl,
+            href: "#",
+          })
+        );
         //
         return {
           title: level1Name,
           icon: level1Icon,
           href: "#",
           subCategories: level2CategoriesMapped,
-          moreSubCategories: level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2,
+          moreSubCategories:
+            level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2,
         };
       });
       mapped["menuData"] = { categories: level1CategoriesMapped };
@@ -221,12 +243,19 @@ const CategoryMenuCard: FC<Props> = (props) => {
             title={item.title}
             caret={!!item.menuData}
           >
-            <MegaMenu data={item.menuData || []} moreSubCategories={item.moreSubCategories} />
+            <MegaMenu
+              data={item.menuData || []}
+              moreSubCategories={item.moreSubCategories}
+            />
           </CategoryMenuItem>
         );
       })}
       {data?.totalPages > 1 && (
-        <NavLink style={{ color: "orange", textAlign: "center" }} className="child-link" href="#">
+        <NavLink
+          style={{ color: "orange", textAlign: "center" }}
+          className="child-link"
+          href="#"
+        >
           More Categories
         </NavLink>
       )}

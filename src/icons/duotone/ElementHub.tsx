@@ -18,7 +18,7 @@ const ElementHub = createSvgIcon(
       className="secondary"
     />
   </svg>,
-  "ElementHub",
+  "ElementHub"
 );
 
 export default ElementHub;

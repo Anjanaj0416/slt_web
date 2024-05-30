@@ -7,7 +7,7 @@ const Search = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Search",
+  "Search"
 );
 
 export default Search;

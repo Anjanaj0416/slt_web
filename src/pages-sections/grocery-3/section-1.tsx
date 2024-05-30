@@ -33,7 +33,12 @@ const Section1: FC<Props> = ({ mainCarouselData }) => {
               <StyledGrid container spacing={10}>
                 <Grid item md={6} sm={6} xs={12}>
                   <Box pt={{ sm: 6 }}>
-                    <LazyImage width={800} height={886} alt={item.title} src={item.imgUrl} />
+                    <LazyImage
+                      width={800}
+                      height={886}
+                      alt={item.title}
+                      src={item.imgUrl}
+                    />
                   </Box>
                 </Grid>
 

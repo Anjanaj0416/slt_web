@@ -55,7 +55,7 @@ const Flower = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Flower",
+  "Flower"
 );
 
 export default Flower;

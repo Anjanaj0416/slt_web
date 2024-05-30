@@ -26,11 +26,20 @@ const Section8: FC<Props> = ({ brands }) => {
     <Container sx={{ my: 8 }}>
       <H3 mb={3}>Featured Brands</H3>
 
-      <Box padding={4} bgcolor="white" sx={{ ".slick-slide": { textAlign: "center" } }}>
+      <Box
+        padding={4}
+        bgcolor="white"
+        sx={{ ".slick-slide": { textAlign: "center" } }}
+      >
         <Carousel slidesToShow={5} arrows={false} responsive={responsive}>
           {brands.map(({ id, image }: any) => (
             <FlexRowCenter maxWidth={110} height="100%" margin="auto" key={id}>
-              <BazaarImage alt="brand" width="100%" src={image} sx={{ filter: "grayscale(1)" }} />
+              <BazaarImage
+                alt="brand"
+                width="100%"
+                src={image}
+                sx={{ filter: "grayscale(1)" }}
+              />
             </FlexRowCenter>
           ))}
         </Carousel>

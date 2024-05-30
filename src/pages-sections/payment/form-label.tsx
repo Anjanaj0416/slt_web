@@ -11,7 +11,7 @@ interface Props {
   checked: boolean;
   handleChange: (
     event: SyntheticEvent<Element, Event>,
-    checked: boolean,
+    checked: boolean
   ) => void;
 }
 // ==============================================================

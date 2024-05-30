@@ -20,7 +20,7 @@ const FormalCloth = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "FormalCloth",
+  "FormalCloth"
 );
 
 export default FormalCloth;

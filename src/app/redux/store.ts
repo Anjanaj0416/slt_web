@@ -34,7 +34,7 @@ const apiMiddlewares = [
   orderApi.middleware,
   userApi.middleware,
   fileApi.middleware,
-  wishlistApi.middleware
+  wishlistApi.middleware,
 ]; // Middleware for Redux Toolkit Query
 //
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors

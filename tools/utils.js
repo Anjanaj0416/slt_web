@@ -61,7 +61,7 @@ const transformTsToJs = (node) => {
           filename: childNode.path,
           presets: ["@babel/preset-typescript"],
           plugins: ["@babel/plugin-transform-typescript"],
-        },
+        }
       );
 
       // Save new file
@@ -91,7 +91,7 @@ const createJsConfig = (outdir) => {
         "baseUrl": "src"
     },
     "include": ["src"]
-}`,
+}`
   );
 };
 

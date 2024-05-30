@@ -8,8 +8,8 @@ export const productApi = createApi({
   tagTypes: ["PRODUCT"],
   endpoints: (builder) => ({
     filteredProducts: builder.query({
-      query: ({ categoryIds }) =>
-        `/products?&size=10&categoryIds=${categoryIds}`,
+      query: ({ categoryId, page = 0, size = 10 }) =>
+        `/products?&page=${page}&size=${size}&categoryId=${categoryId}`,
       providesTags: (result, error, arg) =>
         result
           ? [
@@ -19,7 +19,18 @@ export const productApi = createApi({
           : ["PRODUCT"],
     }),
     listProducts: builder.query({
-      query: ({ page, size }) => `/products?page=${page}&size=${size}`,
+      query: ({ page = 0, size = 10 }) => `/products?page=${page}&size=${size}`,
+      providesTags: (result, error, arg) =>
+        result
+          ? [
+              ...result.data.map(({ id }) => ({ type: "PRODUCT", id })),
+              "PRODUCT",
+            ]
+          : ["PRODUCT"],
+    }),
+    searchListProducts: builder.query({
+      query: ({ name, categoryName, page = 0, size = 10 }) =>
+        `/products?&page=${page}&size=${size}&name=${name}&categoryName=${categoryName}`,
       providesTags: (result, error, arg) =>
         result
           ? [
@@ -38,6 +49,8 @@ export const productApi = createApi({
 
 // Export the generated query hooks for the defined endpoints
 export const {
+  useLazySearchListProductsQuery,
+  useSearchListProductsQuery,
   useFilteredProductsQuery,
   useLazyFilteredProductsQuery,
   useListProductsQuery,

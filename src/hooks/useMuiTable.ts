@@ -83,12 +83,13 @@ const useMuiTable = (props: Props) => {
   };
 
   // Handle change the page
-  const handleChangePage = (_: unknown, newPage: number) => setPage(newPage - 1);
+  const handleChangePage = (_: unknown, newPage: number) =>
+    setPage(newPage - 1);
 
-  const filteredList = stableSort(listData, getComparator(order, orderBy)).slice(
-    page * rowsPerPage,
-    page * rowsPerPage + rowsPerPage
-  );
+  const filteredList = stableSort(
+    listData,
+    getComparator(order, orderBy)
+  ).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return {
     page,

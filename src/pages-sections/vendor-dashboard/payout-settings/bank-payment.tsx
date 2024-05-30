@@ -66,7 +66,7 @@ const BankPayment = () => {
                 label="Account Holder Name"
                 value={values.accountHolderName}
                 error={Boolean(
-                  errors.accountHolderName && touched.accountHolderName,
+                  errors.accountHolderName && touched.accountHolderName
                 )}
                 helperText={
                   (touched.accountHolderName &&

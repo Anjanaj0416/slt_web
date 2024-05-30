@@ -54,7 +54,7 @@ Mock.onGet("/api/market-2/category-based-product?tag=electronics").reply(
       console.error(err);
       return [500, { message: "Internal server error" }];
     }
-  },
+  }
 );
 
 // men's fashion category products

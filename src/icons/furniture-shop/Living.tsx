@@ -35,7 +35,7 @@ const Living = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Living",
+  "Living"
 );
 
 export default Living;

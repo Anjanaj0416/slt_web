@@ -31,7 +31,7 @@ const Decoration = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Decoration",
+  "Decoration"
 );
 
 export default Decoration;

@@ -7,7 +7,7 @@ const Chair = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Chair",
+  "Chair"
 );
 
 export default Chair;

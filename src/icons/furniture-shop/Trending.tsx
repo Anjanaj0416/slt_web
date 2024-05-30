@@ -7,7 +7,7 @@ const Trending = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Trending",
+  "Trending"
 );
 
 export default Trending;

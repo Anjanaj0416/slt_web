@@ -19,7 +19,7 @@ const WeddingGift = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "WeddingGift",
+  "WeddingGift"
 );
 
 export default WeddingGift;

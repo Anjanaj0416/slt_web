@@ -11,7 +11,7 @@ const Mascara = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Mascara",
+  "Mascara"
 );
 
 export default Mascara;

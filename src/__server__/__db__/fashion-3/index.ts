@@ -2,10 +2,10 @@ import Mock from "../../mock";
 import { mainCarouselData, products, serviceList, blogs } from "./data";
 
 const bestSell = products.filter(
-  (item) => item.for.type === "best-selling-product",
+  (item) => item.for.type === "best-selling-product"
 );
 const featureProducts = products.filter(
-  (item) => item.for.type === "featured-products",
+  (item) => item.for.type === "featured-products"
 );
 
 // get all products

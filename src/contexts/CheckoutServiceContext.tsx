@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { POSTAddressRequest, POSTAddressResponse } from "models/Address.model";
 import { User1 } from "models/User.model";
 import { useSession } from "next-auth/react";

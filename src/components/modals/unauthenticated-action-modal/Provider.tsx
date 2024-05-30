@@ -1,18 +1,18 @@
 "use client";
-// 
+//
 import { ReactNode, createContext, useState } from "react";
 import View from "./View";
-// 
+//
 export const context = createContext({
   isOpen: false,
   setIsOpen: null,
   handleClose: null,
 });
-// 
+//
 type Props = {
   children: ReactNode;
 };
-// 
+//
 const Provider = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => {
@@ -25,5 +25,5 @@ const Provider = ({ children }: Props) => {
     </context.Provider>
   );
 };
-// 
+//
 export default Provider;

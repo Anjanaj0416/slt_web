@@ -12,7 +12,7 @@ const Toggle = createSvgIcon(
       fill="currentColor"
     />
   </svg>,
-  "Toggle",
+  "Toggle"
 );
 
 export default Toggle;

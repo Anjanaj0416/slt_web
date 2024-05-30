@@ -20,7 +20,7 @@ const Review = createSvgIcon(
       </clipPath>
     </defs>
   </svg>,
-  "Review",
+  "Review"
 );
 
 export default Review;

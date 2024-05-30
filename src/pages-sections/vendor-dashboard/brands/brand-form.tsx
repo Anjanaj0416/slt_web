@@ -35,7 +35,7 @@ const BrandForm: FC<Props> = (props) => {
   // HANDLE UPDATE NEW IMAGE VIA DROP ZONE
   const handleChangeDropZone = (files: File[]) => {
     files.forEach((file) =>
-      Object.assign(file, { preview: URL.createObjectURL(file) }),
+      Object.assign(file, { preview: URL.createObjectURL(file) })
     );
     setFiles(files);
   };
