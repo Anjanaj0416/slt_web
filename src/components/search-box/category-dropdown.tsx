@@ -7,18 +7,28 @@ import KeyboardArrowDownOutlined from "@mui/icons-material/KeyboardArrowDownOutl
 import BazaarMenu from "components/BazaarMenu";
 // STYLED COMPONENT
 import { DropDownHandler } from "./styled";
-// DATA
-import { categories } from "./categories";
+import { useFilteredCategoriesQuery } from "services/category-api";
 
 // ==============================================================
 interface Props {
   title: string;
-  handleChange: (cat: (typeof categories)[0]) => () => void;
+  handleChange: (cat: { title: string; value: string }) => () => void;
 }
 // ==============================================================
 
 const CategoryDropdown: FC<Props> = ({ title, handleChange }) => {
+  const { data, isSuccess } = useFilteredCategoriesQuery({ size: 7 });
   const { breakpoints } = useTheme();
+  //
+  let categories = [{ title: "All Categories", value: "*" }];
+  if (isSuccess) {
+    data?.data.forEach((category) => {
+      categories.push({
+        title: category.name,
+        value: category.id,
+      });
+    });
+  }
 
   return (
     <BazaarMenu
