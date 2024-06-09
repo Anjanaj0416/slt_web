@@ -9,22 +9,17 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
-// MUI ICON COMPONENTS
-import Apps from "@mui/icons-material/Apps";
-import ViewList from "@mui/icons-material/ViewList";
-import FilterList from "@mui/icons-material/FilterList";
-// Local CUSTOM COMPONENT
-import ProductFilterCard from "../product-filter-card";
 // GLOBAL CUSTOM COMPONENTS
 import Sidenav from "components/side-nav/side-nav";
 import { FlexBox } from "components/flex-box";
 import { H5, Paragraph } from "components/Typography";
-import ProductsGridView from "components/products-view/products-grid-view";
 import ProductsListView from "components/products-view/products-list-view";
 // PRODUCT DATA
 import productDatabase from "data/product-database";
 import { Product1 } from "models/Product.model";
 import Category1 from "models/Category.model";
+import ProductFilterCard1 from "../product-filter-card-1";
+import ProductsGridView1 from "components/products-view/products-grid-view-1";
 
 const SORT_OPTIONS = [
   { label: "Relevance", value: "Relevance" },
@@ -193,14 +188,14 @@ const ProductSearchPageView = ({
         {/* PRODUCT FILTER SIDEBAR AREA */}
         {products.length > 0 && (
           <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
-            <ProductFilterCard categories={parentCategories} brands={brands} />
+            <ProductFilterCard1 categories={parentCategories} brands={brands} />
           </Grid>
         )}
 
         {/* PRODUCT VIEW AREA */}
         <Grid item md={9} xs={12}>
           {view === "grid" ? (
-            <ProductsGridView
+            <ProductsGridView1
               products={products}
               totalPages={totalPages}
               totalResults={totalResults}
