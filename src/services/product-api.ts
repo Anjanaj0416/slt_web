@@ -29,8 +29,8 @@ export const productApi = createApi({
           : ["PRODUCT"],
     }),
     searchListProducts: builder.query({
-      query: ({ name, categoryName, page = 0, size = 10 }) =>
-        `/products?&page=${page}&size=${size}&name=${name}&categoryName=${categoryName}`,
+      query: ({ filters, page = 0, size = 10 }) =>
+        `/products?&page=${page}&size=${size}&${filters}`,
       providesTags: (result, error, arg) =>
         result
           ? [
