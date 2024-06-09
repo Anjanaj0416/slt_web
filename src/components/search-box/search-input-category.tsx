@@ -7,8 +7,10 @@ import CategoryDropdown from "./category-dropdown";
 import useSearch from "./use-search";
 // STYLED COMPONENT
 import { SearchOutlinedIcon } from "./styled";
+import { useRouter } from "next/navigation";
 
 const SearchInputWithCategory = () => {
+  const router = useRouter();
   const {
     categoryTitle,
     handleCategoryChange,
@@ -36,7 +38,11 @@ const SearchInputWithCategory = () => {
       />
     ),
   };
-
+  const handleOnKeyUp = (event) => {
+    if (event.key === "Enter") {
+      router.push(`/products/search/${event.target.value}`);
+    }
+  };
   return (
     <Box
       position="relative"
@@ -50,6 +56,7 @@ const SearchInputWithCategory = () => {
         variant="outlined"
         placeholder="Searching for..."
         onChange={handleSearch}
+        onKeyUp={handleOnKeyUp}
         InputProps={INPUT_PROPS}
       />
 

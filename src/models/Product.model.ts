@@ -1,5 +1,6 @@
 import Shop from "./Shop.model";
 import Review from "./Review.model";
+import Category1 from "./Category.model";
 
 interface Product {
   unit?: any;
@@ -30,7 +31,7 @@ export interface Product1 {
   id: string;
   brand?: string;
   images?: string[];
-  category?: object;
+  category?: Category1;
   name: string;
 }
 

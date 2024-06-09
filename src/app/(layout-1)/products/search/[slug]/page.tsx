@@ -17,14 +17,15 @@ export default async function ProductSearch({ params }) {
   try {
     const slug = params.slug.replace(/%20/g, " ");
     const result = await request(PRODUCT_API.GET_PRODUCTS, {
-      query: `size=10&name=${slug}&categoryName=${slug}`,
+      query: `size=9&name=${slug}&categoryName=${slug}`,
     });
     //
     return (
       <ProductSearchPageView
         searchText={slug}
         products={result?.data}
-        totalResults={result?.totalPages}
+        totalResults={result?.totalResults}
+        totalPages={result?.totalPages}
       />
     );
   } catch (error) {

@@ -18,9 +18,13 @@ const useSearch = () => {
     };
 
   // FETCH PRODUCTS VIA API
-  const getProducts = async (searchText: string, category?: string) => {
+  const getProducts = async (searchText: string, categoryId?: string) => {
     const productList = (
-      await listProducts({ name: searchText, categoryName: searchText })
+      await listProducts({
+        filters: categoryId
+          ? `name=${searchText}&categoryId=${categoryId}`
+          : `name=${searchText}&categoryName=${searchText}`,
+      })
     ).data?.data;
     if (productList.length) {
       const data = productList.map((e) => e.name);
