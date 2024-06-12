@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const usePagination = () => {
+const usePagination = (p0: { totalPage: number }) => {
   const [page, setPage] = useState<number>(null);
-  const [totalPage, setTotalPage] = useState<number>(0);
+  const [totalPage, setTotalPage] = useState<number>(p0?.totalPage ?? 0);
 
   const nextPage = () => {
     if (page + 1 < totalPage) {

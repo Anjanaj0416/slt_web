@@ -48,6 +48,7 @@ const ProductSearchPageView = ({
   const [view, setView] = useState("grid");
   const downMd = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
   const toggleView = useCallback((v: string) => () => setView(v), []);
+  const [totalResult, setTotalResult] = useState(totalResults);
   const [filters, setFilters] = useState(
     categoryId
       ? `name=${searchText}&categoryId=${categoryId}`
@@ -118,9 +119,9 @@ const ProductSearchPageView = ({
         <div>
           <H5>{`Searching for “ ${searchText} ”`}</H5>
           <Paragraph color="grey.600">
-            {totalResults > 1
-              ? `${totalResults} results found`
-              : `${totalResults} result found`}
+            {totalResult > 1
+              ? `${totalResult} results found`
+              : `${totalResult} result found`}
           </Paragraph>
         </div>
 
@@ -226,8 +227,9 @@ const ProductSearchPageView = ({
           {view === "grid" ? (
             <ProductsGridView1
               products={products}
-              totalPages={totalPages}
-              totalResults={totalResults}
+              setTotalResult={setTotalResult}
+              initTotalPages={totalPages}
+              totalResult={totalResult}
               filters={sort ? `${filters}&${sort}` : filters}
             />
           ) : (

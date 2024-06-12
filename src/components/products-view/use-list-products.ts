@@ -3,14 +3,30 @@ import { useLazySearchListProductsQuery } from "services/product-api";
 import usePagination from "hooks/usePagination";
 import { Product1 } from "models/Product.model";
 //
-const useListProducts = (products: Product1[], filters: string) => {
+const useListProducts = (
+  products: Product1[],
+  filters: string,
+  initTotalPages: number,
+  setTotalResult: (value: number) => void
+) => {
   const [filteredProducts, setFilteredProducts] =
     useState<Product1[]>(products);
-  const { setTotalPage, page, setPage, totalPage } = usePagination();
+  const { setTotalPage, page, setPage, totalPage } = usePagination({
+    totalPage: initTotalPages,
+  });
   const [listProducts, { isLoading }] = useLazySearchListProductsQuery();
   //
   useEffect(() => {
-    //if (page === null) return;
+    if (
+      page === null &&
+      !(
+        filters.includes("sort=") ||
+        filters.includes("Price=") ||
+        filters.includes("brand=")
+      )
+    ) {
+      return;
+    }
     const fetchData = async () => {
       try {
         const data = await listProducts({ filters, page }).unwrap();
@@ -32,6 +48,9 @@ const useListProducts = (products: Product1[], filters: string) => {
             }));
 
             setFilteredProducts(filteredProductArray);
+            setTotalResult(data.totalResults);
+
+            setTotalPage(data.totalPages);
           }
         }
       } catch (error) {
@@ -40,7 +59,7 @@ const useListProducts = (products: Product1[], filters: string) => {
     };
 
     fetchData();
-  }, [filters, listProducts, page, setTotalPage]);
+  }, [filters, listProducts, page, setTotalPage, setTotalResult]);
 
   return {
     isLoading,
