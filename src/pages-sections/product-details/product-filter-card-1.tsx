@@ -53,6 +53,7 @@ const ProductFilterCard1 = ({
     if (selectedBrands.length > 0) {
       text += `&brand=${selectedBrands.join(",")}`;
     }
+console.log(text);
 
     setFilters(`${filters}${text}`);
   };
