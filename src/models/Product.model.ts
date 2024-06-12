@@ -32,6 +32,8 @@ export interface Product1 {
   brand?: string;
   images?: string[];
   category?: Category1;
+  description:string;
+  specification:string;
   name: string;
 }
 

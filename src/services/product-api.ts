@@ -44,6 +44,10 @@ export const productApi = createApi({
         `/users/${userId}/stores/${storeId}/products/${productId}`,
       providesTags: ["PRODUCT"],
     }),
+    getProductById: builder.query({
+      query: ({ productId }) => `/products?productId=${productId}`,
+      providesTags: ["PRODUCT"],
+    }),
   }),
 });
 
@@ -56,5 +60,7 @@ export const {
   useListProductsQuery,
   useLazyListProductsQuery,
   useLazyGetProductQuery,
+  useGetProductByIdQuery,
+  useLazyGetProductByIdQuery,
   useGetProductQuery,
 } = productApi;

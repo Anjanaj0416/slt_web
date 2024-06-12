@@ -31,6 +31,7 @@ type Props = {
   hoverEffect?: boolean;
   showProductSize?: boolean;
   handleFavorite: (id: string) => void;
+  isFavorite?: boolean;
 };
 // ========================================================
 
@@ -42,6 +43,7 @@ const ProductCard11: FC<Props> = ({
   handleFavorite,
   showProductSize,
   isUpdating,
+  isFavorite=true
 }) => {
   const { id, name, price, discount, images, discountType } = product;
   const { openModal, toggleDialog } = useProduct(id);
@@ -70,7 +72,7 @@ const ProductCard11: FC<Props> = ({
 
         {/* HOVER ACTION ICONS */}
         <HoverActions
-          isFavorite={true}
+          isFavorite={isFavorite}
           disabledFavButton={isUpdating}
           toggleView={toggleDialog}
           toggleFavorite={() => handleFavorite(id)}

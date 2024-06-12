@@ -2,12 +2,9 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 // PAGE VIEW COMPONENT
 import { ProductDetailsPageView } from "pages-sections/product-details/page-view";
-// API FUNCTIONS
-import api from "utils/__api__/products";
-import {
-  getFrequentlyBought,
-  getRelatedProducts,
-} from "utils/__api__/related-products";
+import request from "utils/request";
+import PRODUCT_API from "constants/products";
+import STORE_API from "constants/store";
 
 export const metadata: Metadata = {
   title: "Product Details - Bazaar Next.js E-commerce Template",
@@ -19,18 +16,30 @@ export const metadata: Metadata = {
 
 export default async function ProductDetails({ params }) {
   try {
-    const product = await api.getProduct(params.slug as string);
-    const relatedProducts = await getRelatedProducts();
-    const frequentlyBought = await getFrequentlyBought();
+    //const frequentlyBought = await getFrequentlyBought();
+    const products = await request(PRODUCT_API.GET_PRODUCTS, {
+      query: `productId=${params?.id}`,
+    });
+
+    const stores = await request(STORE_API.GET_STORES, {
+      query: `size=3`,
+    });
+
+    const relatedProducts = await request(PRODUCT_API.GET_PRODUCTS, {
+      query: `categoryId=${products?.data[0]?.category.id}&size=4`,
+    });
 
     return (
       <ProductDetailsPageView
-        product={product}
-        relatedProducts={relatedProducts}
-        frequentlyBought={frequentlyBought}
+        product={products?.data[0]}
+        relatedProducts={relatedProducts?.data}
+        //frequentlyBought={frequentlyBought}
+        stores={stores.data}
       />
     );
   } catch (error) {
+    console.log(error);
+
     notFound();
   }
 }
