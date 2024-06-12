@@ -1,19 +1,18 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, RefObject, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
 import Divider from "@mui/material/Divider";
 import Collapse from "@mui/material/Collapse";
 import Checkbox from "@mui/material/Checkbox";
-import TextField from "@mui/material/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
 import AccordionHeader from "components/accordion/accordion-header";
 import Category1 from "models/Category.model";
-
 
 const otherOptions = ["On Sale", "In Stock", "Featured"];
 const colorList = [
@@ -28,10 +27,50 @@ const colorList = [
 type Props = {
   categories: Category1[];
   brands: string[];
+  filters: string;
+  setFilters: any;
 };
 
-const ProductFilterCard1 = ({ categories, brands }: Props) => {
+const ProductFilterCard1 = ({
+  categories,
+  brands,
+  filters,
+  setFilters,
+}: Props) => {
   const [collapsed, setCollapsed] = useState(true);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const minRef = useRef<TextFieldProps>();
+  const maxRef = useRef<TextFieldProps>();
+
+  const handleFilters = () => {
+    let text = "";
+    if (maxRef.current.value) {
+      text += `&maxPrice=${maxRef.current.value}`;
+    }
+    if (minRef.current?.value) {
+      text += `&minPrice=${minRef.current.value}`;
+    }
+    if (selectedBrands.length > 0) {
+      text += `&brand=${selectedBrands.join(",")}`;
+    }
+
+    setFilters(`${filters}${text}`);
+  };
+
+  const handleBrandSelect = (isSelect, value) => {
+    if (isSelect) {
+      setSelectedBrands((prvState) => {
+        const brands = [...prvState, value];
+        return brands;
+      });
+    } else {
+      setSelectedBrands((prvState) => {
+        const brands = prvState.filter((e) => e !== value);
+        return brands;
+      });
+    }
+    handleFilters();
+  };
 
   return (
     <Card sx={{ p: "18px 27px", overflow: "auto" }} elevation={1}>
@@ -85,11 +124,25 @@ const ProductFilterCard1 = ({ categories, brands }: Props) => {
       <H6 mb={2}>Price Range</H6>
 
       <FlexBetween>
-        <TextField placeholder="0" type="number" size="small" fullWidth />
+        <TextField
+          inputRef={minRef}
+          placeholder="0"
+          type="number"
+          size="small"
+          fullWidth
+          onChange={handleFilters}
+        />
         <H5 color="grey.600" px={1}>
           -
         </H5>
-        <TextField placeholder="250" type="number" size="small" fullWidth />
+        <TextField
+          inputRef={maxRef}
+          placeholder="250"
+          type="number"
+          size="small"
+          fullWidth
+          onChange={handleFilters}
+        />
       </FlexBetween>
 
       <Box component={Divider} my={3} />
@@ -102,6 +155,9 @@ const ProductFilterCard1 = ({ categories, brands }: Props) => {
           key={item}
           sx={{ display: "flex" }}
           label={<Span color="inherit">{item}</Span>}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleBrandSelect(e.target.checked, item)
+          }
           control={<Checkbox size="small" color="secondary" />}
         />
       ))}

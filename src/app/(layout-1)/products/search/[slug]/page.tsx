@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default async function ProductSearch({ params }) {
+export default async function ProductSearch({ params, searchParams }) {
   try {
     const slug = params.slug.replace(/%20/g, " ");
     const result = await request(PRODUCT_API.GET_PRODUCTS, {
@@ -24,6 +24,7 @@ export default async function ProductSearch({ params }) {
       <ProductSearchPageView
         searchText={slug}
         products={result?.data}
+        categoryId={searchParams?.categoryId}
         totalResults={result?.totalResults}
         totalPages={result?.totalPages}
       />

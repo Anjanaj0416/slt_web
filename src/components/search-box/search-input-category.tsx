@@ -13,6 +13,7 @@ const SearchInputWithCategory = () => {
   const router = useRouter();
   const {
     categoryTitle,
+    categoryId,
     handleCategoryChange,
     handleSearch,
     parentRef,
@@ -40,7 +41,11 @@ const SearchInputWithCategory = () => {
   };
   const handleOnKeyUp = (event) => {
     if (event.key === "Enter") {
-      router.push(`/products/search/${event.target.value}`);
+      router.push(
+        categoryId == "*"
+          ? `/products/search/${event.target.value}`
+          : `/products/search/${event.target.value}?categoryId=${categoryId}`
+      );
     }
   };
   return (

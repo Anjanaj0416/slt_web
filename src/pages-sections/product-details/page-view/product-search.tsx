@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import { Theme } from "@mui/material/styles";
@@ -32,6 +32,7 @@ const SORT_OPTIONS = [
 type Props = {
   products: Product1[];
   searchText: string;
+  categoryId?: string;
   totalResults: number;
   totalPages: number;
 };
@@ -40,12 +41,19 @@ type Props = {
 const ProductSearchPageView = ({
   products,
   searchText,
+  categoryId,
   totalResults,
   totalPages,
 }: Props) => {
   const [view, setView] = useState("grid");
   const downMd = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
   const toggleView = useCallback((v: string) => () => setView(v), []);
+  const [filters, setFilters] = useState(
+    categoryId
+      ? `name=${searchText}&categoryId=${categoryId}`
+      : `name=${searchText}&categoryName=${searchText}`
+  );
+  const [sort, setSort] = useState<string>();
   const PRODUCTS = productDatabase.slice(95, 104);
   let parentCategories: Category1[] = [];
   // Get brands
@@ -136,6 +144,18 @@ const ProductSearchPageView = ({
                 placeholder="Short by"
                 defaultValue={SORT_OPTIONS[0].value}
                 sx={{ flex: "1 1 0", minWidth: "150px" }}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === "Date") {
+                    setSort("sort=createdAt,asc");
+                  } else if (value === "Price Low to High") {
+                    setSort("sort=price,asc");
+                  } else if (value === "Price High to Low") {
+                    setSort("sort=price,desc");
+                  } else {
+                    setSort(null);
+                  }
+                }}
               >
                 {SORT_OPTIONS.map((item) => (
                   <MenuItem value={item.value} key={item.value}>
@@ -188,7 +208,16 @@ const ProductSearchPageView = ({
         {/* PRODUCT FILTER SIDEBAR AREA */}
         {products.length > 0 && (
           <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
-            <ProductFilterCard1 categories={parentCategories} brands={brands} />
+            <ProductFilterCard1
+              filters={
+                categoryId
+                  ? `name=${searchText}&categoryId=${categoryId}`
+                  : `name=${searchText}&categoryName=${searchText}`
+              }
+              setFilters={setFilters}
+              categories={parentCategories}
+              brands={brands}
+            />
           </Grid>
         )}
 
@@ -199,7 +228,7 @@ const ProductSearchPageView = ({
               products={products}
               totalPages={totalPages}
               totalResults={totalResults}
-              filters={`name=${searchText}&categoryName=${searchText}`}
+              filters={sort ? `${filters}&${sort}` : filters}
             />
           ) : (
             <ProductsListView products={PRODUCTS} />

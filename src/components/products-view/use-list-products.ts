@@ -10,7 +10,7 @@ const useListProducts = (products: Product1[], filters: string) => {
   const [listProducts, { isLoading }] = useLazySearchListProductsQuery();
   //
   useEffect(() => {
-    if (page === null) return;
+    //if (page === null) return;
     const fetchData = async () => {
       try {
         const data = await listProducts({ filters, page }).unwrap();
