@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const usePagination = (p0: { totalPage: number }) => {
+const usePagination = (p0?: { totalPage: number }) => {
   const [page, setPage] = useState<number>(null);
   const [totalPage, setTotalPage] = useState<number>(p0?.totalPage ?? 0);
 
