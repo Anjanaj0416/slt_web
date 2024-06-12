@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { FC, useState } from "react";
 import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
 import Rating from "@mui/material/Rating";
@@ -19,10 +18,8 @@ import { H1, H2, H3, H6 } from "components/Typography";
 import { FlexBox, FlexRowCenter } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
-// DUMMY DATA
-import productVariants from "data/product-variants";
 // CUSTOM DATA MODEL
-import Product, { Product1 } from "models/Product.model";
+import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
 import useCartService from "hooks/useCartService";
 
@@ -123,7 +120,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
 
           {/* PRODUCT BRAND */}
           <FlexBox alignItems="center" mb={1}>
-            <div>Brand:</div>
+            <div style={{marginRight:'8px'}}>Brand:</div>
             <H6>{brand}</H6>
           </FlexBox>
 
