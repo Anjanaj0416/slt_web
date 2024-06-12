@@ -1,38 +1,47 @@
 import Container from "@mui/material/Container";
 // Local CUSTOM COMPONENTS
 import ProductTabs from "../product-tabs";
-import ProductIntro from "../product-intro";
 import AvailableShops from "../available-shops";
 import RelatedProducts from "../related-products";
 import FrequentlyBought from "../frequently-bought";
 // CUSTOM DATA MODEL
-import Product from "models/Product.model";
+import Product, { Product1 } from "models/Product.model";
+import ProductIntro1 from "../product-intro1";
+import Store from "models/Store.model";
 
 // ==============================================================
 interface Props {
-  product: Product;
-  relatedProducts: Product[];
-  frequentlyBought: Product[];
+  product: Product1;
+  stores: Store[];
+  relatedProducts: Product1[];
+  frequentlyBought?: Product[];
 }
 // ==============================================================
 
-const ProductDetailsPageView = (props: Props) => {
+const ProductDetailsPageView = ({
+  product,
+  relatedProducts,
+  stores,
+}: Props) => {
   return (
     <Container sx={{ my: 4 }}>
       {/* PRODUCT DETAILS INFO AREA */}
-      <ProductIntro product={props.product} />
+      <ProductIntro1 product={product} />
 
       {/* PRODUCT DESCRIPTION AND REVIEW */}
-      <ProductTabs />
+      <ProductTabs
+        description={product.description}
+        specification={product.specification}
+      />
 
       {/* FREQUENTLY BOUGHT PRODUCTS AREA */}
-      <FrequentlyBought products={props.frequentlyBought} />
+      {/* <FrequentlyBought products={props.frequentlyBought} /> */}
 
       {/* AVAILABLE SHOPS AREA */}
-      <AvailableShops />
+      <AvailableShops stores={stores} />
 
       {/* RELATED PRODUCTS AREA */}
-      <RelatedProducts products={props.relatedProducts} />
+      <RelatedProducts products={relatedProducts} />
     </Container>
   );
 };
