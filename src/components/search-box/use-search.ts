@@ -5,7 +5,7 @@ const useSearch = () => {
   const parentRef = useRef();
 
   const [_, startTransition] = useTransition();
-  const [category, setCategory] = useState("*");
+  const [categoryId, setCategoryId] = useState("*");
   const [resultList, setResultList] = useState<string[]>([]);
   const [categoryTitle, setCategoryTitle] = useState("All Categories");
   const [listProducts] = useLazySearchListProductsQuery();
@@ -13,7 +13,7 @@ const useSearch = () => {
   // HANDLE CHANGE THE CATEGORY
   const handleCategoryChange =
     (cat: { title: string; value: string }) => () => {
-      setCategory(cat.value);
+      setCategoryId(cat.value);
       setCategoryTitle(cat.title);
     };
 
@@ -39,7 +39,7 @@ const useSearch = () => {
       const value = e.target?.value;
 
       if (!value) setResultList([]);
-      else if (value && category !== "*") getProducts(value, category);
+      else if (value && categoryId !== "*") getProducts(value, categoryId);
       else getProducts(value);
     });
   };
@@ -52,7 +52,7 @@ const useSearch = () => {
   }, []);
 
   return {
-    category,
+    categoryId,
     parentRef,
     resultList,
     handleSearch,

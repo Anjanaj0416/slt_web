@@ -31,6 +31,7 @@ const ProductsGridView1: FC<Props> = ({
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value - 1);
   };
+
   return (
     <Fragment>
       <Grid container spacing={3}>
