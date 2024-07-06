@@ -38,6 +38,8 @@ const ProductIntro1: FC<Props> = ({ product }) => {
     ...videos.map((video) => ({ src: video, type: "video" })),
     ...images.map((image) => ({ src: image, type: "image" })),
   ];
+  console.log(medias.length);
+
   // HANDLE CHANGE TYPE AND OPTIONS
   // const handleChangeVariant = (variantName: string, value: string) => () => {
   //   setSelectVariants((state) => ({
@@ -70,17 +72,22 @@ const ProductIntro1: FC<Props> = ({ product }) => {
         {/* IMAGE GALLERY AREA */}
         <Grid item md={6} xs={12} alignItems="center">
           <FlexBox justifyContent="center" mb={6}>
-            {medias[selectedImage].type === "image" ? (
+            {medias.length < 1 ? (
               <LazyImage
                 alt={name}
                 width={300}
                 height={300}
                 loading="eager"
-                src={
-                  images.length > 0
-                    ? `${ENVIRONMENT.S3_BUCKET_URL}/${medias[selectedImage].src}`
-                    : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-                }
+                src={`${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`}
+                sx={{ objectFit: "contain" }}
+              />
+            ) : medias[selectedImage].type === "image" ? (
+              <LazyImage
+                alt={name}
+                width={300}
+                height={300}
+                loading="eager"
+                src={`${ENVIRONMENT.S3_BUCKET_URL}/${medias[selectedImage].src}`}
                 sx={{ objectFit: "contain" }}
               />
             ) : (
@@ -95,41 +102,43 @@ const ProductIntro1: FC<Props> = ({ product }) => {
             )}
           </FlexBox>
 
-          <FlexBox overflow="auto">
-            {medias.map((media, ind) => (
-              <FlexRowCenter
-                key={ind}
-                width={64}
-                height={64}
-                minWidth={64}
-                bgcolor="white"
-                border="1px solid"
-                borderRadius="10px"
-                ml={ind === 0 ? "auto" : 0}
-                style={{ cursor: "pointer" }}
-                onClick={handleImageClick(ind)}
-                mr={ind === medias.length - 1 ? "auto" : "10px"}
-                borderColor={
-                  selectedImage === ind ? "primary.main" : "grey.400"
-                }
-              >
-                {media.type === "image" ? (
-                  <Avatar
-                    alt="product"
-                    src={`${ENVIRONMENT.S3_BUCKET_URL}/${media.src}`}
-                    variant="square"
-                    sx={{ height: 40 }}
-                  />
-                ) : (
-                  <video
-                    src={`${ENVIRONMENT.S3_BUCKET_URL}/${media.src}`}
-                    width={40}
-                    height={40}
-                  />
-                )}
-              </FlexRowCenter>
-            ))}
-          </FlexBox>
+          {medias.length > 0 && (
+            <FlexBox overflow="auto">
+              {medias.map((media, ind) => (
+                <FlexRowCenter
+                  key={ind}
+                  width={64}
+                  height={64}
+                  minWidth={64}
+                  bgcolor="white"
+                  border="1px solid"
+                  borderRadius="10px"
+                  ml={ind === 0 ? "auto" : 0}
+                  style={{ cursor: "pointer" }}
+                  onClick={handleImageClick(ind)}
+                  mr={ind === medias.length - 1 ? "auto" : "10px"}
+                  borderColor={
+                    selectedImage === ind ? "primary.main" : "grey.400"
+                  }
+                >
+                  {media.type === "image" ? (
+                    <Avatar
+                      alt="product"
+                      src={`${ENVIRONMENT.S3_BUCKET_URL}/${media.src}`}
+                      variant="square"
+                      sx={{ height: 40 }}
+                    />
+                  ) : (
+                    <video
+                      src={`${ENVIRONMENT.S3_BUCKET_URL}/${media.src}`}
+                      width={40}
+                      height={40}
+                    />
+                  )}
+                </FlexRowCenter>
+              ))}
+            </FlexBox>
+          )}
         </Grid>
 
         {/* PRODUCT INFO AREA */}
