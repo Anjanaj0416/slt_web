@@ -10,8 +10,6 @@ import Button from "@mui/material/Button";
 // MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
-// GLOBAL CUSTOM HOOK
-import useCart from "hooks/useCart";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H1, H2, H3, H6 } from "components/Typography";
@@ -28,26 +26,28 @@ type Props = { product: Product1 };
 // ================================================================
 
 const ProductIntro1: FC<Props> = ({ product }) => {
-  const { id, price, name, brand, images } = product || {};
+  const { price, name, brand, images, videos } = product || {};
   const { handleAddToCart, handleRemoveFromCart, cart } = useCartService();
   const carItemIds = cart.cartItems.map((item) => item.product.id);
-  const { state, dispatch } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectVariants, setSelectVariants] = useState({
-    option: "option 1",
-    type: "type 1",
-  });
-
+  // const [selectVariants, setSelectVariants] = useState({
+  //   option: "option 1",
+  //   type: "type 1",
+  // });
+  const medias = [
+    ...videos.map((video) => ({ src: video, type: "video" })),
+    ...images.map((image) => ({ src: image, type: "image" })),
+  ];
   // HANDLE CHANGE TYPE AND OPTIONS
-  const handleChangeVariant = (variantName: string, value: string) => () => {
-    setSelectVariants((state) => ({
-      ...state,
-      [variantName.toLowerCase()]: value,
-    }));
-  };
+  // const handleChangeVariant = (variantName: string, value: string) => () => {
+  //   setSelectVariants((state) => ({
+  //     ...state,
+  //     [variantName.toLowerCase()]: value,
+  //   }));
+  // };
 
   // CHECK PRODUCT EXIST OR NOT IN THE CART
-  const cartItem = state.cart.find((item) => item.id === id);
+  // const cartItem = state.cart.find((item) => item.id === id);
 
   // HANDLE SELECT IMAGE
   const handleImageClick = (ind: number) => () => setSelectedImage(ind);
@@ -70,22 +70,33 @@ const ProductIntro1: FC<Props> = ({ product }) => {
         {/* IMAGE GALLERY AREA */}
         <Grid item md={6} xs={12} alignItems="center">
           <FlexBox justifyContent="center" mb={6}>
-            <LazyImage
-              alt={name}
-              width={300}
-              height={300}
-              loading="eager"
-              src={
-                images.length > 0
-                  ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
-                  : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-              }
-              sx={{ objectFit: "contain" }}
-            />
+            {medias[selectedImage].type === "image" ? (
+              <LazyImage
+                alt={name}
+                width={300}
+                height={300}
+                loading="eager"
+                src={
+                  images.length > 0
+                    ? `${ENVIRONMENT.S3_BUCKET_URL}/${medias[selectedImage].src}`
+                    : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
+                }
+                sx={{ objectFit: "contain" }}
+              />
+            ) : (
+              <video
+                autoPlay
+                muted
+                controls
+                width="100%"
+                height={604}
+                src={`${ENVIRONMENT.S3_BUCKET_URL}/${medias[selectedImage].src}`}
+              />
+            )}
           </FlexBox>
 
           <FlexBox overflow="auto">
-            {images.map((url, ind) => (
+            {medias.map((media, ind) => (
               <FlexRowCenter
                 key={ind}
                 width={64}
@@ -97,17 +108,25 @@ const ProductIntro1: FC<Props> = ({ product }) => {
                 ml={ind === 0 ? "auto" : 0}
                 style={{ cursor: "pointer" }}
                 onClick={handleImageClick(ind)}
-                mr={ind === images.length - 1 ? "auto" : "10px"}
+                mr={ind === medias.length - 1 ? "auto" : "10px"}
                 borderColor={
                   selectedImage === ind ? "primary.main" : "grey.400"
                 }
               >
-                <Avatar
-                  alt="product"
-                  src={`${ENVIRONMENT.S3_BUCKET_URL}/${url}`}
-                  variant="square"
-                  sx={{ height: 40 }}
-                />
+                {media.type === "image" ? (
+                  <Avatar
+                    alt="product"
+                    src={`${ENVIRONMENT.S3_BUCKET_URL}/${media.src}`}
+                    variant="square"
+                    sx={{ height: 40 }}
+                  />
+                ) : (
+                  <video
+                    src={`${ENVIRONMENT.S3_BUCKET_URL}/${media.src}`}
+                    width={40}
+                    height={40}
+                  />
+                )}
               </FlexRowCenter>
             ))}
           </FlexBox>
@@ -120,7 +139,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
 
           {/* PRODUCT BRAND */}
           <FlexBox alignItems="center" mb={1}>
-            <div style={{marginRight:'8px'}}>Brand:</div>
+            <div style={{ marginRight: "8px" }}>Brand:</div>
             <H6>{brand}</H6>
           </FlexBox>
 
