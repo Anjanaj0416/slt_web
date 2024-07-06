@@ -31,6 +31,7 @@ export interface Product1 {
   id: string;
   brand?: string;
   images?: string[];
+  videos?: string[];
   category?: Category1;
   description:string;
   specification:string;
