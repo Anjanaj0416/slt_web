@@ -30,15 +30,11 @@ const ProductIntro1: FC<Props> = ({ product }) => {
   const { handleAddToCart, handleRemoveFromCart, cart } = useCartService();
   const carItemIds = cart.cartItems.map((item) => item.product.id);
   const [selectedImage, setSelectedImage] = useState(0);
-  // const [selectVariants, setSelectVariants] = useState({
-  //   option: "option 1",
-  //   type: "type 1",
-  // });
+
   const medias = [
     ...videos.map((video) => ({ src: video, type: "video" })),
     ...images.map((image) => ({ src: image, type: "image" })),
   ];
-  console.log(medias.length);
 
   // HANDLE CHANGE TYPE AND OPTIONS
   // const handleChangeVariant = (variantName: string, value: string) => () => {
@@ -47,9 +43,6 @@ const ProductIntro1: FC<Props> = ({ product }) => {
   //     [variantName.toLowerCase()]: value,
   //   }));
   // };
-
-  // CHECK PRODUCT EXIST OR NOT IN THE CART
-  // const cartItem = state.cart.find((item) => item.id === id);
 
   // HANDLE SELECT IMAGE
   const handleImageClick = (ind: number) => () => setSelectedImage(ind);
