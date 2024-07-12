@@ -7,7 +7,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "s3-us-west-2-slt-marketplace-dev.s3.us-west-2.amazonaws.com",
+        hostname: process.env.NEXT_PUBLIC_S3_BUCKET_URL.replace(
+          /^https?:\/\//,
+          ""
+        ),
       },
       {
         protocol: "http",
