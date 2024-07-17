@@ -2,7 +2,6 @@ import { FC } from "react";
 import Link from "next/link";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
-import Rating from "@mui/material/Rating";
 import IconButton from "@mui/material/IconButton";
 import { alpha, styled } from "@mui/material/styles";
 // MUI ICON COMPONENTS
@@ -13,7 +12,8 @@ import Place from "@mui/icons-material/Place";
 import { H3, Span } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM DATA MODEL
-import Shop from "models/Shop.model";
+import Store from "models/Store.model";
+import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENT
 const ContentWrapper = styled("div", {
@@ -31,24 +31,24 @@ const ContentWrapper = styled("div", {
     url(${img})`,
 }));
 
-const ShopCard: FC<Partial<Shop>> = (props) => {
-  const { name, rating, address, phone, coverPicture, profilePicture, slug } =
-    props || {};
+const ShopCard: FC<Partial<Store>> = (props) => {
+  const { name, address, telephone, logoFilePath, id } = props || {};
+  console.log(logoFilePath);
 
   return (
     <Card>
-      <ContentWrapper img={coverPicture || "/assets/images/banners/cycle.png"}>
+      <ContentWrapper img={"/assets/images/banners/cycle.png"}>
         <H3 fontWeight="600" mb={1}>
           {name}
         </H3>
 
-        <Rating
-          value={rating || 0}
+        {/* <Rating
+          value={5}
           color="warn"
           size="small"
           readOnly
           sx={{ mb: "0.75rem" }}
-        />
+        /> */}
 
         <FlexBox mb={1} gap={1}>
           <Place fontSize="small" sx={{ fontSize: 17, mt: "3px" }} />
@@ -57,24 +57,25 @@ const ShopCard: FC<Partial<Shop>> = (props) => {
 
         <FlexBox alignItems="center" gap={1}>
           <Call fontSize="small" sx={{ fontSize: 17 }} />
-          <Span color="white">{phone}</Span>
+          <Span color="white">{telephone}</Span>
         </FlexBox>
       </ContentWrapper>
 
       <FlexBetween pl={3} pr={1}>
         <Avatar
           alt={name}
-          src={profilePicture}
+          src={`${ENVIRONMENT.S3_BUCKET_URL}/${logoFilePath}`}
           sx={{
             width: 64,
             height: 64,
             mt: "-32px",
+            ...(!logoFilePath && { backgroundColor: "#f44336" }),
             border: "3px solid",
             borderColor: "grey.100",
           }}
         />
 
-        <Link href={`/shops/${slug}`}>
+        <Link href={`/shops/${id}`}>
           <IconButton sx={{ my: 0.5 }}>
             <East
               sx={{
