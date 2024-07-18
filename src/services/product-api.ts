@@ -44,6 +44,11 @@ export const productApi = createApi({
         `/users/${userId}/stores/${storeId}/products/${productId}`,
       providesTags: ["PRODUCT"],
     }),
+    getProductsByStoreId: builder.query({
+      query: ({ storeId, page = 0, size = 9 }) =>
+        `stores/${storeId}/products?size=${size}&page=${page}`,
+      providesTags: ["PRODUCT"],
+    }),
     getProductById: builder.query({
       query: ({ productId }) => `/products?productId=${productId}`,
       providesTags: ["PRODUCT"],
@@ -63,4 +68,6 @@ export const {
   useGetProductByIdQuery,
   useLazyGetProductByIdQuery,
   useGetProductQuery,
+  useGetProductsByStoreIdQuery,
+  useLazyGetProductsByStoreIdQuery,
 } = productApi;
