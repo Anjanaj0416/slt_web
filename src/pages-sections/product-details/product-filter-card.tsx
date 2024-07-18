@@ -12,20 +12,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
 import AccordionHeader from "components/accordion/accordion-header";
+import Category1 from "models/Category.model";
 
-// FILTER OPTIONS
-const categoryList = [
-  {
-    title: "Bath Preparations",
-    subCategories: ["Bubble Bath", "Bath Capsules", "Others"],
-  },
-  { title: "Eye Makeup Preparations" },
-  { title: "Fragrance" },
-  { title: "Hair Preparations" },
-];
-
-const brandList = ["Mac", "Karts", "Baals", "Bukks", "Luasis"];
-const otherOptions = ["On Sale", "In Stock", "Featured"];
+const otherOptions = ["On Sale", "In Stock"];
 const colorList = [
   "#1C1C1C",
   "#FF7A7A",
@@ -35,7 +24,12 @@ const colorList = [
   "#6B7AFF",
 ];
 
-const ProductFilterCard = () => {
+type Props = {
+  categories: Category1[];
+  brands: string[];
+};
+
+const ProductFilterCard = ({ categories, brands }: Props) => {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
@@ -43,35 +37,35 @@ const ProductFilterCard = () => {
       {/* CATEGORY VARIANT FILTER */}
       <H6 mb={1.25}>Categories</H6>
 
-      {categoryList.map((item) =>
+      {categories.map((item) =>
         item.subCategories ? (
-          <Fragment key={item.title}>
+          <Fragment key={item.id}>
             <AccordionHeader
               open={collapsed}
               onClick={() => setCollapsed((state) => !state)}
               sx={{ padding: ".5rem 0", cursor: "pointer", color: "grey.600" }}
             >
-              <Span>{item.title}</Span>
+              <Span>{item.name}</Span>
             </AccordionHeader>
 
             <Collapse in={collapsed}>
-              {item.subCategories.map((name) => (
+              {item.subCategories.map((subCategory) => (
                 <Paragraph
                   pl="22px"
                   py={0.75}
-                  key={name}
+                  key={subCategory.id}
                   fontSize="14px"
                   color="grey.600"
                   sx={{ cursor: "pointer" }}
                 >
-                  {name}
+                  {subCategory.name}
                 </Paragraph>
               ))}
             </Collapse>
           </Fragment>
         ) : (
           <Paragraph
-            key={item.title}
+            key={item.id}
             sx={{
               py: 0.75,
               cursor: "pointer",
@@ -79,7 +73,7 @@ const ProductFilterCard = () => {
               fontSize: 14,
             }}
           >
-            {item.title}
+            {item.name}
           </Paragraph>
         )
       )}
@@ -102,7 +96,7 @@ const ProductFilterCard = () => {
       {/* BRAND VARIANT FILTER */}
       <H6 mb={2}>Brands</H6>
 
-      {brandList.map((item) => (
+      {brands.map((item) => (
         <FormControlLabel
           key={item}
           sx={{ display: "flex" }}
@@ -126,7 +120,7 @@ const ProductFilterCard = () => {
       <Box component={Divider} my={3} />
 
       {/* RATINGS FILTER */}
-      <H6 mb={2}>Ratings</H6>
+      {/* <H6 mb={2}>Ratings</H6>
       {[5, 4, 3, 2, 1].map((item) => (
         <FormControlLabel
           key={item}
@@ -134,7 +128,7 @@ const ProductFilterCard = () => {
           label={<Rating size="small" value={item} color="warn" readOnly />}
           sx={{ display: "flex" }}
         />
-      ))}
+      ))} */}
 
       <Box component={Divider} my={3} />
 

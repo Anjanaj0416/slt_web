@@ -8,7 +8,7 @@ import ProductCard1 from "components/product-cards/product-card-1";
 // CUSTOM DATA MODEL
 import { Product1 } from "models/Product.model";
 import { ProductCard10 } from "components/product-cards/product-card-10";
-import useListProducts from "./use-list-products";
+import useListProducts from "./hook/use-list-products";
 import { LinearProgress } from "@mui/material";
 import Loading from "app/loading";
 

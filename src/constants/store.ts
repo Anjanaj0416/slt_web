@@ -6,6 +6,10 @@ const API = {
     path: "/stores?:query",
     method: "GET",
   },
+  GET_STORE: {
+    path: "/stores/:id",
+    method: "GET",
+  },
 };
 //
 export default API;

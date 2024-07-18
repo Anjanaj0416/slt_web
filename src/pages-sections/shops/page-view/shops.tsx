@@ -10,7 +10,7 @@ import { H2, Span } from "components/Typography";
 import { FlexBetween } from "components/flex-box";
 // CUSTOM DATA MODEL
 import Store from "models/Store.model";
-import useListStores from "./use-list-stores";
+import useListStores from "./hooks/use-list-stores";
 
 // =============================================
 type Props = { storesData: Page<Store> };
@@ -26,8 +26,8 @@ const ShopsPageView = ({ storesData }: Props) => {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value - 1);
   };
-  const resultMinRange = page * PAGE_SIZE + page;
-  const resultMaxRange = (page + 1) * PAGE_SIZE + page;
+  const resultMinRange = (page * PAGE_SIZE) + 1;
+  const resultMaxRange = (page + 1) * PAGE_SIZE ;
 
   return (
     <Container sx={{ mt: 4, mb: 6 }}>
@@ -55,7 +55,7 @@ const ShopsPageView = ({ storesData }: Props) => {
         <Span color="grey.600">
           {totalResults === resultMinRange
             ? `Showing ${totalResults} of ${totalResults} Shops`
-            : `Showing ${page ? resultMinRange : 1}-${
+            : `Showing ${resultMinRange}-${
                 resultMaxRange > totalResults ? totalResults : resultMaxRange
               } of ${totalResults} Shops`}
         </Span>

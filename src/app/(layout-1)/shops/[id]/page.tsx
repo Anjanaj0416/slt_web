@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-// API FUNCTIONS
-import api from "utils/__api__/shop";
 // PAGE VIEW COMPONENT
 import { ShopDetailsPageView } from "pages-sections/shops/page-view";
+import request from "utils/request";
+import STORE_API from "constants/store";
+import PRODUCT_API from "constants/products";
 
 export const metadata: Metadata = {
   title: "Shop Details - Bazaar Next.js E-commerce Template",
@@ -15,8 +16,15 @@ export const metadata: Metadata = {
 
 export default async function ShopDetails({ params }) {
   try {
-    const shop = await api.getProductsBySlug(String(params.slug));
-    return <ShopDetailsPageView shop={shop} />;
+    const store = await request(STORE_API.GET_STORE, {
+      id: params.id,
+    });
+    const productsData = await request(PRODUCT_API.GET_PRODUCTS_BY_STORE_ID, {
+      storeId: params.id,
+      query: "size=9",
+    });
+    
+    return <ShopDetailsPageView store={store} productsData={productsData} />;
   } catch (error) {
     notFound();
   }
