@@ -50,7 +50,7 @@ const useListStoreProducts = (
         console.log(error);
       }
     })();
-  }, [listProducts, page, pageSize]);
+  }, [listProducts, page, pageSize, storeId]);
 
   return {
     isLoading,
