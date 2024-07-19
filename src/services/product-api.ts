@@ -45,8 +45,33 @@ export const productApi = createApi({
       providesTags: ["PRODUCT"],
     }),
     getProductsByStoreId: builder.query({
-      query: ({ storeId, page = 0, size = 9 }) =>
-        `stores/${storeId}/products?size=${size}&page=${page}`,
+      query: ({
+        storeId,
+        categoryId,
+        brand,
+        minPrice = 0,
+        maxPrice = 0,
+        page = 0,
+        size = 9,
+      }) => {
+        let path = `stores/${storeId}/products`;
+        const filters = [];
+        if (categoryId) {
+          filters.push(`categoryId=${categoryId}`);
+        }
+        if (brand) {
+          filters.push(`brand=${brand}`);
+        }
+        if (minPrice) {
+          filters.push(`minPrice=${minPrice}`);
+        }
+        if (maxPrice) {
+          filters.push(`maxPrice=${maxPrice}`);
+        }
+        return filters.length > 0
+          ? `${path}?${filters.join("&&")}&&size=${size}&page=${page}`
+          : `${path}?size=${size}&page=${page}`;
+      },
       providesTags: ["PRODUCT"],
     }),
     getProductById: builder.query({

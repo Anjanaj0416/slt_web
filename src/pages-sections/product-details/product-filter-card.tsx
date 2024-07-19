@@ -1,15 +1,14 @@
 "use client";
-import { Fragment, useState } from "react";
+import { BaseSyntheticEvent, ChangeEvent, Fragment, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import Rating from "@mui/material/Rating";
 import Divider from "@mui/material/Divider";
 import Collapse from "@mui/material/Collapse";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 // GLOBAL CUSTOM COMPONENTS
-import { FlexBetween, FlexBox } from "components/flex-box";
+import { FlexBetween } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
 import AccordionHeader from "components/accordion/accordion-header";
 import Category1 from "models/Category.model";
@@ -25,13 +24,63 @@ const colorList = [
 ];
 
 type Props = {
+  categoryId: string;
   categories: Category1[];
   brands: string[];
+  setCategoryId: (id: string) => void;
+  setBrand: (brand: string) => void;
+  setPage: (page: number) => void;
+  setMinPrice: (page: number) => void;
+  setMaxPrice: (page: number) => void;
 };
 
-const ProductFilterCard = ({ categories, brands }: Props) => {
+const ProductFilterCard = ({
+  categoryId,
+  categories,
+  brands,
+  setCategoryId,
+  setPage,
+  setBrand,
+  setMaxPrice,
+  setMinPrice,
+}: Props) => {
   const [collapsed, setCollapsed] = useState(true);
+  const handleCategoryClick = (id: string) => {
+    setPage(0);
+    if (id === categoryId) {
+      setCategoryId(null);
+    } else {
+      setCategoryId(id);
+    }
+  };
+  const handleBrandClick = (event: BaseSyntheticEvent, brand: string) => {
+    setPage(0);
+    if (event.target.checked) {
+      setBrand(brand);
+    } else {
+      setBrand(null);
+    }
+  };
 
+  const handleMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setPage(0);
+    if (value) {
+      setMaxPrice(+value);
+    } else {
+      setMaxPrice(0);
+    }
+  };
+
+  const handleMinPrice = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setPage(0);
+    if (value) {
+      setMinPrice(+value);
+    } else {
+      setMinPrice(0);
+    }
+  };
   return (
     <Card sx={{ p: "18px 27px", overflow: "auto" }} elevation={1}>
       {/* CATEGORY VARIANT FILTER */}
@@ -43,7 +92,12 @@ const ProductFilterCard = ({ categories, brands }: Props) => {
             <AccordionHeader
               open={collapsed}
               onClick={() => setCollapsed((state) => !state)}
-              sx={{ padding: ".5rem 0", cursor: "pointer", color: "grey.600" }}
+              color={
+                item.subCategories.find((e) => e.id === categoryId)
+                  ? "primary.main"
+                  : "grey.600"
+              }
+              sx={{ padding: ".5rem 0", cursor: "pointer" }}
             >
               <Span>{item.name}</Span>
             </AccordionHeader>
@@ -51,11 +105,14 @@ const ProductFilterCard = ({ categories, brands }: Props) => {
             <Collapse in={collapsed}>
               {item.subCategories.map((subCategory) => (
                 <Paragraph
+                  onClick={() => handleCategoryClick(subCategory.id)}
                   pl="22px"
                   py={0.75}
                   key={subCategory.id}
                   fontSize="14px"
-                  color="grey.600"
+                  color={
+                    subCategory.id === categoryId ? "primary.main" : "grey.600"
+                  }
                   sx={{ cursor: "pointer" }}
                 >
                   {subCategory.name}
@@ -66,10 +123,11 @@ const ProductFilterCard = ({ categories, brands }: Props) => {
         ) : (
           <Paragraph
             key={item.id}
+            onClick={() => handleCategoryClick(item.id)}
+            color={item.id === categoryId ? "primary.main" : "grey.600"}
             sx={{
               py: 0.75,
               cursor: "pointer",
-              color: "grey.600",
               fontSize: 14,
             }}
           >
@@ -84,11 +142,23 @@ const ProductFilterCard = ({ categories, brands }: Props) => {
       <H6 mb={2}>Price Range</H6>
 
       <FlexBetween>
-        <TextField placeholder="0" type="number" size="small" fullWidth />
+        <TextField
+          placeholder="0"
+          type="number"
+          size="small"
+          fullWidth
+          onChange={handleMinPrice}
+        />
         <H5 color="grey.600" px={1}>
           -
         </H5>
-        <TextField placeholder="250" type="number" size="small" fullWidth />
+        <TextField
+          placeholder="250"
+          type="number"
+          size="small"
+          fullWidth
+          onChange={handleMaxPrice}
+        />
       </FlexBetween>
 
       <Box component={Divider} my={3} />
@@ -99,6 +169,9 @@ const ProductFilterCard = ({ categories, brands }: Props) => {
       {brands.map((item) => (
         <FormControlLabel
           key={item}
+          onChange={(event: BaseSyntheticEvent) =>
+            handleBrandClick(event, item)
+          }
           sx={{ display: "flex" }}
           label={<Span color="inherit">{item}</Span>}
           control={<Checkbox size="small" color="secondary" />}

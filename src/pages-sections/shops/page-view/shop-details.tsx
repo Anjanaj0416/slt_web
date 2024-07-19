@@ -21,6 +21,7 @@ import { Span } from "components/Typography";
 import { CircularProgress, Pagination } from "@mui/material";
 import useListStoreProducts from "./hooks/use-list-store-products";
 import Category1 from "models/Category.model";
+import { useState } from "react";
 
 // ============================================================
 type Props = { store: Store; productsData: Page<Product1> };
@@ -28,13 +29,23 @@ type Props = { store: Store; productsData: Page<Product1> };
 const PAGE_SIZE = 9;
 // ============================================================
 const ShopDetailsPageView = ({ store, productsData }: Props) => {
-  const { data: products, totalPages, totalResults } = productsData;
-  const { productList, page, setPage, isLoading } = useListStoreProducts(
-    store.id,
-    products,
-    totalPages,
-    PAGE_SIZE
-  );
+  const { data: products, totalResults } = productsData;
+  const [categoryId, setCategoryId] = useState<string>();
+  const [brand, setBrand] = useState<string>();
+  const [minPrice, setMinPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const { productList, page, setPage, isLoading, totalResult, totalPage } =
+    useListStoreProducts(
+      store.id,
+      categoryId,
+      minPrice,
+      maxPrice,
+      brand,
+      products,
+      productsData.totalPages,
+      PAGE_SIZE,
+      totalResults
+    );
 
   const isDownMd = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("md")
@@ -92,7 +103,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
 
   // Get brands
   const brands = Array.from(
-    new Set(productList.map((product) => product.brand))
+    new Set(products.map((product) => product.brand))
   ).slice(0, 5);
 
   return (
@@ -109,7 +120,16 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
       <Grid container spacing={3}>
         {/* SIDEBAR AREA */}
         <Grid item md={3} xs={12} sx={{ display: { md: "block", xs: "none" } }}>
-          <ProductFilterCard categories={parentCategories} brands={brands} />
+          <ProductFilterCard
+            categoryId={categoryId}
+            setCategoryId={setCategoryId}
+            categories={parentCategories}
+            setPage={setPage}
+            setBrand={setBrand}
+            brands={brands}
+            setMaxPrice={setMaxPrice}
+            setMinPrice={setMinPrice}
+          />
         </Grid>
 
         <Grid item md={9} xs={12}>
@@ -117,7 +137,13 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
           {isDownMd && (
             <SideNav position="left" handle={ICON_BUTTON}>
               <ProductFilterCard
+                categoryId={categoryId}
+                setCategoryId={setCategoryId}
                 categories={parentCategories}
+                setPage={setPage}
+                setBrand={setBrand}
+                setMaxPrice={setMaxPrice}
+                setMinPrice={setMinPrice}
                 brands={brands}
               />
             </SideNav>
@@ -132,16 +158,17 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
           {productList.length > 0 && (
             <FlexBetween flexWrap="wrap" mt={4}>
               <Span color="grey.600">
-                {totalResults === resultMinRange
-                  ? `Showing ${totalResults} of ${totalResults} Products`
+                {totalResult === resultMinRange
+                  ? `Showing ${totalResult} of ${totalResult} Products`
                   : `Showing ${resultMinRange}-${
-                      resultMaxRange > totalResults
-                        ? totalResults
+                      resultMaxRange > totalResult
+                        ? totalResult
                         : resultMaxRange
-                    } of ${totalResults} Products`}
+                    } of ${totalResult} Products`}
               </Span>
               <Pagination
-                count={totalPages}
+                page={page + 1}
+                count={totalPage}
                 onChange={handleChange}
                 variant="outlined"
                 color="primary"
