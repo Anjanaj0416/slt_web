@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function Shops() {
   try {
     const stores = await request(API.GET_STORES, {
-      query: "sort=name,asc&size=9",
+      query: "storeStatus=PUBLISHED&&sort=name,asc&size=9",
     });
     return <ShopsPageView storesData={stores} />;
   } catch (error) {
