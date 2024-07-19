@@ -15,6 +15,7 @@ import LinkedinFilled from "icons/LinkedinFilled";
 import FacebookFilled from "icons/FacebookFilled";
 import InstagramFilled from "icons/InstagramFilled";
 import SocialLink from "models/SocialLink.model";
+import { ENVIRONMENT } from "config";
 
 // =======================================================
 type Props = {
@@ -42,7 +43,7 @@ const ShopIntroCard: FC<Props> = (props) => {
       <FlexBox mt={-8} px={3.75} flexWrap="wrap">
         <Avatar
           alt={name}
-          src={logoImage}
+          src={`${ENVIRONMENT.S3_BUCKET_URL}/${logoImage}`}
           sx={{
             mr: "37px",
             width: "120px",
