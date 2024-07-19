@@ -1,31 +1,19 @@
 "use client";
-import { Fragment, useState } from "react";
+import { BaseSyntheticEvent, ChangeEvent, Fragment, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import Rating from "@mui/material/Rating";
 import Divider from "@mui/material/Divider";
 import Collapse from "@mui/material/Collapse";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 // GLOBAL CUSTOM COMPONENTS
-import { FlexBetween, FlexBox } from "components/flex-box";
+import { FlexBetween } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
 import AccordionHeader from "components/accordion/accordion-header";
+import Category1 from "models/Category.model";
 
-// FILTER OPTIONS
-const categoryList = [
-  {
-    title: "Bath Preparations",
-    subCategories: ["Bubble Bath", "Bath Capsules", "Others"],
-  },
-  { title: "Eye Makeup Preparations" },
-  { title: "Fragrance" },
-  { title: "Hair Preparations" },
-];
-
-const brandList = ["Mac", "Karts", "Baals", "Bukks", "Luasis"];
-const otherOptions = ["On Sale", "In Stock", "Featured"];
+const otherOptions = ["On Sale", "In Stock"];
 const colorList = [
   "#1C1C1C",
   "#FF7A7A",
@@ -35,51 +23,115 @@ const colorList = [
   "#6B7AFF",
 ];
 
-const ProductFilterCard = () => {
-  const [collapsed, setCollapsed] = useState(true);
+type Props = {
+  categoryId: string;
+  categories: Category1[];
+  brands: string[];
+  setCategoryId: (id: string) => void;
+  setBrand: (brand: string) => void;
+  setPage: (page: number) => void;
+  setMinPrice: (page: number) => void;
+  setMaxPrice: (page: number) => void;
+};
 
+const ProductFilterCard = ({
+  categoryId,
+  categories,
+  brands,
+  setCategoryId,
+  setPage,
+  setBrand,
+  setMaxPrice,
+  setMinPrice,
+}: Props) => {
+  const [collapsed, setCollapsed] = useState(true);
+  const handleCategoryClick = (id: string) => {
+    setPage(0);
+    if (id === categoryId) {
+      setCategoryId(null);
+    } else {
+      setCategoryId(id);
+    }
+  };
+  const handleBrandClick = (event: BaseSyntheticEvent, brand: string) => {
+    setPage(0);
+    if (event.target.checked) {
+      setBrand(brand);
+    } else {
+      setBrand(null);
+    }
+  };
+
+  const handleMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setPage(0);
+    if (value) {
+      setMaxPrice(+value);
+    } else {
+      setMaxPrice(0);
+    }
+  };
+
+  const handleMinPrice = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setPage(0);
+    if (value) {
+      setMinPrice(+value);
+    } else {
+      setMinPrice(0);
+    }
+  };
   return (
     <Card sx={{ p: "18px 27px", overflow: "auto" }} elevation={1}>
       {/* CATEGORY VARIANT FILTER */}
       <H6 mb={1.25}>Categories</H6>
 
-      {categoryList.map((item) =>
+      {categories.map((item) =>
         item.subCategories ? (
-          <Fragment key={item.title}>
+          <Fragment key={item.id}>
             <AccordionHeader
               open={collapsed}
               onClick={() => setCollapsed((state) => !state)}
-              sx={{ padding: ".5rem 0", cursor: "pointer", color: "grey.600" }}
+              color={
+                item.subCategories.find((e) => e.id === categoryId)
+                  ? "primary.main"
+                  : "grey.600"
+              }
+              sx={{ padding: ".5rem 0", cursor: "pointer" }}
             >
-              <Span>{item.title}</Span>
+              <Span>{item.name}</Span>
             </AccordionHeader>
 
             <Collapse in={collapsed}>
-              {item.subCategories.map((name) => (
+              {item.subCategories.map((subCategory) => (
                 <Paragraph
+                  onClick={() => handleCategoryClick(subCategory.id)}
                   pl="22px"
                   py={0.75}
-                  key={name}
+                  key={subCategory.id}
                   fontSize="14px"
-                  color="grey.600"
+                  color={
+                    subCategory.id === categoryId ? "primary.main" : "grey.600"
+                  }
                   sx={{ cursor: "pointer" }}
                 >
-                  {name}
+                  {subCategory.name}
                 </Paragraph>
               ))}
             </Collapse>
           </Fragment>
         ) : (
           <Paragraph
-            key={item.title}
+            key={item.id}
+            onClick={() => handleCategoryClick(item.id)}
+            color={item.id === categoryId ? "primary.main" : "grey.600"}
             sx={{
               py: 0.75,
               cursor: "pointer",
-              color: "grey.600",
               fontSize: 14,
             }}
           >
-            {item.title}
+            {item.name}
           </Paragraph>
         )
       )}
@@ -90,11 +142,23 @@ const ProductFilterCard = () => {
       <H6 mb={2}>Price Range</H6>
 
       <FlexBetween>
-        <TextField placeholder="0" type="number" size="small" fullWidth />
+        <TextField
+          placeholder="0"
+          type="number"
+          size="small"
+          fullWidth
+          onChange={handleMinPrice}
+        />
         <H5 color="grey.600" px={1}>
           -
         </H5>
-        <TextField placeholder="250" type="number" size="small" fullWidth />
+        <TextField
+          placeholder="250"
+          type="number"
+          size="small"
+          fullWidth
+          onChange={handleMaxPrice}
+        />
       </FlexBetween>
 
       <Box component={Divider} my={3} />
@@ -102,9 +166,12 @@ const ProductFilterCard = () => {
       {/* BRAND VARIANT FILTER */}
       <H6 mb={2}>Brands</H6>
 
-      {brandList.map((item) => (
+      {brands.map((item) => (
         <FormControlLabel
           key={item}
+          onChange={(event: BaseSyntheticEvent) =>
+            handleBrandClick(event, item)
+          }
           sx={{ display: "flex" }}
           label={<Span color="inherit">{item}</Span>}
           control={<Checkbox size="small" color="secondary" />}
@@ -126,7 +193,7 @@ const ProductFilterCard = () => {
       <Box component={Divider} my={3} />
 
       {/* RATINGS FILTER */}
-      <H6 mb={2}>Ratings</H6>
+      {/* <H6 mb={2}>Ratings</H6>
       {[5, 4, 3, 2, 1].map((item) => (
         <FormControlLabel
           key={item}
@@ -134,7 +201,7 @@ const ProductFilterCard = () => {
           label={<Rating size="small" value={item} color="warn" readOnly />}
           sx={{ display: "flex" }}
         />
-      ))}
+      ))} */}
 
       <Box component={Divider} my={3} />
 

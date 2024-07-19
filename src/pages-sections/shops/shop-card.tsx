@@ -33,7 +33,6 @@ const ContentWrapper = styled("div", {
 
 const ShopCard: FC<Partial<Store>> = (props) => {
   const { name, address, telephone, logoFilePath, id } = props || {};
-  console.log(logoFilePath);
 
   return (
     <Card>

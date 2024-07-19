@@ -2,7 +2,6 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
-import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 // MUI ICON COMPONENTS
 import Call from "@mui/icons-material/Call";
@@ -12,34 +11,39 @@ import { H3, Small, Span } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM ICON COMPONENTS
 import TwitterFilled from "icons/TwitterFilled";
-import YoutubeFilled from "icons/YoutubeFilled";
+import LinkedinFilled from "icons/LinkedinFilled";
 import FacebookFilled from "icons/FacebookFilled";
 import InstagramFilled from "icons/InstagramFilled";
+import SocialLink from "models/SocialLink.model";
+import { ENVIRONMENT } from "config";
 
 // =======================================================
 type Props = {
   name: string;
   phone: string;
   address: string;
-  coverPicture: string;
-  profilePicture: string;
+  socialLinks: SocialLink[];
+  logoImage: string;
+};
+const icons = {
+  facebook: <FacebookFilled sx={{ fontSize: 27 }} />,
+  twitter: <TwitterFilled sx={{ fontSize: 27 }} />,
+  instagram: <InstagramFilled sx={{ fontSize: 27 }} />,
+  linkedin: <LinkedinFilled sx={{ fontSize: 27 }} />,
 };
 // =======================================================
 
 const ShopIntroCard: FC<Props> = (props) => {
-  const { name, phone, address, coverPicture, profilePicture } = props || {};
+  const { name, phone, address, logoImage, socialLinks } = props || {};
 
   return (
     <Card sx={{ mb: 4, pb: 2.5 }}>
-      <Box
-        height="202px"
-        sx={{ background: `url(${coverPicture}) center/cover` }}
-      />
+      <Box height="202px" sx={{ backgroundColor: "secondary.main" }} />
 
       <FlexBox mt={-8} px={3.75} flexWrap="wrap">
         <Avatar
           alt={name}
-          src={profilePicture}
+          src={`${ENVIRONMENT.S3_BUCKET_URL}/${logoImage}`}
           sx={{
             mr: "37px",
             width: "120px",
@@ -62,7 +66,7 @@ const ShopIntroCard: FC<Props> = (props) => {
               p="4px 16px"
               borderRadius="4px"
               display="inline-block"
-              bgcolor="secondary.main"
+              bgcolor="primary.main"
             >
               <H3 fontWeight="600" color="grey.100">
                 {name}
@@ -72,12 +76,12 @@ const ShopIntroCard: FC<Props> = (props) => {
             <FlexBox my={1} gap={1.5}>
               {socialLinks.map((item, ind) => (
                 <a
-                  href={item.url}
+                  href={item.link}
                   target="_blank"
                   rel="noreferrer noopener"
                   key={ind}
                 >
-                  <item.icon sx={{ fontSize: 27 }} />
+                  {icons[item.name]}
                 </a>
               ))}
             </FlexBox>
@@ -85,12 +89,12 @@ const ShopIntroCard: FC<Props> = (props) => {
 
           <FlexBetween flexWrap="wrap">
             <div>
-              <FlexBox alignItems="center" gap={1} mb={2}>
+              {/* <FlexBox alignItems="center" gap={1} mb={2}>
                 <Rating color="warn" size="small" value={5} readOnly />
                 <Small color="grey.600" display="block">
                   (45)
                 </Small>
-              </FlexBox>
+              </FlexBox> */}
 
               <FlexBox color="grey.600" gap={1} mb={1} maxWidth={270}>
                 <Place fontSize="small" sx={{ fontSize: 18, mt: "3px" }} />
@@ -114,12 +118,5 @@ const ShopIntroCard: FC<Props> = (props) => {
     </Card>
   );
 };
-
-const socialLinks = [
-  { icon: FacebookFilled, url: "https://facebook.com" },
-  { icon: TwitterFilled, url: "https://twitter.com" },
-  { icon: YoutubeFilled, url: "https://youtube.com" },
-  { icon: InstagramFilled, url: "https://instagram.com" },
-];
 
 export default ShopIntroCard;
