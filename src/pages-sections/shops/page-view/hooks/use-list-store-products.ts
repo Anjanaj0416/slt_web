@@ -29,7 +29,6 @@ const useListStoreProducts = (
 
     (async () => {
       try {
-        console.log(brands);
         const data = await listProducts({
           categoryId,
           minPrice,
