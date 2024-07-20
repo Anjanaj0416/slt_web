@@ -1,5 +1,11 @@
 "use client";
-import { BaseSyntheticEvent, ChangeEvent, Fragment, useState } from "react";
+import {
+  BaseSyntheticEvent,
+  ChangeEvent,
+  Dispatch,
+  Fragment,
+  useState,
+} from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
@@ -28,7 +34,7 @@ type Props = {
   categories: Category1[];
   brands: string[];
   setCategoryId: (id: string) => void;
-  setBrand: (brand: string) => void;
+  setBrands: Dispatch<React.SetStateAction<string[]>>;
   setPage: (page: number) => void;
   setMinPrice: (page: number) => void;
   setMaxPrice: (page: number) => void;
@@ -40,7 +46,7 @@ const ProductFilterCard = ({
   brands,
   setCategoryId,
   setPage,
-  setBrand,
+  setBrands,
   setMaxPrice,
   setMinPrice,
 }: Props) => {
@@ -56,9 +62,11 @@ const ProductFilterCard = ({
   const handleBrandClick = (event: BaseSyntheticEvent, brand: string) => {
     setPage(0);
     if (event.target.checked) {
-      setBrand(brand);
+      setBrands((prvState) => (prvState ? [...prvState, brand] : [brand]));
     } else {
-      setBrand(null);
+      setBrands((prvState) => {
+        return prvState.filter((e) => e !== brand);
+      });
     }
   };
 

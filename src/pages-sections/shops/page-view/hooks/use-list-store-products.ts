@@ -8,7 +8,7 @@ const useListStoreProducts = (
   categoryId: string,
   minPrice: number,
   maxPrice: number,
-  brand: string,
+  brands: string[],
   products: Product1[],
   initTotalPages: number,
   pageSize: number,
@@ -29,12 +29,12 @@ const useListStoreProducts = (
 
     (async () => {
       try {
-        console.log(brand);
+        console.log(brands);
         const data = await listProducts({
           categoryId,
           minPrice,
           maxPrice,
-          brand,
+          brands,
           storeId,
           page,
           size: pageSize,
@@ -61,7 +61,7 @@ const useListStoreProducts = (
         console.log(error);
       }
     })();
-  }, [listProducts, categoryId, page, pageSize, storeId, maxPrice, minPrice, setTotalPage, brand]);
+  }, [listProducts, categoryId, page, pageSize, storeId, maxPrice, minPrice, setTotalPage, brands]);
 
   return {
     isLoading,
