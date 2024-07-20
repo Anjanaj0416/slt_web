@@ -69,7 +69,7 @@ export const productApi = createApi({
           filters.push(`maxPrice=${maxPrice}`);
         }
         return filters.length > 0
-          ? `${path}?${filters.join("&")}&&size=${size}&page=${page}`
+          ? `${path}?${filters.join("&")}&size=${size}&page=${page}`
           : `${path}?size=${size}&page=${page}`;
       },
       providesTags: ["PRODUCT"],
