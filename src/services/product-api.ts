@@ -48,7 +48,7 @@ export const productApi = createApi({
       query: ({
         storeId,
         categoryId,
-        brand,
+        brands,
         minPrice = 0,
         maxPrice = 0,
         page = 0,
@@ -59,8 +59,8 @@ export const productApi = createApi({
         if (categoryId) {
           filters.push(`categoryId=${categoryId}`);
         }
-        if (brand) {
-          filters.push(`brand=${brand}`);
+        if (brands && brands.length > 0) {
+          filters.push(`brands=${brands.join(",")}`);
         }
         if (minPrice) {
           filters.push(`minPrice=${minPrice}`);

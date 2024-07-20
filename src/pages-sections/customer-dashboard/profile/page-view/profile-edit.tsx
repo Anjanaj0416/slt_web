@@ -57,7 +57,6 @@ const ProfileEditPageView = () => {
           },
           fileTypes.PROFILE_PICTURE
         );
-        console.log(path);
 
         return path;
       }

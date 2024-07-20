@@ -62,8 +62,6 @@ const useWishList = (wishlist: UserWishlist, userId: string) => {
         (currentPage - 1) * 6 + 6
       );
       if (currentPageProducts.length < 1) {
-        console.log("yes");
-
         handleChangePage(currentPage - 1);
       }
     }

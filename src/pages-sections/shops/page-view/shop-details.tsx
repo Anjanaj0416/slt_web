@@ -31,7 +31,7 @@ const PAGE_SIZE = 9;
 const ShopDetailsPageView = ({ store, productsData }: Props) => {
   const { data: products, totalResults } = productsData;
   const [categoryId, setCategoryId] = useState<string>();
-  const [brand, setBrand] = useState<string>();
+  const [brands, setBrands] = useState<string[]>();
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(0);
   const { productList, page, setPage, isLoading, totalResult, totalPage } =
@@ -40,7 +40,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
       categoryId,
       minPrice,
       maxPrice,
-      brand,
+      brands,
       products,
       productsData.totalPages,
       PAGE_SIZE,
@@ -102,7 +102,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
   });
 
   // Get brands
-  const brands = Array.from(
+  const brandNames = Array.from(
     new Set(products.map((product) => product.brand))
   ).slice(0, 5);
 
@@ -125,8 +125,8 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
             setCategoryId={setCategoryId}
             categories={parentCategories}
             setPage={setPage}
-            setBrand={setBrand}
-            brands={brands}
+            setBrands={setBrands}
+            brands={brandNames}
             setMaxPrice={setMaxPrice}
             setMinPrice={setMinPrice}
           />
@@ -141,10 +141,10 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
                 setCategoryId={setCategoryId}
                 categories={parentCategories}
                 setPage={setPage}
-                setBrand={setBrand}
+                setBrands={setBrands}
                 setMaxPrice={setMaxPrice}
                 setMinPrice={setMinPrice}
-                brands={brands}
+                brands={brandNames}
               />
             </SideNav>
           )}
