@@ -112,6 +112,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
       <ShopIntroCard
         name={store.name}
         phone={store.telephone}
+        email={store.email}
         address={store.address}
         socialLinks={store.socialLinks}
         logoImage={store.logoFilePath}

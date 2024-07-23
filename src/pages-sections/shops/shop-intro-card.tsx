@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Call from "@mui/icons-material/Call";
 import Place from "@mui/icons-material/Place";
 // GLOBAL CUSTOM COMPONENTS
-import { H3, Small, Span } from "components/Typography";
+import { H3, Span } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM ICON COMPONENTS
 import TwitterFilled from "icons/TwitterFilled";
@@ -16,11 +16,13 @@ import FacebookFilled from "icons/FacebookFilled";
 import InstagramFilled from "icons/InstagramFilled";
 import SocialLink from "models/SocialLink.model";
 import { ENVIRONMENT } from "config";
+import Link from "next/link";
 
 // =======================================================
 type Props = {
   name: string;
   phone: string;
+  email: string;
   address: string;
   socialLinks: SocialLink[];
   logoImage: string;
@@ -33,8 +35,8 @@ const icons = {
 };
 // =======================================================
 
-const ShopIntroCard: FC<Props> = (props) => {
-  const { name, phone, address, logoImage, socialLinks } = props || {};
+const ShopIntroCard: FC<Props> = (props: Props) => {
+  const { name, phone, email, address, logoImage, socialLinks } = props || {};
 
   return (
     <Card sx={{ mb: 4, pb: 2.5 }}>
@@ -75,14 +77,14 @@ const ShopIntroCard: FC<Props> = (props) => {
 
             <FlexBox my={1} gap={1.5}>
               {socialLinks.map((item, ind) => (
-                <a
+                <Link
                   href={item.link}
                   target="_blank"
-                  rel="noreferrer noopener"
+                  //rel="noreferrer noopener"
                   key={ind}
                 >
                   {icons[item.name]}
-                </a>
+                </Link>
               ))}
             </FlexBox>
           </FlexBetween>
@@ -107,11 +109,17 @@ const ShopIntroCard: FC<Props> = (props) => {
               </FlexBox>
             </div>
 
-            <a href="mailto:scarletbeauty@xmail.com">
-              <Button variant="outlined" color="primary" sx={{ my: 1.5 }}>
+            {email ? (
+              <a target="_blank" href={`mailto:${email}`}>
+                <Button variant="outlined" color="primary" sx={{ my: 1.5 }}>
+                  Contact Vendor
+                </Button>
+              </a>
+            ) : (
+              <Button disabled variant="outlined" color="primary" sx={{ my: 1.5 }}>
                 Contact Vendor
               </Button>
-            </a>
+            )}
           </FlexBetween>
         </Box>
       </FlexBox>
