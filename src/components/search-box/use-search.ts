@@ -1,14 +1,17 @@
 import { ChangeEvent, useEffect, useRef, useState, useTransition } from "react";
 import { useLazySearchListProductsQuery } from "services/product-api";
+import { useLazyGetStoreAndProductSearchQuery } from "services/store-and-product-search-api";
+import StoreProductSearch from "../../models/StoreProductSearch.model";
 
 const useSearch = () => {
   const parentRef = useRef();
 
   const [_, startTransition] = useTransition();
   const [categoryId, setCategoryId] = useState("*");
-  const [resultList, setResultList] = useState<string[]>([]);
+  const [resultList, setResultList] = useState<StoreProductSearch[]>([]);
   const [categoryTitle, setCategoryTitle] = useState("All Categories");
   const [listProducts] = useLazySearchListProductsQuery();
+  const [searchStoreAndProduct] = useLazyGetStoreAndProductSearchQuery();
 
   // HANDLE CHANGE THE CATEGORY
   const handleCategoryChange =
@@ -19,16 +22,25 @@ const useSearch = () => {
 
   // FETCH PRODUCTS VIA API
   const getProducts = async (searchText: string, categoryId?: string) => {
-    const productList = (
-      await listProducts({
-        filters: categoryId
-          ? `name=${searchText}&categoryId=${categoryId}`
-          : `name=${searchText}&categoryName=${searchText}`,
-      })
-    ).data?.data;
-    if (productList.length) {
-      const data = productList.map((e) => e.name);
-      setResultList(data);
+    let searchData;
+
+    if (categoryId) {
+      const searchResults = (
+        await listProducts({
+          filters: `name=${searchText}&categoryId=${categoryId}`,
+        })
+      ).data?.data;
+      searchData = searchResults.map((e) => ({
+        id: e.id,
+        name: e.name,
+        type: "PRODUCT",
+      }));
+    } else {
+      searchData = (await searchStoreAndProduct({ search: searchText })).data;
+    }
+
+    if (searchData.length) {
+      setResultList(searchData);
     } else {
       setResultList([]);
     }
