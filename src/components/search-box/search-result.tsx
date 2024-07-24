@@ -38,7 +38,7 @@ const SearchResult: FC<Props> = ({ results }) => (
               sx={{
                 marginRight: "8px",
                 borderRadius: "10px",
-                height: "auto",
+                height: 36,
                 width: { sm: 36, xs: "100%" },
               }}
             />
