@@ -8,22 +8,36 @@ import Pagination from "../../pagination";
 import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
+import useListOrders from "../hooks/use-list-orders";
+import { CircularProgress } from "@mui/material";
 
 // ====================================================
-type Props = { orders: Order1[] };
+type Props = { orders: Order1[]; initTotalPages: number };
 // ====================================================
 
-const OrdersPageView = ({ orders }: Props) => {
+const OrdersPageView = ({ orders, initTotalPages }: Props) => {
+  const { isLoading, filteredOrders, handleTablePagination, totalPage } =
+    useListOrders(orders);
+
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
       <DashboardHeader Icon={ShoppingBag} title="My Orders" />
 
       {/* ORDER LIST AREA */}
-      {orders?.map((order) => <OrderRow order={order} key={order.id} />)}
+      {!isLoading ? (
+        filteredOrders?.map((order) => (
+          <OrderRow order={order} key={order.id} />
+        ))
+      ) : (
+        <CircularProgress />
+      )}
 
       {/* ORDERS PAGINATION */}
-      <Pagination count={5} onChange={(data) => console.log(data)} />
+      <Pagination
+        count={totalPage || initTotalPages}
+        onChange={handleTablePagination}
+      />
     </Fragment>
   );
 };

@@ -1,4 +1,5 @@
-import { POSTAddressRequest } from "./Address.model";
+import { POSTAddressRequest, POSTAddressResponse } from "./Address.model";
+import Package from "./Package.model";
 import User from "./User.model";
 
 type Item = {
@@ -24,19 +25,14 @@ interface Order {
 
 export interface Order1 {
   id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  orderStatus: "Pending" | "Processing" | "Delivered" | "Cancelled";
-  shippingAddress: POSTAddressRequest;
-  billingAddress: POSTAddressRequest;
+  //status: "Pending" | "Processing" | "Delivered" | "Cancelled";
+  payments: any;
+  packages: Package[];
+  //items: Item[];
+  shippingAddress: POSTAddressResponse;
+  billingAddress: POSTAddressResponse;
   note: string;
-  orderDetails: any[];
-  payments: [
-    {
-      amount: number;
-      paymentType: string;
-    },
-  ];
+  createdAt: Date;
 }
 
 export default Order;
