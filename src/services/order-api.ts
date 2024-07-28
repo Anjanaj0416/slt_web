@@ -9,7 +9,7 @@ export const orderApi = createApi({
   endpoints: (builder) => ({
     getOrders: builder.query({
       query: ({ userId, page }) =>
-        `/users/${userId}/orders?page=${page}&size=10`,
+        `/users/${userId}/orders?page=${page}&size=5&sort=createdAt,desc`,
       providesTags: ["ORDERS"],
     }),
     createOrder: builder.mutation({

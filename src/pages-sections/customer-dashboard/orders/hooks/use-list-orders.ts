@@ -3,11 +3,12 @@ import { useLazyGetOrdersQuery } from "services/order-api";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import usePagination from "hooks/usePagination";
+import { Order1 } from "models/Order.model";
 //
-const useListOrders = (data: any[]) => {
+const useListOrders = (data: Order1[]) => {
   const { data: session } = useSession();
   const user = session?.user as User1;
-  const [filteredStores, setFilteredStores] = useState<any[]>(data);
+  const [filteredOrders, setFilteredOrders] = useState<Order1[]>(data);
   const {
     setTotalPage,
     page,
@@ -18,36 +19,34 @@ const useListOrders = (data: any[]) => {
     totalPage,
     setPage,
   } = usePagination();
-  const [listOrders, { isLoading }] = useLazyGetOrdersQuery();
+  const [listOrders, { isFetching: isLoading }] = useLazyGetOrdersQuery();
   //
   useEffect(() => {
     if (page === null) return;
     if (user?.id) {
-      fetchingOrders(user);
-    }
-  }, [user, page]);
-  //
-  const fetchingOrders = async (user) => {
-    const { data } = await listOrders({
-      userId: user?.id,
-      page: page ?? 0,
-    });
+      const fetchingOrders = async () => {
+        const { data } = await listOrders({
+          userId: user?.id,
+          page: page ?? 0,
+        });
+        setTotalPage(data?.totalPages);
 
-    setTotalPage(data?.totalPages);
-    if (data?.data) {
-      const filteredStoresArray = data?.data.map((store) => ({
-        id: store.id,
-        name: store.name,
-        logo: store.logo,
-        telephone: store.telephone,
-        storeStatus: store.storeStatus,
-        slug: store.slug,
-        brFilePath: store.brFilePath,
-        logoFilePath: store.logoFilePath,
-      }));
-      setFilteredStores(filteredStoresArray);
+        if (data?.data) {
+          const filteredOrdersArray = data?.data.map((order: Order1) => ({
+            id: order.id,
+            note: order.note,
+            shippingAddress: order.shippingAddress,
+            billingAddress: order.billingAddress,
+            payments: order.payments,
+            packages: order.packages,
+            createdAt: order.createdAt,
+          }));
+          setFilteredOrders(filteredOrdersArray);
+        }
+      };
+      fetchingOrders();
     }
-  };
+  }, [user, page, listOrders, setTotalPage]);
   //
   const handleTablePagination = (_: unknown, newPage: number) => {
     setPage(newPage - 1);
@@ -55,11 +54,12 @@ const useListOrders = (data: any[]) => {
 
   return {
     isLoading,
-    filteredStores,
+    filteredOrders,
     nextPage,
     previousPage,
     hasNextPage,
     hasPreviousPage,
+    setPage,
     page,
     totalPage,
     handleTablePagination,

@@ -13,37 +13,57 @@ import TableRow from "../table-row";
 import { currency } from "lib";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
+import Package from "models/Package.model";
 
 // =================================================
 type Props = { order: Order1 };
 // =================================================
 
 const OrderRow: FC<Props> = ({ order }) => {
+  const { packages } = order;
+
   const getColor = (status: string) => {
     switch (status) {
       case "PENDING":
         return "secondary";
 
-      case "Processing":
+      case "PROCESSING":
         return "secondary";
 
-      case "Delivered":
+      case "DELIVERED":
         return "success";
 
-      case "Cancelled":
+      case "CANCELLED":
         return "primary";
 
       default:
         return "default";
     }
   };
-  const calculateTotalAmount = (payments) => {
+  const calculateTotalAmount = () => {
     let totalAmount = 0;
-    payments?.forEach((paymentItem) => {
-      totalAmount += paymentItem.amount;
+    packages?.forEach((pkg) => {
+      pkg.packageItems.forEach((pkgItm) => {
+        const { price, discount, units } = pkgItm;
+        totalAmount += (price - discount) * units;
+      });
     });
     return totalAmount;
   };
+
+  const getOrderStatus = () => {
+    if (packages.some((e) => e.status === "PENDING")) {
+      return "PENDING";
+    } else if (packages.some((e) => e.status === "PROCESSING")) {
+      return "PROCESSING";
+    } else if (packages.some((e) => e.status === "DELIVERED")) {
+      return "DELIVERED";
+    } else {
+      return "CANCELLED";
+    }
+  };
+
+  const orderStatus = getOrderStatus();
 
   return (
     <Link href={`/orders/${order.id}`}>
@@ -53,8 +73,8 @@ const OrderRow: FC<Props> = ({ order }) => {
         <Box textAlign="center">
           <Chip
             size="small"
-            label={order.orderStatus}
-            color={getColor(order.orderStatus)}
+            label={orderStatus}
+            color={getColor(orderStatus)}
           />
         </Box>
 
@@ -62,8 +82,8 @@ const OrderRow: FC<Props> = ({ order }) => {
           {format(new Date(order.createdAt), "MMM dd, yyyy")}
         </Paragraph>
 
-        <Paragraph textAlign="center">
-          {currency(calculateTotalAmount(order?.payments))}
+        <Paragraph textAlign="right">
+          {currency(calculateTotalAmount())}
         </Paragraph>
 
         <Box display={{ sm: "inline-flex", xs: "none" }} justifyContent="end">

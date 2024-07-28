@@ -38,3 +38,4 @@ export interface POSTAddressRequest {
   contactNumber: string;
   primary: boolean;
 }
+

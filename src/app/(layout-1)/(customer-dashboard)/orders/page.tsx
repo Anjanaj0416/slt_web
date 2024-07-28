@@ -21,9 +21,9 @@ export default async function Orders() {
     //
     const orders = await request(API.GET_USER_ORDERS, {
       userId: user?.id,
-      query: "size=10",
+      query: "size=5&sort=createdAt,desc",
     });
-    return <OrdersPageView orders={orders?.data} />;
+    return <OrdersPageView orders={orders?.data} initTotalPages={orders.totalPages} />;
   } catch (error) {
     notFound();
   }
