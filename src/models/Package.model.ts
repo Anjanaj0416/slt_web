@@ -1,3 +1,5 @@
+import { Product1 } from "./Product.model";
+
 export type PackageStatus =
   | "PENDING"
   | "PROCESSING"
@@ -6,7 +8,7 @@ export type PackageStatus =
 export type PackageItem = {
   id: string;
   status: PackageStatus;
-  product: any;
+  product: Product1;
   discount: number;
   price: number;
   units: number;

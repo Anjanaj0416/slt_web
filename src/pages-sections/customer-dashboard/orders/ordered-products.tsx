@@ -4,19 +4,25 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import format from "date-fns/format";
 // GLOBAL CUSTOM COMPONENTS
-import { H6, Paragraph } from "components/Typography";
+import { H3, H6, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import Order from "models/Order.model";
+import { Order1 } from "models/Order.model";
+import { ENVIRONMENT } from "config";
+import { PackageItem } from "models/Package.model";
+import { Box, Typography } from "@mui/material";
 
 // ==============================================================
-type Props = { order: Order };
+type Props = { order: Order1 };
 // ==============================================================
 
 const OrderedProducts: FC<Props> = ({ order }) => {
-  const { id, createdAt, items, deliveredAt } = order || {};
+  console.log(order);
+
+  const { id, createdAt, packages } = order || {};
+  console.log(createdAt);
 
   return (
     <Card sx={{ p: 0, mb: "30px" }}>
@@ -26,42 +32,69 @@ const OrderedProducts: FC<Props> = ({ order }) => {
           title="Placed on:"
           value={format(new Date(createdAt), "dd MMM, yyyy")}
         />
-        <Item
-          title="Delivered on:"
-          value={
-            deliveredAt ? format(new Date(deliveredAt), "dd MMM, yyyy") : "None"
-          }
-        />
+        <Item title="Delivered on:" value={"None"} />
       </FlexBetween>
 
-      {items.map((item, ind) => (
-        <FlexBetween px={2} py={1} flexWrap="wrap" key={ind}>
-          <FlexBox gap={2.5} alignItems="center">
-            <Avatar
-              alt={item.product_name}
-              src={item.product_img}
-              sx={{ height: 64, width: 64 }}
-            />
-
-            <div>
-              <H6>{item.product_name}</H6>
-              <Paragraph color="grey.600">
-                {currency(item.product_price)} x {item.product_quantity}
-              </Paragraph>
-            </div>
-          </FlexBox>
-
-          <Paragraph color="grey.600" ellipsis>
-            Product properties: Black, L
-          </Paragraph>
-
-          <Button variant="text" color="primary">
-            Write a Review
-          </Button>
-        </FlexBetween>
-      ))}
+      {packages.length > 1
+        ? packages.map((pkg) => (
+            <Box
+              key={pkg.id}
+              sx={{
+                border: "2px solid",
+                borderColor: "secondary.100",
+                marginTop: 1,
+                marginBottom:1,
+                borderRadius:"8px",
+                marginX:1
+              }}
+            >
+              <Typography
+                marginBottom={2}
+                marginTop={1}
+                marginLeft={2}
+                color="#7D879C"
+              >{`Package: ${pkg.id}`}</Typography>
+              {pkg.packageItems.map((item, ind) => buildProductList(ind, item))}
+            </Box>
+          ))
+        : packages[0].packageItems.map((item, ind) =>
+            buildProductList(ind, item)
+          )}
     </Card>
   );
+
+  function buildProductList(ind: number, item: PackageItem) {
+    return (
+      <FlexBetween px={2} py={1} flexWrap="wrap" key={ind}>
+        <FlexBox gap={2.5} alignItems="center">
+          <Avatar
+            alt={item.product.name}
+            src={
+              item.product.images?.[0]
+                ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.product.images?.[0]}`
+                : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
+            }
+            sx={{ height: 64, width: 64 }}
+          />
+
+          <div>
+            <H6>{item.product.name}</H6>
+            <Paragraph color="grey.600">
+              {currency(item.product.price)} x {item.units}
+            </Paragraph>
+          </div>
+        </FlexBox>
+
+        <Paragraph color="grey.600" ellipsis>
+          Brand: {item.product.brand}
+        </Paragraph>
+
+        <Button variant="text" color="primary">
+          Write a Review
+        </Button>
+      </FlexBetween>
+    );
+  }
 };
 
 function Item({ title, value }: { title: string; value: string }) {

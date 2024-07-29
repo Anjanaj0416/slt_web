@@ -13,7 +13,7 @@ import TableRow from "../table-row";
 import { currency } from "lib";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
-import Package from "models/Package.model";
+import calculateOrderTotalAmount from "./utils/calculate-order-total-price";
 
 // =================================================
 type Props = { order: Order1 };
@@ -39,16 +39,6 @@ const OrderRow: FC<Props> = ({ order }) => {
       default:
         return "default";
     }
-  };
-  const calculateTotalAmount = () => {
-    let totalAmount = 0;
-    packages?.forEach((pkg) => {
-      pkg.packageItems.forEach((pkgItm) => {
-        const { price, discount, units } = pkgItm;
-        totalAmount += (price - discount) * units;
-      });
-    });
-    return totalAmount;
   };
 
   const getOrderStatus = () => {
@@ -83,7 +73,7 @@ const OrderRow: FC<Props> = ({ order }) => {
         </Paragraph>
 
         <Paragraph textAlign="right">
-          {currency(calculateTotalAmount())}
+          {currency(calculateOrderTotalAmount(order.packages))}
         </Paragraph>
 
         <Box display={{ sm: "inline-flex", xs: "none" }} justifyContent="end">

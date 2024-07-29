@@ -1,10 +1,11 @@
-"use client";
-
 import { FC, PropsWithChildren } from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 // Local CUSTOM COMPONENTS
 import Navigation from "./navigation";
+import { auth } from "utils/auth";
+import request from "utils/request";
+import API from "constants/orders";
 
 /**
  *  Used in:
@@ -16,23 +17,32 @@ import Navigation from "./navigation";
  *  6. support-tickets page
  */
 
-const CustomerDashboardLayout: FC<PropsWithChildren> = ({ children }) => (
-  <Container sx={{ my: 4 }}>
-    <Grid container spacing={3}>
-      <Grid
-        item
-        lg={3}
-        xs={12}
-        sx={{ display: { xs: "none", sm: "none", md: "block" } }}
-      >
-        <Navigation />
-      </Grid>
+const CustomerDashboardLayout: FC<PropsWithChildren> = async ({ children }) => {
+  const { user } = await auth();
+  //
+  const orders = await request(API.GET_USER_ORDERS, {
+    userId: user?.id,
+    query: "size=1",
+  });
 
-      <Grid item lg={9} xs={12}>
-        {children}
+  return (
+    <Container sx={{ my: 4 }}>
+      <Grid container spacing={3}>
+        <Grid
+          item
+          lg={3}
+          xs={12}
+          sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+        >
+          <Navigation ordersCount={orders.totalResults} />
+        </Grid>
+
+        <Grid item lg={9} xs={12}>
+          {children}
+        </Grid>
       </Grid>
-    </Grid>
-  </Container>
-);
+    </Container>
+  );
+};
 
 export default CustomerDashboardLayout;

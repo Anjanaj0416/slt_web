@@ -11,6 +11,7 @@ import TruckFilled from "icons/TruckFilled";
 // GLOBAL CUSTOM COMPONENTS
 import { Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
+import { PackageStatus } from "models/Package.model";
 
 // STYLED COMPONENTS
 const StyledFlexbox = styled(FlexBetween)(({ theme }) => ({
@@ -36,12 +37,15 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
   color: theme.palette.success.main,
 }));
 
-const OrderProgress = () => {
-  const ORDER_STATUS = "Shipping";
-  const STEP_ICONS = [PackageBox, TruckFilled, Delivery];
-  const ORDER_STATUS_LIST = ["Packaging", "Shipping", "Delivering", "Complete"];
+type OrderProgressProps = {
+  status: PackageStatus;
+};
 
-  const statusIndex = ORDER_STATUS_LIST.indexOf(ORDER_STATUS);
+const OrderProgress = ({ status }: OrderProgressProps) => {
+  const STEP_ICONS = [PackageBox, TruckFilled, Delivery];
+  const ORDER_STATUS_LIST = ["PENDING", "PROCESSING", "SHIPPED", "DELIVERED"];
+
+  const statusIndex = ORDER_STATUS_LIST.indexOf(status);
 
   return (
     <Card sx={{ p: "2rem 1.5rem", mb: 4 }}>

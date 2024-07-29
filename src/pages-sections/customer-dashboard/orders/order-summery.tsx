@@ -8,10 +8,12 @@ import { H5, H6, Paragraph } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import Order from "models/Order.model";
+import { Order1 } from "models/Order.model";
+import calculateOrderTotalAmount from "./utils/calculate-order-total-price";
+import calculateOrderTotalDiscount from "./utils/calculate-order-total-discount";
 
 // ==============================================================
-type Props = { order: Order };
+type Props = { order: Order1 };
 // ==============================================================
 
 function ListItem({ title, value }: { title: string; value: string }) {
@@ -32,9 +34,21 @@ const OrderSummery: FC<Props> = ({ order }) => {
           <H5 mt={0} mb={2}>
             Shipping Address
           </H5>
-
           <Paragraph fontSize={14} my={0}>
-            {order.shippingAddress}
+            {`${order.shippingAddress.name}`}
+          </Paragraph>
+          <Paragraph fontSize={14} my={0}>
+            {`${order.shippingAddress.contactNumber ?? ""}`}
+          </Paragraph>
+          <Paragraph fontSize={14} my={0}>
+            {`${order.shippingAddress.postalCode}`}
+          </Paragraph>
+          <Paragraph fontSize={14} my={0}>
+            {`${order.shippingAddress.addressLine1 ?? ""} 
+            ${order.shippingAddress.addressLine2 ?? ""}`}
+          </Paragraph>
+          <Paragraph fontSize={14} my={0}>
+            {`${order.shippingAddress.country ?? ""}`}
           </Paragraph>
         </Card>
       </Grid>
@@ -46,18 +60,28 @@ const OrderSummery: FC<Props> = ({ order }) => {
             Total Summary
           </H5>
 
-          <ListItem title="Subtotal:" value={currency(order.totalPrice)} />
+          <ListItem
+            title="Subtotal:"
+            value={currency(calculateOrderTotalAmount(order.packages))}
+          />
           <ListItem title="Shipping fee:" value={currency(0)} />
-          <ListItem title="Discount:" value={currency(order.discount)} />
+          <ListItem
+            title="Discount:"
+            value={currency(calculateOrderTotalDiscount(order.packages))}
+          />
 
           <Divider sx={{ mb: 1 }} />
 
           <FlexBetween mb={2}>
             <H6>Total</H6>
-            <H6>{currency(order.totalPrice)}</H6>
+            <H6>{currency(calculateOrderTotalAmount(order.packages))}</H6>
           </FlexBetween>
 
-          <Paragraph>Paid by Credit/Debit Card</Paragraph>
+          <Paragraph>{`Paid by ${
+            order.payments.some((e) => e.paymentType === "COD")
+              ? "Cash On Delivery"
+              : "Credit/Debit Card"
+          }`}</Paragraph>
         </Card>
       </Grid>
     </Grid>
