@@ -1,5 +1,6 @@
 import { POSTAddressRequest, POSTAddressResponse } from "./Address.model";
 import Package from "./Package.model";
+import Payment from "./Payment.model";
 import User from "./User.model";
 
 type Item = {
@@ -26,7 +27,7 @@ interface Order {
 export interface Order1 {
   id: string;
   //status: "Pending" | "Processing" | "Delivered" | "Cancelled";
-  payments: any;
+  payments: Payment[];
   packages: Package[];
   //items: Item[];
   shippingAddress: POSTAddressResponse;

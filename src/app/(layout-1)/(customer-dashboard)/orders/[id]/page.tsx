@@ -1,8 +1,10 @@
+import API from "constants/orders";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { OrderDetailsPageView } from "pages-sections/customer-dashboard/orders/page-view";
 // API FUNCTIONS
-import api from "utils/__api__/orders";
+import { auth } from "utils/auth";
+import request from "utils/request";
 
 export const metadata: Metadata = {
   title: "Order Details - Bazaar Next.js E-commerce Template",
@@ -18,7 +20,11 @@ export default async function OrderDetails({
   params: { id: string };
 }) {
   try {
-    const order = await api.getOrder(String(params.id));
+    const { user } = await auth();
+    const order = await request(API.GET_USER_ORDER, {
+      userId: user?.id,
+      orderId: params.id,
+    });
     return <OrderDetailsPageView order={order} />;
   } catch (error) {
     notFound();

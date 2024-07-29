@@ -17,7 +17,10 @@ import CustomerService from "icons/CustomerService";
 import { MainContainer, StyledNavLink } from "./styles";
 import { WishlistContext } from "contexts/WishlistContext";
 
-const Navigation = () => {
+type NavigationProps = {
+  ordersCount?: number;
+};
+const Navigation = ({ ordersCount }: NavigationProps) => {
   const pathname = usePathname();
   const { wishlist } = useContext(WishlistContext);
   return (
@@ -31,6 +34,12 @@ const Navigation = () => {
           {item.list.map(({ Icon, count, href, title }) => {
             if (title === "Wishlist") {
               count = wishlist.products.length;
+            } else if (title === "Orders") {
+              count = ordersCount
+                ? ordersCount < 100
+                  ? ordersCount
+                  : "99+"
+                : "";
             }
             return (
               <StyledNavLink
@@ -57,18 +66,23 @@ const MENUS = [
   {
     title: "DASHBOARD",
     list: [
-      { href: "/orders", title: "Orders", Icon: ShoppingBagOutlined, count: 5 },
+      {
+        href: "/orders",
+        title: "Orders",
+        Icon: ShoppingBagOutlined,
+        count: "100",
+      },
       {
         href: "/wish-list",
         title: "Wishlist",
         Icon: FavoriteBorder,
-        count: 19,
+        count: "19",
       },
       {
         href: "/support-tickets",
         title: "Support Tickets",
         Icon: CustomerService,
-        count: 1,
+        count: "1",
       },
     ],
   },

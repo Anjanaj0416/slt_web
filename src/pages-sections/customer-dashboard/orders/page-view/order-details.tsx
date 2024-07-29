@@ -8,10 +8,10 @@ import OrderProgress from "../order-progress";
 import OrderedProducts from "../ordered-products";
 import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
-import Order from "models/Order.model";
+import { Order1 } from "models/Order.model";
 
 // =============================================================
-type Props = { order: Order };
+type Props = { order: Order1 };
 // =============================================================
 
 const OrderDetailsPageView = ({ order }: Props) => {
@@ -26,7 +26,10 @@ const OrderDetailsPageView = ({ order }: Props) => {
       />
 
       {/* ORDER PROGRESS AREA */}
-      <OrderProgress />
+      {order.packages.length === 1 &&
+        order.packages[0].status !== "CANCELLED" && (
+          <OrderProgress status={order.packages[0].status} />
+        )}
 
       {/* ORDERED PRODUCT LIST */}
       <OrderedProducts order={order} />
