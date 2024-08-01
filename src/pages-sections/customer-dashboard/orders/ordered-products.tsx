@@ -43,9 +43,9 @@ const OrderedProducts: FC<Props> = ({ order }) => {
                 border: "2px solid",
                 borderColor: "secondary.100",
                 marginTop: 1,
-                marginBottom:1,
-                borderRadius:"8px",
-                marginX:1
+                marginBottom: 1,
+                borderRadius: "8px",
+                marginX: 1,
               }}
             >
               <Typography
@@ -89,7 +89,11 @@ const OrderedProducts: FC<Props> = ({ order }) => {
           Brand: {item.product.brand}
         </Paragraph>
 
-        <Button variant="text" color="primary">
+        <Button
+          disabled={item.status !== "DELIVERED"}
+          variant="text"
+          color="primary"
+        >
           Write a Review
         </Button>
       </FlexBetween>

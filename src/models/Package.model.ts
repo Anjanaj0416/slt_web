@@ -3,6 +3,7 @@ import { Product1 } from "./Product.model";
 export type PackageStatus =
   | "PENDING"
   | "PROCESSING"
+  | "SHIPPED"
   | "DELIVERED"
   | "CANCELLED";
 export type PackageItem = {
