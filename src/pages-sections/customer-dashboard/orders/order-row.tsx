@@ -26,16 +26,14 @@ const OrderRow: FC<Props> = ({ order }) => {
     switch (status) {
       case "PENDING":
         return "secondary";
-
       case "PROCESSING":
-        return "secondary";
-
+        return "info";
+      case "SHIPPED":
+        return "warning";
       case "DELIVERED":
         return "success";
-
       case "CANCELLED":
         return "primary";
-
       default:
         return "default";
     }
@@ -46,6 +44,8 @@ const OrderRow: FC<Props> = ({ order }) => {
       return "PENDING";
     } else if (packages.some((e) => e.status === "PROCESSING")) {
       return "PROCESSING";
+    } else if (packages.some((e) => e.status === "SHIPPED")) {
+      return "SHIPPED";
     } else if (packages.some((e) => e.status === "DELIVERED")) {
       return "DELIVERED";
     } else {

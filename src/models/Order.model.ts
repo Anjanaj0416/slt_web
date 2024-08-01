@@ -1,4 +1,4 @@
-import { POSTAddressRequest, POSTAddressResponse } from "./Address.model";
+import { POSTAddressResponse } from "./Address.model";
 import Package from "./Package.model";
 import Payment from "./Payment.model";
 import User from "./User.model";
