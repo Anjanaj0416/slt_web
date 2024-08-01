@@ -13,6 +13,7 @@ import { Order1 } from "models/Order.model";
 import { ENVIRONMENT } from "config";
 import { PackageItem } from "models/Package.model";
 import { Box, Typography } from "@mui/material";
+import OrderProgress from "./order-progress";
 
 // ==============================================================
 type Props = { order: Order1 };
@@ -36,14 +37,15 @@ const OrderedProducts: FC<Props> = ({ order }) => {
       </FlexBetween>
 
       {packages.length > 1
-        ? packages.map((pkg) => (
+        ? packages.map((pkg, index) => (
             <Box
               key={pkg.id}
               sx={{
-                border: "2px solid",
+                border: "1px solid",
                 borderColor: "secondary.100",
-                marginTop: 1,
-                marginBottom: 1,
+                marginTop: 2,
+                marginBottom: index === packages.length - 1 ? 1 : 3,
+                padding: 1,
                 borderRadius: "8px",
                 marginX: 1,
               }}
@@ -53,7 +55,10 @@ const OrderedProducts: FC<Props> = ({ order }) => {
                 marginTop={1}
                 marginLeft={2}
                 color="#7D879C"
-              >{`Package: ${pkg.id}`}</Typography>
+              >{`Package ID: ${pkg.id}`}</Typography>
+              <Box paddingBottom={1}>
+                <OrderProgress status={pkg.status} />
+              </Box>
               {pkg.packageItems.map((item, ind) => buildProductList(ind, item))}
             </Box>
           ))
