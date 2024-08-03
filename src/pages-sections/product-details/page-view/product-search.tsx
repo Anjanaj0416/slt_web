@@ -1,25 +1,23 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-import { Theme } from "@mui/material/styles";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
-import useMediaQuery from "@mui/material/useMediaQuery";
 // GLOBAL CUSTOM COMPONENTS
-import Sidenav from "components/side-nav/side-nav";
-import { FlexBox } from "components/flex-box";
-import { H5, Paragraph } from "components/Typography";
+import { FlexBetween, FlexBox } from "components/flex-box";
+import { H5, Paragraph, Span } from "components/Typography";
 import ProductsListView from "components/products-view/products-list-view";
-// PRODUCT DATA
-import productDatabase from "data/product-database";
 import { Product1 } from "models/Product.model";
 import Category1 from "models/Category.model";
 import ProductFilterCard1 from "../product-filter-card-1";
 import ProductsGridView1 from "components/products-view/products-grid-view-1";
+import { Apps, ViewList } from "@mui/icons-material";
+import useListProducts from "components/products-view/hook/use-list-products";
+import { Pagination } from "@mui/material";
 
 const SORT_OPTIONS = [
   { label: "Relevance", value: "Relevance" },
@@ -34,7 +32,7 @@ type Props = {
   searchText: string;
   categoryId?: string;
   totalResults: number;
-  totalPages: number;
+  initTotalPages: number;
 };
 // ==============================================================
 
@@ -43,10 +41,9 @@ const ProductSearchPageView = ({
   searchText,
   categoryId,
   totalResults,
-  totalPages,
+  initTotalPages,
 }: Props) => {
   const [view, setView] = useState("grid");
-  const downMd = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
   const toggleView = useCallback((v: string) => () => setView(v), []);
   const [totalResult, setTotalResult] = useState(totalResults);
   const [filters, setFilters] = useState(
@@ -55,7 +52,19 @@ const ProductSearchPageView = ({
       : `name=${searchText}&categoryName=${searchText}`
   );
   const [sort, setSort] = useState<string>();
-  const PRODUCTS = productDatabase.slice(95, 104);
+
+  const { isLoading, filteredProducts, setPage, page, totalPage } =
+    useListProducts(
+      products,
+      sort ? `${filters}&${sort}` : filters,
+      initTotalPages,
+      setTotalResult
+    );
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value - 1);
+  };
+
   let parentCategories: Category1[] = [];
   // Get brands
   const brands = Array.from(
@@ -166,7 +175,7 @@ const ProductSearchPageView = ({
               </TextField>
             </FlexBox>
 
-            {/*<FlexBox alignItems="center" my="0.25rem">
+            <FlexBox alignItems="center" my="0.25rem">
               <Paragraph color="grey.600" mr={1}>
                 View:
               </Paragraph>
@@ -185,7 +194,7 @@ const ProductSearchPageView = ({
                 />
               </IconButton>
 
-              {downMd && (
+              {/* {downMd && (
                 <Sidenav
                   handle={
                     <IconButton>
@@ -193,14 +202,13 @@ const ProductSearchPageView = ({
                     </IconButton>
                   }
                 >
-                  <ProductFilterCard
+                  <ProductFilterCar
                     categories={parentCategories}
                     brands={brands}
                   />
                 </Sidenav>
-              )}
+              )} */}
             </FlexBox>
-          */}
           </FlexBox>
         )}
       </Card>
@@ -226,14 +234,25 @@ const ProductSearchPageView = ({
         <Grid item md={9} xs={12}>
           {view === "grid" ? (
             <ProductsGridView1
-              products={products}
-              setTotalResult={setTotalResult}
-              initTotalPages={totalPages}
-              totalResult={totalResult}
-              filters={sort ? `${filters}&${sort}` : filters}
+              products={filteredProducts}
+              isLoading={isLoading}
             />
           ) : (
-            <ProductsListView products={PRODUCTS} />
+            <ProductsListView products={filteredProducts} isLoading={isLoading}/>
+          )}
+          {filteredProducts.length > 1 && !isLoading && (
+            <FlexBetween flexWrap="wrap" mt={4}>
+              <Span color="grey.600">{`Showing ${page ? page * 9 + 1 : 1}-${
+                page ? (page + 1 === totalPage ? totalResult : page * 9 + 9) : 9
+              } of ${totalResult} Products`}</Span>
+
+              <Pagination
+                count={totalPage}
+                variant="outlined"
+                color="primary"
+                onChange={handleChange}
+              />
+            </FlexBetween>
           )}
         </Grid>
       </Grid>

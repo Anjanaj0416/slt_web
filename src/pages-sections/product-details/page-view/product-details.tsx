@@ -3,7 +3,6 @@ import Container from "@mui/material/Container";
 import ProductTabs from "../product-tabs";
 import AvailableShops from "../available-shops";
 import RelatedProducts from "../related-products";
-import FrequentlyBought from "../frequently-bought";
 // CUSTOM DATA MODEL
 import Product, { Product1 } from "models/Product.model";
 import ProductIntro1 from "../product-intro1";

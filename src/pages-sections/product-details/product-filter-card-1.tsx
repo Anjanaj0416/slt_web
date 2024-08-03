@@ -2,7 +2,6 @@
 import { Fragment, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import Rating from "@mui/material/Rating";
 import Divider from "@mui/material/Divider";
 import Collapse from "@mui/material/Collapse";
 import Checkbox from "@mui/material/Checkbox";
@@ -14,7 +13,7 @@ import { H5, H6, Paragraph, Span } from "components/Typography";
 import AccordionHeader from "components/accordion/accordion-header";
 import Category1 from "models/Category.model";
 
-const otherOptions = ["On Sale", "In Stock", "Featured"];
+const otherOptions = ["On Sale", "In Stock"];
 const colorList = [
   "#1C1C1C",
   "#FF7A7A",
@@ -45,10 +44,10 @@ const ProductFilterCard1 = ({
   const handleFilters = () => {
     let text = "";
     if (maxRef.current.value) {
-      text += `&maxPrice=${maxRef.current.value}`;
+      text += `&maxPrice=${maxRef.current.value as string}`;
     }
     if (minRef.current?.value) {
-      text += `&minPrice=${minRef.current.value}`;
+      text += `&minPrice=${minRef.current.value as string}`;
     }
     if (selectedBrands.length > 0) {
       text += `&brand=${selectedBrands.join(",")}`;
@@ -173,10 +172,10 @@ const ProductFilterCard1 = ({
         />
       ))}
 
-      <Box component={Divider} my={3} />
+      {/* <Box component={Divider} my={3} /> */}
 
       {/* RATINGS FILTER */}
-      <H6 mb={2}>Ratings</H6>
+      {/* <H6 mb={2}>Ratings</H6>
       {[5, 4, 3, 2, 1].map((item) => (
         <FormControlLabel
           key={item}
@@ -184,9 +183,9 @@ const ProductFilterCard1 = ({
           label={<Rating size="small" value={item} color="warn" readOnly />}
           sx={{ display: "flex" }}
         />
-      ))}
-
-      <Box component={Divider} my={3} />
+      ))} */}
+      {/* 
+      <Box component={Divider} my={3} /> */}
 
       {/* COLORS VARIANT FILTER */}
       {/* <H6 mb={2}>Colors</H6>
