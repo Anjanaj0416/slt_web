@@ -41,9 +41,33 @@ function renderProductCount(
  * @returns - RETURN NEW PRICE
  */
 
-function calculateDiscount(price: number, discount: number) {
+function calculateDiscountPrice(price: number, discount: number) {
   const afterDiscount = Number((price - price * (discount / 100)).toFixed(2));
   return currency(afterDiscount);
+}
+
+/**
+ * CALCULATE PRICE WITH PRODUCT DISCOUNT THEN RETURN NEW PRODUCT PRICES
+ * @param  type - DISCOUNT TYPE
+ * @param  price - PRODUCT PRICE
+ * @param  discount - DISCOUNT VALUE
+ * @returns - RETURN NEW PRICE
+ */
+
+function calculateDiscount(
+  type: "NONE" | "PERCENTAGE" | "FLAT",
+  price: number,
+  discount: number
+) {
+  console.log(type, discount);
+
+  if (!discount || !type || type === "NONE") {
+    return 0;
+  } else if (type === "PERCENTAGE") {
+    return discount;
+  }
+
+  return price * (discount / 100);
 }
 
 /**
@@ -61,4 +85,10 @@ function currency(price: number, fraction: number = 2) {
   return formatCurrency;
 }
 
-export { currency, getDateDifference, calculateDiscount, renderProductCount };
+export {
+  currency,
+  getDateDifference,
+  calculateDiscountPrice,
+  renderProductCount,
+  calculateDiscount,
+};
