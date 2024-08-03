@@ -14,7 +14,8 @@ const useListProducts = (
   const { setTotalPage, page, setPage, totalPage } = usePagination({
     totalPage: initTotalPages,
   });
-  const [listProducts, { isLoading }] = useLazySearchListProductsQuery();
+  const [listProducts, { isFetching: isLoading }] =
+    useLazySearchListProductsQuery();
   //
   useEffect(() => {
     if (
