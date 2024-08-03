@@ -26,7 +26,7 @@ export default async function ProductSearch({ params, searchParams }) {
         products={result?.data}
         categoryId={searchParams?.categoryId}
         totalResults={result?.totalResults}
-        totalPages={result?.totalPages}
+        initTotalPages={result?.totalPages}
       />
     );
   } catch (error) {

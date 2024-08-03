@@ -3,18 +3,14 @@ import Link from "next/link";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-import Rating from "@mui/material/Rating";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import Image from "components/BazaarImage";
 import { H5 } from "components/Typography";
 import { FlexBox } from "components/flex-box";
-// LOCAL CUSTOM HOOK
-import useProduct from "../use-product";
 // LOCAL CUSTOM COMPONENTS
 import DiscountChip from "../discount-chip";
 import ProductPrice from "../product-price";
-import AddToCartButton from "./add-to-cart";
 import FavoriteButton from "./favorite-button";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
@@ -39,7 +35,7 @@ type Props = { product: Product1 };
 // ===========================================================
 
 const ProductCard9: FC<Props> = ({ product }: Props) => {
-  const { id, price, discount, discountType, name, images } = product;
+  const { id, price, name, images } = product;
   const { data: session } = useSession();
   const { wishlist, setWishlist } = useContext(WishlistContext);
   const [updateWishlist, { error }] = useUpdateWishlistMutation();
@@ -47,10 +43,9 @@ const ProductCard9: FC<Props> = ({ product }: Props) => {
     useCartService();
   //
   const user = session?.user as User1;
-  const imgUrl =
-    images && images[0]
-      ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
-      : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
+  const imgUrl = images?.[0]
+    ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+    : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
   // Map wishlist products to product ids
   const wishListProductIds = wishlist?.products?.map((product) => product.id);
   //

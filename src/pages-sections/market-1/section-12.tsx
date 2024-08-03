@@ -16,7 +16,7 @@ import { SectionCreator } from "components/section-header";
 // CUSTOM DATA MODEL
 import Product from "models/Product.model";
 // CUSTOM UTILS LIBRARY FUNCTIONS
-import { calculateDiscount, currency } from "lib";
+import { calculateDiscountPrice, currency } from "lib";
 
 // ========================================================
 type Props = { bigDiscountList: Product[] };
@@ -52,7 +52,7 @@ const Section12: FC<Props> = ({ bigDiscountList }) => {
 
                     <FlexBox gap={1}>
                       <H6 color="primary.main">
-                        {calculateDiscount(price, discount)}
+                        {calculateDiscountPrice(price, discount)}
                       </H6>
                       <Box component="del" fontWeight={600} color="grey.600">
                         {currency(price)}

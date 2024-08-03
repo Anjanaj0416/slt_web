@@ -27,7 +27,9 @@ import CartServiceProvider from "contexts/CartServiceContext";
 import CheckoutServiceContextProvider from "contexts/CheckoutServiceContext";
 import WishlistProvider from "contexts/WishlistContext";
 //
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   return (
     <ReduxProviderWrapper store={store}>
       <SessionProviderWrapper>

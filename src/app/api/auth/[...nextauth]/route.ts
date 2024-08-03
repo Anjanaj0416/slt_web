@@ -8,8 +8,8 @@ import { User1 } from "models/User.model";
 const refreshTokens = async (refreshToken: string) => {
   const params = new URLSearchParams();
   params.append("grant_type", "refresh_token");
-  params.append("client_id", process.env.KEYCLOAK_CLIENT_ID as string);
-  params.append("client_secret", process.env.KEYCLOAK_CLIENT_SECRET as string);
+  params.append("client_id", process.env.KEYCLOAK_CLIENT_ID);
+  params.append("client_secret", process.env.KEYCLOAK_CLIENT_SECRET);
   params.append("refresh_token", refreshToken);
   //
   const url = `${process.env.KEYCLOAK_CLIENT_ISSUER}/protocol/openid-connect/token`;
@@ -35,6 +35,9 @@ const authOptions: AuthOptions = {
   //
   callbacks: {
     session({ token }) {
+      if (!token) {
+        return;
+      }
       const { user } = token as {
         user: User1;
       };

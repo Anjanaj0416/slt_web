@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { FlexBox } from "components/flex-box";
 import { Paragraph } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTIONS
-import { calculateDiscount, currency } from "lib";
+import { calculateDiscountPrice, currency } from "lib";
 
 // ==============================================================
 type Props = { price: number; discount: number };
@@ -14,7 +14,7 @@ const ProductPrice: FC<Props> = ({ discount, price }) => {
   return (
     <FlexBox alignItems="center" gap={1} mt={0.5}>
       <Paragraph fontWeight={600} color="primary.main">
-        {calculateDiscount(price, discount)}
+        {calculateDiscountPrice(price, discount)}
       </Paragraph>
 
       {discount ? (
