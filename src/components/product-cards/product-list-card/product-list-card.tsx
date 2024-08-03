@@ -65,8 +65,8 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
       <FavoriteButton isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
 
       <Grid container spacing={1}>
-        <Grid item sm={3} xs={12}>
-          <Box position="relative">
+        <Grid item sm={3} xs={12} alignContent="center">
+          <Box position="relative" height="100%">
             {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
             <DiscountChip
               discount={calculateDiscount(discountType, price, discount)}
@@ -80,7 +80,8 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
                   : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
               }
               alt={name}
-              width="100%"
+              height="100%"
+              maxWidth="120px"
             />
           </Box>
         </Grid>
