@@ -11,7 +11,7 @@ import { H4, H6 } from "components/Typography";
 import BazaarImage from "components/BazaarImage";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTIONS
-import { calculateDiscount, currency } from "lib";
+import { calculateDiscountPrice, currency } from "lib";
 
 // ===========================================================
 interface Props {
@@ -63,7 +63,7 @@ const LongProductCard: FC<Props> = ({
           ) : null}
 
           <FlexBox alignItems="center" gap={1}>
-            <H6 color="primary.main">{calculateDiscount(price, off)}</H6>
+            <H6 color="primary.main">{calculateDiscountPrice(price, off)}</H6>
 
             {off > 0 ? (
               <Box component="del" color="grey.600" fontWeight={600}>

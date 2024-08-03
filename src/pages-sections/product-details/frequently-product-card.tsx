@@ -8,7 +8,7 @@ import { FlexBox } from "components/flex-box";
 import BazaarCard from "components/BazaarCard";
 import { H6, Span } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTIONS
-import { calculateDiscount, currency } from "lib";
+import { calculateDiscountPrice, currency } from "lib";
 
 // =======================================================
 type Props = {
@@ -52,7 +52,7 @@ const FrequentlyProductCard: FC<Props> = (props) => {
           <H6 color="primary.main">{currency(price)}</H6>
 
           <Box component="del" fontWeight={600} color="grey.600">
-            {calculateDiscount(price, 35)}
+            {calculateDiscountPrice(price, 35)}
           </Box>
         </FlexBox>
       </Link>
