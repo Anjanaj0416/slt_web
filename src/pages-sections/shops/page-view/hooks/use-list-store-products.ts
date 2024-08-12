@@ -45,6 +45,7 @@ const useListStoreProducts = (
             name: item.name,
             price: item.price,
             brand: item.brand,
+            productType: item.productType,
             category: item.category,
             discount: item.discount,
             discountType: item.discountType,
@@ -60,7 +61,17 @@ const useListStoreProducts = (
         console.log(error);
       }
     })();
-  }, [listProducts, categoryId, page, pageSize, storeId, maxPrice, minPrice, setTotalPage, brands]);
+  }, [
+    listProducts,
+    categoryId,
+    page,
+    pageSize,
+    storeId,
+    maxPrice,
+    minPrice,
+    setTotalPage,
+    brands,
+  ]);
 
   return {
     isLoading,

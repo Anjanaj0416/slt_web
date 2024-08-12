@@ -28,6 +28,7 @@ export interface Product1 {
   price: number;
   discount: number;
   discountType: "NONE" | "PERCENTAGE" | "FLAT";
+  productType:"QUOTATION" |"DIRECT_BUYING";
   id: string;
   brand?: string;
   images?: string[];

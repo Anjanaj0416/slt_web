@@ -60,6 +60,7 @@ const ProductSearchPageView = ({
       initTotalPages,
       setTotalResult
     );
+  console.log(products);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value - 1);
@@ -238,7 +239,10 @@ const ProductSearchPageView = ({
               isLoading={isLoading}
             />
           ) : (
-            <ProductsListView products={filteredProducts} isLoading={isLoading}/>
+            <ProductsListView
+              products={filteredProducts}
+              isLoading={isLoading}
+            />
           )}
           {filteredProducts.length > 1 && !isLoading && (
             <FlexBetween flexWrap="wrap" mt={4}>
