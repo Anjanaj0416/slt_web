@@ -20,17 +20,38 @@ import { currency } from "lib";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
 import useCartService from "hooks/useCartService";
+import useQuotation from "hooks/useQuotation";
+import { LoadingButton } from "@mui/lab";
+import { useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
 
 // ================================================================
 type Props = { product: Product1 };
 // ================================================================
 
 const ProductIntro1: FC<Props> = ({ product }) => {
-  const { price, name, brand, images, videos } = product || {};
-  const { handleAddToCart, handleRemoveFromCart, cart } = useCartService();
+  const { price, name, brand, images, videos, productType } = product || {};
+  const { data } = useSession();
+  const user = data?.user as User1;
+  const {
+    handleAddToCart,
+    handleRemoveFromCart,
+    cart,
+    selectedProductId,
+    isUpdating,
+  } = useCartService();
   const carItemIds = cart.cartItems.map((item) => item.product.id);
   const [selectedImage, setSelectedImage] = useState(0);
+  const { requestQuota, isCreatingQuotation } = useQuotation(
+    product.id,
+    user?.email,
+    user?.id
+  );
 
+  const isButtonLoading = selectedProductId === product?.id && isUpdating;
+  //
+  const isQuotationProduct = productType === "QUOTATION";
+  //
   const medias = [
     ...videos.map((video) => ({ src: video, type: "video" })),
     ...images.map((image) => ({ src: image, type: "image" })),
@@ -183,17 +204,21 @@ const ProductIntro1: FC<Props> = ({ product }) => {
 
           {/* ADD TO CART BUTTON */}
           {!carItemIds?.includes(product.id) ? (
-            <Button
+            <LoadingButton
               color="primary"
               variant="contained"
-              onClick={handleCartAmountChange(1)}
+              loading={isButtonLoading || isCreatingQuotation}
+              onClick={
+                isQuotationProduct ? requestQuota : handleCartAmountChange(1)
+              }
               sx={{ mb: 4.5, px: "1.75rem", height: 40 }}
             >
-              Add to Cart
-            </Button>
+              {isQuotationProduct ? "Get Quote" : "Add to Cart"}
+            </LoadingButton>
           ) : (
             <FlexBox alignItems="center" mb={4.5}>
               <Button
+                disabled={isButtonLoading}
                 size="small"
                 sx={{ p: 1 }}
                 color="primary"
@@ -208,6 +233,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
               </H3>
 
               <Button
+                disabled={isButtonLoading}
                 size="small"
                 sx={{ p: 1 }}
                 color="primary"

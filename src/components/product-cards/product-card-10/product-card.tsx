@@ -28,20 +28,26 @@ import { User1 } from "models/User.model";
 import { useUpdateWishlistMutation } from "services/wishlist-api";
 import { useSnackbar } from "notistack";
 import { WishlistContext } from "contexts/WishlistContext";
+import useQuotation from "hooks/useQuotation";
 
 // ==============================================================
 type Props = { product: Product1 };
 // ==============================================================
 
-const ProductCard20: FC<Props> = ({ product }) => {
-  const { id, price, name, images } = product;
+const ProductCard20: FC<Props> = ({ product }: Props) => {
+  const { id, price, name, images, productType } = product;
   const [updateWishlist, { error }] = useUpdateWishlistMutation();
   const { data } = useSession();
+  const user = data?.user as User1;
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const { enqueueSnackbar } = useSnackbar();
   const { wishlist, setWishlist } = useContext(WishlistContext);
+  const { requestQuota, isCreatingQuotation } = useQuotation(
+    id,
+    user?.email,
+    user?.id
+  );
 
-  const user = data?.user as User1;
   // Map wishlist products to product ids
   const wishListProductIds = wishlist?.products?.map((product) => product.id);
   //
@@ -52,16 +58,20 @@ const ProductCard20: FC<Props> = ({ product }) => {
   //
   const isOutOfStock = product?.units <= 0;
   //
+  const isQuotationProduct = productType === "QUOTATION";
+  //
   const cartUnits = isItemInCart(product)?.units;
+  //
+  const isButtonLoading =
+    (selectedProductId === product?.id && isLoading) || isCreatingQuotation;
 
-  const imgUrl =
-    images && images[0]
-      ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
-      : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
+  const imgUrl = images?.[0]
+    ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+    : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
 
   const toggleFavorite = async () => {
     if (user?.id) {
-      const oldWishlistProducts = [...wishlist?.products];
+      const oldWishlistProducts = [...(wishlist?.products ?? [])];
       //
       let newWishListProducts;
       if (wishListProductIds.includes(id)) {
@@ -129,7 +139,7 @@ const ProductCard20: FC<Props> = ({ product }) => {
 
         {/* PRODUCT FAVORITE BUTTON */}
         <FavoriteButton className="product-actions" onClick={toggleFavorite}>
-          {wishListProductIds && wishListProductIds.includes(product.id) ? (
+          {wishListProductIds?.includes(product.id) ? (
             <Favorite color="primary" fontSize="small" />
           ) : (
             <FavoriteBorder color="disabled" fontSize="small" />
@@ -177,11 +187,17 @@ const ProductCard20: FC<Props> = ({ product }) => {
           fullWidth
           color="dark"
           variant="outlined"
-          onClick={() => handleAddToCart(product, 1)}
-          loading={selectedProductId === product?.id && isLoading}
+          onClick={() =>
+            isQuotationProduct ? requestQuota() : handleAddToCart(product, 1)
+          }
+          loading={isButtonLoading}
           disabled={isOutOfStock || cartUnits >= product?.units}
         >
-          {isOutOfStock ? "Out of stock" : "Add To Cart"}
+          {isOutOfStock
+            ? "Out of stock"
+            : isQuotationProduct
+              ? "Get Quote"
+              : "Add To Cart"}
         </LoadingButton>
       </Box>
     </Card>

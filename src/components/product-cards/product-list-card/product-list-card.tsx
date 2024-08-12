@@ -19,6 +19,10 @@ import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import { calculateDiscount } from "lib";
 import ENVIRONMENT from "config/environment";
+import useQuotation from "hooks/useQuotation";
+import { User1 } from "models/User.model";
+import { useSession } from "next-auth/react";
+import { LoadingButton } from "@mui/lab";
 
 // STYLED COMPONENT
 const Wrapper = styled(Card)({
@@ -35,7 +39,8 @@ type Props = {
 // ===========================================================
 
 const ProductListCard: FC<Props> = ({ product }: Props) => {
-  const { id, name, price, discount, discountType, images } = product;
+  const { id, name, price, discount, discountType, images, productType } =
+    product;
   const { isFavorite, toggleFavorite } = useProduct(id);
   const {
     handleAddToCart,
@@ -44,6 +49,17 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
     selectedProductId,
     isUpdating,
   } = useCartService();
+  //
+  const { data } = useSession();
+  const user = data?.user as User1;
+  //
+  const { requestQuota, isCreatingQuotation } = useQuotation(
+    id,
+    user?.email,
+    user?.id
+  );
+  //
+  const isQuotationProduct = productType === "QUOTATION";
 
   const handleCartAmountChange = (quantity: number) => {
     if (
@@ -107,14 +123,28 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             <ProductPrice price={price} discount={discountPercent} />
 
             {/* PRODUCT ADD TO CART BUTTON */}
-            <AddToCartButton
-              disabled={isUpdating && selectedProductId === id}
-              quantity={
-                cart.cartItems.find((e) => e.product.id === product.id)?.units
-              }
-              handleAddToCart={handleCart}
-              handleAmountChange={handleCartAmountChange}
-            />
+            {isQuotationProduct ? (
+              <FlexBox mt={1}>
+                <LoadingButton
+                  color="primary"
+                  variant="contained"
+                  sx={{ height: 32 }}
+                  loading={isCreatingQuotation}
+                  onClick={requestQuota}
+                >
+                  Get Quote
+                </LoadingButton>
+              </FlexBox>
+            ) : (
+              <AddToCartButton
+                disabled={isUpdating && selectedProductId === id}
+                quantity={
+                  cart.cartItems.find((e) => e.product.id === product.id)?.units
+                }
+                handleAddToCart={handleCart}
+                handleAmountChange={handleCartAmountChange}
+              />
+            )}
           </FlexBox>
         </Grid>
       </Grid>

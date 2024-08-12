@@ -39,6 +39,7 @@ const useListProducts = (
             const filteredProductArray = data?.data?.map((item) => ({
               id: item.id,
               name: item.name,
+              productType: item.productType,
               brand: item?.brand ?? "-",
               price: item.price,
               units: item.units,
