@@ -56,9 +56,9 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   //
   const { openModal, toggleDialog } = useProduct(id);
   //
-  const isOutOfStock = product?.units <= 0;
-  //
   const isQuotationProduct = productType === "QUOTATION";
+  //
+  const isOutOfStock = !isQuotationProduct && product?.units <= 0;
   //
   const cartUnits = isItemInCart(product)?.units;
   //
@@ -165,7 +165,12 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         <Paragraph>{name}</Paragraph>
 
         {/* PRODUCT PRICE */}
-        <H4 fontWeight={700} py={0.5}>
+
+        <H4
+          fontWeight={700}
+          py={0.5}
+          color={isQuotationProduct ? "transparent" : "#000000"}
+        >
           {currency(price)}
         </H4>
 

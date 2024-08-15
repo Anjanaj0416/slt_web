@@ -84,9 +84,11 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
         <Grid item sm={3} xs={12} alignContent="center">
           <Box position="relative" height="100%">
             {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
-            <DiscountChip
-              discount={calculateDiscount(discountType, price, discount)}
-            />
+            {!isQuotationProduct && (
+              <DiscountChip
+                discount={calculateDiscount(discountType, price, discount)}
+              />
+            )}
 
             {/* PRODUCT IMAGE / THUMBNAIL */}
             <Image
@@ -120,7 +122,9 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             {/* <Rating size="small" value={rating} color="warn" readOnly /> */}
 
             {/* PRODUCT PRICE */}
-            <ProductPrice price={price} discount={discountPercent} />
+            {!isQuotationProduct && (
+              <ProductPrice price={price} discount={discountPercent} />
+            )}
 
             {/* PRODUCT ADD TO CART BUTTON */}
             {isQuotationProduct ? (
