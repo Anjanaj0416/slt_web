@@ -26,7 +26,7 @@ interface Product {
 export interface Product1 {
   units?: any;
   price: number;
-  discount: number;
+  discountAmount: number;
   discountType: "NONE" | "PERCENTAGE" | "FLAT";
   productType:"QUOTATION" |"DIRECT_BUYING";
   id: string;

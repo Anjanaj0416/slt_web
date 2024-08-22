@@ -47,7 +47,7 @@ const useListStoreProducts = (
             brand: item.brand,
             productType: item.productType,
             category: item.category,
-            discount: item.discount,
+            discount: item.discountAmount,
             discountType: item.discountType,
             images: item.images,
             description: item.description,
