@@ -17,7 +17,7 @@ const CheckoutForm2 = ({ address }) => {
   const { enqueueSnackbar } = useSnackbar();
   const session = useSession();
   //
-  const [getAddresses] = useLazyGetAddressesQuery();
+  const [getAddresses, { data: addressesData }] = useLazyGetAddressesQuery();
   const {
     selectedBillingAddressId,
     selectedShippingAddressId,
@@ -53,46 +53,24 @@ const CheckoutForm2 = ({ address }) => {
   useEffect(() => {
     setBillingAddresses(
       filterAddressesByType(
-        address,
+        addressesData?.data || address,
         "BILLING",
         handleSetSelectedBillingAddressId
       )
     );
     setShippingAddresses(
       filterAddressesByType(
-        address,
+        addressesData?.data || address,
         "SHIPPING",
         handleSetSelectedShippingAddressId
       )
     );
-  }, [address]);
-  //
-  const handleFetch = useCallback(async () => {
-    try {
-      const response = await getAddresses({ userId: user?.id || "" });
-      setBillingAddresses(
-        filterAddressesByType(
-          response?.data?.data,
-          "BILLING",
-          handleSetSelectedBillingAddressId
-        )
-      );
-      setShippingAddresses(
-        filterAddressesByType(
-          response?.data?.data,
-          "SHIPPING",
-          handleSetSelectedShippingAddressId
-        )
-      );
-    } catch (error) {
-      console.error(error);
-    }
-  }, [user]);
+  }, [address, addressesData]);
 
   //
   const proceedToPayment = () => {
     if (selectedBillingAddressId === "" || selectedShippingAddressId === "") {
-      enqueueSnackbar("Address successfully updated", { variant: "success" });
+      //enqueueSnackbar("Address successfully updated", { variant: "success" });
       return;
     }
     push("/payment");
@@ -101,7 +79,7 @@ const CheckoutForm2 = ({ address }) => {
   return (
     <>
       <DeliveryAddress
-        handleFetch={handleFetch}
+        handleFetch={() => getAddresses({ userId: user?.id || "" })}
         addresses={shippingAddresses}
         setAddresses={setShippingAddresses}
         addressType="SHIPPING"
@@ -109,7 +87,7 @@ const CheckoutForm2 = ({ address }) => {
         section={1}
       />
       <DeliveryAddress
-        handleFetch={handleFetch}
+        handleFetch={() => getAddresses({ userId: user?.id || "" })}
         addresses={billingAddresses}
         setAddresses={setBillingAddresses}
         addressType={"BILLING"}

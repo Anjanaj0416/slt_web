@@ -39,7 +39,7 @@ type Props = {
 // ===========================================================
 
 const ProductListCard: FC<Props> = ({ product }: Props) => {
-  const { id, name, price, discount, discountType, images, productType } =
+  const { id, name, price, discountAmount, discountType, images, productType } =
     product;
   const { isFavorite, toggleFavorite } = useProduct(id);
   const {
@@ -71,7 +71,11 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
       handleAddToCart(product, quantity);
     }
   };
-  const discountPercent = calculateDiscount(discountType, price, discount);
+  const discountPercent = calculateDiscount(
+    discountType,
+    price,
+    discountAmount
+  );
 
   const handleCart = () => handleAddToCart(product, 1);
 
@@ -86,7 +90,11 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
             {!isQuotationProduct && (
               <DiscountChip
-                discount={calculateDiscount(discountType, price, discount)}
+                discount={calculateDiscount(
+                  discountType,
+                  price,
+                  discountAmount
+                )}
               />
             )}
 

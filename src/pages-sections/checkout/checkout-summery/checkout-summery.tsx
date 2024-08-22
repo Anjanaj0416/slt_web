@@ -12,32 +12,19 @@ import { currency } from "lib";
 import useCartService from "hooks/useCartService";
 
 const CheckoutSummary = () => {
-  const { totalPrice } = useCartService();
+  const { totalPrice, totalDiscount } = useCartService();
   //
   return (
     <Card sx={{ p: 3 }}>
       <ListItem mb={1} title="Subtotal" value={totalPrice} />
       <ListItem mb={1} title="Shipping" />
-      <ListItem mb={1} title="Tax" value={40} />
-      <ListItem mb={1} title="Discount" />
+      <ListItem mb={1} title="Discount" value={totalDiscount} />
 
       <Divider sx={{ my: 2 }} />
 
       <Paragraph fontSize={25} fontWeight={600} lineHeight={1}>
-        {currency(totalPrice)}
+        {currency(totalPrice - totalDiscount)}
       </Paragraph>
-
-      <Stack spacing={2} mt={3}>
-        <TextField
-          placeholder="Voucher"
-          variant="outlined"
-          size="small"
-          fullWidth
-        />
-        <Button variant="outlined" color="primary" fullWidth>
-          Apply Voucher
-        </Button>
-      </Stack>
     </Card>
   );
 };
