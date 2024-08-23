@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import format from "date-fns/format";
 // GLOBAL CUSTOM COMPONENTS
-import { H3, H6, Paragraph } from "components/Typography";
+import {  H6, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
@@ -56,9 +56,11 @@ const OrderedProducts: FC<Props> = ({ order }) => {
                 marginLeft={2}
                 color="#7D879C"
               >{`Package ID: ${pkg.id}`}</Typography>
-              <Box paddingBottom={1}>
-                <OrderProgress status={pkg.status} />
-              </Box>
+              {order.status === "SUCCESS" && (
+                <Box paddingBottom={1}>
+                  <OrderProgress status={pkg.status} />
+                </Box>
+              )}
               {pkg.packageItems.map((item, ind) => buildProductList(ind, item))}
             </Box>
           ))

@@ -26,7 +26,7 @@ interface Order {
 
 export interface Order1 {
   id: string;
-  //status: "Pending" | "Processing" | "Delivered" | "Cancelled";
+  status: "PENDING" | "SUCCESS" | "FAILED";
   payments: Payment[];
   packages: Package[];
   //items: Item[];

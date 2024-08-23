@@ -33,6 +33,7 @@ const OrderRow: FC<Props> = ({ order }) => {
       case "DELIVERED":
         return "success";
       case "CANCELLED":
+      case "PENDING PAYMENT":
         return "primary";
       default:
         return "default";
@@ -40,6 +41,9 @@ const OrderRow: FC<Props> = ({ order }) => {
   };
 
   const getOrderStatus = () => {
+    if (order.status === "PENDING" || order.status === "FAILED") {
+      return "PENDING PAYMENT";
+    }
     if (packages.some((e) => e.status === "PENDING")) {
       return "PENDING";
     } else if (packages.some((e) => e.status === "PROCESSING")) {

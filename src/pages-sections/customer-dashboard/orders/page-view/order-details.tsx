@@ -15,18 +15,25 @@ type Props = { order: Order1 };
 // =============================================================
 
 const OrderDetailsPageView = ({ order }: Props) => {
+  console.log(order.status);
+
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
       <DashboardHeader
         href="/orders"
         Icon={ShoppingBag}
-        title="Order Details"
-        buttonText="Order Again"
+        title={
+          order.status === "SUCCESS"
+            ? "Order Details"
+            : "Order Details - Pending Payment"
+        }
+        buttonText={order.status === "SUCCESS" ? "Order Again" : "Pay Now"}
       />
 
       {/* ORDER PROGRESS AREA */}
-      {order.packages.length === 1 &&
+      {order.status === "SUCCESS" &&
+        order.packages.length === 1 &&
         order.packages[0].status !== "CANCELLED" && (
           <OrderProgress status={order.packages[0].status} />
         )}
