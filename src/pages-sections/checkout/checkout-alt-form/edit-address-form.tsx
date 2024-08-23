@@ -1,7 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Dialog from "@mui/material/Dialog";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import DialogContent from "@mui/material/DialogContent";
 import { useFormik } from "formik";
@@ -10,13 +9,13 @@ import * as yup from "yup";
 import { H5 } from "components/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { Address } from "./_types";
 import { POSTAddressResponse } from "models/Address.model";
 import { Box, Checkbox, FormControlLabel, IconButton } from "@mui/material";
 import { useUpdateAddressMutation } from "services/address-api";
 import { useSnackbar } from "notistack";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
+import { LoadingButton } from "@mui/lab";
 
 const validationSchema = yup.object({
   name: yup.string().required("required"),
@@ -42,7 +41,8 @@ const EditAddressForm: FC<Props> = (props) => {
   const { data: session } = useSession();
   const user = session?.user as User1;
   //
-  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
+  const [updateAddress, { isLoading: isUpdating, isSuccess }] =
+    useUpdateAddressMutation();
   const { active, address, setEditAddressId, handleFetch } = props;
 
   const [openModal, setOpenModal] = useState(active);
@@ -51,6 +51,13 @@ const EditAddressForm: FC<Props> = (props) => {
     setEditAddressId("");
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    if (isSuccess && !isUpdating) {
+      handleCloseModal();
+      enqueueSnackbar("Address successfully updated", { variant: "success" });
+    }
+  }, [isUpdating]);
 
   const initialValues = {
     name: address?.name,
@@ -73,9 +80,7 @@ const EditAddressForm: FC<Props> = (props) => {
         body: values,
       });
       handleFetch();
-      handleCloseModal();
       resetForm({});
-      enqueueSnackbar("Address successfully updated", { variant: "success" });
     },
   });
 
@@ -190,9 +195,14 @@ const EditAddressForm: FC<Props> = (props) => {
               />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <Button color="primary" variant="contained" type="submit">
+              <LoadingButton
+                loading={isUpdating}
+                color="primary"
+                variant="contained"
+                type="submit"
+              >
                 Update
-              </Button>
+              </LoadingButton>
             </Grid>
           </Grid>
         </form>

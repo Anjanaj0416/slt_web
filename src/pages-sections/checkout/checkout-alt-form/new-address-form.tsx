@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -9,13 +9,12 @@ import * as yup from "yup";
 // LOCAL CUSTOM COMPONENT
 import { H5 } from "components/Typography";
 import CloseIcon from "@mui/icons-material/Close";
-// CUSTOM DATA MODEL
-import { Address } from "./_types";
 import { Box, Checkbox, FormControlLabel, IconButton } from "@mui/material";
 import { usePostAddressMutation } from "services/address-api";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useSnackbar } from "notistack";
+import { LoadingButton } from "@mui/lab";
 
 const validationSchema = yup.object({
   name: yup.string().required("required"),
@@ -39,10 +38,18 @@ const NewAddressForm: FC<Props> = ({ addressType, handleFetch }) => {
   const { data: session } = useSession();
   const user = session?.user as User1;
   //
-  const [createAddress, { isLoading }] = usePostAddressMutation();
+  const [createAddress, { isLoading: isCreating, isSuccess }] =
+    usePostAddressMutation();
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleCloseModal = () => setOpenModal(false);
+
+  useEffect(() => {
+    if (isSuccess && !isCreating) {
+      handleCloseModal();
+      enqueueSnackbar("Address successfully created", { variant: "success" });
+    }
+  }, [isCreating]);
 
   const initialValues = {
     name: "",
@@ -61,8 +68,6 @@ const NewAddressForm: FC<Props> = ({ addressType, handleFetch }) => {
     onSubmit: async (values, { resetForm }) => {
       await createAddress({ body: values, userId: user?.id });
       handleFetch();
-      enqueueSnackbar("Address successfully created", { variant: "success" });
-      handleCloseModal();
       resetForm({});
     },
   });
@@ -187,9 +192,14 @@ const NewAddressForm: FC<Props> = ({ addressType, handleFetch }) => {
                 />
               </Grid>
               <Grid item sm={6} xs={12}>
-                <Button color="primary" variant="contained" type="submit">
+                <LoadingButton
+                  loading={isCreating}
+                  color="primary"
+                  variant="contained"
+                  type="submit"
+                >
                   Save
-                </Button>
+                </LoadingButton>
               </Grid>
             </Grid>
           </form>

@@ -20,6 +20,7 @@ export const CheckoutServiceContext = createContext({
   ): Promise<POSTAddressResponse | undefined> => undefined,
   isAddingAddress: false,
   isDeletingAddress: false,
+  isSuccessDelete: false,
   selectedBillingAddressId: "",
   selectedShippingAddressId: "",
   handleSetSelectedBillingAddressId: (_: string) => {},
@@ -34,8 +35,10 @@ type Props = {
 //
 const CheckoutServiceContextProvider = (props: Props) => {
   const [addAddress, { isLoading: isAddingAddress }] = usePostAddressMutation();
-  const [deleteAddress, { isLoading: isDeletingAddress }] =
-    useDeleteAddressMutation();
+  const [
+    deleteAddress,
+    { isLoading: isDeletingAddress, isSuccess: isSuccessDelete },
+  ] = useDeleteAddressMutation();
   const session = useSession();
   //
   const user = session?.data?.user as User1;
@@ -103,6 +106,7 @@ const CheckoutServiceContextProvider = (props: Props) => {
     () => ({
       isAddingAddress,
       isDeletingAddress,
+      isSuccessDelete,
       selectedBillingAddressId,
       selectedShippingAddressId,
       handleAddAddress,
@@ -119,6 +123,7 @@ const CheckoutServiceContextProvider = (props: Props) => {
       isDeletingAddress,
       selectedBillingAddressId,
       selectedShippingAddressId,
+      isSuccessDelete,
     ]
   );
   //

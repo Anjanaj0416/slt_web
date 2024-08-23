@@ -114,11 +114,11 @@ const CreditCardForm = () => {
               />
             </Grid>
 
-            <Grid item sm={6} xs={12}>
+            {/* <Grid item sm={6} xs={12}>
               <Button variant="outlined" color="primary">
                 Submit
               </Button>
-            </Grid>
+            </Grid> */}
           </Grid>
         </form>
       )}

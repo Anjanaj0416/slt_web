@@ -71,7 +71,7 @@ const DashboardHeader: FC<Props> = ({ title, buttonText, href, Icon }) => {
         <FlexBox alignItems="center" gap={1.5}>
           {Icon && <Icon color="primary" />}
 
-          <H2 my={0} lineHeight={1} ellipsis>
+          <H2 my={0} lineHeight={1.4} ellipsis>
             {title}
           </H2>
         </FlexBox>

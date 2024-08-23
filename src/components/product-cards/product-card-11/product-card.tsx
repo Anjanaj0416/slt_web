@@ -45,7 +45,7 @@ const ProductCard11: FC<Props> = ({
   isUpdating,
   isFavorite=true
 }) => {
-  const { id, name, price, discount, images, discountType } = product;
+  const { id, name, price, discountAmount, images, discountType } = product;
   const { openModal, toggleDialog } = useProduct(id);
 
   const { handleAddToCart } = useCartService();
@@ -62,11 +62,11 @@ const ProductCard11: FC<Props> = ({
         {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
         <DiscountChip
           discount={
-            !discount || discountType === "NONE"
+            !discountAmount || discountType === "NONE"
               ? 0
               : discountType === "PERCENTAGE"
-                ? discount
-                : ((price - discount) * 100) / price
+                ? discountAmount
+                : ((price - discountAmount) * 100) / price
           }
         />
 
@@ -117,11 +117,11 @@ const ProductCard11: FC<Props> = ({
           {/* PRODUCT PRICE WITH DISCOUNT */}
           <ProductPrice
             discount={
-              !discount || discountType === "NONE"
+              !discountAmount || discountType === "NONE"
                 ? 0
                 : discountType === "PERCENTAGE"
-                  ? discount
-                  : ((price - discount) * 100) / price
+                  ? discountAmount
+                  : ((price - discountAmount) * 100) / price
             }
             price={price}
           />

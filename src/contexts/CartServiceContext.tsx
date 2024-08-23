@@ -1,5 +1,6 @@
 "use client";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
+import { calculateDiscount } from "lib";
 //
 import { Product1 } from "models/Product.model";
 import { CartItem, User1, UserCart } from "models/User.model";
@@ -29,6 +30,7 @@ type ContextState = {
   length: number;
   isLoading: boolean;
   totalPrice: number;
+  totalDiscount: number;
   isItemInCart: (product: Product1) => CartItem | null | undefined;
   selectedProductId: string;
   note: string;
@@ -50,6 +52,7 @@ const initState: ContextState = {
   length: 0,
   isLoading: false,
   totalPrice: 0,
+  totalDiscount: 0,
   isItemInCart: () => null,
   selectedProductId: "",
   note: "",
@@ -266,6 +269,23 @@ const CartServiceProvider = (props: Props) => {
       ),
     [cart?.cartItems]
   );
+
+  const totalDiscount = useMemo(
+    () =>
+      cart?.cartItems?.reduce(
+        (accumulator, current) =>
+          (accumulator =
+            accumulator +
+            calculateDiscount(
+              current?.product?.discountType,
+              current?.product?.price,
+              current?.product?.discountAmount
+            ) *
+              current?.units),
+        0
+      ),
+    [cart?.cartItems]
+  );
   //
   const returnValue: ContextState = useMemo(
     () => ({
@@ -280,6 +300,7 @@ const CartServiceProvider = (props: Props) => {
       length: cart?.cartItems?.length,
       isLoading: isUpdating || isCartFetching,
       totalPrice,
+      totalDiscount,
       isItemInCart,
       selectedProductId,
       note,

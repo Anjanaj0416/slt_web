@@ -121,7 +121,7 @@ const DeliveryAddress: FC<Props> = ({
       {/* SHOW EDIT ADDRESS FORM MODAL WHEN CLICK EDIT BUTTON */}
       {editAddressId ? (
         <EditAddressForm
-          active={editAddressId ? true : false}
+          active={!!editAddressId}
           address={addresses.find((item) => item.id === selectedAddressId)}
           setEditAddressId={setEditAddressId}
           handleFetch={handleFetch}

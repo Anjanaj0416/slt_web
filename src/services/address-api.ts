@@ -21,7 +21,7 @@ export const addressApi = createApi({
         method: "POST",
         body,
       }),
-      //invalidatesTags: ["ADDRESS", "ADDRESSES"],
+      invalidatesTags: ["ADDRESS", "ADDRESSES"],
     }),
     deleteAddress: builder.mutation({
       query: ({ userId, addressId }) => ({

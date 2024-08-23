@@ -51,7 +51,7 @@ function calculateDiscountPrice(price: number, discount: number) {
  * @param  type - DISCOUNT TYPE
  * @param  price - PRODUCT PRICE
  * @param  discount - DISCOUNT VALUE
- * @returns - RETURN NEW PRICE
+ * @returns - RETURN DISCOUNT
  */
 
 function calculateDiscount(
@@ -59,15 +59,15 @@ function calculateDiscount(
   price: number,
   discount: number
 ) {
-  console.log(type, discount);
+  console.log(price, type, discount);
 
-  if (!discount || !type || type === "NONE") {
+  if (!discount || type === "NONE") {
     return 0;
   } else if (type === "PERCENTAGE") {
-    return discount;
+    return price * 0.01;
   }
 
-  return price * (discount / 100);
+  return discount;
 }
 
 /**

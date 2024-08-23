@@ -2,8 +2,6 @@ import API from "constants/orders";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { OrdersPageView } from "pages-sections/customer-dashboard/orders/page-view";
-// API FUNCTIONS
-import api from "utils/__api__/orders";
 import { auth } from "utils/auth";
 import request from "utils/request";
 
@@ -23,7 +21,12 @@ export default async function Orders() {
       userId: user?.id,
       query: "size=5&sort=createdAt,desc",
     });
-    return <OrdersPageView orders={orders?.data} initTotalPages={orders.totalPages} />;
+    return (
+      <OrdersPageView
+        orders={orders?.data}
+        initTotalPages={orders.totalPages}
+      />
+    );
   } catch (error) {
     notFound();
   }
