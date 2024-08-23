@@ -60,14 +60,14 @@ function calculateDiscount(
   discount: number
 ) {
   console.log(price, type, discount);
-  
-  if (!discount || !type || type === "NONE") {
+
+  if (!discount || type === "NONE") {
     return 0;
-  } else if (type === "FLAT") {
-    return discount;
+  } else if (type === "PERCENTAGE") {
+    return price * 0.01;
   }
 
-  return price * (discount / 100);
+  return discount;
 }
 
 /**
