@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Link from "next/link";
-import { ChangeEvent, Fragment, useState } from "react";
+import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import FormLabel from "./form-label";
 import { useCreateOrderMutation } from "services/order-api";
 import useCheckoutService from "hooks/useCheckoutService";
@@ -12,9 +12,12 @@ import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
+import CreditCardForm from "./credit-card-form";
+import { LoadingButton } from "@mui/lab";
 
 const PAYMENT_METHODS = {
-  CASH_ON_DELIVERY: "cash-on-deliver",
+  CASH_ON_DELIVERY: "COD",
+  CARD: "CARD",
 } as const;
 
 const PaymentForm = () => {
@@ -24,12 +27,22 @@ const PaymentForm = () => {
   const user = session?.user as User1;
   const { selectedBillingAddressId, selectedShippingAddressId } =
     useCheckoutService();
-  const { note, totalPrice } = useCartService();
+  const { note, totalPrice, setCart } = useCartService();
   //
-  const [createOrder, { isLoading }] = useCreateOrderMutation();
+  const [createOrder, { isLoading: isCreatingOrder, isSuccess, data }] =
+    useCreateOrderMutation();
+  //
+  useEffect(() => {
+    if (isSuccess) {
+      enqueueSnackbar("Order places successfully", { variant: "success" });
+      setCart({ id: "", cartItems: [] });
+
+      push(`/orders/${data.id}`);
+    }
+  }, [isCreatingOrder, isSuccess]);
   //
   const [paymentMethod, setPaymentMethod] = useState<string>(
-    PAYMENT_METHODS.CASH_ON_DELIVERY
+    PAYMENT_METHODS.CARD
   );
   //
   const handlePaymentMethodChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -44,11 +57,9 @@ const PaymentForm = () => {
         shippingAddressId: selectedShippingAddressId,
         billingAddressId: selectedBillingAddressId,
         note,
-        payments: [{ amount: totalPrice, paymentType: "COD" }],
+        payments: [{ amount: totalPrice, paymentType: paymentMethod }],
       },
     });
-    enqueueSnackbar("Order places successfully", { variant: "success" });
-    push("/orders");
   };
 
   return (
@@ -61,16 +72,16 @@ const PaymentForm = () => {
         }}
       >
         {/* CREDIT CARD OPTION */}
-        {/* <FormLabel
-          name="credit-card"
-          title="Pay with credit card"
+        <FormLabel
+          name={PAYMENT_METHODS.CARD}
+          title="Pay with Card"
           handleChange={handlePaymentMethodChange}
-          checked={paymentMethod === "credit-card"}
+          checked={paymentMethod === PAYMENT_METHODS.CARD}
         />
 
-        {paymentMethod === "credit-card" && <CreditCardForm />}
+        {paymentMethod === PAYMENT_METHODS.CARD && <CreditCardForm />}
 
-        <Divider sx={{ my: 3, mx: -4 }} /> */}
+        <Divider sx={{ my: 3, mx: -4 }} />
 
         {/* PAYPAL CARD OPTION */}
         {/* <FormLabel
@@ -118,7 +129,9 @@ const PaymentForm = () => {
           Back to checkout
         </Button>
 
-        <Button
+        <LoadingButton
+          loading={isCreatingOrder}
+          disabled={isCreatingOrder || isSuccess}
           LinkComponent={Link}
           variant="contained"
           color="primary"
@@ -127,7 +140,7 @@ const PaymentForm = () => {
           fullWidth
         >
           Place Order
-        </Button>
+        </LoadingButton>
       </Stack>
     </Fragment>
   );

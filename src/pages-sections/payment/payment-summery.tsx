@@ -9,13 +9,13 @@ import { currency } from "lib";
 import useCartService from "hooks/useCartService";
 
 const PaymentSummary = () => {
-  const { totalPrice } = useCartService();
+  const { totalPrice, totalDiscount } = useCartService();
   return (
     <Card sx={{ padding: { sm: 3, xs: 2 } }}>
       <PaymentItem title="Subtotal:" amount={totalPrice} />
       <PaymentItem title="Shipping:" />
-      <PaymentItem title="Tax:" />
-      <PaymentItem title="Discount:" />
+      {/* <PaymentItem title="Tax:" /> */}
+      <PaymentItem title="Discount:" amount={totalDiscount}/>
 
       <Divider sx={{ my: 2 }} />
 
@@ -25,7 +25,7 @@ const PaymentSummary = () => {
         lineHeight={1}
         textAlign="right"
       >
-        {currency(totalPrice)}
+        {currency(totalPrice-totalDiscount)}
       </Paragraph>
     </Card>
   );
