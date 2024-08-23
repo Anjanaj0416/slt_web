@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // LOCAL CUSTOM COMPONENTS
 import DeliveryAddress from "./delivery-address";
 
@@ -69,10 +69,21 @@ const CheckoutForm2 = ({ address }) => {
 
   //
   const proceedToPayment = () => {
-    if (selectedBillingAddressId === "" || selectedShippingAddressId === "") {
-      //enqueueSnackbar("Address successfully updated", { variant: "success" });
+    if (!selectedBillingAddressId && !selectedShippingAddressId) {
+      enqueueSnackbar("Select your shipping & billing address", {
+        variant: "warning",
+      });
       return;
     }
+    if (!selectedBillingAddressId) {
+      enqueueSnackbar("Select your billing address", { variant: "warning" });
+      return;
+    }
+    if (!selectedShippingAddressId) {
+      enqueueSnackbar("Select your shipping address", { variant: "warning" });
+      return;
+    }
+
     push("/payment");
   };
   //
