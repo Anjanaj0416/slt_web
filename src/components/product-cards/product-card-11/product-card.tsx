@@ -21,6 +21,7 @@ import { ImageWrapper, ContentWrapper, StyledBazaarCard } from "./styles";
 import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
+import { calculateDiscountPercentage } from "lib";
 
 // ========================================================
 type Props = {
@@ -43,7 +44,7 @@ const ProductCard11: FC<Props> = ({
   handleFavorite,
   showProductSize,
   isUpdating,
-  isFavorite=true
+  isFavorite = true,
 }) => {
   const { id, name, price, discountAmount, images, discountType } = product;
   const { openModal, toggleDialog } = useProduct(id);
@@ -61,13 +62,11 @@ const ProductCard11: FC<Props> = ({
       <ImageWrapper>
         {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
         <DiscountChip
-          discount={
-            !discountAmount || discountType === "NONE"
-              ? 0
-              : discountType === "PERCENTAGE"
-                ? discountAmount
-                : ((price - discountAmount) * 100) / price
-          }
+          discount={calculateDiscountPercentage(
+            discountType,
+            price,
+            discountAmount
+          )}
         />
 
         {/* HOVER ACTION ICONS */}
@@ -116,13 +115,11 @@ const ProductCard11: FC<Props> = ({
 
           {/* PRODUCT PRICE WITH DISCOUNT */}
           <ProductPrice
-            discount={
-              !discountAmount || discountType === "NONE"
-                ? 0
-                : discountType === "PERCENTAGE"
-                  ? discountAmount
-                  : ((price - discountAmount) * 100) / price
-            }
+            discount={calculateDiscountPercentage(
+              discountType,
+              price,
+              discountAmount
+            )}
             price={price}
           />
         </Box>

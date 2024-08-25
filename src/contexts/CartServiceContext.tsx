@@ -1,6 +1,6 @@
 "use client";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
-import { calculateDiscount } from "lib";
+import { calculateDiscountAmount } from "lib";
 //
 import { Product1 } from "models/Product.model";
 import { CartItem, User1, UserCart } from "models/User.model";
@@ -276,7 +276,7 @@ const CartServiceProvider = (props: Props) => {
         (accumulator, current) =>
           (accumulator =
             accumulator +
-            calculateDiscount(
+            calculateDiscountAmount(
               current?.product?.discountType,
               current?.product?.price,
               current?.product?.discountAmount
