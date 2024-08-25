@@ -54,20 +54,41 @@ function calculateDiscountPrice(price: number, discount: number) {
  * @returns - RETURN DISCOUNT
  */
 
-function calculateDiscount(
+function calculateDiscountAmount(
   type: "NONE" | "PERCENTAGE" | "FLAT",
   price: number,
   discount: number
 ) {
-  console.log(price, type, discount);
-
   if (!discount || type === "NONE") {
     return 0;
   } else if (type === "PERCENTAGE") {
-    return price * 0.01;
+    return price * discount * 0.01;
   }
 
   return discount;
+}
+
+/**
+ * Calculates the discount percentage based on the discount type, price, and discount amount.
+ *
+ * @param {"NONE" | "PERCENTAGE" | "FLAT"} type - The type of discount applied. 
+ * @param {number} price - The original price of the item.
+ * @param {number} discount - The discount amount. 
+ * @returns {number} The calculated discount percentage
+ * */
+
+function calculateDiscountPercentage(
+  type: "NONE" | "PERCENTAGE" | "FLAT",
+  price: number,
+  discount: number
+) {
+  if (!discount || type === "NONE") {
+    return 0;
+  } else if (type === "PERCENTAGE") {
+    return discount;
+  }
+
+  return Math.round((discount / price) * 100);
 }
 
 /**
@@ -90,5 +111,6 @@ export {
   getDateDifference,
   calculateDiscountPrice,
   renderProductCount,
-  calculateDiscount,
+  calculateDiscountAmount,
+  calculateDiscountPercentage,
 };
