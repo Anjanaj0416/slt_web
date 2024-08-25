@@ -17,7 +17,7 @@ import AddToCartButton from "./add-to-cart";
 import FavoriteButton from "./favorite-button";
 import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
-import { calculateDiscount } from "lib";
+import { calculateDiscountAmount } from "lib";
 import ENVIRONMENT from "config/environment";
 import useQuotation from "hooks/useQuotation";
 import { User1 } from "models/User.model";
@@ -71,7 +71,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
       handleAddToCart(product, quantity);
     }
   };
-  const discountPercent = calculateDiscount(
+  const discountPercent = calculateDiscountAmount(
     discountType,
     price,
     discountAmount
@@ -90,7 +90,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
             {!isQuotationProduct && (
               <DiscountChip
-                discount={calculateDiscount(
+                discount={calculateDiscountAmount(
                   discountType,
                   price,
                   discountAmount
