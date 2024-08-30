@@ -7,6 +7,8 @@ import FlexBox from "components/flex-box/flex-box";
 import { FC, useState } from "react";
 import ENVIRONMENT from "config/environment";
 import CropDialog from "components/cropper-dialog-box";
+import { useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
 
 type Props = {
   onProfileImage: (value: any) => void;
@@ -19,6 +21,7 @@ const ProfilePicUpload: FC<Props> = ({
 }: Props) => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string>();
+  const { data: session } = useSession();
 
   const handleCropImages = (croppedImages: File[]) => {
     onProfileImage(croppedImages[0]);
@@ -34,12 +37,11 @@ const ProfilePicUpload: FC<Props> = ({
         setOpen={setOpen}
       />
       <Avatar
-        alt="user"
+        alt={(session?.user as User1)?.firstName}
         src={
           !open && selectedImage
             ? selectedImage
-            : `${ENVIRONMENT.S3_BUCKET_URL}/${profilePictureUrl}` ||
-              "/assets/images/avatars/001-man.svg"
+            : `${ENVIRONMENT.S3_BUCKET_URL}/${profilePictureUrl}` 
         }
         sx={{ height: 64, width: 64 }}
       />

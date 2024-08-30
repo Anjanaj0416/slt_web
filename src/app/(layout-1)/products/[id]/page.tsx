@@ -39,7 +39,6 @@ export default async function ProductDetails({ params }) {
     );
   } catch (error) {
     console.log(error);
-
     notFound();
   }
 }

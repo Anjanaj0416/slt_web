@@ -25,8 +25,9 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
 type Props = {
   description: string;
   specification: string;
+  productId: string;
 };
-const ProductTabs = ({ description, specification }: Props) => {
+const ProductTabs = ({ description, specification, productId }: Props) => {
   const [selectedOption, setSelectedOption] = useState(0);
   const handleOptionClick = (_, value: number) => setSelectedOption(value);
 
@@ -40,7 +41,7 @@ const ProductTabs = ({ description, specification }: Props) => {
       >
         <Tab className="inner-tab" label="Description" />
         <Tab className="inner-tab" label="Specification" />
-        <Tab className="inner-tab" label="Review (3)" />
+        <Tab className="inner-tab" label="Review" />
       </StyledTabs>
 
       <Box mb={6}>
@@ -50,7 +51,7 @@ const ProductTabs = ({ description, specification }: Props) => {
         {selectedOption === 1 && (
           <ProductSpecification specification={specification} />
         )}
-        {selectedOption === 2 && <ProductReview />}
+        {selectedOption === 2 && <ProductReview productId={productId} />}
       </Box>
     </>
   );

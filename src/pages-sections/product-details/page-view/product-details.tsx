@@ -31,6 +31,7 @@ const ProductDetailsPageView = ({
       <ProductTabs
         description={product.description}
         specification={product.specification}
+        productId={product.id}
       />
 
       {/* FREQUENTLY BOUGHT PRODUCTS AREA */}

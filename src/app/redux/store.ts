@@ -14,6 +14,7 @@ import { wishlistApi } from "services/wishlist-api";
 import { storeApi } from "services/store-api";
 import { storeAndProductSearchApi } from "services/store-and-product-search-api";
 import { quotationApi } from "services/quotation-api";
+import { reviewApi } from "services/review-api";
 
 // Combine all the reducers into one root reducer
 const rootReducers = combineReducers({
@@ -29,6 +30,7 @@ const rootReducers = combineReducers({
   [wishlistApi.reducerPath]: wishlistApi.reducer,
   [storeAndProductSearchApi.reducerPath]: storeAndProductSearchApi.reducer,
   [quotationApi.reducerPath]: quotationApi.reducer,
+  [reviewApi.reducerPath]: reviewApi.reducer,
 });
 
 // Define custom middlewares for the store
@@ -44,6 +46,7 @@ const apiMiddlewares = [
   storeApi.middleware,
   storeAndProductSearchApi.middleware,
   quotationApi.middleware,
+  reviewApi.middleware,
 ]; // Middleware for Redux Toolkit Query
 //
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors

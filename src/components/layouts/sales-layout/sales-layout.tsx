@@ -5,7 +5,6 @@ import Divider from "@mui/material/Divider";
 // CUSTOM GLOBAL COMPONENTS
 import { Topbar } from "components/topbar";
 import { Header } from "components/header";
-import { Navbar } from "components/navbar";
 import { Footer1 } from "components/footer";
 import { SearchInputWithCategory } from "components/search-box";
 import { MobileNavigationBar } from "components/mobile-navigation";
