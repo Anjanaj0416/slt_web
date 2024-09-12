@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
@@ -25,12 +25,16 @@ import { LoadingButton } from "@mui/lab";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 
+import ShareIcon from "@mui/icons-material/Share";
+import ShareModal, { ShareModalRef } from "./ShareModal";
+import { Tooltip } from "@mui/material";
+
 // ================================================================
 type Props = { product: Product1 };
 // ================================================================
 
 const ProductIntro1: FC<Props> = ({ product }) => {
-  const { price, name, brand, images, videos, productType } = product || {};
+  const { price, name, brand, images, videos, productType, id } = product || {};
   const { data } = useSession();
   const user = data?.user as User1;
   const {
@@ -47,7 +51,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
     user?.email,
     user?.id
   );
-
+  const modalRef = useRef<ShareModalRef>();
   const isButtonLoading = selectedProductId === product?.id && isUpdating;
   //
   const isQuotationProduct = productType === "QUOTATION";
@@ -83,6 +87,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
   return (
     <Box width="100%">
       <Grid container spacing={3} justifyContent="space-around">
+        <ShareModal ref={modalRef} />
         {/* IMAGE GALLERY AREA */}
         <Grid item md={6} xs={12} alignItems="center">
           <FlexBox justifyContent="center" mb={6}>
@@ -205,47 +210,64 @@ const ProductIntro1: FC<Props> = ({ product }) => {
           )}
 
           {/* ADD TO CART BUTTON */}
-          {!carItemIds?.includes(product.id) ? (
-            <LoadingButton
-              color="primary"
-              variant="contained"
-              loading={isButtonLoading || isCreatingQuotation}
-              onClick={
-                isQuotationProduct ? requestQuota : handleCartAmountChange(1)
-              }
-              sx={{ mb: 4.5, px: "1.75rem", height: 40 }}
-            >
-              {isQuotationProduct ? "Get Quote" : "Add to Cart"}
-            </LoadingButton>
-          ) : (
-            <FlexBox alignItems="center" mb={4.5}>
-              <Button
-                disabled={isButtonLoading}
-                size="small"
-                sx={{ p: 1 }}
+          <FlexBox alignItems="center" sx={{ mb: 4.5 }}>
+            {!carItemIds?.includes(product.id) ? (
+              <LoadingButton
                 color="primary"
-                variant="outlined"
-                onClick={handleCartAmountChange(-1)}
+                variant="contained"
+                loading={isButtonLoading || isCreatingQuotation}
+                onClick={
+                  isQuotationProduct ? requestQuota : handleCartAmountChange(1)
+                }
+                sx={{ px: "1.75rem", height: 40 }}
               >
-                <Remove fontSize="small" />
-              </Button>
+                {isQuotationProduct ? "Get Quote" : "Add to Cart"}
+              </LoadingButton>
+            ) : (
+              <>
+                <Button
+                  disabled={isButtonLoading}
+                  size="small"
+                  sx={{ p: 1 }}
+                  color="primary"
+                  variant="outlined"
+                  onClick={handleCartAmountChange(-1)}
+                >
+                  <Remove fontSize="small" />
+                </Button>
 
-              <H3 fontWeight="600" mx={2.5}>
-                {cart.cartItems.find((e) => e.product.id === product.id).units}
-              </H3>
+                <H3 fontWeight="600" mx={2.5}>
+                  {
+                    cart.cartItems.find((e) => e.product.id === product.id)
+                      .units
+                  }
+                </H3>
 
+                <Button
+                  disabled={isButtonLoading}
+                  size="small"
+                  sx={{ p: 1 }}
+                  color="primary"
+                  variant="outlined"
+                  onClick={handleCartAmountChange(1)}
+                >
+                  <Add fontSize="small" />
+                </Button>
+              </>
+            )}
+            <Tooltip title="Share">
               <Button
-                disabled={isButtonLoading}
-                size="small"
-                sx={{ p: 1 }}
-                color="primary"
-                variant="outlined"
-                onClick={handleCartAmountChange(1)}
+                sx={{ height: 40, marginLeft: 1 }}
+                onClick={() =>
+                  modalRef.current.openModal(
+                    `${ENVIRONMENT.APP_URL}/products/${id}`
+                  )
+                }
               >
-                <Add fontSize="small" />
+                <ShareIcon />
               </Button>
-            </FlexBox>
-          )}
+            </Tooltip>
+          </FlexBox>
 
           {/* SHOP NAME */}
           <FlexBox alignItems="center" gap={1} mb={2}>
