@@ -68,9 +68,11 @@ const Footer1 = () => {
           {/* CONTACT & SOCIAL LINKS */}
           <Grid item lg={3} md={6} sm={6} xs={12}>
             {/* CONTACT INFORMATION */}
-            <H6 fontSize={18} mb={1.5} lineHeight="1" color="white">
-              Contact Us
-            </H6>
+            <Link href="/contact-us">
+              <H6 fontSize={18} mb={1.5} lineHeight="1" color="white">
+                Contact Us
+              </H6>
+            </Link>
 
             <Paragraph py={0.6} color="grey.500">
               70 Washington Square South, New York, NY 10012, United States
