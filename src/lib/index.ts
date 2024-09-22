@@ -47,7 +47,7 @@ function calculateDiscountPrice(price: number, discount: number) {
 }
 
 /**
- * CALCULATE PRICE WITH PRODUCT DISCOUNT THEN RETURN NEW PRODUCT PRICES
+ * CALCULATE DISCOUNT AMOUNT
  * @param  type - DISCOUNT TYPE
  * @param  price - PRODUCT PRICE
  * @param  discount - DISCOUNT VALUE

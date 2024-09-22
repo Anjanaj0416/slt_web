@@ -93,7 +93,7 @@ const ProductCard11: FC<Props> = ({
       <ProductViewDialog
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
-        product={{ name, price, id, imgGroup: [imgUrl, imgUrl] }}
+        product={product}
       />
 
       <ContentWrapper>
