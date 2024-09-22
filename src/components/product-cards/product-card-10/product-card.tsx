@@ -12,7 +12,6 @@ import useProduct from "../use-product";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H4, Paragraph } from "components/Typography";
-import ProductViewDialog from "components/products-view/product-view-dialog";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 // STYLED COMPONENTS
 import { Card, CardMedia, FavoriteButton, StyledIconButton } from "./styles";
@@ -29,6 +28,7 @@ import { useUpdateWishlistMutation } from "services/wishlist-api";
 import { useSnackbar } from "notistack";
 import { WishlistContext } from "contexts/WishlistContext";
 import useQuotation from "hooks/useQuotation";
+import ProductViewDialog2 from "components/products-view/product-view-dialog2";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -148,16 +148,10 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
       </CardMedia>
 
       {/* PRODUCT VIEW BOX */}
-      <ProductViewDialog
+      <ProductViewDialog2
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
-        product={{
-          id,
-          slug: id,
-          name,
-          price,
-          imgGroup: [imgUrl],
-        }}
+        product={product}
       />
 
       <Box p={2} textAlign="center">

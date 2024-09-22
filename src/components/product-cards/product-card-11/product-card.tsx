@@ -7,7 +7,6 @@ import Rating from "@mui/material/Rating";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { Span } from "components/Typography";
-import ProductViewDialog from "components/products-view/product-view-dialog";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
 // LOCAL CUSTOM COMPONENTS
@@ -22,6 +21,7 @@ import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
 import { calculateDiscountPercentage } from "lib";
+import ProductViewDialog2 from "components/products-view/product-view-dialog2";
 
 // ========================================================
 type Props = {
@@ -90,7 +90,7 @@ const ProductCard11: FC<Props> = ({
       </ImageWrapper>
 
       {/* PRODUCT VIEW DIALOG BOX */}
-      <ProductViewDialog
+      <ProductViewDialog2
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
         product={product}

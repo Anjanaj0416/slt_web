@@ -109,7 +109,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
         const level1Mapped = {
           title: level1Name,
           icon: level1Icon,
-          href: "#",
+          href: `/products/search/${level1Name}`,
           menuComponent: maxDepth >= 2 ? "MegaMenu1" : "MegaMenu2",
         };
         //level 2 mapping
@@ -143,7 +143,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
               moreSubCategories:
                 level2Category.subCategories.length >
                 MAX_CATEGORY_MEGA_MENU_LEVEL2,
-              href: "#",
+              href: `/products/search/${level2Name}`,
             };
             //level 3 mapping
             if (level3Categories?.length > 0) {
@@ -151,7 +151,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
                 (level3Category) => ({
                   title: level3Category.name,
                   icon: level3Category.iconUrl,
-                  href: "#",
+                  href: `/products/search/${level3Category.name}`,
                 })
               );
 
@@ -169,7 +169,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
           const level2CategoriesMapped = categories.map((level2Category) => ({
             title: level2Category.name,
             icon: level2Category.iconUrl,
-            href: "#",
+            href: `/products/search/${level2Category.name}`,
             menuComponent: "MegaMenu2",
           }));
           level1Mapped["moreSubCategories"] =
@@ -209,14 +209,14 @@ const CategoryMenuCard: FC<Props> = (props) => {
           (level2Category) => ({
             title: level2Category.name,
             icon: level2Category.iconUrl,
-            href: "#",
+            href: `/products/search/${level2Category.name}`,
           })
         );
         //
         return {
           title: level1Name,
           icon: level1Icon,
-          href: "#",
+          href: `/products/search/${level1Name}`,
           subCategories: level2CategoriesMapped,
           moreSubCategories:
             level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2,
