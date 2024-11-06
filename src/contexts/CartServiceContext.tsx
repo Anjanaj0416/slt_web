@@ -264,7 +264,7 @@ const CartServiceProvider = (props: Props) => {
       cart?.cartItems?.reduce(
         (accumulator, current) =>
           (accumulator =
-            accumulator + current?.product?.price * current?.units),
+            accumulator + current?.product?.basePrice * current?.units),
         0
       ),
     [cart?.cartItems]
@@ -278,7 +278,7 @@ const CartServiceProvider = (props: Props) => {
             accumulator +
             calculateDiscountAmount(
               current?.product?.discountType,
-              current?.product?.price,
+              current?.product?.basePrice,
               current?.product?.discountAmount
             ) *
               current?.units),

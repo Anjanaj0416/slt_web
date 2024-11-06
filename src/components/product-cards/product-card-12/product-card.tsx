@@ -35,7 +35,7 @@ type Props = { product: Product1 };
 // ===========================================================
 
 const ProductCard9: FC<Props> = ({ product }: Props) => {
-  const { id, price, name, images } = product;
+  const { id, basePrice, name, images } = product;
   const { data: session } = useSession();
   const { wishlist, setWishlist } = useContext(WishlistContext);
   const [updateWishlist, { error }] = useUpdateWishlistMutation();
@@ -168,7 +168,7 @@ const ProductCard9: FC<Props> = ({ product }: Props) => {
             {/* <Rating size="small" value={rating} color="warn" readOnly /> */}
 
             {/* PRODUCT PRICE */}
-            <ProductPrice price={price} discount={50} />
+            <ProductPrice price={basePrice} discount={50} />
 
             {/* PRODUCT ADD TO CART BUTTON */}
             <LoadingButton

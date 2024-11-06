@@ -71,9 +71,9 @@ function calculateDiscountAmount(
 /**
  * Calculates the discount percentage based on the discount type, price, and discount amount.
  *
- * @param {"NONE" | "PERCENTAGE" | "FLAT"} type - The type of discount applied. 
+ * @param {"NONE" | "PERCENTAGE" | "FLAT"} type - The type of discount applied.
  * @param {number} price - The original price of the item.
- * @param {number} discount - The discount amount. 
+ * @param {number} discount - The discount amount.
  * @returns {number} The calculated discount percentage
  * */
 
@@ -98,7 +98,10 @@ function calculateDiscountPercentage(
  * @returns - RETURN PRICE WITH CURRENCY
  */
 
-function currency(price: number, fraction: number = 2) {
+function currency(price: number | string, fraction: number = 2) {
+  if (typeof price === "string") {
+    return null;
+  }
   const formatCurrency = currencyJs(`${price}`).format({
     precision: fraction,
     symbol: "LKR",

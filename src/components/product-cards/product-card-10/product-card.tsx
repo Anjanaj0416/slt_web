@@ -35,7 +35,7 @@ type Props = { product: Product1 };
 // ==============================================================
 
 const ProductCard20: FC<Props> = ({ product }: Props) => {
-  const { id, price, name, images, productType } = product;
+  const { id, basePrice, name, images, productType } = product;
   const [updateWishlist, { error }] = useUpdateWishlistMutation();
   const { data } = useSession();
   const user = data?.user as User1;
@@ -165,7 +165,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           py={0.5}
           color={isQuotationProduct ? "transparent" : "#000000"}
         >
-          {currency(price)}
+          {basePrice}
         </H4>
 
         {/* PRODUCT RATINGS */}

@@ -46,7 +46,7 @@ const ProductCard11: FC<Props> = ({
   isUpdating,
   isFavorite = true,
 }) => {
-  const { id, name, price, discountAmount, images, discountType } = product;
+  const { id, name, basePrice, discountAmount, images, discountType } = product;
   const { openModal, toggleDialog } = useProduct(id);
 
   const { handleAddToCart } = useCartService();
@@ -64,7 +64,7 @@ const ProductCard11: FC<Props> = ({
         <DiscountChip
           discount={calculateDiscountPercentage(
             discountType,
-            price,
+            basePrice,
             discountAmount
           )}
         />
@@ -117,10 +117,10 @@ const ProductCard11: FC<Props> = ({
           <ProductPrice
             discount={calculateDiscountPercentage(
               discountType,
-              price,
+              basePrice,
               discountAmount
             )}
-            price={price}
+            price={basePrice}
           />
         </Box>
 

@@ -44,7 +44,7 @@ const ProductViewDialog2: FC<Props> = ({
   const {
     id,
     name,
-    price,
+    basePrice,
     discountAmount,
     images,
     discountType,
@@ -76,13 +76,13 @@ const ProductViewDialog2: FC<Props> = ({
     if (discountAmount) {
       const discount = calculateDiscountPercentage(
         discountType,
-        price,
+        basePrice,
         discountAmount
       );
 
-      return calculateDiscountPrice(price, discount);
+      return calculateDiscountPrice(basePrice, discount);
     }
-    return currency(price);
+    return currency(basePrice);
   };
 
   const isQuotationProduct = productType === "QUOTATION";

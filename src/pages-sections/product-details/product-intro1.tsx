@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
@@ -17,7 +17,7 @@ import { FlexBox, FlexRowCenter } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // CUSTOM DATA MODEL
-import { Product1 } from "models/Product.model";
+import { Product1, ProductVariant } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
 import useCartService from "hooks/useCartService";
 import useQuotation from "hooks/useQuotation";
@@ -27,14 +27,97 @@ import { User1 } from "models/User.model";
 
 import ShareIcon from "@mui/icons-material/Share";
 import ShareModal, { ShareModalRef } from "./ShareModal";
-import { Tooltip } from "@mui/material";
+import { Chip, CircularProgress, Tooltip } from "@mui/material";
+import { useSnackbar } from "notistack";
 
 // ================================================================
 type Props = { product: Product1 };
 // ================================================================
 
+interface MappedAttribute {
+  id: string;
+  title: string;
+  values: string[];
+}
+
 const ProductIntro1: FC<Props> = ({ product }) => {
-  const { price, name, brand, images, videos, productType, id } = product || {};
+  const { basePrice, name, brand, images, videos, productType, variants, id } =
+    product || {};
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [selectedAttributes, setSelectedAttributes] = useState([]);
+  const [variantId, setVariantId] = useState<string>();
+  const [price, setPrice] = useState<number>();
+  const [quantity, setQuantity] = useState<number>();
+
+  useEffect(() => {
+    if (productType === "DIRECT_BUYING") {
+      const maxStockVariant = variants.reduce((maxVariant, currentVariant) => {
+        return currentVariant.units > maxVariant.units
+          ? currentVariant
+          : maxVariant;
+      });
+      setQuantity(maxStockVariant.units);
+    }
+  }, []);
+
+  const mapAttributes = (variants: ProductVariant[]): MappedAttribute[] => {
+    const attributeMap: { [key: string]: Set<string> } = {};
+
+    variants.forEach((variant) => {
+      variant.attributes?.forEach((attribute) => {
+        if (!attributeMap[attribute.name]) {
+          attributeMap[attribute.name] = new Set();
+        }
+        attributeMap[attribute.name].add(attribute.value);
+      });
+    });
+
+    return Object.entries(attributeMap).map(([name, values]) => ({
+      id: variants.find(
+        (variant) => variant.attributes?.some((attr) => attr.name === name)
+      )!.id,
+      title: name,
+      values: Array.from(values),
+    }));
+  };
+
+  function findVariantByAttributes(variants, attributesToFind) {
+    return variants.find((variant) => {
+      const attributeMap = Object.fromEntries(
+        variant.attributes.map((attr) => [attr.name, attr.value])
+      );
+
+      return attributesToFind.every(
+        (attr) => attributeMap[attr.name] === attr.value
+      );
+    });
+  }
+
+  const mappedAttributes = mapAttributes(variants);
+
+  useEffect(() => {
+    if (selectedAttributes.length < 1) {
+      return;
+    }
+
+    const selectedVariant = findVariantByAttributes(
+      variants,
+      selectedAttributes
+    );
+    if (selectedVariant) {
+      setVariantId(selectedVariant.id);
+      setPrice(selectedVariant.price);
+      setQuantity(selectedVariant.units);
+    } else {
+      setSelectedAttributes([]);
+      enqueueSnackbar("Selected Variant Not Found", {
+        variant: "error",
+      });
+    }
+  }, [selectedAttributes]);
+
   const { data } = useSession();
   const user = data?.user as User1;
   const {
@@ -62,12 +145,38 @@ const ProductIntro1: FC<Props> = ({ product }) => {
   ];
 
   // HANDLE CHANGE TYPE AND OPTIONS
-  // const handleChangeVariant = (variantName: string, value: string) => () => {
-  //   setSelectVariants((state) => ({
-  //     ...state,
-  //     [variantName.toLowerCase()]: value,
-  //   }));
-  // };
+  const handleChangeVariant = (name: string, value: string) => () => {
+    setSelectedAttributes((state) => {
+      // Find the index of the existing attribute in the state
+      const existingAttributeIndex = state.findIndex((e) => e.name === name);
+
+      // Check if the attribute already exists
+      if (existingAttributeIndex !== -1) {
+        const existingAttribute = state[existingAttributeIndex];
+
+        // If the value is the same, remove it
+        if (existingAttribute.value === value) {
+          return state.filter((_, index) => index !== existingAttributeIndex);
+        } else {
+          // If the value is different, create a new state with the updated value
+          return [
+            ...state.slice(0, existingAttributeIndex),
+            { ...existingAttribute, value }, // Update the existing attribute value
+            ...state.slice(existingAttributeIndex + 1),
+          ];
+        }
+      }
+
+      // If the attribute does not exist, add it to the state
+      return [
+        ...state,
+        {
+          name,
+          value,
+        },
+      ];
+    });
+  };
 
   // HANDLE SELECT IMAGE
   const handleImageClick = (ind: number) => () => setSelectedImage(ind);
@@ -179,33 +288,40 @@ const ProductIntro1: FC<Props> = ({ product }) => {
           </FlexBox>
 
           {/* PRODUCT VARIANTS */}
-          {/* {productVariants.map((variant) => (
+          {mappedAttributes.map((variant) => (
             <Box key={variant.id} mb={2}>
               <H6 mb={1}>{variant.title}</H6>
 
-              {variant.values.map(({ id, value }) => (
+              {variant.values.map((value, index) => (
                 <Chip
-                  key={id}
+                  key={index}
                   label={value}
                   onClick={handleChangeVariant(variant.title, value)}
                   sx={{ borderRadius: "4px", mr: 1, cursor: "pointer" }}
                   color={
-                    selectVariants[variant.title.toLowerCase()] === value
+                    selectedAttributes.find((e) => e.value === value)
                       ? "primary"
                       : "default"
                   }
                 />
               ))}
             </Box>
-          ))} */}
+          ))}
 
           {/* PRICE & STOCK */}
           {!isQuotationProduct && (
             <Box pt={1} mb={3}>
               <H2 color="primary.main" mb={0.5} lineHeight="1">
-                {currency(price)}
+                {price ? currency(price) : `LKR${basePrice}`}
               </H2>
-              <Box color="inherit">Stock Available</Box>
+
+              {quantity !== undefined ? (
+                <Box color="inherit">
+                  {quantity > 0 ? "Stock Available" : "Out of Stocks"}
+                </Box>
+              ) : (
+                <CircularProgress size={20} />
+              )}
             </Box>
           )}
 
@@ -215,6 +331,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
               <LoadingButton
                 color="primary"
                 variant="contained"
+                disabled={quantity < 1}
                 loading={isButtonLoading || isCreatingQuotation}
                 onClick={
                   isQuotationProduct ? requestQuota : handleCartAmountChange(1)
@@ -226,7 +343,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
             ) : (
               <>
                 <Button
-                  disabled={isButtonLoading}
+                  disabled={isButtonLoading || quantity < 1}
                   size="small"
                   sx={{ p: 1 }}
                   color="primary"
@@ -244,7 +361,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
                 </H3>
 
                 <Button
-                  disabled={isButtonLoading}
+                  disabled={isButtonLoading || quantity < 1}
                   size="small"
                   sx={{ p: 1 }}
                   color="primary"
