@@ -60,7 +60,6 @@ const ProductSearchPageView = ({
       initTotalPages,
       setTotalResult
     );
-  console.log(products);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value - 1);

@@ -1,4 +1,4 @@
-import { Product1 } from "./Product.model";
+import { Product1, ProductVariant } from "./Product.model";
 
 interface User {
   id: string;
@@ -12,7 +12,15 @@ interface User {
 }
 //
 export interface CartItem {
-  product: Product1;
+  productId: string;
+  productName: string;
+  basePrice: string;
+  brand: string;
+  productType: "DIRECT_BUYING" | "QUOTATION";
+  discountAmount: number;
+  discountType: "NONE" | "PERCENTAGE" | "FLAT";
+  images: string[];
+  productVariant: ProductVariant;
   units: number;
 }
 //

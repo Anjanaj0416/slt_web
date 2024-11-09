@@ -26,8 +26,8 @@ const ShopsPageView = ({ storesData }: Props) => {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value - 1);
   };
-  const resultMinRange = (page * PAGE_SIZE) + 1;
-  const resultMaxRange = (page + 1) * PAGE_SIZE ;
+  const resultMinRange = page * PAGE_SIZE + 1;
+  const resultMaxRange = (page + 1) * PAGE_SIZE;
 
   return (
     <Container sx={{ mt: 4, mb: 6 }}>

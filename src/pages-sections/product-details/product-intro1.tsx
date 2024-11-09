@@ -15,7 +15,7 @@ import LazyImage from "components/LazyImage";
 import { H1, H2, H3, H6 } from "components/Typography";
 import { FlexBox, FlexRowCenter } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
-import { currency } from "lib";
+import { calculateDiscountAmount, currency } from "lib";
 // CUSTOM DATA MODEL
 import { Product1, ProductVariant } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
@@ -41,13 +41,23 @@ interface MappedAttribute {
 }
 
 const ProductIntro1: FC<Props> = ({ product }) => {
-  const { basePrice, name, brand, images, videos, productType, variants, id } =
-    product || {};
+  const {
+    basePrice,
+    name,
+    brand,
+    images,
+    videos,
+    productType,
+    variants,
+    id,
+    discountAmount,
+    discountType,
+  } = product || {};
 
   const { enqueueSnackbar } = useSnackbar();
 
   const [selectedAttributes, setSelectedAttributes] = useState([]);
-  const [variantId, setVariantId] = useState<string>();
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant>();
   const [price, setPrice] = useState<number>();
   const [quantity, setQuantity] = useState<number>();
 
@@ -83,6 +93,18 @@ const ProductIntro1: FC<Props> = ({ product }) => {
     }));
   };
 
+  const getDiscountedPrice = () => {
+    if (discountAmount) {
+      const discount = calculateDiscountAmount(
+        discountType,
+        selectedVariant.price,
+        discountAmount
+      );
+      return selectedVariant.price - discount;
+    }
+    return selectedVariant.price;
+  };
+
   function findVariantByAttributes(variants, attributesToFind) {
     return variants.find((variant) => {
       const attributeMap = Object.fromEntries(
@@ -98,7 +120,9 @@ const ProductIntro1: FC<Props> = ({ product }) => {
   const mappedAttributes = mapAttributes(variants);
 
   useEffect(() => {
-    if (selectedAttributes.length < 1) {
+    if (selectedAttributes.length < mappedAttributes.length) {
+      setSelectedVariant(null);
+      setPrice(null);
       return;
     }
 
@@ -107,7 +131,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
       selectedAttributes
     );
     if (selectedVariant) {
-      setVariantId(selectedVariant.id);
+      setSelectedVariant(selectedVariant);
       setPrice(selectedVariant.price);
       setQuantity(selectedVariant.units);
     } else {
@@ -127,7 +151,8 @@ const ProductIntro1: FC<Props> = ({ product }) => {
     selectedProductId,
     isUpdating,
   } = useCartService();
-  const carItemIds = cart.cartItems.map((item) => item.product.id);
+
+  const carItemIds = cart.cartItems.map((item) => item.productVariant.id);
   const [selectedImage, setSelectedImage] = useState(0);
   const { requestQuota, isCreatingQuotation } = useQuotation(
     product.id,
@@ -135,7 +160,8 @@ const ProductIntro1: FC<Props> = ({ product }) => {
     user?.id
   );
   const modalRef = useRef<ShareModalRef>();
-  const isButtonLoading = selectedProductId === product?.id && isUpdating;
+  const isButtonLoading =
+    selectedProductId === selectedVariant?.id && isUpdating;
   //
   const isQuotationProduct = productType === "QUOTATION";
   //
@@ -183,13 +209,20 @@ const ProductIntro1: FC<Props> = ({ product }) => {
 
   // HANDLE CHANGE CART
   const handleCartAmountChange = (amount: number) => () => {
+    if (!selectedVariant) {
+      enqueueSnackbar("Please Select Variant", {
+        variant: "warning",
+      });
+      return;
+    }
     if (
       amount === -1 &&
-      cart.cartItems.find((e) => e.product.id === product.id).units === 1
+      cart.cartItems.find((e) => e.productVariant.id === selectedVariant.id)
+        .units === 1
     ) {
-      handleRemoveFromCart(product);
+      handleRemoveFromCart(selectedVariant);
     } else {
-      handleAddToCart(product, amount);
+      handleAddToCart(product, selectedVariant, amount);
     }
   };
 
@@ -312,9 +345,20 @@ const ProductIntro1: FC<Props> = ({ product }) => {
           {!isQuotationProduct && (
             <Box pt={1} mb={3}>
               <H2 color="primary.main" mb={0.5} lineHeight="1">
-                {price ? currency(price) : `LKR${basePrice}`}
+                {price
+                  ? currency(discountAmount ? getDiscountedPrice() : price)
+                  : `LKR${basePrice}`}
               </H2>
-
+              {selectedVariant && discountAmount ? (
+                <Box
+                  component="del"
+                  fontWeight={600}
+                  color="grey.600"
+                  fontSize={20}
+                >
+                  {currency(price)}
+                </Box>
+              ) : null}
               {quantity !== undefined ? (
                 <Box color="inherit">
                   {quantity > 0 ? "Stock Available" : "Out of Stocks"}
@@ -327,7 +371,7 @@ const ProductIntro1: FC<Props> = ({ product }) => {
 
           {/* ADD TO CART BUTTON */}
           <FlexBox alignItems="center" sx={{ mb: 4.5 }}>
-            {!carItemIds?.includes(product.id) ? (
+            {!carItemIds?.includes(selectedVariant?.id) ? (
               <LoadingButton
                 color="primary"
                 variant="contained"
@@ -355,8 +399,9 @@ const ProductIntro1: FC<Props> = ({ product }) => {
 
                 <H3 fontWeight="600" mx={2.5}>
                   {
-                    cart.cartItems.find((e) => e.product.id === product.id)
-                      .units
+                    cart.cartItems.find(
+                      (e) => e.productVariant.id === selectedVariant.id
+                    ).units
                   }
                 </H3>
 

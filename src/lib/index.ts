@@ -41,8 +41,15 @@ function renderProductCount(
  * @returns - RETURN NEW PRICE
  */
 
-function calculateDiscountPrice(price: number, discount: number) {
+function calculateDiscountPrice(
+  price: number,
+  discount: number,
+  formatted = true
+) {
   const afterDiscount = Number((price - price * (discount / 100)).toFixed(2));
+  if (!formatted) {
+    return afterDiscount;
+  }
   return currency(afterDiscount);
 }
 
@@ -87,8 +94,10 @@ function calculateDiscountPercentage(
   } else if (type === "PERCENTAGE") {
     return discount;
   }
+  const percentage = (discount / price) * 100;
+  const isInt = percentage.toFixed(2).split(".")[1] === "00";
 
-  return Math.round((discount / price) * 100);
+  return isInt ? percentage : +percentage.toFixed(2);
 }
 
 /**
@@ -100,7 +109,22 @@ function calculateDiscountPercentage(
 
 function currency(price: number | string, fraction: number = 2) {
   if (typeof price === "string") {
-    return null;
+    const range = price.split(" - ");
+    if (range.length > 1) {
+      const formatCurrency = `${currencyJs(range[0]).format({
+        precision: fraction,
+        symbol: "LKR",
+      })} - ${currencyJs(range[1]).format({
+        precision: fraction,
+        symbol: "",
+      })}`;
+
+      return formatCurrency;
+    }
+    return currencyJs(`${price}`).format({
+      precision: fraction,
+      symbol: "LKR",
+    });
   }
   const formatCurrency = currencyJs(`${price}`).format({
     precision: fraction,

@@ -12,7 +12,12 @@ import Remove from "@mui/icons-material/Remove";
 import { FlexBox } from "components/flex-box";
 import { H6, Tiny } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
-import { currency } from "lib";
+import {
+  calculateDiscountAmount,
+  calculateDiscountPercentage,
+  calculateDiscountPrice,
+  currency,
+} from "lib";
 import { CartItem } from "models/User.model";
 import useCartService from "hooks/useCartService";
 import { ENVIRONMENT } from "config";
@@ -25,14 +30,38 @@ interface Props {
 // ==============================================================
 
 const MiniCartItem: FC<Props> = ({ item }) => {
-  const { product, units } = item;
+  const {
+    productVariant,
+    productName,
+    productId,
+    images,
+    units,
+    discountAmount,
+    discountType,
+  } = item;
   const { handleUpdateQty, handleRemoveFromCart, isLoading } = useCartService();
+
+  const attributeNames: string[] = productVariant.attributes.map(
+    (attr) => attr.value
+  );
+
+  const getPrice = () => {
+    const discount = calculateDiscountAmount(
+      discountType,
+      productVariant.price,
+      discountAmount
+    );
+    if (discountAmount) {
+      return productVariant.price - discount;
+    }
+    return productVariant.price;
+  };
   //
   return (
     <FlexBox
       py={2}
       px={2.5}
-      key={product?.id}
+      key={productId}
       alignItems="center"
       borderBottom="1px solid"
       borderColor="divider"
@@ -43,8 +72,8 @@ const MiniCartItem: FC<Props> = ({ item }) => {
           color="primary"
           variant="outlined"
           sx={{ height: 28, width: 28, borderRadius: 50 }}
-          onClick={() => handleUpdateQty(product, 1)}
-          disabled={units >= product?.units || isLoading}
+          onClick={() => handleUpdateQty(productVariant, 1)}
+          disabled={units >= productVariant?.units || isLoading}
         >
           <Add fontSize="small" />
         </Button>
@@ -56,18 +85,18 @@ const MiniCartItem: FC<Props> = ({ item }) => {
           color="primary"
           variant="outlined"
           disabled={units <= 1 || isLoading}
-          onClick={() => handleUpdateQty(product, -1)}
+          onClick={() => handleUpdateQty(productVariant, -1)}
           sx={{ height: 28, width: 28, borderRadius: 50 }}
         >
           <Remove fontSize="small" />
         </Button>
       </FlexBox>
 
-      <Link href={`/products/${product?.id}`}>
+      <Link href={`/products/${productId}`}>
         <Avatar
-          alt={product?.name}
+          alt={productName}
           src={
-            `${ENVIRONMENT.S3_BUCKET_URL}/${product.images[0]}` ||
+            `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}` ||
             `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
           }
           sx={{ mx: 1, width: 75, height: 75 }}
@@ -80,25 +109,44 @@ const MiniCartItem: FC<Props> = ({ item }) => {
         whiteSpace="nowrap"
         overflow="hidden"
       >
-        <Link href={`/products/${product?.id}`}>
+        <Link href={`/products/${productId}`}>
           <H6 ellipsis className="title">
-            {product?.name}
+            {productName}
           </H6>
         </Link>
 
+        <div>
+          {attributeNames.map((attrName, index) => (
+            <Box
+              key={index}
+              fontSize={10}
+              bgcolor="#FCE9EC"
+              color="primary.main"
+              borderRadius={4}
+              display="inline-block"
+              minWidth={25}
+              paddingX={0.4}
+              paddingY={0.2}
+              mr={1}
+              textAlign={"center"}
+            >
+              {attrName}
+            </Box>
+          ))}
+        </div>
         <Tiny color="grey.600">
-          {currency(product?.price)} x {units}
+          {currency(+getPrice())} x {units}
         </Tiny>
 
         <H6 color="primary.main" mt={0.5}>
-          {currency(units * product?.price)}
+          {currency(units * +getPrice())}
         </H6>
       </Box>
 
       <IconButton
         size="small"
         sx={{ marginLeft: 2.5 }}
-        onClick={() => handleRemoveFromCart(product)}
+        onClick={() => handleRemoveFromCart(productVariant)}
         disabled={isLoading}
       >
         <Close fontSize="small" />

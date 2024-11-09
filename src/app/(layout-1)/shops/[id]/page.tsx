@@ -23,7 +23,7 @@ export default async function ShopDetails({ params }) {
       storeId: params.id,
       query: "size=9",
     });
-    
+
     return <ShopDetailsPageView store={store} productsData={productsData} />;
   } catch (error) {
     notFound();

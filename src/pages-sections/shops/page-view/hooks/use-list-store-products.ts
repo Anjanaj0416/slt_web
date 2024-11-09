@@ -49,6 +49,7 @@ const useListStoreProducts = (
             category: item.category,
             discount: item.discountAmount,
             discountType: item.discountType,
+            variants: item.variants,
             images: item.images,
             description: item.description,
           }));

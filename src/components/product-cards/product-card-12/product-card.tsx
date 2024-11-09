@@ -35,7 +35,7 @@ type Props = { product: Product1 };
 // ===========================================================
 
 const ProductCard9: FC<Props> = ({ product }: Props) => {
-  const { id, basePrice, name, images } = product;
+  const { id, basePrice, name, images, variants } = product;
   const { data: session } = useSession();
   const { wishlist, setWishlist } = useContext(WishlistContext);
   const [updateWishlist, { error }] = useUpdateWishlistMutation();
@@ -48,10 +48,18 @@ const ProductCard9: FC<Props> = ({ product }: Props) => {
     : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
   // Map wishlist products to product ids
   const wishListProductIds = wishlist?.products?.map((product) => product.id);
+
+  const minPriceVariant =
+    variants.length > 0 &&
+    variants.reduce((minVariant, currentVariant) => {
+      return currentVariant.units > 0 && currentVariant.price < minVariant.price
+        ? currentVariant
+        : minVariant;
+    });
   //
-  const isOutOfStock = product?.units <= 0;
+  const isOutOfStock = minPriceVariant?.units <= 0;
   //
-  const cartUnits = isItemInCart(product)?.units;
+  const cartUnits = isItemInCart(minPriceVariant)?.units;
 
   // const { cartItem, handleCartAmountChange, isFavorite, toggleFavorite } =
   //   useProduct(slug);
@@ -175,9 +183,9 @@ const ProductCard9: FC<Props> = ({ product }: Props) => {
               fullWidth
               color="dark"
               variant="outlined"
-              onClick={() => handleAddToCart(product, 1)}
+              onClick={() => handleAddToCart(product, minPriceVariant, 1)}
               loading={selectedProductId === product?.id && isLoading}
-              disabled={isOutOfStock || cartUnits >= product?.units}
+              disabled={isOutOfStock || cartUnits >= minPriceVariant?.units}
             >
               {isOutOfStock ? "Out of stock" : "Add To Cart"}
             </LoadingButton>

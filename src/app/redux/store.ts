@@ -32,7 +32,7 @@ const rootReducers = combineReducers({
   [storeAndProductSearchApi.reducerPath]: storeAndProductSearchApi.reducer,
   [quotationApi.reducerPath]: quotationApi.reducer,
   [reviewApi.reducerPath]: reviewApi.reducer,
-  [complainApi.reducerPath]:complainApi.reducer
+  [complainApi.reducerPath]: complainApi.reducer,
 });
 
 // Define custom middlewares for the store
@@ -50,7 +50,7 @@ const apiMiddlewares = [
   quotationApi.middleware,
   reviewApi.middleware,
   categoryApi.middleware,
-  complainApi.middleware
+  complainApi.middleware,
 ]; // Middleware for Redux Toolkit Query
 //
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors

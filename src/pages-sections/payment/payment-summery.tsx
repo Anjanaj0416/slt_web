@@ -15,7 +15,7 @@ const PaymentSummary = () => {
       <PaymentItem title="Subtotal:" amount={totalPrice} />
       <PaymentItem title="Shipping:" />
       {/* <PaymentItem title="Tax:" /> */}
-      <PaymentItem title="Discount:" amount={totalDiscount}/>
+      <PaymentItem title="Discount:" amount={totalDiscount} />
 
       <Divider sx={{ my: 2 }} />
 
@@ -25,7 +25,7 @@ const PaymentSummary = () => {
         lineHeight={1}
         textAlign="right"
       >
-        {currency(totalPrice-totalDiscount)}
+        {currency(totalPrice - totalDiscount)}
       </Paragraph>
     </Card>
   );

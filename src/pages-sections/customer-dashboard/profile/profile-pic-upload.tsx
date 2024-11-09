@@ -41,7 +41,7 @@ const ProfilePicUpload: FC<Props> = ({
         src={
           !open && selectedImage
             ? selectedImage
-            : `${ENVIRONMENT.S3_BUCKET_URL}/${profilePictureUrl}` 
+            : `${ENVIRONMENT.S3_BUCKET_URL}/${profilePictureUrl}`
         }
         sx={{ height: 64, width: 64 }}
       />

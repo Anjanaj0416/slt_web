@@ -2,7 +2,7 @@
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 import { calculateDiscountAmount } from "lib";
 //
-import { Product1 } from "models/Product.model";
+import { Product1, ProductVariant } from "models/Product.model";
 import { CartItem, User1, UserCart } from "models/User.model";
 import { useSession } from "next-auth/react";
 import { enqueueSnackbar } from "notistack";
@@ -20,18 +20,22 @@ import { useLazyGetCartQuery, useUpdateCartMutation } from "services/cart-api";
 //
 type ContextState = {
   handleFetch: () => void;
-  handleAddToCart: (product: Product1, units: number) => void;
+  handleAddToCart: (
+    product: Product1,
+    productVariant: ProductVariant,
+    units: number
+  ) => void;
   isCartFetching: boolean;
   cart: UserCart;
   setCart: Dispatch<SetStateAction<UserCart>>;
   isUpdating: boolean;
-  handleRemoveFromCart: (product: Product1) => void;
-  handleUpdateQty: (product: Product1, units: number) => void;
+  handleRemoveFromCart: (productVariant: ProductVariant) => void;
+  handleUpdateQty: (productVariant: ProductVariant, units: number) => void;
   length: number;
   isLoading: boolean;
   totalPrice: number;
   totalDiscount: number;
-  isItemInCart: (product: Product1) => CartItem | null | undefined;
+  isItemInCart: (productVariant: ProductVariant) => CartItem | null | undefined;
   selectedProductId: string;
   note: string;
   setNote: Dispatch<SetStateAction<string>>;
@@ -102,15 +106,15 @@ const CartServiceProvider = (props: Props) => {
   }, [handleFetch, user?.cart?.id, user?.id]);
   //
   const handleUpdateQty = useCallback(
-    async (product: Product1, units: number) => {
+    async (productVariant: ProductVariant, units: number) => {
       if (!user?.id) {
         openUnAuthenticatedModal(true);
         return;
       }
-      setSelectedProductId(product?.id);
+      setSelectedProductId(productVariant?.id);
       //
       const newCartList = cart?.cartItems?.map((item) =>
-        item?.product?.id === product?.id
+        item?.productVariant?.id === productVariant?.id
           ? { ...item, units: item?.units + units }
           : { ...item }
       );
@@ -122,7 +126,7 @@ const CartServiceProvider = (props: Props) => {
           body: {
             cartItems: newCartList?.map((item) => ({
               units: item?.units,
-              productId: item?.product?.id,
+              productVariantId: item?.productVariant?.id,
             })),
           },
         });
@@ -146,34 +150,61 @@ const CartServiceProvider = (props: Props) => {
   );
   //
   const isItemInCart = useCallback(
-    (product: Product1) =>
-      cart?.cartItems?.find((item) => item?.product?.id === product?.id),
+    (productVariant: ProductVariant) =>
+      cart?.cartItems?.find(
+        (item) => item?.productVariant?.id === productVariant?.id
+      ),
     [cart?.cartItems]
   );
   //
   const handleAddToCart = useCallback(
-    async (product: Product1, units: number) => {
+    async (
+      product: Product1,
+      productVariant: ProductVariant,
+      units: number
+    ) => {
+      const {
+        id: productId,
+        images,
+        basePrice,
+        productType,
+        brand,
+        discountType,
+        discountAmount,
+        name: productName,
+      } = product;
+      console.log("unit:", units);
+
       if (!user?.id || !user?.cart?.id) {
         openUnAuthenticatedModal(true);
         return;
       }
       //
-      const availableCartItem = isItemInCart(product);
+      const availableCartItem = isItemInCart(productVariant);
       //
       try {
         //
         if (availableCartItem) {
-          if (availableCartItem?.units < product?.units) {
-            await handleUpdateQty(product, units);
+          if (availableCartItem?.units < productVariant?.units) {
+            await handleUpdateQty(productVariant, units);
           }
           return;
         }
-        setSelectedProductId(product?.id);
+        setSelectedProductId(productVariant?.id);
         //
         const newItem: CartItem = {
-          product,
+          productId,
+          basePrice,
+          images,
+          productVariant,
           units,
+          productName,
+          brand,
+          productType,
+          discountAmount,
+          discountType,
         };
+
         //
         await updateCart({
           userId: user?.id,
@@ -181,7 +212,7 @@ const CartServiceProvider = (props: Props) => {
           body: {
             cartItems: [...cart?.cartItems, newItem]?.map((item) => ({
               units: item?.units,
-              productId: item?.product?.id,
+              productVariantId: item?.productVariant?.id,
             })),
           },
         });
@@ -208,22 +239,22 @@ const CartServiceProvider = (props: Props) => {
   );
   //
   const handleRemoveFromCart = useCallback(
-    async (product: Product1) => {
+    async (productVariant: ProductVariant) => {
       if (!user?.id || !user?.cart?.id) {
         openUnAuthenticatedModal(true);
         return;
       }
-      setSelectedProductId(product?.id);
+      setSelectedProductId(productVariant?.id);
       try {
         await updateCart({
           userId: user?.id,
           cartId: user?.cart?.id,
           body: {
             cartItems: cart?.cartItems
-              .filter((item) => item?.product?.id !== product?.id)
+              .filter((item) => item?.productVariant?.id !== productVariant?.id)
               .map((item) => ({
                 units: item?.units,
-                productId: item?.product?.id,
+                productVariantId: item?.productVariant?.id,
               })),
           },
         });
@@ -231,19 +262,16 @@ const CartServiceProvider = (props: Props) => {
         setCart((prev) => ({
           ...prev,
           cartItems: prev?.cartItems?.filter(
-            (item) => item?.product?.id !== product?.id
+            (item) => item?.productVariant?.id !== productVariant?.id
           ),
         }));
-        enqueueSnackbar(
-          `${product?.name} successfully removed from your cart`,
-          {
-            variant: "success",
-            anchorOrigin: {
-              vertical: "top",
-              horizontal: "center",
-            },
-          }
-        );
+        enqueueSnackbar("Item successfully removed from your cart", {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "center",
+          },
+        });
       } catch (error) {
         console.error(error);
       } finally {
@@ -264,7 +292,7 @@ const CartServiceProvider = (props: Props) => {
       cart?.cartItems?.reduce(
         (accumulator, current) =>
           (accumulator =
-            accumulator + current?.product?.basePrice * current?.units),
+            accumulator + current?.productVariant?.price * current?.units),
         0
       ),
     [cart?.cartItems]
@@ -277,9 +305,9 @@ const CartServiceProvider = (props: Props) => {
           (accumulator =
             accumulator +
             calculateDiscountAmount(
-              current?.product?.discountType,
-              current?.product?.basePrice,
-              current?.product?.discountAmount
+              current?.discountType,
+              current?.productVariant.price,
+              current?.discountAmount
             ) *
               current?.units),
         0

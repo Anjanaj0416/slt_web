@@ -15,7 +15,7 @@ export const complainApi = createApi({
   endpoints: (builder) => ({
     createComplain: builder.mutation({
       query: ({ body }: { body: ComplainPOSTRequest }) => ({
-        url: '/complains',
+        url: "/complains",
         method: "POST",
         body,
       }),
