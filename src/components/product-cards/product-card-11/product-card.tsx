@@ -11,7 +11,6 @@ import { Paragraph, Span } from "components/Typography";
 import useProduct from "../use-product";
 // LOCAL CUSTOM COMPONENTS
 import HoverActions from "./hover-actions";
-import ProductPrice from "../product-price";
 import ProductTitle from "../product-title";
 import DiscountChip from "../discount-chip";
 import QuantityButtons from "./quantity-buttons";

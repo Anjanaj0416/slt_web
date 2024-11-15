@@ -24,9 +24,9 @@ const HoverActions: FC<Props> = ({
 }) => {
   return (
     <HoverIconWrapper className="hover-box">
-      <IconButton onClick={toggleView}>
+      {/* <IconButton onClick={toggleView}>
         <RemoveRedEye color="disabled" fontSize="small" />
-      </IconButton>
+      </IconButton> */}
 
       <IconButton disabled={disabledFavButton} onClick={toggleFavorite}>
         {isFavorite ? (

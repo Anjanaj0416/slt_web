@@ -11,7 +11,7 @@ import { HoverIconWrapper } from "./styles";
 interface Props {
   isFavorite: boolean;
   disabledFavButton?: boolean;
-  toggleView: () => void;
+  //toggleView: () => void;
   toggleFavorite: () => void;
 }
 // ==============================================================
@@ -20,13 +20,13 @@ const HoverActions: FC<Props> = ({
   isFavorite,
   disabledFavButton,
   toggleFavorite,
-  toggleView,
+  //toggleView,
 }) => {
   return (
     <HoverIconWrapper className="hover-box">
-      <IconButton onClick={toggleView}>
+      {/* <IconButton onClick={toggleView}>
         <RemoveRedEye color="disabled" fontSize="small" />
-      </IconButton>
+      </IconButton> */}
 
       <IconButton disabled={disabledFavButton} onClick={toggleFavorite}>
         {isFavorite ? (

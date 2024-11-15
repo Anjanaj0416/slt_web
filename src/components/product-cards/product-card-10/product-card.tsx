@@ -6,7 +6,6 @@ import { FC, useContext } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
 // GLOBAL CUSTOM COMPONENTS
@@ -159,9 +158,9 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         </Link>
 
         {/* PRODUCT VIEW BUTTON */}
-        <StyledIconButton className="product-actions" onClick={toggleDialog}>
+        {/* <StyledIconButton className="product-actions" onClick={toggleDialog}>
           <RemoveRedEye color="disabled" fontSize="small" />
-        </StyledIconButton>
+        </StyledIconButton> */}
 
         {/* PRODUCT FAVORITE BUTTON */}
         <FavoriteButton className="product-actions" onClick={toggleFavorite}>

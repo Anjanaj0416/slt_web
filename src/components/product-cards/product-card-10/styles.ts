@@ -31,7 +31,7 @@ export const StyledIconButton = styled(IconButton)({
 });
 
 export const FavoriteButton = styled(IconButton)({
-  top: 45,
+  top: 10,
   right: -40,
   position: "absolute",
   transition: "right 0.3s .2s",
