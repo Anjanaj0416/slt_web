@@ -45,6 +45,13 @@ const CheckoutForm = () => {
           {currency(totalDiscount)}
         </Span>
       </FlexBetween>
+      <FlexBetween mb={2}>
+        <Span color="grey.600">Sub Total:</Span>
+
+        <Span fontSize={18} fontWeight={600} lineHeight="1">
+          {currency(totalPrice - totalDiscount)}
+        </Span>
+      </FlexBetween>
       <Divider sx={{ mb: 2 }} />
 
       <FlexBox alignItems="center" columnGap={1} mb={2}>
