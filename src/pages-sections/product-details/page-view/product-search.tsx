@@ -31,6 +31,7 @@ type Props = {
   products: Product1[];
   searchText: string;
   categoryId?: string;
+  categorySelect?: boolean;
   totalResults: number;
   initTotalPages: number;
 };
@@ -42,14 +43,17 @@ const ProductSearchPageView = ({
   categoryId,
   totalResults,
   initTotalPages,
+  categorySelect,
 }: Props) => {
   const [view, setView] = useState("grid");
   const toggleView = useCallback((v: string) => () => setView(v), []);
   const [totalResult, setTotalResult] = useState(totalResults);
   const [filters, setFilters] = useState(
     categoryId
-      ? `name=${searchText}&categoryId=${categoryId}`
-      : `name=${searchText}&categoryName=${searchText}`
+      ? categorySelect
+        ? `categoryId=${categoryId}`
+        : `name=${searchText}&categoryId=${categoryId}`
+      : `name=${searchText}`
   );
   const [sort, setSort] = useState<string>();
 
@@ -159,9 +163,9 @@ const ProductSearchPageView = ({
                   if (value === "Date") {
                     setSort("sort=createdAt,asc");
                   } else if (value === "Price Low to High") {
-                    setSort("sort=price,asc");
+                    setSort("sort=variants.price,asc");
                   } else if (value === "Price High to Low") {
-                    setSort("sort=price,desc");
+                    setSort("sort=variants.price,desc");
                   } else {
                     setSort(null);
                   }
@@ -220,8 +224,10 @@ const ProductSearchPageView = ({
             <ProductFilterCard1
               filters={
                 categoryId
-                  ? `name=${searchText}&categoryId=${categoryId}`
-                  : `name=${searchText}&categoryName=${searchText}`
+                  ? categorySelect
+                    ? `categoryId=${categoryId}`
+                    : `name=${searchText}&categoryId=${categoryId}`
+                  : `name=${searchText}`
               }
               setFilters={setFilters}
               categories={parentCategories}

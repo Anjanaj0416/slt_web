@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import { ProductSearchPageView } from "pages-sections/product-details/page-view";
 import request from "utils/request";
 import PRODUCT_API from "constants/products";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { Product1 } from "models/Product.model";
 
 export const metadata: Metadata = {
   title: "Product Search - Bazaar Next.js E-commerce Template",
@@ -13,20 +14,33 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default async function ProductSearch({ params, searchParams }) {
+export default async function ProductSearch({ searchParams }) {
   try {
-    const slug = params.slug.replace(/%20/g, " ");
     const categoryId = searchParams?.categoryId;
+    // if (!categoryId) {
+    //   redirect("/");
+    // }
+
     const result = await request(PRODUCT_API.GET_PRODUCTS, {
-      query: categoryId
-        ? `size=9&name=${slug}&categoryId=${categoryId}`
-        : `size=9&name=${slug}`,
+      query: `size=9&categoryId=${categoryId}`,
     });
-    //
+
+    const products = result?.data as Product1[];
+    if (products.length < 1) {
+      notFound();
+    }
+
+    const searchText =
+      products[0].category.id === categoryId
+        ? products[0].category.name
+        : products[0].category.subCategories.find((e) => e.id === categoryId)
+            .name;
+
     return (
       <ProductSearchPageView
-        searchText={slug}
-        products={result?.data}
+        searchText={searchText}
+        products={products}
+        categorySelect
         categoryId={categoryId}
         totalResults={result?.totalResults}
         initTotalPages={result?.totalPages}

@@ -66,7 +66,9 @@ const SearchInputWithCategory = () => {
       />
 
       {/* SHOW SEARCH RESULT LIST */}
-      {resultList.length > 0 ? <SearchResult results={resultList} /> : null}
+      {resultList.length > 0 ? (
+        <SearchResult results={resultList} categoryId={categoryId} />
+      ) : null}
     </Box>
   );
 };

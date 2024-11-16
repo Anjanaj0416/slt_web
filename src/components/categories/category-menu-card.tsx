@@ -109,7 +109,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
         const level1Mapped = {
           title: level1Name,
           icon: level1Icon,
-          href: `/products/search/${level1Name}`,
+          href: `/products/search?categoryId=${level1Category.id}`,
           menuComponent: maxDepth >= 2 ? "MegaMenu1" : "MegaMenu2",
         };
         //level 2 mapping
@@ -143,7 +143,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
               moreSubCategories:
                 level2Category.subCategories.length >
                 MAX_CATEGORY_MEGA_MENU_LEVEL2,
-              href: `/products/search/${level2Name}`,
+              href: `/products/search?categoryId=${level2Category.id}`,
             };
             //level 3 mapping
             if (level3Categories?.length > 0) {
@@ -151,7 +151,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
                 (level3Category) => ({
                   title: level3Category.name,
                   icon: level3Category.iconUrl,
-                  href: `/products/search/${level3Category.name}`,
+                  href: `/products/search?categoryId=${level3Category.id}`,
                 })
               );
 
@@ -169,7 +169,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
           const level2CategoriesMapped = categories.map((level2Category) => ({
             title: level2Category.name,
             icon: level2Category.iconUrl,
-            href: `/products/search/${level2Category.name}`,
+            href: `/products/search?categoryId=${level2Category.id}`,
             menuComponent: "MegaMenu2",
           }));
           level1Mapped["moreSubCategories"] =
@@ -209,14 +209,14 @@ const CategoryMenuCard: FC<Props> = (props) => {
           (level2Category) => ({
             title: level2Category.name,
             icon: level2Category.iconUrl,
-            href: `/products/search/${level2Category.name}`,
+            href: `/products/search?categoryId=${level2Category.id}`,
           })
         );
         //
         return {
           title: level1Name,
           icon: level1Icon,
-          href: `/products/search/${level1Name}`,
+          href: `/products/search?categoryId=${level1Category.id}`,
           subCategories: level2CategoriesMapped,
           moreSubCategories:
             level1Category.subCategories.length > MAX_CATEGORY_MEGA_MENU_LEVEL2,
@@ -224,6 +224,7 @@ const CategoryMenuCard: FC<Props> = (props) => {
       });
       mapped["menuData"] = { categories: level1CategoriesMapped };
     }
+    mapped.href = `/products/search?categoryId=${category.id}`;
     return mapped;
   });
   //

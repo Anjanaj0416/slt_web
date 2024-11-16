@@ -53,6 +53,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
     productType,
     variants,
   } = product;
+  console.log(basePrice);
 
   const minPriceVariant =
     variants.length > 0 &&
@@ -61,6 +62,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
         ? currentVariant
         : minVariant;
     });
+  console.log(minPriceVariant);
   const { isFavorite, toggleFavorite } = useProduct(id);
   const {
     handleAddToCart,
@@ -92,11 +94,11 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
       handleAddToCart(product, minPriceVariant, quantity);
     }
   };
-  const discountPercent = calculateDiscountAmount(
-    discountType,
-    minPriceVariant.price,
-    discountAmount
-  );
+  // const discountPercent = calculateDiscountAmount(
+  //   discountType,
+  //   minPriceVariant.price,
+  //   discountAmount
+  // );
 
   const handleCart = () => handleAddToCart(product, minPriceVariant, 1);
 

@@ -173,11 +173,11 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
       </CardMedia>
 
       {/* PRODUCT VIEW BOX */}
-      <ProductViewDialog2
+      {/* <ProductViewDialog2
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
         product={product}
-      />
+      /> */}
 
       <Box p={2} textAlign="center">
         {/* PRODUCT TITLE */}

@@ -22,7 +22,7 @@ const useListProducts = (
       page === null &&
       !(
         filters.includes("sort=") ||
-        filters.includes("Price=") ||
+        filters.includes("variants.price=") ||
         filters.includes("brand=")
       )
     ) {
@@ -41,12 +41,15 @@ const useListProducts = (
               name: item.name,
               productType: item.productType,
               brand: item?.brand ?? "-",
-              price: item.price,
+              basePrice: item.basePrice,
               units: item.units,
               images: item.images,
+              variants: item.variants,
               productStatus: item.productStatus,
               category: item.category,
               specification: item.specification,
+              discountType: item.discountType,
+              discountAmount: item.discountAmount,
             }));
 
             setFilteredProducts(filteredProductArray);

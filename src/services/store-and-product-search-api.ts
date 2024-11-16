@@ -8,7 +8,10 @@ export const storeAndProductSearchApi = createApi({
   tagTypes: ["STORE_AND_PRODUCT_SEARCH"],
   endpoints: (builder) => ({
     getStoreAndProductSearch: builder.query({
-      query: ({ search }) => `/store-product-search?search=${search}`,
+      query: ({ search, categoryId }) =>
+        categoryId
+          ? `/store-product-search?search=${search}&categoryId=${categoryId}`
+          : `/store-product-search?search=${search}`,
       providesTags: ["STORE_AND_PRODUCT_SEARCH"],
     }),
   }),

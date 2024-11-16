@@ -173,7 +173,6 @@ const CartServiceProvider = (props: Props) => {
         discountAmount,
         name: productName,
       } = product;
-      console.log("unit:", units);
 
       if (!user?.id || !user?.cart?.id) {
         openUnAuthenticatedModal(true);

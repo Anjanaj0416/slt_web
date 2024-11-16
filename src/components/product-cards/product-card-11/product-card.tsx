@@ -113,11 +113,11 @@ const ProductCard11: FC<Props> = ({
       </ImageWrapper>
 
       {/* PRODUCT VIEW DIALOG BOX */}
-      <ProductViewDialog2
+      {/* <ProductViewDialog2
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
         product={product}
-      />
+      /> */}
 
       <ContentWrapper>
         <Box flex="1 1 0" minWidth="0px" mr={1}>

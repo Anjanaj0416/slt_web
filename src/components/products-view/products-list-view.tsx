@@ -9,6 +9,8 @@ type Props = { isLoading: boolean; products: Product1[] };
 // ==========================================================
 
 const ProductsListView: FC<Props> = ({ isLoading, products }) => {
+  console.log(products);
+
   return (
     <div>
       {isLoading ? (

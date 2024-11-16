@@ -25,21 +25,14 @@ const useSearch = () => {
     let searchData;
 
     if (categoryId) {
-      const searchResults = (
-        await listProducts({
-          filters: `name=${searchText}&categoryId=${categoryId}`,
-        })
-      ).data?.data;
-      searchData = searchResults.map((e) => ({
-        id: e.id,
-        name: e.name,
-        type: "PRODUCT",
-      }));
+      searchData = (
+        await searchStoreAndProduct({ search: searchText, categoryId })
+      ).data;
     } else {
       searchData = (await searchStoreAndProduct({ search: searchText })).data;
     }
 
-    if (searchData.length) {
+    if (searchData?.length) {
       setResultList(searchData);
     } else {
       setResultList([]);

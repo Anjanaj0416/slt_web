@@ -189,14 +189,14 @@ const ProductFilterCard = ({
       <Box component={Divider} my={3} />
 
       {/* SALES OPTIONS */}
-      {otherOptions.map((item) => (
+      {/* {otherOptions.map((item) => (
         <FormControlLabel
           key={item}
           sx={{ display: "flex" }}
           label={<Span color="inherit">{item}</Span>}
           control={<Checkbox size="small" color="secondary" />}
         />
-      ))}
+      ))} */}
 
       <Box component={Divider} my={3} />
 
