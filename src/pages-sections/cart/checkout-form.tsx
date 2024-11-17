@@ -19,10 +19,10 @@ const CheckoutForm = () => {
   const [comments, setComments] = useState("");
   const { totalDiscount, totalPrice, setNote, cart } = useCartService();
 
-  const STATE_LIST = [
-    { value: "new-york", label: "New York" },
-    { value: "chicago", label: "Chicago" },
-  ];
+  // const STATE_LIST = [
+  //   { value: "new-york", label: "New York" },
+  //   { value: "chicago", label: "Chicago" },
+  // ];
   //
   const navigateCheckout = () => {
     setNote(comments);

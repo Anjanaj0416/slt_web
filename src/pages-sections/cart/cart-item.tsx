@@ -43,6 +43,12 @@ const CartItemCard: FC<CartItem> = ({
     return productVariant.price;
   };
 
+  const imageUrl = productVariant.image
+    ? `${ENVIRONMENT.S3_BUCKET_URL}/${productVariant.image}`
+    : images[0]
+      ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+      : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
+
   return (
     <Wrapper>
       <Image
@@ -50,10 +56,7 @@ const CartItemCard: FC<CartItem> = ({
         width={140}
         height={140}
         display="block"
-        src={
-          `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}` ||
-          `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-        }
+        src={imageUrl}
       />
 
       {/* DELETE BUTTON */}

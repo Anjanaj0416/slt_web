@@ -50,6 +50,7 @@ export interface ProductVariant {
   sku: string;
   units: number;
   price: number;
+  image?: string;
   reOrderLevel: number;
   attributes: VariantAttribute[];
   createdAt: Date;

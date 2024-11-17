@@ -193,7 +193,7 @@ const ProductFilterCard = ({
         />
       ))}
 
-      <Box component={Divider} my={3} />
+      {/* <Box component={Divider} my={3} /> */}
 
       {/* SALES OPTIONS */}
       {/* {otherOptions.map((item) => (
@@ -205,7 +205,7 @@ const ProductFilterCard = ({
         />
       ))} */}
 
-      <Box component={Divider} my={3} />
+      {/* <Box component={Divider} my={3} /> */}
 
       {/* RATINGS FILTER */}
       {/* <H6 mb={2}>Ratings</H6>
@@ -218,7 +218,7 @@ const ProductFilterCard = ({
         />
       ))} */}
 
-      <Box component={Divider} my={3} />
+      {/* <Box component={Divider} my={3} /> */}
 
       {/* COLORS VARIANT FILTER */}
       {/* <H6 mb={2}>Colors</H6>

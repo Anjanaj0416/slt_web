@@ -56,6 +56,11 @@ const MiniCartItem: FC<Props> = ({ item }) => {
     }
     return productVariant.price;
   };
+  const imageUrl = productVariant.image
+    ? `${ENVIRONMENT.S3_BUCKET_URL}/${productVariant.image}`
+    : images[0]
+      ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+      : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
   //
   return (
     <FlexBox
@@ -95,10 +100,7 @@ const MiniCartItem: FC<Props> = ({ item }) => {
       <Link href={`/products/${productId}`}>
         <Avatar
           alt={productName}
-          src={
-            `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}` ||
-            `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-          }
+          src={imageUrl}
           sx={{ mx: 1, width: 75, height: 75 }}
         />
       </Link>

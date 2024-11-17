@@ -134,6 +134,9 @@ const ProductIntro1: FC<Props> = ({ product }) => {
       setSelectedVariant(selectedVariant);
       setPrice(selectedVariant.price);
       setQuantity(selectedVariant.units);
+      const imageIndex = images.findIndex((e) => e === selectedVariant.image);
+
+      setSelectedImage(imageIndex < 0 ? 0 : imageIndex);
     } else {
       setSelectedAttributes([]);
       enqueueSnackbar("Selected Variant Not Found", {
