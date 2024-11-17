@@ -9,11 +9,16 @@ import { Formik } from "formik";
 import * as yup from "yup";
 // CUSTOM DATA MODEL
 import { User1 } from "models/User.model";
+import { LoadingButton } from "@mui/lab";
 
 // ==============================================================
-type Props = { user: User1; onSubmit: (values: any) => void };
+type Props = {
+  user: User1;
+  onSubmit: (values: any) => void;
+  isUpdating: boolean;
+};
 // ==============================================================
-const ProfileEditForm: FC<Props> = ({ user, onSubmit }) => {
+const ProfileEditForm: FC<Props> = ({ user, onSubmit, isUpdating }) => {
   const initialValues = {
     email: user?.email || "",
     phone: user?.phone || "",
@@ -29,10 +34,11 @@ const ProfileEditForm: FC<Props> = ({ user, onSubmit }) => {
     firstName: yup.string().required("First name is required"),
     lastName: yup.string().required("Last name is required"),
     email: yup.string().email("invalid email").required("Email is required"),
-    phone: yup.string().required("Phone Number is required"),
+    phone: yup
+      .string()
+      .matches(/^(?:\+94\d{9}|0\d{9})$/, "Enter valid phone number"),
     birthDay: yup.date().required("Birth date is required"),
   });
-  console.log(initialValues);
 
   //
   return (
@@ -109,7 +115,7 @@ const ProfileEditForm: FC<Props> = ({ user, onSubmit }) => {
             <Grid item md={6} xs={12}>
               <DatePicker
                 label="Birth Date"
-                value={values?.birth_date}
+                value={values?.birthDay}
                 onChange={(newValue) => setFieldValue("birthDay", newValue)}
                 slots={{ textField: TextField }}
                 slotProps={{
@@ -117,18 +123,23 @@ const ProfileEditForm: FC<Props> = ({ user, onSubmit }) => {
                     sx: { mb: 1 },
                     size: "small",
                     fullWidth: true,
-                    error: Boolean(!!touched.birth_date && !!errors.birth_date),
-                    helperText: (touched.birth_date &&
-                      errors.birth_date) as string,
+                    error: Boolean(!!touched.birthDay && !!errors.birthDay),
+                    helperText: (touched.birthDay && errors.birthDay) as string,
                   },
                 }}
               />
             </Grid>
 
             <Grid item xs={12}>
-              <Button type="submit" variant="contained" color="primary">
+              <LoadingButton
+                loading={isUpdating}
+                disabled={isUpdating}
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
                 Save Changes
-              </Button>
+              </LoadingButton>
             </Grid>
           </Grid>
         </form>

@@ -25,7 +25,7 @@ const ProfileEditPageView = () => {
   const { data, isLoading } = useGetUserByIdQuery({ userId: user?.id });
   const [profileImage, setProfileImage] = useState<File>();
   //
-  const [updateUser] = useUpdateUserMutation();
+  const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
   const [createSignUrl] = useLazyCreateSignUrlQuery();
 
   const uploadProfileImage = async () => {
@@ -108,7 +108,11 @@ const ProfileEditPageView = () => {
         />
 
         {/* PROFILE EDITOR FORM */}
-        <ProfileEditForm user={data} onSubmit={handleSubmit} />
+        <ProfileEditForm
+          user={data}
+          onSubmit={handleSubmit}
+          isUpdating={isUpdating}
+        />
       </Card>
     </Fragment>
   );
