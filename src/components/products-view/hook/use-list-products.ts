@@ -5,9 +5,15 @@ import { Product1 } from "models/Product.model";
 //
 const useListProducts = (
   products: Product1[],
-  filters: string,
+  name: string,
+  categoryId: string,
+  minPrice: number,
+  maxPrice: number,
+  brands: string[],
   initTotalPages: number,
-  setTotalResult: (value: number) => void
+  setTotalResult: (value: number) => void,
+  sort?: string,
+  categorySelect?: boolean
 ) => {
   const [filteredProducts, setFilteredProducts] =
     useState<Product1[]>(products);
@@ -18,19 +24,34 @@ const useListProducts = (
     useLazySearchListProductsQuery();
   //
   useEffect(() => {
-    if (
-      page === null &&
-      !(
-        filters.includes("sort=") ||
-        filters.includes("variants.price=") ||
-        filters.includes("brand=")
-      )
-    ) {
+    if (page === null) {
       return;
     }
     const fetchData = async () => {
       try {
-        const data = await listProducts({ filters, page }).unwrap();
+        const filters = [];
+        if (!categorySelect && name) {
+          filters.push(`name=${name}`);
+        }
+        if (categoryId) {
+          filters.push(`categoryId=${categoryId}`);
+        }
+        if (brands && brands.length > 0) {
+          filters.push(`brand=${brands.join(",")}`);
+        }
+        if (minPrice) {
+          filters.push(`minPrice=${minPrice}`);
+        }
+        if (maxPrice) {
+          filters.push(`maxPrice=${maxPrice}`);
+        }
+        if (sort) {
+          filters.push(sort);
+        }
+        const data = await listProducts({
+          filters: filters.join("&"),
+          page,
+        }).unwrap();
 
         if (data) {
           setTotalPage(data?.totalPages);
@@ -64,7 +85,19 @@ const useListProducts = (
     };
 
     fetchData();
-  }, [filters, listProducts, page, setTotalPage, setTotalResult]);
+  }, [
+    brands,
+    categoryId,
+    categorySelect,
+    listProducts,
+    maxPrice,
+    minPrice,
+    name,
+    page,
+    setTotalPage,
+    setTotalResult,
+    sort,
+  ]);
 
   return {
     isLoading,

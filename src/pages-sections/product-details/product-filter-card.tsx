@@ -4,6 +4,7 @@ import {
   ChangeEvent,
   Dispatch,
   Fragment,
+  useRef,
   useState,
 } from "react";
 import Box from "@mui/material/Box";
@@ -18,20 +19,23 @@ import { FlexBetween } from "components/flex-box";
 import { H5, H6, Paragraph, Span } from "components/Typography";
 import AccordionHeader from "components/accordion/accordion-header";
 import Category1 from "models/Category.model";
+import IconButton from "@mui/material/IconButton";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-const otherOptions = ["On Sale", "In Stock"];
-const colorList = [
-  "#1C1C1C",
-  "#FF7A7A",
-  "#FFC672",
-  "#84FFB5",
-  "#70F6FF",
-  "#6B7AFF",
-];
+// const otherOptions = ["On Sale", "In Stock"];
+// const colorList = [
+//   "#1C1C1C",
+//   "#FF7A7A",
+//   "#FFC672",
+//   "#84FFB5",
+//   "#70F6FF",
+//   "#6B7AFF",
+// ];
 
 type Props = {
   categoryId: string;
   categories: Category1[];
+  isLoading: boolean;
   brands: string[];
   setCategoryId: (id: string) => void;
   setBrands: Dispatch<React.SetStateAction<string[]>>;
@@ -44,6 +48,7 @@ const ProductFilterCard = ({
   categoryId,
   categories,
   brands,
+  isLoading,
   setCategoryId,
   setPage,
   setBrands,
@@ -51,6 +56,8 @@ const ProductFilterCard = ({
   setMinPrice,
 }: Props) => {
   const [collapsed, setCollapsed] = useState(true);
+  const minPriceRef = useRef<HTMLInputElement>(null);
+  const maxPriceRef = useRef<HTMLInputElement>(null);
   const handleCategoryClick = (id: string) => {
     setPage(0);
     if (id === categoryId) {
@@ -70,25 +77,14 @@ const ProductFilterCard = ({
     }
   };
 
-  const handleMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+  const handlePriceFilter = () => {
+    const minPriceValue = minPriceRef.current?.value || 0;
+    const maxPriceValue = maxPriceRef.current?.value || 0;
     setPage(0);
-    if (value) {
-      setMaxPrice(+value);
-    } else {
-      setMaxPrice(0);
-    }
+    setMinPrice(+minPriceValue);
+    setMaxPrice(+maxPriceValue);
   };
 
-  const handleMinPrice = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setPage(0);
-    if (value) {
-      setMinPrice(+value);
-    } else {
-      setMinPrice(0);
-    }
-  };
   return (
     <Card sx={{ p: "18px 27px", overflow: "auto" }} elevation={1}>
       {/* CATEGORY VARIANT FILTER */}
@@ -154,19 +150,29 @@ const ProductFilterCard = ({
           placeholder="0"
           type="number"
           size="small"
+          inputRef={minPriceRef}
           fullWidth
-          onChange={handleMinPrice}
         />
         <H5 color="grey.600" px={1}>
           -
         </H5>
         <TextField
           placeholder="250"
+          inputRef={maxPriceRef}
           type="number"
           size="small"
           fullWidth
-          onChange={handleMaxPrice}
         />
+
+        <IconButton
+          disabled={isLoading}
+          aria-label="Filter Price"
+          title="Price Filter"
+          sx={{ ml: 0.4 }}
+          onClick={handlePriceFilter}
+        >
+          <PlayArrowIcon />
+        </IconButton>
       </FlexBetween>
 
       <Box component={Divider} my={3} />
@@ -176,6 +182,7 @@ const ProductFilterCard = ({
 
       {brands.map((item) => (
         <FormControlLabel
+          disabled={isLoading}
           key={item}
           onChange={(event: BaseSyntheticEvent) =>
             handleBrandClick(event, item)
