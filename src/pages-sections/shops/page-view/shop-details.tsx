@@ -128,6 +128,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
             setPage={setPage}
             setBrands={setBrands}
             brands={brandNames}
+            isLoading={isLoading}
             setMaxPrice={setMaxPrice}
             setMinPrice={setMinPrice}
           />
@@ -143,6 +144,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
                 categories={parentCategories}
                 setPage={setPage}
                 setBrands={setBrands}
+                isLoading={isLoading}
                 setMaxPrice={setMaxPrice}
                 setMinPrice={setMinPrice}
                 brands={brandNames}
