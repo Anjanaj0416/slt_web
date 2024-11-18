@@ -38,9 +38,9 @@ const HoverActions: FC<Props> = (props) => {
     <HoverButtonBox className="hoverButtonBox">
       <div className="buttonBox">
         <ItemController>
-          <Span onClick={toggleDialog}>
+          {/* <Span onClick={toggleDialog}>
             <RemoveRedEye />
-          </Span>
+          </Span> */}
 
           <Divider orientation="vertical" flexItem />
 

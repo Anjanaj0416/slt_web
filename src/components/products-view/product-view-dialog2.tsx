@@ -44,13 +44,14 @@ const ProductViewDialog2: FC<Props> = ({
   const {
     id,
     name,
-    price,
+    basePrice,
     discountAmount,
     images,
     discountType,
     description,
     productType,
     category,
+    variants,
   } = product;
   //
   const { data } = useSession();
@@ -70,34 +71,43 @@ const ProductViewDialog2: FC<Props> = ({
     user?.id
   );
 
-  const carItemIds = cart.cartItems.map((item) => item.product.id);
+  const carItemIds = cart.cartItems.map((item) => item.productVariant.id);
+
+  const minPriceVariant =
+    variants.length > 0 &&
+    variants.reduce((minVariant, currentVariant) => {
+      return currentVariant.price < minVariant.price
+        ? currentVariant
+        : minVariant;
+    });
 
   const getPrice = () => {
     if (discountAmount) {
       const discount = calculateDiscountPercentage(
         discountType,
-        price,
+        minPriceVariant.price,
         discountAmount
       );
 
-      return calculateDiscountPrice(price, discount);
+      return calculateDiscountPrice(minPriceVariant.price, discount);
     }
-    return currency(price);
+    return currency(basePrice);
   };
 
   const isQuotationProduct = productType === "QUOTATION";
 
   // HANDLE CHANGE CART
   const handleCartAmountChange = (amount: number) => () => {
-    const units = cart.cartItems.find((e) => e.product.id === product.id)
-      ?.units;
+    const units = cart.cartItems.find(
+      (e) => e.productVariant.id === minPriceVariant.id
+    )?.units;
     if (amount === -1 && units === 1) {
-      handleRemoveFromCart(product);
+      handleRemoveFromCart(minPriceVariant);
     } else {
       if (!units) {
         handleCloseDialog();
       }
-      handleAddToCart(product, amount);
+      handleAddToCart(product, minPriceVariant, amount);
     }
   };
 
@@ -160,7 +170,7 @@ const ProductViewDialog2: FC<Props> = ({
 
               {/* ADD TO CART BUTTON */}
               <FlexBox alignItems="center" sx={{ mb: 4.5 }}>
-                {!carItemIds?.includes(product.id) ? (
+                {!carItemIds?.includes(minPriceVariant.id) ? (
                   <LoadingButton
                     color="primary"
                     variant="contained"
@@ -189,8 +199,9 @@ const ProductViewDialog2: FC<Props> = ({
 
                     <H3 fontWeight="600" mx={2.5}>
                       {
-                        cart.cartItems.find((e) => e.product.id === product.id)
-                          .units
+                        cart.cartItems.find(
+                          (e) => e.productVariant.id === minPriceVariant.id
+                        ).units
                       }
                     </H3>
 

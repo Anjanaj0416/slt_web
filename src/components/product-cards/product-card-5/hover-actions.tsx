@@ -27,9 +27,9 @@ const HoverActions: FC<Props> = ({
 }) => {
   return (
     <HoverWrapper className="controller">
-      <Span onClick={toggleView}>
+      {/* <Span onClick={toggleView}>
         <RemoveRedEye />
-      </Span>
+      </Span> */}
 
       <Divider orientation="horizontal" flexItem />
 

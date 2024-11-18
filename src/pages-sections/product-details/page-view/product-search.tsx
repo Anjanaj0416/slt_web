@@ -18,6 +18,7 @@ import ProductsGridView1 from "components/products-view/products-grid-view-1";
 import { Apps, ViewList } from "@mui/icons-material";
 import useListProducts from "components/products-view/hook/use-list-products";
 import { Pagination } from "@mui/material";
+import ProductFilterCard from "../product-filter-card";
 
 const SORT_OPTIONS = [
   { label: "Relevance", value: "Relevance" },
@@ -31,6 +32,7 @@ type Props = {
   products: Product1[];
   searchText: string;
   categoryId?: string;
+  categorySelect?: boolean;
   totalResults: number;
   initTotalPages: number;
 };
@@ -42,25 +44,31 @@ const ProductSearchPageView = ({
   categoryId,
   totalResults,
   initTotalPages,
+  categorySelect,
 }: Props) => {
   const [view, setView] = useState("grid");
   const toggleView = useCallback((v: string) => () => setView(v), []);
   const [totalResult, setTotalResult] = useState(totalResults);
-  const [filters, setFilters] = useState(
-    categoryId
-      ? `name=${searchText}&categoryId=${categoryId}`
-      : `name=${searchText}&categoryName=${searchText}`
-  );
+  const [selectedCategoryId, setSelectedCategoryId] =
+    useState<string>(categoryId);
+  const [brands, setBrands] = useState<string[]>();
+  const [minPrice, setMinPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(0);
   const [sort, setSort] = useState<string>();
 
   const { isLoading, filteredProducts, setPage, page, totalPage } =
     useListProducts(
       products,
-      sort ? `${filters}&${sort}` : filters,
+      searchText,
+      categoryId,
+      minPrice,
+      maxPrice,
+      brands,
       initTotalPages,
-      setTotalResult
+      setTotalResult,
+      sort,
+      categorySelect
     );
-  console.log(products);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value - 1);
@@ -68,7 +76,7 @@ const ProductSearchPageView = ({
 
   let parentCategories: Category1[] = [];
   // Get brands
-  const brands = Array.from(
+  const brandNames = Array.from(
     new Set(products.map((product) => product.brand))
   ).slice(0, 5);
 
@@ -160,9 +168,9 @@ const ProductSearchPageView = ({
                   if (value === "Date") {
                     setSort("sort=createdAt,asc");
                   } else if (value === "Price Low to High") {
-                    setSort("sort=price,asc");
+                    setSort("sort=variants.price,asc");
                   } else if (value === "Price High to Low") {
-                    setSort("sort=price,desc");
+                    setSort("sort=variants.price,desc");
                   } else {
                     setSort(null);
                   }
@@ -218,15 +226,28 @@ const ProductSearchPageView = ({
         {/* PRODUCT FILTER SIDEBAR AREA */}
         {products.length > 0 && (
           <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
-            <ProductFilterCard1
+            {/* <ProductFilterCard1
               filters={
                 categoryId
-                  ? `name=${searchText}&categoryId=${categoryId}`
-                  : `name=${searchText}&categoryName=${searchText}`
+                  ? categorySelect
+                    ? `categoryId=${categoryId}`
+                    : `name=${searchText}&categoryId=${categoryId}`
+                  : `name=${searchText}`
               }
               setFilters={setFilters}
               categories={parentCategories}
               brands={brands}
+            /> */}
+            <ProductFilterCard
+              categoryId={selectedCategoryId}
+              setCategoryId={setSelectedCategoryId}
+              categories={parentCategories}
+              setPage={setPage}
+              setBrands={setBrands}
+              brands={brandNames}
+              isLoading={isLoading}
+              setMaxPrice={setMaxPrice}
+              setMinPrice={setMinPrice}
             />
           </Grid>
         )}

@@ -12,35 +12,57 @@ import { Span } from "components/Typography";
 import { FlexBox } from "components/flex-box";
 // GLOBAL CUSTOM HOOK
 // CUSTOM UTILS LIBRARY FUNCTION
-import { currency } from "lib";
+import { calculateDiscountAmount, currency } from "lib";
 // STYLED COMPONENT
 import useCartService from "hooks/useCartService";
-import { CartItem } from "models/User.model";
 import { Wrapper } from "./styles";
 import { ENVIRONMENT } from "config";
+import { CartItem } from "models/User.model";
 
-const CartItem: FC<CartItem> = (props) => {
-  const { id, name, units, price, images } = props.product;
+const CartItemCard: FC<CartItem> = ({
+  productId,
+  productName,
+  units,
+  discountAmount,
+  discountType,
+  images,
+  productVariant,
+}: CartItem) => {
+  const { handleRemoveFromCart, handleUpdateQty, isLoading, isItemInCart } =
+    useCartService();
 
-  const { handleRemoveFromCart, handleUpdateQty, isLoading } = useCartService();
+  const getPrice = () => {
+    if (discountAmount) {
+      const discount = calculateDiscountAmount(
+        discountType,
+        productVariant.price,
+        discountAmount
+      );
+      return productVariant.price - discount;
+    }
+    return productVariant.price;
+  };
+
+  const imageUrl = productVariant.image
+    ? `${ENVIRONMENT.S3_BUCKET_URL}/${productVariant.image}`
+    : images[0]
+      ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
+      : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
 
   return (
     <Wrapper>
       <Image
-        alt={name}
+        alt={productName}
         width={140}
         height={140}
         display="block"
-        src={
-          `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}` ||
-          `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
-        }
+        src={imageUrl}
       />
 
       {/* DELETE BUTTON */}
       <IconButton
         size="small"
-        onClick={() => handleRemoveFromCart(props?.product)}
+        onClick={() => handleRemoveFromCart(productVariant)}
         sx={{ position: "absolute", right: 15, top: 15 }}
         disabled={isLoading}
       >
@@ -48,20 +70,20 @@ const CartItem: FC<CartItem> = (props) => {
       </IconButton>
 
       <FlexBox p={2} rowGap={2} width="100%" flexDirection="column">
-        <Link href={`/products/${id}`}>
+        <Link href={`/products/${productId}`}>
           <Span ellipsis fontWeight="600" fontSize={18}>
-            {name}
+            {productName}
           </Span>
         </Link>
 
         {/* PRODUCT PRICE SECTION */}
         <FlexBox gap={1} flexWrap="wrap" alignItems="center">
           <Span color="grey.600">
-            {currency(price)} x {props?.units}
+            {currency(getPrice())} x {units}
           </Span>
 
           <Span fontWeight={600} color="primary.main">
-            {currency(price * props?.units)}
+            {currency(getPrice() * units)}
           </Span>
         </FlexBox>
 
@@ -71,22 +93,22 @@ const CartItem: FC<CartItem> = (props) => {
             color="primary"
             sx={{ p: "5px" }}
             variant="outlined"
-            disabled={props?.units <= 1 || isLoading}
-            onClick={() => handleUpdateQty(props?.product, -1)}
+            disabled={units <= 1 || isLoading}
+            onClick={() => handleUpdateQty(productVariant, -1)}
           >
             <Remove fontSize="small" />
           </Button>
 
           <Span mx={1} fontWeight={600} fontSize={15}>
-            {props?.units}
+            {units}
           </Span>
 
           <Button
             color="primary"
             sx={{ p: "5px" }}
             variant="outlined"
-            onClick={() => handleUpdateQty(props?.product, 1)}
-            disabled={props?.units >= units || isLoading}
+            onClick={() => handleUpdateQty(productVariant, 1)}
+            disabled={units >= productVariant.units || isLoading}
           >
             <Add fontSize="small" />
           </Button>
@@ -96,4 +118,4 @@ const CartItem: FC<CartItem> = (props) => {
   );
 };
 
-export default CartItem;
+export default CartItemCard;

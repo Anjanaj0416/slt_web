@@ -27,9 +27,9 @@ const HoverActions: FC<Props> = ({
 }) => {
   return (
     <ItemController className="controlBox">
-      <Span onClick={toggleView}>
+      {/* <Span onClick={toggleView}>
         <RemoveRedEye />
-      </Span>
+      </Span> */}
 
       <Divider orientation="horizontal" flexItem />
 

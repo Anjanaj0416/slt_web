@@ -9,7 +9,8 @@ export const storeApi = createApi({
   tagTypes: ["STORE"],
   endpoints: (builder) => ({
     listStore: builder.query({
-      query: ({ page = 0, size = 2 }) => `/stores?page=${page}&size=${size}&sort=name`,
+      query: ({ page = 0, size = 2 }) =>
+        `/stores?page=${page}&size=${size}&sort=name`,
       providesTags: (result, error, arg) =>
         result
           ? [...result.data.map(({ id }) => ({ type: "STORE", id })), "STORE"]

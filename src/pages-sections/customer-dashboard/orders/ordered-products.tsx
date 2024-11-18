@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import format from "date-fns/format";
 // GLOBAL CUSTOM COMPONENTS
-import {  H6, Paragraph } from "components/Typography";
+import { H6, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
@@ -20,10 +20,7 @@ type Props = { order: Order1 };
 // ==============================================================
 
 const OrderedProducts: FC<Props> = ({ order }) => {
-  console.log(order);
-
   const { id, createdAt, packages } = order || {};
-  console.log(createdAt);
 
   return (
     <Card sx={{ p: 0, mb: "30px" }}>
@@ -75,25 +72,25 @@ const OrderedProducts: FC<Props> = ({ order }) => {
       <FlexBetween px={2} py={1} flexWrap="wrap" key={ind}>
         <FlexBox gap={2.5} alignItems="center">
           <Avatar
-            alt={item.product.name}
+            alt={item.productName}
             src={
-              item.product.images?.[0]
-                ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.product.images?.[0]}`
+              item.images?.[0]
+                ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.images?.[0]}`
                 : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
             }
             sx={{ height: 64, width: 64 }}
           />
 
           <div>
-            <H6>{item.product.name}</H6>
+            <H6>{item.productName}</H6>
             <Paragraph color="grey.600">
-              {currency(item.product.price)} x {item.units}
+              {currency(item.price)} x {item.units}
             </Paragraph>
           </div>
         </FlexBox>
 
         <Paragraph color="grey.600" ellipsis>
-          Brand: {item.product.brand}
+          Brand: {item.brand}
         </Paragraph>
 
         <Button

@@ -20,7 +20,7 @@ type Props = { toggleSidenav: () => void };
 
 const MiniCart: FC<Props> = ({ toggleSidenav }) => {
   const { push } = useRouter();
-  const { cart, totalPrice } = useCartService();
+  const { cart, totalPrice, totalDiscount } = useCartService();
   const cartList = cart?.cartItems;
 
   const handleNavigate = (path: string) => () => {
@@ -40,7 +40,7 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
         {cartList?.length > 0 ? (
           <Scrollbar>
             {cartList?.map((item) => (
-              <MiniCartItem key={item?.product?.id} item={item} />
+              <MiniCartItem key={item?.productId} item={item} />
             ))}
           </Scrollbar>
         ) : (
@@ -51,7 +51,7 @@ const MiniCart: FC<Props> = ({ toggleSidenav }) => {
       {/* CART BOTTOM ACTION BUTTONS */}
       {cartList?.length > 0 ? (
         <BottomActions
-          total={currency(totalPrice)}
+          total={currency(totalPrice - totalDiscount)}
           handleNavigate={handleNavigate}
         />
       ) : null}

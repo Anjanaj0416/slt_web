@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import Image from "components/BazaarImage";
-import { H5 } from "components/Typography";
+import { H5, Paragraph } from "components/Typography";
 import { FlexBox } from "components/flex-box";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
@@ -17,7 +17,11 @@ import AddToCartButton from "./add-to-cart";
 import FavoriteButton from "./favorite-button";
 import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
-import { calculateDiscountAmount } from "lib";
+import {
+  calculateDiscountAmount,
+  calculateDiscountPercentage,
+  currency,
+} from "lib";
 import ENVIRONMENT from "config/environment";
 import useQuotation from "hooks/useQuotation";
 import { User1 } from "models/User.model";
@@ -39,8 +43,26 @@ type Props = {
 // ===========================================================
 
 const ProductListCard: FC<Props> = ({ product }: Props) => {
-  const { id, name, price, discountAmount, discountType, images, productType } =
-    product;
+  const {
+    id,
+    name,
+    basePrice,
+    discountAmount,
+    discountType,
+    images,
+    productType,
+    variants,
+  } = product;
+  console.log(basePrice);
+
+  const minPriceVariant =
+    variants.length > 0 &&
+    variants.reduce((minVariant, currentVariant) => {
+      return currentVariant.units > 0 && currentVariant.price < minVariant.price
+        ? currentVariant
+        : minVariant;
+    });
+  console.log(minPriceVariant);
   const { isFavorite, toggleFavorite } = useProduct(id);
   const {
     handleAddToCart,
@@ -64,20 +86,21 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
   const handleCartAmountChange = (quantity: number) => {
     if (
       quantity === -1 &&
-      cart.cartItems.find((e) => e.product.id === product.id).units === 1
+      cart.cartItems.find((e) => e.productVariant.id === minPriceVariant.id)
+        .units === 1
     ) {
-      handleRemoveFromCart(product);
+      handleRemoveFromCart(minPriceVariant);
     } else {
-      handleAddToCart(product, quantity);
+      handleAddToCart(product, minPriceVariant, quantity);
     }
   };
-  const discountPercent = calculateDiscountAmount(
-    discountType,
-    price,
-    discountAmount
-  );
+  // const discountPercent = calculateDiscountAmount(
+  //   discountType,
+  //   minPriceVariant.price,
+  //   discountAmount
+  // );
 
-  const handleCart = () => handleAddToCart(product, 1);
+  const handleCart = () => handleAddToCart(product, minPriceVariant, 1);
 
   return (
     <Wrapper>
@@ -90,9 +113,9 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             {/* DISCOUNT PERCENT CHIP IF AVAILABLE */}
             {!isQuotationProduct && (
               <DiscountChip
-                discount={calculateDiscountAmount(
+                discount={calculateDiscountPercentage(
                   discountType,
-                  price,
+                  minPriceVariant.price,
                   discountAmount
                 )}
               />
@@ -131,7 +154,9 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
 
             {/* PRODUCT PRICE */}
             {!isQuotationProduct && (
-              <ProductPrice price={price} discount={discountPercent} />
+              <Paragraph fontWeight={600} color="primary.main">
+                {currency(basePrice)}
+              </Paragraph>
             )}
 
             {/* PRODUCT ADD TO CART BUTTON */}
@@ -151,7 +176,9 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
               <AddToCartButton
                 disabled={isUpdating && selectedProductId === id}
                 quantity={
-                  cart.cartItems.find((e) => e.product.id === product.id)?.units
+                  cart.cartItems.find(
+                    (e) => e.productVariant.id === minPriceVariant.id
+                  )?.units
                 }
                 handleAddToCart={handleCart}
                 handleAmountChange={handleCartAmountChange}

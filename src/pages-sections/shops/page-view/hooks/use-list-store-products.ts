@@ -43,12 +43,13 @@ const useListStoreProducts = (
           const products = data?.data?.map((item: Product1) => ({
             id: item.id,
             name: item.name,
-            price: item.price,
+            basePrice: item.basePrice,
             brand: item.brand,
             productType: item.productType,
             category: item.category,
-            discount: item.discountAmount,
+            discountAmount: item.discountAmount,
             discountType: item.discountType,
+            variants: item.variants,
             images: item.images,
             description: item.description,
           }));

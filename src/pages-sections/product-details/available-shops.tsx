@@ -35,7 +35,9 @@ const AvailableShops = ({ stores }: Props) => {
                   sx={{ width: 48, height: 48 }}
                 />
                 <H4 mt={1.5} color="grey.800">
-                  {item.name.length > 10 ? `${item.name.substring(0,7)}...` : item.name}
+                  {item.name.length > 10
+                    ? `${item.name.substring(0, 7)}...`
+                    : item.name}
                 </H4>
               </FlexRowCenter>
             </Link>

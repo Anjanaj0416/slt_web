@@ -17,12 +17,12 @@ import { useState } from "react";
 const CheckoutForm = () => {
   const { push } = useRouter();
   const [comments, setComments] = useState("");
-  const { totalPrice, setNote } = useCartService();
+  const { totalDiscount, totalPrice, setNote, cart } = useCartService();
 
-  const STATE_LIST = [
-    { value: "new-york", label: "New York" },
-    { value: "chicago", label: "Chicago" },
-  ];
+  // const STATE_LIST = [
+  //   { value: "new-york", label: "New York" },
+  //   { value: "chicago", label: "Chicago" },
+  // ];
   //
   const navigateCheckout = () => {
     setNote(comments);
@@ -38,7 +38,20 @@ const CheckoutForm = () => {
           {currency(totalPrice)}
         </Span>
       </FlexBetween>
+      <FlexBetween mb={2}>
+        <Span color="grey.600">Discount:</Span>
 
+        <Span fontSize={18} fontWeight={600} lineHeight="1">
+          {currency(totalDiscount)}
+        </Span>
+      </FlexBetween>
+      <FlexBetween mb={2}>
+        <Span color="grey.600">Sub Total:</Span>
+
+        <Span fontSize={18} fontWeight={600} lineHeight="1">
+          {currency(totalPrice - totalDiscount)}
+        </Span>
+      </FlexBetween>
       <Divider sx={{ mb: 2 }} />
 
       <FlexBox alignItems="center" columnGap={1} mb={2}>
@@ -59,6 +72,7 @@ const CheckoutForm = () => {
       {/* COMMENTS TEXT FIELD */}
       <TextField
         variant="outlined"
+        disabled={cart.cartItems.length < 1}
         onChange={(event) => setComments(event.target.value)}
         rows={6}
         fullWidth
@@ -70,6 +84,7 @@ const CheckoutForm = () => {
       {/* APPLY VOUCHER TEXT FIELD */}
       <TextField
         fullWidth
+        disabled={cart.cartItems.length < 1}
         size="small"
         label="Voucher"
         variant="outlined"
@@ -80,6 +95,7 @@ const CheckoutForm = () => {
         variant="outlined"
         color="primary"
         fullWidth
+        disabled={cart.cartItems.length < 1}
         sx={{ mt: 2, mb: 4 }}
       >
         Apply Voucher
@@ -141,6 +157,7 @@ const CheckoutForm = () => {
       <Button
         fullWidth
         color="primary"
+        disabled={cart.cartItems.length < 1}
         onClick={navigateCheckout}
         variant="contained"
         LinkComponent={Link}

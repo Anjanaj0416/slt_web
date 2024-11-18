@@ -86,7 +86,7 @@ const ProductCard1: FC<Props> = ({
         {/* HOVER ACTION ICONS */}
         <HoverActions
           isFavorite={isFavorite}
-          toggleView={toggleDialog}
+          //toggleView={toggleDialog}
           toggleFavorite={toggleFavorite}
         />
 

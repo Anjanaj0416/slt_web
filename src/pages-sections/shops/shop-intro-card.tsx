@@ -116,7 +116,12 @@ const ShopIntroCard: FC<Props> = (props: Props) => {
                 </Button>
               </a>
             ) : (
-              <Button disabled variant="outlined" color="primary" sx={{ my: 1.5 }}>
+              <Button
+                disabled
+                variant="outlined"
+                color="primary"
+                sx={{ my: 1.5 }}
+              >
                 Contact Vendor
               </Button>
             )}

@@ -6,7 +6,6 @@ import { FC, useContext } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
 // GLOBAL CUSTOM COMPONENTS
@@ -16,7 +15,7 @@ import { useUnAuthenticatedModal } from "components/modals/unauthenticated-actio
 // STYLED COMPONENTS
 import { Card, CardMedia, FavoriteButton, StyledIconButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
-import { currency } from "lib";
+import { calculateDiscountPercentage, currency } from "lib";
 // CUSTOM DATA MODEL
 import { LoadingButton } from "@mui/lab";
 import { ENVIRONMENT } from "config";
@@ -29,13 +28,23 @@ import { useSnackbar } from "notistack";
 import { WishlistContext } from "contexts/WishlistContext";
 import useQuotation from "hooks/useQuotation";
 import ProductViewDialog2 from "components/products-view/product-view-dialog2";
+import DiscountChip from "../discount-chip";
 
 // ==============================================================
 type Props = { product: Product1 };
 // ==============================================================
 
 const ProductCard20: FC<Props> = ({ product }: Props) => {
-  const { id, price, name, images, productType } = product;
+  const {
+    id,
+    basePrice,
+    name,
+    images,
+    productType,
+    variants,
+    discountAmount,
+    discountType,
+  } = product;
   const [updateWishlist, { error }] = useUpdateWishlistMutation();
   const { data } = useSession();
   const user = data?.user as User1;
@@ -48,6 +57,14 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
     user?.id
   );
 
+  const minPriceVariant =
+    variants?.length > 0 &&
+    variants.reduce((minVariant, currentVariant) => {
+      return currentVariant.units > 0 && currentVariant.price < minVariant.price
+        ? currentVariant
+        : minVariant;
+    });
+
   // Map wishlist products to product ids
   const wishListProductIds = wishlist?.products?.map((product) => product.id);
   //
@@ -58,12 +75,13 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   //
   const isQuotationProduct = productType === "QUOTATION";
   //
-  const isOutOfStock = !isQuotationProduct && product?.units <= 0;
+  const isOutOfStock = !isQuotationProduct && minPriceVariant.units <= 0;
   //
-  const cartUnits = isItemInCart(product)?.units;
+  const cartUnits = isItemInCart(minPriceVariant)?.units;
   //
   const isButtonLoading =
-    (selectedProductId === product?.id && isLoading) || isCreatingQuotation;
+    (selectedProductId === minPriceVariant.id && isLoading) ||
+    isCreatingQuotation;
 
   const imgUrl = images?.[0]
     ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
@@ -121,6 +139,13 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   return (
     <Card>
       <CardMedia>
+        <DiscountChip
+          discount={calculateDiscountPercentage(
+            discountType,
+            minPriceVariant.price,
+            discountAmount
+          )}
+        />
         {/* PRODUCT IMAGE / THUMBNAIL */}
         <Link href={`/products/${id}`}>
           <LazyImage
@@ -133,9 +158,9 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         </Link>
 
         {/* PRODUCT VIEW BUTTON */}
-        <StyledIconButton className="product-actions" onClick={toggleDialog}>
+        {/* <StyledIconButton className="product-actions" onClick={toggleDialog}>
           <RemoveRedEye color="disabled" fontSize="small" />
-        </StyledIconButton>
+        </StyledIconButton> */}
 
         {/* PRODUCT FAVORITE BUTTON */}
         <FavoriteButton className="product-actions" onClick={toggleFavorite}>
@@ -148,11 +173,11 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
       </CardMedia>
 
       {/* PRODUCT VIEW BOX */}
-      <ProductViewDialog2
+      {/* <ProductViewDialog2
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
         product={product}
-      />
+      /> */}
 
       <Box p={2} textAlign="center">
         {/* PRODUCT TITLE */}
@@ -165,7 +190,8 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           py={0.5}
           color={isQuotationProduct ? "transparent" : "#000000"}
         >
-          {currency(price)}
+          {/* {currency(basePrice)} */}
+          {basePrice}
         </H4>
 
         {/* PRODUCT RATINGS */}
@@ -187,10 +213,12 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           color="dark"
           variant="outlined"
           onClick={() =>
-            isQuotationProduct ? requestQuota() : handleAddToCart(product, 1)
+            isQuotationProduct
+              ? requestQuota()
+              : handleAddToCart(product, minPriceVariant, 1)
           }
           loading={isButtonLoading}
-          disabled={isOutOfStock || cartUnits >= product?.units}
+          disabled={isOutOfStock || cartUnits >= minPriceVariant.units}
         >
           {isOutOfStock
             ? "Out of stock"

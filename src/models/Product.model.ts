@@ -24,19 +24,37 @@ interface Product {
 
 //
 export interface Product1 {
-  units?: any;
-  price: number;
+  id: string;
+  //units?: any;
+  basePrice: string;
   discountAmount: number;
   discountType: "NONE" | "PERCENTAGE" | "FLAT";
-  productType:"QUOTATION" |"DIRECT_BUYING";
-  id: string;
+  productType: "QUOTATION" | "DIRECT_BUYING";
+  variants?: ProductVariant[];
   brand?: string;
   images?: string[];
   videos?: string[];
-  category?: Category1;
-  description:string;
-  specification:string;
+  category: Category1;
+  description: string;
+  specification: string;
   name: string;
+}
+
+export interface VariantAttribute {
+  name: string;
+  value: string;
+}
+
+export interface ProductVariant {
+  id: string;
+  sku: string;
+  units: number;
+  price: number;
+  image?: string;
+  reOrderLevel: number;
+  attributes: VariantAttribute[];
+  createdAt: Date;
+  lastUpdatedAt: Date;
 }
 
 export default Product;

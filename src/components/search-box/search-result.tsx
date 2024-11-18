@@ -9,17 +9,20 @@ import { ENVIRONMENT } from "config";
 
 // ==============================================================
 type Props = {
+  categoryId?: string;
   results: StoreProductSearch[];
 };
 // ==============================================================
 
-const SearchResult: FC<Props> = ({ results }) => (
+const SearchResult: FC<Props> = ({ categoryId, results }) => (
   <SearchResultCard elevation={2}>
     {results.map((item) => (
       <Link
         href={
           item.type === "PRODUCT"
-            ? `/products/search/${item.name}`
+            ? categoryId == "*"
+              ? `/products/search/${item.name}`
+              : `/products/search/${item.name}?categoryId=${categoryId}`
             : `/shops/${item.id}`
         }
         key={item.id}

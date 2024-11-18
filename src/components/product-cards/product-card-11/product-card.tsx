@@ -6,12 +6,11 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { Span } from "components/Typography";
+import { Paragraph, Span } from "components/Typography";
 // LOCAL CUSTOM HOOK
 import useProduct from "../use-product";
 // LOCAL CUSTOM COMPONENTS
 import HoverActions from "./hover-actions";
-import ProductPrice from "../product-price";
 import ProductTitle from "../product-title";
 import DiscountChip from "../discount-chip";
 import QuantityButtons from "./quantity-buttons";
@@ -20,7 +19,7 @@ import { ImageWrapper, ContentWrapper, StyledBazaarCard } from "./styles";
 import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
-import { calculateDiscountPercentage } from "lib";
+import { calculateDiscountPercentage, currency } from "lib";
 import ProductViewDialog2 from "components/products-view/product-view-dialog2";
 
 // ========================================================
@@ -46,13 +45,37 @@ const ProductCard11: FC<Props> = ({
   isUpdating,
   isFavorite = true,
 }) => {
-  const { id, name, price, discountAmount, images, discountType } = product;
+  const {
+    id,
+    name,
+    basePrice,
+    discountAmount,
+    images,
+    discountType,
+    variants,
+  } = product;
   const { openModal, toggleDialog } = useProduct(id);
+  const minPriceVariant =
+    variants.length > 0 &&
+    variants.reduce((minVariant, currentVariant) => {
+      return currentVariant.units > 0 && currentVariant.price < minVariant.price
+        ? currentVariant
+        : minVariant;
+    });
 
-  const { handleAddToCart } = useCartService();
+  const { handleAddToCart, isItemInCart, handleRemoveFromCart } =
+    useCartService();
+  const cartUnits = isItemInCart(minPriceVariant)?.units;
 
   const handleIncrementQuantity = () => {
-    handleAddToCart(product, 1);
+    handleAddToCart(product, minPriceVariant, 1);
+  };
+  const handleDecrementQuantity = () => {
+    if (cartUnits === 1) {
+      handleRemoveFromCart(minPriceVariant);
+      return;
+    }
+    handleAddToCart(product, minPriceVariant, -1);
   };
   const imgUrl = images[0]
     ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
@@ -64,7 +87,7 @@ const ProductCard11: FC<Props> = ({
         <DiscountChip
           discount={calculateDiscountPercentage(
             discountType,
-            price,
+            minPriceVariant.price,
             discountAmount
           )}
         />
@@ -90,11 +113,11 @@ const ProductCard11: FC<Props> = ({
       </ImageWrapper>
 
       {/* PRODUCT VIEW DIALOG BOX */}
-      <ProductViewDialog2
+      {/* <ProductViewDialog2
         openDialog={openModal}
         handleCloseDialog={toggleDialog}
         product={product}
-      />
+      /> */}
 
       <ContentWrapper>
         <Box flex="1 1 0" minWidth="0px" mr={1}>
@@ -114,21 +137,24 @@ const ProductCard11: FC<Props> = ({
           ) : null}
 
           {/* PRODUCT PRICE WITH DISCOUNT */}
-          <ProductPrice
+          {/* <ProductPrice
             discount={calculateDiscountPercentage(
               discountType,
-              price,
+              minPriceVariant.price,
               discountAmount
             )}
-            price={price}
-          />
+            price={basePrice}
+          /> */}
+          <Paragraph fontWeight={600} color="primary.main">
+            {currency(basePrice)}
+          </Paragraph>
         </Box>
 
         {/* PRODUCT QUANTITY HANDLER BUTTONS */}
         <QuantityButtons
-          //quantity={cartItem?.qty || 0}
+          quantity={cartUnits || 0}
           handleIncrement={handleIncrementQuantity}
-          //handleDecrement={handleDecrementQuantity}
+          handleDecrement={handleDecrementQuantity}
         />
       </ContentWrapper>
     </StyledBazaarCard>

@@ -7,14 +7,16 @@ import { Paragraph } from "components/Typography";
 import { calculateDiscountPrice, currency } from "lib";
 
 // ==============================================================
-type Props = { price: number; discount: number };
+type Props = { price: number | string; discount: number };
 // ==============================================================
 
 const ProductPrice: FC<Props> = ({ discount, price }) => {
   return (
     <FlexBox alignItems="center" gap={1} mt={0.5}>
       <Paragraph fontWeight={600} color="primary.main">
-        {calculateDiscountPrice(price, discount)}
+        {typeof price === "number"
+          ? calculateDiscountPrice(price, discount)
+          : price}
       </Paragraph>
 
       {discount ? (

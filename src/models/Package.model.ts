@@ -1,4 +1,4 @@
-import { Product1 } from "./Product.model";
+import { Product1, ProductVariant } from "./Product.model";
 
 export type PackageStatus =
   | "PENDING"
@@ -7,11 +7,15 @@ export type PackageStatus =
   | "DELIVERED"
   | "CANCELLED";
 export type PackageItem = {
-  id: string;
+  productId: string;
+  productName: string;
+  basePrice: string;
+  brand: string;
   status: PackageStatus;
-  product: Product1;
   discount: number;
   price: number;
+  images: string[];
+  productVariant: ProductVariant;
   units: number;
 };
 
