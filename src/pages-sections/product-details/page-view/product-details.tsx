@@ -12,6 +12,7 @@ import Store from "models/Store.model";
 interface Props {
   product: Product1;
   stores: Store[];
+  ownerStore: Store;
   relatedProducts: Product1[];
   frequentlyBought?: Product[];
 }
@@ -21,11 +22,12 @@ const ProductDetailsPageView = ({
   product,
   relatedProducts,
   stores,
+  ownerStore,
 }: Props) => {
   return (
     <Container sx={{ my: 4 }}>
       {/* PRODUCT DETAILS INFO AREA */}
-      <ProductIntro1 product={product} />
+      <ProductIntro1 product={product} store={ownerStore} />
 
       {/* PRODUCT DESCRIPTION AND REVIEW */}
       <ProductTabs
@@ -38,10 +40,12 @@ const ProductDetailsPageView = ({
       {/* <FrequentlyBought products={props.frequentlyBought} /> */}
 
       {/* AVAILABLE SHOPS AREA */}
-      <AvailableShops stores={stores} />
+      {stores.length > 0 && <AvailableShops stores={stores} />}
 
       {/* RELATED PRODUCTS AREA */}
-      <RelatedProducts products={relatedProducts} />
+      {relatedProducts?.length > 0 && (
+        <RelatedProducts products={relatedProducts} />
+      )}
     </Container>
   );
 };

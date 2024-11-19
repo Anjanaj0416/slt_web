@@ -34,6 +34,7 @@ export interface Product1 {
   brand?: string;
   images?: string[];
   videos?: string[];
+  tags?: string[];
   category: Category1;
   description: string;
   specification: string;

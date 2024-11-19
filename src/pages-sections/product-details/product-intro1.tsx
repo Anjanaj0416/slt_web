@@ -29,9 +29,10 @@ import ShareIcon from "@mui/icons-material/Share";
 import ShareModal, { ShareModalRef } from "./ShareModal";
 import { Chip, CircularProgress, Tooltip } from "@mui/material";
 import { useSnackbar } from "notistack";
+import Store from "models/Store.model";
 
 // ================================================================
-type Props = { product: Product1 };
+type Props = { product: Product1; store: Store };
 // ================================================================
 
 interface MappedAttribute {
@@ -40,7 +41,7 @@ interface MappedAttribute {
   values: string[];
 }
 
-const ProductIntro1: FC<Props> = ({ product }) => {
+const ProductIntro1: FC<Props> = ({ product, store }) => {
   const {
     basePrice,
     name,
@@ -437,8 +438,8 @@ const ProductIntro1: FC<Props> = ({ product }) => {
           {/* SHOP NAME */}
           <FlexBox alignItems="center" gap={1} mb={2}>
             <div>Sold By:</div>
-            <Link href="/shops/scarlett-beauty">
-              <H6>Mobile Store</H6>
+            <Link href={`/shops/${store.id}`}>
+              <H6>{store.name}</H6>
             </Link>
           </FlexBox>
         </Grid>
