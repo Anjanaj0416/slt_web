@@ -83,7 +83,7 @@ const MobileHeader: FC<Props> = ({ searchInput }) => {
       >
         <Box sx={{ width: "auto", padding: 2, height: "100vh" }}>
           <FlexBetween mb={1}>
-            <Paragraph>Search to Bazaar</Paragraph>
+            <Paragraph>Search to SLT Marcketplace</Paragraph>
 
             <IconButton onClick={toggleSearchBar}>
               <Clear />

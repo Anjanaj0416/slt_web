@@ -21,7 +21,7 @@ const LogoArea = () => {
       justifyContent={COMPACT ? "center" : "space-between"}
     >
       <Avatar
-        alt="Bazaar Logo"
+        alt="SLT Marcketplace Logo"
         src={
           COMPACT
             ? "/assets/images/bazaar-white-sm.svg"

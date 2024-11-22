@@ -10,7 +10,7 @@ const LogoWithTitle = () => {
         src={require("../../../public/assets/images/bazaar-black-sm.svg")}
         alt="bazaar"
       />
-      <H5 fontWeight={700}>Welcome To Bazaar</H5>
+      <H5 fontWeight={700}>Welcome To SLT Marcketplace</H5>
     </FlexRowCenter>
   );
 };

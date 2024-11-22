@@ -7,8 +7,8 @@ import STORE_API from "constants/store";
 import PRODUCT_API from "constants/products";
 
 export const metadata: Metadata = {
-  title: "Shop Details - Bazaar Next.js E-commerce Template",
-  description: `Bazaar is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
+  title: "Shop Details - SLT Marcketplace Next.js E-commerce Template",
+  description: `SLT Marcketplace is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
   authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
   viewport: "width=device-width, initial-scale=1",
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],

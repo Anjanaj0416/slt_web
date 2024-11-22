@@ -111,7 +111,7 @@ const Section5 = () => {
           <a href="https://www.getbazaar.io/" target="_blank">
             <Image
               src="https://ui-lib.com/wp-content/uploads/2023/10/bazaar-server.jpg"
-              alt="Bazaar server"
+              alt="SLT Marcketplace server"
             />
           </a>
         </Box>

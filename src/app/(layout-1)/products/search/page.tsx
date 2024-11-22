@@ -7,8 +7,8 @@ import { notFound, redirect } from "next/navigation";
 import { Product1 } from "models/Product.model";
 
 export const metadata: Metadata = {
-  title: "Product Search - Bazaar Next.js E-commerce Template",
-  description: `Bazaar is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
+  title: "Product Search - SLT Marcketplace Next.js E-commerce Template",
+  description: `SLT Marcketplace is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
   authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
   viewport: "width=device-width, initial-scale=1",
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
