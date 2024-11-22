@@ -38,7 +38,7 @@ type Props = { product: Product1; store: Store };
 interface MappedAttribute {
   id: string;
   title: string;
-  values: string[];
+  values: { value: string; disabled: boolean }[];
 }
 
 const ProductIntro1: FC<Props> = ({ product, store }) => {
@@ -61,8 +61,10 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>();
   const [price, setPrice] = useState<number>();
   const [quantity, setQuantity] = useState<number>();
+  const [mappedAttributes, setMappedAttributes] = useState<MappedAttribute[]>();
 
   useEffect(() => {
+    setMappedAttributes(mapAttributes(variants));
     if (productType === "DIRECT_BUYING") {
       const maxStockVariant = variants.reduce((maxVariant, currentVariant) => {
         return currentVariant.units > maxVariant.units
@@ -90,7 +92,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
         (variant) => variant.attributes?.some((attr) => attr.name === name)
       )!.id,
       title: name,
-      values: Array.from(values),
+      values: Array.from(values).map((e) => ({ value: e, disabled: false })),
     }));
   };
 
@@ -118,10 +120,35 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     });
   }
 
-  const mappedAttributes = mapAttributes(variants);
-
   useEffect(() => {
-    if (selectedAttributes.length < mappedAttributes.length) {
+    const availableAttributes = getNextAvailableAttributes(
+      product,
+      selectedAttributes
+    );
+
+    setMappedAttributes((prevMappedAttributes) =>
+      prevMappedAttributes.map((attr) => {
+        const matchingAvailableAttr = availableAttributes.find(
+          (availableAttr) => availableAttr.name === attr.title
+        );
+
+        return {
+          ...attr,
+          values: attr.values.map((value) => ({
+            ...value,
+            disabled: !(
+              matchingAvailableAttr &&
+              matchingAvailableAttr?.values?.includes(value.value)
+            ),
+          })),
+        };
+      })
+    );
+
+    if (
+      !mappedAttributes ||
+      selectedAttributes.length < mappedAttributes?.length
+    ) {
       setSelectedVariant(null);
       setPrice(null);
       return;
@@ -138,13 +165,71 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       const imageIndex = images.findIndex((e) => e === selectedVariant.image);
 
       setSelectedImage(imageIndex < 0 ? 0 : imageIndex);
-    } else {
-      setSelectedAttributes([]);
-      enqueueSnackbar("Selected Variant Not Found", {
-        variant: "error",
-      });
     }
   }, [selectedAttributes]);
+
+  function getNextAvailableAttributes(
+    product: Product1,
+    providedAttributes: { name: string; value: string }[]
+  ): { name: string; values: string[] }[] {
+    if (!product.variants || product.variants.length === 0) {
+      console.log("No variants available for this product.");
+      return [];
+    }
+
+    // Step 1: Find variants matching the provided attributes
+    const matchingVariants = product.variants.filter((variant) =>
+      providedAttributes.every((attr) =>
+        variant.attributes.some(
+          (variantAttr) =>
+            variantAttr.name === attr.name && variantAttr.value === attr.value
+        )
+      )
+    );
+
+    // If no matching variants are found
+    if (matchingVariants.length === 0) {
+      console.log("No matching variants for the provided attributes.");
+      return providedAttributes.map((attr) => ({
+        name: attr.name,
+        values: [attr.value],
+      }));
+    }
+
+    // Step 2: Collect all next available attributes from matching variants
+    const nextAttributesMap: Record<string, Set<string>> = {};
+
+    matchingVariants.forEach((variant) => {
+      variant.attributes.forEach((attr) => {
+        const isAlreadyProvided = providedAttributes.some(
+          (providedAttr) =>
+            providedAttr.name === attr.name && providedAttr.value === attr.value
+        );
+
+        // Add only attributes that are not already provided
+        if (!isAlreadyProvided) {
+          if (!nextAttributesMap[attr.name]) {
+            nextAttributesMap[attr.name] = new Set();
+          }
+          nextAttributesMap[attr.name].add(attr.value);
+        }
+      });
+    });
+
+    // Step 3: Include provided attributes as available
+    providedAttributes.forEach((attr) => {
+      if (!nextAttributesMap[attr.name]) {
+        nextAttributesMap[attr.name] = new Set();
+      }
+      nextAttributesMap[attr.name].add(attr.value);
+    });
+
+    // Convert to the required format
+    return Object.entries(nextAttributesMap).map(([name, values]) => ({
+      name,
+      values: Array.from(values),
+    }));
+  }
 
   const { data } = useSession();
   const user = data?.user as User1;
@@ -325,18 +410,19 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
           </FlexBox>
 
           {/* PRODUCT VARIANTS */}
-          {mappedAttributes.map((variant) => (
+          {mappedAttributes?.map((variant) => (
             <Box key={variant.id} mb={2}>
               <H6 mb={1}>{variant.title}</H6>
 
               {variant.values.map((value, index) => (
                 <Chip
                   key={index}
-                  label={value}
-                  onClick={handleChangeVariant(variant.title, value)}
+                  label={value.value}
+                  disabled={value.disabled}
+                  onClick={handleChangeVariant(variant.title, value.value)}
                   sx={{ borderRadius: "4px", mr: 1, cursor: "pointer" }}
                   color={
-                    selectedAttributes.find((e) => e.value === value)
+                    selectedAttributes.find((e) => e.value === value.value)
                       ? "primary"
                       : "default"
                   }
