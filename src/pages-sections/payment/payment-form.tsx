@@ -14,6 +14,7 @@ import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
 import CreditCardForm from "./credit-card-form";
 import { LoadingButton } from "@mui/lab";
+import axios from "axios";
 
 const PAYMENT_METHODS = {
   CASH_ON_DELIVERY: "COD",
@@ -50,16 +51,41 @@ const PaymentForm = () => {
   };
   //
   const placeOrder = async () => {
-    await createOrder({
+    const order = await createOrder({
       body: {
         cartId: user?.cart?.id,
         userId: user?.id,
         shippingAddressId: selectedShippingAddressId,
         billingAddressId: selectedBillingAddressId,
         note,
-        payments: [{ amount: totalPrice, paymentType: paymentMethod }],
+
+        payments: [
+          {
+            amount: totalPrice,
+            paymentType: paymentMethod,
+            ipgType:
+              paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY
+                ? "NONE"
+                : "NDB",
+          },
+        ],
       },
     });
+
+    if (paymentMethod !== PAYMENT_METHODS.CASH_ON_DELIVERY) {
+      const { ndbPaymentIntDto } = (order as any).data;
+      const redirectUrl = ndbPaymentIntDto.redirectUrl;
+
+      const formData = new URLSearchParams(ndbPaymentIntDto).toString();
+      delete ndbPaymentIntDto.redirectURL;
+
+      axios.post(redirectUrl, formData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+    }
   };
 
   return (
