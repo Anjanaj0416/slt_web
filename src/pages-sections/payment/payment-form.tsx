@@ -74,15 +74,13 @@ const PaymentForm = () => {
 
     if (paymentMethod !== PAYMENT_METHODS.CASH_ON_DELIVERY) {
       const { ndbPaymentIntDto } = (order as any).data;
-      const redirectUrl = ndbPaymentIntDto.redirectUrl;
+      const {redirectUrl, ...data} = ndbPaymentIntDto;
+      delete ndbPaymentIntDto['redirectURL'];
+      const formData = new URLSearchParams(data).toString();
 
-      const formData = new URLSearchParams(ndbPaymentIntDto).toString();
-      delete ndbPaymentIntDto.redirectURL;
-
-      axios.post(redirectUrl, formData, {
+      await axios.post(redirectUrl, formData, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
-          "Access-Control-Allow-Origin": "*",
         },
       });
     }
