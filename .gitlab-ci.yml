@@ -58,7 +58,7 @@ build_dev:
     - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
     - docker push $ECR_REGISTRY/marketplacer-client:$IMAGE_TAG
   only:
-    - dev
+    - feature/fix_branch
 
 build_qa:
   stage: build
@@ -126,7 +126,7 @@ deploy_dev:
     - kubectl apply -f ./manifests/deployment.yaml -n dev
     - kubectl apply -f ./manifests/service.yaml -n dev
   only:
-    - dev
+    - feature/fix_branch
 
 deploy_qa:
   stage: deploy
