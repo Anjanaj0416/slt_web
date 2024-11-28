@@ -19,8 +19,6 @@ export default async function Checkout() {
     const { data } = await request(API.GET_ADDRESS, {
       userId: user?.id,
     });
-    console.log(data);
-    
     //
     return <CheckoutPageView address={data} />;
   } catch (error) {

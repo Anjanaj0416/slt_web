@@ -12,7 +12,7 @@ import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
-import CreditCardForm from "./credit-card-form";
+import CreditCardButton, { CardType } from "./credit-card-buttons";
 import { LoadingButton } from "@mui/lab";
 
 const PAYMENT_METHODS = {
@@ -28,6 +28,8 @@ const PaymentForm = () => {
   const { selectedBillingAddressId, selectedShippingAddressId } =
     useCheckoutService();
   const { note, totalPrice, setCart } = useCartService();
+  const [selectedCard, setSelectedCard] = useState<CardType>();
+
   //
   const [createOrder, { isLoading: isCreatingOrder, isSuccess, data }] =
     useCreateOrderMutation();
@@ -69,6 +71,18 @@ const PaymentForm = () => {
   };
   //
   const placeOrder = async () => {
+    let ipgType: string;
+
+    if (paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY) {
+      ipgType = "NONE";
+    } else if (selectedCard === "VISA_MASTER") {
+      ipgType = "NDB";
+    } else if (selectedCard === "AMEX") {
+      ipgType = "WEBEX";
+    } else {
+      enqueueSnackbar("Select Card Type", { variant: "warning" });
+      return;
+    }
     const order = await createOrder({
       body: {
         cartId: user?.cart?.id,
@@ -81,10 +95,7 @@ const PaymentForm = () => {
           {
             amount: totalPrice,
             paymentType: paymentMethod,
-            ipgType:
-              paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY
-                ? "NONE"
-                : "NDB",
+            ipgType,
           },
         ],
       },
@@ -114,33 +125,14 @@ const PaymentForm = () => {
           checked={paymentMethod === PAYMENT_METHODS.CARD}
         />
 
-        {paymentMethod === PAYMENT_METHODS.CARD && <CreditCardForm />}
+        {paymentMethod === PAYMENT_METHODS.CARD && (
+          <CreditCardButton
+            selectedCardType={selectedCard}
+            setCardType={setSelectedCard}
+          />
+        )}
 
         <Divider sx={{ my: 3, mx: -4 }} />
-
-        {/* PAYPAL CARD OPTION */}
-        {/* <FormLabel
-          name="paypal"
-          title="Pay with Paypal"
-          handleChange={handlePaymentMethodChange}
-          checked={paymentMethod === "paypal"}
-        /> */}
-
-        {/* {paymentMethod === "paypal" && (
-          <FlexBox alignItems="flex-end" gap={2} mb={4}>
-            <TextField
-              fullWidth
-              name="email"
-              type="email"
-              label="Paypal Email"
-            />
-            <Button variant="outlined" color="primary" type="button">
-              Submit
-            </Button>
-          </FlexBox>
-        )} */}
-
-        <Divider sx={{ mt: 3, mx: -4 }} />
 
         {/* CASH ON DELIVERY OPTION */}
         <FormLabel
