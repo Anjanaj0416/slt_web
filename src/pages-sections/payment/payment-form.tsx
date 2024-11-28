@@ -14,7 +14,6 @@ import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
 import CreditCardForm from "./credit-card-form";
 import { LoadingButton } from "@mui/lab";
-import axios from "axios";
 
 const PAYMENT_METHODS = {
   CASH_ON_DELIVERY: "COD",
@@ -34,13 +33,32 @@ const PaymentForm = () => {
     useCreateOrderMutation();
   //
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY) {
       enqueueSnackbar("Order places successfully", { variant: "success" });
       setCart({ id: "", cartItems: [] });
 
       push(`/orders/${data.id}`);
     }
   }, [isCreatingOrder, isSuccess]);
+
+  function submitDataToIpg(redirectUrl: string, data: Record<string, string>) {
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = redirectUrl;
+    form.enctype = "application/x-www-form-urlencoded";
+
+    for (const [key, value] of Object.entries(data)) {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
+    }
+
+    document.body.appendChild(form);
+
+    form.submit();
+  }
   //
   const [paymentMethod, setPaymentMethod] = useState<string>(
     PAYMENT_METHODS.CARD
@@ -74,15 +92,8 @@ const PaymentForm = () => {
 
     if (paymentMethod !== PAYMENT_METHODS.CASH_ON_DELIVERY) {
       const { ndbPaymentIntDto } = (order as any).data;
-      const {redirectUrl, ...data} = ndbPaymentIntDto;
-      delete ndbPaymentIntDto['redirectURL'];
-      const formData = new URLSearchParams(data).toString();
-
-      await axios.post(redirectUrl, formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const { redirectUrl, ...formData } = ndbPaymentIntDto;
+      submitDataToIpg(redirectUrl, formData);
     }
   };
 
