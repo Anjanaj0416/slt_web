@@ -78,12 +78,12 @@ const PaymentForm = () => {
     } else if (selectedCard === "VISA_MASTER") {
       ipgType = "NDB";
     } else if (selectedCard === "AMEX") {
-      ipgType = "WEBEX";
+      ipgType = "WEBX_PAY";
     } else {
       enqueueSnackbar("Select Card Type", { variant: "warning" });
       return;
     }
-    const order = await createOrder({
+    const orderData = await createOrder({
       body: {
         cartId: user?.cart?.id,
         userId: user?.id,
@@ -102,8 +102,10 @@ const PaymentForm = () => {
     });
 
     if (paymentMethod !== PAYMENT_METHODS.CASH_ON_DELIVERY) {
-      const { ndbPaymentIntDto } = (order as any).data;
-      const { redirectUrl, ...formData } = ndbPaymentIntDto;
+      const order = (orderData as any).data;
+      const paymentIntDto =
+        ipgType === "NDB" ? order.ndbPaymentIntDto : order.webXPayPaymentIntDto;
+      const { redirectUrl, ...formData } = paymentIntDto;
       submitDataToIpg(redirectUrl, formData);
     }
   };
