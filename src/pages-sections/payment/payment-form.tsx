@@ -44,7 +44,7 @@ const PaymentForm = ({ type }: Props) => {
       if (type === "CART") {
         setCart({ id: "", cartItems: [] });
       } else {
-        setItems([]);
+       setItems([]);
       }
 
       push(`/orders/${data.id}`);
