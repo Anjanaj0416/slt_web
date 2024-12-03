@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function Payment() {
-  return <PaymentPageView type="CART" />;
+  return <PaymentPageView type="BUY_NOW" />;
 }

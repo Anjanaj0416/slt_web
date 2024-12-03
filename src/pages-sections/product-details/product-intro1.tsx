@@ -30,6 +30,7 @@ import ShareModal, { ShareModalRef } from "./ShareModal";
 import { Chip, CircularProgress, Tooltip } from "@mui/material";
 import { useSnackbar } from "notistack";
 import Store from "models/Store.model";
+import useBuyNowItemService from "hooks/useBuyNowItemService";
 
 // ================================================================
 type Props = { product: Product1; store: Store };
@@ -240,6 +241,8 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     selectedProductId,
     isUpdating,
   } = useCartService();
+  const { handleAddToItem } = useBuyNowItemService();
+
 
   const carItemIds = cart.cartItems.map((item) => item.productVariant.id);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -297,7 +300,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   const handleImageClick = (ind: number) => () => setSelectedImage(ind);
 
   // HANDLE CHANGE CART
-  const handleCartAmountChange = (amount: number) => () => {
+  const handleCartAmountChange = (units: number) => {
     if (!selectedVariant) {
       enqueueSnackbar("Please Select Variant", {
         variant: "warning",
@@ -305,14 +308,27 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       return;
     }
     if (
-      amount === -1 &&
+      units === -1 &&
       cart.cartItems.find((e) => e.productVariant.id === selectedVariant.id)
         .units === 1
     ) {
       handleRemoveFromCart(selectedVariant);
     } else {
-      handleAddToCart(product, selectedVariant, amount);
+      handleAddToCart(product, selectedVariant, units);
     }
+  };
+
+  // HANDLE BUY NOW
+  const handleBuyNow = () => {
+    console.log("cl");
+
+    if (!selectedVariant) {
+      enqueueSnackbar("Please Select Variant", {
+        variant: "warning",
+      });
+      return;
+    }
+    handleAddToItem([{ product, productVariant: selectedVariant, units: 1 }]);
   };
 
   return (
@@ -464,13 +480,14 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
             {!carItemIds?.includes(selectedVariant?.id) ? (
               <LoadingButton
                 color="primary"
-                variant="contained"
                 disabled={quantity < 1}
                 loading={isButtonLoading || isCreatingQuotation}
-                onClick={
-                  isQuotationProduct ? requestQuota : handleCartAmountChange(1)
+                onClick={() =>
+                  isQuotationProduct
+                    ? requestQuota()
+                    : handleCartAmountChange(1)
                 }
-                sx={{ px: "1.75rem", height: 40 }}
+                sx={{ px: "1.75rem", height: 40, width: 140, border: 1 }}
               >
                 {isQuotationProduct ? "Get Quote" : "Add to Cart"}
               </LoadingButton>
@@ -482,7 +499,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
                   sx={{ p: 1 }}
                   color="primary"
                   variant="outlined"
-                  onClick={handleCartAmountChange(-1)}
+                  onClick={() => handleCartAmountChange(-1)}
                 >
                   <Remove fontSize="small" />
                 </Button>
@@ -501,12 +518,24 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
                   sx={{ p: 1 }}
                   color="primary"
                   variant="outlined"
-                  onClick={handleCartAmountChange(1)}
+                  onClick={() => handleCartAmountChange(1)}
                 >
                   <Add fontSize="small" />
                 </Button>
               </>
             )}
+
+            <Button
+              color="primary"
+              variant="contained"
+              disabled={quantity < 1}
+              onClick={() =>
+                isQuotationProduct ? requestQuota() : handleBuyNow()
+              }
+              sx={{ px: "1.75rem", height: 40, ml: 1.5, width: 136 }}
+            >
+              Buy Now
+            </Button>
             <Tooltip title="Share">
               <Button
                 sx={{ height: 40, marginLeft: 1 }}

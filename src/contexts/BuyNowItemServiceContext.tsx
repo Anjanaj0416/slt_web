@@ -1,0 +1,181 @@
+"use client";
+
+import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
+import { calculateDiscountAmount } from "lib";
+//
+import { Product1, ProductVariant } from "models/Product.model";
+import { CartItem, User1 } from "models/User.model";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
+//
+type ContextState = {
+  handleAddToItem: (
+    items: {
+      product: Product1;
+      productVariant: ProductVariant;
+      units: number;
+    }[]
+  ) => void;
+  items: CartItem[];
+  setItems: Dispatch<SetStateAction<CartItem[]>>;
+  handleUpdateQty: (productVariant: ProductVariant, units: number) => void;
+  totalPrice: number;
+  totalDiscount: number;
+  note: string;
+  setNote: Dispatch<SetStateAction<string>>;
+};
+//
+const initState: ContextState = {
+  handleAddToItem: () => {},
+  items: [],
+  setItems: () => {},
+  handleUpdateQty: () => {},
+  totalPrice: 0,
+  totalDiscount: 0,
+  note: "",
+  setNote: () => {},
+};
+//
+export const BuyNowItemServiceContext = createContext<ContextState>(initState);
+//
+type Props = {
+  children: ReactNode;
+};
+//
+const BuyNowItemServiceProvider = (props: Props) => {
+  const session = useSession();
+  const router = useRouter();
+  const user = session?.data?.user as User1 | undefined;
+  const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
+  const [note, setNote] = useState<string>("");
+
+  const [items, setItems] = useState<CartItem[]>([]);
+
+  //
+  const handleUpdateQty = useCallback(
+    async (productVariant: ProductVariant, units: number) => {
+      // if (session.status === "loading") {
+      //   return;
+      // }
+      // if (!user?.id) {
+      //   openUnAuthenticatedModal(true);
+      //   return;
+      // }
+      //
+      const newItemList = items?.map((item) =>
+        item?.productVariant?.id === productVariant?.id
+          ? { ...item, units: item?.units + units }
+          : item
+      );
+      //
+      setItems(newItemList);
+    },
+    [user?.id, session.status]
+  );
+  //
+  const handleAddToItem = useCallback(
+    (
+      items: {
+        product: Product1;
+        productVariant: ProductVariant;
+        units: number;
+      }[]
+    ) => {
+      // if (session.status === "loading") {
+      //   return;
+      // }
+      // if (!user?.id) {
+      //   openUnAuthenticatedModal(true);
+      //   return;
+      // }
+      const newItems: CartItem[] = items.map((item) => {
+        const {
+          id: productId,
+          images,
+          basePrice,
+          productType,
+          brand,
+          discountType,
+          discountAmount,
+          name: productName,
+        } = item.product;
+        return {
+          productId,
+          basePrice,
+          images,
+          productVariant: item.productVariant,
+          units: item.units,
+          productName,
+          brand,
+          productType,
+          discountAmount,
+          discountType,
+        };
+      });
+
+      //
+      setItems(newItems);
+      router.push("/buy-now/items");
+    },
+    [user?.id, session.status]
+  );
+  //
+  const totalPrice = useMemo(
+    () =>
+      items?.reduce(
+        (accumulator, current) =>
+          (accumulator =
+            accumulator + current?.productVariant?.price * current?.units),
+        0
+      ),
+    [items]
+  );
+
+  const totalDiscount = useMemo(
+    () =>
+      items?.reduce(
+        (accumulator, current) =>
+          (accumulator =
+            accumulator +
+            calculateDiscountAmount(
+              current?.discountType,
+              current?.productVariant.price,
+              current?.discountAmount
+            ) *
+              current?.units),
+        0
+      ),
+    [items]
+  );
+  //
+  const returnValue: ContextState = useMemo(
+    () => ({
+      handleAddToItem,
+      items,
+      setItems,
+      handleUpdateQty,
+      totalPrice,
+      totalDiscount,
+      note,
+      setNote,
+    }),
+    [items, totalPrice, totalDiscount, note]
+  );
+  //
+  return (
+    <BuyNowItemServiceContext.Provider value={returnValue}>
+      {props.children}
+    </BuyNowItemServiceContext.Provider>
+  );
+};
+//
+export default BuyNowItemServiceProvider;

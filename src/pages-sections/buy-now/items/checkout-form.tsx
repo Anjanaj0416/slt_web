@@ -14,11 +14,12 @@ import { currency } from "lib";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { useSnackbar } from "notistack";
+import useBuyNowItemService from "hooks/useBuyNowItemService";
 
 const CheckoutForm = () => {
   const { push } = useRouter();
   const [comments, setComments] = useState("");
-  const { totalDiscount, totalPrice, setNote, cart } = useCartService();
+  const { totalDiscount, totalPrice, setNote, items } = useBuyNowItemService();
   const { enqueueSnackbar } = useSnackbar();
 
   const [voucherText, setVoucherText] = useState<string>("");
@@ -40,7 +41,7 @@ const CheckoutForm = () => {
   //
   const navigateCheckout = () => {
     setNote(comments);
-    push("/checkout");
+    push("/buy-now/checkout");
   };
   //
   return (
@@ -86,7 +87,7 @@ const CheckoutForm = () => {
       {/* COMMENTS TEXT FIELD */}
       <TextField
         variant="outlined"
-        disabled={cart.cartItems.length < 1}
+        disabled={items.length < 1}
         onChange={(event) => setComments(event.target.value)}
         rows={6}
         fullWidth
@@ -98,9 +99,9 @@ const CheckoutForm = () => {
       {/* APPLY VOUCHER TEXT FIELD */}
       <TextField
         fullWidth
-        disabled={cart.cartItems.length < 1}
+        disabled={items.length < 1}
         size="small"
-        label="Voucher"
+        label={voucherText?"Voucher":""}
         variant="outlined"
         placeholder="Enter Voucher Code"
         value={voucherText}
@@ -111,7 +112,7 @@ const CheckoutForm = () => {
         variant="outlined"
         color="primary"
         fullWidth
-        disabled={cart.cartItems.length < 1 || !voucherText}
+        disabled={items.length < 1 || !voucherText}
         sx={{ mt: 2, mb: 4 }}
         onClick={handleAddVoucher}
       >
@@ -174,7 +175,7 @@ const CheckoutForm = () => {
       <Button
         fullWidth
         color="primary"
-        disabled={cart.cartItems.length < 1}
+        disabled={items.length < 1}
         onClick={navigateCheckout}
         variant="contained"
         LinkComponent={Link}

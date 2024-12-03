@@ -26,6 +26,7 @@ import { UnauthenticatedModalProvider } from "components/modals/unauthenticated-
 import CartServiceProvider from "contexts/CartServiceContext";
 import CheckoutServiceContextProvider from "contexts/CheckoutServiceContext";
 import WishlistProvider from "contexts/WishlistContext";
+import BuyNowItemServiceProvider from "contexts/BuyNowItemServiceContext";
 //
 export default function RootLayout({
   children,
@@ -40,14 +41,16 @@ export default function RootLayout({
                 <CheckoutServiceContextProvider>
                   <CartProvider>
                     <WishlistProvider>
-                      <SettingsProvider>
-                        <ThemeProvider>
-                          <ProgressBar />
-                          <RTL>
-                            <SnackbarProvider>{children}</SnackbarProvider>
-                          </RTL>
-                        </ThemeProvider>
-                      </SettingsProvider>
+                      <BuyNowItemServiceProvider>
+                        <SettingsProvider>
+                          <ThemeProvider>
+                            <ProgressBar />
+                            <RTL>
+                              <SnackbarProvider>{children}</SnackbarProvider>
+                            </RTL>
+                          </ThemeProvider>
+                        </SettingsProvider>
+                      </BuyNowItemServiceProvider>
                     </WishlistProvider>
                   </CartProvider>
                 </CheckoutServiceContextProvider>

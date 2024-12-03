@@ -14,20 +14,24 @@ import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
 import CreditCardButton, { CardType } from "./credit-card-buttons";
 import { LoadingButton } from "@mui/lab";
+import useBuyNowItemService from "hooks/useBuyNowItemService";
 
 const PAYMENT_METHODS = {
   CASH_ON_DELIVERY: "COD",
   CARD: "CARD",
 } as const;
-
-const PaymentForm = () => {
+type Props = {
+  type: "CART" | "BUY_NOW";
+};
+const PaymentForm = ({ type }: Props) => {
   const { push } = useRouter();
   const { enqueueSnackbar } = useSnackbar();
   const { data: session } = useSession();
   const user = session?.user as User1;
   const { selectedBillingAddressId, selectedShippingAddressId } =
     useCheckoutService();
-  const { note, totalPrice, setCart } = useCartService();
+  const { note, setCart } = useCartService();
+  const { note: buyingNote, items, setItems } = useBuyNowItemService();
   const [selectedCard, setSelectedCard] = useState<CardType>();
 
   //
@@ -37,7 +41,11 @@ const PaymentForm = () => {
   useEffect(() => {
     if (isSuccess && paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY) {
       enqueueSnackbar("Order places successfully", { variant: "success" });
-      setCart({ id: "", cartItems: [] });
+      if (type === "CART") {
+        setCart({ id: "", cartItems: [] });
+      } else {
+        setItems([]);
+      }
 
       push(`/orders/${data.id}`);
     }
@@ -83,23 +91,34 @@ const PaymentForm = () => {
       enqueueSnackbar("Select Card Type", { variant: "warning" });
       return;
     }
-    const orderData = await createOrder({
+
+    const requestData = {
       body: {
-        cartId: user?.cart?.id,
         userId: user?.id,
         shippingAddressId: selectedShippingAddressId,
         billingAddressId: selectedBillingAddressId,
-        note,
-
         payments: [
           {
-            amount: totalPrice,
             paymentType: paymentMethod,
             ipgType,
           },
         ],
       },
-    });
+    };
+    console.log(type);
+    if (type === "CART") {
+      requestData.body["cartId"] = user?.cart?.id;
+      requestData.body["note"] = note;
+    } else {
+      console.log(items);
+      const cartItems = items.map((item) => ({
+        productVariantId: item.productVariant.id,
+        units: item.units,
+      }));
+      requestData.body["cartItems"] = cartItems;
+      requestData.body["note"] = buyingNote;
+    }
+    const orderData = await createOrder(requestData);
 
     if (paymentMethod !== PAYMENT_METHODS.CASH_ON_DELIVERY) {
       const order = (orderData as any).data;
@@ -149,7 +168,7 @@ const PaymentForm = () => {
       <Stack direction="row" spacing={3}>
         <Button
           LinkComponent={Link}
-          href="/checkout"
+          href={type === "CART" ? "/checkout" : "/buy-now/checkout"}
           variant="outlined"
           color="primary"
           type="button"

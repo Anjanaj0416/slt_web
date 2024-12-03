@@ -9,7 +9,10 @@ import useCheckoutService from "hooks/useCheckoutService";
 import { useRouter } from "next/navigation";
 import { Box, CircularProgress } from "@mui/material";
 
-const PaymentPageView = () => {
+type Props = {
+  type: "CART" | "BUY_NOW";
+};
+const PaymentPageView = ({ type }: Props) => {
   const { push } = useRouter();
   const { selectedBillingAddressId, selectedShippingAddressId } =
     useCheckoutService();
@@ -17,7 +20,7 @@ const PaymentPageView = () => {
 
   useEffect(() => {
     if (!canPayment) {
-      push("/checkout");
+      push(type === "CART" ? "/checkout" : "/buy-now/checkout");
     }
   }, [canPayment]);
 
@@ -26,10 +29,10 @@ const PaymentPageView = () => {
       {canPayment ? (
         <>
           <Grid item lg={8} md={8} xs={12}>
-            <PaymentForm />
+            <PaymentForm type={type} />
           </Grid>
           <Grid item lg={4} md={4} xs={12}>
-            <PaymentSummary />
+            <PaymentSummary type={type} />
           </Grid>
         </>
       ) : (

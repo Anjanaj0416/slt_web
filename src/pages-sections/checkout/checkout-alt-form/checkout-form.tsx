@@ -5,14 +5,18 @@ import DeliveryAddress from "./delivery-address";
 
 import { Button, Grid, Link } from "@mui/material";
 import useCheckoutService from "hooks/useCheckoutService";
-import { POSTAddressResponse } from "models/Address.model";
+import Address, { POSTAddressResponse } from "models/Address.model";
 import { User1 } from "models/User.model";
 import { useSession } from "next-auth/react";
 import { useLazyGetAddressesQuery } from "services/address-api";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
 
-const CheckoutForm2 = ({ address }) => {
+type Props = {
+  address: Address;
+  type: "CART" | "BUY_NOW";
+};
+const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
   const { push } = useRouter();
   const { enqueueSnackbar } = useSnackbar();
   const session = useSession();
@@ -84,7 +88,7 @@ const CheckoutForm2 = ({ address }) => {
       return;
     }
 
-    push("/payment");
+    push(type==="CART"? "/payment": "/buy-now/payment");
   };
   //
   return (
@@ -115,7 +119,7 @@ const CheckoutForm2 = ({ address }) => {
             href="/cart"
             fullWidth
           >
-            Back to Cart
+            Back to {type === "CART" ? "Cart" : "Items"}
           </Button>
         </Grid>
 
