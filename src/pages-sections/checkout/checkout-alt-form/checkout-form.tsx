@@ -5,7 +5,7 @@ import DeliveryAddress from "./delivery-address";
 
 import { Button, Grid, Link } from "@mui/material";
 import useCheckoutService from "hooks/useCheckoutService";
-import Address, { POSTAddressResponse } from "models/Address.model";
+import  { POSTAddressResponse } from "models/Address.model";
 import { User1 } from "models/User.model";
 import { useSession } from "next-auth/react";
 import { useLazyGetAddressesQuery } from "services/address-api";
@@ -13,7 +13,7 @@ import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  address: Address;
+  address: any;
   type: "CART" | "BUY_NOW";
 };
 const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
