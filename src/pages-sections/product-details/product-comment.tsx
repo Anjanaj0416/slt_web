@@ -33,7 +33,6 @@ const ProductComment: FC<Props> = (props) => {
 
           <FlexBox alignItems="center" gap={1.25}>
             <Rating size="small" value={rating} color="warn" readOnly />
-            <H6>{rating}</H6>
             <Span>{getDateDifference(date)}</Span>
           </FlexBox>
         </div>

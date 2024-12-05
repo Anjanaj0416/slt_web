@@ -28,7 +28,7 @@ export interface Product1 {
   //units?: any;
   basePrice: string;
   discountAmount: number;
-  discountType: "NONE" | "PERCENTAGE" | "FLAT";
+  discountType: DiscountType;
   productType: "QUOTATION" | "DIRECT_BUYING";
   variants?: ProductVariant[];
   brand?: string;
@@ -59,3 +59,5 @@ export interface ProductVariant {
 }
 
 export default Product;
+
+export type DiscountType = "NONE" | "PERCENTAGE" | "FLAT";

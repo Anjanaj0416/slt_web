@@ -62,7 +62,7 @@ const OrderSummery: FC<Props> = ({ order }) => {
 
           <ListItem
             title="Subtotal:"
-            value={currency(calculateOrderTotalAmount(order.packages))}
+            value={currency(calculateOrderTotalAmount(order.packages).subTotal)}
           />
           <ListItem title="Shipping fee:" value={currency(0)} />
           <ListItem
@@ -74,7 +74,7 @@ const OrderSummery: FC<Props> = ({ order }) => {
 
           <FlexBetween mb={2}>
             <H6>Total</H6>
-            <H6>{currency(calculateOrderTotalAmount(order.packages))}</H6>
+            <H6>{currency(calculateOrderTotalAmount(order.packages).total)}</H6>
           </FlexBetween>
 
           <Paragraph>{`Paid by ${

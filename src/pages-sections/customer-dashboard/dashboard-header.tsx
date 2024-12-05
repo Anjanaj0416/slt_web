@@ -33,15 +33,17 @@ const StyledBox = styled("div")(({ theme }) => ({
 // ==============================================================
 
 type WithButton = {
-  href: string;
   title: string;
+  href?: string;
   buttonText: string;
+  onClick?: () => void;
   Icon: SvgIconComponent;
 };
 
 type WithoutButton = {
   title: string;
-  href?: never;
+  href?: string;
+  onClick?: () => void;
   buttonText?: never;
   Icon: SvgIconComponent;
 };
@@ -49,16 +51,31 @@ type WithoutButton = {
 type Props = WithoutButton | WithButton;
 // ==============================================================
 
-const DashboardHeader: FC<Props> = ({ title, buttonText, href, Icon }) => {
+const DashboardHeader: FC<Props> = ({
+  title,
+  buttonText,
+  onClick,
+  href,
+  Icon,
+}) => {
   const isTablet = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down(1025)
   );
 
-  const HEADER_LINK = (
+  const HEADER_LINK = href ? (
     <Button
       href={href}
       color="primary"
       LinkComponent={Link}
+      sx={{ bgcolor: "primary.light", px: 4 }}
+    >
+      {buttonText}
+    </Button>
+  ) : (
+    <Button
+      onClick={onClick}
+      LinkComponent={Link}
+      color="primary"
       sx={{ bgcolor: "primary.light", px: 4 }}
     >
       {buttonText}

@@ -320,8 +320,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
 
   // HANDLE BUY NOW
   const handleBuyNow = () => {
-    console.log("cl");
-
     if (!selectedVariant) {
       enqueueSnackbar("Please Select Variant", {
         variant: "warning",

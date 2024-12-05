@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 import { useLazyGetAddressesQuery } from "services/address-api";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
-
+https://surgeglobal.atlassian.net/jira/software/projects/TC/boards/171
 type Props = {
   address: any;
   type: "CART" | "BUY_NOW";

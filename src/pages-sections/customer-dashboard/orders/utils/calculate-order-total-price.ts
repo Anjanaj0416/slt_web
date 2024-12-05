@@ -1,14 +1,16 @@
 import Package from "models/Package.model";
 
 const calculateOrderTotalAmount = (packages: Package[]) => {
-  let totalAmount = 0;
+  let total = 0;
+  let subTotal = 0;
   packages?.forEach((pkg) => {
     pkg.packageItems.forEach((pkgItm) => {
-      const { price, units } = pkgItm;
-      totalAmount += price * units;
+      const { price, units, discount } = pkgItm;
+      total += (price - discount) * units;
+      subTotal += price * units;
     });
   });
-  return totalAmount;
+  return { total, subTotal };
 };
 
 export default calculateOrderTotalAmount;

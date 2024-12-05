@@ -108,6 +108,7 @@ const BuyNowItemServiceProvider = (props: Props) => {
           discountAmount,
           name: productName,
         } = item.product;
+        
         return {
           productId,
           basePrice,

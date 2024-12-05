@@ -9,26 +9,57 @@ import OrderedProducts from "../ordered-products";
 import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
+import useBuyNowItemService from "hooks/useBuyNowItemService";
 
 // =============================================================
 type Props = { order: Order1 };
 // =============================================================
 
 const OrderDetailsPageView = ({ order }: Props) => {
-  console.log(order.status);
-
+  const { handleAddToItem } = useBuyNowItemService();
+  const handleReOrder = () => {
+    const items = [];
+    order.packages.forEach((pkg) => {
+      pkg.packageItems.forEach((pkgItem) => {
+        const {
+          productVariant,
+          units,
+          price,
+          productId,
+          productName,
+          images,
+          basePrice,
+          brand,
+          productDiscountAmount,
+          productDiscountType,
+        } = pkgItem;
+        const product = {
+          id: productId,
+          images,
+          basePrice,
+          brand,
+          price,
+          discountType: productDiscountType,
+          discountAmount: productDiscountAmount,
+          name: productName,
+        };
+        items.push({ product, productVariant, units });
+      });
+    });
+    handleAddToItem(items);
+  };
   return (
     <Fragment>
       {/* TITLE HEADER AREA */}
       <DashboardHeader
-        href="/orders"
+        onClick={handleReOrder}
         Icon={ShoppingBag}
         title={
           order.status === "SUCCESS"
             ? "Order Details"
             : "Order Details - Pending Payment"
         }
-        buttonText={order.status === "SUCCESS" ? "Order Again" : "Pay Now"}
+        buttonText="Order Again"
       />
 
       {/* ORDER PROGRESS AREA */}

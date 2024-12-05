@@ -1,4 +1,4 @@
-import { Product1, ProductVariant } from "./Product.model";
+import { DiscountType, ProductVariant } from "./Product.model";
 
 export type PackageStatus =
   | "PENDING"
@@ -12,6 +12,8 @@ export type PackageItem = {
   basePrice: string;
   brand: string;
   status: PackageStatus;
+  productDiscountType: DiscountType;
+  productDiscountAmount: number;
   discount: number;
   price: number;
   images: string[];

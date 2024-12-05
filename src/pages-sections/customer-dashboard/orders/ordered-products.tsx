@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
@@ -14,16 +14,27 @@ import { ENVIRONMENT } from "config";
 import { PackageItem } from "models/Package.model";
 import { Box, Typography } from "@mui/material";
 import OrderProgress from "./order-progress";
+import ReviewModal from "./review-modal";
 
 // ==============================================================
 type Props = { order: Order1 };
 // ==============================================================
 
 const OrderedProducts: FC<Props> = ({ order }) => {
-  const { id, createdAt, packages } = order || {};
+  const [reviewProductId, setReviewProductId] = useState<string>();
 
+  const { id, createdAt, packages } = order || {};
+  const handleClose = () => setReviewProductId(null);
+  const handleReview = (productId:string) => {
+    setReviewProductId(productId);
+  };
   return (
     <Card sx={{ p: 0, mb: "30px" }}>
+      <ReviewModal
+        productId={reviewProductId}
+        isOpen={!!reviewProductId}
+        handleClose={handleClose}
+      />
       <FlexBetween px={3} py={2} flexWrap="wrap" bgcolor="grey.200">
         <Item title="Order ID:" value={id} />
         <Item
@@ -74,9 +85,11 @@ const OrderedProducts: FC<Props> = ({ order }) => {
           <Avatar
             alt={item.productName}
             src={
-              item.images?.[0]
-                ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.images?.[0]}`
-                : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
+              item.productVariant.image
+                ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.productVariant.image}`
+                : item.images?.[0]
+                  ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.images?.[0]}`
+                  : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`
             }
             sx={{ height: 64, width: 64 }}
           />
@@ -95,6 +108,7 @@ const OrderedProducts: FC<Props> = ({ order }) => {
 
         <Button
           disabled={item.status !== "DELIVERED"}
+          onClick={()=>handleReview(item.productId)}
           variant="text"
           color="primary"
         >

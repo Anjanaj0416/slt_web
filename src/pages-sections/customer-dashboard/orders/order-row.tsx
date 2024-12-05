@@ -77,7 +77,7 @@ const OrderRow: FC<Props> = ({ order }) => {
         </Paragraph>
 
         <Paragraph textAlign="right">
-          {currency(calculateOrderTotalAmount(order.packages))}
+          {currency(calculateOrderTotalAmount(order.packages).total)}
         </Paragraph>
 
         <Box display={{ sm: "inline-flex", xs: "none" }} justifyContent="end">

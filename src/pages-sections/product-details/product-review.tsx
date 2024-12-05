@@ -129,7 +129,7 @@ const ProductReview = ({ productId }: Props) => {
               variant="contained"
               color="primary"
               type="submit"
-              disabled={!(dirty && isValid) || isAdding}
+              disabled={!(dirty && isValid && values.rating > 0) || isAdding}
             >
               Submit
             </LoadingButton>
