@@ -11,6 +11,8 @@ import { POSTAddressResponse } from "models/Address.model";
 import { useRouter } from "next/navigation";
 import useCheckoutService from "hooks/useCheckoutService";
 import { useSnackbar } from "notistack";
+import NewAddressForm from "../create-address-form";
+import EditAddressForm from "../edit-address-form";
 
 // =======================================================
 type Props = {
@@ -24,8 +26,17 @@ const AddressPageView = ({ addressList, totalPages, page }: Props) => {
   const router = useRouter();
   const { handleDeleteAddress, isDeletingAddress } = useCheckoutService();
   const { enqueueSnackbar } = useSnackbar();
+  const [openCreateModal, setOpenCreateModal] = useState<boolean>(false);
 
+  const handleCloseModal = () => setOpenCreateModal(false);
+  const handleOpenModal = () => setOpenCreateModal(true);
+
+  const handleEditCloseModal = () => setEditingAddress(null);
+  const handleEditOpenModal = (address: POSTAddressResponse) => {
+    setEditingAddress(address);
+  };
   const [addresses, setAddresses] = useState<POSTAddressResponse[]>();
+  const [editingAddress, setEditingAddress] = useState<POSTAddressResponse>();
 
   useEffect(() => {
     setAddresses(addressList);
@@ -47,7 +58,20 @@ const AddressPageView = ({ addressList, totalPages, page }: Props) => {
   };
 
   const handlePage = (page: number) => {
-    router.push(page == 1 ? "/address" : `/address?page=${page}`);
+    router.push(page < 2 ? "/address" : `/address?page=${page}`);
+  };
+
+  const handleUpdatedAddress = async (address: POSTAddressResponse) => {
+    if (addresses) {
+      setAddresses(
+        (prvState) =>
+          prvState?.map((addr) => (addr.id === address.id ? address : addr))
+      );
+    } else {
+      setAddresses(
+        addressList.map((addr) => (addr.id === address.id ? address : addr))
+      );
+    }
   };
 
   return (
@@ -55,11 +79,23 @@ const AddressPageView = ({ addressList, totalPages, page }: Props) => {
       {/* TITLE HEADER AREA */}
       <DashboardHeader
         Icon={Place}
-        href="/address"
+        onClick={handleOpenModal}
         title="My Addresses"
         buttonText="Add New Address"
       />
-
+      <NewAddressForm
+        handleFetch={() => handlePage(page)}
+        handleCloseModal={handleCloseModal}
+        openModal={openCreateModal}
+      />
+      {editingAddress ? (
+        <EditAddressForm
+          openModal={!!editingAddress}
+          address={editingAddress}
+          handleFetch={handleUpdatedAddress}
+          handleCloseModal={handleEditCloseModal}
+        />
+      ) : null}
       {/* ALL ADDRESS LIST AREA */}
       {(addresses || addressList).map((address) => (
         <AddressListItem
@@ -67,6 +103,7 @@ const AddressPageView = ({ addressList, totalPages, page }: Props) => {
           isDeleting={isDeletingAddress}
           address={address}
           handleDelete={handleAddressDelete}
+          handleEdit={handleEditOpenModal}
         />
       ))}
 

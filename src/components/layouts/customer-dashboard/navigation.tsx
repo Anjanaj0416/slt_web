@@ -82,21 +82,21 @@ const MENUS = [
         href: "/support-tickets",
         title: "Support Tickets",
         Icon: CustomerService,
-        count: "1",
+        count: 0,
       },
     ],
   },
   {
     title: "ACCOUNT SETTINGS",
     list: [
-      { href: "/profile", title: "Profile Info", Icon: Person, count: 3 },
-      { href: "/address", title: "Addresses", Icon: Place, count: 16 },
-      {
-        href: "/payment-methods",
-        title: "Payment Methods",
-        Icon: CreditCard,
-        count: 4,
-      },
+      { href: "/profile", title: "Profile Info", Icon: Person },
+      { href: "/address", title: "Addresses", Icon: Place},
+      // {
+      //   href: "/payment-methods",
+      //   title: "Payment Methods",
+      //   Icon: CreditCard,
+     
+      // },
     ],
   },
 ];

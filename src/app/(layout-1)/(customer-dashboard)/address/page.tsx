@@ -21,7 +21,7 @@ export default async function Address({ searchParams }) {
     query:
       isNaN(page) && page >= 0
         ? "size=6&primary,asc"
-        : `page=${page - 1}&size=6&primary,asc`,
+        : `page=${page - 1}&size=6&sort=primary,desc&sort=createdAt,asc`,
   });
 
   return (

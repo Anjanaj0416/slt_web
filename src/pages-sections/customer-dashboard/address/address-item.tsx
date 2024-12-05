@@ -16,20 +16,26 @@ interface Props {
   isDeleting: boolean;
   address: POSTAddressResponse;
   handleDelete: (id: string) => void;
+  handleEdit: (address: POSTAddressResponse) => void;
 }
 // ==============================================================
 
-const AddressListItem: FC<Props> = ({ address, isDeleting, handleDelete }) => {
-  const { addressType, addressLine1, provinceOrState, contactNumber, id } =
+const AddressListItem: FC<Props> = ({
+  address,
+  isDeleting,
+  handleDelete,
+  handleEdit,
+}) => {
+  const { addressType, addressLine1, provinceOrState, contactNumber, name, id } =
     address || {};
   const [selectedId, setSelectedId] = useState<string>();
   return (
     <TableRow>
       <Paragraph ellipsis>{addressType}</Paragraph>
-      <Paragraph ellipsis>{`${addressLine1}, ${provinceOrState}`}</Paragraph>
+      <Paragraph ellipsis>{`${name}, ${addressLine1}, ${provinceOrState}`}</Paragraph>
       <Paragraph ellipsis>{contactNumber}</Paragraph>
       <Paragraph color="grey.600">
-        <IconButton>
+        <IconButton onClick={() => handleEdit(address)}>
           <Edit fontSize="small" color="inherit" />
         </IconButton>
 
