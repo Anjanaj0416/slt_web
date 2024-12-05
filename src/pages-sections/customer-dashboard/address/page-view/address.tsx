@@ -1,24 +1,53 @@
 "use client";
 
-import { useState, Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Place from "@mui/icons-material/Place";
 // Local CUSTOM COMPONENT
 import Pagination from "../../pagination";
 import AddressListItem from "../address-item";
 import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
-import Address from "models/Address.model";
+import { POSTAddressResponse } from "models/Address.model";
+import { useRouter } from "next/navigation";
+import useCheckoutService from "hooks/useCheckoutService";
+import { useSnackbar } from "notistack";
 
 // =======================================================
-type Props = { addressList: Address[] };
+type Props = {
+  addressList: POSTAddressResponse[];
+  totalPages: number;
+  page: number;
+};
 // =======================================================
 
-const AddressPageView = ({ addressList }: Props) => {
-  const [allAddress, setAllAddress] = useState(addressList);
+const AddressPageView = ({ addressList, totalPages, page }: Props) => {
+  const router = useRouter();
+  const { handleDeleteAddress, isDeletingAddress } = useCheckoutService();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [addresses, setAddresses] = useState<POSTAddressResponse[]>();
+
+  useEffect(() => {
+    setAddresses(addressList);
+  }, [addressList, page]);
 
   // HANDLE ADDRESS DELETE
-  const handleAddressDelete = (id: string) => {
-    setAllAddress(allAddress.filter((item) => item.id !== id));
+  const handleAddressDelete = async (id: string) => {
+    try {
+      await handleDeleteAddress(id);
+      enqueueSnackbar("Address deleted successfully!", {
+        variant: "success",
+      });
+      if (addresses) {
+        setAddresses((prvState) => prvState?.filter((addr) => addr.id !== id));
+      } else {
+        setAddresses(addressList.filter((addr) => addr.id !== id));
+      }
+    } catch (e) {}
+  };
+
+  const handlePage = (page: number) => {
+    router.push(page == 1 ? "/address" : `/address?page=${page}`);
   };
 
   return (
@@ -32,16 +61,21 @@ const AddressPageView = ({ addressList }: Props) => {
       />
 
       {/* ALL ADDRESS LIST AREA */}
-      {allAddress.map((address) => (
+      {(addresses || addressList).map((address) => (
         <AddressListItem
           key={address.id}
+          isDeleting={isDeletingAddress}
           address={address}
           handleDelete={handleAddressDelete}
         />
       ))}
 
       {/* PAGINATION AREA */}
-      <Pagination count={5} onChange={(data) => console.log(data)} />
+      <Pagination
+        count={totalPages || 1}
+        page={page + 1}
+        onChange={(_, page) => handlePage(page)}
+      />
     </Fragment>
   );
 };

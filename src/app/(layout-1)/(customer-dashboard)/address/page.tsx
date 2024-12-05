@@ -1,7 +1,8 @@
+import API from "constants/address";
 import { Metadata } from "next";
 import { AddressPageView } from "pages-sections/customer-dashboard/address/page-view";
-// API FUNCTIONS
-import api from "utils/__api__/address";
+import { auth } from "utils/auth";
+import request from "utils/request";
 
 export const metadata: Metadata = {
   title: "Address - SLT Marcketplace Next.js E-commerce Template",
@@ -11,7 +12,23 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default async function Address() {
-  const addressList = await api.getAddressList();
-  return <AddressPageView addressList={addressList} />;
+export default async function Address({ searchParams }) {
+  const page = searchParams?.page;
+  const { user } = await auth();
+
+  const addressesData = await request(API.GET_ADDRESS, {
+    userId: user?.id,
+    query:
+      isNaN(page) && page >= 0
+        ? "size=6&primary,asc"
+        : `page=${page - 1}&size=6&primary,asc`,
+  });
+
+  return (
+    <AddressPageView
+      addressList={addressesData.data}
+      totalPages={addressesData.totalPages}
+      page={addressesData.page}
+    />
+  );
 }

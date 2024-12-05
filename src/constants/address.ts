@@ -3,7 +3,7 @@
  */
 const API = {
   GET_ADDRESS: {
-    path: "/users/:userId/addresses",
+    path: "/users/:userId/addresses?:query",
     method: "GET",
   },
 };

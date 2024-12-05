@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Link from "next/link";
 import IconButton from "@mui/material/IconButton";
 // MUI ICON COMPONENTS
@@ -9,40 +9,42 @@ import { Paragraph } from "components/Typography";
 // Local CUSTOM COMPONENT
 import TableRow from "../table-row";
 // CUSTOM DATA MODEL
-import Address from "models/Address.model";
+import { POSTAddressResponse } from "models/Address.model";
 
 // ==============================================================
 interface Props {
-  address: Address;
+  isDeleting: boolean;
+  address: POSTAddressResponse;
   handleDelete: (id: string) => void;
 }
 // ==============================================================
 
-const AddressListItem: FC<Props> = ({ address, handleDelete }) => {
-  const { title, street, city, phone, id } = address || {};
-
+const AddressListItem: FC<Props> = ({ address, isDeleting, handleDelete }) => {
+  const { addressType, addressLine1, provinceOrState, contactNumber, id } =
+    address || {};
+  const [selectedId, setSelectedId] = useState<string>();
   return (
-    <Link href={`/address/${id}`}>
-      <TableRow>
-        <Paragraph ellipsis>{title}</Paragraph>
-        <Paragraph ellipsis>{`${street}, ${city}`}</Paragraph>
-        <Paragraph ellipsis>{phone}</Paragraph>
-        <Paragraph color="grey.600">
-          <IconButton>
-            <Edit fontSize="small" color="inherit" />
-          </IconButton>
+    <TableRow>
+      <Paragraph ellipsis>{addressType}</Paragraph>
+      <Paragraph ellipsis>{`${addressLine1}, ${provinceOrState}`}</Paragraph>
+      <Paragraph ellipsis>{contactNumber}</Paragraph>
+      <Paragraph color="grey.600">
+        <IconButton>
+          <Edit fontSize="small" color="inherit" />
+        </IconButton>
 
-          <IconButton
-            onClick={(e) => {
-              e.stopPropagation();
-              handleDelete(id);
-            }}
-          >
-            <Delete fontSize="small" color="inherit" />
-          </IconButton>
-        </Paragraph>
-      </TableRow>
-    </Link>
+        <IconButton
+          disabled={isDeleting && selectedId === id}
+          onClick={(e) => {
+            setSelectedId(id);
+            e.stopPropagation();
+            handleDelete(id);
+          }}
+        >
+          <Delete fontSize="small" color="inherit" />
+        </IconButton>
+      </Paragraph>
+    </TableRow>
   );
 };
 

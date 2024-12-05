@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default async function WishList({ searchParams }) {
+export default async function WishList() {
   try {
     const { user } = await auth();
 
