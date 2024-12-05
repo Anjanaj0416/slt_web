@@ -30,10 +30,17 @@ const validationSchema = yup.object({
 interface Props {
   addressType: string;
   handleFetch: Function;
+  addressesCount: number;
 }
 // ==================================================================
 
-const NewAddressForm: FC<Props> = ({ addressType, handleFetch }) => {
+const NewAddressForm: FC<Props> = ({
+  addressType,
+  handleFetch,
+  addressesCount,
+}) => {
+  console.log(addressesCount);
+  
   const { enqueueSnackbar } = useSnackbar();
   const { data: session } = useSession();
   const user = session?.user as User1;
@@ -72,12 +79,22 @@ const NewAddressForm: FC<Props> = ({ addressType, handleFetch }) => {
     },
   });
 
+  const handleOpenModal = () => {
+    if (addressesCount > 9) {
+      enqueueSnackbar("The maximum address count should be 10 or less!", {
+        variant: "warning",
+      });
+      return;
+    }
+    setOpenModal(true);
+  };
+
   return (
     <Fragment>
       <Button
         color="primary"
         variant="outlined"
-        onClick={() => setOpenModal(true)}
+        onClick={ handleOpenModal}
       >
         Add New Address
       </Button>

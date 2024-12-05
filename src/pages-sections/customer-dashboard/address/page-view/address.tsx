@@ -27,16 +27,24 @@ const AddressPageView = ({ addressList, totalPages, page }: Props) => {
   const { handleDeleteAddress, isDeletingAddress } = useCheckoutService();
   const { enqueueSnackbar } = useSnackbar();
   const [openCreateModal, setOpenCreateModal] = useState<boolean>(false);
+  const [addresses, setAddresses] = useState<POSTAddressResponse[]>();
+  const [editingAddress, setEditingAddress] = useState<POSTAddressResponse>();
 
   const handleCloseModal = () => setOpenCreateModal(false);
-  const handleOpenModal = () => setOpenCreateModal(true);
+  const handleOpenModal = () => {
+    if (addresses.length > 9) {
+      enqueueSnackbar("The maximum address count should be 10 or less!", {
+        variant: "warning",
+      });
+      return;
+    }
+    setOpenCreateModal(true);
+  };
 
   const handleEditCloseModal = () => setEditingAddress(null);
   const handleEditOpenModal = (address: POSTAddressResponse) => {
     setEditingAddress(address);
   };
-  const [addresses, setAddresses] = useState<POSTAddressResponse[]>();
-  const [editingAddress, setEditingAddress] = useState<POSTAddressResponse>();
 
   useEffect(() => {
     setAddresses(addressList);

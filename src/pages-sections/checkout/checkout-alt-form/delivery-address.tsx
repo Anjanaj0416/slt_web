@@ -24,6 +24,7 @@ interface Props {
   addressType: POSTAddressResponse["addressType"];
   selectedAddressId: string;
   section: number;
+  addressesCount:number;
   handleFetch: Function;
 }
 // ==============================================================
@@ -34,6 +35,7 @@ const DeliveryAddress: FC<Props> = ({
   addressType,
   selectedAddressId,
   section,
+  addressesCount,
   handleFetch,
 }) => {
   const { enqueueSnackbar } = useSnackbar();
@@ -64,7 +66,11 @@ const DeliveryAddress: FC<Props> = ({
           title={`${upperCaseToCapitalize(addressType)} Address`}
           mb={0}
         />
-        <NewAddressForm addressType={addressType} handleFetch={handleFetch} />
+        <NewAddressForm
+          addressType={addressType}
+          handleFetch={handleFetch}
+          addressesCount={addressesCount}
+        />
       </FlexBetween>
 
       {/* ADDRESS LIST SECTION */}

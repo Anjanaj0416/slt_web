@@ -100,6 +100,7 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
         addressType="SHIPPING"
         selectedAddressId={selectedShippingAddressId}
         section={1}
+        addressesCount={(addressesData?.data || address)?.length}
       />
       <DeliveryAddress
         handleFetch={() => getAddresses({ userId: user?.id || "" })}
@@ -108,6 +109,7 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
         addressType={"BILLING"}
         selectedAddressId={selectedBillingAddressId}
         section={2}
+        addressesCount={(addressesData?.data || address)?.length}
       />
       <Grid container spacing={6}>
         <Grid item sm={6} xs={12}>
