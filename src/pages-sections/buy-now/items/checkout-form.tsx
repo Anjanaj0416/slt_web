@@ -90,6 +90,7 @@ const CheckoutForm = () => {
         disabled={items.length < 1}
         onChange={(event) => setComments(event.target.value)}
         rows={6}
+        inputProps={{ maxLength: 200 }}
         fullWidth
         multiline
       />

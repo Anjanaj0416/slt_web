@@ -31,6 +31,7 @@ import { Chip, CircularProgress, Tooltip } from "@mui/material";
 import { useSnackbar } from "notistack";
 import Store from "models/Store.model";
 import useBuyNowItemService from "hooks/useBuyNowItemService";
+import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 
 // ================================================================
 type Props = { product: Product1; store: Store };
@@ -242,7 +243,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     isUpdating,
   } = useCartService();
   const { handleAddToItem } = useBuyNowItemService();
-
+  const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
 
   const carItemIds = cart.cartItems.map((item) => item.productVariant.id);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -324,6 +325,10 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       enqueueSnackbar("Please Select Variant", {
         variant: "warning",
       });
+      return;
+    }
+    if (!user?.id) {
+      openUnAuthenticatedModal(true);
       return;
     }
     handleAddToItem([{ product, productVariant: selectedVariant, units: 1 }]);

@@ -1,18 +1,15 @@
 "use client";
 
-import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 import { calculateDiscountAmount } from "lib";
 //
 import { Product1, ProductVariant } from "models/Product.model";
 import { CartItem, User1 } from "models/User.model";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import {
   Dispatch,
   ReactNode,
   SetStateAction,
   createContext,
-  useCallback,
   useMemo,
   useState,
 } from "react";
@@ -52,83 +49,73 @@ type Props = {
 };
 //
 const BuyNowItemServiceProvider = (props: Props) => {
-  const session = useSession();
   const router = useRouter();
-  const user = session?.data?.user as User1 | undefined;
-  const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
+ 
   const [note, setNote] = useState<string>("");
 
   const [items, setItems] = useState<CartItem[]>([]);
 
-  //
-  const handleUpdateQty = useCallback(
-    async (productVariant: ProductVariant, units: number) => {
-      // if (session.status === "loading") {
-      //   return;
-      // }
-      // if (!user?.id) {
-      //   openUnAuthenticatedModal(true);
-      //   return;
-      // }
-      //
-      const newItemList = items?.map((item) =>
-        item?.productVariant?.id === productVariant?.id
-          ? { ...item, units: item?.units + units }
-          : item
-      );
-      //
-      setItems(newItemList);
-    },
-    [user?.id, session.status]
-  );
-  //
-  const handleAddToItem = useCallback(
-    (
-      items: {
-        product: Product1;
-        productVariant: ProductVariant;
-        units: number;
-      }[]
-    ) => {
-      // if (session.status === "loading") {
-      //   return;
-      // }
-      // if (!user?.id) {
-      //   openUnAuthenticatedModal(true);
-      //   return;
-      // }
-      const newItems: CartItem[] = items.map((item) => {
-        const {
-          id: productId,
-          images,
-          basePrice,
-          productType,
-          brand,
-          discountType,
-          discountAmount,
-          name: productName,
-        } = item.product;
-        
-        return {
-          productId,
-          basePrice,
-          images,
-          productVariant: item.productVariant,
-          units: item.units,
-          productName,
-          brand,
-          productType,
-          discountAmount,
-          discountType,
-        };
-      });
+  const handleUpdateQty = async (
+    productVariant: ProductVariant,
+    units: number
+  ) => {
+    // TODO: Fix user session loading issue
 
-      //
-      setItems(newItems);
-      router.push("/buy-now/items");
-    },
-    [user?.id, session.status]
-  );
+    // if (!user?.id) {
+    //   openUnAuthenticatedModal(true);
+    //   return;
+    // }
+
+    const newItemList = items?.map((item) =>
+      item?.productVariant?.id === productVariant?.id
+        ? { ...item, units: item?.units + units }
+        : item
+    );
+    //
+    setItems(newItemList);
+  };
+  //
+  const handleAddToItem =  (
+    items: {
+      product: Product1;
+      productVariant: ProductVariant;
+      units: number;
+    }[]
+  ) => {
+    // if (!user?.id) {
+    //   openUnAuthenticatedModal(true);
+    //   return;
+    // }
+    const newItems: CartItem[] = items.map((item) => {
+      const {
+        id: productId,
+        images,
+        basePrice,
+        productType,
+        brand,
+        discountType,
+        discountAmount,
+        name: productName,
+      } = item.product;
+
+      return {
+        productId,
+        basePrice,
+        images,
+        productVariant: item.productVariant,
+        units: item.units,
+        productName,
+        brand,
+        productType,
+        discountAmount,
+        discountType,
+      };
+    });
+
+    //
+    setItems(newItems);
+    router.push("/buy-now/items");
+  };
   //
   const totalPrice = useMemo(
     () =>
@@ -157,6 +144,7 @@ const BuyNowItemServiceProvider = (props: Props) => {
       ),
     [items]
   );
+
   //
   const returnValue: ContextState = useMemo(
     () => ({

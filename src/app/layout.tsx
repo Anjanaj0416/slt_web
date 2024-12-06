@@ -38,10 +38,10 @@ export default function RootLayout({
           <body className={openSans.className}>
             <UnauthenticatedModalProvider>
               <CartServiceProvider>
-                <CheckoutServiceContextProvider>
-                  <CartProvider>
-                    <WishlistProvider>
-                      <BuyNowItemServiceProvider>
+                <BuyNowItemServiceProvider>
+                  <CheckoutServiceContextProvider>
+                    <CartProvider>
+                      <WishlistProvider>
                         <SettingsProvider>
                           <ThemeProvider>
                             <ProgressBar />
@@ -50,10 +50,10 @@ export default function RootLayout({
                             </RTL>
                           </ThemeProvider>
                         </SettingsProvider>
-                      </BuyNowItemServiceProvider>
-                    </WishlistProvider>
-                  </CartProvider>
-                </CheckoutServiceContextProvider>
+                      </WishlistProvider>
+                    </CartProvider>
+                  </CheckoutServiceContextProvider>
+                </BuyNowItemServiceProvider>
               </CartServiceProvider>
             </UnauthenticatedModalProvider>
           </body>

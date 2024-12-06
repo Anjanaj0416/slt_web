@@ -88,6 +88,7 @@ const CheckoutForm = () => {
         variant="outlined"
         disabled={cart.cartItems.length < 1}
         onChange={(event) => setComments(event.target.value)}
+        inputProps={{ maxLength: 200 }}
         rows={6}
         fullWidth
         multiline

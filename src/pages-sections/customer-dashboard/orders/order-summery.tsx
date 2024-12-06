@@ -35,20 +35,20 @@ const OrderSummery: FC<Props> = ({ order }) => {
             Shipping Address
           </H5>
           <Paragraph fontSize={14} my={0}>
-            {`${order.shippingAddress.name}`}
+          {order.shippingAddress?.name?? ""}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
-            {`${order.shippingAddress.contactNumber ?? ""}`}
+            {order.shippingAddress?.contactNumber ?? ""}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
-            {`${order.shippingAddress.postalCode}`}
+            {order.shippingAddress?.postalCode?? ""}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
-            {`${order.shippingAddress.addressLine1 ?? ""} 
-            ${order.shippingAddress.addressLine2 ?? ""}`}
+            {`${order.shippingAddress?.addressLine1 ?? ""} 
+            ${order.shippingAddress?.addressLine2 ?? ""}`}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
-            {`${order.shippingAddress.country ?? ""}`}
+            {`${order.shippingAddress?.country ?? ""}`}
           </Paragraph>
         </Card>
       </Grid>
