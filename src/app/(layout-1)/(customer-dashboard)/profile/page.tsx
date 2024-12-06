@@ -1,5 +1,8 @@
+import API from "constants/orders";
 import { Metadata } from "next";
 import { ProfilePageView } from "pages-sections/customer-dashboard/profile/page-view";
+import { auth } from "utils/auth";
+import request from "utils/request";
 
 export const metadata: Metadata = {
   title: "Profile - SLT Marcketplace Next.js E-commerce Template",
@@ -9,6 +12,31 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
-export default function Profile() {
-  return <ProfilePageView />;
+export default async function Profile() {
+  const { user } = await auth();
+  //
+  const allOrders = await request(API.GET_USER_ORDERS, {
+    userId: user?.id,
+    query: "size=0&sort=createdAt,desc",
+  });
+  const processingOrders = await request(API.GET_USER_ORDERS, {
+    userId: user?.id,
+    query: "packageStatus=PENDING&size=0&sort=createdAt,desc",
+  });
+  const shippedOrders = await request(API.GET_USER_ORDERS, {
+    userId: user?.id,
+    query: "packageStatus=SHIPPED&size=0&sort=createdAt,desc",
+  });
+  const deliveredOrders = await request(API.GET_USER_ORDERS, {
+    userId: user?.id,
+    query: "packageStatus=DELIVERED&size=0&sort=createdAt,desc",
+  });
+  return (
+    <ProfilePageView
+      ordersCount={allOrders.totalResults}
+      processingOrdersCount={processingOrders.totalResults}
+      shippedOrdersCount={shippedOrders.totalResults}
+      deliveredOrdersCount={deliveredOrders.totalResults}
+    />
+  );
 }

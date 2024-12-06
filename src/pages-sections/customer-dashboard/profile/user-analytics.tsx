@@ -12,15 +12,36 @@ import { User1 } from "models/User.model";
 import ENVIRONMENT from "config/environment";
 
 // ==============================================================
-type Props = { user: User1 };
+type Props = {
+  user: User1;
+  ordersCount: number;
+  processingOrdersCount: number;
+  shippedOrdersCount: number;
+  deliveredOrdersCount: number;
+};
 // ==============================================================
 
-const UserAnalytics: FC<Props> = ({ user }) => {
+const UserAnalytics: FC<Props> = ({
+  user,
+  ordersCount,
+  processingOrdersCount,
+  shippedOrdersCount,
+  deliveredOrdersCount,
+}) => {
   const INFO_LIST = [
-    { title: "16", subtitle: "All Orders" },
-    { title: "02", subtitle: "Awaiting Payments" },
-    { title: "00", subtitle: "Awaiting Shipment" },
-    { title: "01", subtitle: "Awaiting Delivery" },
+    { title: ordersCount < 100 ? ordersCount : "99+", subtitle: "All Orders" },
+    {
+      title: processingOrdersCount < 100 ? processingOrdersCount : "99+",
+      subtitle: "Pending Orders",
+    },
+    {
+      title: shippedOrdersCount < 100 ? shippedOrdersCount : "99+",
+      subtitle: "Awaiting Shipment",
+    },
+    {
+      title: deliveredOrdersCount < 100 ? deliveredOrdersCount : "99+",
+      subtitle: "Awaiting Delivery",
+    },
   ];
 
   return (
@@ -45,10 +66,10 @@ const UserAnalytics: FC<Props> = ({ user }) => {
             <div>
               <H5>{`${user?.firstName} ${user?.lastName}`}</H5>
 
-              <FlexBox alignItems="center" gap={1}>
+              {/* <FlexBox alignItems="center" gap={1}>
                 <Paragraph color="grey.600">Balance:</Paragraph>
                 <Paragraph color="primary.main">{currency(500)}</Paragraph>
-              </FlexBox>
+              </FlexBox> */}
             </div>
 
             <Paragraph color="grey.600" letterSpacing={3}>

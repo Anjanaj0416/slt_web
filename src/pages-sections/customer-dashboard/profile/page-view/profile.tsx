@@ -11,7 +11,18 @@ import { User1 } from "models/User.model";
 import { useSession } from "next-auth/react";
 import Container from "@mui/material/Container";
 
-const ProfilePageView = () => {
+type Props = {
+  ordersCount: number;
+  processingOrdersCount: number;
+  shippedOrdersCount: number;
+  deliveredOrdersCount: number;
+};
+const ProfilePageView = ({
+  ordersCount,
+  processingOrdersCount,
+  shippedOrdersCount,
+  deliveredOrdersCount,
+}: Props) => {
   const { data: session, status } = useSession();
   //
   const user = session?.user as User1;
@@ -30,7 +41,13 @@ const ProfilePageView = () => {
       />
 
       {/* USER PROFILE INFO */}
-      <UserAnalytics user={user} />
+      <UserAnalytics
+        user={user}
+        ordersCount={ordersCount}
+        processingOrdersCount={processingOrdersCount}
+        shippedOrdersCount={shippedOrdersCount}
+        deliveredOrdersCount={deliveredOrdersCount}
+      />
 
       {/* USER PROFILE INFO */}
       <UserInfo user={user} />
