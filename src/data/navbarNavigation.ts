@@ -228,6 +228,7 @@ const navbarNavigation = [
         ],
       },
       { title: "Wishlist", url: "/wish-list" },
+      
     ],
   },
   {

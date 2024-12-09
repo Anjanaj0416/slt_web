@@ -5,9 +5,9 @@ import { Fragment, useContext } from "react";
 // MUI ICON COMPONENTS
 import Place from "@mui/icons-material/Place";
 import Person from "@mui/icons-material/Person";
-import CreditCard from "@mui/icons-material/CreditCard";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlined from "@mui/icons-material/ShoppingBagOutlined";
+import StorefrontIcon from "@mui/icons-material/Storefront";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
 import { Paragraph, Span } from "components/Typography";
@@ -33,7 +33,7 @@ const Navigation = ({ ordersCount }: NavigationProps) => {
 
           {item.list.map(({ Icon, count, href, title }) => {
             if (title === "Wishlist") {
-              count = wishlist.products.length;
+              count = wishlist?.products?.length;
             } else if (title === "Orders") {
               count = ordersCount
                 ? ordersCount < 100
@@ -79,6 +79,12 @@ const MENUS = [
         count: "19",
       },
       {
+        href: "/favorite-stores",
+        title: "Favorite Stores",
+        Icon: StorefrontIcon,
+        count: 0,
+      },
+      {
         href: "/support-tickets",
         title: "Support Tickets",
         Icon: CustomerService,
@@ -90,12 +96,12 @@ const MENUS = [
     title: "ACCOUNT SETTINGS",
     list: [
       { href: "/profile", title: "Profile Info", Icon: Person },
-      { href: "/address", title: "Addresses", Icon: Place},
+      { href: "/address", title: "Addresses", Icon: Place },
       // {
       //   href: "/payment-methods",
       //   title: "Payment Methods",
       //   Icon: CreditCard,
-     
+
       // },
     ],
   },

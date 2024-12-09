@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import axios from "./axios";
 
 export class ResponseError extends Error {
@@ -92,6 +93,10 @@ const request = async (_metadata, data, multipart = false, isSecure = true) => {
     const response = await axios(options);
     return parseJSON(response);
   } catch (error) {
+    if (error.response.status === 401) {
+      redirect('/')
+    }
+
     return errorHandling(error);
   }
 };
