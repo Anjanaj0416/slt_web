@@ -110,6 +110,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
     <Container sx={{ mt: 4, mb: 6 }}>
       {/* SHOP INTRODUCTION AREA */}
       <ShopIntroCard
+        id={store.id}
         name={store.name}
         phone={store.telephone}
         email={store.email}

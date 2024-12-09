@@ -1,4 +1,5 @@
 import { Product1, ProductVariant } from "./Product.model";
+import Store from "./Store.model";
 
 interface User {
   id: string;
@@ -46,6 +47,7 @@ export interface User1 {
   cart: UserCart;
   wishlist: UserWishlist;
   profilePictureUrl: string;
+  followedStores: Store[] | { id: string }[];
 }
 //
 export default User;

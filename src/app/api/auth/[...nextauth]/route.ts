@@ -4,6 +4,7 @@ import axios from "axios";
 import { Adapter } from "next-auth/adapters";
 import AuthAdapter from "utils/auth-adapter";
 import { User1 } from "models/User.model";
+import mapUser from "utils/mapUser";
 //
 const refreshTokens = async (refreshToken: string) => {
   const params = new URLSearchParams();
@@ -30,7 +31,7 @@ const authOptions: AuthOptions = {
       clientSecret: process.env.KEYCLOAK_CLIENT_SECRET,
       issuer: process.env.KEYCLOAK_CLIENT_ISSUER,
       authorization: { params: { scope: "openid email profile phone" } },
-      allowDangerousEmailAccountLinking: true
+      allowDangerousEmailAccountLinking: true,
     }),
   ],
   //
@@ -48,11 +49,7 @@ const authOptions: AuthOptions = {
         idToken: token.idToken as string,
         refreshToken: token.refreshToken as string,
         expires: token.expires as string,
-        user: {
-          ...user,
-          cart: { id: user.cart?.id, cartItems: null },
-          wishlist: { id: user.wishlist?.id, products: null },
-        },
+        user: mapUser(user),
       };
     },
     //
