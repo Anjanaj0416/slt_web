@@ -7,7 +7,11 @@ import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // GLOBAL CUSTOM COMPONENT
 import BazaarSwitch from "components/BazaarSwitch";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
+import {
+  StyledIconButton,
+  StyledTableCell,
+  StyledTableRow,
+} from "../../customer-dashboard/styles";
 
 // ========================================================================
 interface Brand {

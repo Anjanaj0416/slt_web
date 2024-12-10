@@ -13,7 +13,7 @@ import {
   CategoryWrapper,
   StyledTableCell,
   StyledIconButton,
-} from "../styles";
+} from "../../customer-dashboard/styles";
 
 // ========================================================================
 interface Category {

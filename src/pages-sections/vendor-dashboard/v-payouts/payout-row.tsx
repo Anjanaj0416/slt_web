@@ -2,7 +2,10 @@ import { FC } from "react";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import { StyledTableCell, StyledTableRow } from "../styles";
+import {
+  StyledTableCell,
+  StyledTableRow,
+} from "../../customer-dashboard/styles";
 // DATA TYPES
 import { Payout } from "./types";
 

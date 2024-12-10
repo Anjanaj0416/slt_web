@@ -11,7 +11,11 @@ import { Paragraph, Small } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
+import {
+  StyledIconButton,
+  StyledTableCell,
+  StyledTableRow,
+} from "../../customer-dashboard/styles";
 // DATA TYPES
 import { Seller } from "./types";
 

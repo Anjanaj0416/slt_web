@@ -16,6 +16,7 @@ import CustomerService from "icons/CustomerService";
 // STYLED COMPONENTS
 import { MainContainer, StyledNavLink } from "./styles";
 import { WishlistContext } from "contexts/WishlistContext";
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 type NavigationProps = {
   ordersCount?: number;
@@ -82,6 +83,12 @@ const MENUS = [
         href: "/favorite-stores",
         title: "Favorite Stores",
         Icon: StorefrontIcon,
+        count: 0,
+      },
+      {
+        href: "/my-reviews",
+        title: "My Reviews",
+        Icon: RateReviewIcon,
         count: 0,
       },
       {

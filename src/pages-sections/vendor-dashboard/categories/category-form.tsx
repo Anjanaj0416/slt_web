@@ -13,7 +13,7 @@ import * as yup from "yup";
 import DropZone from "components/DropZone";
 import { FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
-import { UploadImageBox, StyledClear } from "../styles";
+import { UploadImageBox, StyledClear } from "../../customer-dashboard/styles";
 
 // FORM FIELDS VALIDATION
 const VALIDATION_SCHEMA = yup.object().shape({

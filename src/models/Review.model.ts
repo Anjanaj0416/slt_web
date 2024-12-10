@@ -1,5 +1,5 @@
 import User, { User1 } from "./User.model";
-import Product from "./Product.model";
+import Product, { Product1 } from "./Product.model";
 
 interface Review {
   id: string;
@@ -15,7 +15,7 @@ export interface Review1 {
   rating: number;
   user: User1;
   text: string;
-  productId: string;
+  product: Product1;
   createdAt: Date;
 }
 

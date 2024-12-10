@@ -6,6 +6,10 @@ const API = {
     path: "/reviews?:query",
     method: "GET",
   },
+  GET_USER_REVIEWS: {
+    path: "/users/:userId/reviews?:query",
+    method: "GET",
+  },
 };
 //
 export default API;

@@ -13,7 +13,7 @@ import {
   StyledTableRow,
   StyledTableCell,
   StyledIconButton,
-} from "../styles";
+} from "../../customer-dashboard/styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // DATA TYPES

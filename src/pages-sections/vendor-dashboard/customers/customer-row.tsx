@@ -9,7 +9,11 @@ import { Paragraph } from "components/Typography";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
+import {
+  StyledIconButton,
+  StyledTableCell,
+  StyledTableRow,
+} from "../../customer-dashboard/styles";
 
 // ========================================================================
 type Props = { customer: any };

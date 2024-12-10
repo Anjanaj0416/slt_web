@@ -7,7 +7,11 @@ import { FlexBox } from "components/flex-box";
 import BazaarSwitch from "components/BazaarSwitch";
 import { Paragraph, Small } from "components/Typography";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
+import {
+  StyledIconButton,
+  StyledTableCell,
+  StyledTableRow,
+} from "../../customer-dashboard/styles";
 
 // ========================================================================
 interface Review {

@@ -3,7 +3,11 @@ import { FC } from "react";
 import Delete from "@mui/icons-material/Delete";
 import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 // STYLED COMPONENTS
-import { StyledIconButton, StyledTableCell, StyledTableRow } from "../styles";
+import {
+  StyledIconButton,
+  StyledTableCell,
+  StyledTableRow,
+} from "../../customer-dashboard/styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
 // DATA TYPES

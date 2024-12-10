@@ -8,7 +8,7 @@ import {
   StyledTableRow,
   StyledTableCell,
   StyledIconButton,
-} from "../styles";
+} from "../../customer-dashboard/styles";
 // CUSTOM DATA MODEL
 import Ticket from "models/Ticket.model";
 

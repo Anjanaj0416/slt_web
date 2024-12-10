@@ -12,7 +12,7 @@ import {
   StyledIconButton,
   StyledTableCell,
   StyledTableRow,
-} from "../styles";
+} from "../../customer-dashboard/styles";
 
 // ========================================================================
 type Props = { order: any };
