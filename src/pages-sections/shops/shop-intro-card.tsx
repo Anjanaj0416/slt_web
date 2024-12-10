@@ -92,8 +92,7 @@ const ShopIntroCard: FC<Props> = ({
     const followedStores = user?.followedStores.filter(
       (store) => store.id !== id
     );
-
-    const newFollowedIds = user?.followedStores.map((store) => store.id);
+    const newFollowedIds = followedStores.map((store) => store.id);
 
     try {
       const updatedUser = { ...user, followedStores };
