@@ -9,12 +9,24 @@ import * as yup from "yup";
 // LOCAL CUSTOM COMPONENT
 import { H5 } from "components/Typography";
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Checkbox, FormControlLabel, IconButton } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { usePostAddressMutation } from "services/address-api";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
+import { DISTRICTS } from "data/district-list";
+import { getCities } from "data/city-list";
 
 const validationSchema = yup.object({
   name: yup.string().required("required"),
@@ -39,8 +51,6 @@ const NewAddressForm: FC<Props> = ({
   handleFetch,
   addressesCount,
 }) => {
-  console.log(addressesCount);
-  
   const { enqueueSnackbar } = useSnackbar();
   const { data: session } = useSession();
   const user = session?.user as User1;
@@ -64,6 +74,7 @@ const NewAddressForm: FC<Props> = ({
     addressLine2: "",
     postalCode: "",
     provinceOrState: "",
+    city: "",
     contactNumber: "",
     primary: false,
     addressType,
@@ -73,6 +84,8 @@ const NewAddressForm: FC<Props> = ({
     initialValues,
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
+      console.log(values);
+
       await createAddress({ body: values, userId: user?.id });
       handleFetch();
       resetForm({});
@@ -91,11 +104,7 @@ const NewAddressForm: FC<Props> = ({
 
   return (
     <Fragment>
-      <Button
-        color="primary"
-        variant="outlined"
-        onClick={ handleOpenModal}
-      >
+      <Button color="primary" variant="outlined" onClick={handleOpenModal}>
         Add New Address
       </Button>
 
@@ -119,7 +128,7 @@ const NewAddressForm: FC<Props> = ({
 
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
-              <Grid item sm={6} xs={12}>
+              <Grid item sm={12} xs={12}>
                 <TextField
                   fullWidth
                   type="text"
@@ -157,19 +166,58 @@ const NewAddressForm: FC<Props> = ({
                   error={touched.addressLine2 && Boolean(errors.addressLine2)}
                 />
               </Grid>
-
               <Grid item sm={6} xs={12}>
-                <TextField
+                <FormControl
                   fullWidth
-                  name="provinceOrState"
-                  label="Province or State"
-                  value={values.provinceOrState}
-                  onChange={handleChange}
-                  helperText={touched.provinceOrState && errors.provinceOrState}
+                  size="small"
                   error={
                     touched.provinceOrState && Boolean(errors.provinceOrState)
                   }
-                />
+                >
+                  <InputLabel>District</InputLabel>
+                  <Select
+                    size="small"
+                    name="provinceOrState"
+                    label="District"
+                    value={values.provinceOrState}
+                    onChange={handleChange}
+                  >
+                    {DISTRICTS.map((district) => (
+                      <MenuItem key={district} value={district}>
+                        {district}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                  {touched.provinceOrState && errors.provinceOrState && (
+                    <FormHelperText>{errors.provinceOrState}</FormHelperText>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item sm={6} xs={12}>
+                <FormControl
+                  fullWidth
+                  size="small"
+                  error={touched.city && Boolean(errors.city)}
+                >
+                  <InputLabel>City</InputLabel>
+                  <Select
+                    size="small"
+                    name="city"
+                    label="City"
+                    value={values.city}
+                    onChange={handleChange}
+                  >
+                    {values.provinceOrState &&
+                      getCities(values.provinceOrState)?.map((city) => (
+                        <MenuItem key={city} value={city}>
+                          {city}
+                        </MenuItem>
+                      ))}
+                  </Select>
+                  {touched.city && errors.city && (
+                    <FormHelperText>{errors.city}</FormHelperText>
+                  )}
+                </FormControl>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <TextField

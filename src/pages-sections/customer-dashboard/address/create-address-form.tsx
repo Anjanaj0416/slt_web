@@ -13,10 +13,14 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
+  FormHelperText,
   FormLabel,
   IconButton,
+  InputLabel,
+  MenuItem,
   Radio,
   RadioGroup,
+  Select,
   Typography,
 } from "@mui/material";
 import { usePostAddressMutation } from "services/address-api";
@@ -24,6 +28,8 @@ import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
+import { getCities } from "data/city-list";
+import { DISTRICTS } from "data/district-list";
 
 const validationSchema = yup.object({
   name: yup.string().required("required"),
@@ -69,6 +75,7 @@ const CreateAddressForm: FC<Props> = ({
     postalCode: "",
     provinceOrState: "",
     contactNumber: "",
+    city: "",
     primary: false,
     addressType: "SHIPPING",
   };
@@ -128,7 +135,7 @@ const CreateAddressForm: FC<Props> = ({
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Grid item sm={6} xs={12}>
+              <Grid item sm={12} xs={12}>
                 <TextField
                   fullWidth
                   type="text"
@@ -167,17 +174,57 @@ const CreateAddressForm: FC<Props> = ({
               </Grid>
 
               <Grid item sm={6} xs={12}>
-                <TextField
+                <FormControl
                   fullWidth
-                  name="provinceOrState"
-                  label="Province or State"
-                  value={values.provinceOrState}
-                  onChange={handleChange}
-                  helperText={touched.provinceOrState && errors.provinceOrState}
+                  size="small"
                   error={
                     touched.provinceOrState && Boolean(errors.provinceOrState)
                   }
-                />
+                >
+                  <InputLabel>District</InputLabel>
+                  <Select
+                    size="small"
+                    name="provinceOrState"
+                    label="District"
+                    value={values.provinceOrState}
+                    onChange={handleChange}
+                  >
+                    {DISTRICTS.map((district) => (
+                      <MenuItem key={district} value={district}>
+                        {district}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                  {touched.provinceOrState && errors.provinceOrState && (
+                    <FormHelperText>{errors.provinceOrState}</FormHelperText>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item sm={6} xs={12}>
+                <FormControl
+                  fullWidth
+                  size="small"
+                  error={touched.city && Boolean(errors.city)}
+                >
+                  <InputLabel>City</InputLabel>
+                  <Select
+                    size="small"
+                    name="city"
+                    label="City"
+                    value={values.city}
+                    onChange={handleChange}
+                  >
+                    {values.provinceOrState &&
+                      getCities(values.provinceOrState)?.map((city) => (
+                        <MenuItem key={city} value={city}>
+                          {city}
+                        </MenuItem>
+                      ))}
+                  </Select>
+                  {touched.city && errors.city && (
+                    <FormHelperText>{errors.city}</FormHelperText>
+                  )}
+                </FormControl>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <TextField
