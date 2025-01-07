@@ -121,7 +121,7 @@ const CartServiceProvider = (props: Props) => {
       );
       //
       try {
-        await updateCart({
+        const cart = await updateCart({
           userId: user?.id,
           cartId: user?.cart?.id,
           body: {
@@ -133,6 +133,7 @@ const CartServiceProvider = (props: Props) => {
         });
         setCart((prev) => ({
           ...prev,
+          // shippingCost:cart?.shippingCost,
           cartItems: newCartList,
         }));
       } catch (error) {
@@ -172,6 +173,7 @@ const CartServiceProvider = (props: Props) => {
         brand,
         discountType,
         discountAmount,
+        weight,
         name: productName,
       } = product;
 
@@ -201,10 +203,10 @@ const CartServiceProvider = (props: Props) => {
           productName,
           brand,
           productType,
+          weight,
           discountAmount,
           discountType,
         };
-
         //
         await updateCart({
           userId: user?.id,
@@ -246,7 +248,7 @@ const CartServiceProvider = (props: Props) => {
       }
       setSelectedProductId(productVariant?.id);
       try {
-        await updateCart({
+        const res = await updateCart({
           userId: user?.id,
           cartId: user?.cart?.id,
           body: {
@@ -261,6 +263,7 @@ const CartServiceProvider = (props: Props) => {
         //
         setCart((prev) => ({
           ...prev,
+          shippingCost: res?.data?.shippingCost,
           cartItems: prev?.cartItems?.filter(
             (item) => item?.productVariant?.id !== productVariant?.id
           ),

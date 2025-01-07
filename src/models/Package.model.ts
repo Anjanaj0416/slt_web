@@ -3,9 +3,11 @@ import { DiscountType, ProductVariant } from "./Product.model";
 export type PackageStatus =
   | "PENDING"
   | "PROCESSING"
+  | "PICKUP_REQUESTED"
   | "SHIPPED"
   | "DELIVERED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | "FAILED";
 export type PackageItem = {
   productId: string;
   productName: string;
@@ -19,12 +21,15 @@ export type PackageItem = {
   images: string[];
   productVariant: ProductVariant;
   units: number;
+  weight: number;
 };
 
 interface Package {
   id: string;
   status: PackageStatus;
   packageItems: PackageItem[];
+  shippingCost: number;
+  deliveryReferenceId: string;
   createdAt: Date;
 }
 

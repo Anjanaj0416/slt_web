@@ -21,15 +21,17 @@ interface Product {
   reviews?: Review[];
   published?: boolean;
 }
-
 //
+export type DeliveryPartnerType = 'KOOMBIYO'|'OTHER';
+
 export interface Product1 {
   id: string;
-  //units?: any;
+  weight: number;
   basePrice: string;
   discountAmount: number;
   discountType: DiscountType;
   productType: "QUOTATION" | "DIRECT_BUYING";
+  deliveryPartner:DeliveryPartnerType;
   variants?: ProductVariant[];
   brand?: string;
   images?: string[];

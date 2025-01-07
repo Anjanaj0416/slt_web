@@ -13,7 +13,7 @@ type Props = {
   type: "CART" | "BUY_NOW";
 };
 const PaymentSummary = ({ type }: Props) => {
-  const { totalPrice, totalDiscount } = useCartService();
+  const { totalPrice, totalDiscount, cart } = useCartService();
   const { totalPrice: buyingTotal, totalDiscount: buyingDiscount } =
     useBuyNowItemService();
   return (
@@ -22,7 +22,7 @@ const PaymentSummary = ({ type }: Props) => {
         title="Subtotal:"
         amount={type === "CART" ? totalPrice : buyingTotal}
       />
-      <PaymentItem title="Shipping:" />
+      <PaymentItem title="Shipping:" amount={cart.shippingCost} />
       {/* <PaymentItem title="Tax:" /> */}
       <PaymentItem
         title="Discount:"
@@ -38,7 +38,7 @@ const PaymentSummary = ({ type }: Props) => {
         textAlign="right"
       >
         {type === "CART"
-          ? currency(totalPrice - totalDiscount)
+          ? currency(totalPrice + cart.shippingCost - totalDiscount)
           : currency(buyingTotal - buyingDiscount)}
       </Paragraph>
     </Card>
