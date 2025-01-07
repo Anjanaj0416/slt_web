@@ -8,8 +8,8 @@ import { ReviewsPageView } from "pages-sections/vendor-dashboard/reviews/page-vi
 import MyReviewsPageView from "pages-sections/customer-dashboard/my-reviews/my-reviews";
 
 export const metadata: Metadata = {
-  title: "Wishlist - SLT Marcketplace Next.js E-commerce Template",
-  description: `SLT Marcketplace is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
+  title: "Wishlist - TRADEZ ",
+  description: `TRADEZ is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
   authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
   viewport: "width=device-width, initial-scale=1",
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
@@ -23,12 +23,17 @@ export default async function WishList({ searchParams }) {
     const reviews = await request(API.GET_USER_REVIEWS, {
       userId: user?.id,
       query:
-      isNaN(page) && page >= 0
-        ? "size=6&sort=createdAt,asc"
-        : `page=${page - 1}&size=6&sort=createdAt,asc`,
+        isNaN(page) && page >= 0
+          ? "size=6&sort=createdAt,asc"
+          : `page=${page - 1}&size=6&sort=createdAt,asc`,
     });
 
-    return <MyReviewsPageView reviews={reviews?.data} total={reviews?.totalResults}/>;
+    return (
+      <MyReviewsPageView
+        reviews={reviews?.data}
+        total={reviews?.totalResults}
+      />
+    );
   } catch (error) {
     notFound();
   }

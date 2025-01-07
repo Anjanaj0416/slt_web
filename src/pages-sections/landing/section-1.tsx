@@ -22,7 +22,7 @@ const Section1 = () => {
           <H1 fontSize="40px" mb={3}>
             <Span>Build your online store with</Span>
             <Box color="primary.main" lineHeight={1.2}>
-              SLT Marcketplace
+              TRADEZ
             </Box>
           </H1>
 
@@ -112,8 +112,8 @@ const Section1 = () => {
               placement="right"
               title={
                 <Paragraph>
-                  SLT Marcketplace has REST API integrated on the frontend.
-                  Click this link if you want server side help from us.
+                  TRADEZ has REST API integrated on the frontend. Click this
+                  link if you want server side help from us.
                 </Paragraph>
               }
             >

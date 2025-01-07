@@ -67,7 +67,7 @@ const Setting = () => {
             <Divider sx={{ my: 3 }} />
 
             <H6 textAlign="center" mb={2}>
-              SLT Marcketplace Demos
+              TRADEZ Demos
             </H6>
 
             <FlexBox gap={2} flexWrap="wrap">

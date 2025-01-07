@@ -9,8 +9,8 @@ import { auth } from "utils/auth";
 import FavoriteStoresPageView from "pages-sections/customer-dashboard/favorite-stores/favorite-stores";
 
 export const metadata: Metadata = {
-  title: "Favorite Stores - SLT Marcketplace Next.js E-commerce Template",
-  description: `SLT Marcketplace is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
+  title: "Favorite Stores - TRADEZ ",
+  description: `TRADEZ is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
   authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
   viewport: "width=device-width, initial-scale=1",
   keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
