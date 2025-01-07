@@ -50,7 +50,7 @@ const MobileHeader: FC<Props> = ({ searchInput }) => {
         {/* MIDDLE CONTENT - LOGO */}
         <Link href="/">
           <Image
-            height={44}
+            height={70}
             src="/assets/images/bazaar-black-sm.svg"
             alt="logo"
           />
