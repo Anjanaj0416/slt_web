@@ -1,6 +1,5 @@
 import { ShopLayout1 } from "components/layouts/shop-layout-1";
 import { Metadata } from "next";
-import IndexPageView from "pages-sections/landing/page-view";
 import { MarketTwoPageView } from "pages-sections/market-2/page-view";
 
 export const metadata: Metadata = {
