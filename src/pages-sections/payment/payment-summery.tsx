@@ -8,21 +8,44 @@ import { Paragraph } from "components/Typography";
 import { currency } from "lib";
 import useCartService from "hooks/useCartService";
 import useBuyNowItemService from "hooks/useBuyNowItemService";
+import { useGetShippingCostMutation } from "services/delivery-api";
+import { useEffect } from "react";
 
 type Props = {
   type: "CART" | "BUY_NOW";
 };
 const PaymentSummary = ({ type }: Props) => {
   const { totalPrice, totalDiscount, cart } = useCartService();
-  const { totalPrice: buyingTotal, totalDiscount: buyingDiscount } =
-    useBuyNowItemService();
+  const {
+    totalPrice: buyingSubTotal,
+    totalDiscount: buyingDiscount,
+    items,
+  } = useBuyNowItemService();
+
+  const [getShippingCost, { data: shippingData }] =
+    useGetShippingCostMutation();
+  useEffect(() => {
+    if (type === "BUY_NOW") {
+      const body = items.map(({ productVariant, units }) => ({
+        productVariantId: productVariant.id,
+        units,
+      }));
+      getShippingCost({ body });
+    }
+  }, [type]);
+
+  const shippingCost =
+    type === "CART" ? cart?.shippingCost : shippingData?.shippingCost;
+  const buyingTotal = shippingCost
+    ? buyingSubTotal + shippingCost - buyingDiscount
+    : null;
   return (
     <Card sx={{ padding: { sm: 3, xs: 2 } }}>
       <PaymentItem
         title="Subtotal:"
-        amount={type === "CART" ? totalPrice : buyingTotal}
+        amount={type === "CART" ? totalPrice : buyingSubTotal}
       />
-      <PaymentItem title="Shipping:" amount={cart.shippingCost} />
+      <PaymentItem title="Shipping:" amount={shippingCost} />
       {/* <PaymentItem title="Tax:" /> */}
       <PaymentItem
         title="Discount:"
@@ -38,8 +61,8 @@ const PaymentSummary = ({ type }: Props) => {
         textAlign="right"
       >
         {type === "CART"
-          ? currency(totalPrice + cart.shippingCost - totalDiscount)
-          : currency(buyingTotal - buyingDiscount)}
+          ? currency(totalPrice + shippingCost - totalDiscount)
+          : buyingTotal && currency(buyingTotal)}
       </Paragraph>
     </Card>
   );
