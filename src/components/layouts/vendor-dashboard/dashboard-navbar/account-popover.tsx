@@ -36,6 +36,7 @@ const AccountPopover = () => {
         aria-controls={open ? "account-menu" : undefined}
       >
         <Avatar
+          sx={{ textTransform: "capitalize" }}
           alt={(session?.user as User1)?.firstName}
           src={`${ENVIRONMENT.S3_BUCKET_URL}/${(session?.user as User1)
             ?.profilePictureUrl}`}
