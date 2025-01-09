@@ -46,7 +46,11 @@ const OrderRow: FC<Props> = ({ order }) => {
     }
     if (packages.some((e) => e.status === "PENDING")) {
       return "PENDING";
-    } else if (packages.some((e) => e.status === "PROCESSING")) {
+    } else if (
+      packages.some(
+        (e) => e.status === "PROCESSING" || e.status === "PICKUP_REQUESTED"
+      )
+    ) {
       return "PROCESSING";
     } else if (packages.some((e) => e.status === "SHIPPED")) {
       return "SHIPPED";

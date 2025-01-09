@@ -3,9 +3,11 @@ import { DiscountType, ProductVariant } from "./Product.model";
 export type PackageStatus =
   | "PENDING"
   | "PROCESSING"
+  | "PICKUP_REQUESTED"
   | "SHIPPED"
   | "DELIVERED"
-  | "CANCELLED";
+  | "CANCELLED"
+  | "FAILED";
 export type PackageItem = {
   productId: string;
   productName: string;

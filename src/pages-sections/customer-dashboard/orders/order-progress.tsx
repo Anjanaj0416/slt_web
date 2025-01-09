@@ -12,6 +12,7 @@ import TruckFilled from "icons/TruckFilled";
 import { Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { PackageStatus } from "models/Package.model";
+import CloseIcon from "@mui/icons-material/Close";
 
 // STYLED COMPONENTS
 const StyledFlexbox = styled(FlexBetween)(({ theme }) => ({
@@ -43,9 +44,16 @@ type OrderProgressProps = {
 
 const OrderProgress = ({ status }: OrderProgressProps) => {
   const STEP_ICONS = [PackageBox, TruckFilled, Delivery];
-  const ORDER_STATUS_LIST = ["PENDING", "PROCESSING", "SHIPPED", "DELIVERED"];
+  const ORDER_STATUS_LIST = [
+    "PROCESSING",
+    "PICKUP_REQUESTED",
+    "SHIPPED",
+    "DELIVERED",
+    "FAILED",
+  ];
 
   const statusIndex = ORDER_STATUS_LIST.indexOf(status);
+  console.log(statusIndex);
 
   return (
     <Card sx={{ p: "2rem 1.5rem", mb: 4 }}>
@@ -67,7 +75,11 @@ const OrderProgress = ({ status }: OrderProgressProps) => {
 
               {ind < statusIndex ? (
                 <StyledAvatar alt="done">
-                  <Done color="inherit" sx={{ fontSize: 16 }} />
+                  {ind === STEP_ICONS.length - 1 && status === "FAILED" ? (
+                    <CloseIcon color="error" sx={{ fontSize: 16 }} />
+                  ) : (
+                    <Done color="inherit" sx={{ fontSize: 16 }} />
+                  )}
                 </StyledAvatar>
               ) : null}
             </Box>
@@ -83,7 +95,7 @@ const OrderProgress = ({ status }: OrderProgressProps) => {
       </StyledFlexbox>
 
       <FlexBox justifyContent={{ xs: "center", sm: "flex-end" }}>
-        <Paragraph
+        {/* <Paragraph
           p="0.5rem 1rem"
           textAlign="center"
           borderRadius="300px"
@@ -91,7 +103,7 @@ const OrderProgress = ({ status }: OrderProgressProps) => {
           bgcolor="primary.light"
         >
           Estimated Delivery Date <b>4th October</b>
-        </Paragraph>
+        </Paragraph> */}
       </FlexBox>
     </Card>
   );
