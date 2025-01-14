@@ -21,12 +21,15 @@ export type PackageItem = {
   images: string[];
   productVariant: ProductVariant;
   units: number;
+  weight: number;
 };
 
 interface Package {
   id: string;
   status: PackageStatus;
   packageItems: PackageItem[];
+  shippingCost: number;
+  deliveryReferenceId: string;
   createdAt: Date;
 }
 

@@ -23,10 +23,12 @@ export interface CartItem {
   images: string[];
   productVariant: ProductVariant;
   units: number;
+  weight: number;
 }
 //
 export interface UserCart {
   id: string;
+  shippingCost?: number;
   cartItems: Array<CartItem>;
 }
 
