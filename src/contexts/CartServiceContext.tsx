@@ -263,7 +263,7 @@ const CartServiceProvider = (props: Props) => {
         //
         setCart((prev) => ({
           ...prev,
-          shippingCost: res?.data?.shippingCost,
+          shippingCost: (res as any)?.data?.shippingCost,
           cartItems: prev?.cartItems?.filter(
             (item) => item?.productVariant?.id !== productVariant?.id
           ),
