@@ -133,7 +133,6 @@ const OrderDetailsPageView = ({ order }: Props) => {
         order.packages.length === 1 &&
         order.packages[0].status !== "CANCELLED" && (
           <OrderProgress
-            orderId={order.id}
             status={order.packages[0].status}
             handleOpen={handleOpen}
             isUpdating={isUpdatingOrder}

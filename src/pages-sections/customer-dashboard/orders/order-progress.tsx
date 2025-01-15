@@ -9,14 +9,10 @@ import Delivery from "icons/Delivery";
 import PackageBox from "icons/PackageBox";
 import TruckFilled from "icons/TruckFilled";
 // GLOBAL CUSTOM COMPONENTS
-import { Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { PackageStatus } from "models/Package.model";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "@mui/material";
-import { useUpdateOrderMutation } from "services/order-api";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 // STYLED COMPONENTS
 const StyledFlexbox = styled(FlexBetween)(({ theme }) => ({
@@ -44,12 +40,11 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 
 type OrderProgressProps = {
   status: PackageStatus;
-  orderId: string;
-  handleOpen: ()=>void,
-  isUpdating:boolean
+  handleOpen?: ()=>void,
+  isUpdating?:boolean
 };
 
-const OrderProgress = ({ status, orderId, handleOpen, isUpdating }: OrderProgressProps) => {
+const OrderProgress = ({ status, handleOpen, isUpdating }: OrderProgressProps) => {
   const STEP_ICONS = [PackageBox, TruckFilled, Delivery];
  
   const ORDER_STATUS_LIST = [
@@ -113,7 +108,7 @@ const OrderProgress = ({ status, orderId, handleOpen, isUpdating }: OrderProgres
         >
           Estimated Delivery Date <b>4th October</b>
         </Paragraph> */}
-        <Button
+       {handleOpen && <Button
           onClick={handleOpen}
           color="primary"
           sx={{ bgcolor: "primary.light", px: 4 }}
@@ -122,7 +117,7 @@ const OrderProgress = ({ status, orderId, handleOpen, isUpdating }: OrderProgres
           }
         >
           Cancel Order
-        </Button>
+        </Button>}
       </FlexBox>
     </Card>
   );

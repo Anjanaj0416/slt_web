@@ -66,7 +66,7 @@ const OrderedProducts: FC<Props> = ({ order }) => {
               >{`Package ID: ${pkg.id}`}</Typography>
               {order.status === "SUCCESS" && (
                 <Box paddingBottom={1}>
-                  <OrderProgress status={pkg.status} />
+                  <OrderProgress  status={pkg.status} />
                 </Box>
               )}
               {pkg.packageItems.map((item, ind) => buildProductList(ind, item))}
