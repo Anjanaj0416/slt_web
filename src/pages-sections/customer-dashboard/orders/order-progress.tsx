@@ -13,6 +13,10 @@ import { Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import { PackageStatus } from "models/Package.model";
 import CloseIcon from "@mui/icons-material/Close";
+import { Button } from "@mui/material";
+import { useUpdateOrderMutation } from "services/order-api";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 // STYLED COMPONENTS
 const StyledFlexbox = styled(FlexBetween)(({ theme }) => ({
@@ -40,10 +44,14 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 
 type OrderProgressProps = {
   status: PackageStatus;
+  orderId: string;
+  handleOpen: ()=>void,
+  isUpdating:boolean
 };
 
-const OrderProgress = ({ status }: OrderProgressProps) => {
+const OrderProgress = ({ status, orderId, handleOpen, isUpdating }: OrderProgressProps) => {
   const STEP_ICONS = [PackageBox, TruckFilled, Delivery];
+ 
   const ORDER_STATUS_LIST = [
     "PROCESSING",
     "PICKUP_REQUESTED",
@@ -52,8 +60,9 @@ const OrderProgress = ({ status }: OrderProgressProps) => {
     "FAILED",
   ];
 
+ 
+
   const statusIndex = ORDER_STATUS_LIST.indexOf(status);
-  console.log(statusIndex);
 
   return (
     <Card sx={{ p: "2rem 1.5rem", mb: 4 }}>
@@ -104,6 +113,16 @@ const OrderProgress = ({ status }: OrderProgressProps) => {
         >
           Estimated Delivery Date <b>4th October</b>
         </Paragraph> */}
+        <Button
+          onClick={handleOpen}
+          color="primary"
+          sx={{ bgcolor: "primary.light", px: 4 }}
+          disabled={
+            !(status === "PENDING" || status === "SHIPPED") || isUpdating
+          }
+        >
+          Cancel Order
+        </Button>
       </FlexBox>
     </Card>
   );

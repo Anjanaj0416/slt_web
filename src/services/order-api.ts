@@ -20,8 +20,20 @@ export const orderApi = createApi({
       }),
       invalidatesTags: ["ORDER", "ORDERS"],
     }),
+    updateOrder: builder.mutation({
+      query: ({ userId, id, body }) => ({
+        url: `users/${userId}/orders/${id}`,
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["ORDER", "ORDERS"],
+    }),
   }),
 });
 
 // Export the generated query hooks for the defined endpoints
-export const { useLazyGetOrdersQuery, useCreateOrderMutation } = orderApi;
+export const {
+  useLazyGetOrdersQuery,
+  useCreateOrderMutation,
+  useUpdateOrderMutation,
+} = orderApi;

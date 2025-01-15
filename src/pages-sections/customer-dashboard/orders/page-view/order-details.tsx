@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import ShoppingBag from "@mui/icons-material/ShoppingBag";
 // Local CUSTOM COMPONENTS
 import OrderSummery from "../order-summery";
@@ -10,6 +10,18 @@ import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
 import useBuyNowItemService from "hooks/useBuyNowItemService";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
+import { useUpdateOrderMutation } from "services/order-api";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useSnackbar } from "notistack";
 
 // =============================================================
 type Props = { order: Order1 };
@@ -17,6 +29,39 @@ type Props = { order: Order1 };
 
 const OrderDetailsPageView = ({ order }: Props) => {
   const { handleAddToItem } = useBuyNowItemService();
+  const [open, setOpen] = useState(false);
+  const session = useSession();
+  const user = session?.data?.user;
+  const [updateOrder, { isLoading: isUpdatingOrder }] =
+    useUpdateOrderMutation();
+  const { enqueueSnackbar } = useSnackbar();
+  const router = useRouter();
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleConfirm = async () => {
+    setOpen(false);
+    try {
+      await updateOrder({
+        userId: (user as any).id,
+        id: order.id,
+        body: { status: "CANCELLED" },
+      });
+      enqueueSnackbar("Order cancellation successful!", {
+        variant: "success",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "right",
+        },
+      });
+      router.push("/orders");
+    } catch (e) {}
+  };
   const handleReOrder = () => {
     const items = [];
     order.packages.forEach((pkg) => {
@@ -50,15 +95,36 @@ const OrderDetailsPageView = ({ order }: Props) => {
   };
   return (
     <Fragment>
+      <div>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="confirmation-dialog-title"
+          aria-describedby="confirmation-dialog-description"
+        >
+          <DialogTitle id="confirmation-dialog-title">
+            Confirm Order Cancellation
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="confirmation-dialog-description">
+              Are you sure you want to cancel order?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleConfirm} color="primary" autoFocus>
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
       {/* TITLE HEADER AREA */}
       <DashboardHeader
         onClick={handleReOrder}
         Icon={ShoppingBag}
-        title={
-          order.status === "SUCCESS"
-            ? "Order Details"
-            : "Order Details - Pending Payment"
-        }
+        title={"Order Details"}
         buttonText="Order Again"
       />
 
@@ -66,7 +132,12 @@ const OrderDetailsPageView = ({ order }: Props) => {
       {order.status === "SUCCESS" &&
         order.packages.length === 1 &&
         order.packages[0].status !== "CANCELLED" && (
-          <OrderProgress status={order.packages[0].status} />
+          <OrderProgress
+            orderId={order.id}
+            status={order.packages[0].status}
+            handleOpen={handleOpen}
+            isUpdating={isUpdatingOrder}
+          />
         )}
 
       {/* ORDERED PRODUCT LIST */}
