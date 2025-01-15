@@ -40,13 +40,17 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 
 type OrderProgressProps = {
   status: PackageStatus;
-  handleOpen?: ()=>void,
-  isUpdating?:boolean
+  handleOpen?: () => void;
+  isUpdating?: boolean;
 };
 
-const OrderProgress = ({ status, handleOpen, isUpdating }: OrderProgressProps) => {
+const OrderProgress = ({
+  status,
+  handleOpen,
+  isUpdating,
+}: OrderProgressProps) => {
   const STEP_ICONS = [PackageBox, TruckFilled, Delivery];
- 
+
   const ORDER_STATUS_LIST = [
     "PROCESSING",
     "PICKUP_REQUESTED",
@@ -54,8 +58,6 @@ const OrderProgress = ({ status, handleOpen, isUpdating }: OrderProgressProps) =
     "DELIVERED",
     "FAILED",
   ];
-
- 
 
   const statusIndex = ORDER_STATUS_LIST.indexOf(status);
 
@@ -108,16 +110,18 @@ const OrderProgress = ({ status, handleOpen, isUpdating }: OrderProgressProps) =
         >
           Estimated Delivery Date <b>4th October</b>
         </Paragraph> */}
-       {handleOpen && <Button
-          onClick={handleOpen}
-          color="primary"
-          sx={{ bgcolor: "primary.light", px: 4 }}
-          disabled={
-            !(status === "PENDING" || status === "SHIPPED") || isUpdating
-          }
-        >
-          Cancel Order
-        </Button>}
+        {handleOpen && (
+          <Button
+            onClick={handleOpen}
+            color="primary"
+            sx={{ bgcolor: "primary.light", px: 4 }}
+            disabled={
+              !(status === "PENDING" || status === "PROCESSING") || isUpdating
+            }
+          >
+            Cancel Order
+          </Button>
+        )}
       </FlexBox>
     </Card>
   );
