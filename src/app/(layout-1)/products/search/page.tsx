@@ -47,7 +47,6 @@ export default async function ProductSearch({ searchParams }) {
       />
     );
   } catch (error) {
-    console.error(error);
     notFound();
   }
 }
