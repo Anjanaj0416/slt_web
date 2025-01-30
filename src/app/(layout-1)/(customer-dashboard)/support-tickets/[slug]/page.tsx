@@ -21,6 +21,7 @@ export default async function SupportTicketDetails({
     const ticket = await api.getTicket(String(params.slug));
     return <TicketDetailsPageView ticket={ticket} />;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

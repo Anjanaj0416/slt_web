@@ -93,8 +93,9 @@ const request = async (_metadata, data, multipart = false, isSecure = true) => {
     const response = await axios(options);
     return parseJSON(response);
   } catch (error) {
+    console.error(error);
     if (error.response.status === 401) {
-      redirect('/')
+      redirect("/");
     }
 
     return errorHandling(error);

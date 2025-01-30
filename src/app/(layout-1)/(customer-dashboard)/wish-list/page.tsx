@@ -26,6 +26,7 @@ export default async function WishList() {
 
     return <WishListPageView wishlist={wishlist} />;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

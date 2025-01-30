@@ -33,6 +33,7 @@ export default async function ProductSearch({ params, searchParams }) {
       />
     );
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

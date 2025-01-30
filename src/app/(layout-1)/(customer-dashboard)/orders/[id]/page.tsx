@@ -27,6 +27,7 @@ export default async function OrderDetails({
     });
     return <OrderDetailsPageView order={order} />;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

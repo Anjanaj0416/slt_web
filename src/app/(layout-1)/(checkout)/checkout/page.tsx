@@ -22,6 +22,7 @@ export default async function Checkout() {
     //
     return <CheckoutPageView address={data} />;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

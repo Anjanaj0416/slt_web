@@ -95,6 +95,7 @@ const MarketTwoPageView = async () => {
       </Fragment>
     );
   } catch (error) {
+    console.error(error);
     notFound();
   }
 };

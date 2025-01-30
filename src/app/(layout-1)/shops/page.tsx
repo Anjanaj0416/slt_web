@@ -20,6 +20,7 @@ export default async function Shops() {
     });
     return <ShopsPageView storesData={stores} />;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

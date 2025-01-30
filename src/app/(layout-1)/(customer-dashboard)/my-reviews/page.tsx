@@ -35,6 +35,7 @@ export default async function WishList({ searchParams }) {
       />
     );
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

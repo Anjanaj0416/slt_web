@@ -26,6 +26,7 @@ export default async function ShopDetails({ params }) {
 
     return <ShopDetailsPageView store={store} productsData={productsData} />;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

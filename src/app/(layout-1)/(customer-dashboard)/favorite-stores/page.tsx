@@ -27,7 +27,6 @@ export default async function FavoriteStore() {
     return <FavoriteStoresPageView favoriteStores={user.followedStores} />;
   } catch (error) {
     console.log(error);
-
     notFound();
   }
 }

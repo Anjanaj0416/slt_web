@@ -28,6 +28,7 @@ export default async function Orders() {
       />
     );
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }
