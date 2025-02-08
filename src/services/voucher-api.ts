@@ -9,7 +9,7 @@ export const voucherApi = createApi({
   endpoints: (builder) => ({
     calculateVoucherDiscount: builder.mutation({
       query: ({  body }) => ({
-        url: "vouchers/vouchers/calculate-voucher-discount",
+        url: "vouchers/calculate-voucher-discount",
         method: "POST",
         body,
       }),

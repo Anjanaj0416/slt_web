@@ -39,6 +39,16 @@ type ContextState = {
   isItemInCart: (productVariant: ProductVariant) => CartItem | null | undefined;
   selectedProductId: string;
   note: string;
+  voucherDiscounts: {
+    voucherCode: string;
+    variantId: string;
+    discount: number;
+  }[];
+  increaseVoucherDiscount: (
+    voucherCode: string,
+    variantId: string,
+    discount: number
+  ) => void;
   setNote: Dispatch<SetStateAction<string>>;
 };
 //
@@ -61,7 +71,9 @@ const initState: ContextState = {
   isItemInCart: () => null,
   selectedProductId: "",
   note: "",
+  voucherDiscounts: null,
   setNote: () => {},
+  increaseVoucherDiscount: () => {},
 };
 //
 export const CartServiceContext = createContext<ContextState>(initState);
@@ -81,8 +93,28 @@ const CartServiceProvider = (props: Props) => {
     id: "",
     cartItems: [],
   });
+  const [voucherDiscounts, setVoucherDiscounts] = useState<
+    { voucherCode: string; variantId: string; discount: number }[]
+  >([]);
   const [updateCart, { isLoading: isUpdating }] = useUpdateCartMutation();
   const [fetchCart, { isLoading: isCartFetching }] = useLazyGetCartQuery();
+  //
+  const increaseVoucherDiscount = (
+    voucherCode: string,
+    variantId: string,
+    discount: number
+  ) => {
+    if (
+      voucherDiscounts.length > 0 &&
+      voucherDiscounts.some((e) => e.variantId === variantId)
+    ) {
+      throw Error("This voucher already use in this order!");
+    }
+    setVoucherDiscounts((prvState) => {
+      return [...prvState, { voucherCode, variantId, discount }];
+    });
+  };
+
   //
   const handleFetch = useCallback(async () => {
     if (!user?.id || !user?.cart?.id) {
@@ -301,22 +333,28 @@ const CartServiceProvider = (props: Props) => {
     [cart?.cartItems]
   );
 
-  const totalDiscount = useMemo(
-    () =>
-      cart?.cartItems?.reduce(
+  const totalDiscount = useMemo(() => {
+    const sumOfDiscount = cart?.cartItems?.reduce(
+      (accumulator, current) =>
+        (accumulator =
+          accumulator +
+          calculateDiscountAmount(
+            current?.discountType,
+            current?.productVariant.price,
+            current?.discountAmount
+          ) *
+            current?.units),
+      0
+    );
+    const discount =
+      sumOfDiscount +
+      voucherDiscounts?.reduce(
         (accumulator, current) =>
-          (accumulator =
-            accumulator +
-            calculateDiscountAmount(
-              current?.discountType,
-              current?.productVariant.price,
-              current?.discountAmount
-            ) *
-              current?.units),
+          (accumulator = accumulator + current.discount),
         0
-      ),
-    [cart?.cartItems]
-  );
+      );
+    return discount < totalPrice ? discount : totalPrice;
+  }, [cart?.cartItems, totalPrice, voucherDiscounts]);
   //
   const returnValue: ContextState = useMemo(
     () => ({
@@ -336,19 +374,23 @@ const CartServiceProvider = (props: Props) => {
       selectedProductId,
       note,
       setNote,
+      voucherDiscounts,
+      increaseVoucherDiscount,
     }),
     [
-      cart,
-      handleAddToCart,
       handleFetch,
+      handleAddToCart,
+      isCartFetching,
+      cart,
+      isUpdating,
       handleRemoveFromCart,
       handleUpdateQty,
-      isCartFetching,
-      isItemInCart,
-      isUpdating,
       totalPrice,
+      totalDiscount,
+      isItemInCart,
       selectedProductId,
       note,
+      voucherDiscounts,
     ]
   );
   //

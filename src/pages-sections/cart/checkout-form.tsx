@@ -12,25 +12,74 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 import useCartService from "hooks/useCartService";
 import { currency } from "lib";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useSnackbar } from "notistack";
+import { useCalculateVoucherDiscountMutation } from "services/voucher-api";
+import { useSession } from "next-auth/react";
+import { LoadingButton } from "@mui/lab";
 
 const CheckoutForm = () => {
   const { push } = useRouter();
   const [comments, setComments] = useState("");
-  const { totalDiscount, totalPrice, setNote, cart } = useCartService();
+  const { data } = useSession();
+  const { totalDiscount, totalPrice, setNote, cart, increaseVoucherDiscount } =
+    useCartService();
   const { enqueueSnackbar } = useSnackbar();
 
-  const [voucherText, setVoucherText] = useState<string>("");
+  const [voucherCode, setVoucherCode] = useState<string>("");
+  const [calculateVoucherDiscount, { isLoading }] =
+    useCalculateVoucherDiscountMutation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setVoucherText(event.target.value); // Update the state with the input's value
+    setVoucherCode(event.target.value); // Update the state with the input's value
   };
+  const user = data?.user;
+  const handleAddVoucher = async () => {
+    if (voucherCode.length > 14 || voucherCode.length < 7 ) {
+      enqueueSnackbar("Invalid Voucher!", {
+        variant: "error",
+      });
+      setVoucherCode("");
+      return;
+    }
+    const productVariantIDAndUnits = cart.cartItems.map(
+      ({ productVariant, units }) => ({
+        productVariantId: productVariant.id,
+        units,
+      })
+    );
+    const body = {
+      userId: (user as any)?.id,
+      voucherCode,
+      productVariantIDAndUnits,
+    };
 
-  const handleAddVoucher = () => {
-    enqueueSnackbar("Invalid Voucher!", {
-      variant: "error",
+    calculateVoucherDiscount({ body }).then((response) => {
+      const discount = (response as any)?.data?.discount;
+      const discountedProductVariant = (response as any)?.data
+        ?.discountedProductVariant;
+      if (discount && discountedProductVariant) {
+        try {
+          increaseVoucherDiscount(
+            voucherCode,
+            discountedProductVariant.id,
+            discount
+          );
+          enqueueSnackbar(
+            `Voucher applied. LKR${discount} has been deducted from the total price!`,
+            {
+              variant: "success",
+            }
+          );
+        } catch {
+          enqueueSnackbar("This voucher already use in this order!", {
+            variant: "error",
+          });
+        }
+      }
     });
+
+    setVoucherCode("");
   };
 
   // const STATE_LIST = [
@@ -104,20 +153,22 @@ const CheckoutForm = () => {
         label="Voucher"
         variant="outlined"
         placeholder="Enter Voucher Code"
-        value={voucherText}
+        value={voucherCode}
+        maxRows={1}
         onChange={handleChange}
       />
 
-      <Button
+      <LoadingButton
+        loading={isLoading}
         variant="outlined"
         color="primary"
         fullWidth
-        disabled={cart.cartItems.length < 1 || !voucherText}
+        disabled={cart.cartItems.length < 1 || !voucherCode || isLoading}
         sx={{ mt: 2, mb: 4 }}
         onClick={handleAddVoucher}
       >
         Apply Voucher
-      </Button>
+      </LoadingButton>
 
       <Divider sx={{ mb: 2 }} />
       {/* 
