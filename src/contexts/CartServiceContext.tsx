@@ -240,7 +240,7 @@ const CartServiceProvider = (props: Props) => {
           discountType,
         };
         //
-        await updateCart({
+        const response = await updateCart({
           userId: user?.id,
           cartId: user?.cart?.id,
           body: {
@@ -253,6 +253,7 @@ const CartServiceProvider = (props: Props) => {
         //
         setCart((prev) => ({
           ...prev,
+          shippingCost: (response as any)?.data?.shippingCost,
           cartItems: [...cart?.cartItems, newItem],
         }));
       } catch (error) {
