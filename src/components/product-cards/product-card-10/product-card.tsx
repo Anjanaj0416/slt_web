@@ -181,7 +181,15 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
 
       <Box p={2} textAlign="center">
         {/* PRODUCT TITLE */}
-        <Paragraph>{name}</Paragraph>
+        <Paragraph
+          sx={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {name}
+        </Paragraph>
 
         {/* PRODUCT PRICE */}
 
