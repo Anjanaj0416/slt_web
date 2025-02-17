@@ -28,6 +28,8 @@ type Props = { order: Order1 };
 // =============================================================
 
 const OrderDetailsPageView = ({ order }: Props) => {
+  console.log("order", order);
+  
   const { handleAddToItem } = useBuyNowItemService();
   const [open, setOpen] = useState(false);
   const session = useSession();

@@ -9,8 +9,7 @@ import { H5, H6, Paragraph } from "components/Typography";
 import { currency } from "lib";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
-import calculateOrderTotalAmount from "./utils/calculate-order-total-price";
-import calculateOrderTotalDiscount from "./utils/calculate-order-total-discount";
+import calculateOrderPriceSummary from "./utils/calculate-order-total-price";
 
 // ==============================================================
 type Props = { order: Order1 };
@@ -26,6 +25,10 @@ function ListItem({ title, value }: { title: string; value: string }) {
 }
 
 const OrderSummery: FC<Props> = ({ order }) => {
+  console.log(order);
+
+  const { totalDiscount, totalPrice, totalShippingCost, subTotal } =
+    calculateOrderPriceSummary(order);
   return (
     <Grid container spacing={3}>
       {/* SHIPMENT ADDRESS SECTION */}
@@ -35,13 +38,13 @@ const OrderSummery: FC<Props> = ({ order }) => {
             Shipping Address
           </H5>
           <Paragraph fontSize={14} my={0}>
-          {order.shippingAddress?.name?? ""}
+            {order.shippingAddress?.name ?? ""}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
             {order.shippingAddress?.contactNumber ?? ""}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
-            {order.shippingAddress?.postalCode?? ""}
+            {order.shippingAddress?.postalCode ?? ""}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
             {`${order.shippingAddress?.addressLine1 ?? ""} 
@@ -60,21 +63,15 @@ const OrderSummery: FC<Props> = ({ order }) => {
             Total Summary
           </H5>
 
-          <ListItem
-            title="Subtotal:"
-            value={currency(calculateOrderTotalAmount(order.packages).subTotal)}
-          />
-          <ListItem title="Shipping fee:" value={currency(0)} />
-          <ListItem
-            title="Discount:"
-            value={currency(calculateOrderTotalDiscount(order.packages))}
-          />
+          <ListItem title="Subtotal:" value={currency(subTotal)} />
+          <ListItem title="Shipping fee:" value={currency(totalShippingCost)} />
+          <ListItem title="Discount:" value={currency(totalDiscount)} />
 
           <Divider sx={{ mb: 1 }} />
 
           <FlexBetween mb={2}>
             <H6>Total</H6>
-            <H6>{currency(calculateOrderTotalAmount(order.packages).total)}</H6>
+            <H6>{currency(totalPrice)}</H6>
           </FlexBetween>
 
           <Paragraph>{`Paid by ${

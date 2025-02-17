@@ -13,7 +13,7 @@ import TableRow from "../table-row";
 import { currency } from "lib";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
-import calculateOrderTotalAmount from "./utils/calculate-order-total-price";
+import calculateOrderPriceSummary from "./utils/calculate-order-total-price";
 
 // =================================================
 type Props = { order: Order1 };
@@ -81,7 +81,7 @@ const OrderRow: FC<Props> = ({ order }) => {
         </Paragraph>
 
         <Paragraph textAlign="right">
-          {currency(calculateOrderTotalAmount(order.packages).total)}
+          {currency(calculateOrderPriceSummary(order).totalPrice)}
         </Paragraph>
 
         <Box display={{ sm: "inline-flex", xs: "none" }} justifyContent="end">

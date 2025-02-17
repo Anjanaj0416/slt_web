@@ -1,16 +1,33 @@
-import Package from "models/Package.model";
+import { Order1 } from "models/Order.model";
 
-const calculateOrderTotalAmount = (packages: Package[]) => {
-  let total = 0;
+export const calculateOrderPriceSummary = (order: Order1) => {
+  let totalPrice = 0;
+  let totalDiscount = 0;
+  let totalShippingCost = 0;
   let subTotal = 0;
-  packages?.forEach((pkg) => {
-    pkg.packageItems.forEach((pkgItm) => {
-      const { price, units, discount } = pkgItm;
-      total += (price - discount) * units;
-      subTotal += price * units;
-    });
-  });
-  return { total, subTotal };
-};
+//console.log(order);
 
-export default calculateOrderTotalAmount;
+  for (const pkg of order.packages) {
+    totalShippingCost += pkg.shippingCost;
+
+    for (const item of pkg.packageItems) {
+      const itemTotalPrice = item.price * item.units;
+      const itemTotalDiscount = item.discount * item.units;
+
+      totalPrice += itemTotalPrice;
+      totalDiscount += itemTotalDiscount;
+      subTotal += itemTotalPrice;
+    }
+  }
+
+  totalPrice += totalShippingCost - totalDiscount;
+
+  return {
+    totalPrice,
+    totalDiscount,
+    totalShippingCost,
+    subTotal,
+  };
+}
+
+export default calculateOrderPriceSummary;
