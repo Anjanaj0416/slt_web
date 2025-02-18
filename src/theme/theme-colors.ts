@@ -63,7 +63,7 @@ export const secondary = {
   800: "#0e1138",
   900: "#0c0e30",
   main: "#0F3460",
-  dark: "#0c0e30",
+  dark: "#010125",
 };
 
 export const error = {
