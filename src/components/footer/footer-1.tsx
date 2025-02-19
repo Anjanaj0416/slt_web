@@ -34,7 +34,7 @@ const Footer1 = () => {
               et lectus vel ut sollicitudin elit at amet.
             </Paragraph>
 
-            <AppStore />
+            {/* <AppStore /> */}
           </Grid>
 
           {/* ABOUT US LINKS */}
