@@ -30,8 +30,17 @@ const PaymentForm = ({ type }: Props) => {
   const user = session?.user as User1;
   const { selectedBillingAddressId, selectedShippingAddressId } =
     useCheckoutService();
-  const { note, setCart } = useCartService();
-  const { note: buyingNote, items, setItems } = useBuyNowItemService();
+  const {
+    note,
+    setCart,
+    voucherDiscounts: cartVoucherDiscount,
+  } = useCartService();
+  const {
+    note: buyingNote,
+    items,
+    setItems,
+    voucherDiscounts: buyNowVoucherDiscounts,
+  } = useBuyNowItemService();
   const [selectedCard, setSelectedCard] = useState<CardType>();
 
   //
@@ -44,7 +53,7 @@ const PaymentForm = ({ type }: Props) => {
       if (type === "CART") {
         setCart({ id: "", cartItems: [] });
       } else {
-       setItems([]);
+        setItems([]);
       }
 
       push(`/orders/${data.id}`);
@@ -105,16 +114,24 @@ const PaymentForm = ({ type }: Props) => {
         ],
       },
     };
-    console.log(type);
+
     if (type === "CART") {
       requestData.body["cartId"] = user?.cart?.id;
       requestData.body["note"] = note;
+
+      const voucherCodes = cartVoucherDiscount.map(
+        (voucher) => voucher.voucherCode
+      );
+      requestData.body["voucherCodes"] = voucherCodes;
     } else {
-      console.log(items);
       const cartItems = items.map((item) => ({
         productVariantId: item.productVariant.id,
         units: item.units,
       }));
+      const voucherCodes = buyNowVoucherDiscounts.map(
+        (voucher) => voucher.voucherCode
+      );
+      requestData.body["voucherCodes"] = voucherCodes;
       requestData.body["cartItems"] = cartItems;
       requestData.body["note"] = buyingNote;
     }
