@@ -29,6 +29,16 @@ type ContextState = {
   totalDiscount: number;
   note: string;
   setNote: Dispatch<SetStateAction<string>>;
+  voucherDiscounts: {
+    voucherCode: string;
+    variantId: string;
+    discount: number;
+  }[];
+  increaseVoucherDiscount: (
+    voucherCode: string,
+    variantId: string,
+    discount: number
+  ) => void;
 };
 //
 const initState: ContextState = {
@@ -39,7 +49,9 @@ const initState: ContextState = {
   totalPrice: 0,
   totalDiscount: 0,
   note: "",
+  voucherDiscounts: null,
   setNote: () => {},
+  increaseVoucherDiscount: () => {},
 };
 //
 export const BuyNowItemServiceContext = createContext<ContextState>(initState);
@@ -50,10 +62,14 @@ type Props = {
 //
 const BuyNowItemServiceProvider = (props: Props) => {
   const router = useRouter();
- 
+
   const [note, setNote] = useState<string>("");
 
   const [items, setItems] = useState<CartItem[]>([]);
+
+  const [voucherDiscounts, setVoucherDiscounts] = useState<
+    { voucherCode: string; variantId: string; discount: number }[]
+  >([]);
 
   const handleUpdateQty = async (
     productVariant: ProductVariant,
@@ -75,7 +91,7 @@ const BuyNowItemServiceProvider = (props: Props) => {
     setItems(newItemList);
   };
   //
-  const handleAddToItem =  (
+  const handleAddToItem = (
     items: {
       product: Product1;
       productVariant: ProductVariant;
@@ -130,22 +146,44 @@ const BuyNowItemServiceProvider = (props: Props) => {
     [items]
   );
 
-  const totalDiscount = useMemo(
-    () =>
-      items?.reduce(
+  const totalDiscount = useMemo(() => {
+    const sumOfDiscount = items?.reduce(
+      (accumulator, current) =>
+        (accumulator =
+          accumulator +
+          calculateDiscountAmount(
+            current?.discountType,
+            current?.productVariant.price,
+            current?.discountAmount
+          ) *
+            current?.units),
+      0
+    );
+    const discount =
+      sumOfDiscount +
+      voucherDiscounts?.reduce(
         (accumulator, current) =>
-          (accumulator =
-            accumulator +
-            calculateDiscountAmount(
-              current?.discountType,
-              current?.productVariant.price,
-              current?.discountAmount
-            ) *
-              current?.units),
+          (accumulator = accumulator + current.discount),
         0
-      ),
-    [items]
-  );
+      );
+    return discount < totalPrice ? discount : totalPrice;
+  }, [items, voucherDiscounts]);
+
+  const increaseVoucherDiscount = (
+    voucherCode: string,
+    variantId: string,
+    discount: number
+  ) => {
+    if (
+      voucherDiscounts.length > 0 &&
+      voucherDiscounts.some((e) => e.variantId === variantId)
+    ) {
+      throw Error("This voucher already use in this order!");
+    }
+    setVoucherDiscounts((prvState) => {
+      return [...prvState, { voucherCode, variantId, discount }];
+    });
+  };
 
   //
   const returnValue: ContextState = useMemo(
@@ -154,6 +192,8 @@ const BuyNowItemServiceProvider = (props: Props) => {
       items,
       setItems,
       handleUpdateQty,
+      voucherDiscounts,
+      increaseVoucherDiscount,
       totalPrice,
       totalDiscount,
       note,
