@@ -8,7 +8,7 @@ import ListItem from "@mui/material/ListItem";
 import Container from "@mui/material/Container";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
-import { H3 } from "components/Typography";
+import { H3, H4 } from "components/Typography";
 import { NavLink3 } from "components/nav-link";
 import { Carousel } from "components/carousel";
 import { ProductCard10 } from "components/product-cards/product-card-10";
@@ -17,6 +17,11 @@ import { Product1 } from "models/Product.model";
 import { useLazyFilteredProductsQuery } from "services/product-api";
 import Category1 from "models/Category.model";
 import CircularProgress from "@mui/material/CircularProgress/CircularProgress";
+import LazyImage from "components/LazyImage";
+import ENVIRONMENT from "config/environment";
+import { Typography } from "@mui/material";
+import Image from "next/image";
+import { FlexBox } from "components/flex-box";
 
 // STYLED COMPONENTS
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -111,8 +116,23 @@ const CategoryBasedProducts: FC<Props> = ({ data }) => {
         {/* CATEGORY BASED PRODUCTS CAROUSEL */}
         {
           <Grid item md={9} xs={12}>
-            {isFetching ? (
+            {isFetching || !products ? (
               <CircularProgress />
+            ) : products?.length < 1 ? (
+              <FlexBox
+                flexDirection="column"
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <Image
+                  width={200}
+                  height={200}
+                  alt={"No Products"}
+                  src={`${ENVIRONMENT.APP_URL}/assets/images/empty-box.png`}
+                  className="product-img"
+                />
+                <H4 mt={3}>There is no products !</H4>
+              </FlexBox>
             ) : (
               <Carousel
                 slidesToShow={4}
