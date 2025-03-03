@@ -134,15 +134,21 @@ const ProductSearchPageView = ({
           },
         }}
       >
-        <div>
-          <H5>{`Searching for “ ${searchText} ”`}</H5>
-          <Paragraph color="grey.600">
-            {totalResult > 1
-              ? `${totalResult} results found`
-              : `${totalResult} result found`}
-          </Paragraph>
-        </div>
-
+        {searchText && (
+          <div>
+            <H5>{`Searching for “ ${searchText} ”`}</H5>
+            <Paragraph color="grey.600">
+              {totalResult > 1
+                ? `${totalResult} results found`
+                : `${totalResult} result found`}
+            </Paragraph>
+          </div>
+        )}
+        {!searchText && products.length < 1 && (
+          <div style={{ padding: 4 }}>
+            <H5>There are no products !</H5>
+          </div>
+        )}
         {products.length > 0 && (
           <FlexBox
             alignItems="center"

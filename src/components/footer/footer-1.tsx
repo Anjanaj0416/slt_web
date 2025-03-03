@@ -15,7 +15,12 @@ import { ABOUT_LINKS, CUSTOMER_CARE_LINKS } from "./data";
 
 const Footer1 = () => {
   return (
-    <Box component="footer" bgcolor="secondary.dark" mb={{ sm: 0, xs: 7 }}>
+    <Box
+      component="footer"
+      bgcolor="secondary.dark"
+      mb={{ sm: 0, xs: 7 }}
+      sx={{ bottom: 0, width: "100%" }}
+    >
       <Box
         component={Container}
         py={{ sm: 10, xs: 4 }}

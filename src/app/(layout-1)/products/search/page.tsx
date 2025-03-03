@@ -27,13 +27,14 @@ export default async function ProductSearch({ searchParams }) {
 
     const products = result?.data as Product1[];
     if (products.length < 1) {
-      notFound();
+      //notFound();
     }
+    console.log(products);
 
     const searchText =
-      products[0].category.id === categoryId
-        ? products[0].category.name
-        : products[0].category.subCategories.find((e) => e.id === categoryId)
+      products?.[0]?.category.id === categoryId
+        ? products?.[0]?.category.name
+        : products?.[0]?.category.subCategories.find((e) => e.id === categoryId)
             .name;
 
     return (
