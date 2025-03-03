@@ -431,15 +431,29 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
           {/* PRODUCT VARIANTS */}
           {mappedAttributes?.map((variant) => (
             <Box key={variant.id} mb={2}>
-              <H6 mb={1}>{variant.title}</H6>
+              <H6 sx={{ textTransform: "capitalize" }} mb={1}>
+                {variant.title}
+              </H6>
 
               {variant.values.map((value, index) => (
                 <Chip
                   key={index}
                   label={value.value}
-                  disabled={value.disabled}
+                  disabled={
+                    value.disabled &&
+                    !(
+                      selectedAttributes.find(
+                        (e) => e.name === variant.title
+                      ) && selectedAttributes.length === 1
+                    )
+                  }
                   onClick={handleChangeVariant(variant.title, value.value)}
-                  sx={{ borderRadius: "4px", mr: 1, cursor: "pointer" }}
+                  sx={{
+                    borderRadius: "4px",
+                    mr: 1,
+                    cursor: "pointer",
+                    textTransform: "capitalize",
+                  }}
                   color={
                     selectedAttributes.find((e) => e.value === value.value)
                       ? "primary"
