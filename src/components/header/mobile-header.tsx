@@ -19,6 +19,7 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 import useCart from "hooks/useCart";
 // LOCAL CUSTOM HOOK
 import useHeader from "./use-header";
+import { signIn } from "next-auth/react";
 
 // ==============================================================
 interface Props {
@@ -62,7 +63,10 @@ const MobileHeader: FC<Props> = ({ searchInput }) => {
             <Icon.Search sx={ICON_STYLE} />
           </Box>
 
-          <Box component={IconButton} onClick={toggleDialog}>
+          <Box
+            component={IconButton}
+            onClick={() => void signIn("keycloak", { callbackUrl: "/orders" })}
+          >
             <Icon.User sx={ICON_STYLE} />
           </Box>
 
