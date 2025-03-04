@@ -4,11 +4,8 @@ import navigation from "data/navbarNavigation";
 export const updateNavigation = navigation.reduce((prev: any[], curr) => {
   const newArr = [...prev];
 
-  if (!curr.child) {
+  if (!("child" in curr)) {
     newArr.push({ ...curr, extLink: true });
-  } else if (curr.megaMenu || curr.megaMenuWithSub) {
-    const flat = curr.child.flat();
-    newArr.push({ title: curr.title, child: flat });
   } else {
     newArr.push(curr);
   }
