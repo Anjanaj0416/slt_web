@@ -14,7 +14,7 @@ const BottomActions: FC<Props> = ({ total, handleNavigate }) => {
   const { isLoading } = useCartService();
   return (
     <Box p={2.5}>
-      <Button
+      {/* <Button
         fullWidth
         color="primary"
         variant="contained"
@@ -23,7 +23,7 @@ const BottomActions: FC<Props> = ({ total, handleNavigate }) => {
         disabled={isLoading}
       >
         Checkout Now ({total})
-      </Button>
+      </Button> */}
 
       <Button
         fullWidth
