@@ -107,28 +107,14 @@ function calculateDiscountPercentage(
  * @returns - RETURN PRICE WITH CURRENCY
  */
 
-function currency(price: number | string, fraction: number = 2) {
-  if (typeof price === "string") {
-    const range = price.split(" - ");
-    if (range.length > 1) {
-      const formatCurrency = `${currencyJs(range[0]).format({
-        precision: fraction,
-        symbol: "LKR",
-      })} - ${currencyJs(range[1]).format({
-        precision: fraction,
-        symbol: "",
-      })}`;
-
-      return formatCurrency;
-    }
-    return currencyJs(`${price}`).format({
-      precision: fraction,
-      symbol: "LKR",
-    });
-  }
+function currency(
+  price: number | string,
+  fraction: number = 2,
+  symbol: string = "LKR "
+) {
   const formatCurrency = currencyJs(`${price}`).format({
     precision: fraction,
-    symbol: "LKR",
+    symbol,
   });
   return formatCurrency;
 }

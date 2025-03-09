@@ -135,6 +135,15 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
       openUnAuthenticatedModal(true);
     }
   };
+
+  const getPrice = () => {
+    const prices = basePrice.split("-");
+    if (prices.length == 1) {
+      return currency(prices[0]);
+    }
+    return `${currency(prices[0])} - ${currency(prices[1], 2, "")}`;
+  };
+
   //
   return (
     <Card>
@@ -197,9 +206,14 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           fontWeight={700}
           py={0.5}
           color={isQuotationProduct ? "transparent" : "#000000"}
+          sx={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
         >
           {/* {currency(basePrice)} */}
-          {basePrice}
+          {getPrice()}
         </H4>
 
         {/* PRODUCT RATINGS */}
