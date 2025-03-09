@@ -22,6 +22,7 @@ export interface POSTAddressResponse {
   country: string;
   provinceOrState: string;
   contactNumber: string;
+  city: string;
   createdAt: Date;
   lastUpdatedAt: Date;
   primary: boolean;

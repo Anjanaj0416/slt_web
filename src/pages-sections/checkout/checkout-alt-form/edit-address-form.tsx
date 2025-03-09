@@ -10,12 +10,24 @@ import { H5 } from "components/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { POSTAddressResponse } from "models/Address.model";
-import { Box, Checkbox, FormControlLabel, IconButton } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { useUpdateAddressMutation } from "services/address-api";
 import { useSnackbar } from "notistack";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { LoadingButton } from "@mui/lab";
+import { getCities } from "data/city-list";
+import { DISTRICTS } from "data/district-list";
 
 const validationSchema = yup.object({
   name: yup.string().required("required"),
@@ -67,6 +79,7 @@ const EditAddressForm: FC<Props> = (props) => {
     provinceOrState: address?.provinceOrState,
     contactNumber: address?.contactNumber,
     primary: address?.primary,
+    city: address?.city,
     addressType: address?.addressType,
   };
 
@@ -85,7 +98,7 @@ const EditAddressForm: FC<Props> = (props) => {
   });
 
   return (
-    <Dialog open={openModal} onClose={handleCloseModal} sx={{ zIndex: 99999 }}>
+    <Dialog open={openModal} onClose={handleCloseModal}>
       <DialogContent>
         <Box
           display={"flex"}
@@ -145,17 +158,57 @@ const EditAddressForm: FC<Props> = (props) => {
             </Grid>
 
             <Grid item sm={6} xs={12}>
-              <TextField
+              <FormControl
                 fullWidth
-                name="provinceOrState"
-                label="Province or State"
-                value={values.provinceOrState}
-                onChange={handleChange}
-                helperText={touched.provinceOrState && errors.provinceOrState}
+                size="small"
                 error={
                   touched.provinceOrState && Boolean(errors.provinceOrState)
                 }
-              />
+              >
+                <InputLabel>District</InputLabel>
+                <Select
+                  size="small"
+                  name="provinceOrState"
+                  label="District"
+                  value={values.provinceOrState}
+                  onChange={handleChange}
+                >
+                  {DISTRICTS.map((district) => (
+                    <MenuItem key={district} value={district}>
+                      {district}
+                    </MenuItem>
+                  ))}
+                </Select>
+                {touched.provinceOrState && errors.provinceOrState && (
+                  <FormHelperText>{errors.provinceOrState}</FormHelperText>
+                )}
+              </FormControl>
+            </Grid>
+            <Grid item sm={6} xs={12}>
+              <FormControl
+                fullWidth
+                size="small"
+                error={touched.city && Boolean(errors.city)}
+              >
+                <InputLabel>City</InputLabel>
+                <Select
+                  size="small"
+                  name="city"
+                  label="City"
+                  value={values.city}
+                  onChange={handleChange}
+                >
+                  {values.provinceOrState &&
+                    getCities(values.provinceOrState)?.map((city) => (
+                      <MenuItem key={city} value={city}>
+                        {city}
+                      </MenuItem>
+                    ))}
+                </Select>
+                {touched.city && errors.city && (
+                  <FormHelperText>{errors.city}</FormHelperText>
+                )}
+              </FormControl>
             </Grid>
             <Grid item sm={6} xs={12}>
               <TextField

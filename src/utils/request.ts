@@ -94,7 +94,7 @@ const request = async (_metadata, data, multipart = false, isSecure = true) => {
     return parseJSON(response);
   } catch (error) {
     console.error(error);
-    if (error.response.status === 401) {
+    if (error?.response?.status === 401) {
       redirect("/");
     }
 
