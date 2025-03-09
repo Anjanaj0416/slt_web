@@ -47,7 +47,7 @@ const CategoryMenuItem: FC<Props> = (props) => {
   const { settings } = useSettings();
   return (
     <Wrapper>
-      <Link href={href}>
+      <a href={href}>
         <MenuItem className="category-dropdown-link">
           {rest.icon && (
             <Image src={rest.icon} alt="icon" width={20} height={20} />
@@ -60,7 +60,7 @@ const CategoryMenuItem: FC<Props> = (props) => {
               <ChevronLeft fontSize="small" />
             ))}
         </MenuItem>
-      </Link>
+      </a>
 
       {children}
     </Wrapper>

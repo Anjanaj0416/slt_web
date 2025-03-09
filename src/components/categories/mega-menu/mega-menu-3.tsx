@@ -5,8 +5,6 @@ import Grid from "@mui/material/Grid";
 import StyledMegaMenu from "./StyledMegaMenu";
 // GLOBAL CUSTOM COMPONENTS
 import { FlexBox } from "components/flex-box";
-import LazyImage from "components/LazyImage";
-import { NavLink } from "components/nav-link";
 import BazaarCard from "components/BazaarCard";
 //import { H3, Small } from "components/Typography";
 
@@ -36,27 +34,27 @@ const MegaMenu3: FC<MegaMenuProps> = ({
               {categories?.map((item, ind) => (
                 <Grid item md={3} key={ind}>
                   {item.href ? (
-                    <NavLink className="title-link" href={item.href}>
+                    <a className="title-link" href={item.href}>
                       {item.title}
-                    </NavLink>
+                    </a>
                   ) : (
                     <div className="title-link">{item.title}</div>
                   )}
 
                   {item.subCategories?.map((sub, ind) => (
-                    <NavLink className="child-link" href={sub.href} key={ind}>
+                    <a className="child-link" href={sub.href} key={ind}>
                       {sub.title}
-                    </NavLink>
+                    </a>
                   ))}
                   {item.moreSubCategories && (
-                    <NavLink
+                    <a
                       style={{ color: "orange" }}
                       className="child-link"
                       href="#"
                       key={ind}
                     >
                       More Categories
-                    </NavLink>
+                    </a>
                   )}
                 </Grid>
               ))}
