@@ -34,8 +34,9 @@ export default async function ProductSearch({ searchParams }) {
     const searchText =
       products?.[0]?.category.id === categoryId
         ? products?.[0]?.category.name
-        : products?.[0]?.category.subCategories.find((e) => e.id === categoryId)
-            .name;
+        : products?.[0]?.category?.subCategories?.find(
+            (e) => e.id === categoryId
+          ).name;
 
     return (
       <ProductSearchPageView
@@ -48,6 +49,8 @@ export default async function ProductSearch({ searchParams }) {
       />
     );
   } catch (error) {
+    console.log(error);
+
     notFound();
   }
 }
