@@ -98,7 +98,7 @@ const authOptions: AuthOptions = {
         account?.access_token,
         "customer-marketplace-client"
       );
-      if (!roles.includes("customer")) {
+      if (roles.includes("customer")) {
         signOut();
         return false;
       }
