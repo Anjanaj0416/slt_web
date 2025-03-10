@@ -69,7 +69,7 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
     <Container sx={{ mt: 8 }}>
       <Grid container spacing={3}>
         {/* CATEGORY LIST AREA */}
-        {categories.map((item) => (
+        {categories?.map((item) => (
           <Grid item lg={2} md={3} sm={4} xs={6} key={item.id}>
             <CategoryCard1 image={item.imageUrl} title={item.name} />
           </Grid>

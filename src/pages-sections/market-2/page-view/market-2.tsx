@@ -20,26 +20,25 @@ import { notFound } from "next/navigation";
 
 const MarketTwoPageView = async () => {
   try {
-    const products = await request(PRODUCT_API.GET_PRODUCTS, {
-      query: "size=5",
-    });
-
-    const mainCategories = await request(CATEGORY_API.GET_CATEGORIES, {
-      query: "size=10&productsCountMoreThan=3",
-    });
-
-    const categories = await request(CATEGORY_API.GET_CATEGORIES, {
-      query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
-    });
-    const fullBanners = await request(BANNER_API.GET_BANNERS, {
-      query: "size=3&bannerType=FULL",
-    });
-    const halfBanners = await request(BANNER_API.GET_BANNERS, {
-      query: "size=4&bannerType=HALF",
-    });
-    const threeBanners = await request(BANNER_API.GET_BANNERS, {
-      query: "size=4&bannerType=THREE",
-    });
+    const [
+      products,
+      mainCategories,
+      categories,
+      fullBanners,
+      halfBanners,
+      threeBanners,
+    ] = await Promise.all([
+      request(PRODUCT_API.GET_PRODUCTS, { query: "size=5" }),
+      request(CATEGORY_API.GET_CATEGORIES, {
+        query: "size=10&productsCountMoreThan=3",
+      }),
+      request(CATEGORY_API.GET_CATEGORIES, {
+        query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
+      }),
+      request(BANNER_API.GET_BANNERS, { query: "size=3&bannerType=FULL" }),
+      request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=HALF" }),
+      request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=THREE" }),
+    ]);
     const brands = await api.getBrands();
     const mainCarouselData = await api.getMainCarouselData();
     //const serviceList = await api.getServices();
@@ -71,10 +70,10 @@ const MarketTwoPageView = async () => {
             <Fragment key={category.id}>
               <CategoryBasedProducts data={category} />
               {index % 2 === 0 ? (
-                <FullBanner data={fullBanners.data?.pop()} />
+                <FullBanner data={fullBanners?.data?.pop()} />
               ) : (
                 <HalfBanner
-                  data={[halfBanners.data?.pop(), halfBanners.data?.pop()]}
+                  data={[halfBanners?.data?.pop(), halfBanners?.data?.pop()]}
                 />
               )}
             </Fragment>

@@ -29,7 +29,7 @@ const parseJSON = (response) => {
 const errorHandling = async (error) => {
   const errorResponse = new ResponseError(error);
   errorResponse.message = error?.response?.data;
-  throw errorResponse;
+  console.log(errorResponse);
 };
 /**
  * Requests a URL, returning a promise
