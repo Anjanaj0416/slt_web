@@ -34,7 +34,7 @@ const CustomerDashboardLayout: FC<PropsWithChildren> = async ({ children }) => {
           xs={12}
           sx={{ display: { xs: "none", sm: "none", md: "block" } }}
         >
-          <Navigation ordersCount={orders.totalResults} />
+          <Navigation ordersCount={orders?.totalResults} />
         </Grid>
 
         <Grid item lg={9} xs={12}>
