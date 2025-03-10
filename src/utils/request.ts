@@ -29,6 +29,8 @@ const parseJSON = (response) => {
 const errorHandling = async (error) => {
   const errorResponse = new ResponseError(error);
   errorResponse.message = error?.response?.data;
+  console.log(error);
+
   throw errorResponse;
 };
 /**
