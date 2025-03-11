@@ -92,16 +92,11 @@ const authOptions: AuthOptions = {
     },
 
     async signIn({ account }) {
-      // console.log(account);
       const roles = extractRolesFromToken(
         account?.access_token,
         "customer-marketplace-client"
       );
-      if (!roles.includes("customer")) {
-        return false;
-      }
-
-      return true;
+      return roles.includes("customer");
     },
   },
   adapter: AuthAdapter() as unknown as Adapter,

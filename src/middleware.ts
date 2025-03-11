@@ -9,6 +9,8 @@ export function middleware(req: NextRequest) {
     url.pathname === "/api/auth/error" &&
     url.searchParams.get("error") === "AccessDenied"
   ) {
+    console.log(url);
+    
     return NextResponse.redirect(new URL("/api/auth/signin-redirect", req.url));
   }
 
