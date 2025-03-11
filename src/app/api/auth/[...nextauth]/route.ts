@@ -96,7 +96,7 @@ const authOptions: AuthOptions = {
         account?.access_token,
         "customer-marketplace-client"
       );
-      return roles.includes("customer");
+      return !!roles.includes("customer");
     },
   },
   adapter: AuthAdapter() as unknown as Adapter,
