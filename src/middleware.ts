@@ -4,18 +4,18 @@ import type { NextRequest } from "next/server";
 export function middleware(req: NextRequest) {
   const url = new URL(req.url);
 
+  // Check if the path is "/api/auth/error" and the error param is "AccessDenied"
   if (
     url.pathname === "/api/auth/error" &&
     url.searchParams.get("error") === "AccessDenied"
   ) {
-    const signInUrl = new URL(`/api/auth/signin/keycloak`, req.url);
-    signInUrl.searchParams.set("callbackUrl", "/orders");
-    return NextResponse.redirect(signInUrl);
+    return NextResponse.redirect(new URL("/api/auth/signin-redirect", req.url));
   }
 
   return NextResponse.next(); 
 }
 
+// Apply middleware to specific routes
 export const config = {
   matcher: "/api/auth/error",
 };

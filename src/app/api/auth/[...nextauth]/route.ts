@@ -6,7 +6,6 @@ import AuthAdapter from "utils/auth-adapter";
 import { User1 } from "models/User.model";
 import mapUser from "utils/mapUser";
 import { extractRolesFromToken } from "utils/extract-roles";
-import { signIn, signOut } from "next-auth/react";
 //
 const refreshTokens = async (refreshToken: string) => {
   const params = new URLSearchParams();
@@ -98,8 +97,7 @@ const authOptions: AuthOptions = {
         account?.access_token,
         "customer-marketplace-client"
       );
-      if (roles.includes("customer")) {
-        signOut();
+      if (!roles.includes("customer")) {
         return false;
       }
 
