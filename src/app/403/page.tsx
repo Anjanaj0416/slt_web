@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { FlexRowCenter, FlexBox } from "components/flex-box";
 import { useSession } from "next-auth/react";
 import { notFound } from "next/navigation";
@@ -30,7 +30,7 @@ export default function Page() {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/#")}
           >
             Go to Home
           </Button>
