@@ -5,26 +5,38 @@ export interface CustomAdapterUser extends AdapterUser {
 }
 //
 export default function AuthAdapter(): any {
-  async function createUserAndHandleErrors(data: CustomAdapterUser) {
+  const createUserIndDb = async (data: CustomAdapterUser) => {
     try {
-      const createUserRequest = {
+      const body = {
         firstName: data.name.split(" ")[0] ?? "",
         lastName: data.name.split(" ")[1] ?? "",
         email: data.email,
       };
+      const tokenUrl = `${process.env.KEYCLOAK_CLIENT_ISSUER}/protocol/openid-connect/token`;
+      const clientId = process.env.KEYCLOAK_CLIENT_ID;
+      const clientSecret = process.env.KEYCLOAK_CLIENT_SECRET;
       //
-      const response = await axios.post(
-        `${process.env.NEXTAUTH_URL}/api/auth/users`,
-        createUserRequest
-      );
-      return response?.data;
+      const tokenParams = new URLSearchParams();
+      tokenParams.append("client_id", clientId);
+      tokenParams.append("client_secret", clientSecret);
+      tokenParams.append("grant_type", "client_credentials");
+      const tokenData = await axios.post(tokenUrl, tokenParams);
+      //
+      const usersUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/users`;
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${tokenData?.data?.access_token}`,
+      };
+      const userResponse = await axios.post(usersUrl, body, { headers });
+      //
+      return userResponse?.data;
     } catch (error) {
-      return;
+      console.log(error);
     }
-  }
+  };
 
   return {
-    createUser: createUserAndHandleErrors,
+    createUser: createUserIndDb,
     async getUser(id: string): Promise<AdapterUser> {
       try {
         const getUserBySubRequest = { params: { sub: id } };
