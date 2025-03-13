@@ -39,7 +39,7 @@ interface Props {
 const CarouselCard4: FC<Props> = ({ bgImage, link, mode = "dark" }) => {
   return (
     <CardWrapper img={bgImage} mode={mode}>
-      <div className="content" style={{ paddingTop: "70px" }}>
+      <div className="content" style={{ paddingTop: "120px" }}>
         <Button
           size="large"
           color="dark"
