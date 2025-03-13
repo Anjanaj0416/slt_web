@@ -64,11 +64,13 @@ const Section1: FC<Props> = ({ carouselData, topBanners }) => {
                   flex={1}
                   img={`${ENVIRONMENT.S3_BUCKET_URL}/${banner.imageUrl}`}
                 >
-                  <NavLink3
-                    href={banner.link}
-                    text="Shop Now"
-                    color="dark.main"
-                  />
+                  <div style={{ paddingTop: "70px" }}>
+                    <NavLink3
+                      href={banner.link}
+                      text="Shop Now"
+                      color="dark.main"
+                    />
+                  </div>
                 </BannerCard>
               ))}
             </Stack>
