@@ -27,17 +27,7 @@ const Section1: FC<Props> = ({ carouselData }) => {
           dotStyles={COMMON_DOT_STYLES}
         >
           {carouselData.map((item, ind) => (
-            <CarouselCard4
-              key={ind}
-              mode="dark"
-              title={item.title}
-              bgImage={item.imgUrl}
-              discount={item.discount}
-              category={item.category}
-              buttonText={item.buttonText}
-              buttonLink={item.buttonLink}
-              description={item.description}
-            />
+            <CarouselCard4 key={ind} mode="dark" link="#" />
           ))}
         </Carousel>
       </Container>
