@@ -17,12 +17,13 @@ import { CarouselCard4 } from "components/carousel-cards";
 import { MainCarouselItem } from "models/Market-2.model";
 import { COMMON_DOT_STYLES } from "components/carousel/styles";
 import { ENVIRONMENT } from "config";
+import Banner from "models/Banner.model";
 
 // ======================================================
-type Props = { carouselData: MainCarouselItem[] };
+type Props = { carouselData: Banner[]; topBanners: Banner[] };
 // ======================================================
 
-const Section1: FC<Props> = ({ carouselData }) => {
+const Section1: FC<Props> = ({ carouselData, topBanners }) => {
   const { palette } = useTheme();
   return (
     <Box pt={3}>
@@ -41,14 +42,9 @@ const Section1: FC<Props> = ({ carouselData }) => {
               {carouselData.map((item, ind) => (
                 <CarouselCard4
                   key={ind}
+                  link={item.link}
                   mode="light"
-                  title={item.title}
-                  bgImage={item.imgUrl}
-                  discount={item.discount}
-                  category={item.category}
-                  buttonLink={item.buttonLink}
-                  buttonText={item.buttonText}
-                  description={item.description}
+                  bgImage={`${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`}
                 />
               ))}
             </Carousel>
@@ -61,42 +57,20 @@ const Section1: FC<Props> = ({ carouselData }) => {
               spacing={2}
             >
               {/* SUMMER SALE BANNER */}
-              <BannerCard
-                imageFull
-                flex={1}
-                img={`${ENVIRONMENT.APP_URL}/assets/images/banners/banner-17.jpg`}
-              >
-                <Paragraph fontSize={13} letterSpacing={1.2}>
-                  NEW ARRIVALS
-                </Paragraph>
-
-                <H4 fontSize={20} lineHeight={1.2} mb={2}>
-                  SUMMER
-                  <br />
-                  SALE 20% OFF
-                </H4>
-
-                <NavLink3 href="/" text="Shop Now" color="dark.main" />
-              </BannerCard>
-
-              {/* DESKTOP & LAPTOP BANNER */}
-              <BannerCard
-                imageFull
-                flex={1}
-                img={`${ENVIRONMENT.APP_URL}/assets/images/banners/banner-16.jpg`}
-              >
-                <Paragraph fontSize={13} letterSpacing={1.2}>
-                  GAMING 4K
-                </Paragraph>
-
-                <H4 fontSize={20} lineHeight={1.2} mb={2}>
-                  DESKTOPS &
-                  <br />
-                  LAPTOPS
-                </H4>
-
-                <NavLink3 href="/" text="Shop Now" color="dark.main" />
-              </BannerCard>
+              {topBanners.map((banner) => (
+                <BannerCard
+                  key={banner.id}
+                  imageFull
+                  flex={1}
+                  img={`${ENVIRONMENT.S3_BUCKET_URL}/${banner.imageUrl}`}
+                >
+                  <NavLink3
+                    href={banner.link}
+                    text="Shop Now"
+                    color="dark.main"
+                  />
+                </BannerCard>
+              ))}
             </Stack>
           </Grid>
         </Grid>

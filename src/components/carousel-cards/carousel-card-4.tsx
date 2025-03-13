@@ -30,69 +30,24 @@ const CardWrapper = styled("div", {
 
 // ===============================================================
 interface Props {
-  title?: string;
   bgImage?: string;
-  category?: string;
-  discount?: number;
-  buttonLink?: string;
-  buttonText?: string;
-  description?: string;
+  link: string;
   mode?: "dark" | "light";
 }
 // ===============================================================
 
-const CarouselCard4: FC<Props> = ({
-  title,
-  bgImage,
-  category,
-  discount,
-  buttonLink,
-  buttonText,
-  description,
-  mode = "dark",
-}) => {
+const CarouselCard4: FC<Props> = ({ bgImage, link, mode = "dark" }) => {
   return (
     <CardWrapper img={bgImage} mode={mode}>
       <div className="content">
-        <H4
-          mb={1}
-          lineHeight={1}
-          fontWeight={400}
-          textTransform="uppercase"
-          fontSize={{ sm: 30, xs: 24 }}
-        >
-          {title}
-        </H4>
-
-        <H1
-          fontSize={{ sm: 60, xs: 44 }}
-          lineHeight={1}
-          textTransform="uppercase"
-        >
-          {category}
-        </H1>
-
-        <H4
-          fontSize={{ sm: 30, xs: 24 }}
-          lineHeight={1}
-          mt={1.5}
-          textTransform="uppercase"
-        >
-          SALE UP TO <Span color="primary.main">{discount}% OFF</Span>
-        </H4>
-
-        <Paragraph fontSize={{ sm: 18, xs: 14 }} mb={4}>
-          {description}
-        </Paragraph>
-
         <Button
           size="large"
           color="dark"
-          href={buttonLink}
+          href={link}
           variant="contained"
           LinkComponent={Link}
         >
-          {buttonText}
+          Shop Now
         </Button>
       </div>
     </CardWrapper>

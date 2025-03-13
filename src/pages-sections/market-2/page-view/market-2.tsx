@@ -27,6 +27,8 @@ const MarketTwoPageView = async () => {
       fullBanners,
       halfBanners,
       threeBanners,
+      mainCarouselData,
+      topBanners,
     ] = await Promise.all([
       request(PRODUCT_API.GET_PRODUCTS, { query: "size=5" }),
       request(CATEGORY_API.GET_CATEGORIES, {
@@ -38,9 +40,11 @@ const MarketTwoPageView = async () => {
       request(BANNER_API.GET_BANNERS, { query: "size=3&bannerType=FULL" }),
       request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=HALF" }),
       request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=THREE" }),
+      request(BANNER_API.GET_BANNERS, { query: "size=2&bannerType=CAROUSEL" }),
+      request(BANNER_API.GET_BANNERS, { query: "size=2&bannerType=HALF_TOP" }),
     ]);
+
     const brands = await api.getBrands();
-    const mainCarouselData = await api.getMainCarouselData();
     //const serviceList = await api.getServices();
     // const menFashionProducts = await api.getMenFashionProducts();
     // const electronicsProducts = await api.getElectronicsProducts();
@@ -49,7 +53,10 @@ const MarketTwoPageView = async () => {
       <Fragment>
         <Box bgcolor="#F6F6F6">
           {/* HERO SLIDER AND GRID */}
-          <Section1 carouselData={mainCarouselData} />
+          <Section1
+            carouselData={mainCarouselData?.data}
+            topBanners={topBanners?.data}
+          />
 
           {/* SERVICE CARDS */}
           {/* <Section2 serviceList={serviceList} /> */}
