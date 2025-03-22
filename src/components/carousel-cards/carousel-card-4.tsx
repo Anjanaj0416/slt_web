@@ -15,7 +15,7 @@ const CardWrapper = styled("div", {
   alignItems: "center",
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
-  backgroundImage: `url(${img})`,
+  backgroundImage: `url(${img}) !important`,
   backgroundColor: mode === "dark" ? "#000" : "#fff",
   color: mode === "light" ? theme.palette.dark.main : "#fff",
   ".content":
