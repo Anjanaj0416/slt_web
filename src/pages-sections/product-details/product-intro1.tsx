@@ -77,6 +77,14 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     }
   }, []);
 
+  const getPrice = () => {
+    const prices = basePrice.split("-");
+    if (prices.length == 1) {
+      return currency(prices[0]);
+    }
+    return `${currency(prices[0])} - ${currency(prices[1], 2, "")}`;
+  };
+
   const mapAttributes = (variants: ProductVariant[]): MappedAttribute[] => {
     const attributeMap: { [key: string]: Set<string> } = {};
 
@@ -470,7 +478,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
               <H2 color="primary.main" mb={0.5} lineHeight="1">
                 {price
                   ? currency(discountAmount ? getDiscountedPrice() : price)
-                  : `LKR${basePrice}`}
+                  : getPrice()}
               </H2>
               {selectedVariant && discountAmount ? (
                 <Box
