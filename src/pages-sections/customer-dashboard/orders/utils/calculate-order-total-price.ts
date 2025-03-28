@@ -12,7 +12,7 @@ export const calculateOrderPriceSummary = (order: Order1) => {
 
     for (const item of pkg.packageItems) {
       const itemTotalPrice = item.price * item.units;
-      const itemTotalDiscount = item.discount * item.units;
+      const itemTotalDiscount = item.discount;
 
       totalPrice += itemTotalPrice;
       totalDiscount += itemTotalDiscount;
