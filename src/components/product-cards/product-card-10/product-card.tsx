@@ -137,7 +137,9 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   };
 
   const getPrice = () => {
-    const prices = basePrice.split("-");
+    if (!basePrice) return "";
+
+    const prices = basePrice?.split("-");
     if (prices.length == 1) {
       return currency(prices[0]);
     }

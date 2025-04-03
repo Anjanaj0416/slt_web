@@ -550,17 +550,17 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
               </>
             )}
 
-            <Button
-              color="primary"
-              variant="contained"
-              disabled={quantity < 1}
-              onClick={() =>
-                isQuotationProduct ? requestQuota() : handleBuyNow()
-              }
-              sx={{ px: "1.75rem", height: 40, ml: 1.5, width: 136 }}
-            >
-              Buy Now
-            </Button>
+            {!isQuotationProduct && (
+              <Button
+                color="primary"
+                variant="contained"
+                disabled={quantity < 1}
+                onClick={() => handleBuyNow()}
+                sx={{ px: "1.75rem", height: 40, ml: 1.5, width: 136 }}
+              >
+                Buy Now
+              </Button>
+            )}
             <Tooltip title="Share">
               <Button
                 sx={{ height: 40, marginLeft: 1 }}
