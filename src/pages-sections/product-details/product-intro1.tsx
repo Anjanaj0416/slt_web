@@ -505,7 +505,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
             {!carItemIds?.includes(selectedVariant?.id) ? (
               <LoadingButton
                 color="primary"
-                disabled={quantity < 1}
+                disabled={!isQuotationProduct && quantity < 1}
                 loading={isButtonLoading || isCreatingQuotation}
                 onClick={() =>
                   isQuotationProduct
