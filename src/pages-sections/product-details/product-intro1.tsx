@@ -64,7 +64,10 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   const [price, setPrice] = useState<number>();
   const [quantity, setQuantity] = useState<number>();
   const [mappedAttributes, setMappedAttributes] = useState<MappedAttribute[]>();
-
+  const medias = [
+    ...videos.map((video) => ({ src: video, type: "video" })),
+    ...images.map((image) => ({ src: image, type: "image" })),
+  ];
   useEffect(() => {
     setMappedAttributes(mapAttributes(variants));
     if (productType === "DIRECT_BUYING") {
@@ -172,8 +175,10 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       setSelectedVariant(selectedVariant);
       setPrice(selectedVariant.price);
       setQuantity(selectedVariant.units);
-      const imageIndex = images.findIndex((e) => e === selectedVariant.image);
 
+      const imageIndex = medias.findIndex(
+        (e) => e.src === selectedVariant.image
+      );
       setSelectedImage(imageIndex < 0 ? 0 : imageIndex);
     }
   }, [selectedAttributes]);
@@ -266,10 +271,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   //
   const isQuotationProduct = productType === "QUOTATION";
   //
-  const medias = [
-    ...videos.map((video) => ({ src: video, type: "video" })),
-    ...images.map((image) => ({ src: image, type: "image" })),
-  ];
 
   // HANDLE CHANGE TYPE AND OPTIONS
   const handleChangeVariant = (name: string, value: string) => () => {
