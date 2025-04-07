@@ -40,7 +40,7 @@ const MarketTwoPageView = async () => {
       request(BANNER_API.GET_BANNERS, { query: "size=3&bannerType=FULL" }),
       request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=HALF" }),
       request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=THREE" }),
-      request(BANNER_API.GET_BANNERS, { query: "size=2&bannerType=CAROUSEL" }),
+      request(BANNER_API.GET_BANNERS, { query: "size=6&bannerType=CAROUSEL" }),
       request(BANNER_API.GET_BANNERS, { query: "size=2&bannerType=HALF_TOP" }),
     ]);
 

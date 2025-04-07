@@ -7,37 +7,54 @@ import styled from "@mui/material/styles/styled";
 // STYLED COMPONENT
 const CardWrapper = styled("div", {
   shouldForwardProp: (prop) => prop !== "img" && prop !== "mode",
-})<{ img: string; mode: string }>(({ theme, img, mode }) => ({
-  minHeight: 500,
-  display: "flex",
-  alignItems: "center",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-  backgroundImage: `url(${img}) !important`,
-  backgroundColor: mode === "dark" ? "#000" : "#fff",
-  color: mode === "light" ? theme.palette.dark.main : "#fff",
-  ".content":
-    theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
-  [theme.breakpoints.down("md")]: {
-    padding: 24,
-    textAlign: "center",
-    backgroundImage: "none",
-    justifyContent: "center",
-  },
-}));
+})<{ img: string; mode: string; imgTablet?: string; imgMobile?: string }>(
+  ({ theme, img, imgTablet, imgMobile, mode }) => ({
+    minHeight: 500,
+    display: "flex",
+    alignItems: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${img}) !important`,
+    backgroundColor: mode === "dark" ? "#000" : "#fff",
+    color: mode === "light" ? theme.palette.dark.main : "#fff",
+    ".content":
+      theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
+
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: imgTablet ? `url(${imgTablet}) !important` : "none",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: imgMobile ? `url(${imgMobile}) !important` : "none",
+    },
+  })
+);
 
 // ===============================================================
 interface Props {
   bgImage?: string;
+  bgImageTablet?: string;
+  bgImageMobile?: string;
   link: string;
   mode?: "dark" | "light";
 }
 // ===============================================================
 
-const CarouselCard4: FC<Props> = ({ bgImage, link, mode = "dark" }) => {
+const CarouselCard4: FC<Props> = ({
+  bgImage,
+  bgImageMobile,
+  bgImageTablet,
+  link,
+  mode = "dark",
+}) => {
   return (
-    <CardWrapper img={bgImage} mode={mode}>
-      <div className="content" style={{ paddingTop: "120px" }}>
+    <CardWrapper
+      img={bgImage}
+      imgTablet={bgImageTablet}
+      imgMobile={bgImageMobile}
+      mode={mode}
+    >
+      <div className="content" style={{ paddingTop: "230px" }}>
         <Button
           size="large"
           color="dark"

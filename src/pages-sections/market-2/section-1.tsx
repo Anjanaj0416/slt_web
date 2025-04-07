@@ -25,6 +25,17 @@ type Props = { carouselData: Banner[]; topBanners: Banner[] };
 
 const Section1: FC<Props> = ({ carouselData, topBanners }) => {
   const { palette } = useTheme();
+  function getResponsiveImageUrls(imageUrl) {
+    const extensionRegex = /\.(png|jpg|jpeg|webp)$/i;
+
+    const tabletImage = imageUrl.replace(extensionRegex, "_tablet.$1");
+    const mobileImage = imageUrl.replace(extensionRegex, "_mobile.$1");
+
+    return {
+      tabletImage,
+      mobileImage,
+    };
+  }
   return (
     <Box pt={3}>
       <Container>
@@ -45,6 +56,16 @@ const Section1: FC<Props> = ({ carouselData, topBanners }) => {
                   link={item.link}
                   mode="light"
                   bgImage={`${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`}
+                  bgImageTablet={
+                    getResponsiveImageUrls(
+                      `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`
+                    ).tabletImage
+                  }
+                  bgImageMobile={
+                    getResponsiveImageUrls(
+                      `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`
+                    ).mobileImage
+                  }
                 />
               ))}
             </Carousel>
