@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { WishListPageView } from "pages-sections/customer-dashboard/wish-list";
 
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 import API from "constants/wishlist";
 import { notFound } from "next/navigation";
 import { auth } from "utils/auth";
@@ -18,9 +18,9 @@ export default async function WishList() {
   try {
     const { user } = await auth();
 
-    const wishlist = await request(API.GET_WISHLISTS, {
-      userId: user?.id,
-      wishlistId: user?.wishlist.id,
+    const wishlist = await cachedRequest(API.GET_WISHLISTS, {
+      userId: user.id,
+      wishlistId: user.wishlist.id,
     });
 
     return <WishListPageView wishlist={wishlist} />;

@@ -93,9 +93,6 @@ const MarketTwoPageView = async () => {
             </Fragment>
           ))}
 
-          {/*  FEATURED BRANDS */}
-          {/* <Section8 brands={brands} /> */}
-
           {/* SELECTED PRODUCTS */}
           <SelectedProducts />
         </Box>

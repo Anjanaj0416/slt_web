@@ -51,11 +51,11 @@ const UserInfo: FC<Props> = ({ user }) => {
 function TableRowItem({ title, value }: { title: string; value: string }) {
   return (
     <FlexBox flexDirection="column" p={1}>
-      <Small color="grey.600" mb={0.5}>
+      <Small color="grey.600" mb={0.5} textTransform="capitalize">
         {title}
       </Small>
 
-      <Span>{value}</Span>
+      <Span textTransform="capitalize">{value}</Span>
     </FlexBox>
   );
 }

@@ -2,7 +2,7 @@ import API from "constants/address";
 import { Metadata } from "next";
 import BuyNowCheckoutPageView from "pages-sections/buy-now/checkout/page-view/checkout";
 import { auth } from "utils/auth";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 // PAGE VIEW COMPONENT
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Shops() {
   const { user } = await auth();
-  const { data } = await request(API.GET_ADDRESS, {
+  const { data } = await cachedRequest(API.GET_ADDRESS, {
     userId: user?.id,
   });
   return <BuyNowCheckoutPageView address={data} />;

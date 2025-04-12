@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 import API from "constants/users";
 import { notFound } from "next/navigation";
 import { auth } from "utils/auth";
@@ -17,9 +17,7 @@ export default async function FavoriteStore() {
   try {
     const data = await auth();
 
-    const user = await request(API.GET_USERS, {
-      userId: data.user?.id,
-    });
+    const user = await cachedRequest(API.GET_USERS, { userId: data.user?.id });
 
     return <FavoriteStoresPageView favoriteStores={user.followedStores} />;
   } catch (error) {

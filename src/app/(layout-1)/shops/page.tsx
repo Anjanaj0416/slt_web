@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 // PAGE VIEW COMPONENT
 import { ShopsPageView } from "pages-sections/shops/page-view";
-import request from "utils/request";
+import request, { cachedRequest } from "utils/request";
 import API from "constants/store";
 
 export const metadata: Metadata = {
@@ -15,8 +15,9 @@ export const metadata: Metadata = {
 
 export default async function Shops() {
   try {
-    const stores = await request(API.GET_STORES, {
-      query: "storeStatus=PUBLISHED&&sort=name,asc&size=9",
+    const query = "storeStatus=PUBLISHED&sort=name,asc&size=9";
+    const stores = await cachedRequest(API.GET_STORES, {
+      query,
     });
     return <ShopsPageView storesData={stores} />;
   } catch (error) {

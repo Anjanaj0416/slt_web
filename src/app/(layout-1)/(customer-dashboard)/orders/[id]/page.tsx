@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { OrderDetailsPageView } from "pages-sections/customer-dashboard/orders/page-view";
 // API FUNCTIONS
 import { auth } from "utils/auth";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 
 export const metadata: Metadata = {
   title: "Order Details - TRADEZ ",
@@ -21,7 +21,7 @@ export default async function OrderDetails({
 }) {
   try {
     const { user } = await auth();
-    const order = await request(API.GET_USER_ORDER, {
+    const order = await cachedRequest(API.GET_USER_ORDER, {
       userId: user?.id,
       orderId: params.id,
     });

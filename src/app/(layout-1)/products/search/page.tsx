@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 // PAGE VIEW COMPONENT
 import { ProductSearchPageView } from "pages-sections/product-details/page-view";
-import request from "utils/request";
+import request, { cachedRequest } from "utils/request";
 import PRODUCT_API from "constants/products";
 import { notFound, redirect } from "next/navigation";
 import { Product1 } from "models/Product.model";
@@ -17,19 +17,11 @@ export const metadata: Metadata = {
 export default async function ProductSearch({ searchParams }) {
   try {
     const categoryId = searchParams?.categoryId;
-    // if (!categoryId) {
-    //   redirect("/");
-    // }
-
-    const result = await request(PRODUCT_API.GET_PRODUCTS, {
+    const result = await cachedRequest(PRODUCT_API.GET_PRODUCTS, {
       query: `size=9&categoryId=${categoryId}`,
     });
 
     const products = result?.data as Product1[];
-    if (products.length < 1) {
-      //notFound();
-    }
-    console.log(products);
 
     const searchText =
       products?.[0]?.category.id === categoryId
@@ -50,7 +42,6 @@ export default async function ProductSearch({ searchParams }) {
     );
   } catch (error) {
     console.log(error);
-
     notFound();
   }
 }
