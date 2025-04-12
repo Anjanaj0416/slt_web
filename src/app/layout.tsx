@@ -12,8 +12,6 @@ import SettingsProvider from "contexts/SettingContext";
 // GLOBAL CUSTOM COMPONENTS
 import { RTL } from "components/rtl";
 
-// IMPORT i18n SUPPORT FILE
-import "i18n";
 import ReduxProviderWrapper from "utils/redux-provider-wrapper";
 import { store } from "./redux/store";
 import SnackbarProvider from "components/SnackbarProvider";
