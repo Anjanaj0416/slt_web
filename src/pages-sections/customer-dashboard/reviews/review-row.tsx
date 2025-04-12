@@ -11,7 +11,7 @@ import {
   StyledIconButton,
   StyledTableCell,
   StyledTableRow,
-} from "../../customer-dashboard/styles";
+} from "../styles";
 // CUSTOM DATA MODEL
 import { Review } from "./types";
 
