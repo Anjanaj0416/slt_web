@@ -4,9 +4,9 @@ import ProductTabs from "../product-tabs";
 import AvailableShops from "../available-shops";
 import RelatedProducts from "../related-products";
 // CUSTOM DATA MODEL
-import Product, { Product1 } from "models/Product.model";
 import ProductIntro1 from "../product-intro1";
 import Store from "models/Store.model";
+import { Product1 } from "models/Product.model";
 
 // ==============================================================
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
   stores: Store[];
   ownerStore: Store;
   relatedProducts: Product1[];
-  frequentlyBought?: Product[];
+  frequentlyBought?: Product1[];
 }
 // ==============================================================
 

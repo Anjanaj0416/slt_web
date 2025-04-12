@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { WishListPageView } from "pages-sections/customer-dashboard/wish-list";
-// API FUNCTIONS
-import { getWishListProducts } from "utils/__api__/wish-list";
+
 import request from "utils/request";
 import API from "constants/wishlist";
 import { notFound } from "next/navigation";

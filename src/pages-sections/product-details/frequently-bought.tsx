@@ -11,8 +11,8 @@ import { FlexBox, FlexRowCenter } from "components/flex-box";
 import FrequentlyProductCard from "./frequently-product-card";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { currency } from "lib";
+import { Product1 } from "models/Product.model";
 // CUSTOM DATA MODEL
-import Product from "models/Product.model";
 
 // STYLED COMPONENTS
 const WrapperBox = styled(Box)(({ theme }) => ({
@@ -22,7 +22,7 @@ const WrapperBox = styled(Box)(({ theme }) => ({
 }));
 
 // ============================================================
-type Props = { products: Product[] };
+type Props = { products: Product1[] };
 // ============================================================
 
 const FrequentlyBought: FC<Props> = ({ products }) => {
@@ -36,10 +36,10 @@ const FrequentlyBought: FC<Props> = ({ products }) => {
             <FrequentlyProductCard
               id={item.id}
               key={item.id}
-              slug={item.slug}
-              price={item.price}
-              title={item.title}
-              imgUrl={item.thumbnail}
+              slug={item.id}
+              price={item.basePrice}
+              title={item.name}
+              imgUrl={item.images?.[0]}
             />
 
             {ind < products.length - 1 && (
