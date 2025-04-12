@@ -3,6 +3,7 @@ const nextConfig = {
   output: "standalone",
   env: { theme: "DEFAULT", currency: "LKR" },
   publicRuntimeConfig: { theme: "DEFAULT", currency: "LKR" },
+  swcMinify:true,
   images: {
     remotePatterns: [
       {
