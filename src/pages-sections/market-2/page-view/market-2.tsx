@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Fragment } from "react";
+import { cache, Fragment } from "react";
 //LOCAL CUSTOM COMPONENTS
 import AnimatedCategoryList from "../animated-category-list";
 import CategoryBasedProducts from "../category-based-products";
@@ -7,16 +7,18 @@ import FullBanner from "../full-banner";
 import HalfBanner from "../half-banner";
 import Section1 from "../section-1";
 import Section4 from "../section-4";
-import Section8 from "../section-8";
 import SelectedProducts from "../selected-products";
 import ThreeBanner from "../three-banner";
 // API FUNCTIONS
 import PRODUCT_API from "constants/products";
 import BANNER_API from "constants/banners";
 import CATEGORY_API from "constants/categories";
-import api from "utils/__api__/market-2";
 import request from "utils/request";
 import { notFound } from "next/navigation";
+
+const cachedRequest = cache((url: Object, options: any) =>
+  request(url, options)
+);
 
 const MarketTwoPageView = async () => {
   try {
@@ -30,25 +32,30 @@ const MarketTwoPageView = async () => {
       mainCarouselData,
       topBanners,
     ] = await Promise.all([
-      request(PRODUCT_API.GET_PRODUCTS, { query: "size=5" }),
-      request(CATEGORY_API.GET_CATEGORIES, {
+      cachedRequest(PRODUCT_API.GET_PRODUCTS, { query: "size=5" }),
+      cachedRequest(CATEGORY_API.GET_CATEGORIES, {
         query: "size=10&productsCountMoreThan=3",
       }),
-      request(CATEGORY_API.GET_CATEGORIES, {
+      cachedRequest(CATEGORY_API.GET_CATEGORIES, {
         query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
       }),
-      request(BANNER_API.GET_BANNERS, { query: "size=3&bannerType=FULL" }),
-      request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=HALF" }),
-      request(BANNER_API.GET_BANNERS, { query: "size=4&bannerType=THREE" }),
-      request(BANNER_API.GET_BANNERS, { query: "size=6&bannerType=CAROUSEL" }),
-      request(BANNER_API.GET_BANNERS, { query: "size=2&bannerType=HALF_TOP" }),
+      cachedRequest(BANNER_API.GET_BANNERS, {
+        query: "size=3&bannerType=FULL",
+      }),
+      cachedRequest(BANNER_API.GET_BANNERS, {
+        query: "size=4&bannerType=HALF",
+      }),
+      cachedRequest(BANNER_API.GET_BANNERS, {
+        query: "size=4&bannerType=THREE",
+      }),
+      cachedRequest(BANNER_API.GET_BANNERS, {
+        query: "size=6&bannerType=CAROUSEL",
+      }),
+      cachedRequest(BANNER_API.GET_BANNERS, {
+        query: "size=2&bannerType=HALF_TOP",
+      }),
     ]);
 
-    const brands = await api.getBrands();
-    //const serviceList = await api.getServices();
-    // const menFashionProducts = await api.getMenFashionProducts();
-    // const electronicsProducts = await api.getElectronicsProducts();
-    // const womenFashionProducts = await api.getWomenFashionProducts();
     return (
       <Fragment>
         <Box bgcolor="#F6F6F6">
@@ -87,7 +94,7 @@ const MarketTwoPageView = async () => {
           ))}
 
           {/*  FEATURED BRANDS */}
-          <Section8 brands={brands} />
+          {/* <Section8 brands={brands} /> */}
 
           {/* SELECTED PRODUCTS */}
           <SelectedProducts />
