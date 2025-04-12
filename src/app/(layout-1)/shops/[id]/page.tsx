@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 // PAGE VIEW COMPONENT
 import { ShopDetailsPageView } from "pages-sections/shops/page-view";
-import request from "utils/request";
+import request, { cachedRequest } from "utils/request";
 import STORE_API from "constants/store";
 import PRODUCT_API from "constants/products";
 
@@ -16,13 +16,14 @@ export const metadata: Metadata = {
 
 export default async function ShopDetails({ params }) {
   try {
-    const store = await request(STORE_API.GET_STORE, {
-      id: params.id,
-    });
-    const productsData = await request(PRODUCT_API.GET_PRODUCTS_BY_STORE_ID, {
-      storeId: params.id,
-      query: "size=9",
-    });
+    const storeId = params.id;
+    const [store, productsData] = await Promise.all([
+      cachedRequest(STORE_API.GET_STORE, { id: storeId }),
+      cachedRequest(PRODUCT_API.GET_PRODUCTS_BY_STORE_ID, {
+        storeId,
+        query: "size=9",
+      }),
+    ]);
 
     return <ShopDetailsPageView store={store} productsData={productsData} />;
   } catch (error) {

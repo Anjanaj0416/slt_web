@@ -2,7 +2,7 @@ import API from "constants/orders";
 import { Metadata } from "next";
 import { ProfilePageView } from "pages-sections/customer-dashboard/profile/page-view";
 import { auth } from "utils/auth";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 
 export const metadata: Metadata = {
   title: "Profile - TRADEZ ",
@@ -15,22 +15,29 @@ export const metadata: Metadata = {
 export default async function Profile() {
   const { user } = await auth();
   //
-  const allOrders = await request(API.GET_USER_ORDERS, {
-    userId: user?.id,
-    query: "size=0&sort=createdAt,desc",
-  });
-  const processingOrders = await request(API.GET_USER_ORDERS, {
-    userId: user?.id,
-    query: "packageStatus=PENDING&size=0&sort=createdAt,desc",
-  });
-  const shippedOrders = await request(API.GET_USER_ORDERS, {
-    userId: user?.id,
-    query: "packageStatus=SHIPPED&size=0&sort=createdAt,desc",
-  });
-  const deliveredOrders = await request(API.GET_USER_ORDERS, {
-    userId: user?.id,
-    query: "packageStatus=DELIVERED&size=0&sort=createdAt,desc",
-  });
+  const queries = {
+    allOrders: "size=0&sort=createdAt,desc",
+    processingOrders: "packageStatus=PENDING&size=0&sort=createdAt,desc",
+    shippedOrders: "packageStatus=SHIPPED&size=0&sort=createdAt,desc",
+    deliveredOrders: "packageStatus=DELIVERED&size=0&sort=createdAt,desc",
+  };
+  const userId = user?.id;
+  const [allOrders, processingOrders, shippedOrders, deliveredOrders] =
+    await Promise.all([
+      cachedRequest(API.GET_USER_ORDERS, { userId, query: queries.allOrders }),
+      cachedRequest(API.GET_USER_ORDERS, {
+        userId,
+        query: queries.processingOrders,
+      }),
+      cachedRequest(API.GET_USER_ORDERS, {
+        userId,
+        query: queries.shippedOrders,
+      }),
+      cachedRequest(API.GET_USER_ORDERS, {
+        userId,
+        query: queries.deliveredOrders,
+      }),
+    ]);
   return (
     <ProfilePageView
       ordersCount={allOrders.totalResults}

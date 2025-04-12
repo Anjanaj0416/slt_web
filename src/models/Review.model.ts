@@ -1,14 +1,5 @@
 import User, { User1 } from "./User.model";
-import Product, { Product1 } from "./Product.model";
-
-interface Review {
-  id: string;
-  rating: number;
-  customer: User;
-  comment: string;
-  product: Product;
-  published?: boolean;
-}
+import { Product1 } from "./Product.model";
 
 export interface Review1 {
   id: string;
@@ -24,5 +15,3 @@ export interface POSTReviewRequest {
   text: string;
   productId: string;
 }
-
-export default Review;

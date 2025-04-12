@@ -64,7 +64,7 @@ const UserAnalytics: FC<Props> = ({
 
           <FlexBetween flexWrap="wrap" flex={1}>
             <div>
-              <H5>{`${user?.firstName} ${user?.lastName}`}</H5>
+              <H5 textTransform="capitalize">{`${user?.firstName} ${user?.lastName}`}</H5>
 
               {/* <FlexBox alignItems="center" gap={1}>
                 <Paragraph color="grey.600">Balance:</Paragraph>

@@ -13,7 +13,7 @@ import { calculateDiscountPrice, currency } from "lib";
 // =======================================================
 type Props = {
   slug: string;
-  price: number;
+  price: number | string;
   title: string;
   imgUrl: string;
   id: string | number;
@@ -51,9 +51,9 @@ const FrequentlyProductCard: FC<Props> = (props) => {
         <FlexBox alignItems="center" gap={1}>
           <H6 color="primary.main">{currency(price)}</H6>
 
-          <Box component="del" fontWeight={600} color="grey.600">
+          {/* <Box component="del" fontWeight={600} color="grey.600">
             {calculateDiscountPrice(price, 35)}
-          </Box>
+          </Box> */}
         </FlexBox>
       </Link>
     </BazaarCard>

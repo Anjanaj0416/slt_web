@@ -90,13 +90,7 @@ const MENUS = [
         title: "My Reviews",
         Icon: RateReviewIcon,
         count: 0,
-      },
-      {
-        href: "/support-tickets",
-        title: "Support Tickets",
-        Icon: CustomerService,
-        count: 0,
-      },
+      }
     ],
   },
   {

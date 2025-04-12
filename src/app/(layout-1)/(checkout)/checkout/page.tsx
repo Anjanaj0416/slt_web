@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CheckoutPageView } from "pages-sections/checkout/page-view";
 import { auth } from "utils/auth";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 
 export const metadata: Metadata = {
   title: "Checkout - TRADEZ ",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function Checkout() {
   try {
     const { user } = await auth();
-    const { data } = await request(API.GET_ADDRESS, {
+    const { data } = await cachedRequest(API.GET_ADDRESS, {
       userId: user?.id,
     });
     //

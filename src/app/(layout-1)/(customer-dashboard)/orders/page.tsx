@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { OrdersPageView } from "pages-sections/customer-dashboard/orders/page-view";
 import { auth } from "utils/auth";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 
 export const metadata: Metadata = {
   title: "Orders - TRADEZ ",
@@ -17,7 +17,7 @@ export default async function Orders() {
   try {
     const { user } = await auth();
     //
-    const orders = await request(API.GET_USER_ORDERS, {
+    const orders = await cachedRequest(API.GET_USER_ORDERS, {
       userId: user?.id,
       query: "size=5&sort=createdAt,desc",
     });
