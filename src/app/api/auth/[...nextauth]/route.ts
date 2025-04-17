@@ -5,7 +5,6 @@ import { Adapter } from "next-auth/adapters";
 import AuthAdapter from "utils/auth-adapter";
 import { User1 } from "models/User.model";
 import mapUser from "utils/mapUser";
-import { extractRolesFromToken } from "utils/extract-roles";
 //
 const refreshTokens = async (refreshToken: string) => {
   const params = new URLSearchParams();
@@ -91,14 +90,6 @@ const authOptions: AuthOptions = {
             Math.floor(Date.now() / 1000) + newTokens?.refresh_expires_in,
         };
       }
-    },
-
-    async signIn({ account }) {
-      const roles = extractRolesFromToken(
-        account?.access_token,
-        "customer-marketplace-client"
-      );
-      return !!roles.includes("customer");
     },
   },
   adapter: AuthAdapter() as unknown as Adapter,
