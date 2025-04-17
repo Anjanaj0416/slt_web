@@ -6,9 +6,8 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import styled from "@mui/material/styles/styled";
 // Local CUSTOM COMPONENTS
-import ProductReview from "./product-review";
 import ProductDescription from "./product-description";
-import ProductSpecification from "./product-specification";
+import dynamic from "next/dynamic";
 
 // STYLED COMPONENT
 const StyledTabs = styled(Tabs)(({ theme }) => ({
@@ -27,10 +26,11 @@ type Props = {
   specification: string;
   productId: string;
 };
+const ProductSpecification = dynamic(() => import("./product-specification"));
+const ProductReview = dynamic(() => import("./product-review"));
 const ProductTabs = ({ description, specification, productId }: Props) => {
   const [selectedOption, setSelectedOption] = useState(0);
   const handleOptionClick = (_, value: number) => setSelectedOption(value);
-
   return (
     <>
       <StyledTabs

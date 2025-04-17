@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Open_Sans } from "next/font/google";
-
+import NextTopLoader from 'nextjs-toploader';
 export const openSans = Open_Sans({ subsets: ["latin"] });
 
 // THEME PROVIDER
@@ -11,13 +11,7 @@ import CartProvider from "contexts/CartContext";
 import SettingsProvider from "contexts/SettingContext";
 // GLOBAL CUSTOM COMPONENTS
 import { RTL } from "components/rtl";
-import { ProgressBar } from "components/progress";
 
-// IMPORT DUMMY SERVER
-import "__server__";
-
-// IMPORT i18n SUPPORT FILE
-import "i18n";
 import ReduxProviderWrapper from "utils/redux-provider-wrapper";
 import { store } from "./redux/store";
 import SnackbarProvider from "components/SnackbarProvider";
@@ -44,7 +38,7 @@ export default function RootLayout({
                       <WishlistProvider>
                         <SettingsProvider>
                           <ThemeProvider>
-                            <ProgressBar />
+                          <NextTopLoader showForHashAnchor={false} showSpinner={false} speed={300} color="#E94560"/>
                             <RTL>
                               <SnackbarProvider>{children}</SnackbarProvider>
                             </RTL>

@@ -1,24 +1,24 @@
-import Product from "./Product.model";
+// import Product from "./Product.model";
 
-interface Shop {
-  id: string;
-  slug: string;
-  user: any;
-  email: string;
-  name: string;
-  phone: string;
-  address: string;
-  rating?: number;
-  verified: boolean;
-  products?: any | Product[];
-  coverPicture: string;
-  profilePicture: string;
-  socialLinks: {
-    facebook?: string;
-    youtube?: string;
-    twitter?: string;
-    instagram?: string;
-  };
-}
+// interface Shop {
+//   id: string;
+//   slug: string;
+//   user: any;
+//   email: string;
+//   name: string;
+//   phone: string;
+//   address: string;
+//   rating?: number;
+//   verified: boolean;
+//   products?: any | Product[];
+//   coverPicture: string;
+//   profilePicture: string;
+//   socialLinks: {
+//     facebook?: string;
+//     youtube?: string;
+//     twitter?: string;
+//     instagram?: string;
+//   };
+// }
 
-export default Shop;
+// export default Shop;

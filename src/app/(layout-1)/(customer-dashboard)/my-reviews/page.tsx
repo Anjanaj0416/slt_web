@@ -1,10 +1,8 @@
 import { Metadata } from "next";
-import { WishListPageView } from "pages-sections/customer-dashboard/wish-list";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 import API from "constants/review";
 import { notFound } from "next/navigation";
 import { auth } from "utils/auth";
-import { ReviewsPageView } from "pages-sections/vendor-dashboard/reviews/page-view";
 import MyReviewsPageView from "pages-sections/customer-dashboard/my-reviews/my-reviews";
 
 export const metadata: Metadata = {
@@ -19,13 +17,12 @@ export default async function WishList({ searchParams }) {
   try {
     const page = searchParams?.page;
     const { user } = await auth();
+    const safePage = Number.isInteger(page) && page > 0 ? page : 1;
+    const query = `page=${safePage - 1}&size=6&sort=createdAt,asc`;
 
-    const reviews = await request(API.GET_USER_REVIEWS, {
-      userId: user?.id,
-      query:
-        isNaN(page) && page >= 0
-          ? "size=6&sort=createdAt,asc"
-          : `page=${page - 1}&size=6&sort=createdAt,asc`,
+    const reviews = await cachedRequest(API.GET_USER_REVIEWS, {
+      userId: user.id,
+      query,
     });
 
     return (

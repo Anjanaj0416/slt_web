@@ -1,12 +1,4 @@
-export interface FurnitureCarouselItem {
-  id: string | number;
-  title: string;
-  imgUrl: string;
-  subTitle: string;
-  buttonText: string;
-  buttonLink: string;
-  description: string;
-}
+
 
 export interface GiftCarouselItem {
   id: string | number;

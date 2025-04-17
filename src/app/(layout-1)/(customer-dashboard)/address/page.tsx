@@ -2,7 +2,7 @@ import API from "constants/address";
 import { Metadata } from "next";
 import { AddressPageView } from "pages-sections/customer-dashboard/address/page-view";
 import { auth } from "utils/auth";
-import request from "utils/request";
+import { cachedRequest } from "utils/request";
 
 export const metadata: Metadata = {
   title: "Address - TRADEZ ",
@@ -16,12 +16,16 @@ export default async function Address({ searchParams }) {
   const page = searchParams?.page;
   const { user } = await auth();
 
-  const addressesData = await request(API.GET_ADDRESS, {
+  const safePage = Number.isInteger(page) && page > 0 ? page : 1;
+
+  const query =
+    safePage === 1
+      ? "size=6&sort=primary,asc"
+      : `page=${safePage - 1}&size=6&sort=primary,desc&sort=createdAt,asc`;
+
+  const addressesData = await cachedRequest(API.GET_ADDRESS, {
     userId: user?.id,
-    query:
-      isNaN(page) && page >= 0
-        ? "size=6&primary,asc"
-        : `page=${page - 1}&size=6&sort=primary,desc&sort=createdAt,asc`,
+    query,
   });
 
   return (

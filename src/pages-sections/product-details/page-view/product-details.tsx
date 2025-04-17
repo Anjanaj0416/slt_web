@@ -1,29 +1,35 @@
+"use client";
+
 import Container from "@mui/material/Container";
 // Local CUSTOM COMPONENTS
 import ProductTabs from "../product-tabs";
 import AvailableShops from "../available-shops";
 import RelatedProducts from "../related-products";
 // CUSTOM DATA MODEL
-import Product, { Product1 } from "models/Product.model";
 import ProductIntro1 from "../product-intro1";
 import Store from "models/Store.model";
+import { Product1 } from "models/Product.model";
+import { useFilteredProductsQuery } from "services/product-api";
+import { CircularProgress } from "@mui/material";
 
 // ==============================================================
 interface Props {
   product: Product1;
   stores: Store[];
   ownerStore: Store;
-  relatedProducts: Product1[];
-  frequentlyBought?: Product[];
+  frequentlyBought?: Product1[];
 }
 // ==============================================================
 
-const ProductDetailsPageView = ({
-  product,
-  relatedProducts,
-  stores,
-  ownerStore,
-}: Props) => {
+const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
+  const {
+    data: products,
+    error,
+    isLoading: isLoadingRelated,
+  } = useFilteredProductsQuery({ categoryId: product.category.id, size: 5 });
+  const relatedProducts = (products?.data ?? [])
+    .filter((p: Product1) => p.id !== product.id)
+    .slice(0, 4);
   return (
     <Container sx={{ my: 4 }}>
       {/* PRODUCT DETAILS INFO AREA */}
@@ -43,8 +49,12 @@ const ProductDetailsPageView = ({
       {stores.length > 0 && <AvailableShops stores={stores} />}
 
       {/* RELATED PRODUCTS AREA */}
-      {relatedProducts?.length > 0 && (
-        <RelatedProducts products={relatedProducts} />
+      {isLoadingRelated ? (
+        <CircularProgress />
+      ) : (
+        relatedProducts?.length > 0 && (
+          <RelatedProducts products={relatedProducts} />
+        )
       )}
     </Container>
   );

@@ -11,7 +11,7 @@ import useMuiTable from "hooks/useMuiTable";
 import { useRouter } from "next/navigation";
 import { tableHeading } from "./table-heading";
 import ReviewRow from "./review-row";
-import RateReviewIcon from '@mui/icons-material/RateReview';
+import RateReviewIcon from "@mui/icons-material/RateReview";
 
 // ==================================================================
 type Props = { reviews: Review1[]; total: number };
@@ -57,14 +57,11 @@ const MyReviewsPageView = ({ reviews, total }: Props) => {
           </TableContainer>
         </Scrollbar>
 
-        {total && (
+        {total ? (
           <Stack alignItems="center" my={4}>
-            <TablePagination
-              onChange={handleChangePage}
-              count={Math.ceil(total / 6)}
-            />
+            <TablePagination onChange={handleChangePage} count={2} />
           </Stack>
-        )}
+        ) : null}
       </Card>
     </Fragment>
   );

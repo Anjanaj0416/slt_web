@@ -12,9 +12,9 @@ import { FlexBox } from "components/flex-box";
 import ShoppingBagOutlined from "icons/ShoppingBagOutlined";
 // GLOBAL CUSTOM HOOK
 import useCartService from "hooks/useCartService";
-import AccountPopover from "components/layouts/vendor-dashboard/dashboard-navbar/account-popover";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
+import AccountPopover from "components/layouts/customer-dashboard/account-popover";
 
 // ==============================================================
 interface Props {

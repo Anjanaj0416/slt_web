@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import axios from "./axios";
+import { cache } from "react";
 
 export class ResponseError extends Error {
   constructor(error) {
@@ -103,5 +104,11 @@ const request = async (_metadata, data, multipart = false, isSecure = true) => {
     return errorHandling(error);
   }
 };
+
+export const cachedRequest = cache(
+  (url: Object, options: Record<string, any>) => {
+    return request(url, options);
+  }
+);
 //
 export default request;

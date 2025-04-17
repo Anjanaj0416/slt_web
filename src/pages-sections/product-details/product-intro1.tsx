@@ -579,8 +579,8 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
           {/* SHOP NAME */}
           <FlexBox alignItems="center" gap={1} mb={2}>
             <div>Sold By:</div>
-            <Link href={`/shops/${store.id}`}>
-              <H6>{store.name}</H6>
+            <Link href={`/shops/${store?.id}`}>
+              <H6>{store?.name}</H6>
             </Link>
           </FlexBox>
         </Grid>
