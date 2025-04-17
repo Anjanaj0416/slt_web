@@ -1,22 +1,46 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { withAuth } from "next-auth/middleware";
+import { NextRequest } from "next/server";
 
-export function middleware(req: NextRequest) {
-  //const url = new URL(req.url);
+/**
+ * Middleware for authenticating requests using NextAuth.
+ * It checks if the token exists to determine if the user is authenticated.
+ */
+const authMiddleware = withAuth({
+  callbacks: {
+    /**
+     * Checks if the user is authorized by verifying if they are an admin.
+     * @param {Object} token - The JWT token containing user details.
+     * @returns {boolean} - Returns true if the user is an admin, otherwise false.
+     */
+    authorized({ token }) {
+      return !!token; // Returns true if the token exists, otherwise false.
+    },
+  },
+});
 
-  // Check if the path is "/api/auth/error" and the error param is "AccessDenied"
-  // if (
-  //   url.pathname === "/api/auth/error" &&
-  //   url.searchParams.get("error") === "AccessDenied"
-  // ) {
-    
-  //   return NextResponse.redirect(new URL("/403", req.url));
-  // }
-
-  return NextResponse.next(); 
+/**
+ * Main middleware function that applies the authentication middleware.
+ * If the request is authorized (has a valid token), it proceeds; otherwise, it redirects.
+ * @param {NextRequest} req - Incoming request object.
+ * @returns {NextResponse} - Response based on authentication result.
+ */
+export default function middleware(req: NextRequest) {
+  // Apply the authentication middleware to the request.
+  return (authMiddleware as any)(req);
 }
 
-// Apply middleware to specific routes
+/**
+ * Configuration for defining the routes where this middleware should be applied.
+ * These routes represent the public pages in the application.
+ */
 export const config = {
-  matcher: "/api/auth/error",
+  matcher: [
+    "/orders/:path*",
+    "/profile/:path*",
+    "/cart/:path*",
+    "/wish-list/:path*",
+    "/favorite-stores/:path*",
+    "/my-reviews/:path*",
+  ],
 };
+
