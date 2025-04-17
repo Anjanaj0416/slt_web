@@ -31,7 +31,9 @@ const authOptions: AuthOptions = {
       clientId: process.env.KEYCLOAK_CLIENT_ID,
       clientSecret: process.env.KEYCLOAK_CLIENT_SECRET,
       issuer: process.env.KEYCLOAK_CLIENT_ISSUER,
-      authorization: { params: { scope: "openid email profile phone" } },
+      authorization: {
+        params: { scope: "openid email profile phone", prompt: "login" },
+      },
       allowDangerousEmailAccountLinking: true,
     }),
   ],
