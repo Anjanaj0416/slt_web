@@ -7,11 +7,10 @@ import Instagram from "icons/Instagram";
 import { ENVIRONMENT } from "config";
 
 export const ABOUT_LINKS = [
-  "Careers",
-  "Our Stores",
-  "Our Cares",
-  "Terms & Conditions",
-  "Privacy Policy",
+  { text: "Careers", path: "/" },
+  { text: "Our Stores", path: "/" },
+  { text: "Terms & Conditions", path: "terms" },
+  { text: "Privacy Policy", path: "privacy-policy" },
 ];
 
 export const CUSTOMER_CARE_LINKS = [

@@ -50,8 +50,8 @@ const Footer1 = () => {
 
             <div>
               {ABOUT_LINKS.map((item, ind) => (
-                <StyledLink href="/" key={ind}>
-                  {item}
+                <StyledLink href={item.path} key={ind}>
+                  {item.text}
                 </StyledLink>
               ))}
             </div>
