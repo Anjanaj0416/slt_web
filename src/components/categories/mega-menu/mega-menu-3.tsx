@@ -27,7 +27,7 @@ const MegaMenu3: FC<MegaMenuProps> = ({
 }) => {
   return categories ? (
     <StyledMegaMenu>
-      <BazaarCard sx={{ ml: "1rem", minWidth }} elevation={2}>
+      <BazaarCard sx={{ ml: "1rem", minWidth, minHeight: 400 }} elevation={2}>
         <FlexBox px={2.5} py={1.75}>
           <Box flex="1 1 0">
             <Grid container spacing={4}>

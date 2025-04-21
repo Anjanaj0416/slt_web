@@ -21,7 +21,7 @@ export type MegaMenu2Props = { data: Data[]; moreSubCategories?: boolean };
 const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
   return (
     <StyledMegaMenu>
-      <BazaarCard elevation={2} sx={{ ml: "1rem", py: "0.5rem" }}>
+      <BazaarCard elevation={2} sx={{ ml: "1rem", py: "0.5rem", minHeight:400 }}>
         {data?.map((item) => (
           <CategoryMenuItem
             href={item.href}
@@ -40,6 +40,7 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
               ) : (
                 <MegaMenu2
                   data={item.menuData || []}
+                  
                   moreSubCategories={item.moreSubCategories}
                 />
               ))}
