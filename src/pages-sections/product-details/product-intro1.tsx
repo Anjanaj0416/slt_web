@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FC, useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Avatar from "@mui/material/Avatar";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 // MUI ICON COMPONENTS
@@ -400,11 +399,12 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
                   }
                 >
                   {media.type === "image" ? (
-                    <Avatar
+                    <LazyImage
+                      quality={50}
                       alt="product"
                       src={`${ENVIRONMENT.S3_BUCKET_URL}/${media.src}`}
-                      variant="square"
-                      sx={{ height: 40 }}
+                      width={40}
+                      height={40}
                     />
                   ) : (
                     <video

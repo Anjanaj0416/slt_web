@@ -144,12 +144,8 @@ const ProductSearchPageView = ({
             </Paragraph>
           </div>
         )}
-        {!searchText && products.length < 1 && (
-          <div style={{ padding: 4 }}>
-            <H5>There are no products !</H5>
-          </div>
-        )}
-        {products.length > 0 && (
+        
+        { (
           <FlexBox
             alignItems="center"
             columnGap={4}
@@ -165,6 +161,7 @@ const ProductSearchPageView = ({
                 select
                 fullWidth
                 size="small"
+                disabled={isLoading || products.length < 1} 
                 variant="outlined"
                 placeholder="Short by"
                 defaultValue={SORT_OPTIONS[0].value}
@@ -230,7 +227,7 @@ const ProductSearchPageView = ({
 
       <Grid container spacing={3}>
         {/* PRODUCT FILTER SIDEBAR AREA */}
-        {products.length > 0 && (
+        { (
           <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
             {/* <ProductFilterCard1
               filters={
@@ -251,7 +248,7 @@ const ProductSearchPageView = ({
               setPage={setPage}
               setBrands={setBrands}
               brands={brandNames}
-              isLoading={isLoading}
+              isLoading={isLoading || products.length < 1}
               setMaxPrice={setMaxPrice}
               setMinPrice={setMinPrice}
             />
@@ -285,6 +282,11 @@ const ProductSearchPageView = ({
               />
             </FlexBetween>
           )}
+          {!searchText && products.length < 1 && !isLoading && (
+          <div style={{ padding: 4 , marginTop:50}}>
+            <H5>There are no products !</H5>
+          </div>
+        )}
         </Grid>
       </Grid>
     </Container>
