@@ -21,8 +21,8 @@ importers:
         specifier: ^11.11.0
         version: 11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0)
       '@mui/icons-material':
-        specifier: ^5.14.11
-        version: 5.14.19(@mui/material@5.14.20(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.24)(react@18.2.0)
+        specifier: ^6.0.0
+        version: 6.4.11(@mui/material@5.14.20(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.24)(react@18.2.0)
       '@mui/lab':
         specifier: ^5.0.0-alpha.146
         version: 5.0.0-alpha.155(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0))(@mui/material@5.14.20(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -346,6 +346,10 @@ packages:
     resolution: {integrity: sha512-VBj9MYyDb9tuLq7yzqjgzt6Q+IBQLrGZfdjOekyEirZPHxXWoTSGUTMrpsfi58Up73d13NfYLv8HT9vmznjzhQ==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/runtime@7.27.0':
+    resolution: {integrity: sha512-VtPOkrdPHZsKc/clNqyi9WUA8TINkZ4cGk63UUE3u4pmB2k+ZMQRDuIOagv8UVd6j7k0T3+RRIb7beKTebNbcw==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/template@7.25.0':
     resolution: {integrity: sha512-aOOgh1/5XzKvg1jvVz7AVrx2piJ2XBi227DHmbY6y+bM9H2FlN+IfecYu4Xl0cNiiVejlsCri89LUsbj8vJD9Q==}
     engines: {node: '>=6.9.0'}
@@ -645,13 +649,13 @@ packages:
   '@mui/core-downloads-tracker@5.16.7':
     resolution: {integrity: sha512-RtsCt4Geed2/v74sbihWzzRs+HsIQCfclHeORh5Ynu2fS4icIKozcSubwuG7vtzq2uW3fOR1zITSP84TNt2GoQ==}
 
-  '@mui/icons-material@5.14.19':
-    resolution: {integrity: sha512-yjP8nluXxZGe3Y7pS+yxBV+hWZSsSBampCxkZwaw+1l+feL+rfP74vbEFbMrX/Kil9I/Y1tWfy5bs/eNvwNpWw==}
-    engines: {node: '>=12.0.0'}
+  '@mui/icons-material@6.4.11':
+    resolution: {integrity: sha512-+jjJGIrB1awNbMv4ZVPPdN/p7O1UKFZ+xqRvNIQ8B1KnlID5hPMPBLM6UUbRF4bu3UDCbu79rn9Nye5LGNzmeA==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
-      '@mui/material': ^5.0.0
-      '@types/react': ^17.0.0 || ^18.0.0
-      react: ^17.0.0 || ^18.0.0
+      '@mui/material': ^6.4.11
+      '@types/react': ^17.0.0 || ^18.0.0 || ^19.0.0
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -4419,6 +4423,10 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.0
 
+  '@babel/runtime@7.27.0':
+    dependencies:
+      regenerator-runtime: 0.14.0
+
   '@babel/template@7.25.0':
     dependencies:
       '@babel/code-frame': 7.24.7
@@ -4885,9 +4893,9 @@ snapshots:
 
   '@mui/core-downloads-tracker@5.16.7': {}
 
-  '@mui/icons-material@5.14.19(@mui/material@5.14.20(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.24)(react@18.2.0)':
+  '@mui/icons-material@6.4.11(@mui/material@5.14.20(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.24)(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.27.0
       '@mui/material': 5.14.20(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.1(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react@18.2.0))(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
     optionalDependencies:

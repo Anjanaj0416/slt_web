@@ -1,23 +1,20 @@
 import Link from "next/link";
 import { FC, useState } from "react";
 import Chip from "@mui/material/Chip";
-import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
-import TouchRipple from "@mui/material/ButtonBase";
 import { useTranslation } from "react-i18next";
 // MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
-import Twitter from "@mui/icons-material/Twitter";
 import Facebook from "@mui/icons-material/Facebook";
 import Instagram from "@mui/icons-material/Instagram";
-import ExpandMore from "@mui/icons-material/ExpandMore";
+import XIcon from "@mui/icons-material/X";
 // GLOBAL CUSTOM COMPONENTS
 import { Span } from "components/Typography";
-import BazaarMenu from "components/BazaarMenu";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
 import { StyledContainer, StyledRoot } from "./styles";
+import { ENVIRONMENT } from "config";
 
 // ==============================================================
 interface LanguageOption {
@@ -110,9 +107,9 @@ const Topbar: FC<Props> = ({ bgColor }) => {
 };
 
 const socialLinks = [
-  { id: 1, Icon: Twitter, url: "#" },
-  { id: 2, Icon: Facebook, url: "#" },
-  { id: 3, Icon: Instagram, url: "#" },
+  { id: 2, Icon: Facebook, url: ENVIRONMENT.FACEBOOK_LINK },
+  { id: 3, Icon: Instagram, url: ENVIRONMENT.INSTAGRAM_LINK },
+  { id: 1, Icon: XIcon, url: ENVIRONMENT.TWITTER_LINK },
 ];
 
 export default Topbar;

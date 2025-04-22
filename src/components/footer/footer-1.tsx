@@ -64,8 +64,8 @@ const Footer1 = () => {
             </H6>
 
             {CUSTOMER_CARE_LINKS.map((item, ind) => (
-              <StyledLink href="/" key={ind}>
-                {item}
+              <StyledLink href={item.path} key={ind}>
+                {item.text}
               </StyledLink>
             ))}
           </Grid>
