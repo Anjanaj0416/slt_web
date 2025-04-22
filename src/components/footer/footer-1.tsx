@@ -80,15 +80,15 @@ const Footer1 = () => {
             </Link>
 
             <Paragraph py={0.6} color="grey.500">
-              70 Washington Square South, New York, NY 10012, United States
+              No: 17 H.K Dharmadasa Mawatha, Colombo 02
             </Paragraph>
 
             <Paragraph py={0.6} color="grey.500">
-              Email: uilib.help@gmail.com
+              Email: <a href="mailto:info@tradez.lk">info@tradez.lk</a>
             </Paragraph>
 
             <Paragraph py={0.6} mb={2} color="grey.500">
-              Phone: +1 1123 456 780
+              Phone: <a href="tel:+94112399399">+94 11 2 399 399</a>
             </Paragraph>
 
             {/* SOCIAL LINKS WITH ICON */}

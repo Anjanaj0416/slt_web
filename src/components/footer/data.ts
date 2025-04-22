@@ -23,7 +23,5 @@ export const CUSTOMER_CARE_LINKS = [
 export const SOCIAL_ICON_LINKS = [
   { Icon: Facebook, url: ENVIRONMENT.FACEBOOK_LINK },
   { Icon: Twitter, url: ENVIRONMENT.TWITTER_LINK },
-  { Icon: Youtube, url: "#" },
-  { Icon: Google, url: "#" },
   { Icon: Instagram, url: ENVIRONMENT.INSTAGRAM_LINK },
 ];

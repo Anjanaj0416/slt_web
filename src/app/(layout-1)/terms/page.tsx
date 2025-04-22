@@ -22,13 +22,13 @@ export default function TermsAndConditions() {
         Terms and Conditions
       </Typography>
       <Typography variant="subtitle2" gutterBottom>
-        Last Updated: …… Insert Date ……
+        Last Updated: 2025-04-20
       </Typography>
       <Divider sx={{ my: 3 }} />
 
       <Section title="1. Introduction">
         <Typography>
-          {`Welcome to …… (Name of the Site) …….., an online platform operated by
+          {`Welcome to Tradez, an online platform operated by
           Sri Lanka Telecom (Services) Limited (PB 914) ("SLTS"). These Terms
           and Conditions govern your use of ………………………., including its website,
           mobile application, and associated services (collectively, the
@@ -199,11 +199,11 @@ export default function TermsAndConditions() {
         <Typography>
           For inquiries, complaints, or claims, contact SLTS at:
           <br />
-          Email: …… (Insert Email) ……
+          Email: <a href="mailto:info@tradez.lk">info@tradez.lk</a>
           <br />
-          Phone: …… (Insert Contact Number) ……
+          Phone: <a href="tel:+94112399399">+94 11 2 399 399</a> 
           <br />
-          Address: …… (Insert Address) ……
+          Address: No: 17 H.K Dharmadasa Mawatha, Colombo 02
         </Typography>
       </Section>
 
