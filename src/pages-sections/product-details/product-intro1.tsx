@@ -77,12 +77,16 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       });
       setQuantity(maxStockVariant.units);
     }
+    if (variants.length === 1) {
+      setSelectedVariant(variants[0]);
+      setPrice(variants[0].price);
+    }
   }, []);
 
   const getPrice = () => {
     const prices = basePrice.split("-");
     if (prices.length == 1) {
-      return currency(prices[0]);
+      return currency(+prices[0] * selectedUnits);
     }
     return `${currency(prices[0])} - ${currency(prices[1], 2, "")}`;
   };
@@ -158,8 +162,9 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     );
 
     if (
-      !mappedAttributes ||
-      selectedAttributes.length < mappedAttributes?.length
+      variants.length > 1 &&
+      (!mappedAttributes ||
+        selectedAttributes.length < mappedAttributes?.length)
     ) {
       setSelectedVariant(null);
       setPrice(null);
@@ -187,7 +192,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     providedAttributes: { name: string; value: string }[]
   ): { name: string; values: string[] }[] {
     if (!product.variants || product.variants.length === 0) {
-      console.log("No variants available for this product.");
       return [];
     }
 
@@ -203,7 +207,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
 
     // If no matching variants are found
     if (matchingVariants.length === 0) {
-      console.log("No matching variants for the provided attributes.");
       return providedAttributes.map((attr) => ({
         name: attr.name,
         values: [attr.value],
@@ -318,7 +321,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     }
     if (
       units === -1 &&
-      cart.cartItems.find((e) => e.productVariant.id === selectedVariant.id)
+      cart.cartItems.find((e) => e.productVariant.id === selectedVariant?.id)
         .units === 1
     ) {
       handleRemoveFromCart(selectedVariant);
@@ -329,7 +332,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
 
   // HANDLE BUY NOW
   const handleBuyNow = () => {
-    if (!selectedVariant) {
+    if (!selectedVariant && variants.length > 1) {
       enqueueSnackbar("Please Select Variant", {
         variant: "warning",
       });
@@ -341,7 +344,10 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     }
     handleAddToItem([{ product, productVariant: selectedVariant, units: 1 }]);
   };
-
+  // HANDLE REQUEST QUOTE
+  const selectedUnits =
+    cart.cartItems.find((e) => e?.productVariant?.id === selectedVariant?.id)
+      ?.units ?? 1;
   return (
     <Box width="100%">
       <Grid container spacing={3} justifyContent="space-around">
@@ -478,7 +484,11 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
             <Box pt={1} mb={3}>
               <H2 color="primary.main" mb={0.5} lineHeight="1">
                 {price
-                  ? currency(discountAmount ? getDiscountedPrice() : price)
+                  ? currency(
+                      discountAmount
+                        ? getDiscountedPrice() * selectedUnits
+                        : price * selectedUnits
+                    )
                   : getPrice()}
               </H2>
               {selectedVariant && discountAmount ? (
@@ -531,11 +541,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
                 </Button>
 
                 <H3 fontWeight="600" mx={2.5}>
-                  {
-                    cart.cartItems.find(
-                      (e) => e.productVariant.id === selectedVariant.id
-                    ).units
-                  }
+                  {selectedUnits}
                 </H3>
 
                 <Button
