@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function ShopDetails({ params }) {
   try {
-    const storeId = params.id;
+    const storeId = params.id?.split("_")?.[0];
     const [store, productsData] = await Promise.all([
       cachedRequest(STORE_API.GET_STORE, { id: storeId }),
       cachedRequest(PRODUCT_API.GET_PRODUCTS_BY_STORE_ID, {

@@ -74,7 +74,7 @@ const ShopCard: FC<Partial<Store>> = (props) => {
           }}
         />
 
-        <Link href={`/shops/${id}`}>
+        <Link href={`/shops/${id}_${name}`}>
           <IconButton sx={{ my: 0.5 }}>
             <East
               sx={{
