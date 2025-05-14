@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 // PAGE VIEW COMPONENT
 import { ProductDetailsPageView } from "pages-sections/product-details/page-view";
-import request, { cachedRequest } from "utils/request";
+import { cachedRequest } from "utils/request";
 import PRODUCT_API from "constants/products";
 import STORE_API from "constants/store";
 import { Product1 } from "models/Product.model";
@@ -18,7 +18,11 @@ export const metadata: Metadata = {
 
 export default async function ProductDetails({ params }) {
   try {
-    const productId = params?.id;
+    const idAndName = params?.id?.split("_");
+    if (idAndName?.length < 2) {
+      notFound();
+    }
+    const productId = idAndName?.[0];
     // 1. Fetch product
     const [productResults, ownerStoreResult] = await Promise.all([
       cachedRequest(PRODUCT_API.GET_PRODUCTS, {
@@ -30,7 +34,7 @@ export default async function ProductDetails({ params }) {
     ]);
     const product = productResults?.data?.[0] as Product1;
 
-    if (!product) {
+    if (!product || decodeURIComponent(idAndName?.[1]) !== product?.name) {
       notFound();
     }
 
