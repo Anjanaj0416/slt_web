@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function ProductSearch({ searchParams }) {
   try {
-    const categoryId = searchParams?.categoryId;
+    const categoryId = searchParams?.categoryId?.split("_")?.[0];
     const result = await cachedRequest(PRODUCT_API.GET_PRODUCTS, {
       query: `size=9&categoryId=${categoryId}`,
     });
