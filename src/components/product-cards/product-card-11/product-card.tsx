@@ -101,7 +101,7 @@ const ProductCard11: FC<Props> = ({
         />
 
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${id}`}>
+        <Link href={`/products/${id}_${name}`}>
           <LazyImage
             priority
             src={imgUrl}

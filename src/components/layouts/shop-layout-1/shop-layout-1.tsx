@@ -1,6 +1,13 @@
 "use client";
 
-import { FC, Fragment, PropsWithChildren, useCallback, useState } from "react";
+import {
+  FC,
+  Fragment,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 // GLOBAL CUSTOM COMPONENTS
 import { Sticky } from "components/sticky";
 import { Topbar } from "components/topbar";
@@ -9,6 +16,9 @@ import { Footer1 } from "components/footer";
 import Header from "components/header/header";
 import { SearchInputWithCategory } from "components/search-box";
 import { MobileNavigationBar } from "components/mobile-navigation";
+import { usePathname } from "next/navigation";
+import { Box, Breadcrumbs, Container, Typography } from "@mui/material";
+import Link from "next/link";
 
 /**
  *  USED IN:
@@ -22,7 +32,27 @@ import { MobileNavigationBar } from "components/mobile-navigation";
 const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
   const [isFixed, setIsFixed] = useState(false);
   const toggleIsFixed = useCallback((fixed: boolean) => setIsFixed(fixed), []);
+  const pathname = usePathname();
+  const [pathSegments, setPathSegments] = useState<string[]>([]);
+  useEffect(() => {
+    // Get the pathname and split it
+    const segments = pathname
+      .split("?")[0]
+      .split("/")
+      .filter(Boolean)
+      .filter((segment) => segment !== "search");
+    console.log(pathname.includes("search"));
 
+    if (segments.length > 1 && segments[0] === "products") {
+      segments[1] = pathname.includes("search")
+        ? "Search"
+        : decodeURIComponent(segments[1].split("_")?.[1]);
+    }
+    if (segments.length > 1 && segments[0] === "shops") {
+      segments[1] = decodeURIComponent(segments[1].split("_")?.[1]);
+    }
+    setPathSegments(segments);
+  }, [pathname]);
   return (
     <Fragment>
       {/* TOP BAR SECTION */}
@@ -35,6 +65,42 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
 
       {/* NAVIGATION BAR */}
       <Navbar elevation={0} border={1} />
+      <Container sx={{ px: 0 }}>
+        {pathSegments.length > 0 && (
+          <Box mt={2}>
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link href="/" style={{ textTransform: "capitalize" }}>
+                Home
+              </Link>
+              {pathSegments.map((segment, index) => {
+                const isLast = index === pathSegments.length - 1;
+                console.log(segment, isLast);
+
+                if (isLast || segment.toLowerCase() === "products") {
+                  return (
+                    <Typography
+                      key={index}
+                      color="text.primary"
+                      textTransform="capitalize"
+                    >
+                      {segment}
+                    </Typography>
+                  );
+                }
+                return (
+                  <Link
+                    key={index}
+                    href={`/${segment}`}
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {segment}
+                  </Link>
+                );
+              })}
+            </Breadcrumbs>
+          </Box>
+        )}
+      </Container>
 
       {/* BODY CONTENT */}
       {children}
