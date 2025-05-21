@@ -11,8 +11,19 @@ export default function Layout1({ children }: PropsWithChildren) {
   const [pathSegments, setPathSegments] = useState<string[]>([]);
   useEffect(() => {
     // Get the pathname and split it
-    const segments = pathname.split("?")[0].split("/").filter(Boolean);
+    const segments = pathname
+      .split("?")[0]
+      .split("/")
+      .filter(Boolean)
+      .filter((segment) => segment !== "search");
+    console.log(pathname.includes("search"));
+
     if (segments.length > 1 && segments[0] === "products") {
+      segments[1] = pathname.includes("search")
+        ? "Search"
+        : decodeURIComponent(segments[1].split("_")?.[1]);
+    }
+    if (segments.length > 1 && segments[0] === "shops") {
       segments[1] = decodeURIComponent(segments[1].split("_")?.[1]);
     }
     setPathSegments(segments);
