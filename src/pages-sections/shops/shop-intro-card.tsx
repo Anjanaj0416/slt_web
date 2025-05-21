@@ -67,9 +67,11 @@ const ShopIntroCard: FC<Props> = ({
     }
 
     const followedIds = user?.followedStores.map((store) => store.id);
-    const newFollowedIds = followedIds
-      ? Array.from(new Set([...user.followedStores, id]))
-      : [id];
+
+    const newFollowedIds =
+      followedIds?.length > 0
+        ? Array.from(new Set([...followedIds, id]))
+        : [id];
     try {
       const updatedUser = await updateUser({
         userId: user?.id,
@@ -78,7 +80,7 @@ const ShopIntroCard: FC<Props> = ({
         },
       });
       updateSession({ ...data, user: mapUser((updatedUser as any).data) });
-      enqueueSnackbar("Added to Favorites", { variant: "success" })
+      enqueueSnackbar("Added to Favorites", { variant: "success" });
     } catch (error) {
       console.error(error);
     }
@@ -103,7 +105,7 @@ const ShopIntroCard: FC<Props> = ({
           followedStoreIds: newFollowedIds,
         },
       });
-      enqueueSnackbar("Removed from Favorites", { variant: "success" })
+      enqueueSnackbar("Removed from Favorites", { variant: "success" });
     } catch (error) {
       console.error(error);
     }
