@@ -13,6 +13,7 @@ import useCheckoutService from "hooks/useCheckoutService";
 import { useSnackbar } from "notistack";
 import NewAddressForm from "../create-address-form";
 import EditAddressForm from "../edit-address-form";
+import { Box } from "@mui/material";
 
 // =======================================================
 type Props = {
@@ -105,22 +106,40 @@ const AddressPageView = ({ addressList, totalPages, page }: Props) => {
         />
       ) : null}
       {/* ALL ADDRESS LIST AREA */}
-      {(addresses || addressList).map((address) => (
-        <AddressListItem
-          key={address.id}
-          isDeleting={isDeletingAddress}
-          address={address}
-          handleDelete={handleAddressDelete}
-          handleEdit={handleEditOpenModal}
-        />
-      ))}
+      {addresses || addressList ? (
+        (addresses || addressList).map((address) => (
+          <AddressListItem
+            key={address.id}
+            isDeleting={isDeletingAddress}
+            address={address}
+            handleDelete={handleAddressDelete}
+            handleEdit={handleEditOpenModal}
+          />
+        ))
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "200px",
+            fontWeight: "semibold",
+            fontSize: "18px",
+          }}
+        >
+          There is no addresses !
+        </Box>
+      )}
 
       {/* PAGINATION AREA */}
-      <Pagination
-        count={totalPages || 1}
-        page={page + 1}
-        onChange={(_, page) => handlePage(page)}
-      />
+      {(addresses || addressList) && (
+        <Pagination
+          count={totalPages || 1}
+          page={page + 1}
+          onChange={(_, page) => handlePage(page)}
+        />
+      )}
     </Fragment>
   );
 };

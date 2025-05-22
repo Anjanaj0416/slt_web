@@ -37,7 +37,15 @@ const ShopCard: FC<Partial<Store>> = (props) => {
   return (
     <Card>
       <ContentWrapper img={"/assets/images/banners/cycle.png"}>
-        <H3 fontWeight="600" mb={1}>
+        <H3
+          fontWeight="600"
+          mb={1}
+          sx={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {name}
         </H3>
 

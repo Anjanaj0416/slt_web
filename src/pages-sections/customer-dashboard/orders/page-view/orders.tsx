@@ -9,7 +9,7 @@ import DashboardHeader from "../../dashboard-header";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
 import useListOrders from "../hooks/use-list-orders";
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 // ====================================================
 type Props = { orders: Order1[]; initTotalPages: number };
@@ -26,18 +26,36 @@ const OrdersPageView = ({ orders, initTotalPages }: Props) => {
 
       {/* ORDER LIST AREA */}
       {!isLoading ? (
-        filteredOrders?.map((order) => (
-          <OrderRow order={order} key={order.id} />
-        ))
+        filteredOrders?.length > 0 ? (
+          filteredOrders?.map((order) => (
+            <OrderRow order={order} key={order.id} />
+          ))
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "200px",
+              fontWeight: "semibold",
+              fontSize: "18px",
+            }}
+          >
+            There is no orders !
+          </Box>
+        )
       ) : (
         <CircularProgress />
       )}
 
       {/* ORDERS PAGINATION */}
-      <Pagination
-        count={totalPage || initTotalPages}
-        onChange={handleTablePagination}
-      />
+      {filteredOrders?.length > 0 && (
+        <Pagination
+          count={totalPage || initTotalPages}
+          onChange={handleTablePagination}
+        />
+      )}
     </Fragment>
   );
 };

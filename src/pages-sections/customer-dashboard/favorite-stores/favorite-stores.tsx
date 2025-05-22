@@ -10,6 +10,7 @@ import Pagination from "../pagination";
 import DashboardHeader from "../dashboard-header";
 import Store from "models/Store.model";
 import ShopCard from "pages-sections/shops/shop-card";
+import { Box } from "@mui/material";
 
 // ==================================================================
 type Props = { favoriteStores: Store[] };
@@ -26,17 +27,33 @@ const FavoriteStoresPageView = ({ favoriteStores }: Props) => {
 
       {/* PRODUCT LIST AREA */}
       <Grid container spacing={3}>
-        {filteredFavStores.map((item) => (
-          <Grid item lg={4} sm={6} xs={12} key={item.id}>
-            <ShopCard
-              name={item.name}
-              id={item.id}
-              telephone={item.telephone}
-              address={item.address}
-              logoFilePath={item.logoFilePath}
-            />
-          </Grid>
-        ))}
+        {filteredFavStores?.length > 0 ? (
+          filteredFavStores.map((item) => (
+            <Grid item lg={4} sm={6} xs={12} key={item.id}>
+              <ShopCard
+                name={item.name}
+                id={item.id}
+                telephone={item.telephone}
+                address={item.address}
+                logoFilePath={item.logoFilePath}
+              />
+            </Grid>
+          ))
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "200px",
+              fontWeight: "semibold",
+              fontSize: "18px",
+            }}
+          >
+            There is no favorite stores !
+          </Box>
+        )}
       </Grid>
 
       {/* PAGINATION AREA */}

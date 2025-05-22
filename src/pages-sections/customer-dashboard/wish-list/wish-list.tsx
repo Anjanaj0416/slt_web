@@ -12,6 +12,7 @@ import Pagination from "../pagination";
 import DashboardHeader from "../dashboard-header";
 import { useSession } from "next-auth/react";
 import { User1, UserWishlist } from "models/User.model";
+import Box from "@mui/material/Box";
 
 // ==================================================================
 type Props = { wishlist: UserWishlist };
@@ -37,18 +38,34 @@ const WishListPageView = (props: Props) => {
 
       {/* PRODUCT LIST AREA */}
       <Grid container spacing={3}>
-        {filteredWishlist.products
-          .slice((currentPage - 1) * 6, (currentPage - 1) * 6 + 6)
-          .map((item) => (
-            <Grid item lg={4} sm={6} xs={12} key={item.id}>
-              <ProductCard11
-                handleFavorite={handleFavorite}
-                product={item}
-                rating={5}
-                isUpdating={isUpdating}
-              />
-            </Grid>
-          ))}
+        {filteredWishlist?.products?.length > 0 ? (
+          filteredWishlist.products
+            .slice((currentPage - 1) * 6, (currentPage - 1) * 6 + 6)
+            .map((item) => (
+              <Grid item lg={4} sm={6} xs={12} key={item.id}>
+                <ProductCard11
+                  handleFavorite={handleFavorite}
+                  product={item}
+                  rating={5}
+                  isUpdating={isUpdating}
+                />
+              </Grid>
+            ))
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "200px",
+              fontWeight:"semibold",
+              fontSize: "18px",
+            }}
+          >
+            There is no wishlist items !
+          </Box>
+        )}
       </Grid>
 
       {/* PAGINATION AREA */}
