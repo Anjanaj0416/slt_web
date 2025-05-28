@@ -23,7 +23,7 @@ const SearchResult: FC<Props> = ({ categoryId, results }) => (
             ? categoryId == "*"
               ? `/products/search/${item.name}`
               : `/products/search/${item.name}?categoryId=${categoryId}`
-            : `/shops/${item.id}`
+            : `/shops/${item.id}_${item.name}`
         }
         key={item.id}
       >

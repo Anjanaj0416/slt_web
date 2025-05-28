@@ -74,7 +74,6 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
               </Link>
               {pathSegments.map((segment, index) => {
                 const isLast = index === pathSegments.length - 1;
-                console.log(segment, isLast);
 
                 if (isLast || segment.toLowerCase() === "products") {
                   return (
