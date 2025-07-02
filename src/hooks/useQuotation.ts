@@ -3,7 +3,7 @@ import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useCreateQuotationMutation } from "services/quotation-api";
 
-const useQuotation = (productId: string, email: string, userId?: string) => {
+const useQuotation = (productId: string, userId?: string) => {
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const { enqueueSnackbar } = useSnackbar();
   const [createQuotation, { isLoading: isCreatingQuotation, isSuccess }] =
@@ -11,7 +11,7 @@ const useQuotation = (productId: string, email: string, userId?: string) => {
 
   useEffect(() => {
     if (isSuccess) {
-      enqueueSnackbar(`Quotation Requested. Email will be sent to ${email}`, {
+      enqueueSnackbar("The quotation request has been sent to Tradez", {
         variant: "success",
         anchorOrigin: {
           vertical: "top",
@@ -19,7 +19,7 @@ const useQuotation = (productId: string, email: string, userId?: string) => {
         },
       });
     }
-  }, [enqueueSnackbar, isSuccess, email]);
+  }, [enqueueSnackbar, isSuccess]);
 
   const requestQuota = () => {
     if (!userId) {

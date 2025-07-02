@@ -51,11 +51,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const { enqueueSnackbar } = useSnackbar();
   const { wishlist, setWishlist } = useContext(WishlistContext);
-  const { requestQuota, isCreatingQuotation } = useQuotation(
-    id,
-    user?.email,
-    user?.id
-  );
+  const { requestQuota, isCreatingQuotation } = useQuotation(id, user?.id);
 
   const minPriceVariant =
     variants?.length > 0 &&
