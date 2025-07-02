@@ -73,11 +73,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
   const { data } = useSession();
   const user = data?.user as User1;
   //
-  const { requestQuota, isCreatingQuotation } = useQuotation(
-    id,
-    user?.email,
-    user?.id
-  );
+  const { requestQuota, isCreatingQuotation } = useQuotation(id, user?.id);
   //
   const isQuotationProduct = productType === "QUOTATION";
 
