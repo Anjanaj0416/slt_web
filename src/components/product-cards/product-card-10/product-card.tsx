@@ -13,7 +13,7 @@ import LazyImage from "components/LazyImage";
 import { H4, Paragraph } from "components/Typography";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 // STYLED COMPONENTS
-import { Card, CardMedia, FavoriteButton, StyledIconButton } from "./styles";
+import { Card, CardMedia, FavoriteButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
 import { calculateDiscountPercentage, currency } from "lib";
 // CUSTOM DATA MODEL
@@ -27,7 +27,6 @@ import { useUpdateWishlistMutation } from "services/wishlist-api";
 import { useSnackbar } from "notistack";
 import { WishlistContext } from "contexts/WishlistContext";
 import useQuotation from "hooks/useQuotation";
-import ProductViewDialog2 from "components/products-view/product-view-dialog2";
 import DiscountChip from "../discount-chip";
 
 // ==============================================================

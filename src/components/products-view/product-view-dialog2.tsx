@@ -65,11 +65,7 @@ const ProductViewDialog2: FC<Props> = ({
   const { handleAddToCart, handleRemoveFromCart, cart, isUpdating } =
     useCartService();
 
-  const { requestQuota, isCreatingQuotation } = useQuotation(
-    id,
-    user?.email,
-    user?.id
-  );
+  const { requestQuota, isCreatingQuotation } = useQuotation(id, user?.id);
 
   const carItemIds = cart.cartItems.map((item) => item.productVariant.id);
 

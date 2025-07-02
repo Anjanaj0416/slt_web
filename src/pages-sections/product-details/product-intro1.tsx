@@ -264,7 +264,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const { requestQuota, isCreatingQuotation } = useQuotation(
     product.id,
-    user?.email,
     user?.id
   );
   const modalRef = useRef<ShareModalRef>();
