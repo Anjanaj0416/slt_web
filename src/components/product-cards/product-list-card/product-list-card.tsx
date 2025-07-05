@@ -137,7 +137,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             p={2}
           >
             {/* PRODUCT TITLE / NAME */}
-            <Link href={`/products/${id}`}>
+            <Link href={`/products/${id}_${name}`}>
               <H5 fontWeight="600" my="0.5rem">
                 {name}
               </H5>

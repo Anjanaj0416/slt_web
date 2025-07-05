@@ -572,7 +572,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
                 sx={{ height: 40, marginLeft: 1 }}
                 onClick={() =>
                   modalRef.current.openModal(
-                    `${ENVIRONMENT.APP_URL}/products/${id}`
+                    `${ENVIRONMENT.APP_URL}/products/${id}_${name}`
                   )
                 }
               >
