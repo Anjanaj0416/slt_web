@@ -8,7 +8,7 @@ const ProductDescription = ({ description }: Props) => {
   return (
     <div>
       <H3 mb={2}>Description:</H3>
-      <div>{description}</div>
+      <div dangerouslySetInnerHTML={{ __html: description }}></div>
     </div>
   );
 };
