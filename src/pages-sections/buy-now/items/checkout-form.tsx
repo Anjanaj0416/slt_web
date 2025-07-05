@@ -35,7 +35,7 @@ const CheckoutForm = () => {
   };
   const user = data?.user;
   const handleAddVoucher = async () => {
-    if (voucherCode.length > 14 || voucherCode.length < 7) {
+    if (voucherCode.length !== 6) {
       enqueueSnackbar("Invalid Voucher!", {
         variant: "error",
       });
