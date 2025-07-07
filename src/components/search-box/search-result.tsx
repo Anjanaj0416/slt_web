@@ -53,7 +53,7 @@ const SearchResult: FC<Props> = ({
                   marginRight: "8px",
                   borderRadius: "10px",
                   height: 36,
-                  width: { sm: 36, xs: "100%" },
+                  width: { sm: 36, xs: 32 },
                 }}
               />
               {item.name}
