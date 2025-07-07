@@ -24,19 +24,25 @@ import { signIn } from "next-auth/react";
 // ==============================================================
 interface Props {
   searchInput: ReactElement;
+  dialogOpen: boolean;
+  sidenavOpen: boolean;
+  searchBarOpen: boolean;
+  toggleDialog: () => void;
+  toggleSearchBar: () => void;
+  toggleSidenav: () => void;
 }
 // ==============================================================
 
-const MobileHeader: FC<Props> = ({ searchInput }) => {
+const MobileHeader: FC<Props> = ({
+  searchInput,
+  dialogOpen,
+  sidenavOpen,
+  searchBarOpen,
+  toggleDialog,
+  toggleSearchBar,
+  toggleSidenav,
+}) => {
   const { state } = useCart();
-  const {
-    dialogOpen,
-    sidenavOpen,
-    searchBarOpen,
-    toggleDialog,
-    toggleSearchBar,
-    toggleSidenav,
-  } = useHeader();
 
   const ICON_STYLE = { color: "grey.600", fontSize: 20 };
 

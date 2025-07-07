@@ -52,7 +52,7 @@ const SearchInput = () => {
       />
 
       {/* SHOW SEARCH RESULT LIST */}
-      {resultList.length > 0 ? <SearchResult results={resultList} /> : null}
+      {/* {resultList.length > 0 ? <SearchResult results={resultList} /> : null} */}
     </Box>
   );
 };

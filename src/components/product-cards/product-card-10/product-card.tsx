@@ -66,8 +66,6 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   const { handleAddToCart, isItemInCart, selectedProductId, isLoading } =
     useCartService();
   //
-  const { openModal, toggleDialog } = useProduct(id);
-  //
   const isQuotationProduct = productType === "QUOTATION";
   //
   const isOutOfStock = !isQuotationProduct && minPriceVariant.units <= 0;

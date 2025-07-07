@@ -8,6 +8,7 @@ import { Topbar } from "components/topbar";
 import { Header } from "components/header";
 import { Navbar } from "components/navbar";
 import { SearchInput } from "components/search-box";
+import useHeader from "components/header/use-header";
 
 /**
  *  USED IN:
@@ -19,6 +20,14 @@ const ShopLayout2: FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
   const [isFixed, setIsFixed] = useState(false);
   const toggleIsFixed = useCallback((fixed: boolean) => setIsFixed(fixed), []);
+  const {
+    dialogOpen,
+    sidenavOpen,
+    searchBarOpen,
+    toggleDialog,
+    toggleSearchBar,
+    toggleSidenav,
+  } = useHeader();
 
   // FOR HANDLE TOP BAR AREA
   let TOP_BAR_CONTENT = null;
@@ -45,7 +54,16 @@ const ShopLayout2: FC<PropsWithChildren> = ({ children }) => {
 
       {/* HEADER */}
       <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={70}>
-        <Header isFixed={isFixed} searchInput={<SearchInput />} />
+        <Header
+          isFixed={isFixed}
+          searchInput={<SearchInput />}
+          sidenavOpen={sidenavOpen}
+          dialogOpen={dialogOpen}
+          searchBarOpen={searchBarOpen}
+          toggleSidenav={toggleSidenav}
+          toggleDialog={toggleDialog}
+          toggleSearchBar={toggleSearchBar}
+        />
       </Sticky>
 
       {/* NAVIGATION BAR */}

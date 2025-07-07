@@ -144,8 +144,8 @@ const ProductSearchPageView = ({
             </Paragraph>
           </div>
         )}
-        
-        { (
+
+        {
           <FlexBox
             alignItems="center"
             columnGap={4}
@@ -161,7 +161,7 @@ const ProductSearchPageView = ({
                 select
                 fullWidth
                 size="small"
-                disabled={isLoading || products.length < 1} 
+                disabled={isLoading || products.length < 1}
                 variant="outlined"
                 placeholder="Short by"
                 defaultValue={SORT_OPTIONS[0].value}
@@ -187,7 +187,17 @@ const ProductSearchPageView = ({
               </TextField>
             </FlexBox>
 
-            <FlexBox alignItems="center" my="0.25rem">
+            <FlexBox
+              alignItems="center"
+              my="0.25rem"
+              sx={{
+                display: {
+                  xs: "none", // hidden on mobile
+                  sm: "none", // hidden on small
+                  md: "flex", // visible on md and up
+                },
+              }}
+            >
               <Paragraph color="grey.600" mr={1}>
                 View:
               </Paragraph>
@@ -222,12 +232,12 @@ const ProductSearchPageView = ({
               )} */}
             </FlexBox>
           </FlexBox>
-        )}
+        }
       </Card>
 
       <Grid container spacing={3}>
         {/* PRODUCT FILTER SIDEBAR AREA */}
-        { (
+        {
           <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
             {/* <ProductFilterCard1
               filters={
@@ -253,7 +263,7 @@ const ProductSearchPageView = ({
               setMinPrice={setMinPrice}
             />
           </Grid>
-        )}
+        }
 
         {/* PRODUCT VIEW AREA */}
         <Grid item md={9} xs={12}>
@@ -283,10 +293,10 @@ const ProductSearchPageView = ({
             </FlexBetween>
           )}
           {!searchText && products.length < 1 && !isLoading && (
-          <div style={{ padding: 4 , marginTop:50}}>
-            <H5>There are no products !</H5>
-          </div>
-        )}
+            <div style={{ padding: 4, marginTop: 50 }}>
+              <H5>There are no products !</H5>
+            </div>
+          )}
         </Grid>
       </Grid>
     </Container>

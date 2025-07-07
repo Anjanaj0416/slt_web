@@ -8,6 +8,7 @@ import { Header } from "components/header";
 import { Footer1 } from "components/footer";
 import { SearchInputWithCategory } from "components/search-box";
 import { MobileNavigationBar } from "components/mobile-navigation";
+import useHeader from "components/header/use-header";
 
 /** USED: SALES-1 & SALES-2 PAGES */
 
@@ -30,7 +31,14 @@ type SaleLayoutProps = NoOne | NoTwo;
 
 const SalesLayout: FC<SaleLayoutProps> = (props) => {
   const { children, type = "one", categoryNav } = props;
-
+  const {
+    dialogOpen,
+    sidenavOpen,
+    searchBarOpen,
+    toggleDialog,
+    toggleSearchBar,
+    toggleSidenav,
+  } = useHeader();
   let CONTENT = null;
 
   // FOR SALES 1 PAGE
@@ -55,7 +63,20 @@ const SalesLayout: FC<SaleLayoutProps> = (props) => {
       <Topbar />
 
       {/* HEADER AREA */}
-      <Header searchInput={<SearchInputWithCategory />} />
+      <Header
+        searchInput={
+          <SearchInputWithCategory
+            searchBarOpen={false}
+            toggleSearchBar={toggleSearchBar}
+          />
+        }
+        sidenavOpen={sidenavOpen}
+        dialogOpen={dialogOpen}
+        searchBarOpen={searchBarOpen}
+        toggleSidenav={toggleSidenav}
+        toggleDialog={toggleDialog}
+        toggleSearchBar={toggleSearchBar}
+      />
 
       {/* RENDER MAIN CONTENT AREA */}
       {CONTENT}

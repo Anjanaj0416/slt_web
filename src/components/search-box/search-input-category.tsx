@@ -9,7 +9,11 @@ import useSearch from "./use-search";
 import { SearchOutlinedIcon } from "./styled";
 import { useRouter } from "next/navigation";
 
-const SearchInputWithCategory = () => {
+interface Props {
+  searchBarOpen: boolean;
+  toggleSearchBar: () => void;
+}
+const SearchInputWithCategory = ({ searchBarOpen, toggleSearchBar }: Props) => {
   const router = useRouter();
   const {
     categoryTitle,
@@ -67,7 +71,12 @@ const SearchInputWithCategory = () => {
 
       {/* SHOW SEARCH RESULT LIST */}
       {resultList.length > 0 ? (
-        <SearchResult results={resultList} categoryId={categoryId} />
+        <SearchResult
+          results={resultList}
+          categoryId={categoryId}
+          searchBarOpen={searchBarOpen}
+          toggleSearchBar={toggleSearchBar}
+        />
       ) : null}
     </Box>
   );

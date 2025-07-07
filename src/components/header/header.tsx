@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { FC, Fragment, ReactElement } from "react";
+import { Fragment, ReactElement } from "react";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import clsx from "clsx";
 // LOCAL CUSTOM HOOKS
-import useHeader from "./use-header";
 // GLOBAL CUSTOM COMPONENTS
 import Image from "components/BazaarImage";
 import { FlexBox } from "components/flex-box";
@@ -22,13 +21,28 @@ interface Props {
   isFixed?: boolean;
   className?: string;
   searchInput: ReactElement;
+  sidenavOpen: boolean;
+  dialogOpen: boolean;
+  searchBarOpen: boolean;
+  toggleSidenav: () => void;
+  toggleDialog: () => void;
+  toggleSearchBar: () => void;
 }
 // ==============================================================
 
-const Header: FC<Props> = ({ isFixed, className, searchInput }) => {
+const Header = ({
+  isFixed,
+  className,
+  searchInput,
+  dialogOpen,
+  sidenavOpen,
+  searchBarOpen,
+  toggleDialog,
+  toggleSearchBar,
+  toggleSidenav,
+}: Props) => {
   const theme = useTheme();
   const downMd = useMediaQuery(theme.breakpoints.down(1150));
-  const { dialogOpen, sidenavOpen, toggleDialog, toggleSidenav } = useHeader();
 
   const CONTENT_FOR_LARGE_DEVICE = (
     <Fragment>
@@ -67,7 +81,15 @@ const Header: FC<Props> = ({ isFixed, className, searchInput }) => {
     <HeaderWrapper className={clsx(className)}>
       <StyledContainer>
         {downMd ? (
-          <MobileHeader searchInput={searchInput} />
+          <MobileHeader
+            searchInput={searchInput}
+            dialogOpen={dialogOpen}
+            sidenavOpen={sidenavOpen}
+            searchBarOpen={searchBarOpen}
+            toggleDialog={toggleDialog}
+            toggleSearchBar={toggleSearchBar}
+            toggleSidenav={toggleSidenav}
+          />
         ) : (
           CONTENT_FOR_LARGE_DEVICE
         )}

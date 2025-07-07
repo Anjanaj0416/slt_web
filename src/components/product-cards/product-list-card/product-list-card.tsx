@@ -88,11 +88,16 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
       handleAddToCart(product, minPriceVariant, quantity);
     }
   };
-  // const discountPercent = calculateDiscountAmount(
-  //   discountType,
-  //   minPriceVariant.price,
-  //   discountAmount
-  // );
+
+  const getPrice = () => {
+    if (!basePrice) return "";
+
+    const prices = basePrice?.split("-");
+    if (prices.length == 1) {
+      return currency(prices[0]);
+    }
+    return `${currency(prices[0])} - ${currency(prices[1], 2, "")}`;
+  };
 
   const handleCart = () => handleAddToCart(product, minPriceVariant, 1);
 
@@ -149,7 +154,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             {/* PRODUCT PRICE */}
             {!isQuotationProduct && (
               <Paragraph fontWeight={600} color="primary.main">
-                {currency(basePrice)}
+                {getPrice()}
               </Paragraph>
             )}
 

@@ -19,6 +19,7 @@ import { MobileNavigationBar } from "components/mobile-navigation";
 import { usePathname } from "next/navigation";
 import { Box, Breadcrumbs, Container, Typography } from "@mui/material";
 import Link from "next/link";
+import useHeader from "components/header/use-header";
 
 /**
  *  USED IN:
@@ -34,6 +35,14 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
   const toggleIsFixed = useCallback((fixed: boolean) => setIsFixed(fixed), []);
   const pathname = usePathname();
   const [pathSegments, setPathSegments] = useState<string[]>([]);
+  const {
+    dialogOpen,
+    sidenavOpen,
+    searchBarOpen,
+    toggleDialog,
+    toggleSearchBar,
+    toggleSidenav,
+  } = useHeader();
   useEffect(() => {
     // Get the pathname and split it
     const segments = pathname
@@ -41,7 +50,6 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
       .split("/")
       .filter(Boolean)
       .filter((segment) => segment !== "search");
-    console.log(pathname.includes("search"));
 
     if (segments.length > 1 && segments[0] === "products") {
       segments[1] = pathname.includes("search")
@@ -60,14 +68,37 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
 
       {/* HEADER */}
       <Sticky fixedOn={0} onSticky={toggleIsFixed} scrollDistance={300}>
-        <Header isFixed={isFixed} searchInput={<SearchInputWithCategory />} />
+        <Header
+          isFixed={isFixed}
+          searchInput={
+            <SearchInputWithCategory
+              searchBarOpen={false}
+              toggleSearchBar={toggleSearchBar}
+            />
+          }
+          sidenavOpen={sidenavOpen}
+          dialogOpen={dialogOpen}
+          searchBarOpen={searchBarOpen}
+          toggleSidenav={toggleSidenav}
+          toggleDialog={toggleDialog}
+          toggleSearchBar={toggleSearchBar}
+        />
       </Sticky>
 
       {/* NAVIGATION BAR */}
       <Navbar elevation={0} border={1} />
       <Container sx={{ px: 0 }}>
         {pathSegments.length > 0 && (
-          <Box mt={2}>
+          <Box
+            mt={2}
+            sx={{
+              pl: {
+                xs: 4, // padding-left on extra-small (mobile)
+                sm: 4, // still apply on small
+                md: 0, // remove padding on medium and up
+              },
+            }}
+          >
             <Breadcrumbs aria-label="breadcrumb">
               <Link href="/" style={{ textTransform: "capitalize" }}>
                 Home
