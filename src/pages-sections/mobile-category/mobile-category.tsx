@@ -42,7 +42,6 @@ const MobileCategoryPageView = ({ categories }: Props) => {
   const handleSubClick = (name: string) => {
     setExpandedSub((prev) => (prev === name ? null : name));
   };
-  console.log(selectedCategory);
 
   return (
     <Box p={2}>
