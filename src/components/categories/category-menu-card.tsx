@@ -30,8 +30,8 @@ const Wrapper = styled(Box, {
 }));
 
 const MAX_CATEGORY_MENU_ITEM = 12;
-const MAX_CATEGORY_MEGA_MENU_LEVEL1 = 8;
-const MAX_CATEGORY_MEGA_MENU_LEVEL2 = 6;
+const MAX_CATEGORY_MEGA_MENU_LEVEL1 = 12;
+const MAX_CATEGORY_MEGA_MENU_LEVEL2 = 12;
 
 // ===============================================================
 interface Props {
