@@ -5,7 +5,7 @@ import DeliveryAddress from "./delivery-address";
 
 import { Button, Grid, Link } from "@mui/material";
 import useCheckoutService from "hooks/useCheckoutService";
-import  { POSTAddressResponse } from "models/Address.model";
+import { POSTAddressResponse } from "models/Address.model";
 import { User1 } from "models/User.model";
 import { useSession } from "next-auth/react";
 import { useLazyGetAddressesQuery } from "services/address-api";
@@ -17,7 +17,7 @@ type Props = {
   type: "CART" | "BUY_NOW";
 };
 const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
-  const { push } = useRouter();
+  const { push, back } = useRouter();
   const { enqueueSnackbar } = useSnackbar();
   const session = useSession();
   //
@@ -88,7 +88,7 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
       return;
     }
 
-    push(type==="CART"? "/payment": "/buy-now/payment");
+    push(type === "CART" ? "/payment" : "/buy-now/payment");
   };
   //
   return (
@@ -114,11 +114,10 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
       <Grid container spacing={6}>
         <Grid item sm={6} xs={12}>
           <Button
-            LinkComponent={Link}
             variant="outlined"
             color="primary"
             type="button"
-            href="/cart"
+            onClick={back}
             fullWidth
           >
             Back to {type === "CART" ? "Cart" : "Items"}
