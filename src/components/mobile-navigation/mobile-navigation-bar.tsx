@@ -40,7 +40,7 @@ const MobileNavigationBar = () => {
 
 const list = [
   { title: "Home", Icon: Home, href: "/" },
-  { title: "Category", Icon: CategoryOutlined, href: "/mobile-category-nav" },
+  { title: "Category", Icon: CategoryOutlined, href: "/mobile-categories" },
   { title: "Cart", Icon: ShoppingBagOutlined, href: "/cart" },
   { title: "Account", Icon: User2, href: "/profile" },
 ];

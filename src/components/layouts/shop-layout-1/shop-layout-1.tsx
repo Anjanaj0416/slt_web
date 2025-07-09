@@ -87,50 +87,52 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
 
       {/* NAVIGATION BAR */}
       <Navbar elevation={0} border={1} />
-      <Container sx={{ px: 0 }}>
-        {pathSegments.length > 0 && (
-          <Box
-            mt={2}
-            sx={{
-              pl: {
-                xs: 4, // padding-left on extra-small (mobile)
-                sm: 4, // still apply on small
-                md: 0, // remove padding on medium and up
-              },
-            }}
-          >
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link href="/" style={{ textTransform: "capitalize" }}>
-                Home
-              </Link>
-              {pathSegments.map((segment, index) => {
-                const isLast = index === pathSegments.length - 1;
+      {pathname !== "/mobile-categories" && (
+        <Container sx={{ px: 0 }}>
+          {pathSegments.length > 0 && (
+            <Box
+              mt={2}
+              sx={{
+                pl: {
+                  xs: 4, // padding-left on extra-small (mobile)
+                  sm: 4, // still apply on small
+                  md: 0, // remove padding on medium and up
+                },
+              }}
+            >
+              <Breadcrumbs aria-label="breadcrumb">
+                <Link href="/" style={{ textTransform: "capitalize" }}>
+                  Home
+                </Link>
+                {pathSegments.map((segment, index) => {
+                  const isLast = index === pathSegments.length - 1;
 
-                if (isLast || segment.toLowerCase() === "products") {
+                  if (isLast || segment.toLowerCase() === "products") {
+                    return (
+                      <Typography
+                        key={index}
+                        color="text.primary"
+                        textTransform="capitalize"
+                      >
+                        {segment}
+                      </Typography>
+                    );
+                  }
                   return (
-                    <Typography
+                    <Link
                       key={index}
-                      color="text.primary"
-                      textTransform="capitalize"
+                      href={`/${segment}`}
+                      style={{ textTransform: "capitalize" }}
                     >
                       {segment}
-                    </Typography>
+                    </Link>
                   );
-                }
-                return (
-                  <Link
-                    key={index}
-                    href={`/${segment}`}
-                    style={{ textTransform: "capitalize" }}
-                  >
-                    {segment}
-                  </Link>
-                );
-              })}
-            </Breadcrumbs>
-          </Box>
-        )}
-      </Container>
+                })}
+              </Breadcrumbs>
+            </Box>
+          )}
+        </Container>
+      )}
 
       {/* BODY CONTENT */}
       {children}
