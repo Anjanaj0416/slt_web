@@ -179,11 +179,14 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       setSelectedVariant(selectedVariant);
       setPrice(selectedVariant.price);
       setQuantity(selectedVariant.units);
+      
+      if (availableAttributes.length > 1) {
+        const imageIndex = medias.findIndex(
+          (e) => e.src === selectedVariant.image
+        );
 
-      const imageIndex = medias.findIndex(
-        (e) => e.src === selectedVariant.image
-      );
-      setSelectedImage(imageIndex < 0 ? 0 : imageIndex);
+        setSelectedImage(imageIndex < 0 ? 0 : imageIndex);
+      }
     }
   }, [selectedAttributes]);
 
