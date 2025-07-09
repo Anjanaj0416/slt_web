@@ -18,6 +18,10 @@ const Provider = styled(NotistackProvider)(({ theme }) => ({
   "&.SnackbarItem-variantError .MuiSvgIcon-root": {
     color: theme.palette.error.main,
   },
+  "& .SnackbarContainer-root": {
+    zIndex: "99999 !important", // make sure it's above modals
+    position: "fixed !important",
+  },
 }));
 
 const SnackbarProvider: FC<PropsWithChildren> = ({ children }) => {

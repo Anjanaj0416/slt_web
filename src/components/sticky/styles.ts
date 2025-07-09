@@ -26,7 +26,7 @@ export const StyledBox = styled("div", {
   "& .fixed": {
     left: 0,
     right: 0,
-    zIndex: 1500,
+    zIndex: 10,
     position: "fixed",
     top: `${fixedOn}px`,
     boxShadow: theme.shadows[2],
