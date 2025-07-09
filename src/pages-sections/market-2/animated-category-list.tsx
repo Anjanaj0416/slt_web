@@ -76,7 +76,7 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
         ))}
 
         {/* ANIMATED BANNER AREA */}
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <AdWrapper alignItems="center">
             <AdTitle1>Black friday sale!</AdTitle1>
 
@@ -116,7 +116,7 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
               <WhiteButton>Shop Now</WhiteButton>
             </Box>
           </AdWrapper>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Container>
   );
