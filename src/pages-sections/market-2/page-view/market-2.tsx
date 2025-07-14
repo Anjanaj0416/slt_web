@@ -32,7 +32,9 @@ const MarketTwoPageView = async () => {
       mainCarouselData,
       topBanners,
     ] = await Promise.all([
-      cachedRequest(PRODUCT_API.GET_PRODUCTS, { query: "size=5" }),
+      cachedRequest(PRODUCT_API.GET_PRODUCTS, {
+        query: "size=5&isDiscount=true",
+      }),
       cachedRequest(CATEGORY_API.GET_CATEGORIES, {
         query: "size=10&productsCountMoreThan=3",
       }),
@@ -72,7 +74,7 @@ const MarketTwoPageView = async () => {
           <AnimatedCategoryList categories={categories?.data} />
 
           {/* DEALS OF THE DAY AND OFFER BANNERS */}
-          <Section4 products={products?.data} />
+          {products?.data?.length > 4 && <Section4 products={products?.data} />}
 
           {/* TOP OFFER BANNERS */}
           {threeBanners?.data.length > 2 && (
