@@ -32,16 +32,18 @@ const useListOrders = (data: Order1[]) => {
         setTotalPage(data?.totalPages);
 
         if (data?.data) {
-          const filteredOrdersArray: Order1[] = data?.data.map((order: Order1) => ({
-            id: order.id,
-            note: order.note,
-            shippingAddress: order.shippingAddress,
-            billingAddress: order.billingAddress,
-            payments: order.payments,
-            packages: order.packages,
-            status: order.status,
-            createdAt: order.createdAt,
-          }));
+          const filteredOrdersArray: Order1[] = data?.data.map(
+            (order: Order1) => ({
+              id: order.id,
+              note: order.note,
+              shippingAddress: order.shippingAddress,
+              billingAddress: order.billingAddress,
+              payments: order.payments,
+              packages: order.packages,
+              status: order.status,
+              createdAt: order.createdAt,
+            })
+          );
           setFilteredOrders(filteredOrdersArray);
         }
       };
