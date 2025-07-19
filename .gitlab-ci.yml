@@ -19,8 +19,9 @@ build_dev:
   before_script:
   # Fetch values from Parameter Store
   - echo "Logging in to ECR"
-  - amazon-linux-extras install docker
-  - amazon-linux-extras install epel
+  - yum install -y docker
+  - service docker start
+  - yum install -y epel-release
   - yum install -y openssl
   - echo "Envs injection started --"
   # Fetch values from Parameter Store
