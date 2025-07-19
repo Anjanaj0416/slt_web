@@ -19,6 +19,7 @@ build_dev:
   before_script:
   # Fetch values from Parameter Store
   - echo "Logging in to ECR"
+  - yum install -y docker
   - yum install -y openssl
   - echo "Envs injection started --"
   # Fetch values from Parameter Store
