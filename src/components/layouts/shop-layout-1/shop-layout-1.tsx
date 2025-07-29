@@ -59,6 +59,10 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
     if (segments.length > 1 && segments[0] === "shops") {
       segments[1] = decodeURIComponent(segments[1].split("_")?.[1]);
     }
+    if (segments.length > 1 && segments[0] === "orders") {
+      const orderNumber = decodeURIComponent(segments[1].split("_")?.[1]);
+      segments[1] = String(orderNumber)?.padStart(8, "0");
+    }
     setPathSegments(segments);
   }, [pathname]);
   return (

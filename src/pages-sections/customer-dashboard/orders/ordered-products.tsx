@@ -23,9 +23,9 @@ type Props = { order: Order1 };
 const OrderedProducts: FC<Props> = ({ order }) => {
   const [reviewProductId, setReviewProductId] = useState<string>();
 
-  const { id, createdAt, packages } = order || {};
+  const { orderNumber, createdAt, packages } = order || {};
   const handleClose = () => setReviewProductId(null);
-  const handleReview = (productId:string) => {
+  const handleReview = (productId: string) => {
     setReviewProductId(productId);
   };
   return (
@@ -36,7 +36,7 @@ const OrderedProducts: FC<Props> = ({ order }) => {
         handleClose={handleClose}
       />
       <FlexBetween px={3} py={2} flexWrap="wrap" bgcolor="grey.200">
-        <Item title="Order ID:" value={id} />
+        <Item title="Order ID:" value={String(orderNumber)?.padStart(8, "0")} />
         <Item
           title="Placed on:"
           value={format(new Date(createdAt), "dd MMM, yyyy")}
@@ -66,7 +66,7 @@ const OrderedProducts: FC<Props> = ({ order }) => {
               >{`Package ID: ${pkg.id}`}</Typography>
               {order.status === "SUCCESS" && (
                 <Box paddingBottom={1}>
-                  <OrderProgress  status={pkg.status} />
+                  <OrderProgress status={pkg.status} />
                 </Box>
               )}
               {pkg.packageItems.map((item, ind) => buildProductList(ind, item))}
@@ -108,7 +108,7 @@ const OrderedProducts: FC<Props> = ({ order }) => {
 
         <Button
           disabled={item.status !== "DELIVERED"}
-          onClick={()=>handleReview(item.productId)}
+          onClick={() => handleReview(item.productId)}
           variant="text"
           color="primary"
         >

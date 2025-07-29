@@ -17,10 +17,15 @@ export default async function OrderDetails({
   params: { id: string };
 }) {
   try {
+    const idAndName = params?.id?.split("_");
+    if (idAndName?.length < 2) {
+      notFound();
+    }
+    const orderId = idAndName?.[0];
     const { user } = await auth();
     const order = await cachedRequest(API.GET_USER_ORDER, {
       userId: user?.id,
-      orderId: params.id,
+      orderId,
     });
     return <OrderDetailsPageView order={order} />;
   } catch (error) {

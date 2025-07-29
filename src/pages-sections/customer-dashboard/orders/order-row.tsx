@@ -64,9 +64,9 @@ const OrderRow: FC<Props> = ({ order }) => {
   const orderStatus = getOrderStatus();
 
   return (
-    <Link href={`/orders/${order.id}`}>
+    <Link href={`/orders/${order.id}_${order.orderNumber}`}>
       <TableRow sx={{ gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr" }}>
-        <H5 ellipsis>#{order.id.substring(0, 18)}</H5>
+        <H5 ellipsis>{String(order?.orderNumber)?.padStart(8, "0")}</H5>
 
         <Box textAlign="center">
           <Chip
