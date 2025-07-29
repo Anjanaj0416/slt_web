@@ -41,7 +41,6 @@ const ContactUsPageView: React.FC = () => {
     phone: "",
     description: "",
   };
-  console.log(isCreating);
 
   const {
     handleChange,
