@@ -56,7 +56,7 @@ const PaymentForm = ({ type }: Props) => {
         setItems([]);
       }
 
-      push(`/orders/${data.id}`);
+      push(`/orders/${data.id}_${data.orderNumber}`);
     }
   }, [isCreatingOrder, isSuccess]);
 
