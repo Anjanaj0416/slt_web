@@ -34,7 +34,7 @@ const UserInfo: FC<Props> = ({ user }) => {
     >
       <TableRowItem title="First Name" value={user?.firstName} />
       <TableRowItem title="Last Name" value={user?.lastName} />
-      <TableRowItem title="Email" value={user?.email?.toLocaleLowerCase()} />
+      <TableRowEmail value={user?.email?.toLocaleLowerCase()} />
       <TableRowItem title="Phone" value={user?.phone || "-"} />
       <TableRowItem
         title="Birth date"
@@ -56,6 +56,18 @@ function TableRowItem({ title, value }: { title: string; value: string }) {
       </Small>
 
       <Span textTransform="capitalize">{value}</Span>
+    </FlexBox>
+  );
+}
+
+function TableRowEmail({ value }: { value: string }) {
+  return (
+    <FlexBox flexDirection="column" p={1}>
+      <Small color="grey.600" mb={0.5} textTransform="capitalize">
+        Email
+      </Small>
+
+      <Span>{value}</Span>
     </FlexBox>
   );
 }
