@@ -55,20 +55,24 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
   };
   //
   useEffect(() => {
-    setBillingAddresses(
-      filterAddressesByType(
-        addressesData?.data || address,
-        "BILLING",
-        handleSetSelectedBillingAddressId
-      )
+    const billing = filterAddressesByType(
+      addressesData?.data || address,
+      "BILLING",
+      handleSetSelectedBillingAddressId
     );
-    setShippingAddresses(
-      filterAddressesByType(
-        addressesData?.data || address,
-        "SHIPPING",
-        handleSetSelectedShippingAddressId
-      )
+    const shipping = filterAddressesByType(
+      addressesData?.data || address,
+      "SHIPPING",
+      handleSetSelectedShippingAddressId
     );
+    setBillingAddresses(billing);
+    setShippingAddresses(shipping);
+    if (shipping?.length === 1) {
+      handleSetSelectedShippingAddressId(shipping[0].id);
+    }
+    if (billing?.length === 1) {
+      handleSetSelectedBillingAddressId(billing[0].id);
+    }
   }, [address, addressesData]);
 
   //

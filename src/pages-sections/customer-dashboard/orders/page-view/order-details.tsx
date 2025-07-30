@@ -59,7 +59,7 @@ const OrderDetailsPageView = ({ order }: Props) => {
           horizontal: "right",
         },
       });
-      router.push("/orders");
+      window.location.href = window.location.origin + "/orders";
     } catch (e) {}
   };
   const handleReOrder = () => {
