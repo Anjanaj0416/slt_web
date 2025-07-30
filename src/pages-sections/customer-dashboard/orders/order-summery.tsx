@@ -25,8 +25,6 @@ function ListItem({ title, value }: { title: string; value: string }) {
 }
 
 const OrderSummery: FC<Props> = ({ order }) => {
-  console.log(order);
-
   const { totalDiscount, totalPrice, totalShippingCost, subTotal } =
     calculateOrderPriceSummary(order);
   return (

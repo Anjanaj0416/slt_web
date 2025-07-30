@@ -34,7 +34,7 @@ const UserInfo: FC<Props> = ({ user }) => {
     >
       <TableRowItem title="First Name" value={user?.firstName} />
       <TableRowItem title="Last Name" value={user?.lastName} />
-      <TableRowItem title="Email" value={user?.email} />
+      <TableRowItem title="Email" value={user?.email?.toLocaleLowerCase()} />
       <TableRowItem title="Phone" value={user?.phone || "-"} />
       <TableRowItem
         title="Birth date"

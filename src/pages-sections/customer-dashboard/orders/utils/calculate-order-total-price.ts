@@ -5,7 +5,6 @@ export const calculateOrderPriceSummary = (order: Order1) => {
   let totalDiscount = 0;
   let totalShippingCost = 0;
   let subTotal = 0;
-//console.log(order);
 
   for (const pkg of order.packages) {
     totalShippingCost += pkg.shippingCost;
