@@ -19,7 +19,9 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 import useCart from "hooks/useCart";
 // LOCAL CUSTOM HOOK
 import useHeader from "./use-header";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { User1 } from "models/User.model";
+import { AccountPopover } from "components/layouts/customer-dashboard";
 
 // ==============================================================
 interface Props {
@@ -43,7 +45,8 @@ const MobileHeader: FC<Props> = ({
   toggleSidenav,
 }) => {
   const { state } = useCart();
-
+  const session = useSession();
+  const user = session?.data?.user as User1;
   const ICON_STYLE = { color: "grey.600", fontSize: 20 };
 
   return (
@@ -68,18 +71,23 @@ const MobileHeader: FC<Props> = ({
           <Box component={IconButton} onClick={toggleSearchBar}>
             <Icon.Search sx={ICON_STYLE} />
           </Box>
-
-          <Box
-            component={IconButton}
-            onClick={() => void signIn("keycloak", { callbackUrl: "/orders" })}
-          >
-            <Icon.User sx={ICON_STYLE} />
-          </Box>
-
           <Box component={IconButton} onClick={toggleSidenav}>
             <Badge badgeContent={state.cart.length} color="primary">
               <Icon.CartBag sx={ICON_STYLE} />
             </Badge>
+          </Box>
+          <Box component={IconButton}>
+            {user ? (
+              <AccountPopover isMobile={true} />
+            ) : (
+              <IconButton
+                onClick={() =>
+                  void signIn("keycloak", { callbackUrl: "/orders" })
+                }
+              >
+                <Icon.User sx={ICON_STYLE} />
+              </IconButton>
+            )}
           </Box>
         </FlexBox>
       </FlexBetween>

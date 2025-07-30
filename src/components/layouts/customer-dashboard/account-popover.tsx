@@ -13,12 +13,10 @@ import { User1 } from "models/User.model";
 import ENVIRONMENT from "config/environment";
 
 // STYLED COMPONENT
-const Divider = styled("div")(({ theme }) => ({
-  margin: "0.5rem 0",
-  border: `1px dashed ${theme.palette.grey[200]}`,
-}));
-
-const AccountPopover = () => {
+interface Props {
+  isMobile?: boolean;
+}
+const AccountPopover = ({ isMobile = false }: Props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const { data: session } = useSession();
@@ -36,7 +34,10 @@ const AccountPopover = () => {
         aria-controls={open ? "account-menu" : undefined}
       >
         <Avatar
-          sx={{ textTransform: "capitalize" }}
+          sx={{
+            textTransform: "capitalize",
+            ...(isMobile ? { width: 30, height: 30 } : {}),
+          }}
           alt={(session?.user as User1)?.firstName}
           src={`${ENVIRONMENT.S3_BUCKET_URL}/${(session?.user as User1)
             ?.profilePictureUrl}`}
