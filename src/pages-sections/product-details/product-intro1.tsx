@@ -62,13 +62,15 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>();
   const [price, setPrice] = useState<number>();
   const [quantity, setQuantity] = useState<number>();
+  const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
   const [mappedAttributes, setMappedAttributes] = useState<MappedAttribute[]>();
   const medias = [
     ...videos.map((video) => ({ src: video, type: "video" })),
     ...images.map((image) => ({ src: image, type: "image" })),
   ];
   useEffect(() => {
-    setMappedAttributes(mapAttributes(variants));
+    const availableAttributes = mapAttributes(variants);
+    setMappedAttributes(availableAttributes);
     if (productType === "DIRECT_BUYING") {
       const maxStockVariant = variants.reduce((maxVariant, currentVariant) => {
         return currentVariant.units > maxVariant.units
@@ -80,6 +82,9 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     if (variants.length === 1) {
       setSelectedVariant(variants[0]);
       setPrice(variants[0].price);
+    }
+    if (availableAttributes?.length === 1) {
+      setSelectedAttributes(availableAttributes);
     }
   }, []);
 
@@ -179,7 +184,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       setSelectedVariant(selectedVariant);
       setPrice(selectedVariant.price);
       setQuantity(selectedVariant.units);
-      
+
       if (availableAttributes.length > 1) {
         const imageIndex = medias.findIndex(
           (e) => e.src === selectedVariant.image
@@ -263,7 +268,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   const { handleAddToItem } = useBuyNowItemService();
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
 
-  const carItemIds = cart.cartItems.map((item) => item.productVariant.id);
   const [selectedImage, setSelectedImage] = useState(0);
   const { requestQuota, isCreatingQuotation } = useQuotation(
     product.id,
@@ -275,7 +279,8 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   //
   const isQuotationProduct = productType === "QUOTATION";
   //
-
+  console.log(selectedVariant);
+  console.log(selectedAttributes);
   // HANDLE CHANGE TYPE AND OPTIONS
   const handleChangeVariant = (name: string, value: string) => () => {
     setSelectedAttributes((state) => {
@@ -344,7 +349,9 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       openUnAuthenticatedModal(true);
       return;
     }
-    handleAddToItem([{ product, productVariant: selectedVariant, units: 1 }]);
+    handleAddToItem([
+      { product, productVariant: selectedVariant, units: selectedQuantity },
+    ]);
   };
   // HANDLE REQUEST QUOTE
   const selectedUnits =
@@ -387,7 +394,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
             )}
           </FlexBox>
 
-          {medias.length > 0 && (
+          {medias?.length > 0 && (
             <FlexBox overflow="auto">
               {medias.map((media, ind) => (
                 <FlexRowCenter
@@ -447,12 +454,12 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
 
           {/* PRODUCT VARIANTS */}
           {mappedAttributes?.map((variant) => (
-            <Box key={variant.id} mb={2}>
+            <Box key={variant?.id} mb={2}>
               <H6 sx={{ textTransform: "capitalize" }} mb={1}>
                 {variant.title}
               </H6>
 
-              {variant.values.map((value, index) => (
+              {variant?.values?.map((value, index) => (
                 <Chip
                   key={index}
                   label={value.value}
@@ -514,50 +521,51 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
           )}
 
           {/* ADD TO CART BUTTON */}
+          <FlexBox mb={2}>
+            <Button
+              disabled={selectedQuantity < 2}
+              size="small"
+              sx={{ p: 1 }}
+              color="primary"
+              variant="outlined"
+              onClick={() =>
+                setSelectedQuantity((prvQuantity) => prvQuantity - 1)
+              }
+            >
+              <Remove fontSize="small" />
+            </Button>
+
+            <H3 fontWeight="600" mx={2.5}>
+              {selectedQuantity}
+            </H3>
+
+            <Button
+              disabled={!selectedVariant?.id || quantity <= selectedQuantity}
+              size="small"
+              sx={{ p: 1 }}
+              color="primary"
+              variant="outlined"
+              onClick={() =>
+                setSelectedQuantity((prvQuantity) => prvQuantity + 1)
+              }
+            >
+              <Add fontSize="small" />
+            </Button>
+          </FlexBox>
           <FlexBox alignItems="center" sx={{ mb: 4.5 }}>
-            {!carItemIds?.includes(selectedVariant?.id) ? (
-              <LoadingButton
-                color="primary"
-                disabled={!isQuotationProduct && quantity < 1}
-                loading={isButtonLoading || isCreatingQuotation}
-                onClick={() =>
-                  isQuotationProduct
-                    ? requestQuota()
-                    : handleCartAmountChange(1)
-                }
-                sx={{ px: "1.75rem", height: 40, width: 140, border: 1 }}
-              >
-                {isQuotationProduct ? "Get Quote" : "Add to Cart"}
-              </LoadingButton>
-            ) : (
-              <>
-                <Button
-                  disabled={isButtonLoading || quantity < 1}
-                  size="small"
-                  sx={{ p: 1 }}
-                  color="primary"
-                  variant="outlined"
-                  onClick={() => handleCartAmountChange(-1)}
-                >
-                  <Remove fontSize="small" />
-                </Button>
-
-                <H3 fontWeight="600" mx={2.5}>
-                  {selectedUnits}
-                </H3>
-
-                <Button
-                  disabled={isButtonLoading || quantity < 1}
-                  size="small"
-                  sx={{ p: 1 }}
-                  color="primary"
-                  variant="outlined"
-                  onClick={() => handleCartAmountChange(1)}
-                >
-                  <Add fontSize="small" />
-                </Button>
-              </>
-            )}
+            <LoadingButton
+              color="primary"
+              disabled={!isQuotationProduct && quantity < 1}
+              loading={isButtonLoading || isCreatingQuotation}
+              onClick={() =>
+                isQuotationProduct
+                  ? requestQuota()
+                  : handleCartAmountChange(selectedQuantity)
+              }
+              sx={{ px: "1.75rem", height: 40, width: 140, border: 1 }}
+            >
+              {isQuotationProduct ? "Get Quote" : "Add to Cart"}
+            </LoadingButton>
 
             {!isQuotationProduct && (
               <Button

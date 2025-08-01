@@ -97,7 +97,7 @@ const CartItemCard: FC<CartItem> = ({
             sx={{ p: "5px" }}
             variant="outlined"
             onClick={() => handleUpdateQty(productVariant, 1)}
-            disabled={units >= productVariant.units}
+            disabled={units >= productVariant?.units}
           >
             <Add fontSize="small" />
           </Button>
