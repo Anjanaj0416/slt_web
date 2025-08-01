@@ -37,7 +37,7 @@ type Props = {
   categories: Category1[];
   isLoading: boolean;
   brands: string[];
-  setCategoryId: (id: string) => void;
+  setSelectedCategoryId: Dispatch<React.SetStateAction<string>>;
   setBrands: Dispatch<React.SetStateAction<string[]>>;
   setPage: (page: number) => void;
   setMinPrice: (page: number) => void;
@@ -49,7 +49,7 @@ const ProductFilterCard = ({
   categories,
   brands,
   isLoading,
-  setCategoryId,
+  setSelectedCategoryId,
   setPage,
   setBrands,
   setMaxPrice,
@@ -60,11 +60,7 @@ const ProductFilterCard = ({
   const maxPriceRef = useRef<HTMLInputElement>(null);
   const handleCategoryClick = (id: string) => {
     setPage(0);
-    if (id === categoryId) {
-      setCategoryId(null);
-    } else {
-      setCategoryId(id);
-    }
+    setSelectedCategoryId(id);
   };
   const handleBrandClick = (event: BaseSyntheticEvent, brand: string) => {
     setPage(0);

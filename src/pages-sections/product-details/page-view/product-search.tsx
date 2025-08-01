@@ -13,7 +13,6 @@ import { H5, Paragraph, Span } from "components/Typography";
 import ProductsListView from "components/products-view/products-list-view";
 import { Product1 } from "models/Product.model";
 import Category1 from "models/Category.model";
-import ProductFilterCard1 from "../product-filter-card-1";
 import ProductsGridView1 from "components/products-view/products-grid-view-1";
 import { Apps, ViewList } from "@mui/icons-material";
 import useListProducts from "components/products-view/hook/use-list-products";
@@ -55,12 +54,11 @@ const ProductSearchPageView = ({
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(0);
   const [sort, setSort] = useState<string>();
-
   const { isLoading, filteredProducts, setPage, page, totalPage } =
     useListProducts(
       products,
       searchText,
-      categoryId,
+      selectedCategoryId,
       minPrice,
       maxPrice,
       brands,
@@ -253,7 +251,7 @@ const ProductSearchPageView = ({
             /> */}
             <ProductFilterCard
               categoryId={selectedCategoryId}
-              setCategoryId={setSelectedCategoryId}
+              setSelectedCategoryId={setSelectedCategoryId}
               categories={parentCategories}
               setPage={setPage}
               setBrands={setBrands}
@@ -279,11 +277,7 @@ const ProductSearchPageView = ({
             />
           )}
           {filteredProducts.length > 1 && !isLoading && (
-            <FlexBetween flexWrap="wrap" mt={4}>
-              <Span color="grey.600">{`Showing ${page ? page * 9 + 1 : 1}-${
-                page ? (page + 1 === totalPage ? totalResult : page * 9 + 9) : 9
-              } of ${totalResult} Products`}</Span>
-
+            <FlexBetween justifyContent="end" flexWrap="wrap" mt={4}>
               <Pagination
                 count={totalPage}
                 variant="outlined"
