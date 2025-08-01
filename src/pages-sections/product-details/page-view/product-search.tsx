@@ -48,7 +48,7 @@ const ProductSearchPageView = ({
   const [view, setView] = useState("grid");
   const toggleView = useCallback((v: string) => () => setView(v), []);
   const [totalResult, setTotalResult] = useState(totalResults);
-  const [selectedCategoryId, setSelectedCategoryId] =
+  const [selectedCategoryId, setCategoryId] =
     useState<string>(categoryId);
   const [brands, setBrands] = useState<string[]>();
   const [minPrice, setMinPrice] = useState<number>(0);
@@ -251,7 +251,7 @@ const ProductSearchPageView = ({
             /> */}
             <ProductFilterCard
               categoryId={selectedCategoryId}
-              setSelectedCategoryId={setSelectedCategoryId}
+              setCategoryId={setCategoryId}
               categories={parentCategories}
               setPage={setPage}
               setBrands={setBrands}
