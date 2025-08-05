@@ -30,7 +30,7 @@ type Props = {
 };
 const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
   const [products, setProducts] = useState<Product1[]>([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [fetchProducts, { isFetching }] = useLazyListProductsQuery();
   const loaderRef = useRef<HTMLDivElement | null>(null);
