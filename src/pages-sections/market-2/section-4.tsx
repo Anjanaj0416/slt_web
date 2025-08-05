@@ -1,15 +1,14 @@
 "use client";
 
 import { FC } from "react";
-import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { H3 } from "components/Typography";
-import { NavLink3 } from "components/nav-link";
 import { Carousel } from "components/carousel";
 import { FlexBetween } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
 // CUSTOM DATA MODEL
 import { Product1 } from "models/Product.model";
+import { Box } from "@mui/material";
 
 // ======================================================================
 type Props = { products: Product1[] };
@@ -24,7 +23,7 @@ const Section4: FC<Props> = ({ products }) => {
   ];
 
   return (
-    <Container sx={{ py: 8 }}>
+    <Box sx={{ pb: 6, pt:-2 }}>
       <FlexBetween mb={3}>
         <H3>Deals Of The Day</H3>
         {/* <NavLink3 text="More Products" href="/" hoverColor="dark.main" /> */}
@@ -39,7 +38,7 @@ const Section4: FC<Props> = ({ products }) => {
           <ProductCard10 product={product} key={product.id} />
         ))}
       </Carousel>
-    </Container>
+    </Box>
   );
 };
 

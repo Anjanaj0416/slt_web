@@ -9,7 +9,7 @@ import { keyframes, styled } from "@mui/material/styles";
 import { FlexBox } from "components/flex-box";
 import WhiteButton from "components/WhiteButton";
 import { CategoryCard1 } from "components/category-cards";
-import { H3, Paragraph, Span } from "components/Typography";
+import { H2, H3, Paragraph, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Category1 from "models/Category.model";
 
@@ -66,59 +66,37 @@ type Props = { categories: Category1[] };
 
 const AnimatedCategoryList: FC<Props> = ({ categories }) => {
   return (
-    <Container sx={{ mt: 8 }}>
-      <Grid container spacing={3}>
+    <Box sx={{ mt: { xs: 0, md: 6 } }}>
+      <H3>Categories</H3>
+      <Box
+        width="100%"
+        height={100}
+        gap={2}
+        sx={{ display: { md: "none", xs: "flex" }, mt: 1 }}
+      >
+        {categories
+          .slice(0, 4)
+          ?.map((item) => (
+            <CategoryCard1
+              key={item.id}
+              image={item.imageUrl}
+              title={item.name}
+            />
+          ))}
+      </Box>
+      <Grid
+        container
+        spacing={3}
+        sx={{ display: { md: "flex", xs: "none" }, mt: 0.2 }}
+      >
         {/* CATEGORY LIST AREA */}
         {categories?.map((item) => (
           <Grid item lg={2} md={3} sm={4} xs={6} key={item.id}>
             <CategoryCard1 image={item.imageUrl} title={item.name} />
           </Grid>
         ))}
-
-        {/* ANIMATED BANNER AREA */}
-        {/* <Grid item xs={12}>
-          <AdWrapper alignItems="center">
-            <AdTitle1>Black friday sale!</AdTitle1>
-
-            <Paragraph
-              fontSize={28}
-              sx={{
-                flex: 1,
-                zIndex: 5,
-                overflow: "hidden",
-                whiteSpace: "nowrap",
-                textOverflow: "hidden",
-              }}
-            >
-              <Span
-                sx={{
-                  letterSpacing: 1.3,
-                  fontStyle: "italic",
-                  position: "relative",
-                  whiteSpace: "nowrap",
-                  textOverflow: "hidden",
-                  textTransform: "uppercase",
-                  animation: `${slideX} 30s infinite linear 1s`,
-                }}
-              >
-                Pay only for{" "}
-                <Span
-                  fontWeight={700}
-                  textTransform="uppercase"
-                  sx={{ textOverflow: "hidden", whiteSpace: "nowrap" }}
-                >
-                  your loving electronics
-                </Span>
-              </Span>
-            </Paragraph>
-
-            <Box sx={{ padding: 3, flexShrink: 0, zIndex: 5 }}>
-              <WhiteButton>Shop Now</WhiteButton>
-            </Box>
-          </AdWrapper>
-        </Grid> */}
       </Grid>
-    </Container>
+    </Box>
   );
 };
 

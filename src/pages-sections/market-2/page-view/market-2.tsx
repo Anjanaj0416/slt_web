@@ -2,12 +2,9 @@ import Box from "@mui/material/Box";
 import { cache, Fragment } from "react";
 //LOCAL CUSTOM COMPONENTS
 import AnimatedCategoryList from "../animated-category-list";
-import CategoryBasedProducts from "../category-based-products";
-import FullBanner from "../full-banner";
-import HalfBanner from "../half-banner";
+import AllProducts from "../allproducts";
 import Section1 from "../section-1";
 import Section4 from "../section-4";
-import SelectedProducts from "../selected-products";
 import ThreeBanner from "../three-banner";
 // API FUNCTIONS
 import PRODUCT_API from "constants/products";
@@ -24,7 +21,6 @@ const MarketTwoPageView = async () => {
   try {
     const [
       products,
-      mainCategories,
       categories,
       fullBanners,
       halfBanners,
@@ -34,9 +30,6 @@ const MarketTwoPageView = async () => {
     ] = await Promise.all([
       cachedRequest(PRODUCT_API.GET_PRODUCTS, {
         query: "size=5&isDiscount=true",
-      }),
-      cachedRequest(CATEGORY_API.GET_CATEGORIES, {
-        query: "size=10&productsCountMoreThan=3",
       }),
       cachedRequest(CATEGORY_API.GET_CATEGORIES, {
         query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
@@ -60,7 +53,13 @@ const MarketTwoPageView = async () => {
 
     return (
       <Fragment>
-        <Box bgcolor="#F6F6F6" px={16}>
+        <Box
+          bgcolor="#F6F6F6"
+          sx={{
+            px: { xs: 2, md: 16 },
+            pb: 4,
+          }}
+        >
           {/* HERO SLIDER AND GRID */}
           <Section1
             carouselData={mainCarouselData?.data}
@@ -82,7 +81,7 @@ const MarketTwoPageView = async () => {
           )}
 
           {/* CATEGORY BASED PRODUCTS */}
-          {mainCategories.data?.slice(0, 5).map(async (category, index) => (
+          {/* {mainCategories.data?.slice(0, 5).map(async (category, index) => (
             <Fragment key={category.id}>
               <CategoryBasedProducts data={category} />
               {index % 2 === 0 ? (
@@ -93,10 +92,13 @@ const MarketTwoPageView = async () => {
                 />
               )}
             </Fragment>
-          ))}
-
+          ))} */}
+          <AllProducts
+            fullBanners={fullBanners?.data ?? []}
+            halfBanners={halfBanners?.data ?? []}
+          />
           {/* SELECTED PRODUCTS */}
-          <SelectedProducts />
+          {/* <SelectedProducts /> */}
         </Box>
 
         {/* POPUP NEWSLETTER FORM */}

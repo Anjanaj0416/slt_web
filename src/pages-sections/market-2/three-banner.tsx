@@ -1,7 +1,6 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
 // LOCAL CUSTOM COMPONENT
 import BannerCard from "./banner-card";
 // GLOBAL CUSTOM COMPONENTS
@@ -9,6 +8,7 @@ import { NavLink3 } from "components/nav-link";
 import { FC } from "react";
 import Banner from "models/Banner.model";
 import { ENVIRONMENT } from "config";
+import { Box } from "@mui/material";
 
 // ======================================================================
 type Props = { data: Banner[] };
@@ -16,7 +16,7 @@ type Props = { data: Banner[] };
 
 const ThreeBanner: FC<Props> = ({ data }) => {
   return (
-    <Container sx={{ pb: 8 }}>
+    <Box sx={{ pb: 4 }}>
       <Grid container spacing={3}>
         {/* NEW ARRIVALS */}
         <Grid item md={4} xs={12}>
@@ -54,7 +54,7 @@ const ThreeBanner: FC<Props> = ({ data }) => {
           </BannerCard>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 

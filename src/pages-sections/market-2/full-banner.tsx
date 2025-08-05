@@ -1,12 +1,12 @@
 "use client";
 
-import Container from "@mui/material/Container";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 import WhiteButton from "components/WhiteButton";
 import Banner from "models/Banner.model";
 import { FC } from "react";
 import { ENVIRONMENT } from "config";
+import { Box } from "@mui/material";
 
 // STYLED COMPONENT
 const BannerWrapper = styled("div")<{ img: string }>(({ theme, img }) => ({
@@ -50,11 +50,11 @@ type Props = { data: Banner };
 
 const FullBanner: FC<Props> = ({ data }) => {
   return (
-    <Container sx={{ my: 8 }}>
+    <Box sx={{ my: 2 }} width={"100%"} height={"100%"}>
       <BannerWrapper img={data?.imageUrl}>
         <WhiteButton size="large">Discover Now</WhiteButton>
       </BannerWrapper>
-    </Container>
+    </Box>
   );
 };
 

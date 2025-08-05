@@ -141,7 +141,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
 
   //
   return (
-    <Card>
+    <Card sx={{ minWidth: { xs: 100, md: 280 }, maxWidth: { xs: 170 } }}>
       <CardMedia>
         <DiscountChip
           discount={calculateDiscountPercentage(

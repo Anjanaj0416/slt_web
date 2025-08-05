@@ -30,6 +30,8 @@ type Props = { data: Banner[] };
 // ======================================================================
 
 const HalfBanner: FC<Props> = ({ data }) => {
+  console.log(data);
+  
   return (
     //TODO: Fix banner height
     <Container sx={{ my: 8 }}>
