@@ -1,6 +1,4 @@
 import { FC } from "react";
-import Link from "next/link";
-import Button from "@mui/material/Button";
 import styled from "@mui/material/styles/styled";
 // GLOBAL CUSTOM COMPONENTS
 
@@ -9,13 +7,14 @@ const CardWrapper = styled("div", {
   shouldForwardProp: (prop) => prop !== "img" && prop !== "mode",
 })<{ img: string; mode: string; imgTablet?: string; imgMobile?: string }>(
   ({ theme, img, imgTablet, imgMobile, mode }) => ({
-    minHeight: 500,
+    minHeight: 540,
     display: "flex",
     alignItems: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${img}) !important`,
     backgroundColor: mode === "dark" ? "#000" : "#fff",
+    borderRadius: 8,
     color: mode === "light" ? theme.palette.dark.main : "#fff",
     ".content":
       theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
@@ -35,7 +34,6 @@ interface Props {
   bgImage?: string;
   bgImageTablet?: string;
   bgImageMobile?: string;
-  link: string;
   mode?: "dark" | "light";
 }
 // ===============================================================
@@ -44,7 +42,6 @@ const CarouselCard4: FC<Props> = ({
   bgImage,
   bgImageMobile,
   bgImageTablet,
-  link,
   mode = "dark",
 }) => {
   return (
@@ -53,19 +50,7 @@ const CarouselCard4: FC<Props> = ({
       imgTablet={bgImageTablet}
       imgMobile={bgImageMobile}
       mode={mode}
-    >
-      <div className="content" style={{ paddingTop: "230px" }}>
-        <Button
-          size="large"
-          color="dark"
-          href={link}
-          variant="contained"
-          LinkComponent={Link}
-        >
-          Shop Now
-        </Button>
-      </div>
-    </CardWrapper>
+    />
   );
 };
 

@@ -60,7 +60,7 @@ const MarketTwoPageView = async () => {
 
     return (
       <Fragment>
-        <Box bgcolor="#F6F6F6">
+        <Box bgcolor="#F6F6F6" px={16}>
           {/* HERO SLIDER AND GRID */}
           <Section1
             carouselData={mainCarouselData?.data}

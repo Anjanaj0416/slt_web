@@ -1,56 +1,37 @@
-import Image from "next/image";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import Box, { BoxProps } from "@mui/material/Box";
 import styled from "@mui/material/styles/styled";
-import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENTS
-const CardWrapper = styled(Box)({
+const CardWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "img", // prevent img from being passed to DOM
+})<{ img: string }>(({ theme, img }) => ({
   overflow: "hidden",
-  position: "relative",
-});
-
-const CardContent = styled("div")(({ theme }) => ({
-  top: 0,
-  left: 32,
-  zIndex: 1,
-  height: "100%",
-  display: "flex",
-  position: "absolute",
-  flexDirection: "column",
-  justifyContent: "center",
-  ...(theme.direction === "rtl" && {
-    left: "auto",
-    right: 32,
-    textAlign: "right",
-  }),
+  cursor: "pointer",
+  height: 260,
+  maxHeight: 540,
+  width: "100%",
+  borderRadius: 8,
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  backgroundImage: `url(${img}) !important`,
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+  [theme.breakpoints.up("md")]: {
+    display: "block",
+  },
 }));
 
 // ========================================================
 interface Props extends BoxProps {
   img: string;
-  children: ReactNode;
   imageFull?: boolean;
 }
 // ========================================================
 
-const BannerCard: FC<Props> = ({ img, children, imageFull, ...props }) => {
-  return (
-    <CardWrapper {...props}>
-      <Image
-        src={img}
-        width={330}
-        height={239}
-        alt="banner-image"
-        style={{
-          width: "100%",
-          height: imageFull ? "100%" : "auto",
-          objectFit: "cover",
-        }}
-      />
-      <CardContent>{children}</CardContent>
-    </CardWrapper>
-  );
+const BannerCard: FC<Props> = ({ img, imageFull, ...props }) => {
+  return <CardWrapper img={img} {...props}></CardWrapper>;
 };
 
 export default BannerCard;
