@@ -12,6 +12,7 @@ import { CategoryCard1 } from "components/category-cards";
 import { H3, Paragraph, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Category1 from "models/Category.model";
+import Link from "next/link";
 
 // CSS ANIMATION NAME
 const slideX = keyframes`
@@ -66,7 +67,7 @@ type Props = { categories: Category1[] };
 
 const AnimatedCategoryList: FC<Props> = ({ categories }) => {
   return (
-    <Box sx={{ mt: 3, mb: 6 }}>
+    <Box sx={{ mt: { md: 4, xs: 0 }, mb: { md: 8, xs: 5 } }}>
       <H3 sx={{ pb: 2 }}>Categories</H3>
       <Grid
         container
@@ -76,52 +77,11 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
         {/* CATEGORY LIST AREA */}
         {categories.slice(0, 6)?.map((item) => (
           <Grid item lg={2} md={3} sm={4} xs={5} key={item.id}>
-            <CategoryCard1 image={item.imageUrl} title={item.name} />
+            <Link href={`/products/search?categoryId=${item.id}_${item.name}`}>
+              <CategoryCard1 image={item.imageUrl} title={item.name} />
+            </Link>
           </Grid>
         ))}
-
-        {/* ANIMATED BANNER AREA */}
-        {/* <Grid item xs={12}>
-          <AdWrapper alignItems="center">
-            <AdTitle1>Black friday sale!</AdTitle1>
-
-            <Paragraph
-              fontSize={28}
-              sx={{
-                flex: 1,
-                zIndex: 5,
-                overflow: "hidden",
-                whiteSpace: "nowrap",
-                textOverflow: "hidden",
-              }}
-            >
-              <Span
-                sx={{
-                  letterSpacing: 1.3,
-                  fontStyle: "italic",
-                  position: "relative",
-                  whiteSpace: "nowrap",
-                  textOverflow: "hidden",
-                  textTransform: "uppercase",
-                  animation: `${slideX} 30s infinite linear 1s`,
-                }}
-              >
-                Pay only for{" "}
-                <Span
-                  fontWeight={700}
-                  textTransform="uppercase"
-                  sx={{ textOverflow: "hidden", whiteSpace: "nowrap" }}
-                >
-                  your loving electronics
-                </Span>
-              </Span>
-            </Paragraph>
-
-            <Box sx={{ padding: 3, flexShrink: 0, zIndex: 5 }}>
-              <WhiteButton>Shop Now</WhiteButton>
-            </Box>
-          </AdWrapper>
-        </Grid> */}
       </Grid>
       <Grid container sx={{ px: 0, mx: 0 }} spacing={3}>
         {/* CATEGORY LIST AREA */}
@@ -135,7 +95,9 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
             key={item.id}
             sx={{ display: { md: "none", xs: "flex" } }}
           >
-            <CategoryCard1 image={item.imageUrl} title={item.name} />
+            <Link href={`/products/search?categoryId=${item.id}_${item.name}`}>
+              <CategoryCard1 image={item.imageUrl} title={item.name} />
+            </Link>
           </Grid>
         ))}
       </Grid>
