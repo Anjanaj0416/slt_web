@@ -85,7 +85,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
     return () => {
       if (currentLoader) observer.unobserve(currentLoader);
     };
-  }, [hasMore, isFetching]);
+  }, [hasMore]);
 
   const columnCount = getColumnCount();
 
@@ -159,7 +159,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
   return (
     <Box>
       <H3 sx={{ pb: 4 }}>All Products</H3>
-      {isFetching && page === 1 ? (
+      {isFetching && page === 0 ? (
         <CircularProgress />
       ) : products.length < 1 ? (
         <FlexBox
