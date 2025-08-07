@@ -7,19 +7,18 @@ import { ENVIRONMENT } from "config";
 
 // STYLED COMPONENTS
 const Wrapper = styled("div")(({ theme }) => ({
-  height: "70%",
+  height: "100%",
   cursor: "pointer",
   overflow: "hidden",
-  borderRadius: "6px",
+  borderRadius: "4px",
   position: "relative",
-  border: "1px solid #000",
   "& img": { transition: "all 0.3s" },
   ":hover": {
     img: { transform: "scale(1.1)" },
-    // "& .category-title": {
-    //   color: theme.palette.common.white,
-    //   backgroundColor: theme.palette.dark.main,
-    // },
+    "& .category-title": {
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.dark.main,
+    },
   },
 }));
 
@@ -32,6 +31,7 @@ const CategoryTitle = styled("div")({
   borderRadius: "2px",
   position: "absolute",
   transition: "all 0.3s",
+  backgroundColor: "rgba(255,255,255, .67)",
 });
 
 // ============================================================

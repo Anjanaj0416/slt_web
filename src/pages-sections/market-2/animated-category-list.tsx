@@ -9,7 +9,7 @@ import { keyframes, styled } from "@mui/material/styles";
 import { FlexBox } from "components/flex-box";
 import WhiteButton from "components/WhiteButton";
 import { CategoryCard1 } from "components/category-cards";
-import { H2, H3, Paragraph, Span } from "components/Typography";
+import { H3, Paragraph, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Category1 from "models/Category.model";
 
@@ -66,56 +66,79 @@ type Props = { categories: Category1[] };
 
 const AnimatedCategoryList: FC<Props> = ({ categories }) => {
   return (
-    <Box sx={{ mt: { xs: 0, md: 6 } }}>
-      <H3>Categories</H3>
-
-      {/* Mobile view */}
-      <Box
-        width="100%"
-        height={100}
-        gap={2}
-        sx={{ display: { md: "none", xs: "flex" }, mt: 1, overflowX: "auto" }}
+    <Box sx={{ mt: 3, mb: 6 }}>
+      <H3 sx={{ pb: 2 }}>Categories</H3>
+      <Grid
+        container
+        sx={{ px: 0, mx: 0, display: { md: "flex", xs: "none" } }}
+        spacing={3}
       >
-        {categories
-          .slice(0, 4)
-          ?.map((item) => (
-            <CategoryCard1
-              key={item.id}
-              image={item.imageUrl}
-              title={item.name}
-            />
-          ))}
-      </Box>
+        {/* CATEGORY LIST AREA */}
+        {categories.slice(0, 6)?.map((item) => (
+          <Grid item lg={2} md={3} sm={4} xs={5} key={item.id}>
+            <CategoryCard1 image={item.imageUrl} title={item.name} />
+          </Grid>
+        ))}
 
-      {/* Desktop view with horizontal scroll */}
-      <Box
-        sx={{
-          display: { md: "block", xs: "none" },
-          mt: 0.2,
-          overflowX: "auto", // enables horizontal scrolling
-          whiteSpace: "nowrap", // prevents wrapping
-          pb: 1, // optional padding-bottom for scrollbar spacing
-        }}
-      >
-        <Box
-          sx={{
-            display: "inline-flex", // keep children in a row without wrapping
-            gap: 3,
-          }}
-        >
-          {categories?.slice(0,5).map((item) => (
-            <Box
-              key={item.id}
+        {/* ANIMATED BANNER AREA */}
+        {/* <Grid item xs={12}>
+          <AdWrapper alignItems="center">
+            <AdTitle1>Black friday sale!</AdTitle1>
+
+            <Paragraph
+              fontSize={28}
               sx={{
-                minWidth: 200, // fixed min width so cards don't shrink too much
-                display: "inline-block",
+                flex: 1,
+                zIndex: 5,
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "hidden",
               }}
             >
-              <CategoryCard1 image={item.imageUrl} title={item.name} />
+              <Span
+                sx={{
+                  letterSpacing: 1.3,
+                  fontStyle: "italic",
+                  position: "relative",
+                  whiteSpace: "nowrap",
+                  textOverflow: "hidden",
+                  textTransform: "uppercase",
+                  animation: `${slideX} 30s infinite linear 1s`,
+                }}
+              >
+                Pay only for{" "}
+                <Span
+                  fontWeight={700}
+                  textTransform="uppercase"
+                  sx={{ textOverflow: "hidden", whiteSpace: "nowrap" }}
+                >
+                  your loving electronics
+                </Span>
+              </Span>
+            </Paragraph>
+
+            <Box sx={{ padding: 3, flexShrink: 0, zIndex: 5 }}>
+              <WhiteButton>Shop Now</WhiteButton>
             </Box>
-          ))}
-        </Box>
-      </Box>
+          </AdWrapper>
+        </Grid> */}
+      </Grid>
+      <Grid container sx={{ px: 0, mx: 0 }} spacing={3}>
+        {/* CATEGORY LIST AREA */}
+        {categories.slice(0, 4)?.map((item) => (
+          <Grid
+            item
+            lg={2}
+            md={3}
+            sm={4}
+            xs={5}
+            key={item.id}
+            sx={{ display: { md: "none", xs: "flex" } }}
+          >
+            <CategoryCard1 image={item.imageUrl} title={item.name} />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };
