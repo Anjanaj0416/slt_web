@@ -363,12 +363,17 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
         <ShareModal ref={modalRef} />
         {/* IMAGE GALLERY AREA */}
         <Grid item md={6} xs={12} alignItems="center">
-          <FlexBox justifyContent="center" mb={6}>
+          <FlexBox
+            justifyContent="center"
+            mb={2.5}
+            width="100%"
+            height={{ xs: 340, md: 600 }}
+          >
             {medias.length < 1 ? (
               <LazyImage
                 alt={name}
-                width={300}
-                height={300}
+                width={280}
+                height={280}
                 loading="eager"
                 src={`${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`}
                 sx={{ objectFit: "contain" }}
@@ -376,8 +381,8 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
             ) : medias[selectedImage].type === "image" ? (
               <LazyImage
                 alt={name}
-                width={300}
-                height={300}
+                width={280}
+                height={280}
                 loading="eager"
                 src={`${ENVIRONMENT.S3_BUCKET_URL}/${medias[selectedImage].src}`}
                 sx={{ objectFit: "contain" }}

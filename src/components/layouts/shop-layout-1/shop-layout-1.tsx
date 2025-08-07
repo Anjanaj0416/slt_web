@@ -90,16 +90,12 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
       </Sticky>
 
       {pathname !== "/mobile-categories" && (
-        <Container sx={{ px: 0 }}>
+        <Box sx={{ px: 0 }}>
           {pathSegments.length > 0 && (
             <Box
               mt={2}
               sx={{
-                pl: {
-                  xs: 4, // padding-left on extra-small (mobile)
-                  sm: 4, // still apply on small
-                  md: 0, // remove padding on medium and up
-                },
+                px: { xs: 2, md: 16 },
               }}
             >
               <Breadcrumbs aria-label="breadcrumb">
@@ -133,7 +129,7 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
               </Breadcrumbs>
             </Box>
           )}
-        </Container>
+        </Box>
       )}
 
       {/* BODY CONTENT */}

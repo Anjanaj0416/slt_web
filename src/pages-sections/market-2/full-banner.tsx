@@ -52,7 +52,9 @@ const FullBanner: FC<Props> = ({ data }) => {
   return (
     <Box sx={{ my: 2 }} width={"100%"} height={"100%"}>
       <BannerWrapper img={data?.imageUrl}>
-        <WhiteButton size="large">Discover Now</WhiteButton>
+        <WhiteButton size="large" href={data?.link}>
+          Discover Now
+        </WhiteButton>
       </BannerWrapper>
     </Box>
   );

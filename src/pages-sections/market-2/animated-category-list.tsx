@@ -68,11 +68,13 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
   return (
     <Box sx={{ mt: { xs: 0, md: 6 } }}>
       <H3>Categories</H3>
+
+      {/* Mobile view */}
       <Box
         width="100%"
         height={100}
         gap={2}
-        sx={{ display: { md: "none", xs: "flex" }, mt: 1 }}
+        sx={{ display: { md: "none", xs: "flex" }, mt: 1, overflowX: "auto" }}
       >
         {categories
           .slice(0, 4)
@@ -84,18 +86,36 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
             />
           ))}
       </Box>
-      <Grid
-        container
-        spacing={3}
-        sx={{ display: { md: "flex", xs: "none" }, mt: 0.2 }}
+
+      {/* Desktop view with horizontal scroll */}
+      <Box
+        sx={{
+          display: { md: "block", xs: "none" },
+          mt: 0.2,
+          overflowX: "auto", // enables horizontal scrolling
+          whiteSpace: "nowrap", // prevents wrapping
+          pb: 1, // optional padding-bottom for scrollbar spacing
+        }}
       >
-        {/* CATEGORY LIST AREA */}
-        {categories?.map((item) => (
-          <Grid item lg={2} md={3} sm={4} xs={6} key={item.id}>
-            <CategoryCard1 image={item.imageUrl} title={item.name} />
-          </Grid>
-        ))}
-      </Grid>
+        <Box
+          sx={{
+            display: "inline-flex", // keep children in a row without wrapping
+            gap: 3,
+          }}
+        >
+          {categories?.slice(0,5).map((item) => (
+            <Box
+              key={item.id}
+              sx={{
+                minWidth: 200, // fixed min width so cards don't shrink too much
+                display: "inline-block",
+              }}
+            >
+              <CategoryCard1 image={item.imageUrl} title={item.name} />
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 };

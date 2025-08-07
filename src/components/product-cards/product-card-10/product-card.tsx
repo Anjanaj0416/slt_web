@@ -6,8 +6,6 @@ import { FC, useContext } from "react";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-// LOCAL CUSTOM HOOK
-import useProduct from "../use-product";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
 import { H4, Paragraph } from "components/Typography";
@@ -141,7 +139,12 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
 
   //
   return (
-    <Card sx={{ minWidth: { xs: 100, md: 280 }, maxWidth: { xs: 170 } }}>
+    <Card
+      sx={{
+        minWidth: { xs: 100, sm: 360, md: 280, lg: 292 },
+        maxWidth: { xs: 190, sm: 200, md: 400 },
+      }}
+    >
       <CardMedia>
         <DiscountChip
           discount={calculateDiscountPercentage(

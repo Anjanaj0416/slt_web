@@ -13,7 +13,12 @@ const WhiteButton: FC<Props> = ({ children, ...props }) => {
   };
 
   return (
-    <Button color="dark" variant="contained" sx={STYLE} {...props}>
+    <Button
+      color="dark"
+      variant="contained"
+      sx={STYLE}
+      {...props}
+    >
       {children}
     </Button>
   );
