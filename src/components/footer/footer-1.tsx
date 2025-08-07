@@ -22,8 +22,8 @@ const Footer1 = () => {
       sx={{ bottom: 0, width: "100%" }}
     >
       <Box
-        component={Container}
         py={{ sm: 10, xs: 4 }}
+        px={{ xs: 2, md: 16 }}
         color="white"
         overflow="hidden"
       >

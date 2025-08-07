@@ -89,8 +89,6 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
         />
       </Sticky>
 
-      {/* NAVIGATION BAR */}
-      <Navbar elevation={0} border={1} />
       {pathname !== "/mobile-categories" && (
         <Container sx={{ px: 0 }}>
           {pathSegments.length > 0 && (

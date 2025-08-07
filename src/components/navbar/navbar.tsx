@@ -53,26 +53,10 @@ const Navbar: FC<Props> = ({
     return list.map((nav: NavList) => {
       if (isRoot) {
         // SHOW MEGA MENU
-        if (nav.megaMenu) {
-          return (
-            <MegaMenu
-              key={nav.title}
-              title={nav.title}
-              menuList={nav.child as any}
-            />
-          );
-        }
+       
 
         // SHOW MEGA MENU WITH SUB ITEMS
-        if (nav.megaMenuWithSub) {
-          return (
-            <CategoryBasedMenu
-              key={nav.title}
-              title={nav.title}
-              menuList={nav.child as any}
-            />
-          );
-        }
+    
 
         if (nav.url) {
           return (

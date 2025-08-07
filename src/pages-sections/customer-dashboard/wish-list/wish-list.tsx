@@ -34,7 +34,7 @@ const WishListPageView = (props: Props) => {
   return (
     <Fragment>
       {/* TOP HEADER AREA */}
-      <DashboardHeader title="My Wish List" Icon={Favorite} />
+      <DashboardHeader title="My Wishlist" Icon={Favorite} />
 
       {/* PRODUCT LIST AREA */}
       <Grid container spacing={3}>

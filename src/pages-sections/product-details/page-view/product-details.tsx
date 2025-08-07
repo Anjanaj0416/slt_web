@@ -10,7 +10,7 @@ import ProductIntro1 from "../product-intro1";
 import Store from "models/Store.model";
 import { Product1 } from "models/Product.model";
 import { useFilteredProductsQuery } from "services/product-api";
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 // ==============================================================
 interface Props {
@@ -31,7 +31,7 @@ const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
     .filter((p: Product1) => p.id !== product.id)
     .slice(0, 4);
   return (
-    <Container sx={{ my: 4 }}>
+    <Box sx={{ my: 4, px: { xs: 2, md: 16 } }}>
       {/* PRODUCT DETAILS INFO AREA */}
       <ProductIntro1 product={product} store={ownerStore} />
 
@@ -56,7 +56,7 @@ const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
           <RelatedProducts products={relatedProducts} />
         )
       )}
-    </Container>
+    </Box>
   );
 };
 

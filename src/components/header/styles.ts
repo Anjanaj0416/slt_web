@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import styled from "@mui/material/styles/styled";
 // CONSTANT VARIABLES
@@ -14,7 +15,7 @@ export const HeaderWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledContainer = styled(Container)({
+export const StyledContainer = styled(Box)({
   gap: 2,
   height: "100%",
   display: "flex",

@@ -6,6 +6,7 @@ import Navigation from "./navigation";
 import { auth } from "utils/auth";
 import request from "utils/request";
 import API from "constants/orders";
+import { Box } from "@mui/material";
 
 /**
  *  Used in:
@@ -26,7 +27,7 @@ const CustomerDashboardLayout: FC<PropsWithChildren> = async ({ children }) => {
   });
 
   return (
-    <Container sx={{ my: 4 }}>
+    <Box sx={{ my: 4, px: { xs: 2, md: 16 } }}>
       <Grid container spacing={3}>
         <Grid
           item
@@ -41,7 +42,7 @@ const CustomerDashboardLayout: FC<PropsWithChildren> = async ({ children }) => {
           {children}
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 

@@ -62,7 +62,7 @@ export const InnerContainer = styled(Container)({
 export const CategoryMenuButton = styled(Button)(({ theme }) => ({
   width: "278px",
   height: "40px",
-  backgroundColor: theme.palette.grey[100],
+  backgroundColor: "#fff"
 }));
 
 export const ChildNavListWrapper = styled("div")({

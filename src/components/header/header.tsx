@@ -13,8 +13,10 @@ import DialogDrawer from "./dialog-drawer";
 import CategoriesMenu from "./categories-menu";
 import LoginCartButtons from "./login-cart-buttons";
 // STYLED COMPONENTS
-import { HeaderWrapper, StyledContainer } from "./styles";
+import { HeaderWrapper } from "./styles";
 import { signIn } from "next-auth/react";
+import Categories from "components/navbar/categories";
+import { Box } from "@mui/material";
 
 // ==============================================================
 interface Props {
@@ -53,7 +55,13 @@ const Header = ({
         </Link>
 
         {/* SHOW DROP DOWN CATEGORY BUTTON WHEN HEADER FIXED */}
-        {isFixed ? <CategoriesMenu /> : null}
+        {isFixed ? (
+          <CategoriesMenu />
+        ) : (
+          <Box pl={4}>
+            <Categories open={false} />
+          </Box>
+        )}
       </FlexBox>
 
       {/* SEARCH FORM */}
@@ -79,7 +87,16 @@ const Header = ({
 
   return (
     <HeaderWrapper className={clsx(className)}>
-      <StyledContainer>
+      <Box
+        sx={{
+          gap: 2,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          px: { xs: 2, md: 16 },
+        }}
+      >
         {downMd ? (
           <MobileHeader
             searchInput={searchInput}
@@ -93,7 +110,7 @@ const Header = ({
         ) : (
           CONTENT_FOR_LARGE_DEVICE
         )}
-      </StyledContainer>
+      </Box>
     </HeaderWrapper>
   );
 };

@@ -15,6 +15,7 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
 import { StyledContainer, StyledRoot } from "./styles";
 import { ENVIRONMENT } from "config";
+import { Box } from "@mui/material";
 
 // ==============================================================
 interface LanguageOption {
@@ -36,15 +37,18 @@ const Topbar: FC<Props> = ({ bgColor }) => {
   const { i18n, t } = useTranslation();
   const [expand, setExpand] = useState<boolean>(false);
 
-  const handleChangeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
-  };
-
-  const selectedLanguage = languageOptions[i18n.language];
-
   return (
     <StyledRoot bgColor={bgColor} expand={expand ? 1 : 0}>
-      <StyledContainer>
+      <Box
+        sx={{
+          gap: 2,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          px: { xs: 2, md: 16 },
+        }}
+      >
         <FlexBetween width="100%">
           <FlexBox alignItems="center" gap={1}>
             <Chip
@@ -101,7 +105,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
             ))}
           </FlexBox>
         </FlexBox>
-      </StyledContainer>
+      </Box>
     </StyledRoot>
   );
 };
