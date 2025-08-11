@@ -36,6 +36,7 @@ import {
   Button,
   CircularProgress,
   IconButton,
+  Rating,
   Typography,
 } from "@mui/material";
 import { FlexBetween } from "components/flex-box";
@@ -222,20 +223,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           {name}
         </Paragraph>
 
-        {/* PRODUCT PRICE */}
-
-        {/* PRODUCT RATINGS */}
-        {/* <FlexRowCenter gap={1} mb={2}>
-          <Rating
-            name="read-only"
-            value={rating || 4}
-            readOnly
-            sx={{ fontSize: 14 }}
-          />
-          <Small fontWeight={600} color="grey.500">
-            ({reviews.length})
-          </Small>
-        </FlexRowCenter> */}
+        <Rating color="warn" value={4} readOnly size="small" />
 
         {/* PRODUCT ADD TO CART BUTTON */}
         {isQuotationProduct && (
