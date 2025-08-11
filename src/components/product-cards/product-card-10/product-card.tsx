@@ -3,17 +3,22 @@
 import Box from "@mui/material/Box";
 import Link from "next/link";
 import { FC, useContext } from "react";
+import CartIcon from "../../../../public/assets/svg/cart.svg";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { H4, Paragraph } from "components/Typography";
+import { H4, H5, Paragraph, Span } from "components/Typography";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 // STYLED COMPONENTS
 import { Card, CardMedia, FavoriteButton } from "./styles";
 // CUSTOM UTILS LIBRARY FUNCTION
-import { calculateDiscountPercentage, currency } from "lib";
+import {
+  calculateDiscountAmount,
+  calculateDiscountPercentage,
+  currency,
+} from "lib";
 // CUSTOM DATA MODEL
 import { LoadingButton } from "@mui/lab";
 import { ENVIRONMENT } from "config";
@@ -26,6 +31,14 @@ import { useSnackbar } from "notistack";
 import { WishlistContext } from "contexts/WishlistContext";
 import useQuotation from "hooks/useQuotation";
 import DiscountChip from "../discount-chip";
+import CartButtonIcon from "icons/CartButton";
+import {
+  Button,
+  CircularProgress,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { FlexBetween } from "components/flex-box";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -127,25 +140,35 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
     }
   };
 
-  const getPrice = () => {
-    if (!basePrice) return "";
-
-    const prices = basePrice?.split("-");
-    if (prices.length == 1) {
-      return currency(prices[0]);
+  const getDiscountedPrice = () => {
+    if (discountAmount) {
+      const discount = calculateDiscountAmount(
+        discountType,
+        minPriceVariant.price,
+        discountAmount
+      );
+      return minPriceVariant.price - discount;
     }
-    return `${currency(prices[0])} - ${currency(prices[1], 2, "")}`;
+    return minPriceVariant.price;
   };
 
   //
   return (
     <Card
       sx={{
-        minWidth: { xs: 100, sm: 360, md: 280, lg: 292 },
-        maxWidth: { xs: 190, sm: 200, md: 400 },
+        minWidth: { xs: 100, sm: 360, md: 240, lg: 250 },
+        maxWidth: { xs: 190, sm: 200, md: 400, lg: 600 },
+        borderRadius: 3,
+        border: "2px solid #DADADA",
       }}
     >
-      <CardMedia>
+      <CardMedia
+        sx={{
+          borderRadius: 3,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        }}
+      >
         <DiscountChip
           discount={calculateDiscountPercentage(
             discountType,
@@ -186,33 +209,20 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         product={product}
       /> */}
 
-      <Box p={2} textAlign="center">
+      <Box p={2}>
         {/* PRODUCT TITLE */}
         <Paragraph
           sx={{
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
+            textTransform: "capitalize",
           }}
         >
           {name}
         </Paragraph>
 
         {/* PRODUCT PRICE */}
-
-        <H4
-          fontWeight={700}
-          py={0.5}
-          color={isQuotationProduct ? "transparent" : "#000000"}
-          sx={{
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {/* {currency(basePrice)} */}
-          {getPrice()}
-        </H4>
 
         {/* PRODUCT RATINGS */}
         {/* <FlexRowCenter gap={1} mb={2}>
@@ -228,24 +238,82 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         </FlexRowCenter> */}
 
         {/* PRODUCT ADD TO CART BUTTON */}
-        <LoadingButton
-          fullWidth
-          color="dark"
-          variant="outlined"
-          onClick={() =>
-            isQuotationProduct
-              ? requestQuota()
-              : handleAddToCart(product, minPriceVariant, 1)
-          }
-          loading={isButtonLoading}
-          disabled={isOutOfStock || cartUnits >= minPriceVariant.units}
-        >
-          {isOutOfStock
-            ? "Out of stock"
-            : isQuotationProduct
-              ? "Get Quote"
-              : "Add To Cart"}
-        </LoadingButton>
+        {isQuotationProduct && (
+          <LoadingButton
+            fullWidth
+            color="dark"
+            variant="outlined"
+            onClick={requestQuota}
+            loading={isButtonLoading}
+            disabled={isOutOfStock || cartUnits >= minPriceVariant.units}
+          >
+            {isOutOfStock ? "Out of stock" : "Get Quote"}
+          </LoadingButton>
+        )}
+        {!isQuotationProduct && (
+          <FlexBetween alignItems={"center"}>
+            <Box
+              fontWeight={{ xs: 500, md: 700 }}
+              py={0.5}
+              color={isQuotationProduct ? "transparent" : "#000000"}
+              sx={{
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                pt: isOutOfStock ? 1 : 0,
+                fontSize: { xs: 10, md: 16 },
+              }}
+            >
+              {/* {currency(basePrice)} */}
+              {minPriceVariant.price === getDiscountedPrice() ? (
+                currency(minPriceVariant.price)
+              ) : (
+                <Box>
+                  {"LKR "}
+                  {`${currency(getDiscountedPrice(), 2, "")} `}
+                  <Span
+                    color={"gray"}
+                    sx={{
+                      textDecoration: "line-through",
+                      ml: 0.5,
+                      fontWeight: 400,
+                    }}
+                  >
+                    {currency(minPriceVariant.price, 2, "")}
+                  </Span>
+                </Box>
+              )}
+            </Box>
+            {isOutOfStock ? (
+              <Typography
+                sx={{ fontSize: { xs: 10, md: 16 } }}
+                color={"primary"}
+              >
+                Out of Stock
+              </Typography>
+            ) : (
+              <Button
+                sx={{
+                  borderRadius: 3,
+                  px: { xs: 0.8, md: 2 },
+                  border: "1px solid #DADADA",
+                }}
+                onClick={() => handleAddToCart(product, minPriceVariant, 1)}
+                disabled={
+                  isOutOfStock ||
+                  cartUnits >= minPriceVariant.units ||
+                  isButtonLoading
+                }
+              >
+                {isButtonLoading ? (
+                  <CircularProgress size={22} color="secondary" />
+                ) : (
+                  <CartButtonIcon />
+                )}
+              </Button>
+            )}
+          </FlexBetween>
+        )}
       </Box>
     </Card>
     // <Card>

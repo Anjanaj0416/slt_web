@@ -16,7 +16,7 @@ export const Card = styled("div")(({ theme }) => ({
 
 export const CardMedia = styled("div")({
   width: "100%",
-  maxHeight: 300,
+  maxHeight: 260,
   cursor: "pointer",
   overflow: "hidden",
   position: "relative",

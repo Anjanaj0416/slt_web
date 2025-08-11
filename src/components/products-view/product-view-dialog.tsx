@@ -92,7 +92,6 @@ const ProductViewDialog: FC<Props> = (props) => {
 
               <FlexBox alignItems="center" gap={1} mt={1}>
                 <Rating color="warn" value={4} readOnly />
-                <H6 lineHeight="1">(50)</H6>
               </FlexBox>
 
               <Paragraph my={2}>

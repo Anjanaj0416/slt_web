@@ -158,7 +158,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
 
   return (
     <Box>
-      <H3 sx={{ pb: 4 }}>All Products</H3>
+      <H3 sx={{ pb: 2 }}>All Products</H3>
       {isFetching && page === 0 ? (
         <CircularProgress />
       ) : products.length < 1 ? (
@@ -184,7 +184,8 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
             gridTemplateColumns: {
               xs: "repeat(2, 1fr)",
               md: "repeat(2, 1fr)",
-              lg: "repeat(5, 1fr)",
+              lg: "repeat(4, 1fr)",
+              xl: "repeat(5, 1fr)",
             },
           }}
         >

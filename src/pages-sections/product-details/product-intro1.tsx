@@ -278,9 +278,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     selectedProductId === selectedVariant?.id && isUpdating;
   //
   const isQuotationProduct = productType === "QUOTATION";
-  //
-  console.log(selectedVariant);
-  console.log(selectedAttributes);
   // HANDLE CHANGE TYPE AND OPTIONS
   const handleChangeVariant = (name: string, value: string) => () => {
     setSelectedAttributes((state) => {
@@ -454,7 +451,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
           <FlexBox alignItems="center" gap={1} mb={2}>
             <Box lineHeight="1">Rated:</Box>
             <Rating color="warn" value={4} readOnly />
-            <H6 lineHeight="1">(50)</H6>
           </FlexBox>
 
           {/* PRODUCT VARIANTS */}
@@ -463,7 +459,6 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
               <H6 sx={{ textTransform: "capitalize" }} mb={1}>
                 {variant.title}
               </H6>
-
               {variant?.values?.map((value, index) => (
                 <Chip
                   key={index}
