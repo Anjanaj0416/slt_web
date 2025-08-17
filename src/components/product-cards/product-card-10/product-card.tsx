@@ -159,8 +159,8 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   return (
     <Card
       sx={{
-        minWidth: { xs: 200, sm: 360, md: 240, lg: 250 },
-        maxWidth: { xs: "100%", sm: 200, md: 400, lg: 600 },
+        minWidth: { xs: 160, sm: 200, md: 240, lg: 250 },
+        maxWidth: { xs: 200, sm: 380, md: 400, lg: 600 },
         borderRadius: 3,
         border: "2px solid #DADADA",
       }}
@@ -251,7 +251,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 pt: isOutOfStock ? 1 : 0,
-                fontSize: 16,
+                fontSize: { xs: 14, md: 16 },
               }}
             >
               {/* {currency(basePrice)} */}
@@ -260,7 +260,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
               ) : (
                 <Box>
                   {"LKR "}
-                  {`${currency(getDiscountedPrice(), 2, "")} `}
+                  {`${currency(getDiscountedPrice(), 0, "")} `}
                   <Span
                     color={"gray"}
                     sx={{
@@ -268,9 +268,10 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                       ml: 0.5,
                       fontWeight: 400,
                       fontSize: 14,
+                      display: { xs: "none", md: "inline-block" },
                     }}
                   >
-                    {currency(minPriceVariant.price, 2, "")}
+                    {currency(minPriceVariant.price, 0, "")}
                   </Span>
                 </Box>
               )}
@@ -280,7 +281,13 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
               <Button
                 sx={{
                   borderRadius: 3,
-                  px: { xs: 1.8, md: 2 },
+                  px: {
+                    xs: 0.8,
+                    md: 2,
+                    "@media (max-width:400px)": {
+                      display: "none",
+                    },
+                  },
                   border: "1px solid #DADADA",
                 }}
                 onClick={() => handleAddToCart(product, minPriceVariant, 1)}
