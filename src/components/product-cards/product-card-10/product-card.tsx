@@ -37,9 +37,11 @@ import {
   CircularProgress,
   IconButton,
   Rating,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { FlexBetween } from "components/flex-box";
+import { is } from "date-fns/locale";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -249,7 +251,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 pt: isOutOfStock ? 1 : 0,
-                fontSize: { xs: 15, md: 16 },
+                fontSize: 16,
               }}
             >
               {/* {currency(basePrice)} */}
@@ -265,6 +267,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                       textDecoration: "line-through",
                       ml: 0.5,
                       fontWeight: 400,
+                      fontSize: 14,
                     }}
                   >
                     {currency(minPriceVariant.price, 2, "")}
@@ -272,14 +275,8 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 </Box>
               )}
             </Box>
-            {isOutOfStock ? (
-              <Typography
-                sx={{ fontSize: { xs: 15, md: 16 } }}
-                color={"primary"}
-              >
-                Out of Stock
-              </Typography>
-            ) : (
+
+            <Tooltip title={"Add to cart"}>
               <Button
                 sx={{
                   borderRadius: 3,
@@ -299,7 +296,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                   <CartButtonIcon />
                 )}
               </Button>
-            )}
+            </Tooltip>
           </FlexBetween>
         )}
       </Box>
