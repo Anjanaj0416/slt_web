@@ -23,8 +23,8 @@ const Section4: FC<Props> = ({ products }) => {
   ];
 
   return (
-    <Box sx={{ pb: 6, pt:-2 }}>
-      <FlexBetween mb={3}>
+    <Box sx={{ pb: 3, pt: -4 }}>
+      <FlexBetween mb={2}>
         <H3>Deals Of The Day</H3>
         {/* <NavLink3 text="More Products" href="/" hoverColor="dark.main" /> */}
       </FlexBetween>

@@ -71,7 +71,7 @@ type Props = { categories: Category1[] };
 
 const AnimatedCategoryList: FC<Props> = ({ categories }) => {
   return (
-    <Box sx={{ mt: { md: 4, xs: 0 }, mb: { md: 8, xs: 5 } }}>
+    <Box sx={{ mt: { md: 4, xs: 0 }, mb: { md: 4, xs: 3 } }}>
       <H3 sx={{ pb: 2 }}>Categories</H3>
       <Box >
         {/* CATEGORY LIST AREA */}

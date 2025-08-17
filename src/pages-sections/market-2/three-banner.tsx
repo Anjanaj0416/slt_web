@@ -17,7 +17,7 @@ type Props = { data: Banner[] };
 
 const ThreeBanner: FC<Props> = ({ data }) => {
   return (
-    <Box sx={{ pb: 4 }}>
+    <Box sx={{ pb: 3, display: { xs: "none", md: "flex" } }}>
       <Grid container spacing={3}>
         {/* NEW ARRIVALS */}
         <Grid item md={4} xs={12}>
