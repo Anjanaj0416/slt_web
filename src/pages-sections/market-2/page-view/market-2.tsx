@@ -32,7 +32,7 @@ const MarketTwoPageView = async () => {
         query: "size=5&isDiscount=true",
       }),
       cachedRequest(CATEGORY_API.GET_CATEGORIES, {
-        query: "size=6&categoryType=PRODUCT&categoryStatus=APPROVED",
+        query: "size=12&categoryType=PRODUCT&parentCategoryId=null&categoryStatus=APPROVED",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
         query: "size=3&bannerType=FULL",

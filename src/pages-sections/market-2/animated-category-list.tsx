@@ -13,6 +13,7 @@ import { H3, Paragraph, Span } from "components/Typography";
 // CUSTOM DATA MODEL
 import Category1 from "models/Category.model";
 import Link from "next/link";
+import { Carousel } from "components/carousel";
 
 // CSS ANIMATION NAME
 const slideX = keyframes`
@@ -60,7 +61,10 @@ const AdTitle1 = styled(H3)(({ theme }) => ({
     "::after": { display: "none" },
   },
 }));
-
+const responsive = [
+  { breakpoint: 1200, settings: { slidesToShow: 3 } },
+  { breakpoint: 650, settings: { slidesToShow: 2 } },
+];
 // ===========================================================
 type Props = { categories: Category1[] };
 // ===========================================================
@@ -69,38 +73,24 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
   return (
     <Box sx={{ mt: { md: 4, xs: 0 }, mb: { md: 8, xs: 5 } }}>
       <H3 sx={{ pb: 2 }}>Categories</H3>
-      <Grid
-        container
-        sx={{ px: 0, mx: 0, display: { md: "flex", xs: "none" } }}
-        spacing={3}
-      >
+      <Box >
         {/* CATEGORY LIST AREA */}
-        {categories.slice(0, 6)?.map((item) => (
-          <Grid item lg={2} md={3} sm={4} xs={5} key={item.id}>
-            <Link href={`/products/search?categoryId=${item.id}_${item.name}`}>
+        <Carousel
+          slidesToShow={6}
+          responsive={responsive}
+          arrowStyles={{ backgroundColor: "dark.main" }}
+        >
+          {categories?.map((item) => (
+            <Link
+              key={item.id}
+              href={`/products/search?categoryId=${item.id}_${item.name}`}
+            >
               <CategoryCard1 image={item.imageUrl} title={item.name} />
             </Link>
-          </Grid>
-        ))}
-      </Grid>
-      <Grid container sx={{ px: 0, mx: 0 }} spacing={3}>
-        {/* CATEGORY LIST AREA */}
-        {categories.slice(0, 4)?.map((item) => (
-          <Grid
-            item
-            lg={2}
-            md={3}
-            sm={4}
-            xs={5}
-            key={item.id}
-            sx={{ display: { md: "none", xs: "flex" } }}
-          >
-            <Link href={`/products/search?categoryId=${item.id}_${item.name}`}>
-              <CategoryCard1 image={item.imageUrl} title={item.name} />
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
+          ))}{" "}
+        </Carousel>
+      </Box>
+    
     </Box>
   );
 };

@@ -157,8 +157,8 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   return (
     <Card
       sx={{
-        minWidth: { xs: 100, sm: 360, md: 240, lg: 250 },
-        maxWidth: { xs: 190, sm: 200, md: 400, lg: 600 },
+        minWidth: { xs: 200, sm: 360, md: 240, lg: 250 },
+        maxWidth: { xs: "100%", sm: 200, md: 400, lg: 600 },
         borderRadius: 3,
         border: "2px solid #DADADA",
       }}
@@ -241,7 +241,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         {!isQuotationProduct && (
           <FlexBetween alignItems={"center"}>
             <Box
-              fontWeight={{ xs: 500, md: 700 }}
+              fontWeight={700}
               py={0.5}
               color={isQuotationProduct ? "transparent" : "#000000"}
               sx={{
@@ -249,7 +249,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 pt: isOutOfStock ? 1 : 0,
-                fontSize: { xs: 10, md: 16 },
+                fontSize: { xs: 15, md: 16 },
               }}
             >
               {/* {currency(basePrice)} */}
@@ -274,7 +274,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
             </Box>
             {isOutOfStock ? (
               <Typography
-                sx={{ fontSize: { xs: 10, md: 16 } }}
+                sx={{ fontSize: { xs: 15, md: 16 } }}
                 color={"primary"}
               >
                 Out of Stock
@@ -283,7 +283,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
               <Button
                 sx={{
                   borderRadius: 3,
-                  px: { xs: 0.8, md: 2 },
+                  px: { xs: 1.8, md: 2 },
                   border: "1px solid #DADADA",
                 }}
                 onClick={() => handleAddToCart(product, minPriceVariant, 1)}
