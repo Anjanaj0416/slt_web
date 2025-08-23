@@ -179,16 +179,17 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 top: discountAmount ? 42 : 12,
                 right: "49%",
                 left: 8,
+                maxWidth: "80px",
                 fontSize: { xs: 8 },
                 padding: 0,
-                display: { md: "none", xs: "flex" },
+                display: { lg: "none", md: "flex" },
               }}
             />
             <StyledChip
               size="small"
               label="Out of Stock"
               selected={0}
-              sx={{ display: { xs: "none", md: "inline-block" } }}
+              sx={{ display: { xs: "none", lg: "inline-block" }, top:9 }}
             />
           </>
         )}
@@ -264,7 +265,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 pt: isOutOfStock ? 1 : 0,
-                fontSize: { xs: 14, md: 16 },
+                fontSize: { xs: 14, md: 14, lg: 16 },
               }}
             >
               {/* {currency(basePrice)} */}
@@ -281,7 +282,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                       ml: 0.5,
                       fontWeight: 400,
                       fontSize: 14,
-                      display: { xs: "none", md: "inline-block" },
+                      display: { xs: "none", lg: "inline-block" },
                     }}
                   >
                     {currency(minPriceVariant.price, 0, "")}
@@ -296,7 +297,8 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                   borderRadius: 3,
                   px: {
                     xs: 0.8,
-                    md: 2,
+                    md: 1.2,
+                    lg: 2,
                     "@media (max-width:400px)": {
                       display: "none",
                     },

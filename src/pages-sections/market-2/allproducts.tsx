@@ -183,9 +183,9 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
             gap: { xs: 1, md: 1, lg: 4 },
             gridTemplateColumns: {
               xs: "repeat(2, minmax(150px, 1fr))",
-              md: "repeat(3, auto)",
-              lg: "repeat(4, auto)",
-              xl: "repeat(5, auto)",
+              md: "repeat(3, 1fr)",
+              lg: "repeat(4, 1fr)",
+              xl: "repeat(5, 1fr)",
             },
           }}
         >
