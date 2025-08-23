@@ -12,10 +12,6 @@ import BANNER_API from "constants/banners";
 import CATEGORY_API from "constants/categories";
 import request from "utils/request";
 import { notFound } from "next/navigation";
-import { Link } from "@mui/material";
-import BannerCard from "../banner-card";
-import { ENVIRONMENT } from "config";
-import MobileBannerCard from "../mobile-banner-card";
 import MobileBannerSection from "../mobile-banner-section";
 
 const cachedRequest = cache((url: Object, options: any) =>
@@ -34,7 +30,7 @@ const MarketTwoPageView = async () => {
       topBanners,
     ] = await Promise.all([
       cachedRequest(PRODUCT_API.GET_PRODUCTS, {
-        query: "size=5&isDiscount=true",
+        query: "size=30&isDiscount=true",
       }),
       cachedRequest(CATEGORY_API.GET_CATEGORIES, {
         query:

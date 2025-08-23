@@ -34,7 +34,12 @@ const Section1: FC<Props> = ({ carouselData, topBanners }) => {
     };
   }
   return (
-    <Box pt={3} display={"flex"} justifyContent={"center"} flexDirection={"column"}>
+    <Box
+      pt={3}
+      display={"flex"}
+      justifyContent={"center"}
+      flexDirection={"column"}
+    >
       <Grid container spacing={2}>
         {/* MAIN CAROUSEL AREA */}
         <Grid item md={9} xs={12}>
@@ -43,6 +48,7 @@ const Section1: FC<Props> = ({ carouselData, topBanners }) => {
             arrows={false}
             spaceBetween={0}
             slidesToShow={1}
+            autoplay
             dotColor={palette.dark.main}
             dotStyles={COMMON_DOT_STYLES}
           >

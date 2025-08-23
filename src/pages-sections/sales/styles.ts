@@ -30,6 +30,7 @@ export const StyledChip = styled(Chip, {
 })<Selected>(({ selected, theme }) => ({
   top: "1rem",
   right: "1rem",
+  zIndex: 99,
   fontWeight: 600,
   fontSize: "10px",
   padding: "5px 10px",

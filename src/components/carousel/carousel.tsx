@@ -25,8 +25,10 @@ const Carousel: FC<Props> = ({
   arrowStyles,
   dots = false,
   arrows = true,
+  autoplay= false,  
   slidesToShow = 4,
   spaceBetween = 10,
+  autoplaySpeed = 3000,
   dotStyles = { mt: 4 },
   ...props
 }) => {
@@ -36,6 +38,8 @@ const Carousel: FC<Props> = ({
     dots,
     arrows,
     slidesToShow,
+    autoplay,
+    autoplaySpeed,
     rtl: theme.direction === "rtl",
     ...CarouselArrows(arrowStyles),
     ...CarouselDots({ dotColor, sx: dotStyles }),

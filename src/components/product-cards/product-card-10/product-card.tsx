@@ -3,7 +3,6 @@
 import Box from "@mui/material/Box";
 import Link from "next/link";
 import { FC, useContext } from "react";
-import CartIcon from "../../../../public/assets/svg/cart.svg";
 // MUI ICON COMPONENTS
 import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -32,16 +31,9 @@ import { WishlistContext } from "contexts/WishlistContext";
 import useQuotation from "hooks/useQuotation";
 import DiscountChip from "../discount-chip";
 import CartButtonIcon from "icons/CartButton";
-import {
-  Button,
-  CircularProgress,
-  IconButton,
-  Rating,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Button, CircularProgress, Rating, Tooltip } from "@mui/material";
 import { FlexBetween } from "components/flex-box";
-import { is } from "date-fns/locale";
+import { StyledChip } from "pages-sections/sales/styles";
 
 // ==============================================================
 type Props = { product: Product1 };
@@ -50,7 +42,6 @@ type Props = { product: Product1 };
 const ProductCard20: FC<Props> = ({ product }: Props) => {
   const {
     id,
-    basePrice,
     name,
     images,
     productType,
@@ -159,8 +150,6 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   return (
     <Card
       sx={{
-        minWidth: { xs: 160, sm: 200, md: 240, lg: 250 },
-        maxWidth: { xs: 200, sm: 380, md: 400, lg: 600 },
         borderRadius: 3,
         border: "2px solid #DADADA",
       }}
@@ -179,6 +168,30 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
             discountAmount
           )}
         />
+
+        {isOutOfStock && (
+          <>
+            <StyledChip
+              size="small"
+              label="Out of Stock"
+              selected={0}
+              sx={{
+                top: discountAmount ? 42 : 12,
+                right: "49%",
+                left: 8,
+                fontSize: { xs: 8 },
+                padding: 0,
+                display: { md: "none", xs: "flex" },
+              }}
+            />
+            <StyledChip
+              size="small"
+              label="Out of Stock"
+              selected={0}
+              sx={{ display: { xs: "none", md: "inline-block" } }}
+            />
+          </>
+        )}
         {/* PRODUCT IMAGE / THUMBNAIL */}
         <Link href={`/products/${id}_${name}`}>
           <LazyImage

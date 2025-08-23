@@ -30,7 +30,9 @@ const Section4: FC<Props> = ({ products }) => {
 
       <Carousel
         slidesToShow={5}
+        autoplay
         responsive={responsive}
+        autoplaySpeed={4000}
         arrowStyles={{ backgroundColor: "dark.main" }}
       >
         {products?.map((product) => (
