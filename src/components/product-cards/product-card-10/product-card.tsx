@@ -182,14 +182,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 maxWidth: "80px",
                 fontSize: { xs: 8 },
                 padding: 0,
-                display: { lg: "none", md: "flex" },
               }}
-            />
-            <StyledChip
-              size="small"
-              label="Out of Stock"
-              selected={0}
-              sx={{ display: { xs: "none", lg: "inline-block" }, top:9 }}
             />
           </>
         )}
