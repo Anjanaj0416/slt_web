@@ -162,6 +162,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         }}
       >
         <DiscountChip
+          sx={{ fontSize: { xs: 8, md: 10} }}
           discount={calculateDiscountPercentage(
             discountType,
             minPriceVariant.price,
@@ -177,11 +178,15 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
               selected={0}
               sx={{
                 top: discountAmount ? 42 : 12,
-                right: "49%",
+                right: "47%",
                 left: 8,
-                maxWidth: "80px",
-                fontSize: { xs: 8 },
+                maxWidth: "86px",
+                fontSize: { xs: 8, md: 10 },
                 padding: 0,
+                "@media (max-width:400px)": {
+                  right: "40%",
+                  maxWidth: "80px",
+                },
               }}
             />
           </>
@@ -227,6 +232,9 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
             overflow: "hidden",
             textOverflow: "ellipsis",
             textTransform: "capitalize",
+            "@media (max-width:400px)": {
+              fontSize: 10,
+            },
           }}
         >
           {name}
@@ -259,6 +267,9 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                 textOverflow: "ellipsis",
                 pt: isOutOfStock ? 1 : 0,
                 fontSize: { xs: 14, md: 14, lg: 16 },
+                "@media (max-width:400px)": {
+                  fontSize: 10,
+                },
               }}
             >
               {/* {currency(basePrice)} */}
