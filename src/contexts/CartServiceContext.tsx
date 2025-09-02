@@ -1,5 +1,6 @@
 "use client";
 
+import ClearCartModal from "components/ClearCartModal";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 import { calculateDiscountAmount } from "lib";
 //
@@ -88,6 +89,8 @@ const CartServiceProvider = (props: Props) => {
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const [selectedProductId, setSelectedProductId] = useState<string>("");
   const [note, setNote] = useState<string>("");
+  const [openSelfPickClearCart, setOpenSelfPickClearCart] = useState(false);
+  const [openOtherClearCart, setOpenOtherClearCart] = useState(false);
 
   const [cart, setCart] = useState<UserCart>({
     id: "",
@@ -206,8 +209,27 @@ const CartServiceProvider = (props: Props) => {
         discountType,
         discountAmount,
         weight,
+        deliveryPartner,
         name: productName,
       } = product;
+
+      if (deliveryPartner === "SELF_PICKUP") {
+        if (
+          isItemInCart &&
+          cart.cartItems.some((item) => item.deliveryPartner !== "SELF_PICKUP")
+        ) {
+          setOpenOtherClearCart(true);
+          return;
+        }
+      } else {
+        if (
+          isItemInCart &&
+          cart.cartItems.some((item) => item.deliveryPartner === "SELF_PICKUP")
+        ) {
+          setOpenSelfPickClearCart(true);
+          return;
+        }
+      }
 
       if (!user?.id || !user?.cart?.id) {
         openUnAuthenticatedModal(true);
@@ -229,6 +251,7 @@ const CartServiceProvider = (props: Props) => {
         const newItem: CartItem = {
           productId,
           basePrice,
+          deliveryPartner,
           images,
           productVariant,
           units,
@@ -322,6 +345,26 @@ const CartServiceProvider = (props: Props) => {
       user?.id,
     ]
   );
+
+  const handleClearCartAndAdd = useCallback(async () => {
+    try {
+      await updateCart({
+        userId: user?.id,
+        cartId: user?.cart?.id,
+        body: {
+          cartItems: [],
+        },
+      });
+      //
+      setCart((prev) => ({
+        ...prev,
+        shippingCost: 0,
+        cartItems: [],
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  }, [updateCart, user?.cart?.id, user?.id]);
   //
   const totalPrice = useMemo(
     () =>
@@ -398,6 +441,18 @@ const CartServiceProvider = (props: Props) => {
   return (
     <CartServiceContext.Provider value={returnValue}>
       {props.children}
+      <ClearCartModal
+        open={openSelfPickClearCart}
+        onClose={() => setOpenSelfPickClearCart(false)}
+        onClearCart={handleClearCartAndAdd}
+        message="You cannot add a delivery item when your cart already contains 'Self Pickup' items!"
+      />
+      <ClearCartModal
+        open={openOtherClearCart}
+        onClose={() => setOpenOtherClearCart(false)}
+        onClearCart={handleClearCartAndAdd}
+        message="You cannot add a 'Self Pickup' item when your cart already contains other delivery items!"
+      />
     </CartServiceContext.Provider>
   );
 };

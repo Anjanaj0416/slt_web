@@ -9,6 +9,7 @@ interface Props {
   name: string;
   title: string;
   checked: boolean;
+  disabled?: boolean;
   handleChange: (
     event: SyntheticEvent<Element, Event>,
     checked: boolean
@@ -16,11 +17,18 @@ interface Props {
 }
 // ==============================================================
 
-const FormLabel: FC<Props> = ({ name, checked, title, handleChange }) => {
+const FormLabel: FC<Props> = ({
+  name,
+  checked,
+  disabled = false,
+  title,
+  handleChange,
+}) => {
   return (
     <FormControlLabel
       name={name}
       onChange={handleChange}
+      disabled={disabled}
       label={<Paragraph fontWeight={600}>{title}</Paragraph>}
       control={<Radio checked={checked} color="primary" size="small" />}
     />

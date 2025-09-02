@@ -90,6 +90,7 @@ const BuyNowItemServiceProvider = (props: Props) => {
     //
     setItems(newItemList);
   };
+  
   //
   const handleAddToItem = (
     items: {
@@ -112,9 +113,10 @@ const BuyNowItemServiceProvider = (props: Props) => {
         brand,
         discountType,
         discountAmount,
+        deliveryPartner,
         name: productName,
       } = item.product;
-
+      //
       return {
         productId,
         basePrice,
@@ -126,6 +128,7 @@ const BuyNowItemServiceProvider = (props: Props) => {
         brand,
         productType,
         discountAmount,
+        deliveryPartner,
         discountType,
       };
     });

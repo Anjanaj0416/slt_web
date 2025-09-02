@@ -1,4 +1,4 @@
-import { Product1, ProductVariant } from "./Product.model";
+import { DeliveryPartnerType, Product1, ProductVariant } from "./Product.model";
 import Store from "./Store.model";
 
 interface User {
@@ -17,6 +17,7 @@ export interface CartItem {
   productName: string;
   basePrice: string;
   brand: string;
+  deliveryPartner: DeliveryPartnerType;
   productType: "DIRECT_BUYING" | "QUOTATION";
   discountAmount: number;
   discountType: "NONE" | "PERCENTAGE" | "FLAT";

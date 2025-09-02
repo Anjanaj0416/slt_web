@@ -31,6 +31,7 @@ import { useSnackbar } from "notistack";
 import Store from "models/Store.model";
 import useBuyNowItemService from "hooks/useBuyNowItemService";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
+import SelfPickupInfo from "./self-pickup-info";
 
 // ================================================================
 type Props = { product: Product1; store: Store };
@@ -578,18 +579,20 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
                 Buy Now
               </Button>
             )}
-            <Tooltip title="Share">
-              <Button
-                sx={{ height: 40, marginLeft: 1 }}
-                onClick={() =>
-                  modalRef.current.openModal(
-                    `${ENVIRONMENT.APP_URL}/products/${id}_${name}`
-                  )
-                }
-              >
-                <ShareIcon />
-              </Button>
-            </Tooltip>
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Tooltip title="Share">
+                <Button
+                  sx={{ height: 40, marginLeft: 1 }}
+                  onClick={() =>
+                    modalRef.current.openModal(
+                      `${ENVIRONMENT.APP_URL}/products/${id}_${name}`
+                    )
+                  }
+                >
+                  <ShareIcon />
+                </Button>
+              </Tooltip>
+            </Box>
           </FlexBox>
 
           {/* SHOP NAME */}
@@ -598,7 +601,27 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
             <Link href={`/shops/${store?.id}_${store?.name}`}>
               <H6>{store?.name}</H6>
             </Link>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <Tooltip title="Share">
+                <Button
+                  sx={{ height: 36, marginLeft: 1 }}
+                  onClick={() =>
+                    modalRef.current.openModal(
+                      `${ENVIRONMENT.APP_URL}/products/${id}_${name}`
+                    )
+                  }
+                >
+                  <ShareIcon fontSize="small" />
+                </Button>
+              </Tooltip>
+            </Box>
           </FlexBox>
+
+          {product.deliveryPartner === "SELF_PICKUP" && (
+            <Box mt={5}>
+              <SelfPickupInfo address={store?.address} />
+            </Box>
+          )}
         </Grid>
       </Grid>
     </Box>

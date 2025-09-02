@@ -1,7 +1,6 @@
-
 import Category1 from "./Category.model";
 
-export type DeliveryPartnerType = 'KOOMBIYO'|'OTHER';
+export type DeliveryPartnerType = "KOOMBIYO" | "SELF_PICKUP" | "OTHER";
 
 export interface Product1 {
   id: string;
@@ -10,7 +9,7 @@ export interface Product1 {
   discountAmount: number;
   discountType: DiscountType;
   productType: "QUOTATION" | "DIRECT_BUYING";
-  deliveryPartner:DeliveryPartnerType;
+  deliveryPartner: DeliveryPartnerType;
   variants?: ProductVariant[];
   brand?: string;
   images?: string[];

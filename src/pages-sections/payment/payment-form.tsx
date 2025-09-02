@@ -33,6 +33,7 @@ const PaymentForm = ({ type }: Props) => {
   const {
     note,
     setCart,
+    cart,
     voucherDiscounts: cartVoucherDiscount,
   } = useCartService();
   const {
@@ -145,6 +146,17 @@ const PaymentForm = ({ type }: Props) => {
     }
   };
 
+  const isSelfPickupOrder = () => {
+    if (items.length > 0) {
+      return !!items.find((item) => item.deliveryPartner === "SELF_PICKUP");
+    } else if (cart.cartItems.length > 0) {
+      return !!cart.cartItems.find(
+        (item) => item.deliveryPartner === "SELF_PICKUP"
+      );
+    }
+    return false;
+  };
+
   return (
     <Fragment>
       <Card
@@ -172,10 +184,12 @@ const PaymentForm = ({ type }: Props) => {
         <Divider sx={{ my: 3, mx: -4 }} />
 
         {/* CASH ON DELIVERY OPTION */}
+
         <FormLabel
           name={PAYMENT_METHODS.CASH_ON_DELIVERY}
           title="Cash On Delivery"
           handleChange={handlePaymentMethodChange}
+          disabled={isSelfPickupOrder()}
           checked={paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY}
         />
       </Card>
