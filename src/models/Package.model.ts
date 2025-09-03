@@ -1,4 +1,8 @@
-import { DiscountType, ProductVariant } from "./Product.model";
+import {
+  DeliveryPartnerType,
+  DiscountType,
+  ProductVariant,
+} from "./Product.model";
 
 export type PackageStatus =
   | "PENDING"
@@ -7,6 +11,7 @@ export type PackageStatus =
   | "SHIPPED"
   | "DELIVERED"
   | "CANCELLED"
+  | "RETURNED"
   | "FAILED";
 export type PackageItem = {
   productId: string;
@@ -14,6 +19,7 @@ export type PackageItem = {
   basePrice: string;
   brand: string;
   status: PackageStatus;
+  deliveryPartner: DeliveryPartnerType;
   productDiscountType: DiscountType;
   productDiscountAmount: number;
   discount: number;

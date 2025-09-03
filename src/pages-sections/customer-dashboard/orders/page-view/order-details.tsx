@@ -22,6 +22,7 @@ import { useUpdateOrderMutation } from "services/order-api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useSnackbar } from "notistack";
+import { isSelfPickupPackage } from "lib";
 
 // =============================================================
 type Props = { order: Order1 };
@@ -131,7 +132,8 @@ const OrderDetailsPageView = ({ order }: Props) => {
       {/* ORDER PROGRESS AREA */}
       {order.status === "SUCCESS" &&
         order.packages.length === 1 &&
-        order.packages[0].status !== "CANCELLED" && (
+        order.packages[0].status !== "CANCELLED" &&
+        !isSelfPickupPackage(order.packages?.[0]) && (
           <OrderProgress
             status={order.packages[0].status}
             handleOpen={handleOpen}

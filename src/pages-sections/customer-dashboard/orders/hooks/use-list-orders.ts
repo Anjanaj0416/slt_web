@@ -36,6 +36,7 @@ const useListOrders = (data: Order1[]) => {
             (order: Order1) => ({
               id: order.id,
               note: order.note,
+              orderNumber: order.orderNumber,
               shippingAddress: order.shippingAddress,
               billingAddress: order.billingAddress,
               payments: order.payments,

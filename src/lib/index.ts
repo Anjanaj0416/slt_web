@@ -1,5 +1,6 @@
 import currencyJs from "currency.js";
 import formatDistanceStrict from "date-fns/formatDistanceStrict";
+import Package from "models/Package.model";
 
 /**
  * GET THE DIFFERENCE DATE FORMAT
@@ -119,6 +120,9 @@ function currency(
   return formatCurrency;
 }
 
+const isSelfPickupPackage = (pkg: Package) =>
+  pkg.packageItems.some((item) => item.deliveryPartner === "SELF_PICKUP");
+
 export {
   currency,
   getDateDifference,
@@ -126,4 +130,5 @@ export {
   renderProductCount,
   calculateDiscountAmount,
   calculateDiscountPercentage,
+  isSelfPickupPackage,
 };
