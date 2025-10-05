@@ -10,10 +10,14 @@ import useCartService from "hooks/useCartService";
 import useBuyNowItemService from "hooks/useBuyNowItemService";
 import { useGetShippingCostMutation } from "services/delivery-api";
 import { useEffect } from "react";
+import { CartItem } from "models/User.model";
 
 type Props = {
   type: "CART" | "BUY_NOW";
 };
+const isSelfPickupOrder = (items: CartItem[]) =>
+  items.some((item) => item.deliveryPartner === "SELF_PICKUP");
+//
 const PaymentSummary = ({ type }: Props) => {
   const { totalPrice, totalDiscount, cart } = useCartService();
   const {
@@ -25,17 +29,23 @@ const PaymentSummary = ({ type }: Props) => {
   const [getShippingCost, { data: shippingData }] =
     useGetShippingCostMutation();
   useEffect(() => {
-    if (type === "BUY_NOW") {
+    if (type === "BUY_NOW" && !isSelfPickupOrder(items)) {
       const body = items.map(({ productVariant, units }) => ({
         productVariantId: productVariant.id,
         units,
       }));
       getShippingCost({ body });
     }
-  }, [type]);
+  }, [getShippingCost, items, type]);
 
   const shippingCost =
-    type === "CART" ? cart?.shippingCost : shippingData?.shippingCost;
+    type === "CART"
+      ? isSelfPickupOrder(cart.cartItems)
+        ? 0
+        : cart?.shippingCost
+      : isSelfPickupOrder(items)
+        ? 0
+        : shippingData?.shippingCost;
   const buyingTotal = shippingCost
     ? buyingSubTotal + shippingCost - buyingDiscount
     : null;

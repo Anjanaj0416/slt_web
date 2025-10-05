@@ -16,7 +16,6 @@ import BillingAddressForm from "./billing-address-form";
 import ShippingForm from "./shipping-form";
 //
 const CheckoutForm = () => {
-  const router = useRouter();
   const session = useSession();
   //
   const user = session?.data?.user as User1;

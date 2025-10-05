@@ -3,7 +3,7 @@ import { useSnackbar } from "notistack";
 import { useEffect } from "react";
 import { useCreateQuotationMutation } from "services/quotation-api";
 
-const useQuotation = (productId: string, userId?: string) => {
+const useQuotation = (productVariantId: string, userId?: string) => {
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const { enqueueSnackbar } = useSnackbar();
   const [createQuotation, { isLoading: isCreatingQuotation, isSuccess }] =
@@ -26,7 +26,7 @@ const useQuotation = (productId: string, userId?: string) => {
       openUnAuthenticatedModal(true);
       return;
     }
-    createQuotation({ userId, body: { productId } });
+    createQuotation({ userId, body: { productVariantId } });
   };
   return { requestQuota, isCreatingQuotation };
 };
