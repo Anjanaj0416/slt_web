@@ -32,6 +32,7 @@ import Store from "models/Store.model";
 import useBuyNowItemService from "hooks/useBuyNowItemService";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 import SelfPickupInfo from "./self-pickup-info";
+import SelfPickupInfoModal from "./self-pickup-info-modal";
 
 // ================================================================
 type Props = { product: Product1; store: Store };
@@ -65,6 +66,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
   const [quantity, setQuantity] = useState<number>();
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
   const [mappedAttributes, setMappedAttributes] = useState<MappedAttribute[]>();
+  const [openSelfPickupInfo, setOpenSelfPickupInfo] = useState(false);
   const medias = [
     ...videos.map((video) => ({ src: video, type: "video" })),
     ...images.map((image) => ({ src: image, type: "image" })),
@@ -351,12 +353,24 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
       { product, productVariant: selectedVariant, units: selectedQuantity },
     ]);
   };
+
+  useEffect(() => {
+    if (product.deliveryPartner === "SELF_PICKUP") {
+      setOpenSelfPickupInfo(true);
+    }
+  }, []);
   // HANDLE REQUEST QUOTE
   const selectedUnits =
     cart.cartItems.find((e) => e?.productVariant?.id === selectedVariant?.id)
       ?.units ?? 1;
   return (
     <Box width="100%">
+      <SelfPickupInfoModal
+        open={openSelfPickupInfo}
+        onClose={() => setOpenSelfPickupInfo(false)}
+        storeName={store.name}
+        storeAddress={store?.address}
+      />
       <Grid container spacing={3} justifyContent="space-around">
         <ShareModal ref={modalRef} />
         {/* IMAGE GALLERY AREA */}
