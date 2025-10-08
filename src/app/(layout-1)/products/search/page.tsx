@@ -1,26 +1,30 @@
 import { Metadata } from "next";
 // PAGE VIEW COMPONENT
 import { ProductSearchPageView } from "pages-sections/product-details/page-view";
-import request, { cachedRequest } from "utils/request";
+import { cachedRequest } from "utils/request";
 import PRODUCT_API from "constants/products";
-import { notFound, redirect } from "next/navigation";
+import BANNER_API from "constants/banners";
+import { notFound } from "next/navigation";
 import { Product1 } from "models/Product.model";
 
 export const metadata: Metadata = {
   title: "Product Search - TRADEZ ",
-  description: `TRADEZ is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
   authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
   viewport: "width=device-width, initial-scale=1",
-  keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
 };
 
 export default async function ProductSearch({ searchParams }) {
   try {
     const categoryId = searchParams?.categoryId?.split("_")?.[0];
-    const result = await cachedRequest(PRODUCT_API.GET_PRODUCTS, {
-      query: `size=9&categoryId=${categoryId}`,
-    });
-
+    const [result, banners] = await Promise.all([
+      cachedRequest(PRODUCT_API.GET_PRODUCTS, {
+        query: `size=9&categoryId=${categoryId}`,
+      }),
+      cachedRequest(BANNER_API.GET_BANNERS, {
+        query: "size=6&bannerType=SEARCH_SECTION_CAROUSEL",
+      }),
+    ]);
+    
     const products = result?.data as Product1[];
 
     const searchText =
@@ -32,6 +36,7 @@ export default async function ProductSearch({ searchParams }) {
 
     return (
       <ProductSearchPageView
+        banners={banners?.data}
         searchText={searchText}
         products={products}
         categorySelect

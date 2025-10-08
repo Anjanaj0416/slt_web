@@ -16,8 +16,15 @@ import Category1 from "models/Category.model";
 import ProductsGridView1 from "components/products-view/products-grid-view-1";
 import { Apps, ViewList } from "@mui/icons-material";
 import useListProducts from "components/products-view/hook/use-list-products";
-import { Pagination } from "@mui/material";
+import { Box, Pagination, useTheme } from "@mui/material";
 import ProductFilterCard from "../product-filter-card";
+import Banner from "models/Banner.model";
+import { Carousel } from "components/carousel";
+import Link from "next/link";
+import { CarouselCard4 } from "components/carousel-cards";
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
+import ENVIRONMENT from "config/environment";
+import CarouselCard5 from "components/carousel-cards/carousel-card-5";
 
 const SORT_OPTIONS = [
   { label: "Relevance", value: "Relevance" },
@@ -34,9 +41,21 @@ type Props = {
   categorySelect?: boolean;
   totalResults: number;
   initTotalPages: number;
+  banners?: Banner[];
 };
 // ==============================================================
+function getResponsiveImageUrls(imageUrl) {
+  const extensionRegex = /\.(png|jpg|jpeg|webp)$/i;
 
+  const tabletImage = imageUrl.replace(extensionRegex, "_tablet.$1");
+  const mobileImage = imageUrl.replace(extensionRegex, "_mobile.$1");
+
+  return {
+    tabletImage,
+    mobileImage,
+  };
+}
+//
 const ProductSearchPageView = ({
   products,
   searchText,
@@ -44,16 +63,17 @@ const ProductSearchPageView = ({
   totalResults,
   initTotalPages,
   categorySelect,
+  banners,
 }: Props) => {
   const [view, setView] = useState("grid");
   const toggleView = useCallback((v: string) => () => setView(v), []);
   const [totalResult, setTotalResult] = useState(totalResults);
-  const [selectedCategoryId, setCategoryId] =
-    useState<string>(categoryId);
+  const [selectedCategoryId, setCategoryId] = useState<string>(categoryId);
   const [brands, setBrands] = useState<string[]>();
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(0);
   const [sort, setSort] = useState<string>();
+  const { palette } = useTheme();
   const { isLoading, filteredProducts, setPage, page, totalPage } =
     useListProducts(
       products,
@@ -115,7 +135,39 @@ const ProductSearchPageView = ({
   });
 
   return (
-    <Container sx={{ mt: 4, mb: 6 }}>
+    <Box sx={{ mt: 4, mb: 6, px: { xs: 2, md: 16 } }}>
+      <Grid item md={9} xs={12} mb={1}>
+        {banners && banners?.length && (
+          <Carousel
+            dots
+            arrows={false}
+            spaceBetween={0}
+            slidesToShow={1}
+            autoplay
+            dotColor={palette.dark.main}
+            dotStyles={COMMON_DOT_STYLES}
+          >
+            {banners.map((item) => (
+              <Link key={item.id} href={item.link} target="_blank">
+                <CarouselCard5
+                  mode="light"
+                  bgImage={`${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`}
+                  bgImageTablet={
+                    getResponsiveImageUrls(
+                      `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`
+                    ).tabletImage
+                  }
+                  bgImageMobile={
+                    getResponsiveImageUrls(
+                      `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`
+                    ).mobileImage
+                  }
+                />
+              </Link>
+            ))}
+          </Carousel>
+        )}
+      </Grid>
       {/* FILTER ACTION AREA */}
       <Card
         elevation={1}
@@ -293,7 +345,7 @@ const ProductSearchPageView = ({
           )}
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 
