@@ -47,6 +47,7 @@ const ShopCard: FC<Partial<Store>> = (props) => {
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
+            textTransform: "capitalize",
           }}
         >
           {name}
