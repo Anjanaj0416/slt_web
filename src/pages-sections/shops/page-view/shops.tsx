@@ -44,6 +44,7 @@ const ShopsPageView = ({ storesData }: Props) => {
                 telephone={item.telephone}
                 address={item.address}
                 logoFilePath={item.logoFilePath}
+                coverImageFilePath={item.coverImageFilePath}
               />
             </Grid>
           ))}

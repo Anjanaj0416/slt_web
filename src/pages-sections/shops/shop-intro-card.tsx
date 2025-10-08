@@ -36,6 +36,7 @@ type Props = {
   address: string;
   socialLinks: SocialLink[];
   logoImage: string;
+  coverImage: string;
 };
 const icons = {
   facebook: <FacebookFilled sx={{ fontSize: 27 }} />,
@@ -52,6 +53,7 @@ const ShopIntroCard: FC<Props> = ({
   email,
   address,
   logoImage,
+  coverImage,
   socialLinks,
 }: Props) => {
   const { data, update: updateSession } = useSession();
@@ -112,13 +114,23 @@ const ShopIntroCard: FC<Props> = ({
   };
 
   return (
-    <Card sx={{ mb: 4, pb: 2.5 }}>
+    <Card
+      sx={{
+        mb: 4,
+        pb: 2.5,
+      }}
+    >
       <FlexBox
         alignItems={"start"}
         justifyContent="right"
         height="202px"
         pr={1}
-        sx={{ backgroundColor: "secondary.main" }}
+        sx={{
+          backgroundColor: "secondary.main",
+          backgroundImage: `url('${ENVIRONMENT.S3_BUCKET_URL}/${coverImage}')`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
       >
         {user?.followedStores?.find((store) => store.id === id) ? (
           <IconButton
@@ -171,7 +183,11 @@ const ShopIntroCard: FC<Props> = ({
               display="inline-block"
               bgcolor="primary.main"
             >
-              <H3 fontWeight="600" color="grey.100">
+              <H3
+                fontWeight="600"
+                color="grey.100"
+                sx={{ textTransform: "capitalize" }}
+              >
                 {name}
               </H3>
             </Box>
@@ -201,7 +217,9 @@ const ShopIntroCard: FC<Props> = ({
 
               <FlexBox color="grey.600" gap={1} mb={1} maxWidth={270}>
                 <Place fontSize="small" sx={{ fontSize: 18, mt: "3px" }} />
-                <Span color="grey.600">{address}</Span>
+                <Span color="grey.600" sx={{ textTransform: "capitalize" }}>
+                  {address}
+                </Span>
               </FlexBox>
 
               <FlexBox color="grey.600" gap={1} mb={1}>

@@ -117,6 +117,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
         address={store.address}
         socialLinks={store.socialLinks}
         logoImage={store.logoFilePath}
+        coverImage={store.coverImageFilePath}
       />
 
       <Grid container spacing={3}>

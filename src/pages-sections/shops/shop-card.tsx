@@ -26,17 +26,20 @@ const ContentWrapper = styled("div", {
   backgroundImage: `linear-gradient(to bottom,
     ${alpha(theme.palette.grey[900], 0.8)}, ${alpha(
       theme.palette.grey[900],
-      0.8
+      0.5
     )}), 
     url(${img})`,
 }));
 
 const ShopCard: FC<Partial<Store>> = (props) => {
-  const { name, address, telephone, logoFilePath, id } = props || {};
+  const { name, address, telephone, logoFilePath, id, coverImageFilePath } =
+    props || {};
 
   return (
     <Card>
-      <ContentWrapper img={"/assets/images/banners/cycle.png"}>
+      <ContentWrapper
+        img={`${ENVIRONMENT.S3_BUCKET_URL}/${coverImageFilePath}`}
+      >
         <H3
           fontWeight="600"
           mb={1}
@@ -59,7 +62,9 @@ const ShopCard: FC<Partial<Store>> = (props) => {
 
         <FlexBox mb={1} gap={1}>
           <Place fontSize="small" sx={{ fontSize: 17, mt: "3px" }} />
-          <Span color="white">{address}</Span>
+          <Span color="white" sx={{ textTransform: "capitalize" }}>
+            {address}
+          </Span>
         </FlexBox>
 
         <FlexBox alignItems="center" gap={1}>

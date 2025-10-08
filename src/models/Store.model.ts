@@ -15,6 +15,7 @@ export default interface Store {
   website?: string;
   logoFilePath: string;
   storeStatus: StoreStatus;
+  coverImageFilePath: string;
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
