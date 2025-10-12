@@ -83,7 +83,7 @@ const ProductReview = ({ productId }: Props) => {
         ))
       )}
 
-      {user?.id && (
+      {/* {user?.id && (
         <>
           <H2 fontWeight="600" mt={7} mb={2.5}>
             Write a Review for this product
@@ -135,7 +135,7 @@ const ProductReview = ({ productId }: Props) => {
             </LoadingButton>
           </form>
         </>
-      )}
+      )} */}
     </div>
   );
 };
