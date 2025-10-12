@@ -50,6 +50,7 @@ type ContextState = {
     variantId: string,
     discount: number
   ) => void;
+  removeVoucherDiscount: (voucherCode: string) => void;
   setNote: Dispatch<SetStateAction<string>>;
 };
 //
@@ -75,6 +76,7 @@ const initState: ContextState = {
   voucherDiscounts: null,
   setNote: () => {},
   increaseVoucherDiscount: () => {},
+  removeVoucherDiscount: () => {},
 };
 //
 export const CartServiceContext = createContext<ContextState>(initState);
@@ -117,7 +119,14 @@ const CartServiceProvider = (props: Props) => {
       return [...prvState, { voucherCode, variantId, discount }];
     });
   };
-
+  //
+  const removeVoucherDiscount = (voucherCode: string) => {
+    setVoucherDiscounts((prvState) => {
+      return prvState.filter(
+        (voucherDiscount) => voucherDiscount.voucherCode != voucherCode
+      );
+    });
+  };
   //
   const handleFetch = useCallback(async () => {
     if (!user?.id || !user?.cart?.id) {
@@ -420,22 +429,9 @@ const CartServiceProvider = (props: Props) => {
       setNote,
       voucherDiscounts,
       increaseVoucherDiscount,
+      removeVoucherDiscount
     }),
-    [
-      handleFetch,
-      handleAddToCart,
-      isCartFetching,
-      cart,
-      isUpdating,
-      handleRemoveFromCart,
-      handleUpdateQty,
-      totalPrice,
-      totalDiscount,
-      isItemInCart,
-      selectedProductId,
-      note,
-      voucherDiscounts,
-    ]
+    [handleFetch, handleAddToCart, isCartFetching, cart, isUpdating, handleRemoveFromCart, handleUpdateQty, totalPrice, totalDiscount, isItemInCart, selectedProductId, note, voucherDiscounts, increaseVoucherDiscount]
   );
   //
   return (

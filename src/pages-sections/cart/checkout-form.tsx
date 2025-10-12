@@ -22,10 +22,16 @@ const CheckoutForm = () => {
   const { push } = useRouter();
   const [comments, setComments] = useState("");
   const { data } = useSession();
-  const { totalDiscount, totalPrice, setNote, cart, increaseVoucherDiscount } =
-    useCartService();
+  const {
+    totalDiscount,
+    totalPrice,
+    setNote,
+    cart,
+    increaseVoucherDiscount,
+    removeVoucherDiscount,
+  } = useCartService();
   const { enqueueSnackbar } = useSnackbar();
-
+  const [appliedVoucher, setAppliedVoucher] = useState<string>();
   const [voucherCode, setVoucherCode] = useState<string>("");
   const [calculateVoucherDiscount, { isLoading }] =
     useCalculateVoucherDiscountMutation();
@@ -71,22 +77,21 @@ const CheckoutForm = () => {
               variant: "success",
             }
           );
+          setAppliedVoucher(voucherCode);
         } catch {
           enqueueSnackbar("This voucher already use in this order!", {
             variant: "error",
           });
+        } finally {
+          setVoucherCode("");
         }
       }
     });
-
-    setVoucherCode("");
   };
-
-  // const STATE_LIST = [
-  //   { value: "new-york", label: "New York" },
-  //   { value: "chicago", label: "Chicago" },
-  // ];
-  //
+  const handleVoucherRemove = () => {
+    removeVoucherDiscount(appliedVoucher);
+    setAppliedVoucher(null);
+  };
   const navigateCheckout = () => {
     setNote(comments);
     push("/checkout");
@@ -146,29 +151,41 @@ const CheckoutForm = () => {
       <Divider sx={{ mb: 2 }} />
 
       {/* APPLY VOUCHER TEXT FIELD */}
-      <TextField
-        fullWidth
-        disabled={cart.cartItems.length < 1}
-        size="small"
-        label="Voucher"
-        variant="outlined"
-        placeholder="Enter Voucher Code"
-        value={voucherCode}
-        maxRows={1}
-        onChange={handleChange}
-      />
-
-      <LoadingButton
-        loading={isLoading}
-        variant="outlined"
-        color="primary"
-        fullWidth
-        disabled={cart.cartItems.length < 1 || !voucherCode || isLoading}
-        sx={{ mt: 2, mb: 4 }}
-        onClick={handleAddVoucher}
-      >
-        Apply Voucher
-      </LoadingButton>
+      {appliedVoucher ? (
+        <FlexBetween
+          mb={2}
+          p={1}
+          sx={{ bgcolor: "primary.light", borderRadius: "6px" }}
+        >
+          <Span fontWeight={600}>Voucher Applied: {appliedVoucher}</Span>
+          <Button size="small" color="error" onClick={handleVoucherRemove}>
+            Remove
+          </Button>
+        </FlexBetween>
+      ) : (
+        <>
+          <TextField
+            fullWidth
+            disabled={cart.cartItems.length < 1}
+            size="small"
+            label={voucherCode ? "Voucher" : ""}
+            variant="outlined"
+            placeholder="Enter Voucher Code"
+            value={voucherCode}
+            onChange={handleChange}
+          />
+          <Button
+            variant="outlined"
+            color="primary"
+            fullWidth
+            disabled={cart.cartItems.length < 1 || !voucherCode || isLoading}
+            sx={{ mt: 2, mb: 4 }}
+            onClick={handleAddVoucher}
+          >
+            Apply Voucher
+          </Button>
+        </>
+      )}
 
       <Divider sx={{ mb: 2 }} />
       {/* 

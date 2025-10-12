@@ -39,6 +39,7 @@ type ContextState = {
     variantId: string,
     discount: number
   ) => void;
+  removeVoucherDiscount: (voucherCode: string) => void;
 };
 //
 const initState: ContextState = {
@@ -52,6 +53,7 @@ const initState: ContextState = {
   voucherDiscounts: null,
   setNote: () => {},
   increaseVoucherDiscount: () => {},
+  removeVoucherDiscount: () => {},
 };
 //
 export const BuyNowItemServiceContext = createContext<ContextState>(initState);
@@ -90,7 +92,7 @@ const BuyNowItemServiceProvider = (props: Props) => {
     //
     setItems(newItemList);
   };
-  
+
   //
   const handleAddToItem = (
     items: {
@@ -188,6 +190,14 @@ const BuyNowItemServiceProvider = (props: Props) => {
     });
   };
 
+  const removeVoucherDiscount = (voucherCode: string) => {
+    setVoucherDiscounts((prvState) => {
+      return prvState.filter(
+        (voucherDiscount) => voucherDiscount.voucherCode != voucherCode
+      );
+    });
+  };
+
   //
   const returnValue: ContextState = useMemo(
     () => ({
@@ -197,6 +207,7 @@ const BuyNowItemServiceProvider = (props: Props) => {
       handleUpdateQty,
       voucherDiscounts,
       increaseVoucherDiscount,
+      removeVoucherDiscount,
       totalPrice,
       totalDiscount,
       note,

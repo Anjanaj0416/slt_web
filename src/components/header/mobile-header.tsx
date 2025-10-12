@@ -82,7 +82,7 @@ const MobileHeader: FC<Props> = ({
             ) : (
               <IconButton
                 onClick={() =>
-                  void signIn("keycloak", { callbackUrl: "/orders" })
+                  void signIn("keycloak", { callbackUrl: window.location.href || "/" })
                 }
               >
                 <Icon.User sx={ICON_STYLE} />

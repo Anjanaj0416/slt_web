@@ -24,7 +24,11 @@ const View = ({ isOpen, handleClose }: Props) => {
           <Button
             variant="contained"
             color="error"
-            onClick={() => void signIn("keycloak", { callbackUrl: "/" })}
+            onClick={() =>
+              void signIn("keycloak", {
+                callbackUrl: window.location.href || "/",
+              })
+            }
           >
             Login
           </Button>

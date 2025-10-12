@@ -130,7 +130,7 @@ const Newsletter: FC<Props> = ({
                 <TextField
                   fullWidth
                   className="emailInput"
-                  placeholder="Enter your email address"
+                  placeholder="Enter your email addrggess"
                 />
 
                 <Button

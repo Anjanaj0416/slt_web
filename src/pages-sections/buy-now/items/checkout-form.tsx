@@ -22,9 +22,16 @@ const CheckoutForm = () => {
   const { push } = useRouter();
   const [comments, setComments] = useState("");
   const { data } = useSession();
-  const { totalDiscount, totalPrice, setNote, items, increaseVoucherDiscount } =
-    useBuyNowItemService();
+  const {
+    totalDiscount,
+    totalPrice,
+    setNote,
+    items,
+    increaseVoucherDiscount,
+    removeVoucherDiscount,
+  } = useBuyNowItemService();
   const { enqueueSnackbar } = useSnackbar();
+  const [appliedVoucher, setAppliedVoucher] = useState<string>();
 
   const [voucherCode, setVoucherCode] = useState<string>("");
   const [calculateVoucherDiscount, { isLoading }] =
@@ -69,22 +76,21 @@ const CheckoutForm = () => {
               variant: "success",
             }
           );
+          setAppliedVoucher(voucherCode);
         } catch {
           enqueueSnackbar("This voucher already use in this order!", {
             variant: "error",
           });
+        } finally {
+          setVoucherCode("");
         }
       }
     });
-
-    setVoucherCode("");
   };
-
-  // const STATE_LIST = [
-  //   { value: "new-york", label: "New York" },
-  //   { value: "chicago", label: "Chicago" },
-  // ];
-  //
+  const handleVoucherRemove = () => {
+    removeVoucherDiscount(appliedVoucher);
+    setVoucherCode(null);
+  };
   const navigateCheckout = () => {
     setNote(comments);
     push("/buy-now/checkout");
@@ -94,30 +100,30 @@ const CheckoutForm = () => {
     <Card sx={{ padding: 3 }}>
       <FlexBetween mb={2}>
         <Span color="grey.600">Total:</Span>
-
         <Span fontSize={18} fontWeight={600} lineHeight="1">
           {currency(totalPrice)}
         </Span>
       </FlexBetween>
+
       <FlexBetween mb={2}>
         <Span color="grey.600">Discount:</Span>
-
         <Span fontSize={18} fontWeight={600} lineHeight="1">
           {currency(totalDiscount)}
         </Span>
       </FlexBetween>
+
       <FlexBetween mb={2}>
         <Span color="grey.600">Sub Total:</Span>
-
         <Span fontSize={18} fontWeight={600} lineHeight="1">
           {currency(totalPrice - totalDiscount)}
         </Span>
       </FlexBetween>
+
       <Divider sx={{ mb: 2 }} />
 
+      {/* Additional Comments */}
       <FlexBox alignItems="center" columnGap={1} mb={2}>
         <Span fontWeight="600">Additional Comments</Span>
-
         <Span
           p="6px 10px"
           fontSize={12}
@@ -130,7 +136,6 @@ const CheckoutForm = () => {
         </Span>
       </FlexBox>
 
-      {/* COMMENTS TEXT FIELD */}
       <TextField
         variant="outlined"
         disabled={items.length < 1}
@@ -143,81 +148,43 @@ const CheckoutForm = () => {
 
       <Divider sx={{ mb: 2 }} />
 
-      {/* APPLY VOUCHER TEXT FIELD */}
-      <TextField
-        fullWidth
-        disabled={items.length < 1}
-        size="small"
-        label={voucherCode ? "Voucher" : ""}
-        variant="outlined"
-        placeholder="Enter Voucher Code"
-        value={voucherCode}
-        onChange={handleChange}
-      />
-
-      <Button
-        variant="outlined"
-        color="primary"
-        fullWidth
-        disabled={items.length < 1 || !voucherCode || isLoading}
-        sx={{ mt: 2, mb: 4 }}
-        onClick={handleAddVoucher}
-      >
-        Apply Voucher
-      </Button>
+      {appliedVoucher ? (
+        <FlexBetween
+          mb={2}
+          p={1}
+          sx={{ bgcolor: "primary.light", borderRadius: "6px" }}
+        >
+          <Span fontWeight={600}>Voucher Applied: {appliedVoucher}</Span>
+          <Button size="small" color="error" onClick={handleVoucherRemove}>
+            Remove
+          </Button>
+        </FlexBetween>
+      ) : (
+        <>
+          <TextField
+            fullWidth
+            disabled={items.length < 1}
+            size="small"
+            label={voucherCode ? "Voucher" : ""}
+            variant="outlined"
+            placeholder="Enter Voucher Code"
+            value={voucherCode}
+            onChange={handleChange}
+          />
+          <Button
+            variant="outlined"
+            color="primary"
+            fullWidth
+            disabled={items.length < 1 || !voucherCode || isLoading}
+            sx={{ mt: 2, mb: 4 }}
+            onClick={handleAddVoucher}
+          >
+            Apply Voucher
+          </Button>
+        </>
+      )}
 
       <Divider sx={{ mb: 2 }} />
-      {/* 
-      <Span fontWeight={600} mb={2} display="block">
-        Shipping Estimates
-      </Span> */}
-
-      {/* COUNTRY TEXT FIELD */}
-      {/* <Autocomplete
-        fullWidth
-        sx={{ mb: 2 }}
-        options={countryList}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            size="small"
-            label="Country"
-            variant="outlined"
-            placeholder="Select Country"
-          />
-        )}
-      /> */}
-
-      {/* STATE/CITY TEXT FIELD */}
-      {/* <TextField
-        select
-        fullWidth
-        size="small"
-        label="State"
-        variant="outlined"
-        placeholder="Select State"
-        defaultValue="new-york"
-      >
-        {STATE_LIST.map(({ label, value }) => (
-          <MenuItem value={value} key={label}>
-            {label}
-          </MenuItem>
-        ))}
-      </TextField> */}
-
-      {/* ZIP-CODE TEXT FIELD */}
-      {/* <TextField
-        fullWidth
-        size="small"
-        label="Zip Code"
-        placeholder="3100"
-        variant="outlined"
-        sx={{ mt: 2 }}
-      />
-
-      <Button variant="outlined" color="primary" fullWidth sx={{ my: 2 }}>
-        Calculate Shipping
-      </Button> */}
 
       <Button
         fullWidth

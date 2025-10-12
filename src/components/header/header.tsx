@@ -71,7 +71,9 @@ const Header = ({
 
       {/* LOGIN AND CART BUTTON */}
       <LoginCartButtons
-        toggleDialog={() => void signIn("keycloak", { callbackUrl: "/orders" })}
+        toggleDialog={() =>
+          void signIn("keycloak", { callbackUrl: window.location.href || "/" })
+        }
         toggleSidenav={toggleSidenav}
       />
 
