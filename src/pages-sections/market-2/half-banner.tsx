@@ -7,22 +7,17 @@ import Container from "@mui/material/Container";
 import Banner from "models/Banner.model";
 import { FC } from "react";
 import { ENVIRONMENT } from "config";
+import Link from "next/link";
 
 // STYLED COMPONENT
-const BannerBox = styled("div", {
-  shouldForwardProp: (prop) => prop !== "img",
-})<{ img: string }>(({ theme, img }) => ({
-  padding: 32,
-  overflow: "hidden",
-  borderRadius: "3px",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-  height: "100%",
+const BannerBox = styled("div")<{ img: string }>(({ img }) => ({
+  position: "relative",
+  width: "100%",
+  paddingTop: "50%",
   backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${img})`,
-  ...(theme.direction === "rtl" && {
-    textAlign: "right",
-    "& > .MuiDivider-root": { marginLeft: "auto" },
-  }),
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  borderRadius: "6px",
 }));
 
 // ======================================================================
@@ -31,22 +26,20 @@ type Props = { data: Banner[] };
 
 const HalfBanner: FC<Props> = ({ data }) => {
   console.log(data);
-  
-  return (
-    //TODO: Fix banner height
-    <Container sx={{ my: 8 }}>
-      <Grid container spacing={3}>
-        {/* FINAL REDUCTION BANNER */}
-        <Grid item md={6} xs={12}>
-          <BannerBox img={data[0]?.imageUrl} />
-        </Grid>
 
-        {/* WEEKEND SALE BANNER */}
-        <Grid item md={6} xs={12}>
-          <BannerBox img={data[1]?.imageUrl} />
-        </Grid>
+  return (
+    <Grid container spacing={3} mb={{ xs: 1, md: 0.5 }} mt={{ xs: "1px", md: 0 }}>
+      <Grid item md={6} xs={12}>
+        <Link href={data[0]?.link} target="_blank">
+          <BannerBox img={data[0]?.imageUrl} />{" "}
+        </Link>
       </Grid>
-    </Container>
+      <Grid item md={6} xs={12}>
+        <Link href={data?.[1]?.link} target="_blank">
+          <BannerBox img={data?.[1]?.imageUrl} />
+        </Link>
+      </Grid>
+    </Grid>
   );
 };
 

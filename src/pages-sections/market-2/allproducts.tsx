@@ -18,12 +18,14 @@ const PAGE_SIZE = 10;
 const getColumnCount = () => {
   if (typeof window !== "undefined") {
     const width = window.innerWidth;
-    if (width >= 1200) return 5; // lg
-    if (width >= 900) return 4; // md
+    if (width >= 1858) return 5; // xl
+    if (width >= 1287) return 4; // lg
+    if (width >= 900) return 3; // md
     return 2; // xs
   }
   return 2;
 };
+
 type Props = {
   fullBanners: Banner[];
   halfBanners: Banner[];
@@ -65,7 +67,6 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
   // Intersection Observer to trigger loading
   useEffect(() => {
     if (!hasMore) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !isFetching) {
@@ -78,14 +79,13 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
         threshold: 1.0,
       }
     );
-
     const currentLoader = loaderRef.current;
     if (currentLoader) observer.observe(currentLoader);
 
     return () => {
       if (currentLoader) observer.unobserve(currentLoader);
     };
-  }, [hasMore]);
+  }, [hasMore, isFetching]);
 
   const columnCount = getColumnCount();
 
@@ -101,6 +101,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
     let halfBannerIndex = 0;
     const isEndOfRow = (index + 1) % columnCount === 0;
     const isEvenRow = ((index + 1) / columnCount) % 2 === 0;
+console.log(columnCount);
 
     if (isEndOfRow && isEvenRow && fullBanners.length > 0) {
       if (!isFullBannerAdded) {
@@ -133,7 +134,6 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
               gridColumn: `1 / -1`, // spans the full row
               display: "flex",
               justifyContent: "center",
-              mt: 2,
             }}
           >
             <HalfBanner
