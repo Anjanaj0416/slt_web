@@ -20,7 +20,6 @@ import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
 import { calculateDiscountPercentage, currency } from "lib";
-import ProductViewDialog2 from "components/products-view/product-view-dialog2";
 
 // ========================================================
 type Props = {
@@ -54,7 +53,7 @@ const ProductCard11: FC<Props> = ({
     discountType,
     variants,
   } = product;
-  const { openModal, toggleDialog } = useProduct(id);
+  const { toggleDialog } = useProduct(id);
   const minPriceVariant =
     variants.length > 0 &&
     variants.reduce((minVariant, currentVariant) => {
@@ -80,6 +79,12 @@ const ProductCard11: FC<Props> = ({
   const imgUrl = images[0]
     ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
     : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
+
+  const getPrice = () => {
+    const prices = basePrice.split("-");
+
+    return currency(+prices[0], 1);
+  };
   return (
     <StyledBazaarCard hoverEffect={hoverEffect}>
       <ImageWrapper>
@@ -146,7 +151,7 @@ const ProductCard11: FC<Props> = ({
             price={basePrice}
           /> */}
           <Paragraph fontWeight={600} color="primary.main">
-            {currency(basePrice)}
+            {getPrice()}
           </Paragraph>
         </Box>
 
