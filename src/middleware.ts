@@ -22,10 +22,7 @@ export async function middleware(req: NextRequest) {
   });
 
   if (!token) {
-    const loginUrl = req.nextUrl.origin+ "/login?callbackUrl=" + req.nextUrl.href;
-    console.log(req.nextUrl);
-    
-    console.log(loginUrl);
+    const loginUrl = req.nextUrl.origin+ "/login?callbackPath=" + req.nextUrl.pathname;
     return NextResponse.redirect(loginUrl);
   }
 

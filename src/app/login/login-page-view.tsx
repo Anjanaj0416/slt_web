@@ -6,16 +6,16 @@ import { useEffect } from "react";
 
 const LoginPageView = () => {
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl");
+  const callbackPath = searchParams.get("callbackPath") || "";
   useEffect(() => {
     const signInWithKeycloak = async () => {
       await signIn("keycloak", {
-        callbackUrl,
+        callbackUrl: `${window.location.origin}${callbackPath}`,
       });
     };
     //
     signInWithKeycloak();
-  }, [callbackUrl]);
+  }, [callbackPath]);
 
   return <></>;
 };
