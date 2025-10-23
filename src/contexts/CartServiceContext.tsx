@@ -272,6 +272,13 @@ const CartServiceProvider = (props: Props) => {
           if (availableCartItem?.units < productVariant?.units) {
             await handleUpdateQty(productVariant, units);
           }
+          enqueueSnackbar("Item successfully added to your cart", {
+            variant: "success",
+            anchorOrigin: {
+              vertical: "top",
+              horizontal: "center",
+            },
+          });
           return;
         }
         setSelectedProductId(productVariant?.id);
@@ -307,6 +314,13 @@ const CartServiceProvider = (props: Props) => {
           shippingCost: (response as any)?.data?.shippingCost,
           cartItems: [...cart?.cartItems, newItem],
         }));
+        enqueueSnackbar("Item successfully added to your cart", {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "center",
+          },
+        });
       } catch (error) {
         console.error(error);
       } finally {

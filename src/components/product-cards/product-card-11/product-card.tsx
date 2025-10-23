@@ -81,9 +81,9 @@ const ProductCard11: FC<Props> = ({
     : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
 
   const getPrice = () => {
-    const prices = basePrice.split("-");
+    const prices = basePrice?.split("-");
 
-    return currency(+prices[0], 1);
+    return prices?.length ? currency(+prices[0], 1) : currency(+basePrice, 1);
   };
   return (
     <StyledBazaarCard hoverEffect={hoverEffect}>
