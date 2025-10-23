@@ -7,6 +7,7 @@ import {
   Stack,
   Snackbar,
   Tooltip,
+  Backdrop,
 } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -48,7 +49,21 @@ const ShareModal = forwardRef<ShareModalRef>((_, ref) => {
 
   return (
     <>
-      <Modal open={!!url} onClose={() => setUrl("")}>
+      <Modal
+        open={!!url}
+        onClose={() => setUrl("")}
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 300,
+            sx: {
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
+              backgroundColor: "rgba(0,0,0,0.45)",
+            },
+          },
+        }}
+      >
         <Box sx={modalStyle}>
           <Box
             display="flex"
