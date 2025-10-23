@@ -6,6 +6,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { Product1, ProductVariant } from "models/Product.model";
 
 interface Props {
   open: boolean;
@@ -18,10 +19,24 @@ const ClearCartModal: React.FC<Props> = ({
   open,
   onClose,
   onClearCart,
+
   message,
 }) => {
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      maxWidth="md"
+      fullWidth
+      slotProps={{
+        backdrop: {
+          sx: {
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            backdropFilter: "blur(6px)", 
+          },
+        },
+      }}
+    >
       <DialogTitle>Mixed Cart Items</DialogTitle>
       <DialogContent>
         <Typography variant="body1">{message}</Typography>
@@ -49,7 +64,7 @@ const ClearCartModal: React.FC<Props> = ({
           variant="contained"
           sx={{ textTransform: "capitalize" }}
         >
-          Clear Cart
+          Clear Cart & Add Item
         </Button>
       </DialogActions>
     </Dialog>

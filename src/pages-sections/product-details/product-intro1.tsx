@@ -333,7 +333,7 @@ const ProductIntro1: FC<Props> = ({ product, store }) => {
     ) {
       handleRemoveFromCart(selectedVariant);
     } else {
-      handleAddToCart(product, selectedVariant, units);
+      handleAddToCart(product, selectedVariant, units, false);
     }
   };
 

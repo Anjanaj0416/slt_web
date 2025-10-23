@@ -2,12 +2,14 @@
 
 import ClearCartModal from "components/ClearCartModal";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
+import { set } from "date-fns";
 import { calculateDiscountAmount } from "lib";
 //
 import { Product1, ProductVariant } from "models/Product.model";
 import { CartItem, User1, UserCart } from "models/User.model";
 import { useSession } from "next-auth/react";
 import { enqueueSnackbar } from "notistack";
+import SelfPickupInfoModal from "pages-sections/product-details/self-pickup-info-modal";
 import {
   Dispatch,
   ReactNode,
@@ -25,7 +27,8 @@ type ContextState = {
   handleAddToCart: (
     product: Product1,
     productVariant: ProductVariant,
-    units: number
+    units: number,
+    isOpenSelfPickClearInfo?: boolean
   ) => void;
   isCartFetching: boolean;
   cart: UserCart;
@@ -93,6 +96,12 @@ const CartServiceProvider = (props: Props) => {
   const [note, setNote] = useState<string>("");
   const [openSelfPickClearCart, setOpenSelfPickClearCart] = useState(false);
   const [openOtherClearCart, setOpenOtherClearCart] = useState(false);
+  const [openSelfPickClearInfo, setOpenSelfPickClearInfo] = useState(false);
+  const [product, setProduct] = useState<Product1 | null>(null);
+  const [productVariant, setProductVariant] = useState<ProductVariant | null>(
+    null
+  );
+  const [units, setUnits] = useState<number>(null);
 
   const [cart, setCart] = useState<UserCart>({
     id: "",
@@ -207,7 +216,8 @@ const CartServiceProvider = (props: Props) => {
     async (
       product: Product1,
       productVariant: ProductVariant,
-      units: number
+      units: number,
+      isOpenSelfPickClearInfo = true
     ) => {
       const {
         id: productId,
@@ -227,14 +237,23 @@ const CartServiceProvider = (props: Props) => {
           isItemInCart &&
           cart.cartItems.some((item) => item.deliveryPartner !== "SELF_PICKUP")
         ) {
+          setProduct(product);
+          setProductVariant(productVariant);
+          setUnits(units);
           setOpenOtherClearCart(true);
           return;
+        }
+        if (isOpenSelfPickClearInfo) {
+          setOpenSelfPickClearInfo(true);
         }
       } else {
         if (
           isItemInCart &&
           cart.cartItems.some((item) => item.deliveryPartner === "SELF_PICKUP")
         ) {
+          setProduct(product);
+          setProductVariant(productVariant);
+          setUnits(units);
           setOpenSelfPickClearCart(true);
           return;
         }
@@ -356,25 +375,59 @@ const CartServiceProvider = (props: Props) => {
   );
 
   const handleClearCartAndAdd = useCallback(async () => {
+    setSelectedProductId(productVariant?.id);
+    const {
+      id: productId,
+      images,
+      basePrice,
+      productType,
+      brand,
+      discountType,
+      discountAmount,
+      weight,
+      deliveryPartner,
+      name: productName,
+    } = product;
+    const newItem: CartItem = {
+      productId,
+      basePrice,
+      deliveryPartner,
+      images,
+      productVariant,
+      units,
+      productName,
+      brand,
+      productType,
+      weight,
+      discountAmount,
+      discountType,
+    };
     try {
       await updateCart({
         userId: user?.id,
         cartId: user?.cart?.id,
         body: {
-          cartItems: [],
+          cartItems: [{ productVariantId: productVariant?.id, units }],
         },
       });
       //
       setCart((prev) => ({
         ...prev,
         shippingCost: 0,
-        cartItems: [],
+        cartItems: [newItem],
       }));
     } catch (error) {
       console.error(error);
     }
-  }, [updateCart, user?.cart?.id, user?.id]);
-  //
+  }, [
+    product,
+    productVariant,
+    units,
+    updateCart,
+    user?.cart?.id,
+    user?.id,
+  ]);
+
   const totalPrice = useMemo(
     () =>
       cart?.cartItems?.reduce(
@@ -429,9 +482,24 @@ const CartServiceProvider = (props: Props) => {
       setNote,
       voucherDiscounts,
       increaseVoucherDiscount,
-      removeVoucherDiscount
+      removeVoucherDiscount,
     }),
-    [handleFetch, handleAddToCart, isCartFetching, cart, isUpdating, handleRemoveFromCart, handleUpdateQty, totalPrice, totalDiscount, isItemInCart, selectedProductId, note, voucherDiscounts, increaseVoucherDiscount]
+    [
+      handleFetch,
+      handleAddToCart,
+      isCartFetching,
+      cart,
+      isUpdating,
+      handleRemoveFromCart,
+      handleUpdateQty,
+      totalPrice,
+      totalDiscount,
+      isItemInCart,
+      selectedProductId,
+      note,
+      voucherDiscounts,
+      increaseVoucherDiscount,
+    ]
   );
   //
   return (
@@ -448,6 +516,12 @@ const CartServiceProvider = (props: Props) => {
         onClose={() => setOpenOtherClearCart(false)}
         onClearCart={handleClearCartAndAdd}
         message="You cannot add a 'Self Pickup' item when your cart already contains other delivery items!"
+      />
+      <SelfPickupInfoModal
+        open={openSelfPickClearInfo}
+        onClose={() => setOpenSelfPickClearInfo(false)}
+        storeName={""}
+        storeAddress={""}
       />
     </CartServiceContext.Provider>
   );

@@ -67,7 +67,7 @@ export default function SelfPickupInfoModal({
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: { xs: "90%", sm: 440, md:500 }, 
+            width: { xs: "90%", sm: 440, md: 500 },
             maxWidth: "95%",
             bgcolor: "background.paper",
             boxShadow: 24,
@@ -83,13 +83,13 @@ export default function SelfPickupInfoModal({
             mb={1}
           >
             <Stack direction="row" alignItems="center" spacing={1}>
-              <StoreIcon color="primary" />
+              <StoreIcon color="error" />
               <Typography variant="h6" component="h2">
-                Self Pickup Information
+                Self Pickup Product
               </Typography>
             </Stack>
 
-            <IconButton size="small" onClick={onClose}>
+            <IconButton size="small" onClick={onClose} color="error">
               <Close fontSize="small" />
             </IconButton>
           </Stack>
@@ -99,24 +99,26 @@ export default function SelfPickupInfoModal({
             store and collect your order in person.
           </Typography>
 
-          <Box
-            sx={{
-              bgcolor: "grey.100",
-              borderRadius: 1,
-              p: 2,
-              mb: 2,
-            }}
-          >
-            <Typography variant="subtitle1" fontWeight="bold">
-              {storeName}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {storeAddress}
-            </Typography>
-          </Box>
+          {storeAddress && storeName && (
+            <Box
+              sx={{
+                bgcolor: "grey.100",
+                borderRadius: 1,
+                p: 2,
+                mb: 2,
+              }}
+            >
+              <Typography variant="subtitle1" fontWeight="bold">
+                {storeName}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {storeAddress}
+              </Typography>
+            </Box>
+          )}
 
           <Stack direction="row" justifyContent="flex-end">
-            <Button variant="contained" onClick={onClose}>
+            <Button variant="contained" onClick={onClose} color="error">
               Got it
             </Button>
           </Stack>
