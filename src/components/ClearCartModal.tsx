@@ -6,7 +6,6 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { Product1, ProductVariant } from "models/Product.model";
 
 interface Props {
   open: boolean;
@@ -28,13 +27,13 @@ const ClearCartModal: React.FC<Props> = ({
       onClose={onClose}
       maxWidth="md"
       fullWidth
-      slotProps={{
-        backdrop: {
-          sx: {
-            backgroundColor: "rgba(0, 0, 0, 0.2)",
-            backdropFilter: "blur(6px)", 
-          },
-        },
+      closeAfterTransition
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backdropFilter: "blur(12px)",
+        backgroundColor: "rgba(0, 0, 0, 0.35)",
       }}
     >
       <DialogTitle>Mixed Cart Items</DialogTitle>

@@ -21,6 +21,7 @@ interface SelfPickupInfoModalProps {
 interface SelfPickupInfoModalProps {
   open: boolean;
   onClose: () => void;
+  onSubmit?: () => void;
   storeName?: string;
   storeAddress?: string;
 }
@@ -28,6 +29,7 @@ interface SelfPickupInfoModalProps {
 export default function SelfPickupInfoModal({
   open,
   onClose,
+  onSubmit,
   storeName = "Main Store",
   storeAddress = "123 Main Street, Colombo, Sri Lanka",
 }: SelfPickupInfoModalProps) {
@@ -40,22 +42,25 @@ export default function SelfPickupInfoModal({
     onClose();
   };
 
+  const handleGotIt = () => {
+    if (onSubmit) {
+      onSubmit();
+    }
+    onClose();
+  };
+
   return (
     <Modal
       open={open}
       onClose={handleClose}
       disableEscapeKeyDown
       closeAfterTransition
-      slots={{ backdrop: Backdrop }}
-      slotProps={{
-        backdrop: {
-          timeout: 300,
-          sx: {
-            backdropFilter: "blur(6px)",
-            WebkitBackdropFilter: "blur(6px)",
-            backgroundColor: "rgba(0,0,0,0.45)",
-          },
-        },
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backdropFilter: "blur(12px)",
+        backgroundColor: "rgba(0, 0, 0, 0.35)",
       }}
       aria-labelledby="self-pickup-modal-title"
       aria-describedby="self-pickup-modal-description"
@@ -118,7 +123,7 @@ export default function SelfPickupInfoModal({
           )}
 
           <Stack direction="row" justifyContent="flex-end">
-            <Button variant="contained" onClick={onClose} color="error">
+            <Button variant="contained" onClick={handleGotIt} color="error">
               Got it
             </Button>
           </Stack>

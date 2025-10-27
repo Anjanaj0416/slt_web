@@ -219,6 +219,10 @@ const CartServiceProvider = (props: Props) => {
       units: number,
       isOpenSelfPickClearInfo = true
     ) => {
+      if (!user?.id || !user?.cart?.id) {
+        openUnAuthenticatedModal(true);
+        return;
+      }
       const {
         id: productId,
         images,
@@ -233,18 +237,19 @@ const CartServiceProvider = (props: Props) => {
       } = product;
 
       if (deliveryPartner === "SELF_PICKUP") {
+        setProduct(product);
+        setProductVariant(productVariant);
+        setUnits(units);
         if (
           isItemInCart &&
           cart.cartItems.some((item) => item.deliveryPartner !== "SELF_PICKUP")
         ) {
-          setProduct(product);
-          setProductVariant(productVariant);
-          setUnits(units);
           setOpenOtherClearCart(true);
           return;
         }
         if (isOpenSelfPickClearInfo) {
           setOpenSelfPickClearInfo(true);
+          return;
         }
       } else {
         if (
@@ -258,12 +263,6 @@ const CartServiceProvider = (props: Props) => {
           return;
         }
       }
-
-      if (!user?.id || !user?.cart?.id) {
-        openUnAuthenticatedModal(true);
-        return;
-      }
-      //
       const availableCartItem = isItemInCart(productVariant);
       //
       try {
@@ -337,6 +336,87 @@ const CartServiceProvider = (props: Props) => {
       user?.id,
     ]
   );
+
+  const submitCartItems = async () => {
+    const {
+      id: productId,
+      images,
+      basePrice,
+      productType,
+      brand,
+      discountType,
+      discountAmount,
+      weight,
+      deliveryPartner,
+      name: productName,
+    } = product;
+    const availableCartItem = isItemInCart(productVariant);
+    //
+    try {
+      //
+      if (availableCartItem) {
+        if (availableCartItem?.units < productVariant?.units) {
+          await handleUpdateQty(productVariant, units);
+        }
+        enqueueSnackbar("Item successfully added to your cart", {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "center",
+          },
+        });
+        return;
+      }
+      setSelectedProductId(productVariant?.id);
+      //
+      const newItem: CartItem = {
+        productId,
+        basePrice,
+        deliveryPartner,
+        images,
+        productVariant,
+        units,
+        productName,
+        brand,
+        productType,
+        weight,
+        discountAmount,
+        discountType,
+      };
+      //
+      const response = await updateCart({
+        userId: user?.id,
+        cartId: user?.cart?.id,
+        body: {
+          cartItems: [...cart?.cartItems, newItem]?.map((item) => ({
+            units: item?.units,
+            productVariantId: item?.productVariant?.id,
+          })),
+        },
+      });
+      //
+      setCart((prev) => ({
+        ...prev,
+        shippingCost: (response as any)?.data?.shippingCost,
+        cartItems: [...cart?.cartItems, newItem],
+      }));
+      enqueueSnackbar("Item successfully added to your cart", {
+        variant: "success",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setSelectedProductId("");
+      setProduct(null);
+      setProductVariant(null);
+      setUnits(null);
+    }
+  };
+
   //
   const handleRemoveFromCart = useCallback(
     async (productVariant: ProductVariant) => {
@@ -433,14 +513,7 @@ const CartServiceProvider = (props: Props) => {
     } catch (error) {
       console.error(error);
     }
-  }, [
-    product,
-    productVariant,
-    units,
-    updateCart,
-    user?.cart?.id,
-    user?.id,
-  ]);
+  }, [product, productVariant, units, updateCart, user?.cart?.id, user?.id]);
 
   const totalPrice = useMemo(
     () =>
@@ -533,6 +606,7 @@ const CartServiceProvider = (props: Props) => {
       />
       <SelfPickupInfoModal
         open={openSelfPickClearInfo}
+        onSubmit={submitCartItems}
         onClose={() => setOpenSelfPickClearInfo(false)}
         storeName={""}
         storeAddress={""}
