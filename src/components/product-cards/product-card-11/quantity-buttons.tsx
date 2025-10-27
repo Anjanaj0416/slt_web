@@ -9,6 +9,7 @@ import { Paragraph } from "components/Typography";
 
 // ==============================================================
 interface Props {
+  disabled?: boolean;
   quantity?: number;
   handleDecrement?: () => void;
   handleIncrement?: () => void;
@@ -16,7 +17,12 @@ interface Props {
 // ==============================================================
 
 const QuantityButtons: FC<Props> = (props) => {
-  const { quantity, handleDecrement, handleIncrement } = props || {};
+  const {
+    quantity,
+    handleDecrement,
+    handleIncrement,
+    disabled = false,
+  } = props || {};
 
   return (
     <FlexBox
@@ -27,6 +33,7 @@ const QuantityButtons: FC<Props> = (props) => {
       justifyContent={quantity ? "space-between" : "flex-start"}
     >
       <Button
+        disabled={disabled}
         color="primary"
         variant="outlined"
         onClick={handleIncrement}
@@ -42,6 +49,7 @@ const QuantityButtons: FC<Props> = (props) => {
           </Paragraph>
 
           <Button
+            disabled={disabled}
             color="primary"
             variant="outlined"
             onClick={handleDecrement}

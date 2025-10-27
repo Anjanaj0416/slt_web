@@ -20,6 +20,10 @@ import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
 import { calculateDiscountPercentage, currency } from "lib";
+import { Button } from "@mui/material";
+import useQuotation from "hooks/useQuotation";
+import { User1 } from "models/User.model";
+import { useSession } from "next-auth/react";
 
 // ========================================================
 type Props = {
@@ -51,9 +55,12 @@ const ProductCard11: FC<Props> = ({
     discountAmount,
     images,
     discountType,
+    productType,
     variants,
   } = product;
   const { toggleDialog } = useProduct(id);
+  const { data } = useSession();
+  const user = data?.user as User1;
   const minPriceVariant =
     variants.length > 0 &&
     variants.reduce((minVariant, currentVariant) => {
@@ -61,6 +68,11 @@ const ProductCard11: FC<Props> = ({
         ? currentVariant
         : minVariant;
     });
+
+  const { requestQuota, isCreatingQuotation } = useQuotation(
+    minPriceVariant?.id,
+    user?.id
+  );
 
   const { handleAddToCart, isItemInCart, handleRemoveFromCart } =
     useCartService();
@@ -150,17 +162,32 @@ const ProductCard11: FC<Props> = ({
             )}
             price={basePrice}
           /> */}
-          <Paragraph fontWeight={600} color="primary.main">
-            {getPrice()}
-          </Paragraph>
+          {productType === "DIRECT_BUYING" && (
+            <Paragraph fontWeight={600} color="primary.main">
+              {getPrice()}
+            </Paragraph>
+          )}
         </Box>
 
         {/* PRODUCT QUANTITY HANDLER BUTTONS */}
-        <QuantityButtons
-          quantity={cartUnits || 0}
-          handleIncrement={handleIncrementQuantity}
-          handleDecrement={handleDecrementQuantity}
-        />
+        {productType === "DIRECT_BUYING" ? (
+          <QuantityButtons
+            disabled={isUpdating || minPriceVariant.units <= 0}
+            quantity={cartUnits || 0}
+            handleIncrement={handleIncrementQuantity}
+            handleDecrement={handleDecrementQuantity}
+          />
+        ) : (
+          <Button
+            variant="outlined"
+            color="error"
+            disabled={isCreatingQuotation}
+            onClick={() => requestQuota()}
+            sx={{ maxHeight: 36, px: 2 }}
+          >
+            Get Quote
+          </Button>
+        )}
       </ContentWrapper>
     </StyledBazaarCard>
   );
