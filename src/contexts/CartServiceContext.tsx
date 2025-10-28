@@ -21,6 +21,7 @@ import {
   useState,
 } from "react";
 import { useLazyGetCartQuery, useUpdateCartMutation } from "services/cart-api";
+import { useLazyGetProductByIdQuery } from "services/product-api";
 //
 type ContextState = {
   handleFetch: () => void;
@@ -102,6 +103,8 @@ const CartServiceProvider = (props: Props) => {
     null
   );
   const [units, setUnits] = useState<number>(null);
+  const [fetchProduct, { isLoading: isLoadingProduct }] =
+    useLazyGetProductByIdQuery();
 
   const [cart, setCart] = useState<UserCart>({
     id: "",
@@ -222,6 +225,12 @@ const CartServiceProvider = (props: Props) => {
       if (!user?.id || !user?.cart?.id) {
         openUnAuthenticatedModal(true);
         return;
+      }
+      if (!product.deliveryPartner) {
+        const productData = await fetchProduct({
+          productId: product.id,
+        }).unwrap();
+        product = productData?.data?.[0];
       }
       const {
         id: productId,
@@ -556,7 +565,7 @@ const CartServiceProvider = (props: Props) => {
       isCartFetching,
       cart,
       setCart,
-      isUpdating,
+      isUpdating: isUpdating || isLoadingProduct,
       handleRemoveFromCart,
       handleUpdateQty,
       length: cart?.cartItems?.length,
