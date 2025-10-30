@@ -50,7 +50,7 @@ const CategoryMenuItem: FC<Props> = (props) => {
       <a href={href}>
         <MenuItem className="category-dropdown-link">
           {rest.icon && (
-            <Image src={rest.icon} alt="icon" width={20} height={20} />
+            <Image src={rest.icon} alt="icon" width={16} height={16} />
           )}
           <span className="title">{title}</span>
           {caret &&

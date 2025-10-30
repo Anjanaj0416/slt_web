@@ -30,7 +30,7 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data }) => {
             icon={
               item.icon
                 ? `${ENVIRONMENT.S3_BUCKET_URL}/${item.icon}`
-                : `${ENVIRONMENT.APP_URL}/assets/svg/default-category-icon.svg`
+                : `${ENVIRONMENT.APP_URL}/assets/images/default-category.png`
             }
             key={item.title}
             title={item.title}

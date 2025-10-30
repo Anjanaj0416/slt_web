@@ -101,12 +101,14 @@ const ProductIntro1 = ({ product, store }) => {
 
         <Grid item md={6} xs={12}>
           {/* ====== Product Title ====== */}
-          <H1 mb={1}>{product.name}</H1>
+          <H1 mb={1} textTransform="capitalize">
+            {product.name}
+          </H1>
 
           {/* ====== Brand ====== */}
           <FlexBox alignItems="center" mb={1}>
             <Box mr={1}>Brand:</Box>
-            <H6>{product.brand || "N/A"}</H6>
+            <H6 textTransform="capitalize">{product.brand || "N/A"}</H6>
           </FlexBox>
 
           {/* ====== Rating ====== */}
