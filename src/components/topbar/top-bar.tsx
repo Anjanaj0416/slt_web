@@ -2,7 +2,6 @@ import Link from "next/link";
 import { FC, useState } from "react";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
-import { useTranslation } from "react-i18next";
 // MUI ICON COMPONENTS
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
@@ -13,30 +12,16 @@ import XIcon from "@mui/icons-material/X";
 import { Span } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
-import { StyledContainer, StyledRoot } from "./styles";
+import { StyledRoot } from "./styles";
 import { ENVIRONMENT } from "config";
 import { Box } from "@mui/material";
-
-// ==============================================================
-interface LanguageOption {
-  [key: string]: { title: string; value: string };
-}
-// ==============================================================
-
-// LANGUAGE OPTIONS
-const languageOptions: LanguageOption = {
-  en: { title: "EN", value: "en" },
-  es: { title: "DE", value: "de" },
-};
 
 // ===========================================
 type Props = { bgColor?: string };
 // ===========================================
 
 const Topbar: FC<Props> = ({ bgColor }) => {
-  const { i18n, t } = useTranslation();
   const [expand, setExpand] = useState<boolean>(false);
-
   return (
     <StyledRoot bgColor={bgColor} expand={expand ? 1 : 0}>
       <Box
@@ -52,7 +37,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
         <FlexBetween width="100%">
           <FlexBox alignItems="center" gap={1}>
             <Chip
-              label={t("HOT")}
+              label={"HOT"}
               size="small"
               sx={{
                 color: "white",
@@ -61,7 +46,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                 "& .MuiChip-label": { pl: ".8rem", pr: ".8rem" },
               }}
             />
-            <Span className="title">{t("Free Express Shipping")}</Span>
+            <Span className="title">Free Express Shipping</Span>
           </FlexBox>
 
           <IconButton

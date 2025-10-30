@@ -4,7 +4,8 @@ import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT
 const CardWrapper = styled("div", {
-  shouldForwardProp: (prop) => prop !== "img" && prop !== "mode",
+  shouldForwardProp: (prop) =>
+    !["img", "mode", "imgTablet", "imgMobile"].includes(prop as string),
 })<{ img: string; mode: string; imgTablet?: string; imgMobile?: string }>(
   ({ theme, img, imgTablet, imgMobile, mode }) => ({
     minHeight: 540,
@@ -16,6 +17,7 @@ const CardWrapper = styled("div", {
     backgroundColor: mode === "dark" ? "#000" : "#fff",
     borderRadius: 8,
     color: mode === "light" ? theme.palette.dark.main : "#fff",
+
     ".content":
       theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
 
@@ -29,6 +31,7 @@ const CardWrapper = styled("div", {
     },
   })
 );
+
 
 // ===============================================================
 interface Props {

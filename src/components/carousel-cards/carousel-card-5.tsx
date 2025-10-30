@@ -4,7 +4,11 @@ import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENT
 const CardWrapper = styled("div", {
-  shouldForwardProp: (prop) => prop !== "img" && prop !== "mode",
+  shouldForwardProp: (prop) =>
+    prop !== "img" &&
+    prop !== "mode" &&
+    prop !== "imgTablet" &&
+    prop !== "imgMobile",
 })<{ img: string; mode: string; imgTablet?: string; imgMobile?: string }>(
   ({ theme, img, imgTablet, imgMobile, mode }) => ({
     minHeight: 240,
