@@ -11,6 +11,7 @@ import { useSession } from "next-auth/react";
 import { useLazyGetAddressesQuery } from "services/address-api";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/navigation";
+import DisclaimerModal from "./disclaimer-modal";
 
 type Props = {
   address: any;
@@ -38,6 +39,7 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
   const [billingAddresses, setBillingAddresses] = useState<
     POSTAddressResponse[]
   >([]);
+  const [open, setOpen] = useState(false);
   //
   const filterAddressesByType = (
     addresses,
@@ -94,9 +96,16 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
 
     push(type === "CART" ? "/payment" : "/buy-now/payment");
   };
+
+  const handleDisclaimerModalOpen = () => setOpen(true);
   //
   return (
     <>
+      <DisclaimerModal
+        open={open}
+        onClose={() => setOpen(false)}
+        onAgree={proceedToPayment}
+      />
       <DeliveryAddress
         handleFetch={() => getAddresses({ userId: user?.id || "" })}
         addresses={shippingAddresses}
@@ -134,7 +143,7 @@ const CheckoutForm2 = ({ address, type = "CART" }: Props) => {
             color="primary"
             type="submit"
             fullWidth
-            onClick={proceedToPayment}
+            onClick={handleDisclaimerModalOpen}
           >
             Proceed to Payment
           </Button>
