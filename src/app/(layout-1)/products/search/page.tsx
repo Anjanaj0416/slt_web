@@ -9,7 +9,7 @@ import { Product1 } from "models/Product.model";
 
 export const metadata: Metadata = {
   title: "Product Search - TRADEZ ",
-  authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
+
   viewport: "width=device-width, initial-scale=1",
 };
 
@@ -24,7 +24,7 @@ export default async function ProductSearch({ searchParams }) {
         query: "size=6&bannerType=SEARCH_SECTION_CAROUSEL",
       }),
     ]);
-    
+
     const products = result?.data as Product1[];
 
     const searchText =

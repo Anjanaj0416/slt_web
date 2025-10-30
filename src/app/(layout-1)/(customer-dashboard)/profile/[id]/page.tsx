@@ -5,9 +5,9 @@ import { ProfileEditPageView } from "pages-sections/customer-dashboard/profile/p
 export const metadata: Metadata = {
   title: "Profile - TRADEZ ",
   description: `TRADEZ is a React Next.js E-commerce template. Build SEO friendly Online store, delivery app and Multi vendor store`,
-  authors: [{ name: "UI-LIB", url: "https://ui-lib.com" }],
+
   viewport: "width=device-width, initial-scale=1",
-  keywords: ["e-commerce", "e-commerce template", "next.js", "react"],
+  keywords: ["Tradez"],
 };
 
 export default async function ProfileEdit() {
