@@ -101,8 +101,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
     let halfBannerIndex = 0;
     const isEndOfRow = (index + 1) % columnCount === 0;
     const isEvenRow = ((index + 1) / columnCount) % 2 === 0;
-console.log(columnCount);
-
+    //
     if (isEndOfRow && isEvenRow && fullBanners.length > 0) {
       if (!isFullBannerAdded) {
         itemsWithImages.push(

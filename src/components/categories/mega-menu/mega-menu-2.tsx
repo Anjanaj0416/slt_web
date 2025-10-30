@@ -12,16 +12,18 @@ type Data = {
   icon: string;
   href: string;
   title: string;
-  moreSubCategories?: boolean;
-  menuData?: any;
+  subCategories?: any;
 };
-export type MegaMenu2Props = { data: Data[]; moreSubCategories?: boolean };
+export type MegaMenu2Props = { data: Data[] };
 // =======================================================================
 
-const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
+const MegaMenu2: FC<MegaMenu2Props> = ({ data }) => {
   return (
     <StyledMegaMenu>
-      <BazaarCard elevation={2} sx={{ ml: "1rem", py: "0.5rem", minHeight:400 }}>
+      <BazaarCard
+        elevation={2}
+        sx={{ ml: "1rem", py: "0.5rem", minHeight: 400 }}
+      >
         {data?.map((item) => (
           <CategoryMenuItem
             href={item.href}
@@ -32,21 +34,19 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
             }
             key={item.title}
             title={item.title}
-            caret={!!item.menuData}
+            caret={!!item.subCategories}
           >
-            {item.menuData &&
-              (item.menuData.categories ? (
-                <MegaMenu3 minWidth="560px" data={item.menuData} />
+            {item.subCategories &&
+              (item.subCategories.categories ? (
+                <MegaMenu3 minWidth="560px" data={item.subCategories} />
               ) : (
                 <MegaMenu2
-                  data={item.menuData || []}
-                  
-                  moreSubCategories={item.moreSubCategories}
+                  data={item.subCategories || []}
                 />
               ))}
           </CategoryMenuItem>
         ))}
-        {moreSubCategories && (
+        {/* {moreSubCategories && (
           <NavLink
             style={{ color: "orange", textAlign: "center" }}
             className="child-link"
@@ -54,7 +54,7 @@ const MegaMenu2: FC<MegaMenu2Props> = ({ data, moreSubCategories }) => {
           >
             More Categories
           </NavLink>
-        )}
+        )} */}
       </BazaarCard>
     </StyledMegaMenu>
   );

@@ -24,7 +24,6 @@ const useListProducts = (
     useLazySearchListProductsQuery();
   //
   useEffect(() => {
-    console.log(categoryId);
     const fetchData = async () => {
       try {
         const filters = [];
