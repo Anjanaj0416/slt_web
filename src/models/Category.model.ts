@@ -2,6 +2,7 @@ interface Category1 {
   id: string;
   name: string;
   imageUrl?: string;
+  iconUrl?: string;
   parentCategory: Category1;
   subCategories: Category1[];
   isFeatured?: boolean;

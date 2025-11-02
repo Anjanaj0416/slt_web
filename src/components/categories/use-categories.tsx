@@ -13,23 +13,26 @@ type MenuItem = {
 export const useCategories = () => {
   const { data, isLoading } = useFilteredCategoriesQuery({ size: 20 });
 
-  const mapCategoriesToMenu = useCallback((categories: Category1[]): MenuItem[] => {
-    return categories.map((category) => {
-      const { id, name, imageUrl, subCategories } = category;
+  const mapCategoriesToMenu = useCallback(
+    (categories: Category1[]): MenuItem[] => {
+      return categories.map((category) => {
+        const { id, name, iconUrl, subCategories } = category;
 
-      const item: MenuItem = {
-        title: name,
-        icon: imageUrl ?? null,
-        href: `/products/search?categoryId=${id}_${encodeURIComponent(name)}`,
-      };
+        const item: MenuItem = {
+          title: name,
+          icon: iconUrl ?? null,
+          href: `/products/search?categoryId=${id}_${encodeURIComponent(name)}`,
+        };
 
-      if (subCategories?.length) {
-        item.subCategories = mapCategoriesToMenu(subCategories);
-      }
+        if (subCategories?.length) {
+          item.subCategories = mapCategoriesToMenu(subCategories);
+        }
 
-      return item;
-    });
-  }, []);
+        return item;
+      });
+    },
+    []
+  );
 
   // memoize mapped categories
   const categories = useMemo(() => {
