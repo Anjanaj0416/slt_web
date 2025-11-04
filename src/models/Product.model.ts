@@ -9,6 +9,12 @@ export interface Product1 {
   discountAmount: number;
   discountType: DiscountType;
   productType: "QUOTATION" | "DIRECT_BUYING";
+  productStatus:
+    | "IN_REVIEW"
+    | "APPROVED"
+    | "PUBLISH"
+    | "DISABLED"
+    | "UNPUBLISHED";
   deliveryPartner: DeliveryPartnerType;
   variants?: ProductVariant[];
   brand?: string;

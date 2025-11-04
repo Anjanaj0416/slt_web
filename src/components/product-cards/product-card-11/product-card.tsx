@@ -20,7 +20,7 @@ import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
 import { calculateDiscountPercentage, currency } from "lib";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import useQuotation from "hooks/useQuotation";
 import { User1 } from "models/User.model";
 import { useSession } from "next-auth/react";
@@ -53,6 +53,7 @@ const ProductCard11: FC<Props> = ({
     name,
     basePrice,
     discountAmount,
+    productStatus,
     images,
     discountType,
     productType,
@@ -112,21 +113,62 @@ const ProductCard11: FC<Props> = ({
         {/* HOVER ACTION ICONS */}
         <HoverActions
           isFavorite={isFavorite}
-          disabledFavButton={isUpdating}
+          disabledFavButton={isUpdating || productStatus !== "PUBLISH"}
           toggleView={toggleDialog}
           toggleFavorite={() => handleFavorite(id)}
         />
 
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${id}_${name}`}>
-          <LazyImage
-            priority
-            src={imgUrl}
+        {productStatus === "PUBLISH" ? (
+          <Link href={`/products/${id}_${name}`}>
+            <LazyImage
+              priority
+              src={imgUrl}
+              width={500}
+              height={500}
+              alt={name}
+            />
+          </Link>
+        ) : (
+          <Box
+            position="relative"
+            display="inline-block"
             width={500}
             height={500}
-            alt={name}
-          />
-        </Link>
+          >
+            {/* Label */}
+            <Typography
+              variant="subtitle1"
+              sx={{
+                position: "absolute",
+                top: 16,
+                left: "50%",
+                transform: "translateX(-50%)",
+                backgroundColor: "rgba(0, 0, 0, 0.6)",
+                color: "#fff",
+                px: 4,
+                py: 0.5,
+                borderRadius: 1,
+                fontWeight: 500,
+              }}
+            >
+              Not Available
+            </Typography>
+
+            {/* Image */}
+            <LazyImage
+              priority
+              src={imgUrl}
+              width={500}
+              height={500}
+              alt={name}
+              style={{
+                objectFit: "cover",
+                borderRadius: 8,
+              }}
+            />
+          </Box>
+        )}
       </ImageWrapper>
 
       {/* PRODUCT VIEW DIALOG BOX */}
@@ -172,7 +214,11 @@ const ProductCard11: FC<Props> = ({
         {/* PRODUCT QUANTITY HANDLER BUTTONS */}
         {productType === "DIRECT_BUYING" ? (
           <QuantityButtons
-            disabled={isUpdating || minPriceVariant.units <= 0}
+            disabled={
+              isUpdating ||
+              minPriceVariant.units <= 0 ||
+              productStatus !== "PUBLISH"
+            }
             quantity={cartUnits || 0}
             handleIncrement={handleIncrementQuantity}
             handleDecrement={handleDecrementQuantity}
