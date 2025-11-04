@@ -12,12 +12,20 @@ interface Props {
   onShare: () => void;
 }
 
-const ActionButtons = ({ isQuotation, isLoading, disabled, onAdd, onBuy, onQuote, onShare }: Props) => (
+const ActionButtons = ({
+  isQuotation,
+  isLoading,
+  disabled,
+  onAdd,
+  onBuy,
+  onQuote,
+  onShare,
+}: Props) => (
   <Box display="flex" alignItems="center" mb={4.5}>
     <LoadingButton
       color="primary"
       loading={isLoading}
-      disabled={disabled}
+      disabled={isQuotation ? false : disabled}
       onClick={isQuotation ? onQuote : onAdd}
       sx={{ px: "1.75rem", height: 40, width: 140, border: 1 }}
     >

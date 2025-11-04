@@ -4,6 +4,7 @@ import { currency } from "lib";
 
 interface Props {
   price?: number | string;
+  isQuotation: boolean;
   discountedPrice?: number;
   discountAmount?: number;
   quantity?: number;
@@ -16,6 +17,7 @@ const PriceSection = ({
   discountAmount,
   quantity,
   selectedUnits,
+  isQuotation,
 }: Props) => (
   <Box pt={1} mb={3}>
     {price && (
@@ -35,7 +37,9 @@ const PriceSection = ({
       ""
     )}
     {quantity !== undefined && (
-      <Box>{quantity > 0 ? "Stock Available" : "Out of Stock"}</Box>
+      <Box>
+        {quantity > 0 || isQuotation ? "Stock Available" : "Out of Stock"}
+      </Box>
     )}
   </Box>
 );

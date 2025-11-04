@@ -128,15 +128,18 @@ const ProductIntro1 = ({ product, store }) => {
             discountAmount={product.discountAmount}
             quantity={quantity}
             selectedUnits={selectedUnits}
+            isQuotation={isQuotation}
           />
 
-          <Box mt={2} mb={3}>
-            <QuantitySelector
-              selectedQuantity={selectedQuantity}
-              quantity={quantity}
-              onChange={setSelectedQuantity}
-            />
-          </Box>
+          {!isQuotation && (
+            <Box mt={2} mb={3}>
+              <QuantitySelector
+                selectedQuantity={selectedQuantity}
+                quantity={quantity}
+                onChange={setSelectedQuantity}
+              />
+            </Box>
+          )}
 
           <ActionButtons
             isQuotation={isQuotation}
