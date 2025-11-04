@@ -55,8 +55,6 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   const { enqueueSnackbar } = useSnackbar();
   const { wishlist, setWishlist } = useContext(WishlistContext);
-  const { requestQuota, isCreatingQuotation } = useQuotation(id, user?.id);
-
   const minPriceVariant =
     variants?.length > 0 &&
     variants.reduce((minVariant, currentVariant) => {
@@ -64,6 +62,10 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         ? currentVariant
         : minVariant;
     });
+  const { requestQuota, isCreatingQuotation } = useQuotation(
+    minPriceVariant.id,
+    user?.id
+  );
 
   // Map wishlist products to product ids
   const wishListProductIds = wishlist?.products?.map((product) => product.id);
@@ -162,7 +164,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         }}
       >
         <DiscountChip
-          sx={{ fontSize: { xs: 8, md: 10} }}
+          sx={{ fontSize: { xs: 8, md: 10 } }}
           discount={calculateDiscountPercentage(
             discountType,
             minPriceVariant.price,
