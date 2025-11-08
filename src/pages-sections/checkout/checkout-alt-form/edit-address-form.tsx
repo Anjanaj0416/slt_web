@@ -26,8 +26,8 @@ import { useSnackbar } from "notistack";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { LoadingButton } from "@mui/lab";
-import { getCities } from "data/city-list";
 import { DISTRICTS } from "data/district-list";
+import { CITIES_DATA } from "data/city-list";
 
 const validationSchema = yup.object({
   name: yup.string().required("required"),
@@ -199,11 +199,13 @@ const EditAddressForm: FC<Props> = (props) => {
                   onChange={handleChange}
                 >
                   {values.provinceOrState &&
-                    getCities(values.provinceOrState)?.map((city) => (
-                      <MenuItem key={city} value={city}>
-                        {city}
-                      </MenuItem>
-                    ))}
+                    CITIES_DATA[values.provinceOrState.toLowerCase()]?.map(
+                      (city) => (
+                        <MenuItem key={city} value={city}>
+                          {city}
+                        </MenuItem>
+                      )
+                    )}
                 </Select>
                 {touched.city && errors.city && (
                   <FormHelperText>{errors.city}</FormHelperText>

@@ -26,7 +26,7 @@ import { User1 } from "models/User.model";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
 import { DISTRICTS } from "data/district-list";
-import { getCities } from "data/city-list";
+import { CITIES_DATA } from "data/city-list";
 
 const validationSchema = yup.object({
   name: yup.string().required("required"),
@@ -208,11 +208,13 @@ const NewAddressForm: FC<Props> = ({
                     onChange={handleChange}
                   >
                     {values.provinceOrState &&
-                      getCities(values.provinceOrState)?.map((city) => (
-                        <MenuItem key={city} value={city}>
-                          {city}
-                        </MenuItem>
-                      ))}
+                      CITIES_DATA[values.provinceOrState.toLowerCase()]?.map(
+                        (city) => (
+                          <MenuItem key={city} value={city}>
+                            {city}
+                          </MenuItem>
+                        )
+                      )}
                   </Select>
                   {touched.city && errors.city && (
                     <FormHelperText>{errors.city}</FormHelperText>

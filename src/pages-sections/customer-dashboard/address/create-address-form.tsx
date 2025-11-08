@@ -14,7 +14,6 @@ import {
   FormControl,
   FormControlLabel,
   FormHelperText,
-  FormLabel,
   IconButton,
   InputLabel,
   MenuItem,
@@ -28,7 +27,7 @@ import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
-import { getCities } from "data/city-list";
+import { CITIES_DATA } from "data/city-list";
 import { DISTRICTS } from "data/district-list";
 
 const validationSchema = yup.object({
@@ -215,11 +214,13 @@ const CreateAddressForm: FC<Props> = ({
                     onChange={handleChange}
                   >
                     {values.provinceOrState &&
-                      getCities(values.provinceOrState)?.map((city) => (
-                        <MenuItem key={city} value={city}>
-                          {city}
-                        </MenuItem>
-                      ))}
+                      CITIES_DATA[values.provinceOrState.toLowerCase()]?.map(
+                        (city) => (
+                          <MenuItem key={city} value={city}>
+                            {city}
+                          </MenuItem>
+                        )
+                      )}
                   </Select>
                   {touched.city && errors.city && (
                     <FormHelperText>{errors.city}</FormHelperText>
