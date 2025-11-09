@@ -20,8 +20,8 @@ export default async function Address({ searchParams }) {
 
   const query =
     safePage === 1
-      ? "size=10&sort=primary,asc"
-      : `page=${safePage - 1}&size=10&sort=primary,desc&sort=createdAt,asc`;
+      ? "size=8&sort=primary,asc"
+      : `page=${safePage - 1}&size=8&sort=primary,desc&sort=createdAt,asc`;
 
   const addressesData = await cachedRequest(API.GET_ADDRESS, {
     userId: user?.id,

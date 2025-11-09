@@ -85,10 +85,7 @@ const AccountPopover = ({ isMobile = false }: Props) => {
           },
         }}
       >
-        {/* <Box px={2} pt={1}>
-          <H6>Gage Paquette</H6>
-          <Small color="grey.500">Admin</Small>
-        </Box> */}
+        <MenuItem onClick={() => router.push("/orders")}>Order</MenuItem>
 
         {/* <Divider /> */}
         <MenuItem onClick={() => router.push("/profile")}>Profile</MenuItem>
