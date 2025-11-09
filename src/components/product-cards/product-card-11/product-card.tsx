@@ -113,7 +113,7 @@ const ProductCard11: FC<Props> = ({
         {/* HOVER ACTION ICONS */}
         <HoverActions
           isFavorite={isFavorite}
-          disabledFavButton={isUpdating || productStatus !== "PUBLISH"}
+          disabledFavButton={isUpdating}
           toggleView={toggleDialog}
           toggleFavorite={() => handleFavorite(id)}
         />
@@ -130,12 +130,7 @@ const ProductCard11: FC<Props> = ({
             />
           </Link>
         ) : (
-          <Box
-            position="relative"
-            display="inline-block"
-            width={500}
-            height={500}
-          >
+          <Box position="relative" display="inline-block">
             {/* Label */}
             <Typography
               variant="subtitle1"
@@ -146,9 +141,10 @@ const ProductCard11: FC<Props> = ({
                 transform: "translateX(-50%)",
                 backgroundColor: "rgba(0, 0, 0, 0.6)",
                 color: "#fff",
-                px: 4,
+                px: { xs: 2, lg: 1.8, xl: 4 },
                 py: 0.5,
                 borderRadius: 1,
+                fontSize: { md: 12, lg: 12, xl: 16 },
                 fontWeight: 500,
               }}
             >
