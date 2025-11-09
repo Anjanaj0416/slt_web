@@ -59,7 +59,7 @@ const MyReviewsPageView = ({ reviews, total }: Props) => {
 
         {total ? (
           <Stack alignItems="center" my={4}>
-            <TablePagination onChange={handleChangePage} count={2} />
+            <TablePagination onChange={handleChangePage} count={total} />
           </Stack>
         ) : null}
       </Card>

@@ -19,7 +19,7 @@ export default async function Orders() {
     //
     const orders = await cachedRequest(API.GET_USER_ORDERS, {
       userId: user?.id,
-      query: "size=5&sort=createdAt,desc",
+      query: "size=10&sort=createdAt,desc",
     });
     return (
       <OrdersPageView

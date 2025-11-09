@@ -28,11 +28,8 @@ const getMapUrl = (location: { lat: string; lng: string }) => {
 };
 
 export type StoreDetailsProps = {
-  name: string;
-  address: string;
   productId: string;
-  contact?: string;
-  email?: string;
+
 };
 
 export default function StoreDetails({ productId }: StoreDetailsProps) {

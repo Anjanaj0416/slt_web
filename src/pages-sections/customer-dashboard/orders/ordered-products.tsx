@@ -56,7 +56,7 @@ const OrderedProducts: FC<Props> = ({ order }) => {
         />
       </FlexBetween>
 
-      {packages.length > 1 ? (
+      {packages?.length > 1 ? (
         packages.map((pkg, index) => (
           <Box
             key={pkg.id}
@@ -93,13 +93,9 @@ const OrderedProducts: FC<Props> = ({ order }) => {
             isSelfPickupPackage(order.packages?.[0]) && (
               <StoreDetails
                 productId={order.packages?.[0]?.packageItems?.[0].productId}
-                name="Tech World - Ratnapura"
-                address="77/B1 Pallebedda, Ratnapura, Sri Lanka"
-                contact="+94 77 659 1828"
-                email="info@techworld.lk"
               />
             )}
-          {packages[0].packageItems.map((item, ind) =>
+          {packages[0].packageItems?.map((item, ind) =>
             buildProductList(ind, item)
           )}
         </>
@@ -108,6 +104,8 @@ const OrderedProducts: FC<Props> = ({ order }) => {
   );
 
   function buildProductList(ind: number, item: PackageItem) {
+    console.log(item);
+    
     return (
       <FlexBetween px={2} py={1} flexWrap="wrap" key={ind}>
         <FlexBox gap={2.5} alignItems="center">

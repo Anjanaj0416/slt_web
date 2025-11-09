@@ -18,7 +18,7 @@ export default async function WishList({ searchParams }) {
     const page = searchParams?.page;
     const { user } = await auth();
     const safePage = Number.isInteger(page) && page > 0 ? page : 1;
-    const query = `page=${safePage - 1}&size=6&sort=createdAt,asc`;
+    const query = `page=${safePage - 1}&size=10&sort=createdAt,asc`;
 
     const reviews = await cachedRequest(API.GET_USER_REVIEWS, {
       userId: user.id,

@@ -26,13 +26,22 @@ const AddressListItem: FC<Props> = ({
   handleDelete,
   handleEdit,
 }) => {
-  const { addressType, addressLine1, provinceOrState, contactNumber, name, id } =
-    address || {};
+  const {
+    addressType,
+    addressLine1,
+    provinceOrState,
+    contactNumber,
+    name,
+    id,
+  } = address || {};
   const [selectedId, setSelectedId] = useState<string>();
   return (
     <TableRow>
       <Paragraph ellipsis>{addressType}</Paragraph>
-      <Paragraph ellipsis>{`${name}, ${addressLine1}, ${provinceOrState}`}</Paragraph>
+      <Paragraph
+        ellipsis
+        textTransform="capitalize"
+      >{`${name}, ${addressLine1}, ${provinceOrState}`}</Paragraph>
       <Paragraph ellipsis>{contactNumber}</Paragraph>
       <Paragraph color="grey.600">
         <IconButton onClick={() => handleEdit(address)}>

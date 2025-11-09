@@ -35,7 +35,7 @@ const OrderSummery: FC<Props> = ({ order }) => {
           <H5 mt={0} mb={2}>
             Shipping Address
           </H5>
-          <Paragraph fontSize={14} my={0}>
+          <Paragraph fontSize={14} my={0} textTransform="capitalize">
             {order.shippingAddress?.name ?? ""}
           </Paragraph>
           <Paragraph fontSize={14} my={0}>
@@ -44,11 +44,11 @@ const OrderSummery: FC<Props> = ({ order }) => {
           <Paragraph fontSize={14} my={0}>
             {order.shippingAddress?.postalCode ?? ""}
           </Paragraph>
-          <Paragraph fontSize={14} my={0}>
+          <Paragraph fontSize={14} my={0} textTransform="capitalize">
             {`${order.shippingAddress?.addressLine1 ?? ""} 
             ${order.shippingAddress?.addressLine2 ?? ""}`}
           </Paragraph>
-          <Paragraph fontSize={14} my={0}>
+          <Paragraph fontSize={14} my={0} textTransform="capitalize">
             {`${order.shippingAddress?.country ?? ""}`}
           </Paragraph>
         </Card>

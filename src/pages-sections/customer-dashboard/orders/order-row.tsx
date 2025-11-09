@@ -28,11 +28,14 @@ const OrderRow: FC<Props> = ({ order }) => {
         return "secondary";
       case "PROCESSING":
         return "info";
+      case "READY TO PICKUP":
       case "SHIPPED":
         return "warning";
       case "DELIVERED":
         return "success";
+      case "ORDER FAILED":
       case "CANCELLED":
+      case "RETURNED":
       case "PENDING PAYMENT":
         return "primary";
       default:
@@ -41,24 +44,27 @@ const OrderRow: FC<Props> = ({ order }) => {
   };
 
   const getOrderStatus = () => {
-    if (order.status === "PENDING" || order.status === "FAILED") {
+    if (order.status === "PENDING") {
       return "PENDING PAYMENT";
+    } else if (order.status === "FAILED") {
+      return "ORDER FAILED";
     }
     if (packages.some((e) => e.status === "PENDING")) {
       return "PENDING";
-    } else if (
-      packages.some(
-        (e) => e.status === "PROCESSING" || e.status === "PICKUP_REQUESTED"
-      )
-    ) {
+    } else if (packages.some((e) => e.status === "PROCESSING")) {
       return "PROCESSING";
+    } else if (packages.some((e) => e.status === "PICKUP_REQUESTED")) {
+      return "READY TO PICKUP";
     } else if (packages.some((e) => e.status === "SHIPPED")) {
       return "SHIPPED";
     } else if (packages.some((e) => e.status === "DELIVERED")) {
       return "DELIVERED";
-    } else {
+    } else if (packages.some((e) => e.status === "CANCELLED")) {
       return "CANCELLED";
+    } else if (packages.some((e) => e.status === "RETURNED")) {
+      return "RETURNED";
     }
+    return "PROCESSING";
   };
 
   const orderStatus = getOrderStatus();

@@ -25,11 +25,16 @@ const ReviewRow: FC<Props> = ({ review }) => {
     <StyledTableRow tabIndex={-1} role="checkbox">
       <StyledTableCell align="left">
         <FlexBox alignItems="center" gap={1.5}>
-          <Avatar alt={product.name} src={imgUrl} sx={{ borderRadius: "8px" }} />
-          <Paragraph fontWeight={600}>{product.name}</Paragraph>
+          <Avatar
+            alt={product.name}
+            src={imgUrl}
+            sx={{ borderRadius: "8px" }}
+          />
+          <Paragraph fontWeight={600} textTransform="capitalize">
+            {product.name}
+          </Paragraph>
         </FlexBox>
       </StyledTableCell>
-
 
       <StyledTableCell align="left">
         <Small>{text}</Small>
@@ -38,7 +43,6 @@ const ReviewRow: FC<Props> = ({ review }) => {
       <StyledTableCell align="left">
         <Rating value={rating} size="small" color="warning" readOnly />
       </StyledTableCell>
-
     </StyledTableRow>
   );
 };

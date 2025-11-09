@@ -36,7 +36,6 @@ const OrderDetailsPageView = ({ order }: Props) => {
   const [updateOrder, { isLoading: isUpdatingOrder }] =
     useUpdateOrderMutation();
   const { enqueueSnackbar } = useSnackbar();
-  const router = useRouter();
   const handleOpen = () => {
     setOpen(true);
   };
