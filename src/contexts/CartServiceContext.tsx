@@ -226,6 +226,20 @@ const CartServiceProvider = (props: Props) => {
         openUnAuthenticatedModal(true);
         return;
       }
+      if (cart.cartItems.length >= 10) {
+        enqueueSnackbar(
+          "You can only have up to 10 items in your cart. Please remove some items before adding new ones",
+          {
+            variant: "warning",
+            autoHideDuration: 4000,
+            anchorOrigin: {
+              vertical: "top",
+              horizontal: "center",
+            },
+          }
+        );
+        return;
+      }
       if (!product.deliveryPartner) {
         const productData = await fetchProduct({
           productId: product.id,
