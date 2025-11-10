@@ -211,7 +211,7 @@ deploy_staging:
 deploy_staging:
   <<: *deploy_template
   variables:
-    KUBE_CONTEXT: dev-customer-front-agent
+    KUBE_CONTEXT: prod-customer-front-agent
     KUBE_NAMESPACE: webapp
   only:
     - main
