@@ -186,7 +186,7 @@ deploy_dev:
   only:
     - dev
   environment:
-    name: development
+    name: dev
 
 deploy_qa:
   <<: *deploy_template
