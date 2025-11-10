@@ -171,7 +171,7 @@ build_staging:
     name: bitnami/kubectl:latest
     entrypoint: [""]
   script:
-    - echo "🚀 Deploying to Kubernetes: $CI_ENVIRONMENT_NAME"
+    - echo 🚀 Deploying to Kubernetes
     - kubectl config get-contexts
     - kubectl config use-context slt6491334/marketplace-customer-frontend:$KUBE_CONTEXT
     - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
