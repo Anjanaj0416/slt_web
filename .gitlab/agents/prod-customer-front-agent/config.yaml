@@ -1,0 +1,3 @@
+ci_access:
+  groups:
+    - id: slt6491334/marketplace-customer-frontend

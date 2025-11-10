@@ -165,62 +165,42 @@ build_staging:
   only:
   - staging
 
-deploy_dev:
+.deploy_template: &deploy_template
   stage: deploy
   image:
     name: bitnami/kubectl:latest
-    entrypoint: [ "" ]
+    entrypoint: [""]
   script:
-  - echo "Deploying to Kubernetes"
-  - kubectl config get-contexts
-  - kubectl config use-context slt6491334/marketplace-customer-frontend:dev-customer-front-agent
-  - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
-  - kubectl apply -f ./manifests/deployment.yaml -n dev
-  - kubectl apply -f ./manifests/service.yaml -n dev
+    - echo "🚀 Deploying to Kubernetes: $CI_ENVIRONMENT_NAME"
+    - kubectl config get-contexts
+    - kubectl config use-context slt6491334/marketplace-customer-frontend:$KUBE_CONTEXT
+    - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
+    - kubectl apply -f ./manifests/deployment.yaml -n $CI_ENVIRONMENT_NAME
+    - kubectl apply -f ./manifests/service.yaml -n $CI_ENVIRONMENT_NAME
+
+deploy_dev:
+  <<: *deploy_template
+  variables:
+    KUBE_CONTEXT: dev-customer-front-agent
   only:
-  - dev
+    - dev
+  environment:
+    name: development
 
 deploy_qa:
-  stage: deploy
-  image:
-    name: bitnami/kubectl:latest
-    entrypoint: [ "" ]
-  script:
-  - echo "Deploying to Kubernetes"
-  - kubectl config get-contexts
-  - kubectl config use-context slt6491334/marketplace-customer-frontend:dev-customer-front-agent
-  - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
-  - kubectl apply -f ./manifests/deployment.yaml -n qa
-  - kubectl apply -f ./manifests/service.yaml -n qa
+  <<: *deploy_template
+  variables:
+    KUBE_CONTEXT: dev-customer-front-agent
   only:
-  - qa
+    - qa
+  environment:
+    name: qa
 
 deploy_staging:
-  stage: deploy
-  image:
-    name: bitnami/kubectl:latest
-    entrypoint: [ "" ]
-  script:
-  - echo "Deploying to Kubernetes"
-  - kubectl config get-contexts
-  - kubectl config use-context slt6491334/marketplace-customer-frontend:dev-customer-front-agent
-  - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
-  - kubectl apply -f ./manifests/deployment.yaml -n staging
-  - kubectl apply -f ./manifests/service.yaml -n staging
+  <<: *deploy_template
+  variables:
+    KUBE_CONTEXT: dev-customer-front-agent
   only:
-  - staging
-
-#deploy_prod:
-#  stage: deploy
-#  image:
-#    name: bitnami/kubectl:latest
-#    entrypoint: [""]
-#  script:
-#    - echo "Deploying to Kubernetes"
-#   - kubectl config get-contexts
-#    - kubectl config use-context slt6491334/marketplace-front-end:dev-frontend-agent
-#    - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
-#    - kubectl apply -f ./manifests/deployment.yaml -n qa
-#    - kubectl apply -f ./manifests/service.yaml -n qa
-#  only:
-#    - main
+    - staging
+  environment:
+    name: staging
