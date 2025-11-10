@@ -19,7 +19,7 @@ const refreshTokens = async (refreshToken: string) => {
     //
     return axiosRes?.data;
   } catch (error) {
-    console.log(error?.data);
+    console.log(error);
   }
 };
 //
@@ -114,6 +114,7 @@ const authOptions: AuthOptions = {
   //
   session: {
     strategy: "jwt",
+    maxAge: 24 * 60 * 60,
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

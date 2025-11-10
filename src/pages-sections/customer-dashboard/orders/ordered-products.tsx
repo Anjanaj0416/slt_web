@@ -29,8 +29,6 @@ const OrderedProducts: FC<Props> = ({ order }) => {
   const handleReview = (productId: string) => {
     setReviewProductId(productId);
   };
-  console.log(isSelfPickupPackage(order.packages[0]));
-
   return (
     <Card sx={{ p: 0, mb: "30px" }}>
       <ReviewModal
@@ -104,8 +102,6 @@ const OrderedProducts: FC<Props> = ({ order }) => {
   );
 
   function buildProductList(ind: number, item: PackageItem) {
-    console.log(item);
-    
     return (
       <FlexBetween px={2} py={1} flexWrap="wrap" key={ind}>
         <FlexBox gap={2.5} alignItems="center">
