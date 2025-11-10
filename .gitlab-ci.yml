@@ -171,17 +171,18 @@ build_staging:
     name: bitnami/kubectl:latest
     entrypoint: [""]
   script:
-    - echo 🚀 Deploying to Kubernetes
+    - echo "🚀 Deploying to Kubernetes"
     - kubectl config get-contexts
     - kubectl config use-context slt6491334/marketplace-customer-frontend:$KUBE_CONTEXT
     - sed -i "s/<VERSION>/${IMAGE_TAG}/g" ./manifests/deployment.yaml
-    - kubectl apply -f ./manifests/deployment.yaml -n $CI_ENVIRONMENT_NAME
-    - kubectl apply -f ./manifests/service.yaml -n $CI_ENVIRONMENT_NAME
+    - kubectl apply -f ./manifests/deployment.yaml -n $KUBE_NAMESPACE
+    - kubectl apply -f ./manifests/service.yaml -n $KUBE_NAMESPACE
 
 deploy_dev:
   <<: *deploy_template
   variables:
     KUBE_CONTEXT: dev-customer-front-agent
+    KUBE_NAMESPACE: dev
   only:
     - dev
   environment:
@@ -191,6 +192,7 @@ deploy_qa:
   <<: *deploy_template
   variables:
     KUBE_CONTEXT: dev-customer-front-agent
+    KUBE_NAMESPACE: qa
   only:
     - qa
   environment:
@@ -200,7 +202,18 @@ deploy_staging:
   <<: *deploy_template
   variables:
     KUBE_CONTEXT: dev-customer-front-agent
+    KUBE_NAMESPACE: staging
   only:
     - staging
   environment:
     name: staging
+
+deploy_staging:
+  <<: *deploy_template
+  variables:
+    KUBE_CONTEXT: dev-customer-front-agent
+    KUBE_NAMESPACE: webapp
+  only:
+    - main
+  environment:
+    name: prod
