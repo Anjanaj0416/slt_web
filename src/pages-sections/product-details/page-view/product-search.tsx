@@ -204,7 +204,7 @@ const ProductSearchPageView = ({
           >
             <FlexBox alignItems="center" gap={1} flex="1 1 0">
               <Paragraph color="grey.600" whiteSpace="pre">
-                Short by:
+                Sort by:
               </Paragraph>
 
               <TextField
@@ -213,7 +213,7 @@ const ProductSearchPageView = ({
                 size="small"
                 disabled={isLoading || products.length < 1}
                 variant="outlined"
-                placeholder="Short by"
+                placeholder="Sort by"
                 defaultValue={SORT_OPTIONS[0].value}
                 sx={{ flex: "1 1 0", minWidth: "150px" }}
                 onChange={(e) => {
