@@ -17,9 +17,7 @@ build_dev:
   services:
   - docker:dind
   before_script:
-  # Fetch values from Parameter Store
-  - apk add --no-cache python3 py3-pip openssl
-  - pip3 install awscli
+  - apk add --no-cache aws-cli openssl bash
   - echo "Logging in to ECR"
   - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
   - echo "Envs injection started --"
