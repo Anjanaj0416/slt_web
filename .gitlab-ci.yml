@@ -63,15 +63,14 @@ build_dev:
 build_qa:
   stage: build
   image:
-    name: amazon/aws-cli
+    name: docker:25
     entrypoint: [ "" ]
   services:
   - docker:dind
   before_script:
-  # Fetch values from Parameter Store
+  - apk add --no-cache aws-cli openssl bash
   - echo "Logging in to ECR"
-  - yum install -y docker
-  - yum install -y openssl
+  - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
   - echo "Envs injection started --"
   # Fetch values from Parameter Store
   - NEXT_PUBLIC_BASE_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_base_url --query Parameter.Value --output text)
@@ -115,15 +114,14 @@ build_qa:
 build_staging:
   stage: build
   image:
-    name: amazon/aws-cli
+    name: docker:25
     entrypoint: [ "" ]
   services:
   - docker:dind
   before_script:
-  # Fetch values from Parameter Store
+  - apk add --no-cache aws-cli openssl bash
   - echo "Logging in to ECR"
-  - yum install -y docker
-  - yum install -y openssl
+  - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
   - echo "Envs injection started --"
   # Fetch values from Parameter Store
   - NEXT_PUBLIC_BASE_URL=$(aws ssm get-parameter --name /stg-marketplacer-client-next_public_base_url --query Parameter.Value --output text)
@@ -167,15 +165,14 @@ build_staging:
 build_prod:
   stage: build
   image:
-    name: amazon/aws-cli
+    name: docker:25
     entrypoint: [ "" ]
   services:
   - docker:dind
   before_script:
-  # Fetch values from Parameter Store
+  - apk add --no-cache aws-cli openssl bash
   - echo "Logging in to ECR"
-  - yum install -y docker
-  - yum install -y openssl
+  - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
   - echo "Envs injection started --"
   # Fetch values from Parameter Store
   - NEXT_PUBLIC_BASE_URL=$(aws ssm get-parameter --name /prod-marketplacer-client-next_public_base_url --query Parameter.Value --output text)
