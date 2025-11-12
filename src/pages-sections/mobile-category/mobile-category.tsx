@@ -61,7 +61,7 @@ const MobileCategoryPageView = ({ categories }: Props) => {
       ) : (
         // === Level 2: Sub Category List ===
         <Box>
-          <Breadcrumbs sx={{ mb: 2, ml:2 }}>
+          <Breadcrumbs sx={{ mb: 2, ml: 2 }}>
             <Typography
               onClick={handleBack}
               color="primary"
@@ -100,6 +100,13 @@ const MobileCategoryPageView = ({ categories }: Props) => {
                   unmountOnExit
                 >
                   <List component="div" disablePadding>
+                    <ListItem sx={{ pl: 4 }}>
+                      <Link
+                        href={`/products/search?categoryId=${sub.id}_${sub.name}`}
+                      >
+                        <ListItemText primary={sub.name} />
+                      </Link>
+                    </ListItem>
                     {sub.subCategories?.map((item: Category1) => (
                       <ListItem key={item.id} sx={{ pl: 4 }}>
                         <Link
