@@ -258,7 +258,7 @@ deploy_staging:
   environment:
     name: staging
 
-deploy_staging:
+deploy_prod:
   <<: *deploy_template
   variables:
     KUBE_CONTEXT: prod-customer-front-agent
