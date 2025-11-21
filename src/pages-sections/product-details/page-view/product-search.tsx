@@ -137,7 +137,7 @@ const ProductSearchPageView = ({
   return (
     <Box sx={{ mt: 4, mb: 6, px: { xs: 2, md: 16 } }}>
       <Grid item md={9} xs={12} mb={1}>
-        {banners && banners?.length && (
+        {banners && banners?.length ? (
           <Carousel
             dots
             arrows={false}
@@ -166,7 +166,7 @@ const ProductSearchPageView = ({
               </Link>
             ))}
           </Carousel>
-        )}
+        ) : null}
       </Grid>
       {/* FILTER ACTION AREA */}
       <Card
