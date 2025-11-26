@@ -13,6 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { POSTAddressResponse } from "models/Address.model";
 import {
+  Autocomplete,
   Box,
   Checkbox,
   FormControl,
@@ -85,7 +86,15 @@ const EditAddressForm: FC<Props> = ({
     addressType: address?.addressType,
   };
 
-  const { values, touched, errors, handleChange, handleSubmit } = useFormik({
+  const {
+    values,
+    touched,
+    errors,
+    setFieldValue,
+    setFieldTouched,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
@@ -166,23 +175,31 @@ const EditAddressForm: FC<Props> = ({
                   touched.provinceOrState && Boolean(errors.provinceOrState)
                 }
               >
-                <InputLabel>District</InputLabel>
-                <Select
+                <Autocomplete
                   size="small"
-                  name="provinceOrState"
-                  label="District"
-                  value={values.provinceOrState}
-                  onChange={handleChange}
-                >
-                  {DISTRICTS.map((district) => (
-                    <MenuItem key={district} value={district}>
-                      {district}
-                    </MenuItem>
-                  ))}
-                </Select>
-                {touched.provinceOrState && errors.provinceOrState && (
-                  <FormHelperText>{errors.provinceOrState}</FormHelperText>
-                )}
+                  options={DISTRICTS} // array of strings
+                  value={values.provinceOrState || null}
+                  onChange={(_, newValue) => {
+                    setFieldValue("provinceOrState", newValue ?? "");
+                    setFieldValue("city", "");
+                  }}
+                  onBlur={() => setFieldTouched("provinceOrState", true)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="District"
+                      name="provinceOrState"
+                      error={
+                        touched.provinceOrState &&
+                        Boolean(errors.provinceOrState)
+                      }
+                      helperText={
+                        touched.provinceOrState && errors.provinceOrState
+                      }
+                      size="small"
+                    />
+                  )}
+                />
               </FormControl>
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -191,24 +208,32 @@ const EditAddressForm: FC<Props> = ({
                 size="small"
                 error={touched.city && Boolean(errors.city)}
               >
-                <InputLabel>City</InputLabel>
-                <Select
+                <Autocomplete
                   size="small"
-                  name="city"
-                  label="City"
-                  value={values.city}
-                  onChange={handleChange}
-                >
-                  {values.provinceOrState &&
-                    CITIES_DATA[values.provinceOrState.toLowerCase()]?.map((city) => (
-                      <MenuItem key={city} value={city}>
-                        {city}
-                      </MenuItem>
-                    ))}
-                </Select>
-                {touched.city && errors.city && (
-                  <FormHelperText>{errors.city}</FormHelperText>
-                )}
+                  options={
+                    values?.provinceOrState
+                      ? CITIES_DATA[values?.provinceOrState.toLowerCase()]
+                      : null
+                  }
+                  value={values.city || null}
+                  disabled={!values?.provinceOrState || !CITIES_DATA}
+                  onChange={(_, newValue) => {
+                    setFieldValue("city", newValue ?? "");
+                  }}
+                  onBlur={() => setFieldTouched("city", true)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="City"
+                      name="city"
+                      error={Boolean(touched.city && errors.city)}
+                      helperText={
+                        touched.city && errors.city ? errors.city : ""
+                      }
+                      size="small"
+                    />
+                  )}
+                />
               </FormControl>
             </Grid>
             <Grid item sm={6} xs={12}>

@@ -63,7 +63,7 @@ const WishListPageView = (props: Props) => {
               fontSize: "18px",
             }}
           >
-            There is no wishlist items !
+            There are no wishlist items !
           </Box>
         )}
       </Grid>

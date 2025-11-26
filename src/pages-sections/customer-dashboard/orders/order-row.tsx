@@ -28,7 +28,7 @@ const OrderRow: FC<Props> = ({ order }) => {
         return "secondary";
       case "PROCESSING":
         return "info";
-      case "READY TO PICKUP":
+      case "READY TO DISPATCH":
       case "SHIPPED":
         return "warning";
       case "DELIVERED":
@@ -54,7 +54,7 @@ const OrderRow: FC<Props> = ({ order }) => {
     } else if (packages.some((e) => e.status === "PROCESSING")) {
       return "PROCESSING";
     } else if (packages.some((e) => e.status === "PICKUP_REQUESTED")) {
-      return "READY TO PICKUP";
+      return "READY TO DISPATCH";
     } else if (packages.some((e) => e.status === "SHIPPED")) {
       return "SHIPPED";
     } else if (packages.some((e) => e.status === "DELIVERED")) {

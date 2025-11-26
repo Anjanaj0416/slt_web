@@ -128,7 +128,7 @@ const AddressPageView = ({ addressList, totalPages, page }: Props) => {
             fontSize: "18px",
           }}
         >
-          There is no addresses !
+          There are no addresses !
         </Box>
       )}
 

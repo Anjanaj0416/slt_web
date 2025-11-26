@@ -51,7 +51,7 @@ const FavoriteStoresPageView = ({ favoriteStores }: Props) => {
               fontSize: "18px",
             }}
           >
-            There is no favorite stores !
+            There are no favorite stores !
           </Box>
         )}
       </Grid>

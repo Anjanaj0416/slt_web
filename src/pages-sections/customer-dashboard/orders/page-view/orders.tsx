@@ -42,7 +42,7 @@ const OrdersPageView = ({ orders, initTotalPages }: Props) => {
               fontSize: "18px",
             }}
           >
-            There is no orders !
+            There are no orders !
           </Box>
         )
       ) : (
