@@ -262,7 +262,7 @@ const EditAddressForm: FC<Props> = ({
             </Grid>
             <Grid item sm={12} xs={12}>
               <FormControlLabel
-                label="Is Primary"
+                label="Default"
                 control={
                   <Checkbox
                     name="primary"

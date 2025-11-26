@@ -45,9 +45,21 @@ const useListProducts = (
         if (sort) {
           filters.push(sort);
         }
+
+        if (
+          !page &&
+          (filters.length === 0 ||
+            (filters.length === 1 && filters[0]?.incudes("categoryId=")))
+        ) {
+          setFilteredProducts(products);
+          setTotalPage(initTotalPages);
+          setPage(1);
+          return;
+        }
+
         const data = await listProducts({
           filters: filters.join("&"),
-          page,
+          page: page - 1,
         }).unwrap();
 
         if (data) {

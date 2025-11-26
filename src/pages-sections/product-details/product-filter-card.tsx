@@ -171,10 +171,10 @@ const ProductFilterCard = ({
         </IconButton>
       </FlexBetween>
 
-      <Box component={Divider} my={3} />
+      {/* <Box component={Divider} my={3} /> */}
 
       {/* BRAND VARIANT FILTER */}
-      <H6 mb={2}>Brands</H6>
+      {/* <H6 mb={2}>Brands</H6>
 
       {brands.map((item) => (
         <FormControlLabel
@@ -187,7 +187,7 @@ const ProductFilterCard = ({
           label={<Span color="inherit">{item}</Span>}
           control={<Checkbox size="small" color="secondary" />}
         />
-      ))}
+      ))} */}
 
       {/* <Box component={Divider} my={3} /> */}
 
