@@ -257,7 +257,7 @@ export default function ProductSearchPageView({
               my="0.25rem"
               sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
             >
-              <Paragraph color="grey.600" mr={1}>
+              {/* <Paragraph color="grey.600" mr={1}>
                 View:
               </Paragraph>
 
@@ -266,14 +266,14 @@ export default function ProductSearchPageView({
                   color={view === "grid" ? "primary" : "inherit"}
                   fontSize="small"
                 />
-              </IconButton>
+              </IconButton> */}
 
-              <IconButton onClick={toggleView("list")} aria-label="list view">
+              {/* <IconButton onClick={toggleView("list")} aria-label="list view">
                 <ViewList
                   color={view === "list" ? "primary" : "inherit"}
                   fontSize="small"
                 />
-              </IconButton>
+              </IconButton> */}
             </FlexBox>
           </FlexBox>
         </Card>

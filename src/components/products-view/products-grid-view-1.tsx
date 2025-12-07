@@ -20,7 +20,7 @@ const ProductsGridView1: FC<Props> = ({ products, isLoading }) => {
       ) : (
         <Grid container spacing={3}>
           {products.map((product: Product1) => (
-            <Grid item lg={4} sm={6} xs={12} key={product.id}>
+            <Grid item lg={3} sm={6} xs={6} key={product.id}>
               <ProductCard10 product={product} />
             </Grid>
           ))}

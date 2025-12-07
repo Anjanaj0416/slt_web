@@ -18,7 +18,7 @@ export default async function ProductSearch({ searchParams }) {
     const categoryId = searchParams?.categoryId?.split("_")?.[0];
     const [result, banners] = await Promise.all([
       cachedRequest(PRODUCT_API.GET_PRODUCTS, {
-        query: `size=9&categoryId=${categoryId}`,
+        query: `size=12&categoryId=${categoryId}`,
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
         query: "size=6&bannerType=SEARCH_SECTION_CAROUSEL",

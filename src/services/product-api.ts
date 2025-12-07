@@ -29,7 +29,7 @@ export const productApi = createApi({
           : ["PRODUCT"],
     }),
     searchListProducts: builder.query({
-      query: ({ filters, page = 0, size = 9 }) =>
+      query: ({ filters, page = 0, size = 12 }) =>
         `/products?&page=${page}&size=${size}&${filters}`,
       providesTags: (result, error, arg) =>
         result
