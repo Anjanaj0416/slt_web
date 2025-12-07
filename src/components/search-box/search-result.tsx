@@ -32,9 +32,12 @@ const SearchResult: FC<Props> = ({
           href={
             item.type === "PRODUCT"
               ? categoryId == "*"
-                ? `/products/search/${item.name}`
-                : `/products/search/${item.name}?categoryId=${categoryId}`
-              : `/shops/${item.id}_${item.name}`
+                ? `/products/search/${item.name?.replace(/\s+/g, "-")}`
+                : `/products/search/${item.name?.replace(
+                    /\s+/g,
+                    "-"
+                  )}?categoryId=${categoryId}`
+              : `/shops/${item.id}_${item.name?.replace(/\s+/g, "-")}`
           }
           key={item.id}
         >

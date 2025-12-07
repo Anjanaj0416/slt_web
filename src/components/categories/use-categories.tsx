@@ -21,7 +21,9 @@ export const useCategories = () => {
         const item: MenuItem = {
           title: name,
           icon: iconUrl ?? null,
-          href: `/products/search?categoryId=${id}_${encodeURIComponent(name)}`,
+          href: `/products/search?categoryId=${id}_${encodeURIComponent(
+            name?.replace(/\s+/g, "-")
+          )}`,
         };
 
         if (subCategories?.length) {

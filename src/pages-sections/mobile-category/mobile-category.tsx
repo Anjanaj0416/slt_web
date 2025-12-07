@@ -102,7 +102,9 @@ const MobileCategoryPageView = ({ categories }: Props) => {
                   <List component="div" disablePadding>
                     <ListItem sx={{ pl: 4 }}>
                       <Link
-                        href={`/products/search?categoryId=${sub.id}_${sub.name}`}
+                        href={`/products/search?categoryId=${
+                          sub.id
+                        }_${sub.name?.replace(/\s+/g, "-")}`}
                       >
                         <ListItemText primary={sub.name} />
                       </Link>

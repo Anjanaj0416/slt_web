@@ -70,7 +70,9 @@ const CartItemCard: FC<CartItem> = ({
       </IconButton>
 
       <FlexBox p={2} rowGap={2} width="100%" flexDirection="column">
-        <Link href={`/products/${productId}_${productName}`}>
+        <Link
+          href={`/products/${productId}_${productName?.replace(/\s+/g, "-")}`}
+        >
           <Span ellipsis fontWeight="600" fontSize={18}>
             {productName}
           </Span>

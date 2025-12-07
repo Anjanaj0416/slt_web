@@ -34,7 +34,10 @@ export default async function ProductDetails({ params }) {
     ]);
     const product = productResults?.data?.[0] as Product1;
 
-    if (!product || decodeURIComponent(idAndName?.[1]) !== product?.name) {
+    if (
+      !product ||
+      decodeURIComponent(idAndName?.[1]) !== product?.name?.replace(/\s+/g, "-")
+    ) {
       notFound();
     }
 
