@@ -63,6 +63,9 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
       const orderNumber = decodeURIComponent(segments[1].split("_")?.[1]);
       segments[1] = String(orderNumber)?.padStart(8, "0");
     }
+    if (segments.length > 1 && segments[0] === "profile") {
+      segments[1] = "Edit Profile";
+    }
     setPathSegments(segments);
   }, [pathname]);
   return (
