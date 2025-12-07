@@ -32,6 +32,7 @@ export type PackageItem = {
 
 interface Package {
   id: string;
+  packageNumber: string;
   status: PackageStatus;
   packageItems: PackageItem[];
   shippingCost: number;

@@ -73,7 +73,10 @@ const OrderedProducts: FC<Props> = ({ order }) => {
               marginTop={1}
               marginLeft={2}
               color="#7D879C"
-            >{`Package ID: ${pkg.id}`}</Typography>
+            >{`Package ID: ${String(pkg?.packageNumber)?.padStart(
+              8,
+              "0"
+            )}`}</Typography>
             {order.status === "SUCCESS" && !isSelfPickupPackage(pkg) && (
               <Box paddingBottom={1}>
                 <OrderProgress status={pkg.status} />
