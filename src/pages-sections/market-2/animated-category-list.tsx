@@ -73,7 +73,7 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
   return (
     <Box sx={{ mt: { md: 4, xs: 0 }, mb: { md: 4, xs: 3 } }}>
       <H3 sx={{ pb: 2 }}>Categories</H3>
-      <Box>
+      <Box >
         {/* CATEGORY LIST AREA */}
         <Carousel
           slidesToShow={6}
@@ -83,15 +83,14 @@ const AnimatedCategoryList: FC<Props> = ({ categories }) => {
           {categories?.map((item) => (
             <Link
               key={item.id}
-              href={`/products/search?categoryId=${
-                item.id
-              }_${item.name?.replace(/\s+/g, "-")}`}
+              href={`/products/search?categoryId=${item.id}_${item.name}`}
             >
               <CategoryCard1 image={item.imageUrl} title={item.name} />
             </Link>
           ))}{" "}
         </Carousel>
       </Box>
+    
     </Box>
   );
 };

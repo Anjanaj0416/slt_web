@@ -97,9 +97,7 @@ const MiniCartItem: FC<Props> = ({ item }) => {
         </Button>
       </FlexBox>
 
-      <Link
-        href={`/products/${productId}_${productName?.replace(/\s+/g, "-")}`}
-      >
+      <Link href={`/products/${productId}_${productName}`}>
         <Avatar
           alt={productName}
           src={imageUrl}
@@ -113,7 +111,7 @@ const MiniCartItem: FC<Props> = ({ item }) => {
         whiteSpace="nowrap"
         overflow="hidden"
       >
-        <Link href={`/products/${productId}_${productName?.replace(/\s+/g, "-")}`}>
+        <Link href={`/products/${productId}_${productName}`}>
           <H6 ellipsis className="title">
             {productName}
           </H6>
