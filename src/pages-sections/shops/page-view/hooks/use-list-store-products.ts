@@ -43,7 +43,8 @@ const useListStoreProducts = (
           const products = data?.data?.map((item: Product1) => ({
             id: item.id,
             name: item.name,
-            basePrice: item.basePrice,
+            minPrice: item.minPrice,
+            maxPrice: item.maxPrice,
             brand: item.brand,
             productType: item.productType,
             category: item.category,

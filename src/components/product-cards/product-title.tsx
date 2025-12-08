@@ -14,6 +14,7 @@ const ProductTitle: FC<Props> = ({ title, id }) => (
       title={title}
       fontSize={14}
       fontWeight={600}
+      textTransform="capitalize"
       className="title"
       color="text.secondary"
     >

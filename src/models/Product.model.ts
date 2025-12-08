@@ -5,7 +5,8 @@ export type DeliveryPartnerType = "KOOMBIYO" | "SELF_PICKUP" | "OTHER";
 export interface Product1 {
   id: string;
   weight: number;
-  basePrice: string;
+  minPrice: number;
+  maxPrice: number;
   discountAmount: number;
   discountType: DiscountType;
   productType: "QUOTATION" | "DIRECT_BUYING";

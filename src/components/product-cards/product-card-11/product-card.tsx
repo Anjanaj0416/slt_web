@@ -19,7 +19,11 @@ import { ImageWrapper, ContentWrapper, StyledBazaarCard } from "./styles";
 import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import ENVIRONMENT from "config/environment";
-import { calculateDiscountPercentage, currency } from "lib";
+import {
+  calculateDiscountPercentage,
+  currency,
+  getProductFormattedPrice,
+} from "lib";
 import { Button, Typography } from "@mui/material";
 import useQuotation from "hooks/useQuotation";
 import { User1 } from "models/User.model";
@@ -51,7 +55,6 @@ const ProductCard11: FC<Props> = ({
   const {
     id,
     name,
-    basePrice,
     discountAmount,
     productStatus,
     images,
@@ -93,11 +96,6 @@ const ProductCard11: FC<Props> = ({
     ? `${ENVIRONMENT.S3_BUCKET_URL}/${images[0]}`
     : `${ENVIRONMENT.APP_URL}/assets/images/default-product.jpg`;
 
-  const getPrice = () => {
-    const prices = basePrice?.split("-");
-
-    return prices?.length ? currency(+prices[0], 1) : currency(+basePrice, 1);
-  };
   return (
     <StyledBazaarCard hoverEffect={hoverEffect}>
       <ImageWrapper>
@@ -202,7 +200,7 @@ const ProductCard11: FC<Props> = ({
           /> */}
           {productType === "DIRECT_BUYING" && (
             <Paragraph fontWeight={600} color="primary.main">
-              {getPrice()}
+              {getProductFormattedPrice(product).formattedMaxPrice}
             </Paragraph>
           )}
         </Box>

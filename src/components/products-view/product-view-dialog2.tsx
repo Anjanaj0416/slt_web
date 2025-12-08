@@ -44,7 +44,7 @@ const ProductViewDialog2: FC<Props> = ({
   const {
     id,
     name,
-    basePrice,
+    minPrice,
     discountAmount,
     images,
     discountType,
@@ -87,7 +87,7 @@ const ProductViewDialog2: FC<Props> = ({
 
       return calculateDiscountPrice(minPriceVariant.price, discount);
     }
-    return currency(basePrice);
+    return currency(minPrice);
   };
 
   const isQuotationProduct = productType === "QUOTATION";

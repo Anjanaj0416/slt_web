@@ -249,7 +249,8 @@ const CartServiceProvider = (props: Props) => {
       const {
         id: productId,
         images,
-        basePrice,
+        maxPrice,
+        minPrice,
         productType,
         brand,
         discountType,
@@ -307,7 +308,8 @@ const CartServiceProvider = (props: Props) => {
         //
         const newItem: CartItem = {
           productId,
-          basePrice,
+          maxPrice,
+          minPrice,
           deliveryPartner,
           images,
           productVariant,
@@ -364,7 +366,8 @@ const CartServiceProvider = (props: Props) => {
     const {
       id: productId,
       images,
-      basePrice,
+      maxPrice,
+      minPrice,
       productType,
       brand,
       discountType,
@@ -394,7 +397,8 @@ const CartServiceProvider = (props: Props) => {
       //
       const newItem: CartItem = {
         productId,
-        basePrice,
+        maxPrice,
+        minPrice,
         deliveryPartner,
         images,
         productVariant,
@@ -496,7 +500,8 @@ const CartServiceProvider = (props: Props) => {
     const {
       id: productId,
       images,
-      basePrice,
+      minPrice,
+      maxPrice,
       productType,
       brand,
       discountType,
@@ -507,7 +512,8 @@ const CartServiceProvider = (props: Props) => {
     } = product;
     const newItem: CartItem = {
       productId,
-      basePrice,
+      minPrice,
+      maxPrice,
       deliveryPartner,
       images,
       productVariant,

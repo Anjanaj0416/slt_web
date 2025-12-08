@@ -16,7 +16,6 @@ export type PackageStatus =
 export type PackageItem = {
   productId: string;
   productName: string;
-  basePrice: string;
   brand: string;
   status: PackageStatus;
   deliveryPartner: DeliveryPartnerType;

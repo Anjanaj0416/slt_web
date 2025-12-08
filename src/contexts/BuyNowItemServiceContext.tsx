@@ -109,7 +109,8 @@ const BuyNowItemServiceProvider = (props: Props) => {
       const {
         id: productId,
         images,
-        basePrice,
+        minPrice,
+        maxPrice,
         weight,
         productType,
         brand,
@@ -121,7 +122,8 @@ const BuyNowItemServiceProvider = (props: Props) => {
       //
       return {
         productId,
-        basePrice,
+        minPrice,
+        maxPrice,
         images,
         weight,
         productVariant: item.productVariant,

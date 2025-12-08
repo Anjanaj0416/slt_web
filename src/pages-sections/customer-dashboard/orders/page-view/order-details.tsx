@@ -20,7 +20,6 @@ import {
 } from "@mui/material";
 import { useUpdateOrderMutation } from "services/order-api";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useSnackbar } from "notistack";
 import { isSelfPickupPackage } from "lib";
 
@@ -73,7 +72,6 @@ const OrderDetailsPageView = ({ order }: Props) => {
           productId,
           productName,
           images,
-          basePrice,
           brand,
           productDiscountAmount,
           productDiscountType,
@@ -81,7 +79,6 @@ const OrderDetailsPageView = ({ order }: Props) => {
         const product = {
           id: productId,
           images,
-          basePrice,
           brand,
           price,
           discountType: productDiscountType,

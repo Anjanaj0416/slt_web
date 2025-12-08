@@ -12,15 +12,13 @@ import { FlexBox } from "components/flex-box";
 import useProduct from "../use-product";
 // LOCAL CUSTOM COMPONENTS
 import DiscountChip from "../discount-chip";
-import ProductPrice from "../product-price";
 import AddToCartButton from "./add-to-cart";
 import FavoriteButton from "./favorite-button";
 import useCartService from "hooks/useCartService";
 import { Product1 } from "models/Product.model";
 import {
-  calculateDiscountAmount,
   calculateDiscountPercentage,
-  currency,
+  getProductFormattedPrice,
 } from "lib";
 import ENVIRONMENT from "config/environment";
 import useQuotation from "hooks/useQuotation";
@@ -46,7 +44,6 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
   const {
     id,
     name,
-    basePrice,
     discountAmount,
     discountType,
     images,
@@ -89,15 +86,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
     }
   };
 
-  const getPrice = () => {
-    if (!basePrice) return "";
 
-    const prices = basePrice?.split("-");
-    if (prices.length == 1) {
-      return currency(prices[0]);
-    }
-    return `${currency(prices[0])} - ${currency(prices[1], 2, "")}`;
-  };
 
   const handleCart = () => handleAddToCart(product, minPriceVariant, 1);
 
@@ -154,7 +143,7 @@ const ProductListCard: FC<Props> = ({ product }: Props) => {
             {/* PRODUCT PRICE */}
             {!isQuotationProduct && (
               <Paragraph fontWeight={600} color="primary.main">
-                {getPrice()}
+                {getProductFormattedPrice(product).formattedBasePrice}
               </Paragraph>
             )}
 

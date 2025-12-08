@@ -1,6 +1,7 @@
 import currencyJs from "currency.js";
 import formatDistanceStrict from "date-fns/formatDistanceStrict";
 import Package from "models/Package.model";
+import { Product1 } from "models/Product.model";
 
 /**
  * GET THE DIFFERENCE DATE FORMAT
@@ -131,4 +132,26 @@ export {
   calculateDiscountAmount,
   calculateDiscountPercentage,
   isSelfPickupPackage,
+};
+
+export const getProductFormattedPrice = (product: Product1) => {
+  const { minPrice, maxPrice } = product;
+  const formattedMinPrice = currency(minPrice, 1);
+  const formattedMaxPrice = currency(maxPrice, 1);
+  const formattedBasePrice =
+    minPrice === maxPrice
+      ? formattedMinPrice
+      : `${formattedMinPrice} - ${formattedMaxPrice?.replace("LKR ", "")}`;
+  return {
+    formattedBasePrice,
+    basePrice:
+      minPrice === maxPrice
+        ? maxPrice
+        : `${formattedMinPrice.replace(
+            "LKR ",
+            ""
+          )} - ${formattedMaxPrice.replace("LKR ", "")}`,
+    formattedMinPrice,
+    formattedMaxPrice,
+  };
 };

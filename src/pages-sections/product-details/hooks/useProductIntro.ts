@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Product1, ProductVariant } from "models/Product.model";
-import { calculateDiscountAmount } from "lib";
+import { calculateDiscountAmount, getProductFormattedPrice } from "lib";
 
 export interface AttributeState {
   name: string;
@@ -28,10 +28,14 @@ export function useProductIntro(product: Product1) {
     videos,
   } = product;
 
-  const [selectedAttributes, setSelectedAttributes] = useState<AttributeState[]>([]);
+  const [selectedAttributes, setSelectedAttributes] = useState<
+    AttributeState[]
+  >([]);
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>();
-  const [mappedAttributes, setMappedAttributes] = useState<MappedAttribute[]>([]);
-  const [price, setPrice] = useState<number | string>(product.basePrice);
+  const [mappedAttributes, setMappedAttributes] = useState<MappedAttribute[]>(
+    []
+  );
+  const [price, setPrice] = useState<number | string>(getProductFormattedPrice(product).basePrice);
   const [quantity, setQuantity] = useState<number>();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
@@ -85,7 +89,9 @@ export function useProductIntro(product: Product1) {
         setSelectedVariant(singleVariant);
         setPrice(singleVariant.price);
         setQuantity(singleVariant.units);
-        setSelectedAttributes([{ name: attr.title, value: attr.values[0].value }]);
+        setSelectedAttributes([
+          { name: attr.title, value: attr.values[0].value },
+        ]);
       }
       return;
     }
@@ -119,7 +125,7 @@ export function useProductIntro(product: Product1) {
       if (imgIndex >= 0) setSelectedImage(imgIndex);
     } else {
       setSelectedVariant(undefined);
-      setPrice(product.basePrice);
+      setPrice(getProductFormattedPrice(product).basePrice);
       setQuantity(undefined);
     }
 
@@ -167,14 +173,17 @@ export function useProductIntro(product: Product1) {
     selected: AttributeState[]
   ): Record<string, string[]> {
     if (selected.length === 0)
-      return variants.reduce((acc, variant) => {
-        variant.attributes.forEach((attr) => {
-          if (!acc[attr.name]) acc[attr.name] = [];
-          if (!acc[attr.name].includes(attr.value))
-            acc[attr.name].push(attr.value);
-        });
-        return acc;
-      }, {} as Record<string, string[]>);
+      return variants.reduce(
+        (acc, variant) => {
+          variant.attributes.forEach((attr) => {
+            if (!acc[attr.name]) acc[attr.name] = [];
+            if (!acc[attr.name].includes(attr.value))
+              acc[attr.name].push(attr.value);
+          });
+          return acc;
+        },
+        {} as Record<string, string[]>
+      );
 
     // Keep all values active for a single selected attribute
     if (selected.length === 1) {
@@ -218,14 +227,17 @@ export function useProductIntro(product: Product1) {
       )
     );
 
-    return filtered.reduce((acc, variant) => {
-      variant.attributes.forEach((attr) => {
-        if (!acc[attr.name]) acc[attr.name] = [];
-        if (!acc[attr.name].includes(attr.value))
-          acc[attr.name].push(attr.value);
-      });
-      return acc;
-    }, {} as Record<string, string[]>);
+    return filtered.reduce(
+      (acc, variant) => {
+        variant.attributes.forEach((attr) => {
+          if (!acc[attr.name]) acc[attr.name] = [];
+          if (!acc[attr.name].includes(attr.value))
+            acc[attr.name].push(attr.value);
+        });
+        return acc;
+      },
+      {} as Record<string, string[]>
+    );
   }
 
   return {

@@ -15,7 +15,8 @@ interface User {
 export interface CartItem {
   productId: string;
   productName: string;
-  basePrice: string;
+  minPrice: number;
+  maxPrice: number;
   brand: string;
   deliveryPartner: DeliveryPartnerType;
   productType: "DIRECT_BUYING" | "QUOTATION";
