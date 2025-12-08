@@ -1,7 +1,5 @@
 "use client";
 
-import Container from "@mui/material/Container";
-// Local CUSTOM COMPONENTS
 import ProductTabs from "../product-tabs";
 import AvailableShops from "../available-shops";
 import RelatedProducts from "../related-products";
@@ -22,11 +20,8 @@ interface Props {
 // ==============================================================
 
 const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
-  const {
-    data: products,
-    error,
-    isLoading: isLoadingRelated,
-  } = useFilteredProductsQuery({ categoryId: product.category.id, size: 5 });
+  const { data: products, isLoading: isLoadingRelated } =
+    useFilteredProductsQuery({ categoryId: product.category.id, size: 5 });
   const relatedProducts = (products?.data ?? [])
     .filter((p: Product1) => p.id !== product.id)
     .slice(0, 4);

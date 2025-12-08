@@ -37,8 +37,8 @@ const SORT_OPTIONS = [
 
 const SORT_MAP: Record<string, string | null> = {
   Date: "sort=createdAt,asc",
-  "Price Low to High": "sort=variants.price,asc",
-  "Price High to Low": "sort=variants.price,desc",
+  "Price Low to High": "sort=minPrice,asc",
+  "Price High to Low": "sort=maxPrice,desc",
   Relevance: null,
 };
 
@@ -85,7 +85,7 @@ export default function ProductSearchPageView({
   banners,
 }: Props) {
   const [view, setView] = useState<"grid" | "list">("grid");
-  const toggleView = useCallback((v: "grid" | "list") => () => setView(v), []);
+  //const toggleView = useCallback((v: "grid" | "list") => () => setView(v), []);
 
   const [totalResult, setTotalResult] = useState<number>(totalResults ?? 0);
   const [selectedCategoryId, setCategoryId] = useState<string | undefined>(
@@ -156,10 +156,9 @@ export default function ProductSearchPageView({
 
     return Array.from(map.values());
   }, [products]);
-
   // shuffle filtered products only when filteredProducts changes
   const shuffledProducts = useMemo(
-    () => shuffle(filteredProducts || []),
+    () => (sort === null ? shuffle(filteredProducts || []) : filteredProducts),
     [filteredProducts]
   );
 
