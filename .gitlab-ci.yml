@@ -60,56 +60,56 @@ build_dev:
   only:
   - dev
 
-build_qa:
-  stage: build
-  image:
-    name: docker:25
-    entrypoint: [ "" ]
-  services:
-  - docker:dind
-  before_script:
-  - apk add --no-cache aws-cli openssl bash
-  - echo "Logging in to ECR"
-  - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
-  - echo "Envs injection started --"
-  # Fetch values from Parameter Store
-  - NEXT_PUBLIC_BASE_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_base_url --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL" >> .env
-  - NEXTAUTH_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_auth_url --query Parameter.Value --output text)
-  - echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env
-  - KEYCLOAK_CLIENT_ID=$(aws ssm get-parameter --name /qa-marketplacer-client-keycloak_client_id --query Parameter.Value --output text)
-  - echo "KEYCLOAK_CLIENT_ID=$KEYCLOAK_CLIENT_ID" >> .env
-  - KEYCLOAK_CLIENT_SECRET=$(aws ssm get-parameter --name /qa-marketplacer-client-keycloak_client_secret --query Parameter.Value --output text)
-  - echo "KEYCLOAK_CLIENT_SECRET=$KEYCLOAK_CLIENT_SECRET" >> .env
-  - KEYCLOAK_CLIENT_ISSUER=$(aws ssm get-parameter --name /qa-marketplacer-client-keycloak_client_issuer --query Parameter.Value --output text)
-  - echo "KEYCLOAK_CLIENT_ISSUER=$KEYCLOAK_CLIENT_ISSUER" >> .env
-  - NEXTAUTH_SECRET=$(openssl rand -base64 4 | tr -dc A-Za-z0-9 | head -c 32)
-  - echo "NEXTAUTH_SECRET=$(echo -n $NEXTAUTH_SECRET | base64)" >> .env
-  - NEXT_PUBLIC_FACEBOOK_LINK=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_facebook_link --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_FACEBOOK_LINK=$NEXT_PUBLIC_FACEBOOK_LINK" >> .env
-  - NEXT_PUBLIC_TWITTER_LINK=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_twitter_link --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_TWITTER_LINK=$NEXT_PUBLIC_TWITTER_LINK" >> .env
-  - NEXT_PUBLIC_INSTAGRAM_LINK=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_instagram_link --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_INSTAGRAM_LINK=$NEXT_PUBLIC_INSTAGRAM_LINK" >> .env
-  - NEXT_PUBLIC_S3_BUCKET_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_s3_bucket_url --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_S3_BUCKET_URL=$NEXT_PUBLIC_S3_BUCKET_URL" >> .env
-  - NEXT_PUBLIC_DOMAIN=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_domain --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_DOMAIN=$NEXT_PUBLIC_DOMAIN" >> .env
-  - NEXT_PUBLIC_APP_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_app_url --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL" >> .env
-  - NEXT_PUBLIC_WISHLIST_LIMIT=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_wishlist_limit --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_WISHLIST_LIMIT=$NEXT_PUBLIC_WISHLIST_LIMIT" >> .env
-  - NEXT_PUBLIC_SESSION_REFRESH_TIME=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_session_refresh_time --query Parameter.Value --output text)
-  - echo "NEXT_PUBLIC_SESSION_REFRESH_TIME=$NEXT_PUBLIC_SESSION_REFRESH_TIME" >> .env
-  - echo "Envs injection end --"
-  script:
-  - echo "Building Docker image"
-  - docker build -t $ECR_REGISTRY/marketplacer-client:$IMAGE_TAG .
-  - echo "Pushing Docker image to ECR"
-  - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
-  - docker push $ECR_REGISTRY/marketplacer-client:$IMAGE_TAG
-  only:
-  - qa
+# build_qa:
+#   stage: build
+#   image:
+#     name: docker:25
+#     entrypoint: [ "" ]
+#   services:
+#   - docker:dind
+#   before_script:
+#   - apk add --no-cache aws-cli openssl bash
+#   - echo "Logging in to ECR"
+#   - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
+#   - echo "Envs injection started --"
+#   # Fetch values from Parameter Store
+#   - NEXT_PUBLIC_BASE_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_base_url --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL" >> .env
+#   - NEXTAUTH_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_auth_url --query Parameter.Value --output text)
+#   - echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env
+#   - KEYCLOAK_CLIENT_ID=$(aws ssm get-parameter --name /qa-marketplacer-client-keycloak_client_id --query Parameter.Value --output text)
+#   - echo "KEYCLOAK_CLIENT_ID=$KEYCLOAK_CLIENT_ID" >> .env
+#   - KEYCLOAK_CLIENT_SECRET=$(aws ssm get-parameter --name /qa-marketplacer-client-keycloak_client_secret --query Parameter.Value --output text)
+#   - echo "KEYCLOAK_CLIENT_SECRET=$KEYCLOAK_CLIENT_SECRET" >> .env
+#   - KEYCLOAK_CLIENT_ISSUER=$(aws ssm get-parameter --name /qa-marketplacer-client-keycloak_client_issuer --query Parameter.Value --output text)
+#   - echo "KEYCLOAK_CLIENT_ISSUER=$KEYCLOAK_CLIENT_ISSUER" >> .env
+#   - NEXTAUTH_SECRET=$(openssl rand -base64 4 | tr -dc A-Za-z0-9 | head -c 32)
+#   - echo "NEXTAUTH_SECRET=$(echo -n $NEXTAUTH_SECRET | base64)" >> .env
+#   - NEXT_PUBLIC_FACEBOOK_LINK=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_facebook_link --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_FACEBOOK_LINK=$NEXT_PUBLIC_FACEBOOK_LINK" >> .env
+#   - NEXT_PUBLIC_TWITTER_LINK=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_twitter_link --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_TWITTER_LINK=$NEXT_PUBLIC_TWITTER_LINK" >> .env
+#   - NEXT_PUBLIC_INSTAGRAM_LINK=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_instagram_link --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_INSTAGRAM_LINK=$NEXT_PUBLIC_INSTAGRAM_LINK" >> .env
+#   - NEXT_PUBLIC_S3_BUCKET_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_s3_bucket_url --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_S3_BUCKET_URL=$NEXT_PUBLIC_S3_BUCKET_URL" >> .env
+#   - NEXT_PUBLIC_DOMAIN=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_domain --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_DOMAIN=$NEXT_PUBLIC_DOMAIN" >> .env
+#   - NEXT_PUBLIC_APP_URL=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_app_url --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL" >> .env
+#   - NEXT_PUBLIC_WISHLIST_LIMIT=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_wishlist_limit --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_WISHLIST_LIMIT=$NEXT_PUBLIC_WISHLIST_LIMIT" >> .env
+#   - NEXT_PUBLIC_SESSION_REFRESH_TIME=$(aws ssm get-parameter --name /qa-marketplacer-client-next_public_session_refresh_time --query Parameter.Value --output text)
+#   - echo "NEXT_PUBLIC_SESSION_REFRESH_TIME=$NEXT_PUBLIC_SESSION_REFRESH_TIME" >> .env
+#   - echo "Envs injection end --"
+#   script:
+#   - echo "Building Docker image"
+#   - docker build -t $ECR_REGISTRY/marketplacer-client:$IMAGE_TAG .
+#   - echo "Pushing Docker image to ECR"
+#   - aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REGISTRY
+#   - docker push $ECR_REGISTRY/marketplacer-client:$IMAGE_TAG
+#   only:
+#   - qa
 
 build_staging:
   stage: build
@@ -238,15 +238,15 @@ deploy_dev:
   environment:
     name: dev
 
-deploy_qa:
-  <<: *deploy_template
-  variables:
-    KUBE_CONTEXT: dev-customer-front-agent
-    KUBE_NAMESPACE: qa
-  only:
-    - qa
-  environment:
-    name: qa
+# deploy_qa:
+#   <<: *deploy_template
+#   variables:
+#     KUBE_CONTEXT: dev-customer-front-agent
+#     KUBE_NAMESPACE: qa
+#   only:
+#     - qa
+#   environment:
+#     name: qa
 
 deploy_staging:
   <<: *deploy_template
