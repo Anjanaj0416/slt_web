@@ -166,7 +166,7 @@ const ProductCard9: FC<Props> = ({ product }: Props) => {
             p={2}
           >
             {/* PRODUCT TITLE / NAME */}
-            <Link href={`/products/${id}_${name.replace("/", "")}`}>
+            <Link href={`/products/${id}_${encodeURIComponent(name)}`}>
               <H5 fontWeight="600" my="0.5rem">
                 {name}
               </H5>

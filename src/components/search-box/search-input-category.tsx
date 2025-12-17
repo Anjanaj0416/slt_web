@@ -47,8 +47,10 @@ const SearchInputWithCategory = ({ searchBarOpen, toggleSearchBar }: Props) => {
     if (event.key === "Enter") {
       router.push(
         categoryId == "*"
-          ? `/products/search/${event.target.value.replace("/", "")}`
-          : `/products/search/${event.target.value.replace("/", "")}?categoryId=${categoryId}`
+          ? `/products/search/${encodeURIComponent(event.target.value)}`
+          : `/products/search/${encodeURIComponent(
+              event.target.value
+            )}?categoryId=${categoryId}`
       );
     }
   };

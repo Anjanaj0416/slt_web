@@ -97,7 +97,7 @@ const MiniCartItem: FC<Props> = ({ item }) => {
         </Button>
       </FlexBox>
 
-      <Link href={`/products/${productId}_${productName}`}>
+      <Link href={`/products/${productId}_${encodeURIComponent(productName)}`}>
         <Avatar
           alt={productName}
           src={imageUrl}
@@ -111,7 +111,7 @@ const MiniCartItem: FC<Props> = ({ item }) => {
         whiteSpace="nowrap"
         overflow="hidden"
       >
-        <Link href={`/products/${productId}_${productName}`}>
+        <Link href={`/products/${productId}_${encodeURIComponent(productName)}`}>
           <H6 ellipsis className="title">
             {productName}
           </H6>

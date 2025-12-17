@@ -91,7 +91,7 @@ const ProductCard14: FC<Props> = (props) => {
 
         <ImageBox>
           {/* PRODUCT IMAGE / THUMBNAIL */}
-          <Link href={`/products/${slug.replaceAll("/", "")}`}>
+          <Link href={`/products/${encodeURIComponent(slug)}`}>
             <LazyImage alt={title} src={imgUrl} width={190} height={190} />
           </Link>
 

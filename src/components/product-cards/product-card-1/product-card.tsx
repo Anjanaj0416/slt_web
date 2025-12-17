@@ -91,7 +91,7 @@ const ProductCard1: FC<Props> = ({
         />
 
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${slug.replace("/", "")}`}>
+        <Link href={`/products/${encodeURIComponent(slug)}`}>
           <LazyImage
             priority
             src={imgUrl}

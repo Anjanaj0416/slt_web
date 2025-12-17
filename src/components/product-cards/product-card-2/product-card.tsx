@@ -37,7 +37,7 @@ const ProductCard2: FC<Props> = ({
 
   return (
     <div>
-      <Link href={`/products/${slug.replace("/", "")}`}>
+      <Link href={`/products/${encodeURIComponent(slug)}`}>
         <HoverBox overflow="hidden" borderRadius={2}>
           <LazyImage width={270} height={270} alt={title} src={imgUrl} />
         </HoverBox>

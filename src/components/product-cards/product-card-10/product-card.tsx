@@ -147,7 +147,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
     }
     return minPriceVariant.price;
   };
-
+  const encodedId = encodeURIComponent(`${id}_${name}`);
   //
   return (
     <Card
@@ -194,7 +194,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           </>
         )}
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${id}_${name.replace("/", "")}`}>
+        <Link href={`/products/${encodedId}`}>
           <LazyImage
             width={300}
             height={300}

@@ -83,7 +83,7 @@ const ProductCard13: FC<Props> = (props) => {
         <DiscountChip discount={off} />
 
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${slug.replaceAll("/", "")}`}>
+        <Link href={`/products/${encodeURIComponent(slug)}`}>
           <LazyImage alt={title} src={imgUrl} width={450} height={450} />
         </Link>
 

@@ -7,7 +7,7 @@ type Props = { title: string; id: string };
 // ==============================================================
 
 const ProductTitle: FC<Props> = ({ title, id }) => (
-  <Link href={`/products/${id}_${title}`}>
+  <Link href={`/products/${id}_${encodeURIComponent(title)}`}>
     <H3
       mb={1}
       ellipsis
