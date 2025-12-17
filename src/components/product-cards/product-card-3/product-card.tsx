@@ -69,7 +69,7 @@ const ProductCard10: FC<Props> = (props) => {
 
         {/* PRODUCT IMAGE / THUMBNAIL */}
         <ImageBox className="hoverImgBox">
-          <Link href={`/products/${slug}`}>
+          <Link href={`/products/${slug.replaceAll("/", "")}`}>
             <LazyImage alt={title} width={190} height={190} src={imgUrl} />
           </Link>
         </ImageBox>

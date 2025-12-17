@@ -91,7 +91,7 @@ const ProductCard9: FC<Props> = (props) => {
             p={2}
           >
             {/* PRODUCT TITLE / NAME */}
-            <Link href={`/products/${slug}`}>
+            <Link href={`/products/${slug.replace("/", "")}`}>
               <H5 fontWeight="600" my="0.5rem">
                 {title}
               </H5>

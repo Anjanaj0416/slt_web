@@ -194,7 +194,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           </>
         )}
         {/* PRODUCT IMAGE / THUMBNAIL */}
-        <Link href={`/products/${id}_${name}`}>
+        <Link href={`/products/${id}_${name.replace("/", "")}`}>
           <LazyImage
             width={300}
             height={300}

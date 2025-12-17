@@ -75,7 +75,7 @@ const ProductCard17: FC<Props> = (props) => {
 
   return (
     <StyledCard sx={sx}>
-      <Link href={`/products/${slug}`}>
+      <Link href={`/products/${slug.replace("/", "")}`}>
         <ImgBox id="imgBox">
           {/* PRODUCT BADGE STATUS IF STATUS AVAILABLE */}
           <ProductStatus status={status} />
@@ -97,7 +97,7 @@ const ProductCard17: FC<Props> = (props) => {
       <ContentWrapper>
         <Box flex="1 1 0">
           {/* PRODUCT TITLE / NAME */}
-          <Link href={`/products/${slug}`}>
+          <Link href={`/products/${slug.replace("/", "")}`}>
             <H3
               mb={1}
               title={title}
