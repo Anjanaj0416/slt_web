@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 export default async function ProductDetails({ params }) {
   try {
     const idAndName = params?.id?.split("_");
-    console.log(idAndName);
-    
-   
+    if (idAndName?.length < 2) {
+      notFound();
+    }
     const productId = idAndName?.[0];
     // 1. Fetch product
     const [productResults, ownerStoreResult] = await Promise.all([
@@ -59,5 +59,6 @@ export default async function ProductDetails({ params }) {
     );
   } catch (error) {
     console.log(error);
+    notFound()
   }
 }
