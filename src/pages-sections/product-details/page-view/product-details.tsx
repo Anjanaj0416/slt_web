@@ -57,7 +57,7 @@ const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
       <ProductIntro1 product={product} store={ownerStore} />
 
       {!isLoading && banners?.data?.length && (
-        <Box width={"100%"}>
+        <Box width={"100%"} mt={{ xs: 4, lg: 0 }}>
           <Carousel
             dots
             arrows={false}

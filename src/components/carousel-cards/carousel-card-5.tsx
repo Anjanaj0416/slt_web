@@ -30,7 +30,7 @@ const CardWrapper = styled("div", {
 
     [theme.breakpoints.down("sm")]: {
       backgroundImage: imgMobile ? `url(${imgMobile}) !important` : "none",
-      minHeight: 100,
+      minHeight: 300,
     },
   })
 );

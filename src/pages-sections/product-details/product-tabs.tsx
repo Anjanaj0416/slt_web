@@ -12,15 +12,21 @@ import dynamic from "next/dynamic";
 // STYLED COMPONENT
 const StyledTabs = styled(Tabs)(({ theme }) => ({
   minHeight: 0,
-  marginTop: 80,
   marginBottom: 24,
+  marginTop: 20,
   borderBottom: `1px solid ${theme.palette.text.disabled}`,
+
+  [theme.breakpoints.up("md")]: {
+    marginTop: 80,
+  },
+
   "& .inner-tab": {
     minHeight: 40,
     fontWeight: 600,
     textTransform: "capitalize",
   },
 }));
+
 type Props = {
   description: string;
   specification: string;
