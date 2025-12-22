@@ -25,8 +25,7 @@ const AddToCartButton: FC<Props> = ({
 }) => {
   const handleIncrement = () => handleAmountChange(1);
   const handleDecrement = () => handleAmountChange(-1);
-  console.log(disabled);
-
+  //
   return (
     <FlexBox mt={1}>
       {quantity ? (

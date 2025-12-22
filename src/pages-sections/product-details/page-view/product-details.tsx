@@ -8,7 +8,29 @@ import ProductIntro1 from "../product-intro1";
 import Store from "models/Store.model";
 import { Product1 } from "models/Product.model";
 import { useFilteredProductsQuery } from "services/product-api";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Link, useTheme } from "@mui/material";
+import { Carousel } from "components/carousel";
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
+import { ENVIRONMENT } from "config";
+import { useGetAllBannersQuery } from "services/banner-api";
+import CarouselCard5 from "components/carousel-cards/carousel-card-5";
+
+function getResponsiveImageUrls(imageUrl = "") {
+  // keep captured extension and replace with suffix
+  const m = imageUrl.match(/(.*)\.(png|jpe?g|webp)$/i);
+  if (!m) return { tabletImage: imageUrl, mobileImage: imageUrl };
+  const [, base, ext] = m;
+  return {
+    tabletImage: `${base}_tablet.${ext}`,
+    mobileImage: `${base}_mobile.${ext}`,
+  };
+}
+
+function getRandomMaxThree(array) {
+  return [...array]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, Math.min(3, array.length));
+}
 
 // ==============================================================
 interface Props {
@@ -25,10 +47,44 @@ const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
   const relatedProducts = (products?.data ?? [])
     .filter((p: Product1) => p.id !== product.id)
     .slice(0, 4);
+  const { palette } = useTheme();
+  const { data: banners, isLoading } = useGetAllBannersQuery({
+    type: "PRODUCT_SECTION_CAROUSEL",
+  });
   return (
     <Box sx={{ my: 4, px: { xs: 2, md: 16 } }}>
       {/* PRODUCT DETAILS INFO AREA */}
       <ProductIntro1 product={product} store={ownerStore} />
+
+      {!isLoading && banners?.data?.length && (
+        <Box width={"100%"}>
+          <Carousel
+            dots
+            arrows={false}
+            spaceBetween={0}
+            slidesToShow={1}
+            autoplay
+            dotColor={palette.dark?.main}
+            dotStyles={COMMON_DOT_STYLES}
+          >
+            {getRandomMaxThree(banners.data)?.map((item) => {
+              const url = `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`;
+              const { tabletImage, mobileImage } = getResponsiveImageUrls(url);
+
+              return (
+                <Link key={item.id} href={item.link} target="_blank">
+                  <CarouselCard5
+                    mode="light"
+                    bgImage={url}
+                    bgImageTablet={tabletImage}
+                    bgImageMobile={mobileImage}
+                  />
+                </Link>
+              );
+            })}
+          </Carousel>
+        </Box>
+      )}
 
       {/* PRODUCT DESCRIPTION AND REVIEW */}
       <ProductTabs

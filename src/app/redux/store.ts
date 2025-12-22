@@ -18,6 +18,7 @@ import { reviewApi } from "services/review-api";
 import { complainApi } from "services/complain-api";
 import { deliveryApi } from "services/delivery-api";
 import { voucherApi } from "services/voucher-api";
+import { bannerApi } from "services/banner-api";
 
 // Combine all the reducers into one root reducer
 const rootReducers = combineReducers({
@@ -36,7 +37,8 @@ const rootReducers = combineReducers({
   [reviewApi.reducerPath]: reviewApi.reducer,
   [complainApi.reducerPath]: complainApi.reducer,
   [deliveryApi.reducerPath]: deliveryApi.reducer,
-  [voucherApi.reducerPath]: voucherApi.reducer
+  [voucherApi.reducerPath]: voucherApi.reducer,
+  [bannerApi.reducerPath]: bannerApi.reducer
 });
 
 // Define custom middlewares for the store
@@ -56,7 +58,8 @@ const apiMiddlewares = [
   categoryApi.middleware,
   complainApi.middleware,
   deliveryApi.middleware,
-  voucherApi.middleware
+  voucherApi.middleware,
+  bannerApi.middleware
 ]; // Middleware for Redux Toolkit Query
 //
 const customMiddleWares = [rtkQueryErrorLogger]; // Custom middleware for handling errors

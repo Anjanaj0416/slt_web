@@ -16,8 +16,6 @@ interface Props {
 }
 
 const ProductGallery = ({ medias, selectedImage, onSelect, name }: Props) => {
-  console.log(medias);
-
   return (
     <Box>
       <FlexBox

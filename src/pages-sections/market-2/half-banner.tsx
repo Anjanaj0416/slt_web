@@ -25,10 +25,13 @@ type Props = { data: Banner[] };
 // ======================================================================
 
 const HalfBanner: FC<Props> = ({ data }) => {
-  console.log(data);
-
   return (
-    <Grid container spacing={3} mb={{ xs: 1, md: 0.5 }} mt={{ xs: "1px", md: 0 }}>
+    <Grid
+      container
+      spacing={3}
+      mb={{ xs: 1, md: 0.5 }}
+      mt={{ xs: "1px", md: 0 }}
+    >
       <Grid item md={6} xs={12}>
         <Link href={data[0]?.link} target="_blank">
           <BannerBox img={data[0]?.imageUrl} />{" "}
