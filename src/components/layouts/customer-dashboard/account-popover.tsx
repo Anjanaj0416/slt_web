@@ -27,7 +27,7 @@ const AccountPopover = ({ isMobile = false }: Props) => {
   return (
     <div>
       <IconButton
-        sx={{ padding: 0 }}
+        sx={{ padding: 0, mb: { xs: 0.4, lg: 0 } }}
         aria-haspopup="true"
         onClick={(e) => setAnchorEl(e.currentTarget)}
         aria-expanded={open ? "true" : undefined}
@@ -36,7 +36,7 @@ const AccountPopover = ({ isMobile = false }: Props) => {
         <Avatar
           sx={{
             textTransform: "capitalize",
-            ...(isMobile ? { width: 30, height: 30 } : {}),
+            ...(isMobile ? { width: 28, height: 28 } : {}),
           }}
           alt={(session?.user as User1)?.firstName}
           src={`${ENVIRONMENT.S3_BUCKET_URL}/${(session?.user as User1)

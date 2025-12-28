@@ -31,7 +31,17 @@ const LoginCartButtons: FC<Props> = ({ toggleDialog, toggleSidenav }) => {
   const user = session?.data?.user as User1;
 
   return (
-    <FlexBox gap={1.5} alignItems="center">
+    <FlexBox gap={2.5} alignItems="center">
+      <Badge badgeContent={length} color="primary">
+        <Box
+          p={1.25}
+          bgcolor="grey.200"
+          component={IconButton}
+          onClick={toggleSidenav}
+        >
+          <ShoppingBagOutlined />
+        </Box>
+      </Badge>
       {user ? (
         <AccountPopover />
       ) : (
@@ -44,17 +54,6 @@ const LoginCartButtons: FC<Props> = ({ toggleDialog, toggleSidenav }) => {
           <PersonOutline />
         </Box>
       )}
-
-      <Badge badgeContent={length} color="primary">
-        <Box
-          p={1.25}
-          bgcolor="grey.200"
-          component={IconButton}
-          onClick={toggleSidenav}
-        >
-          <ShoppingBagOutlined />
-        </Box>
-      </Badge>
     </FlexBox>
   );
 };

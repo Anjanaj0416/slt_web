@@ -22,6 +22,7 @@ import useHeader from "./use-header";
 import { signIn, useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { AccountPopover } from "components/layouts/customer-dashboard";
+import useCartService from "hooks/useCartService";
 
 // ==============================================================
 interface Props {
@@ -44,7 +45,7 @@ const MobileHeader: FC<Props> = ({
   toggleSearchBar,
   toggleSidenav,
 }) => {
-  const { state } = useCart();
+  const { length } = useCartService();
   const session = useSession();
   const user = session?.data?.user as User1;
   const ICON_STYLE = { color: "grey.600", fontSize: 20 };
@@ -72,7 +73,7 @@ const MobileHeader: FC<Props> = ({
             <Icon.Search sx={ICON_STYLE} />
           </Box>
           <Box component={IconButton} onClick={toggleSidenav}>
-            <Badge badgeContent={state.cart.length} color="primary">
+            <Badge badgeContent={length} color="primary">
               <Icon.CartBag sx={ICON_STYLE} />
             </Badge>
           </Box>
