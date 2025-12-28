@@ -70,30 +70,45 @@ const ContactUsPageView: React.FC = () => {
   };
 
   return (
-    <Box display={"flex"} justifyContent={"space-between"}>
-      <Box width={"45%"} pt={6} pl={12}>
+    <Box
+      display="flex"
+      flexDirection={{ xs: "column", md: "row" }}
+      justifyContent="space-between"
+      px={{ xs: 2, sm: 4, md: 12 }}
+    >
+      {/* LEFT SECTION */}
+      <Box
+        width={{ xs: "100%", md: "45%" }}
+        pt={{ xs: 4, md: 6 }}
+        pl={{ xs: 0, md: 4 }}
+        mb={{ xs: 4, md: 0 }}
+      >
         <Typography variant="h4" gutterBottom>
           Contact Us
         </Typography>
-        <Box display="flex" alignItems="center" mb={2} mt={3}>
+
+        <Box display="flex" alignItems="flex-start" mb={2} mt={3}>
           <LocationOnIcon color="primary" />
           <Typography variant="body1" sx={{ ml: 1 }}>
             No.148/15, Lesley Ranagala Mawatha, Baseline Road, Colombo 08, Sri
             Lanka
           </Typography>
         </Box>
+
         <Box display="flex" alignItems="center" mb={2}>
           <EmailIcon color="primary" />
           <Typography variant="body1" sx={{ ml: 1 }}>
             info@marcketplacer.com
           </Typography>
         </Box>
+
         <Box display="flex" alignItems="center" mb={2}>
           <PhoneIcon color="primary" />
           <Typography variant="body1" sx={{ ml: 1 }}>
             +1 234 567 890
           </Typography>
         </Box>
+
         <Box mt={4}>
           <Typography variant="h6" gutterBottom>
             Follow Us
@@ -107,6 +122,7 @@ const ContactUsPageView: React.FC = () => {
           >
             <FacebookIcon />
           </IconButton>
+
           <IconButton
             href="https://www.twitter.com"
             target="_blank"
@@ -117,8 +133,15 @@ const ContactUsPageView: React.FC = () => {
           </IconButton>
         </Box>
       </Box>
-      <Container maxWidth="sm" sx={{ marginBottom: 4 }}>
-        <Box sx={{ mt: 4 }}>
+
+      {/* RIGHT SECTION (FORM) */}
+      <Container
+        maxWidth="sm"
+        sx={{
+          px: { xs: 0, sm: 2 },
+        }}
+      >
+        <Box mt={{ xs: 2, md: 4 }}>
           <form onSubmit={handleSubmit}>
             <TextField
               label="Name"
@@ -131,6 +154,7 @@ const ContactUsPageView: React.FC = () => {
               error={touched.name && Boolean(errors.name)}
               helperText={touched.name && errors.name}
             />
+
             <TextField
               label="Email"
               name="email"
@@ -143,6 +167,7 @@ const ContactUsPageView: React.FC = () => {
               error={touched.email && Boolean(errors.email)}
               helperText={touched.email && errors.email}
             />
+
             <TextField
               label="Phone"
               name="phone"
@@ -154,6 +179,7 @@ const ContactUsPageView: React.FC = () => {
               error={touched.phone && Boolean(errors.phone)}
               helperText={touched.phone && errors.phone}
             />
+
             <TextField
               label="Description"
               name="description"
@@ -167,13 +193,14 @@ const ContactUsPageView: React.FC = () => {
               error={touched.description && Boolean(errors.description)}
               helperText={touched.description && errors.description}
             />
+
             <LoadingButton
               loading={isCreating}
               type="submit"
               variant="contained"
               color="primary"
               fullWidth
-              sx={{ mt: 2 }}
+              sx={{ mt: 2, mb:4 }}
               disabled={isCreating}
             >
               Submit
