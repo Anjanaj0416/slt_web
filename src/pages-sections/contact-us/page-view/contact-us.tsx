@@ -18,6 +18,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import { useCreateComplainMutation } from "services/complain-api";
 import { LoadingButton } from "@mui/lab";
 import { enqueueSnackbar } from "notistack";
+import Link from "next/link";
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -90,23 +91,34 @@ const ContactUsPageView: React.FC = () => {
         <Box display="flex" alignItems="flex-start" mb={2} mt={3}>
           <LocationOnIcon color="primary" />
           <Typography variant="body1" sx={{ ml: 1 }}>
-            No.148/15, Lesley Ranagala Mawatha, Baseline Road, Colombo 08, Sri
-            Lanka
+            No: 17 H.K Dharmadasa Mawatha, Colombo 02, Sri Lanka
           </Typography>
         </Box>
 
         <Box display="flex" alignItems="center" mb={2}>
           <EmailIcon color="primary" />
-          <Typography variant="body1" sx={{ ml: 1 }}>
-            info@marcketplacer.com
-          </Typography>
+          <Link
+            href="mailto:info@tradez.lk"
+            target="_blank"
+            style={{ textDecoration: "none" }}
+          >
+            <Typography variant="body1" sx={{ ml: 1 }}>
+              info@tradez.lk
+            </Typography>
+          </Link>
         </Box>
 
         <Box display="flex" alignItems="center" mb={2}>
           <PhoneIcon color="primary" />
-          <Typography variant="body1" sx={{ ml: 1 }}>
-            +1 234 567 890
-          </Typography>
+          <Link
+            href="tel:+9411239999"
+            target="_blank"
+            style={{ textDecoration: "none" }}
+          >
+            <Typography variant="body1" sx={{ ml: 1 }}>
+              +94 11 2 399 399
+            </Typography>
+          </Link>
         </Box>
 
         <Box mt={4}>
@@ -200,7 +212,7 @@ const ContactUsPageView: React.FC = () => {
               variant="contained"
               color="primary"
               fullWidth
-              sx={{ mt: 2, mb:4 }}
+              sx={{ mt: 2, mb: 4 }}
               disabled={isCreating}
             >
               Submit

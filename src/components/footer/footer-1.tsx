@@ -96,7 +96,7 @@ const Footer1 = () => {
             </Link>
 
             <Paragraph py={0.6} color="grey.500">
-              No: 17 H.K Dharmadasa Mawatha, Colombo 02
+              No: 17 H.K Dharmadasa Mawatha, Colombo 02, Sri Lanka
             </Paragraph>
 
             <Paragraph py={0.6} color="grey.500">
