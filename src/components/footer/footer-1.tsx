@@ -7,7 +7,7 @@ import AppStore from "./app-store";
 import SocialLinks from "./social-links";
 // GLOBAL CUSTOM COMPONENTS
 import Image from "components/BazaarImage";
-import { H6, Paragraph } from "components/Typography";
+import { H3, H4, H6, Paragraph } from "components/Typography";
 // STYLED COMPONENTS
 import { StyledLink } from "./styles";
 // DATA
@@ -27,8 +27,8 @@ const Footer1 = () => {
         color="white"
         overflow="hidden"
       >
-        <Grid container spacing={3}>
-          <Grid item lg={4} md={6} sm={6} xs={12}>
+        <Grid container spacing={4}>
+          <Grid item lg={5} md={6} sm={6} xs={12}>
             <Link href="/">
               <Box sx={{ mb: 2.5, maxWidth: { xs: 110, sm: 140, md: 180 } }}>
                 <Image
@@ -42,9 +42,17 @@ const Footer1 = () => {
             </Link>
 
             <Paragraph mb={2.5} color="grey.500">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-              libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat
-              et lectus vel ut sollicitudin elit at amet.
+              <H4 mb={1}>
+                TRADEZ – Sri Lanka’s Trusted & Verified Digital Marketplace
+              </H4>
+              <H6 mb={0.6}>
+                Buy and sell with confidence on a secure, multi-vendor platform
+                powered by SLT-Mobitel.
+              </H6>
+              TRADEZ connects verified sellers from RainbowPages and new trusted
+              suppliers, enabling secure online transactions for products and
+              services across Sri Lanka. From local businesses to growing
+              brands, TRADEZ makes digital commerce simple, safe, and reliable.
             </Paragraph>
 
             {/* <AppStore /> */}
@@ -66,7 +74,7 @@ const Footer1 = () => {
           </Grid>
 
           {/* CUSTOMER CARE LINKS */}
-          <Grid item lg={3} md={6} sm={6} xs={12}>
+          <Grid item lg={2} md={6} sm={6} xs={12}>
             <H6 fontSize={18} mb={1.5} lineHeight="1" color="white">
               Customer Care
             </H6>
