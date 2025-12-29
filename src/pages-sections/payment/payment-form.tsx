@@ -198,6 +198,7 @@ const PaymentForm = ({ type }: Props) => {
           title="Pay with Card"
           handleChange={handlePaymentMethodChange}
           checked={paymentMethod === PAYMENT_METHODS.CARD}
+          disabled={!cardPaymentSettingEnabled}
         />
 
         {paymentMethod === PAYMENT_METHODS.CARD && (
