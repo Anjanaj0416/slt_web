@@ -15,6 +15,8 @@ import { useRouter } from "next/navigation";
 import CreditCardButton, { CardType } from "./credit-card-buttons";
 import { LoadingButton } from "@mui/lab";
 import useBuyNowItemService from "hooks/useBuyNowItemService";
+import { Box, CircularProgress } from "@mui/material";
+import { useGetPaymentSettingsQuery } from "services/payment-settings";
 
 const PAYMENT_METHODS = {
   CASH_ON_DELIVERY: "COD",
@@ -43,7 +45,10 @@ const PaymentForm = ({ type }: Props) => {
     voucherDiscounts: buyNowVoucherDiscounts,
   } = useBuyNowItemService();
   const [selectedCard, setSelectedCard] = useState<CardType>();
-
+  const { data: paymentSettings, isLoading } = useGetPaymentSettingsQuery({
+    page: 0,
+    size: 20,
+  });
   //
   const [createOrder, { isLoading: isCreatingOrder, isSuccess, data }] =
     useCreateOrderMutation();
@@ -156,6 +161,27 @@ const PaymentForm = ({ type }: Props) => {
     }
     return false;
   };
+  const cardPaymentSettingEnabled = paymentSettings?.data?.find(
+    (ps) => ps.paymentType === "CARD"
+  )?.enabled;
+  const codPaymentSettingEnabled = paymentSettings?.data?.find(
+    (ps) => ps.paymentType === "COD"
+  )?.enabled;
+
+  if (isLoading) {
+    return (
+      <Box
+        display="flex"
+        justifyItems="center"
+        justifyContent="center"
+        alignItems="center"
+        height="274px"
+        width="100%"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Fragment>
@@ -178,6 +204,7 @@ const PaymentForm = ({ type }: Props) => {
           <CreditCardButton
             selectedCardType={selectedCard}
             setCardType={setSelectedCard}
+            disabled={!cardPaymentSettingEnabled}
           />
         )}
 
@@ -189,7 +216,7 @@ const PaymentForm = ({ type }: Props) => {
           name={PAYMENT_METHODS.CASH_ON_DELIVERY}
           title="Cash On Delivery"
           handleChange={handlePaymentMethodChange}
-          disabled={isSelfPickupOrder()}
+          disabled={isSelfPickupOrder() || !codPaymentSettingEnabled}
           checked={paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY}
         />
       </Card>

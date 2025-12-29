@@ -4,7 +4,6 @@ import { ENVIRONMENT } from "config";
 import Image from "next/image";
 import { FlexBox } from "components/flex-box";
 
-
 // Styled Button with props for the selected state
 const PaymentButton = styled(Button)<{ selected: boolean }>(
   ({ theme, selected }) => ({
@@ -23,8 +22,13 @@ export type CardType = "VISA_MASTER" | "AMEX";
 type Props = {
   selectedCardType: CardType;
   setCardType: (value: CardType) => void;
+  disabled?: boolean;
 };
-const CreditCardButton = ({ setCardType, selectedCardType }: Props) => {
+const CreditCardButton = ({
+  setCardType,
+  selectedCardType,
+  disabled = false,
+}: Props) => {
   const handleSelect = (payment: CardType) => {
     setCardType(payment);
   };
@@ -34,6 +38,7 @@ const CreditCardButton = ({ setCardType, selectedCardType }: Props) => {
       <PaymentButton
         selected={selectedCardType === "VISA_MASTER"}
         onClick={() => handleSelect("VISA_MASTER")}
+        disabled={disabled}
       >
         <Image
           src={`${ENVIRONMENT.APP_URL}/assets/images/visa_master.png`}
@@ -45,14 +50,14 @@ const CreditCardButton = ({ setCardType, selectedCardType }: Props) => {
       <PaymentButton
         selected={selectedCardType === "AMEX"}
         onClick={() => handleSelect("AMEX")}
+        disabled={disabled}
       >
-         <Image
+        <Image
           src={`${ENVIRONMENT.APP_URL}/assets/images/amex.png`}
           alt="Visa Logo"
           width={90}
           height={40}
         />
-       
       </PaymentButton>
     </FlexBox>
   );
