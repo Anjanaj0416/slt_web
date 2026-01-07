@@ -66,6 +66,12 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
     if (segments.length > 1 && segments[0] === "profile") {
       segments[1] = "Edit Profile";
     }
+    if (segments.length > 1 && segments[0] === "buy-now") {
+      if(segments[1]==="items"){
+        segments[1]="Buy Now - Items"
+      }
+      delete segments[0];
+    }
     setPathSegments(segments);
   }, [pathname]);
   return (

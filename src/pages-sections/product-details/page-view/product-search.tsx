@@ -5,9 +5,7 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
 import { Box, Pagination, useTheme } from "@mui/material";
-import { Apps, ViewList } from "@mui/icons-material";
 import Link from "next/link";
 
 // GLOBAL CUSTOM COMPONENTS
