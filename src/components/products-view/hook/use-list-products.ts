@@ -24,6 +24,8 @@ const useListProducts = (
     useLazySearchListProductsQuery();
   //
   useEffect(() => {
+    console.log("call: ", categoryId);
+
     const fetchData = async () => {
       try {
         const filters = [];
@@ -36,21 +38,17 @@ const useListProducts = (
         if (brands && brands.length > 0) {
           filters.push(`brand=${brands.join(",")}`);
         }
-        if (minPrice) {
+        if (minPrice !== null || minPrice !== undefined) {
           filters.push(`minPrice=${minPrice}`);
         }
-        if (maxPrice) {
+        if (maxPrice !== null || maxPrice !== undefined) {
           filters.push(`maxPrice=${maxPrice}`);
         }
         if (sort) {
           filters.push(sort);
         }
 
-        if (
-          !page &&
-          (filters.length === 0 ||
-            (filters.length === 1 && filters[0]?.incudes("categoryId=")))
-        ) {
+        if (!page && filters.length === 0) {
           setFilteredProducts(products);
           setTotalPage(initTotalPages);
           setPage(1);
@@ -99,11 +97,14 @@ const useListProducts = (
     brands,
     categoryId,
     categorySelect,
+    initTotalPages,
     listProducts,
     maxPrice,
     minPrice,
     name,
     page,
+    products,
+    setPage,
     setTotalPage,
     setTotalResult,
     sort,

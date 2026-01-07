@@ -97,6 +97,7 @@ export default function ProductSearchPageView({
   const [sort, setSort] = useState<string | null>(null);
 
   const { palette } = useTheme();
+  console.log(selectedCategoryId);
 
   const { isLoading, filteredProducts, setPage, page, totalPage } =
     useListProducts(
@@ -282,6 +283,7 @@ export default function ProductSearchPageView({
         <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
           <ProductFilterCard
             categoryId={selectedCategoryId}
+            initCategoryId={categoryId}
             setCategoryId={setCategoryId}
             categories={parentCategories}
             setPage={setPage}

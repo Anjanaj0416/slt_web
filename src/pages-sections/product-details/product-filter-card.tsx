@@ -34,6 +34,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 type Props = {
   categoryId: string;
+  initCategoryId: string;
   categories: Category1[];
   isLoading: boolean;
   brands: string[];
@@ -46,6 +47,7 @@ type Props = {
 
 const ProductFilterCard = ({
   categoryId,
+  initCategoryId = null,
   categories,
   brands,
   isLoading,
@@ -60,7 +62,7 @@ const ProductFilterCard = ({
   const maxPriceRef = useRef<HTMLInputElement>(null);
   const handleCategoryClick = (id: string) => {
     setPage(0);
-    setCategoryId(id);
+    setCategoryId(categoryId === id ? initCategoryId : id);
   };
   const handleBrandClick = (event: BaseSyntheticEvent, brand: string) => {
     setPage(0);
@@ -143,7 +145,7 @@ const ProductFilterCard = ({
 
       <FlexBetween>
         <TextField
-          placeholder="0"
+          placeholder="Min. Price"
           type="number"
           size="small"
           inputRef={minPriceRef}
@@ -153,7 +155,7 @@ const ProductFilterCard = ({
           -
         </H5>
         <TextField
-          placeholder="250"
+          placeholder="Max. Price"
           inputRef={maxPriceRef}
           type="number"
           size="small"
