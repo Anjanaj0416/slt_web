@@ -124,6 +124,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
         {/* SIDEBAR AREA */}
         <Grid item md={3} xs={12} sx={{ display: { md: "block", xs: "none" } }}>
           <ProductFilterCard
+          initCategoryId={categoryId}
             categoryId={categoryId}
             setCategoryId={setCategoryId}
             categories={parentCategories}
@@ -142,6 +143,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
             <SideNav position="left" handle={ICON_BUTTON}>
               <ProductFilterCard
                 categoryId={categoryId}
+                initCategoryId={categoryId}
                 setCategoryId={setCategoryId}
                 categories={parentCategories}
                 setPage={setPage}
