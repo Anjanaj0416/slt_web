@@ -1,5 +1,5 @@
 "use client";
-import { Box, Grid, Link, Rating } from "@mui/material";
+import { Box, Grid, Link, Rating, useTheme } from "@mui/material";
 import { useProductIntro } from "./hooks/useProductIntro";
 import ProductGallery from "./product-gallary";
 import VariantSelector from "./variant-selector";
@@ -20,6 +20,27 @@ import { FlexBox } from "components/flex-box";
 import { H1, H6 } from "components/Typography";
 import SelfPickupInfo from "./self-pickup-info";
 import SelfPickupInfoModal from "./self-pickup-info-modal";
+import Image from "next/image";
+import { useGetAllBannersQuery } from "services/banner-api";
+import { Carousel } from "components/carousel";
+import { COMMON_DOT_STYLES } from "components/carousel/styles";
+import CarouselCard5 from "components/carousel-cards/carousel-card-5";
+
+function getResponsiveImageUrls(imageUrl = "") {
+  // keep captured extension and replace with suffix
+  const m = imageUrl.match(/(.*)\.(png|jpe?g|webp)$/i);
+  if (!m) return { tabletImage: imageUrl, mobileImage: imageUrl };
+  const [, base, ext] = m;
+  return {
+    tabletImage: `${base}_tablet.${ext}`,
+    mobileImage: `${base}_mobile.${ext}`,
+  };
+}
+function getRandomMaxThree(array) {
+  return [...array]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, Math.min(3, array.length));
+}
 
 const ProductIntro1 = ({ product, store }) => {
   const {
@@ -37,6 +58,10 @@ const ProductIntro1 = ({ product, store }) => {
     setSelectedImage,
   } = useProductIntro(product);
 
+  const { data: banners, isLoading } = useGetAllBannersQuery({
+    type: "PRODUCT_SECTION_CAROUSEL",
+  });
+
   const { enqueueSnackbar } = useSnackbar();
   const { data } = useSession();
   const [openSelfPickupInfo, setOpenSelfPickupInfo] = useState(
@@ -51,7 +76,8 @@ const ProductIntro1 = ({ product, store }) => {
     user?.id
   );
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
-
+  //
+  const { palette } = useTheme();
   const modalRef = useRef<ShareModalRef>(null);
   const isQuotation = product.productType === "QUOTATION";
 
@@ -89,8 +115,9 @@ const ProductIntro1 = ({ product, store }) => {
         storeName={store.name}
         storeAddress={store?.address}
       />
-      <Grid container spacing={3}>
-        <Grid item md={6} xs={12}>
+      <Grid container spacing={4}>
+        {/* ====== Column 2: Product Gallery ====== */}
+        <Grid item md={5} xs={12}>
           <ProductGallery
             medias={medias}
             selectedImage={selectedImage}
@@ -99,23 +126,22 @@ const ProductIntro1 = ({ product, store }) => {
           />
         </Grid>
 
-        <Grid item md={6} xs={12}>
-          {/* ====== Product Title ====== */}
+        {/* ====== Column 3: Product Details ====== */}
+        <Grid item md={4} xs={12}>
           <H1 mb={1} textTransform="capitalize">
             {product.name}
           </H1>
 
-          {/* ====== Brand ====== */}
           <FlexBox alignItems="center" mb={1}>
             <Box mr={1}>Brand:</Box>
             <H6 textTransform="capitalize">{product.brand || "N/A"}</H6>
           </FlexBox>
 
-          {/* ====== Rating ====== */}
           <FlexBox alignItems="center" gap={1} mb={2}>
             <Box lineHeight="1">Rated:</Box>
             <Rating color="warn" value={4} readOnly />
           </FlexBox>
+
           <VariantSelector
             mappedAttributes={mappedAttributes}
             selectedAttributes={selectedAttributes}
@@ -150,6 +176,7 @@ const ProductIntro1 = ({ product, store }) => {
             onQuote={() => requestQuota()}
             onShare={handleShare}
           />
+
           <FlexBox>
             Sold By:
             <Link ml={1} href={`/shops/${store?.id}_${store?.name}`}>
@@ -160,6 +187,36 @@ const ProductIntro1 = ({ product, store }) => {
           {product.deliveryPartner === "SELF_PICKUP" && (
             <Box mt={5}>
               <SelfPickupInfo address={store?.address} />
+            </Box>
+          )}
+        </Grid>
+        {/* ====== Column 1: View / Thumbnail Image ====== */}
+        <Grid item md={3} xs={12}>
+          {!isLoading && banners?.data?.length && (
+            <Box width={"100%"} >
+              <Carousel
+                arrows={false}
+                spaceBetween={0}
+                slidesToShow={1}
+                autoplay
+              >
+                {getRandomMaxThree(banners.data)?.map((item) => {
+                  const url = `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`;
+                  const { tabletImage, mobileImage } =
+                    getResponsiveImageUrls(url);
+
+                  return (
+                    <Link key={item.id} href={item.link} target="_blank">
+                      <CarouselCard5
+                        mode="light"
+                        bgImage={url}
+                        bgImageTablet={tabletImage}
+                        bgImageMobile={mobileImage}
+                      />
+                    </Link>
+                  );
+                })}
+              </Carousel>
             </Box>
           )}
         </Grid>

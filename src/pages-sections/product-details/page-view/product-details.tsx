@@ -15,22 +15,7 @@ import { ENVIRONMENT } from "config";
 import { useGetAllBannersQuery } from "services/banner-api";
 import CarouselCard5 from "components/carousel-cards/carousel-card-5";
 
-function getResponsiveImageUrls(imageUrl = "") {
-  // keep captured extension and replace with suffix
-  const m = imageUrl.match(/(.*)\.(png|jpe?g|webp)$/i);
-  if (!m) return { tabletImage: imageUrl, mobileImage: imageUrl };
-  const [, base, ext] = m;
-  return {
-    tabletImage: `${base}_tablet.${ext}`,
-    mobileImage: `${base}_mobile.${ext}`,
-  };
-}
 
-function getRandomMaxThree(array) {
-  return [...array]
-    .sort(() => Math.random() - 0.5)
-    .slice(0, Math.min(3, array.length));
-}
 
 // ==============================================================
 interface Props {
@@ -56,7 +41,7 @@ const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
       {/* PRODUCT DETAILS INFO AREA */}
       <ProductIntro1 product={product} store={ownerStore} />
 
-      {!isLoading && banners?.data?.length && (
+      {/* {!isLoading && banners?.data?.length && (
         <Box width={"100%"} mt={{ xs: 4, lg: 0 }}>
           <Carousel
             dots
@@ -84,7 +69,7 @@ const ProductDetailsPageView = ({ product, stores, ownerStore }: Props) => {
             })}
           </Carousel>
         </Box>
-      )}
+      )} */}
 
       {/* PRODUCT DESCRIPTION AND REVIEW */}
       <ProductTabs

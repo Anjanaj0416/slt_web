@@ -11,7 +11,7 @@ const CardWrapper = styled("div", {
     prop !== "imgMobile",
 })<{ img: string; mode: string; imgTablet?: string; imgMobile?: string }>(
   ({ theme, img, imgTablet, imgMobile, mode }) => ({
-    minHeight: 240,
+    minHeight: 700,
     display: "flex",
     alignItems: "center",
     backgroundSize: "cover",
