@@ -192,15 +192,15 @@ const ProductIntro1 = ({ product, store }) => {
         </Grid>
         {/* ====== Column 1: View / Thumbnail Image ====== */}
         <Grid item md={3} xs={12}>
-          {!isLoading && banners?.data?.length && (
-            <Box width={"100%"} >
+          {!isLoading && banners?.data?.length ? (
+            <Box width={"100%"}>
               <Carousel
                 arrows={false}
                 spaceBetween={0}
                 slidesToShow={1}
                 autoplay
               >
-                {getRandomMaxThree(banners.data)?.map((item) => {
+                {getRandomMaxThree(banners?.data)?.map((item) => {
                   const url = `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`;
                   const { tabletImage, mobileImage } =
                     getResponsiveImageUrls(url);
@@ -218,7 +218,7 @@ const ProductIntro1 = ({ product, store }) => {
                 })}
               </Carousel>
             </Box>
-          )}
+          ) : null}
         </Grid>
       </Grid>
     </Box>
