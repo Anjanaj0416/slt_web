@@ -228,19 +228,23 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
 
       <Box p={2}>
         {/* PRODUCT TITLE */}
-        <Paragraph
-          sx={{
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            textTransform: "capitalize",
-            "@media (max-width:400px)": {
-              fontSize: 10,
-            },
-          }}
-        >
-          {name}
-        </Paragraph>
+        <Tooltip title={name?.length > 30 ? name : ""}>
+          <Box width="100%" maxWidth={{ sm: 200, xl: 250 }}>
+            <Paragraph
+              sx={{
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                textTransform: "capitalize",
+                "@media (max-width:400px)": {
+                  fontSize: 10,
+                },
+              }}
+            >
+              {name}
+            </Paragraph>
+          </Box>
+        </Tooltip>
 
         <Rating color="warn" value={4} readOnly size="small" />
 
@@ -329,74 +333,6 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
         )}
       </Box>
     </Card>
-    // <Card>
-    //   <CardMedia>
-    //     {/* PRODUCT IMAGE / THUMBNAIL */}
-    //     <Link href={`/products/${slug}`}>
-    //       <LazyImage
-    //         width={300}
-    //         height={300}
-    //         alt="category"
-    //         src={thumbnail}
-    //         className="product-img"
-    //       />
-    //     </Link>
-
-    //     {/* PRODUCT VIEW BUTTON */}
-    //     <StyledIconButton className="product-actions" onClick={toggleDialog}>
-    //       <RemoveRedEye color="disabled" fontSize="small" />
-    //     </StyledIconButton>
-
-    //     {/* PRODUCT FAVORITE BUTTON */}
-    //     <FavoriteButton className="product-actions" onClick={toggleFavorite}>
-    //       {isFavorite ? (
-    //         <Favorite color="primary" fontSize="small" />
-    //       ) : (
-    //         <FavoriteBorder color="disabled" fontSize="small" />
-    //       )}
-    //     </FavoriteButton>
-    //   </CardMedia>
-
-    //   {/* PRODUCT VIEW BOX */}
-    //   <ProductViewDialog
-    //     openDialog={openModal}
-    //     handleCloseDialog={toggleDialog}
-    //     product={{ id, slug, title, price, imgGroup: [thumbnail, thumbnail] }}
-    //   />
-
-    //   <Box p={2} textAlign="center">
-    //     {/* PRODUCT TITLE */}
-    //     <Paragraph>{title}</Paragraph>
-
-    //     {/* PRODUCT PRICE */}
-    //     <H4 fontWeight={700} py={0.5}>
-    //       {currency(price)}
-    //     </H4>
-
-    //     {/* PRODUCT RATINGS */}
-    //     <FlexRowCenter gap={1} mb={2}>
-    //       <Rating
-    //         name="read-only"
-    //         value={rating || 4}
-    //         readOnly
-    //         sx={{ fontSize: 14 }}
-    //       />
-    //       <Small fontWeight={600} color="grey.500">
-    //         ({reviews.length})
-    //       </Small>
-    //     </FlexRowCenter>
-
-    //     {/* PRODUCT ADD TO CART BUTTON */}
-    //     <Button
-    //       fullWidth
-    //       color="dark"
-    //       variant="outlined"
-    //       onClick={handleAddToCart}
-    //     >
-    //       Add To Cart
-    //     </Button>
-    //   </Box>
-    // </Card>
   );
 };
 
