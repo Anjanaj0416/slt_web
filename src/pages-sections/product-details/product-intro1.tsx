@@ -1,5 +1,5 @@
 "use client";
-import { Box, Grid, Link, Rating, useTheme } from "@mui/material";
+import { Box, Grid, Link, Rating, Typography, useTheme } from "@mui/material";
 import { useProductIntro } from "./hooks/useProductIntro";
 import ProductGallery from "./product-gallary";
 import VariantSelector from "./variant-selector";
@@ -20,10 +20,8 @@ import { FlexBox } from "components/flex-box";
 import { H1, H6 } from "components/Typography";
 import SelfPickupInfo from "./self-pickup-info";
 import SelfPickupInfoModal from "./self-pickup-info-modal";
-import Image from "next/image";
 import { useGetAllBannersQuery } from "services/banner-api";
 import { Carousel } from "components/carousel";
-import { COMMON_DOT_STYLES } from "components/carousel/styles";
 import CarouselCard5 from "components/carousel-cards/carousel-card-5";
 
 function getResponsiveImageUrls(imageUrl = "") {
@@ -77,7 +75,6 @@ const ProductIntro1 = ({ product, store }) => {
   );
   const { setIsOpen: openUnAuthenticatedModal } = useUnAuthenticatedModal();
   //
-  const { palette } = useTheme();
   const modalRef = useRef<ShareModalRef>(null);
   const isQuotation = product.productType === "QUOTATION";
 
@@ -162,8 +159,15 @@ const ProductIntro1 = ({ product, store }) => {
               <QuantitySelector
                 selectedQuantity={selectedQuantity}
                 quantity={quantity}
+                maxBuyableQuantity={product.maxBuyableQuantity}
                 onChange={setSelectedQuantity}
               />
+              {selectedQuantity >= product.maxBuyableQuantity && (
+                <Typography color="error" mt={0.4}>
+                  Quantity limit exceeded. Maximum allowed:{" "}
+                  {product.maxBuyableQuantity}
+                </Typography>
+              )}
             </Box>
           )}
 

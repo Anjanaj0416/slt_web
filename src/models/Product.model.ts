@@ -26,6 +26,7 @@ export interface Product1 {
   description: string;
   specification: string;
   name: string;
+  maxBuyableQuantity: number;
 }
 
 export interface VariantAttribute {

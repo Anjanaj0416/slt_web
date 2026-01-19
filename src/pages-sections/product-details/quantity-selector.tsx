@@ -6,15 +6,17 @@ import { H3 } from "components/Typography";
 interface Props {
   selectedQuantity: number;
   quantity?: number;
+  maxBuyableQuantity?: number;
   onChange: (value: number) => void;
 }
 
 const QuantitySelector = ({
   selectedQuantity,
+  maxBuyableQuantity,
   quantity = 0,
   onChange,
 }: Props) => (
-  <Stack direction="row" alignItems="center" spacing={2} >
+  <Stack direction="row" alignItems="center" spacing={2}>
     <Button
       disabled={selectedQuantity < 2}
       onClick={() => onChange(selectedQuantity - 1)}
@@ -27,7 +29,9 @@ const QuantitySelector = ({
     </Button>
     <H3>{selectedQuantity}</H3>
     <Button
-      disabled={quantity <= selectedQuantity}
+      disabled={
+        quantity <= selectedQuantity || selectedQuantity >= maxBuyableQuantity
+      }
       onClick={() => onChange(selectedQuantity + 1)}
       size="small"
       sx={{ p: 1 }}
