@@ -162,12 +162,13 @@ const ProductIntro1 = ({ product, store }) => {
                 maxBuyableQuantity={product.maxBuyableQuantity}
                 onChange={setSelectedQuantity}
               />
-              {selectedQuantity >= product.maxBuyableQuantity && (
-                <Typography color="error" mt={0.4}>
-                  Quantity limit exceeded. Maximum allowed:{" "}
-                  {product.maxBuyableQuantity}
-                </Typography>
-              )}
+              {product.maxBuyableQuantity &&
+                selectedQuantity >= product.maxBuyableQuantity && (
+                  <Typography color="error" mt={1} fontSize={12}>
+                    Quantity limit exceeded. Maximum allowed:{" "}
+                    {product.maxBuyableQuantity}
+                  </Typography>
+                )}
             </Box>
           )}
 
