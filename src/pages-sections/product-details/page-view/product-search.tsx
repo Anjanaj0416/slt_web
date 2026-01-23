@@ -25,6 +25,7 @@ import ENVIRONMENT from "config/environment";
 import { Product1 } from "models/Product.model";
 import Category1 from "models/Category.model";
 import Banner from "models/Banner.model";
+import CarouselCardSearchBanner from "components/carousel-cards/carousel-card-search-banner";
 
 const SORT_OPTIONS = [
   { label: "Relevance", value: "Relevance" },
@@ -179,7 +180,7 @@ export default function ProductSearchPageView({
               const { tabletImage, mobileImage } = getResponsiveImageUrls(url);
               return (
                 <Link key={item.id} href={item.link} target="_blank">
-                  <CarouselCard5
+                  <CarouselCardSearchBanner
                     mode="light"
                     bgImage={url}
                     bgImageTablet={tabletImage}
