@@ -30,7 +30,8 @@ const QuantitySelector = ({
     <H3>{selectedQuantity}</H3>
     <Button
       disabled={
-        quantity <= selectedQuantity || selectedQuantity >= maxBuyableQuantity
+        quantity <= selectedQuantity ||
+        (maxBuyableQuantity && selectedQuantity >= maxBuyableQuantity)
       }
       onClick={() => onChange(selectedQuantity + 1)}
       size="small"
