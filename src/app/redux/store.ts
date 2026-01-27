@@ -46,7 +46,6 @@ const rootReducers = combineReducers({
 // Define custom middlewares for the store
 const apiMiddlewares = [
   productApi.middleware,
-  categoryApi.middleware,
   cartApi.middleware,
   addressApi.middleware,
   orderApi.middleware,
