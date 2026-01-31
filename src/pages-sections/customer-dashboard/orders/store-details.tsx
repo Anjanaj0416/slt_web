@@ -29,7 +29,6 @@ const getMapUrl = (location: { lat: string; lng: string }) => {
 
 export type StoreDetailsProps = {
   productId: string;
-
 };
 
 export default function StoreDetails({ productId }: StoreDetailsProps) {
@@ -39,10 +38,12 @@ export default function StoreDetails({ productId }: StoreDetailsProps) {
     productId,
   });
   const store = data?.data?.[0];
+  console.log(store);
+
   //
   const handleOpen = () => {
     window.open(
-      getMapUrl(JSON.parse(store?.location)),
+      getMapUrl({ lat: store?.latitude, lng: store?.longitude }),
       "_blank",
       "noopener,noreferrer"
     );
