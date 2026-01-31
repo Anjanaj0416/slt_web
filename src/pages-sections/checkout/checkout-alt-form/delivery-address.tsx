@@ -24,7 +24,7 @@ interface Props {
   addressType: POSTAddressResponse["addressType"];
   selectedAddressId: string;
   section: number;
-  addressesCount:number;
+  addressesCount: number;
   handleFetch: Function;
 }
 // ==============================================================
@@ -114,10 +114,12 @@ const DeliveryAddress: FC<Props> = ({
               </FlexBox>
 
               <H6 mb={0.5}>{item?.name}</H6>
+              <Paragraph color="grey.700">{item?.city}</Paragraph>
               <Paragraph color="grey.700">{item?.addressLine1}</Paragraph>
               {item?.addressLine1 ? (
                 <Paragraph color="grey.700">{item?.addressLine2}</Paragraph>
               ) : null}
+              <Paragraph color="grey.700">{item?.postalCode}</Paragraph>
               <Paragraph color="grey.700">{item?.contactNumber}</Paragraph>
             </Card>
           </Grid>

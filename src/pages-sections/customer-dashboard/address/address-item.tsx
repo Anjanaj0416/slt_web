@@ -29,8 +29,11 @@ const AddressListItem: FC<Props> = ({
   const {
     addressType,
     addressLine1,
+    addressLine2,
+    city,
     provinceOrState,
     contactNumber,
+    postalCode,
     name,
     id,
   } = address || {};
@@ -38,10 +41,11 @@ const AddressListItem: FC<Props> = ({
   return (
     <TableRow>
       <Paragraph ellipsis>{addressType}</Paragraph>
-      <Paragraph
-        ellipsis
-        textTransform="capitalize"
-      >{`${name}, ${addressLine1}, ${provinceOrState}`}</Paragraph>
+      <Paragraph textTransform="capitalize">
+        {[name, addressLine1, addressLine2, city, provinceOrState, postalCode]
+          .filter((v) => v && v.trim())
+          .join(", ")}
+      </Paragraph>
       <Paragraph ellipsis>{contactNumber}</Paragraph>
       <Paragraph color="grey.600">
         <IconButton onClick={() => handleEdit(address)}>
