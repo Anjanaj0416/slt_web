@@ -191,19 +191,6 @@ const ShopIntroCard: FC<Props> = ({
                 {name}
               </H3>
             </Box>
-
-            <FlexBox my={1} gap={1.5}>
-              {socialLinks.map((item, ind) => (
-                <Link
-                  href={item.link}
-                  target="_blank"
-                  //rel="noreferrer noopener"
-                  key={ind}
-                >
-                  {icons[item.name]}
-                </Link>
-              ))}
-            </FlexBox>
           </FlexBetween>
 
           <FlexBetween flexWrap="wrap">
@@ -214,36 +201,7 @@ const ShopIntroCard: FC<Props> = ({
                   (45)
                 </Small>
               </FlexBox> */}
-
-              <FlexBox color="grey.600" gap={1} mb={1} maxWidth={270}>
-                <Place fontSize="small" sx={{ fontSize: 18, mt: "3px" }} />
-                <Span color="grey.600" sx={{ textTransform: "capitalize" }}>
-                  {address}
-                </Span>
-              </FlexBox>
-
-              <FlexBox color="grey.600" gap={1} mb={1}>
-                <Call fontSize="small" sx={{ fontSize: 18, mt: "2px" }} />
-                <Span color="grey.600">{phone}</Span>
-              </FlexBox>
             </div>
-
-            {email ? (
-              <a target="_blank" href={`mailto:${email}`}>
-                <Button variant="outlined" color="primary" sx={{ my: 1.5 }}>
-                  Contact Vendor
-                </Button>
-              </a>
-            ) : (
-              <Button
-                disabled
-                variant="outlined"
-                color="primary"
-                sx={{ my: 1.5 }}
-              >
-                Contact Vendor
-              </Button>
-            )}
           </FlexBetween>
         </Box>
       </FlexBox>
