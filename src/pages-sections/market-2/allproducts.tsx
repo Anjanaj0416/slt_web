@@ -12,6 +12,7 @@ import { FlexBox } from "components/flex-box";
 import Banner from "models/Banner.model";
 import FullBanner from "./full-banner";
 import HalfBanner from "./half-banner";
+import { shuffle } from "utils/shuffle";
 
 const PAGE_SIZE = 10;
 
@@ -91,7 +92,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
 
   const itemsWithImages = [];
   let isFullBannerAdded = false;
-  products.forEach((product, index) => {
+  shuffle(products).forEach((product, index) => {
     itemsWithImages.push(
       <Box key={product.id}>
         <ProductCard10 product={product} />

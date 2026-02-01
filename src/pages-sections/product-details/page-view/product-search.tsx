@@ -26,6 +26,7 @@ import { Product1 } from "models/Product.model";
 import Category1 from "models/Category.model";
 import Banner from "models/Banner.model";
 import CarouselCardSearchBanner from "components/carousel-cards/carousel-card-search-banner";
+import { shuffle } from "utils/shuffle";
 
 const SORT_OPTIONS = [
   { label: "Relevance", value: "Relevance" },
@@ -40,16 +41,6 @@ const SORT_MAP: Record<string, string | null> = {
   "Price High to Low": "sort=maxPrice,desc",
   Relevance: null,
 };
-
-function shuffle<T>(arr: T[]) {
-  // non-mutating shuffle
-  const array = arr.slice();
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
 
 function getResponsiveImageUrls(imageUrl = "") {
   // keep captured extension and replace with suffix
