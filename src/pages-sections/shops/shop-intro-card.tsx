@@ -21,7 +21,7 @@ import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import { useUpdateUserMutation } from "services/user-api";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import mapUser from "utils/mapUser";
@@ -31,10 +31,7 @@ import { useSnackbar } from "notistack";
 type Props = {
   id: string;
   name: string;
-  phone: string;
-  email: string;
-  address: string;
-  socialLinks: SocialLink[];
+  description: string;
   logoImage: string;
   coverImage: string;
 };
@@ -49,12 +46,9 @@ const icons = {
 const ShopIntroCard: FC<Props> = ({
   id,
   name,
-  phone,
-  email,
-  address,
   logoImage,
   coverImage,
-  socialLinks,
+  description,
 }: Props) => {
   const { data, update: updateSession } = useSession();
   const user = data?.user as User1;
@@ -118,15 +112,15 @@ const ShopIntroCard: FC<Props> = ({
       sx={{
         mb: 4,
         pb: 2.5,
+        backgroundColor: "secondary.main",
       }}
     >
       <FlexBox
         alignItems={"start"}
         justifyContent="right"
-        height="202px"
+        height="180px"
         pr={1}
         sx={{
-          backgroundColor: "secondary.main",
           backgroundImage: `url('${ENVIRONMENT.S3_BUCKET_URL}/${coverImage}')`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -175,7 +169,7 @@ const ShopIntroCard: FC<Props> = ({
             "@media only screen and (max-width: 500px)": { marginLeft: 0 },
           }}
         >
-          <FlexBetween flexWrap="wrap" mt={0.375} mb={3}>
+          <Box flexWrap="wrap" mt={0.375} pb={4}>
             <Box
               my={1}
               p="4px 16px"
@@ -191,7 +185,10 @@ const ShopIntroCard: FC<Props> = ({
                 {name}
               </H3>
             </Box>
-          </FlexBetween>
+            <Typography color="grey.100" sx={{ textTransform: "capitalize" }}>
+              {description}
+            </Typography>
+          </Box>
 
           <FlexBetween flexWrap="wrap">
             <div>

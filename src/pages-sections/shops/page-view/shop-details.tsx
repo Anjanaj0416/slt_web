@@ -105,6 +105,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
   const brandNames = Array.from(
     new Set(products.map((product) => product.brand))
   ).slice(0, 5);
+console.log(store);
 
   return (
     <Container sx={{ mt: 4, mb: 6 }}>
@@ -112,10 +113,7 @@ const ShopDetailsPageView = ({ store, productsData }: Props) => {
       <ShopIntroCard
         id={store.id}
         name={store.name}
-        phone={store.telephone}
-        email={store.email}
-        address={store.address}
-        socialLinks={store.socialLinks}
+        description={store.description}
         logoImage={store.logoFilePath}
         coverImage={store.coverImageFilePath}
       />
