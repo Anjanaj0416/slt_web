@@ -97,13 +97,8 @@ const PaymentForm = ({ type }: Props) => {
 
     if (paymentMethod === PAYMENT_METHODS.CASH_ON_DELIVERY) {
       ipgType = "NONE";
-    } else if (selectedCard === "VISA_MASTER") {
-      ipgType = "NDB";
-    } else if (selectedCard === "AMEX") {
-      ipgType = "WEBX_PAY";
     } else {
-      enqueueSnackbar("Select Card Type", { variant: "warning" });
-      return;
+      ipgType = "NDB";
     }
 
     const requestData = {
