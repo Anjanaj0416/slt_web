@@ -11,7 +11,8 @@ export default interface Store {
   fax?: string;
   whatsapp?: string;
   address?: string;
-  email?: string;
+  email: string;
+  district: string;
   website?: string;
   logoFilePath: string;
   storeStatus: StoreStatus;

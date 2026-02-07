@@ -30,8 +30,8 @@ export default function SelfPickupInfoModal({
   open,
   onClose,
   onSubmit,
-  storeName = "Main Store",
-  storeAddress = "123 Main Street, Colombo, Sri Lanka",
+  storeName,
+  storeAddress,
 }: SelfPickupInfoModalProps) {
   const handleClose = (
     event: unknown,

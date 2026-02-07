@@ -110,7 +110,7 @@ const ProductIntro1 = ({ product, store }) => {
         open={openSelfPickupInfo}
         onClose={() => setOpenSelfPickupInfo(false)}
         storeName={store.name}
-        storeAddress={store?.address}
+        storeAddress={store?.district}
       />
       <Grid container spacing={4}>
         {/* ====== Column 2: Product Gallery ====== */}
