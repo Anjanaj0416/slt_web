@@ -191,7 +191,7 @@ const ProductIntro1 = ({ product, store }) => {
 
           {product.deliveryPartner === "SELF_PICKUP" && (
             <Box mt={5}>
-              <SelfPickupInfo address={store?.address} />
+              <SelfPickupInfo address={store?.district} />
             </Box>
           )}
         </Grid>
