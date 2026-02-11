@@ -20,7 +20,7 @@ const getColumnCount = () => {
   if (typeof window !== "undefined") {
     const width = window.innerWidth;
     if (width >= 1858) return 5; // xl
-    if (width >= 1287) return 4; // lg
+    if (width >= 1287) return 5; // lg
     if (width >= 900) return 3; // md
     return 2; // xs
   }
@@ -185,8 +185,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
             gridTemplateColumns: {
               xs: "repeat(2, minmax(150px, 1fr))",
               md: "repeat(3, 1fr)",
-              lg: "repeat(4, 1fr)",
-              xl: "repeat(5, 1fr)",
+              lg: "repeat(5, 1fr)",
             },
           }}
         >
