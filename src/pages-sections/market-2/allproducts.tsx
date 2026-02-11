@@ -49,7 +49,8 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
     if (newProducts?.length) {
       setProducts((prevState) => {
         // Create a Map to ensure uniqueness based on product.id
-        const combined = [...prevState, ...newProducts];
+        const shuffledNew = shuffle([...newProducts]);
+        const combined = [...prevState, ...shuffledNew];
         const uniqueProductsMap = new Map<string, Product1>();
 
         combined.forEach((product) => {
@@ -92,7 +93,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
 
   const itemsWithImages = [];
   let isFullBannerAdded = false;
-  shuffle(products).forEach((product, index) => {
+  products.forEach((product, index) => {
     itemsWithImages.push(
       <Box key={product.id}>
         <ProductCard10 product={product} />
