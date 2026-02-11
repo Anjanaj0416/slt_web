@@ -93,18 +93,21 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
 
   const itemsWithImages = [];
   let isFullBannerAdded = false;
+  let fullBannerIndex = 0;
+  let halfBannerIndex = 0;
   products.forEach((product, index) => {
     itemsWithImages.push(
       <Box key={product.id}>
         <ProductCard10 product={product} />
       </Box>
     );
-    let fullBannerIndex = 0;
-    let halfBannerIndex = 0;
+
     const isEndOfRow = (index + 1) % columnCount === 0;
     const isEvenRow = ((index + 1) / columnCount) % 2 === 0;
     //
     if (isEndOfRow && isEvenRow && fullBanners.length > 0) {
+      console.log(fullBannerIndex, fullBanners.length);
+
       if (!isFullBannerAdded) {
         itemsWithImages.push(
           <Box
@@ -145,7 +148,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
             />
           </Box>
         );
-        if (halfBannerIndex === halfBanners.length - 1) {
+        if (halfBannerIndex === halfBanners.length - 2) {
           halfBannerIndex = 0;
         } else {
           halfBannerIndex += 2;
