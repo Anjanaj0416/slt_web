@@ -37,19 +37,19 @@ const MarketTwoPageView = async () => {
           "size=12&categoryType=PRODUCT&parentCategoryId=null&categoryStatus=APPROVED",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
-        query: "size=3&bannerType=FULL",
+        query: "size=3&bannerType=FULL&sort=index,asc",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
-        query: "size=4&bannerType=HALF",
+        query: "size=4&bannerType=HALF&sort=index,asc",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
-        query: "size=4&bannerType=THREE",
+        query: "size=4&bannerType=THREE&sort=index,asc",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
-        query: "size=6&bannerType=CAROUSEL",
+        query: "size=6&bannerType=CAROUSEL&sort=index,asc",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
-        query: "size=2&bannerType=HALF_TOP",
+        query: "size=2&bannerType=HALF_TOP&sort=index,asc",
       }),
     ]);
 
