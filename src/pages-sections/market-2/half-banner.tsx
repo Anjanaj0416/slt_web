@@ -13,7 +13,8 @@ import Link from "next/link";
 const BannerBox = styled("div")<{ img: string }>(({ img }) => ({
   position: "relative",
   width: "100%",
-  paddingTop: "50%",
+  aspectRatio: "2 / 1",
+  maxHeight:"220px",
   backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${img})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -28,8 +29,8 @@ const HalfBanner: FC<Props> = ({ data }) => {
   return (
     <Grid
       container
-      spacing={3}
-      mb={{ xs: 1, md: 0.5 }}
+      spacing={2}
+      mb={{ xs: 1, md: 0 }}
       mt={{ xs: "1px", md: 0 }}
     >
       <Grid item md={6} xs={12}>
