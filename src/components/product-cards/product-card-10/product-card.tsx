@@ -161,6 +161,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           borderRadius: 3,
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0,
+          padding: !images?.[0] ? 0 : 1.5,
         }}
       >
         <DiscountChip
