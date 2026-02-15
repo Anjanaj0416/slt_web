@@ -14,7 +14,7 @@ import { H6, Paragraph } from "components/Typography";
 import { FlexBetween, FlexBox } from "components/flex-box";
 import useCheckoutService from "hooks/useCheckoutService";
 import { POSTAddressResponse } from "models/Address.model";
-import { upperCaseToCapitalize } from "utils/strings";
+import { capitalize } from "utils/strings";
 import { useSnackbar } from "notistack";
 
 // ==============================================================
@@ -63,7 +63,7 @@ const DeliveryAddress: FC<Props> = ({
       <FlexBetween mb={4}>
         <Heading
           number={section}
-          title={`${upperCaseToCapitalize(addressType)} Address`}
+          title={`${capitalize(addressType)} Address`}
           mb={0}
         />
         <NewAddressForm

@@ -14,6 +14,7 @@ import { currency } from "lib";
 // CUSTOM DATA MODEL
 import { Order1 } from "models/Order.model";
 import calculateOrderPriceSummary from "./utils/calculate-order-total-price";
+import { capitalize } from "utils/strings";
 
 // =================================================
 type Props = { order: Order1 };
@@ -29,7 +30,7 @@ const OrderRow: FC<Props> = ({ order }) => {
       case "PROCESSING":
         return "info";
       case "READY TO DISPATCH":
-      case "SHIPPED":
+      case "ON THE WAY":
         return "warning";
       case "DELIVERED":
         return "success";
@@ -56,7 +57,7 @@ const OrderRow: FC<Props> = ({ order }) => {
     } else if (packages.some((e) => e.status === "PICKUP_REQUESTED")) {
       return "READY TO DISPATCH";
     } else if (packages.some((e) => e.status === "SHIPPED")) {
-      return "SHIPPED";
+      return "ON THE WAY";
     } else if (packages.some((e) => e.status === "DELIVERED")) {
       return "DELIVERED";
     } else if (packages.some((e) => e.status === "CANCELLED")) {
@@ -77,7 +78,7 @@ const OrderRow: FC<Props> = ({ order }) => {
         <Box textAlign="center">
           <Chip
             size="small"
-            label={orderStatus}
+            label={capitalize(orderStatus)}
             color={getColor(orderStatus)}
           />
         </Box>

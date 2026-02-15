@@ -1,2 +1,6 @@
-export const upperCaseToCapitalize = (string: string): string =>
-  string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+export const capitalize = (string: string): string =>
+  string
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
