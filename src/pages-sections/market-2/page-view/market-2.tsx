@@ -69,9 +69,6 @@ const MarketTwoPageView = async () => {
           />
 
           {/* SERVICE CARDS */}
-          {/* <Section2 serviceList={serviceList} /> */}
-
-          {/* CATEGORIES AND ANIMATED OFFER BANNER */}
           <AnimatedCategoryList categories={categories?.data} />
 
           {/* DEALS OF THE DAY AND OFFER BANNERS */}
@@ -83,26 +80,11 @@ const MarketTwoPageView = async () => {
           {threeBanners?.data.length > 2 && (
             <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
           )}
-
-          {/* CATEGORY BASED PRODUCTS */}
-          {/* {mainCategories.data?.slice(0, 5).map(async (category, index) => (
-            <Fragment key={category.id}>
-              <CategoryBasedProducts data={category} />
-              {index % 2 === 0 ? (
-                <FullBanner data={fullBanners?.data?.pop()} />
-              ) : (
-                <HalfBanner
-                  data={[halfBanners?.data?.pop(), halfBanners?.data?.pop()]}
-                />
-              )}
-            </Fragment>
-          ))} */}
           <AllProducts
             fullBanners={fullBanners?.data ?? []}
             halfBanners={halfBanners?.data ?? []}
           />
           {/* SELECTED PRODUCTS */}
-          {/* <SelectedProducts /> */}
         </Box>
 
         {/* POPUP NEWSLETTER FORM */}

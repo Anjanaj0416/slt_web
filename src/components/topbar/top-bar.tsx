@@ -15,15 +15,22 @@ import { FlexBetween, FlexBox } from "components/flex-box";
 import { StyledRoot } from "./styles";
 import { ENVIRONMENT } from "config";
 import { Box } from "@mui/material";
+import API from "constants/settings";
+import { cachedRequest } from "utils/request";
+import { useGetSettingsQuery } from "services/setting-api";
 
 // ===========================================
 type Props = { bgColor?: string };
 // ===========================================
 
 const Topbar: FC<Props> = ({ bgColor }) => {
-  const [expand, setExpand] = useState<boolean>(false);
+  const { data, isLoading } = useGetSettingsQuery({});
+  const marqueeSettings = data?.Marquee;
   return (
-    <StyledRoot bgColor={bgColor} expand={expand ? 1 : 0}>
+    <StyledRoot
+      bgColor={marqueeSettings?.backgroundColor || bgColor}
+      expand={1}
+    >
       <Box
         sx={{
           gap: 2,
@@ -31,12 +38,9 @@ const Topbar: FC<Props> = ({ bgColor }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          px: { xs: 2, md: 16 },
         }}
       >
-        <FlexBetween width="100%">
-          <FlexBox alignItems="center" gap={1}>
-            <Chip
+        {/* <Chip
               label={"HOT"}
               size="small"
               sx={{
@@ -45,60 +49,64 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                 backgroundColor: "primary.main",
                 "& .MuiChip-label": { pl: ".8rem", pr: ".8rem" },
               }}
-            />
-            <Span className="title">Free Express Shipping</Span>
-          </FlexBox>
+            /> */}
+        {!isLoading && (
+          <Box
+            className="title"
+            sx={{
+              color: marqueeSettings?.textColor || "#ffffff",
 
-          <IconButton
-            disableRipple
-            className="expand"
-            onClick={() => setExpand((state) => !state)}
+              width: "100%",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              display: "block",
+            }}
           >
-            {expand ? <Remove /> : <Add />}
-          </IconButton>
-        </FlexBetween>
+            <Box
+              component="span"
+              sx={{
+                display: "inline-block",
+                fontSize: "14px",
+                fontWeight: 500,
+                animation: "scroll 20s linear infinite",
+              }}
+            >
+              <FlexBetween gap={24}>
+                <Box>
+                  {marqueeSettings?.title ||
+                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                </Box>
+                <Box>
+                  {marqueeSettings?.title ||
+                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                </Box>
+                <Box>
+                  {marqueeSettings?.title ||
+                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                </Box>
+                <Box>
+                  {marqueeSettings?.title ||
+                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                </Box>
 
-        <FlexBox className="topbarRight" alignItems="center">
-          {/* LANGUAGE MENU SELECTOR */}
-          {/* <BazaarMenu
-            handler={
-              <TouchRipple className="handler marginRight">
-                <Span className="menuTitle">{selectedLanguage.title}</Span>
-                <ExpandMore fontSize="inherit" />
-              </TouchRipple>
-            }
-          >
-            {Object.keys(languageOptions).map((language: string) => (
-              <MenuItem
-                className="menuItem"
-                key={languageOptions[language].title}
-                onClick={() => handleChangeLanguage(language)}
-              >
-                <Span className="menuTitle">
-                  {languageOptions[language].title}
-                </Span>
-              </MenuItem>
-            ))}
-          </BazaarMenu> */}
-
-          {/* SOCIAL LINKS AREA */}
-          <FlexBox alignItems="center" gap={1.5}>
-            {socialLinks.map(({ id, Icon, url }) => (
-              <Link href={url} key={id}>
-                <Icon sx={{ fontSize: 16 }} />
-              </Link>
-            ))}
-          </FlexBox>
-        </FlexBox>
+                <Box>{marqueeSettings?.title}</Box>
+              </FlexBetween>
+            </Box>
+            <style jsx>{`
+              @keyframes scroll {
+                0% {
+                  transform: translateX(0%);
+                }
+                100% {
+                  transform: translateX(-50%);
+                }
+              }
+            `}</style>
+          </Box>
+        )}
       </Box>
     </StyledRoot>
   );
 };
-
-const socialLinks = [
-  { id: 2, Icon: Facebook, url: ENVIRONMENT.FACEBOOK_LINK },
-  { id: 3, Icon: Instagram, url: ENVIRONMENT.INSTAGRAM_LINK },
-  { id: 1, Icon: XIcon, url: ENVIRONMENT.TWITTER_LINK },
-];
 
 export default Topbar;

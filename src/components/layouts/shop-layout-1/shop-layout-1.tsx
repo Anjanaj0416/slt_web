@@ -17,7 +17,7 @@ import Header from "components/header/header";
 import { SearchInputWithCategory } from "components/search-box";
 import { MobileNavigationBar } from "components/mobile-navigation";
 import { usePathname } from "next/navigation";
-import { Box, Breadcrumbs, Container, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
 import useHeader from "components/header/use-header";
 
@@ -67,8 +67,8 @@ const ShopLayout1: FC<PropsWithChildren> = ({ children }) => {
       segments[1] = "Edit Profile";
     }
     if (segments.length > 1 && segments[0] === "buy-now") {
-      if(segments[1]==="items"){
-        segments[1]="Buy Now - Items"
+      if (segments[1] === "items") {
+        segments[1] = "Buy Now - Items";
       }
       delete segments[0];
     }
