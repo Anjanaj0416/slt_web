@@ -16,7 +16,8 @@ import { StyledRoot } from "./styles";
 import { ENVIRONMENT } from "config";
 import { Box } from "@mui/material";
 import API from "constants/settings";
-import { cachedRequest } from "utils/request";
+import Marquee from "react-fast-marquee";
+
 import { useGetSettingsQuery } from "services/setting-api";
 
 // ===========================================
@@ -67,33 +68,21 @@ const Topbar: FC<Props> = ({ bgColor }) => {
               component="span"
               sx={{
                 display: "inline-block",
-                fontSize: { xs: "12px", md: "14px" },
                 fontWeight: 500,
-                animation: "scroll 20s linear infinite",
               }}
             >
               <FlexBetween gap={24}>
-                <Box>
-                  {marqueeSettings?.title ||
-                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
-                </Box>
-                <Box>
-                  {marqueeSettings?.title ||
-                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
-                </Box>
-                <Box>
-                  {marqueeSettings?.title ||
-                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
-                </Box>
-                <Box>
-                  {marqueeSettings?.title ||
-                    "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
-                </Box>
+                <Marquee autoFill>
+                  <Box pl={12} sx={{ fontSize: { xs: "12px", md: "14px" } }}>
+                    {marqueeSettings?.title ||
+                      "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                  </Box>{" "}
+                </Marquee>
 
                 <Box>{marqueeSettings?.title}</Box>
               </FlexBetween>
             </Box>
-            <style jsx>{`
+            {/* <style jsx>{`
               @keyframes scroll {
                 0% {
                   transform: translateX(0%);
@@ -102,7 +91,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                   transform: translateX(-50%);
                 }
               }
-            `}</style>
+            `}</style> */}
           </Box>
         )}
       </Box>
