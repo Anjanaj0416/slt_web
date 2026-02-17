@@ -17,5 +17,12 @@ const baseQuery = fetchBaseQuery({
     return headers;
   },
 });
+const publicBaseQuery = fetchBaseQuery({
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
+  prepareHeaders: async (headers, { getState }) => {
+    headers.set("Content-Type", "application/json");
+    return headers;
+  },
+});
 //
-export { baseQuery };
+export { baseQuery, publicBaseQuery };
