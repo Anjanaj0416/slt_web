@@ -184,7 +184,7 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
         <Box
           sx={{
             display: "grid",
-            gap: { xs: 1, md: 1, lg: 4 },
+            gap: { xs: 1, md: 1, lg: 1 },
             gridTemplateColumns: {
               xs: "repeat(2, minmax(150px, 1fr))",
               md: "repeat(3, 1fr)",

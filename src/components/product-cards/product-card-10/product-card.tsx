@@ -8,7 +8,7 @@ import Favorite from "@mui/icons-material/Favorite";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 // GLOBAL CUSTOM COMPONENTS
 import LazyImage from "components/LazyImage";
-import { H4, H5, Paragraph, Span } from "components/Typography";
+import { Paragraph, Span } from "components/Typography";
 import { useUnAuthenticatedModal } from "components/modals/unauthenticated-action-modal";
 // STYLED COMPONENTS
 import { Card, CardMedia, FavoriteButton } from "./styles";
