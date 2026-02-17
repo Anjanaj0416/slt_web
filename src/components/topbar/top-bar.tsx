@@ -1,21 +1,8 @@
-import Link from "next/link";
-import { FC, useState } from "react";
-import Chip from "@mui/material/Chip";
-import IconButton from "@mui/material/IconButton";
-// MUI ICON COMPONENTS
-import Add from "@mui/icons-material/Add";
-import Remove from "@mui/icons-material/Remove";
-import Facebook from "@mui/icons-material/Facebook";
-import Instagram from "@mui/icons-material/Instagram";
-import XIcon from "@mui/icons-material/X";
-// GLOBAL CUSTOM COMPONENTS
-import { Span } from "components/Typography";
-import { FlexBetween, FlexBox } from "components/flex-box";
+import { FC } from "react";
+import { FlexBetween } from "components/flex-box";
 // STYLED COMPONENTS
 import { StyledRoot } from "./styles";
-import { ENVIRONMENT } from "config";
 import { Box } from "@mui/material";
-import API from "constants/settings";
 import Marquee from "react-fast-marquee";
 
 import { useGetSettingsQuery } from "services/setting-api";
@@ -36,7 +23,6 @@ const Topbar: FC<Props> = ({ bgColor }) => {
       <Box
         sx={{
           height: "100%",
-
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
