@@ -30,11 +30,12 @@ const Topbar: FC<Props> = ({ bgColor }) => {
     <StyledRoot
       bgColor={marqueeSettings?.backgroundColor || bgColor}
       expand={1}
+      sx={{ maxHeight: { xs: "40px", md: "50px" } }}
     >
       <Box
         sx={{
-          gap: 2,
           height: "100%",
+
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -66,7 +67,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
               component="span"
               sx={{
                 display: "inline-block",
-                fontSize: "14px",
+                fontSize: { xs: "12px", md: "14px" },
                 fontWeight: 500,
                 animation: "scroll 20s linear infinite",
               }}
