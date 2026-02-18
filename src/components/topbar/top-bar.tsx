@@ -58,12 +58,12 @@ const Topbar: FC<Props> = ({ bgColor }) => {
               }}
             >
               <FlexBetween gap={24}>
-                <Marquee autoFill>
+                {/* <Marquee autoFill>
                   <Box pl={12} sx={{ fontSize: { xs: "12px", md: "14px" } }}>
                     {marqueeSettings?.title ||
                       "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
                   </Box>{" "}
-                </Marquee>
+                </Marquee> */}
 
                 <Box>{marqueeSettings?.title}</Box>
               </FlexBetween>
