@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FlexBetween } from "components/flex-box";
+import { FlexBetween, FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
 import { StyledRoot } from "./styles";
 import { Box } from "@mui/material";
@@ -52,21 +52,100 @@ const Topbar: FC<Props> = ({ bgColor }) => {
           >
             <Box
               component="span"
+              width="100%"
               sx={{
                 display: "inline-block",
                 fontWeight: 500,
               }}
             >
-              <FlexBetween gap={24}>
-                {/* <Marquee autoFill>
-                  <Box pl={12} sx={{ fontSize: { xs: "12px", md: "14px" } }}>
+              <Box
+                sx={{
+                  overflow: "hidden",
+                  width: "100%",
+                  backgroundColor: "#000",
+                  color: "#fff",
+                  py: 1,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    width: "max-content",
+                    animation: `scroll 30s linear infinite`,
+                    "@keyframes scroll": {
+                      "0%": {
+                        transform: "translateX(0)",
+                      },
+                      "100%": {
+                        transform: "translateX(-50%)",
+                      },
+                    },
+                  }}
+                >
+                  {/* Duplicate content */}
+                  <Box
+                    sx={{
+                      whiteSpace: "nowrap",
+                      px: 6,
+                      fontSize: { xs: "12px", md: "14px" },
+                    }}
+                  >
                     {marqueeSettings?.title ||
                       "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
-                  </Box>{" "}
-                </Marquee> */}
+                  </Box>
 
-                <Box>{marqueeSettings?.title}</Box>
-              </FlexBetween>
+                  <Box
+                    sx={{
+                      whiteSpace: "nowrap",
+                      px: 6,
+                      fontSize: { xs: "12px", md: "14px" },
+                    }}
+                  >
+                    {marqueeSettings?.title ||
+                      "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                  </Box>
+                  <Box
+                    sx={{
+                      whiteSpace: "nowrap",
+                      px: 6,
+                      fontSize: { xs: "12px", md: "14px" },
+                    }}
+                  >
+                    {marqueeSettings?.title ||
+                      "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                  </Box>
+                  <Box
+                    sx={{
+                      whiteSpace: "nowrap",
+                      px: 6,
+                      fontSize: { xs: "12px", md: "14px" },
+                    }}
+                  >
+                    {marqueeSettings?.title ||
+                      "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                  </Box>
+                  <Box
+                    sx={{
+                      whiteSpace: "nowrap",
+                      px: 6,
+                      fontSize: { xs: "12px", md: "14px" },
+                    }}
+                  >
+                    {marqueeSettings?.title ||
+                      "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                  </Box>
+                  <Box
+                    sx={{
+                      whiteSpace: "nowrap",
+                      px: 6,
+                      fontSize: { xs: "12px", md: "14px" },
+                    }}
+                  >
+                    {marqueeSettings?.title ||
+                      "www.tradez.lk - An Emerging Digital Marketplace in Sri Lanka"}
+                  </Box>
+                </Box>
+              </Box>
             </Box>
             {/* <style jsx>{`
               @keyframes scroll {
