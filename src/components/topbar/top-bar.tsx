@@ -1,10 +1,7 @@
 import { FC } from "react";
-import { FlexBetween, FlexBox } from "components/flex-box";
 // STYLED COMPONENTS
 import { StyledRoot } from "./styles";
 import { Box } from "@mui/material";
-import Marquee from "react-fast-marquee";
-
 import { useGetSettingsQuery } from "services/setting-api";
 
 // ===========================================
