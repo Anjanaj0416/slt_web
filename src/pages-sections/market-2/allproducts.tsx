@@ -77,8 +77,8 @@ const AllProducts = ({ fullBanners = [], halfBanners = [] }: Props) => {
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 1.0,
+        rootMargin: "10px",
+        threshold: 0.1,
       }
     );
     const currentLoader = loaderRef.current;
