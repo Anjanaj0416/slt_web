@@ -136,7 +136,7 @@ const ProductIntro1 = ({ product, store }) => {
 
           <FlexBox alignItems="center" gap={1} mb={2}>
             <Box lineHeight="1">Rated:</Box>
-            <Rating color="warn" value={4} readOnly />
+            <Rating color="warn" value={5} readOnly />
           </FlexBox>
 
           <VariantSelector
