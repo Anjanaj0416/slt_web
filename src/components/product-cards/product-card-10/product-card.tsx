@@ -32,7 +32,7 @@ import useQuotation from "hooks/useQuotation";
 import DiscountChip from "../discount-chip";
 import CartButtonIcon from "icons/CartButton";
 import { Button, CircularProgress, Rating, Tooltip } from "@mui/material";
-import { FlexBetween } from "components/flex-box";
+import { FlexBetween, FlexBox } from "components/flex-box";
 import { StyledChip } from "pages-sections/sales/styles";
 
 // ==============================================================
@@ -247,7 +247,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
           </Box>
         </Tooltip>
 
-        <Rating color="warn" value={4} readOnly size="small" />
+        <Rating color="warn" value={5} readOnly size="small" />
 
         {/* PRODUCT ADD TO CART BUTTON */}
         {isQuotationProduct && (
@@ -283,22 +283,21 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
               {minPriceVariant.price === getDiscountedPrice() ? (
                 currency(minPriceVariant.price)
               ) : (
-                <Box>
+                <FlexBox flexDirection="column" mt={0.5}>
                   {"LKR "}
                   {`${currency(getDiscountedPrice(), 0, "")} `}
                   <Span
                     color={"gray"}
                     sx={{
                       textDecoration: "line-through",
-                      ml: 0.5,
                       fontWeight: 400,
-                      fontSize: 14,
+                      fontSize: 12,
                       display: { xs: "none", lg: "inline-block" },
                     }}
                   >
                     {currency(minPriceVariant.price, 0, "")}
                   </Span>
-                </Box>
+                </FlexBox>
               )}
             </Box>
 
