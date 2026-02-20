@@ -39,8 +39,6 @@ const Topbar: FC<Props> = ({ bgColor }) => {
           <Box
             className="title"
             sx={{
-              color: marqueeSettings?.textColor || "#ffffff",
-
               width: "100%",
               whiteSpace: "nowrap",
               overflow: "hidden",
@@ -59,7 +57,7 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                 sx={{
                   overflow: "hidden",
                   width: "100%",
-                  backgroundColor: "#000",
+                  backgroundColor: marqueeSettings?.backgroundColor || bgColor,
                   color: "#fff",
                   py: 1,
                 }}
@@ -84,7 +82,11 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                     sx={{
                       whiteSpace: "nowrap",
                       px: 6,
-                      fontSize: { xs: "12px", md: "14px" },
+                      fontSize: {
+                        xs: "12px",
+                        md: "14px",
+                        color: marqueeSettings?.textColor || "#ffffff",
+                      },
                     }}
                   >
                     {marqueeSettings?.title ||
@@ -95,7 +97,11 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                     sx={{
                       whiteSpace: "nowrap",
                       px: 6,
-                      fontSize: { xs: "12px", md: "14px" },
+                      fontSize: {
+                        xs: "12px",
+                        md: "14px",
+                        color: marqueeSettings?.textColor || "#ffffff",
+                      },
                     }}
                   >
                     {marqueeSettings?.title ||
@@ -105,7 +111,11 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                     sx={{
                       whiteSpace: "nowrap",
                       px: 6,
-                      fontSize: { xs: "12px", md: "14px" },
+                      fontSize: {
+                        xs: "12px",
+                        md: "14px",
+                        color: marqueeSettings?.textColor || "#ffffff",
+                      },
                     }}
                   >
                     {marqueeSettings?.title ||
@@ -115,7 +125,11 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                     sx={{
                       whiteSpace: "nowrap",
                       px: 6,
-                      fontSize: { xs: "12px", md: "14px" },
+                      fontSize: {
+                        xs: "12px",
+                        md: "14px",
+                        color: marqueeSettings?.textColor || "#ffffff",
+                      },
                     }}
                   >
                     {marqueeSettings?.title ||
@@ -125,7 +139,11 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                     sx={{
                       whiteSpace: "nowrap",
                       px: 6,
-                      fontSize: { xs: "12px", md: "14px" },
+                      fontSize: {
+                        xs: "12px",
+                        md: "14px",
+                        color: marqueeSettings?.textColor || "#ffffff",
+                      },
                     }}
                   >
                     {marqueeSettings?.title ||
@@ -135,7 +153,11 @@ const Topbar: FC<Props> = ({ bgColor }) => {
                     sx={{
                       whiteSpace: "nowrap",
                       px: 6,
-                      fontSize: { xs: "12px", md: "14px" },
+                      fontSize: {
+                        xs: "12px",
+                        md: "14px",
+                        color: marqueeSettings?.textColor || "#ffffff",
+                      },
                     }}
                   >
                     {marqueeSettings?.title ||
