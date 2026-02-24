@@ -154,6 +154,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
       sx={{
         borderRadius: 3,
         border: "2px solid #DADADA",
+        maxWidth: { xs: "280px", md: "300px", lg: "320px" },
       }}
     >
       <CardMedia
@@ -307,8 +308,8 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
                   borderRadius: 3,
                   px: {
                     xs: 0.8,
-                    md: 1.2,
-                    lg: 2,
+                    md: 1,
+                    lg: 1.5,
                     "@media (max-width:400px)": {
                       display: "none",
                     },

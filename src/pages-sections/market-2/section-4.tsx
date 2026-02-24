@@ -31,6 +31,7 @@ const Section4: FC<Props> = ({ products }) => {
       <Carousel
         slidesToShow={5}
         autoplay
+        spaceBetween={5}
         responsive={responsive}
         autoplaySpeed={4000}
         arrowStyles={{ backgroundColor: "dark.main" }}
