@@ -35,7 +35,9 @@ export function useProductIntro(product: Product1) {
   const [mappedAttributes, setMappedAttributes] = useState<MappedAttribute[]>(
     []
   );
-  const [price, setPrice] = useState<number | string>(getProductFormattedPrice(product).basePrice);
+  const [price, setPrice] = useState<number | string>(
+    getProductFormattedPrice(product).basePrice
+  );
   const [quantity, setQuantity] = useState<number>();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
@@ -120,9 +122,10 @@ export function useProductIntro(product: Product1) {
       setSelectedVariant(match);
       setPrice(match.price);
       setQuantity(match.units);
-
-      const imgIndex = medias.findIndex((m) => m.src === match.image);
-      if (imgIndex >= 0) setSelectedImage(imgIndex);
+      if (variants.length > 1) {
+        const imgIndex = medias.findIndex((m) => m.src === match.image);
+        if (imgIndex >= 0) setSelectedImage(imgIndex);
+      }
     } else {
       setSelectedVariant(undefined);
       setPrice(getProductFormattedPrice(product).basePrice);
