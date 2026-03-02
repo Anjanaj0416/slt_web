@@ -154,7 +154,7 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
       sx={{
         borderRadius: 3,
         border: "2px solid #DADADA",
-        maxWidth: { xs: "280px", md: "300px", lg: "320px" },
+        maxWidth: { xs: "280px", md: "300px", lg: "350px" },
       }}
     >
       <CardMedia
@@ -258,6 +258,11 @@ const ProductCard20: FC<Props> = ({ product }: Props) => {
             variant="outlined"
             onClick={requestQuota}
             loading={isButtonLoading}
+            sx={{
+              "@media (max-width:400px)": {
+                display: "none",
+              },
+            }}
             disabled={isOutOfStock || cartUnits >= minPriceVariant.units}
           >
             {isOutOfStock ? "Out of stock" : "Get Quote"}

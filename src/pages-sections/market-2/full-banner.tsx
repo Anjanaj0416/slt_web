@@ -10,36 +10,15 @@ import Link from "next/link";
 
 // STYLED COMPONENT
 const BannerWrapper = styled("div")<{ img: string }>(({ theme, img }) => ({
-  zIndex: 1,
- 
+  position: "relative",
   overflow: "hidden",
   borderRadius: "3px",
-  position: "relative",
   minHeight: "100px",
-  ":after": {
-    top: 0,
-    left: 0,
-    bottom:0,
-    zIndex: -1,
-    content: "''",
-    width: "100%",
-    height: "100%",
 
-    position: "absolute",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${img})`,
-    ...(theme.direction === "rtl" && {
-      transform: "rotateX(180deg) rotateZ(180deg)",
-    }),
-  },
-
-  [theme.breakpoints.down("md")]: {
-    gap: "1rem",
-    flexDirection: "column",
-    justifyContent: "center",
-  },
+  backgroundImage: `url(https://ucarecdn.com/3c080e28-4b9e-4c4a-b31d-5a58bb3507f4/-/preview/1000x93/)`,
+  backgroundSize: "contain",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
 }));
 
 // ======================================================================
@@ -48,11 +27,26 @@ type Props = { data: Banner };
 
 const FullBanner: FC<Props> = ({ data }) => {
   return (
-    <Box sx={{ my: 0.5 }} width={"100%"} height={"100%"}>
-      <Link href={data?.link}>
-        <BannerWrapper img={data?.imageUrl}></BannerWrapper>
-      </Link>
-    </Box>
+    <Link href={data?.link}>
+      <Box
+        component="img"
+         src={`${ENVIRONMENT.S3_BUCKET_URL}/${data?.imageUrl}`}
+        alt="Banner"
+        sx={{
+          width: "100%",
+          height: {
+            xs: 70, // mobile
+            sm: 90, // tablet
+            md: 140, // desktop
+            lg: 150, // large screens
+            xl: 160,
+          },
+          objectFit: "cover",
+          display: "block",
+          borderRadius:1.5
+        }}
+      ></Box>
+    </Link>
   );
 };
 

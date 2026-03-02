@@ -13,6 +13,7 @@ import CATEGORY_API from "constants/categories";
 import request from "utils/request";
 import { notFound } from "next/navigation";
 import MobileBannerSection from "../mobile-banner-section";
+import SelectedProducts from "../selected-products";
 
 const cachedRequest = cache((url: Object, options: any) =>
   request(url, options)
@@ -28,6 +29,7 @@ const MarketTwoPageView = async () => {
       threeBanners,
       mainCarouselData,
       topBanners,
+      topCategories,
     ] = await Promise.all([
       cachedRequest(PRODUCT_API.GET_PRODUCTS, {
         query: "size=30&isDiscount=true",
@@ -37,10 +39,10 @@ const MarketTwoPageView = async () => {
           "size=12&categoryType=PRODUCT&parentCategoryId=null&categoryStatus=APPROVED",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
-        query: "size=3&bannerType=FULL&sort=index,asc",
+        query: "size=2&bannerType=FULL&sort=index,asc",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
-        query: "size=4&bannerType=HALF&sort=index,asc",
+        query: "size=2&bannerType=HALF&sort=index,asc",
       }),
       cachedRequest(BANNER_API.GET_BANNERS, {
         query: "size=4&bannerType=THREE&sort=index,asc",
@@ -51,8 +53,11 @@ const MarketTwoPageView = async () => {
       cachedRequest(BANNER_API.GET_BANNERS, {
         query: "size=2&bannerType=HALF_TOP&sort=index,asc",
       }),
+      cachedRequest(CATEGORY_API.GET_CATEGORIES, {
+        query:
+          "productsCountMoreThan=5&categoryType=PRODUCT&categoryStatus=APPROVED&size=3",
+      }),
     ]);
-
     return (
       <Fragment>
         <Box
@@ -73,17 +78,23 @@ const MarketTwoPageView = async () => {
 
           {/* DEALS OF THE DAY AND OFFER BANNERS */}
           {products?.data?.length > 4 && <Section4 products={products?.data} />}
-
+          {topCategories?.data?.map((category, index) => (
+            <SelectedProducts
+              key={category?.id}
+              category={category}
+              banner={
+                index % 2 === 0
+                  ? fullBanners?.data?.pop()
+                  : [...halfBanners?.data]
+              }
+            />
+          ))}
           <MobileBannerSection topBanners={topBanners?.data} />
-
           {/* TOP OFFER BANNERS */}
           {threeBanners?.data.length > 2 && (
             <ThreeBanner data={threeBanners?.data.slice(0, 3)} />
           )}
-          <AllProducts
-            fullBanners={fullBanners?.data ?? []}
-            halfBanners={halfBanners?.data ?? []}
-          />
+          <AllProducts />
           {/* SELECTED PRODUCTS */}
         </Box>
 

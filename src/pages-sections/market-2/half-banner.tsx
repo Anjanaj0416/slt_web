@@ -10,14 +10,32 @@ import { ENVIRONMENT } from "config";
 import Link from "next/link";
 
 // STYLED COMPONENT
-const BannerBox = styled("div")<{ img: string }>(({ img }) => ({
+const BannerBox = styled("div")<{ img: string }>(({ theme, img }) => ({
   position: "relative",
   width: "100%",
-  aspectRatio: "2 / 1",
-  maxHeight:"220px",
+
+  height: 230, // default fallback
+
+  [theme.breakpoints.up("xs")]: {
+    height: 120,
+  },
+  [theme.breakpoints.up("sm")]: {
+    height: 240,
+  },
+  [theme.breakpoints.up("md")]: {
+    height: 130,
+  },
+  [theme.breakpoints.up("lg")]: {
+    height: 200,
+  },
+  [theme.breakpoints.up("xl")]: {
+    height: 230,
+  },
+
   backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${img})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
   borderRadius: "6px",
 }));
 

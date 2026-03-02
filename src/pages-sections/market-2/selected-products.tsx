@@ -1,101 +1,69 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 // GLOBAL CUSTOM COMPONENTS
 import { Carousel } from "components/carousel";
-import { H3, Paragraph } from "components/Typography";
+import { H2, H3, Paragraph } from "components/Typography";
 import { FlexBetween } from "components/flex-box";
 import { ProductCard10 } from "components/product-cards/product-card-10";
-import { useLazyListProductsQuery } from "services/product-api";
+import { useFilteredProductsQuery } from "services/product-api";
 // PRODUCT DATA MODEL
 import { Product1 } from "models/Product.model";
+import { Box } from "@mui/material";
+import Category1 from "models/Category.model";
+import Banner from "models/Banner.model";
+import FullBanner from "./full-banner";
+import HalfBanner from "./half-banner";
 
-const SelectedProducts = () => {
-  const [selected, setSelected] = useState("new");
-  const [products, setProducts] = useState<Product1[]>([]);
-  const [listProducts, { isLoading }] = useLazyListProductsQuery();
-
-  const handleFetch = useCallback(async () => {
-    const products: Product1[] = (await listProducts({ page: 0, size: 5 })).data
-      ?.data;
-
-    if (products.length > 0 && products.length < 4) {
-      if (products.length === 1) {
-        setProducts([...products, ...products]);
-      } else if (products.length === 2) {
-        setProducts([...products, ...products]);
-      } else {
-        setProducts([...products, ...products.slice(0, 1)]);
-      }
-    } else {
-      setProducts(products);
-    }
-  }, [listProducts]);
-  //
-  useEffect(() => {
-    handleFetch();
-  }, [handleFetch]);
+type Props = {
+  category: Category1;
+  banner: Banner | Banner[];
+};
+const SelectedProducts = ({ category, banner }: Props) => {
+  const { data: products, isLoading } = useFilteredProductsQuery({
+    categoryId: category.id,
+    size: 20,
+  });
   //
   const responsive = [
     { breakpoint: 1200, settings: { slidesToShow: 4 } },
     { breakpoint: 1024, settings: { slidesToShow: 3 } },
     { breakpoint: 650, settings: { slidesToShow: 2 } },
-    { breakpoint: 426, settings: { slidesToShow: 1 } },
+    { breakpoint: 426, settings: { slidesToShow: 2} },
   ];
-
-  // SELECTED BUTTON
-  const handleSelected = (item: string) => () => setSelected(item);
-
-  // BUTTON ACTIVE COLOR
-  const activeColor = (item: string) => (item === selected ? "error" : "dark");
-
-  // FILTERABLE BUTTON LIST
-  const FILTER_BUTTONS = [
-    { id: 1, title: "New Arrivals", value: "new" },
-    { id: 2, title: "Best Seller", value: "best" },
-    { id: 3, title: "Most Popular", value: "popular" },
-    { id: 4, title: "View All", value: "view" },
-  ];
+  console.log(banner);
 
   return (
-    <Container sx={{ pb: 8 }}>
-      <FlexBetween gap={2} flexWrap="wrap" mb={3}>
-        {/* SECTION TITLE */}
-        <div>
-          <H3>Selected Products</H3>
-          <Paragraph>
-            All our new arrivals in a exclusive brand selection
-          </Paragraph>
-        </div>
-
-        {/* FILTERED BUTTON LIST */}
-        {/* <FlexBox flexWrap="wrap" gap={1} sx={{ "& button": { flexGrow: 1 } }}>
-          {FILTER_BUTTONS.map(({ id, title, value }) => (
-            <Button
-              key={id}
-              variant="outlined"
-              color={activeColor(value)}
-              onClick={handleSelected(value)}
-            >
-              {title}
-            </Button>
-          ))}
-        </FlexBox> */}
-      </FlexBetween>
+    <Container disableGutters maxWidth="xl">
+      <Box mb={3}>
+        <H2>{category.name}</H2>
+      </Box>
 
       {/* PRODUCT CAROUSEL */}
       {isLoading ? (
         <Container>Loading...</Container>
       ) : (
-        <Carousel
-          slidesToShow={5}
-          responsive={responsive}
-          arrowStyles={{ backgroundColor: "dark.main" }}
-        >
-          {products?.map((product) => (
-            <ProductCard10 product={product} key={product.id} />
-          ))}
-        </Carousel>
+        <Box>
+          <Carousel
+            slidesToShow={5}
+            responsive={responsive}
+            arrowStyles={{ backgroundColor: "dark.main" }}
+            autoplay
+            autoplaySpeed={5000}
+          >
+            {products.data?.map((product) => (
+              <ProductCard10 product={product} key={product.id} />
+            ))}
+          </Carousel>
+          <Box sx={{ py: 3 }}>
+            {Array.isArray(banner) && banner?.length === 2 && (
+              <HalfBanner data={banner} />
+            )}
+            {!Array.isArray(banner) && banner?.bannerType === "FULL" && (
+              <FullBanner data={banner} />
+            )}
+          </Box>
+        </Box>
       )}
     </Container>
   );
