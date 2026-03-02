@@ -14,6 +14,7 @@ import request from "utils/request";
 import { notFound } from "next/navigation";
 import MobileBannerSection from "../mobile-banner-section";
 import SelectedProducts from "../selected-products";
+import { shuffle } from "utils/shuffle";
 
 const cachedRequest = cache((url: Object, options: any) =>
   request(url, options)
@@ -69,13 +70,13 @@ const MarketTwoPageView = async () => {
         >
           {/* HERO SLIDER AND GRID */}
           <Section1
-            carouselData={mainCarouselData?.data}
+            carouselData={shuffle(mainCarouselData?.data)}
             topBanners={topBanners?.data}
           />
 
           {/* SERVICE CARDS */}
           <AnimatedCategoryList categories={categories?.data} />
-
+          <MobileBannerSection topBanners={topBanners?.data} />
           {/* DEALS OF THE DAY AND OFFER BANNERS */}
           {products?.data?.length > 4 && <Section4 products={products?.data} />}
           {topCategories?.data?.map((category, index) => (
@@ -89,7 +90,7 @@ const MarketTwoPageView = async () => {
               }
             />
           ))}
-          <MobileBannerSection topBanners={topBanners?.data} />
+
           {/* TOP OFFER BANNERS */}
           {threeBanners?.data.length > 2 && (
             <ThreeBanner data={threeBanners?.data.slice(0, 3)} />

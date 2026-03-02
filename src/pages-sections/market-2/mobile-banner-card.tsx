@@ -4,20 +4,16 @@ import styled from "@mui/material/styles/styled";
 
 // STYLED COMPONENTS
 const CardWrapper = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "img", // prevent img from being passed to DOM
-})<{ img: string }>(({theme, img }) => ({
-
+  shouldForwardProp: (prop) => prop !== "img",
+})<{ img: string }>(({ img }) => ({
   cursor: "pointer",
   height: 200,
-  maxHeight: 240,
-  width: "45vw",
-  [theme.breakpoints.down(400)]: {
-    width: "43vw",
-  },
+  width: "100%",
   borderRadius: 8,
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
-  backgroundImage: `url(${img}) !important`,
+  backgroundPosition: "center",
+  backgroundImage: `url(${img})`,
 }));
 
 // ========================================================

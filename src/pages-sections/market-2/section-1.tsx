@@ -42,7 +42,7 @@ const Section1: FC<Props> = ({ carouselData, topBanners }) => {
     >
       <Grid container spacing={2}>
         {/* MAIN CAROUSEL AREA */}
-        <Grid item md={9} xs={12}>
+        <Grid item lg={9} xs={12}>
           <Carousel
             dots
             arrows={false}
@@ -73,13 +73,10 @@ const Section1: FC<Props> = ({ carouselData, topBanners }) => {
           </Carousel>
         </Grid>
 
-        <Grid item md={3} xs={12}>
+        <Grid item xs={12} md={3}>
           <Stack
-            height="100%"
-            direction={{ md: "column", sm: "row", xs: "column" }}
             spacing={2}
           >
-            {/* SUMMER SALE BANNER */}
             {topBanners.map((banner) => (
               <Link key={banner.id} href={banner.link}>
                 <BannerCard

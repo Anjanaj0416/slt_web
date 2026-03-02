@@ -15,10 +15,10 @@ const CardWrapper = styled(Box, {
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
   backgroundImage: `url(${img}) !important`,
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("lg")]: {
     display: "none",
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("lg")]: {
     display: "block",
   },
 }));

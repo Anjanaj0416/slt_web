@@ -14,6 +14,7 @@ import Category1 from "models/Category.model";
 import Banner from "models/Banner.model";
 import FullBanner from "./full-banner";
 import HalfBanner from "./half-banner";
+import ProductCardSkeleton from "./product-card-skeleton";
 
 type Props = {
   category: Category1;
@@ -29,10 +30,8 @@ const SelectedProducts = ({ category, banner }: Props) => {
     { breakpoint: 1200, settings: { slidesToShow: 4 } },
     { breakpoint: 1024, settings: { slidesToShow: 3 } },
     { breakpoint: 650, settings: { slidesToShow: 2 } },
-    { breakpoint: 426, settings: { slidesToShow: 2} },
+    { breakpoint: 426, settings: { slidesToShow: 2 } },
   ];
-  console.log(banner);
-
   return (
     <Container disableGutters maxWidth="xl">
       <Box mb={3}>
@@ -41,7 +40,9 @@ const SelectedProducts = ({ category, banner }: Props) => {
 
       {/* PRODUCT CAROUSEL */}
       {isLoading ? (
-        <Container>Loading...</Container>
+        <Container disableGutters maxWidth="xl">
+          <ProductCardSkeleton />
+        </Container>
       ) : (
         <Box>
           <Carousel

@@ -10,16 +10,18 @@ type Props = { topBanners: Banner[] };
 const MobileBannerSection = ({ topBanners }: Props) => {
   return (
     <FlexBetween
-      mb={{ xs: 3, md: 0 }}
-      sx={{ display: { xs: "flex", md: "none" } }}
-      flexWrap="wrap"
+      mb={{ xs: 3, md: 4 }}
+      sx={{
+        display: { xs: "flex", lg: "none" },
+        gap: 1,
+      }}
     >
       {topBanners.map((banner) => (
-        <Link key={banner.id} href={banner.link}>
+        <Link key={banner.id} href={banner.link} style={{ flex: 1 }}>
           <MobileBannerCard
             imageFull
-            flex={1}
             img={`${ENVIRONMENT.S3_BUCKET_URL}/${banner.imageUrl}`}
+            sx={{ width: "100%" }}
           />
         </Link>
       ))}
