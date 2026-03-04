@@ -17,7 +17,6 @@ import useListProducts from "components/products-view/hook/use-list-products";
 import ProductFilterCard from "../product-filter-card";
 import { Carousel } from "components/carousel";
 import { COMMON_DOT_STYLES } from "components/carousel/styles";
-import CarouselCard5 from "components/carousel-cards/carousel-card-5";
 
 import ENVIRONMENT from "config/environment";
 
@@ -165,6 +164,7 @@ export default function ProductSearchPageView({
             autoplay
             dotColor={palette.dark?.main}
             dotStyles={COMMON_DOT_STYLES}
+            autoplaySpeed={6000}
           >
             {banners.map((item) => {
               const url = `${ENVIRONMENT.S3_BUCKET_URL}/${item.imageUrl}`;

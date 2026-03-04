@@ -24,13 +24,13 @@ const CardWrapper = styled("div", {
       theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
 
     [theme.breakpoints.down("md")]: {
-      backgroundImage: imgTablet ? `url(${imgTablet}) !important` : "none",
-      minHeight: 250,
+      backgroundImage: imgTablet ? `url(${imgMobile}) !important` : "none",
+      minHeight: 360,
     },
 
     [theme.breakpoints.down("sm")]: {
       backgroundImage: imgMobile ? `url(${imgMobile}) !important` : "none",
-      minHeight: 300,
+      minHeight: 360,
     },
   })
 );

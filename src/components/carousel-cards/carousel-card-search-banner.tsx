@@ -12,6 +12,7 @@ const CardWrapperSearchWrapper = styled("div", {
 })<{ img: string; mode: string; imgTablet?: string; imgMobile?: string }>(
   ({ theme, img, imgTablet, imgMobile, mode }) => ({
     minHeight: 250,
+    maxHeight: 300,
     display: "flex",
     alignItems: "center",
     backgroundSize: "cover",
@@ -31,6 +32,7 @@ const CardWrapperSearchWrapper = styled("div", {
     [theme.breakpoints.down("sm")]: {
       backgroundImage: imgMobile ? `url(${imgMobile}) !important` : "none",
       minHeight: 300,
+      
     },
     marginBottom: theme.spacing(2),
   })
