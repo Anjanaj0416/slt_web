@@ -1,43 +1,12 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-import styled from "@mui/material/styles/styled";
-import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 // CUSTOM UTILS LIBRARY FUNCTION
 import Banner from "models/Banner.model";
 import { FC } from "react";
 import { ENVIRONMENT } from "config";
 import Link from "next/link";
-
-// STYLED COMPONENT
-const BannerBox = styled("div")<{ img: string }>(({ theme, img }) => ({
-  position: "relative",
-  width: "100%",
-
-  height: 230, // default fallback
-
-  [theme.breakpoints.up("xs")]: {
-    height: 120,
-  },
-  [theme.breakpoints.up("sm")]: {
-    height: 240,
-  },
-  [theme.breakpoints.up("md")]: {
-    height: 130,
-  },
-  [theme.breakpoints.up("lg")]: {
-    height: 200,
-  },
-  [theme.breakpoints.up("xl")]: {
-    height: 230,
-  },
-
-  backgroundImage: `url(${ENVIRONMENT.S3_BUCKET_URL}/${img})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  borderRadius: "6px",
-}));
 
 // ======================================================================
 type Props = { data: Banner[] };
@@ -53,12 +22,53 @@ const HalfBanner: FC<Props> = ({ data }) => {
     >
       <Grid item md={6} xs={12}>
         <Link href={data[0]?.link} target="_blank">
-          <BannerBox img={data[0]?.imageUrl} />{" "}
+          <Box
+            sx={{
+              width: "100%",
+              borderRadius: "6px",
+              overflow: "hidden",
+              lineHeight: 0,
+            }}
+          >
+            <Box
+              component="img"
+              src={`${ENVIRONMENT.S3_BUCKET_URL}/${data[0]?.imageUrl}`}
+              alt="Banner 1"
+              sx={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                objectFit: "contain",
+                borderRadius: "6px",
+              }}
+            />
+          </Box>
         </Link>
       </Grid>
+
       <Grid item md={6} xs={12}>
         <Link href={data?.[1]?.link} target="_blank">
-          <BannerBox img={data?.[1]?.imageUrl} />
+          <Box
+            sx={{
+              width: "100%",
+              borderRadius: "6px",
+              overflow: "hidden",
+              lineHeight: 0,
+            }}
+          >
+            <Box
+              component="img"
+              src={`${ENVIRONMENT.S3_BUCKET_URL}/${data?.[1]?.imageUrl}`}
+              alt="Banner 2"
+              sx={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                objectFit: "contain",
+                borderRadius: "6px",
+              }}
+            />
+          </Box>
         </Link>
       </Grid>
     </Grid>
