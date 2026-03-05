@@ -100,7 +100,7 @@ const Footer1 = () => {
             </Paragraph>
 
             <Paragraph py={0.6} color="grey.500">
-              Email: <a href="mailto:info@tradez.lk">info@tradez.lk</a>
+              Email: <a href="mailto:info@tradez.lk">info@sltds.lk</a>
             </Paragraph>
 
             <Paragraph py={0.6} mb={2} color="grey.500">
