@@ -21,6 +21,7 @@ import CartServiceProvider from "contexts/CartServiceContext";
 import CheckoutServiceContextProvider from "contexts/CheckoutServiceContext";
 import WishlistProvider from "contexts/WishlistContext";
 import BuyNowItemServiceProvider from "contexts/BuyNowItemServiceContext";
+import ScrollButtons from "components/scroll-buttons";
 //
 export default function RootLayout({
   children,
@@ -40,7 +41,7 @@ export default function RootLayout({
                           <ThemeProvider>
                           <NextTopLoader showForHashAnchor={false} showSpinner={false} speed={300} color="#E94560"/>
                             <RTL>
-                              <SnackbarProvider>{children}</SnackbarProvider>
+                              <SnackbarProvider>{children}<ScrollButtons /></SnackbarProvider>
                             </RTL>
                           </ThemeProvider>
                         </SettingsProvider>
