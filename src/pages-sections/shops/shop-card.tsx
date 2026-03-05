@@ -2,15 +2,13 @@ import { FC } from "react";
 import Link from "next/link";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
 import { alpha, styled } from "@mui/material/styles";
 // MUI ICON COMPONENTS
 import Call from "@mui/icons-material/Call";
-import East from "@mui/icons-material/East";
 import Place from "@mui/icons-material/Place";
 // GLOBAL CUSTOM COMPONENTS
 import { H3, Span } from "components/Typography";
-import { FlexBetween, FlexBox } from "components/flex-box";
+import { FlexBox } from "components/flex-box";
 // CUSTOM DATA MODEL
 import Store from "models/Store.model";
 import { ENVIRONMENT } from "config";
@@ -31,76 +29,67 @@ const ContentWrapper = styled("div", {
     url(${img})`,
 }));
 
+const StyledCard = styled(Card)(() => ({
+  cursor: "pointer",
+  transition: "transform 0.25s ease, box-shadow 0.25s ease",
+  "&:hover": {
+    transform: "translateY(-6px)",
+    boxShadow: "0 12px 28px rgba(0,0,0,0.18)",
+  },
+}));
+
 const ShopCard: FC<Partial<Store>> = (props) => {
   const { name, address, telephone, logoFilePath, id, coverImageFilePath } =
     props || {};
 
   return (
-    <Card>
-      <ContentWrapper
-        img={`${ENVIRONMENT.S3_BUCKET_URL}/${coverImageFilePath}`}
-      >
-        <H3
-          fontWeight="600"
-          mb={1}
-          sx={{
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            textTransform: "capitalize",
-          }}
+    <Link href={`/shops/${id}_${name}`} style={{ textDecoration: "none" }}>
+      <StyledCard>
+        <ContentWrapper
+          img={`${ENVIRONMENT.S3_BUCKET_URL}/${coverImageFilePath}`}
         >
-          {name}
-        </H3>
+          <H3
+            fontWeight="600"
+            mb={1}
+            sx={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              textTransform: "capitalize",
+            }}
+          >
+            {name}
+          </H3>
 
-        {/* <Rating
-          value={5}
-          color="warn"
-          size="small"
-          readOnly
-          sx={{ mb: "0.75rem" }}
-        /> */}
+          <FlexBox mb={1} gap={1}>
+            <Place fontSize="small" sx={{ fontSize: 17, mt: "3px" }} />
+            <Span color="white" sx={{ textTransform: "capitalize" }}>
+              {address}
+            </Span>
+          </FlexBox>
 
-        <FlexBox mb={1} gap={1}>
-          <Place fontSize="small" sx={{ fontSize: 17, mt: "3px" }} />
-          <Span color="white" sx={{ textTransform: "capitalize" }}>
-            {address}
-          </Span>
+          <FlexBox alignItems="center" gap={1}>
+            <Call fontSize="small" sx={{ fontSize: 17 }} />
+            <Span color="white">{telephone}</Span>
+          </FlexBox>
+        </ContentWrapper>
+
+        <FlexBox pl={3} pr={1} pb={1}>
+          <Avatar
+            alt={name}
+            src={`${ENVIRONMENT.S3_BUCKET_URL}/${logoFilePath}`}
+            sx={{
+              width: 64,
+              height: 64,
+              mt: "-32px",
+              ...(!logoFilePath && { backgroundColor: "#f44336" }),
+              border: "3px solid",
+              borderColor: "grey.100",
+            }}
+          />
         </FlexBox>
-
-        <FlexBox alignItems="center" gap={1}>
-          <Call fontSize="small" sx={{ fontSize: 17 }} />
-          <Span color="white">{telephone}</Span>
-        </FlexBox>
-      </ContentWrapper>
-
-      <FlexBetween pl={3} pr={1}>
-        <Avatar
-          alt={name}
-          src={`${ENVIRONMENT.S3_BUCKET_URL}/${logoFilePath}`}
-          sx={{
-            width: 64,
-            height: 64,
-            mt: "-32px",
-            ...(!logoFilePath && { backgroundColor: "#f44336" }),
-            border: "3px solid",
-            borderColor: "grey.100",
-          }}
-        />
-
-        <Link href={`/shops/${id}_${name}`}>
-          <IconButton sx={{ my: 0.5 }}>
-            <East
-              sx={{
-                fontSize: 19,
-                transform: ({ direction }) =>
-                  `rotate(${direction === "rtl" ? "180deg" : "0deg"})`,
-              }}
-            />
-          </IconButton>
-        </Link>
-      </FlexBetween>
-    </Card>
+      </StyledCard>
+    </Link>
   );
 };
 
