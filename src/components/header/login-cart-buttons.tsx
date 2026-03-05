@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import { FC } from "react";
 // MUI ICON COMPONENT
 import PersonOutline from "@mui/icons-material/PersonOutline";
+import StorefrontOutlined from "@mui/icons-material/StorefrontOutlined";
 // GLOBAL CUSTOM COMPONENT
 import { FlexBox } from "components/flex-box";
 // CUSTOM ICON COMPONENT
@@ -15,6 +16,7 @@ import useCartService from "hooks/useCartService";
 import { useSession } from "next-auth/react";
 import { User1 } from "models/User.model";
 import AccountPopover from "components/layouts/customer-dashboard/account-popover";
+import Link from "next/link";
 
 // ==============================================================
 interface Props {
@@ -32,6 +34,13 @@ const LoginCartButtons: FC<Props> = ({ toggleDialog, toggleSidenav }) => {
 
   return (
     <FlexBox gap={2.5} alignItems="center">
+      {/* STORE ICON - NAVIGATES TO SHOPS PAGE */}
+      <Link href="/shops" passHref>
+        <Box p={1.25} bgcolor="grey.200" component={IconButton}>
+          <StorefrontOutlined />
+        </Box>
+      </Link>
+
       <Badge badgeContent={length} color="primary">
         <Box
           p={1.25}
