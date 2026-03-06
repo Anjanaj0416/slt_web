@@ -1,37 +1,7 @@
 import { FC } from "react";
-import styled from "@mui/material/styles/styled";
-// GLOBAL CUSTOM COMPONENTS
-
-// STYLED COMPONENT
-const CardWrapper = styled("div", {
-  shouldForwardProp: (prop) =>
-    !["img", "mode", "imgTablet", "imgMobile"].includes(prop as string),
-})<{ img: string; mode: string; imgTablet?: string; imgMobile?: string }>(
-  ({ theme, img, imgTablet, imgMobile, mode }) => ({
-    minHeight: 540,
-    display: "flex",
-    alignItems: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${img}) !important`,
-    backgroundColor: mode === "dark" ? "#000" : "#fff",
-    borderRadius: 8,
-    color: mode === "light" ? theme.palette.dark.main : "#fff",
-
-    ".content":
-      theme.direction === "rtl" ? { paddingRight: 80 } : { paddingLeft: 80 },
-
-    [theme.breakpoints.down("md")]: {
-      backgroundImage: imgTablet ? `url(${imgTablet}) !important` : "none",
-    },
-
-    [theme.breakpoints.down("sm")]: {
-      backgroundImage: imgMobile ? `url(${imgMobile}) !important` : "none",
-      minHeight: 250,
-    },
-  })
-);
-
+import Box from "@mui/material/Box";
+import useTheme from "@mui/material/styles/useTheme";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // ===============================================================
 interface Props {
@@ -48,13 +18,39 @@ const CarouselCard4: FC<Props> = ({
   bgImageTablet,
   mode = "dark",
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+
+  const imageSrc = isMobile
+    ? bgImageMobile || bgImage
+    : isTablet
+    ? bgImageTablet || bgImage
+    : bgImage;
+
   return (
-    <CardWrapper
-      img={bgImage}
-      imgTablet={bgImageTablet}
-      imgMobile={bgImageMobile}
-      mode={mode}
-    />
+    <Box
+      sx={{
+        width: "100%",
+        borderRadius: "8px",
+        overflow: "hidden",
+        lineHeight: 0,
+      }}
+    >
+      <Box
+        component="img"
+        src={imageSrc}
+        alt="banner"
+        sx={{
+          width: "100%",
+          height: "auto",
+          maxHeight: { lg: 480, xl: 680 },
+          display: "block",
+          objectFit: "cover",
+          borderRadius: "8px",
+        }}
+      />
+    </Box>
   );
 };
 
